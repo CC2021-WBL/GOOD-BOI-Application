@@ -1,5 +1,6 @@
 const competitions = [
   {
+    id: "ok79bctyuii",
     kynologiqueDepartment: "Gdynia",
     competitionName: "Gdanskie Zawody o Piertuszke",
     date: new Date(2022, 3, 22),
@@ -11,6 +12,7 @@ const competitions = [
   },
 
   {
+    id: "ft64dfgjhy8",
     kynologiqueDepartment: "Poznan",
     competitionName: "Zawody obedience klas 0,1,2",
     date: new Date(2022, 5, 1),
@@ -19,7 +21,7 @@ const competitions = [
     judge: "Zuzzana Zezowa",
     steward: "Zygfryd Zaduzy",
     secretary: "Posejdon Paktofonik",
-  }
+  },
 ];
 
 export default competitions;
