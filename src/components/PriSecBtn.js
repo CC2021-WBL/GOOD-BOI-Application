@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Button = styled.button`
   // component "stylowy"
+
   display: block;
   width: 343px;
   height: 50px;

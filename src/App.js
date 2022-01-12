@@ -1,5 +1,6 @@
 import "./App.css";
 import PriSecBtn from "./components/PriSecBtn";
+import HomePage from "./components/pages/HomePage";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <PriSecBtn primary text="PRIMARY" />
       <PriSecBtn secondary text="SECONDARY" />
       {/* ==== */}
+      <HomePage />
     </div>
   );
 }
