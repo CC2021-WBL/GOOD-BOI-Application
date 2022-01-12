@@ -11,15 +11,7 @@ import LoginPage from "./components/pages/LoginPage";
 function App() {
   return (
     <div className="App">
-      {/* Components injected for testing purpose */}
       <HomePage />
-      <LoginPage />
-      <ContestsPage />
-      <ClassesPage />
-      <CompetitorsPage />
-      <ExcersisesPage />
-      <SingleSummaryPage />
-      <ClassSummaryPage />
     </div>
   );
 }
