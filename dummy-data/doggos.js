@@ -21,3 +21,5 @@ const doggos = [
         chipOrTatoo: 752093200095647
     }
 ]
+
+export default doggos;

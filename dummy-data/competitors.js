@@ -21,3 +21,5 @@ const competitors = [
         postalCode: '33-221'
     }
 ]
+
+export default competitors;
