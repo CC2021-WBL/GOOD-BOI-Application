@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 const Button = styled.button`
-  // component "stylowy"
-
   display: block;
   width: 343px;
   height: 50px;
@@ -14,7 +12,6 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* dfdifj */
 `;
 
 const PriSecBtn = (props) => {

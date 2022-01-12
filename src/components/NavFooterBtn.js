@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 // If button has attribute "active", then change bottom border and font color,
-// text to be desided on render
+// text to be desided on render with props.text
 
 const Button = styled.button`
   box-sizing: border-box;
