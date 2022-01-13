@@ -18,8 +18,8 @@ const Button = styled.button`
     background: #f5f5f5;
   }
 `;
-const NavFooterBtn = (props) => {
-  return <Button active={props.active}>{props.text}</Button>;
+const NavFooterBtn = ({ text, active }) => {
+  return <Button active={active}>{text}</Button>;
 };
 
 export default NavFooterBtn;
