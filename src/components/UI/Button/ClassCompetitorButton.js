@@ -23,14 +23,20 @@ const ClassCompetitorButtonWrapper = styled.div`
 `;
 
 const ClassCompetitorButton = (props) => {
-  const {type, classNumber, nameOfCompetitor, contestantsAmount, exercisesAmount, exercisesCompleted, no}=props;
+  const {type, classNumber, nameOfCompetitor, contestantsAmount, exercisesAmount, exercisesCompleted, no, classCompleted} = props;
 
     return <ClassCompetitorButtonWrapper>
 
       { type === 'class' && <>Klasa {classNumber}</> }
       { type === 'competitor' && <>{no}. {nameOfCompetitor}</> }
 
-      <InButtonLabel type={type} contestantsAmount={contestantsAmount} exercisesAmount={exercisesAmount} exercisesCompleted={exercisesCompleted}/>
+      <InButtonLabel
+        type={type}
+        contestantsAmount={contestantsAmount}
+        exercisesAmount={exercisesAmount}
+        exercisesCompleted={exercisesCompleted}
+        classCompleted={classCompleted}
+      />
 
     </ClassCompetitorButtonWrapper>
 

@@ -17,11 +17,26 @@ function App() {
 
       Testowe buttony "Lista klas"
 
-        {classes.map(e=> <ClassCompetitorButton type='class' key={e.id} classNumber={e.classNumber} contestantsAmount={e.contestantsAmount} />)};
+      {classes.map(e=>
+        <ClassCompetitorButton
+          type='class'
+          key={e.id}
+          classNumber={e.classNumber}
+          contestantsAmount={e.contestantsAmount}
+          classCompleted={e.classCompleted}
+        />)}
 
       Testowe buttony "Lista uczestników"
 
-      {competitors.map((e, index) => <ClassCompetitorButton type='competitor' key={e.id} no={index+1} nameOfCompetitor={e.nameOfCompetitor} exercisesCompleted={e.exercisesCompleted} exercisesAmount = {e.exercisesAmount} />)};
+      {competitors.map((e, index) =>
+        <ClassCompetitorButton
+          type='competitor'
+          key={e.id}
+          no={index+1}
+          nameOfCompetitor={e.nameOfCompetitor}
+          exercisesCompleted={e.exercisesCompleted}
+          exercisesAmount={e.exercisesAmount}
+        />)};
 
     </div>
   );

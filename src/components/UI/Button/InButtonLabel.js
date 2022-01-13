@@ -14,13 +14,17 @@ const LabelWrapper = styled.div`
     border: solid 1px #323F4B;
     border-radius: 0.25rem;
     line-height: 1em;
+    ${props => (props.classCompleted || props.exerciseCompleted) ? `background: #97E3B3; color: #1A6234;  border: solid 1px #1A6234;` : `background: transparent`};
 `;
 
-
 const InButtonLabel = (props) => {
-    const { type, contestantsAmount, exercisesCompleted, exercisesAmount} = props;
-    return <LabelWrapper>
-        { type === 'class' && <>{contestantsAmount} {contestantsAmount==='1' ? `uczestnik` : `uczestników`}</> }
+    const { type, contestantsAmount, exercisesCompleted, exercisesAmount, classCompleted} = props;
+
+    const exercisesComplete = exercisesAmount !== undefined && exercisesCompleted === exercisesAmount;
+
+    return <LabelWrapper classCompleted={classCompleted} exerciseCompleted={exercisesComplete}>
+        { (type === 'class' && classCompleted) && <>ukończono</> }
+        { (type === 'class' && !classCompleted) && <>{contestantsAmount} {contestantsAmount==='1' ? `uczestnik` : `uczestników`}</> }
         { type === 'competitor' && <>{exercisesCompleted}/{exercisesAmount} ćwiczeń</> }
     </LabelWrapper>
 
