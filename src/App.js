@@ -1,6 +1,6 @@
 import "./App.css";
 import PriSecBtn from "./Atoms/PriSecBtn";
-import HomePage from "./Pages/HomePage";
+import HomePage from "./Templates/HomePage";
 
 function App() {
   return (
