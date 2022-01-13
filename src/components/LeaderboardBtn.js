@@ -1,14 +1,17 @@
 import styled from "styled-components";
 
-const ButtonWrapper = styled.div`
+const Btn = styled.div`
   display: flex;
+  align-self: center;
   width: 343px;
   height: 50px;
   color: black;
   background: transparent;
   border: none;
+  cursor: pointer;
   border-bottom: 1px solid #9aa5b1;
   font-size: 15px;
+  font-weight: 600;
   justify-content: space-between;
   align-items: center;
   &:hover {
@@ -23,13 +26,12 @@ const ButtonWrapper = styled.div`
   }
 `;
 
-const LeaderboardBtn = () => {
+const LeaderboardBtn = (props) => {
   return (
-    <ButtonWrapper>
-      <div className="justifyStart">nazwa ćwiczenia</div>
-      <div className="justifyEnd">26</div>
-    </ButtonWrapper>
+    <Btn>
+      <div className="justifyStart">{props.text}</div>
+      <div className="justifyEnd">{props.score}</div>
+    </Btn>
   );
 };
-
 export default LeaderboardBtn;
