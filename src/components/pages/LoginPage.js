@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
+import { useRef } from "react";
 
 const Wrapper = styled.div`
   display: flex;
@@ -29,22 +30,44 @@ const StyledForm = styled.form`
 `;
 
 const LoginPage = () => {
+  const loginInputRef = useRef();
+  const emailInputRef = useRef();
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    const enteredLogin = loginInputRef.current.value;
+    const enteredEmail = emailInputRef.current.value;
+
+    const data = {
+      login: enteredLogin,
+      email: enteredEmail,
+    };
+
+    // Checking if submitted data apears in an object
+
+    console.log(data);
+  };
+
   return (
     <Wrapper>
-      <StyledForm>
+      <StyledForm onSubmit={submitHandler}>
         <label htmlFor="login">Login</label>
         <input
           type="text"
           placeholder="&#xF007; Login"
           id="login"
-          required></input>
+          required
+          ref={loginInputRef}></input>
         <label htmlFor="email">Email</label>
         <input
           type="mail"
           placeholder="&#xF199; Username"
           id="email"
-          required></input>
+          required
+          ref={emailInputRef}></input>
         <p>Zapomniałeś hasła ?</p>
+        <button>Zaloguj się</button>
       </StyledForm>
     </Wrapper>
   );
