@@ -1,6 +1,7 @@
 import "./App.css";
 import PriSecBtn from "./components/PriSecBtn";
 import HomePage from "./components/pages/HomePage";
+import ClassCompetitorButton from "./components/ClassCompetitorButton";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <PriSecBtn secondary text="SECONDARY" />
       {/* ==== */}
       <HomePage />
+      <ClassCompetitorButton classNumber='5' contestantsAmount='5'/>
     </div>
   );
 }
