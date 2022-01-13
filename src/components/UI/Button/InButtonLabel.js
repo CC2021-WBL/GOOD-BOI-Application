@@ -43,7 +43,7 @@ const InButtonLabel = (props) => {
       {type === 'class' && !classCompleted && (
         <>
           {contestantsAmount}{' '}
-          {contestantsAmount === '1' ? `uczestnik` : `uczestników`}
+          {contestantsAmount === 1 ? `uczestnik` : `uczestników`}
         </>
       )}
       {type === 'competitor' && (
