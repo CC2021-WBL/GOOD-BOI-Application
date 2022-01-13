@@ -14,22 +14,16 @@ const LabelWrapper = styled.div`
     border: solid 1px #323F4B;
     border-radius: 0.25rem;
     line-height: 1em;
-    ${LabelData => LabelData.children[0] === LabelData.children[2]  ? `background: #97E3B3; color: #1A6234;  border: solid 1px #1A6234;` : `background: transparent`};
-
 `;
 
 
 const InButtonLabel = (props) => {
     const { type, contestantsAmount, exercisesCompleted, exercisesAmount} = props;
-if (type === 'class') {
     return <LabelWrapper>
-        {contestantsAmount} {contestantsAmount==='1' ? `uczestnik` : `uczestników`}
+        { type === 'class' && <>{contestantsAmount} {contestantsAmount==='1' ? `uczestnik` : `uczestników`}</> }
+        { type === 'competitor' && <>{exercisesCompleted}/{exercisesAmount} ćwiczeń</> }
     </LabelWrapper>
-} else {
-    return <LabelWrapper>
-        {exercisesCompleted}/{exercisesAmount} {`ćwiczeń`}
-    </LabelWrapper>
-}
+
 };
 
 export default InButtonLabel;

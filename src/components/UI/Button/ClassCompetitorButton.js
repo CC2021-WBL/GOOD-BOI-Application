@@ -11,7 +11,7 @@ const ClassCompetitorButtonWrapper = styled.div`
   margin: 1rem;
   padding: 1rem;
   color: #323F4B;
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 1.25em;
   font-weight: 700;
   font-style: normal;
@@ -23,17 +23,17 @@ const ClassCompetitorButtonWrapper = styled.div`
 `;
 
 const ClassCompetitorButton = (props) => {
-  if (props.type === 'class'){
+  const {type, classNumber, nameOfCompetitor, contestantsAmount, exercisesAmount, exercisesCompleted, no}=props;
+
     return <ClassCompetitorButtonWrapper>
-      Klasa {props.classNumber}
-      <InButtonLabel type={props.type} contestantsAmount={props.contestantsAmount} exercisesAmount={props.exercisesAmount} exercisesCompleted={props.exercisesCompleted} completed={props.exercisesAmount === props.exercisesCompleted}/>
+
+      { type === 'class' && <>Klasa {classNumber}</> }
+      { type === 'competitor' && <>{no}. {nameOfCompetitor}</> }
+
+      <InButtonLabel type={type} contestantsAmount={contestantsAmount} exercisesAmount={exercisesAmount} exercisesCompleted={exercisesCompleted}/>
+
     </ClassCompetitorButtonWrapper>
-  } else {
-    return <ClassCompetitorButtonWrapper>
-      1. {props.nameOfCompetitor}
-    <InButtonLabel type={props.type} contestantsAmount={props.contestantsAmount} exercisesAmount={props.exercisesAmount} exercisesCompleted={props.exercisesCompleted} completed={props.exercisesAmount === props.exercisesCompleted}/>
-  </ClassCompetitorButtonWrapper>;
-  }
+
 };
 
 export default ClassCompetitorButton;
