@@ -24,7 +24,7 @@ const StyledForm = styled.form`
     height: 48px;
     border-radius: 8px;
     border: 1px solid #7b8794;
-    padding-left: 5px;
+    padding-left: 10px;
   }
 `;
 
@@ -32,10 +32,18 @@ const LoginPage = () => {
   return (
     <Wrapper>
       <StyledForm>
-        <label>Login</label>
-        <input type="text" placeholder="&#xF007; Login"></input>
-        <label>email</label>
-        <input type="email" placeholder="&#xF199; Username"></input>
+        <label htmlFor="login">Login</label>
+        <input
+          type="text"
+          placeholder="&#xF007; Login"
+          id="login"
+          required></input>
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          placeholder="&#xF199; Username"
+          id="email"
+          required></input>
         <p>Zapomniałeś hasła ?</p>
       </StyledForm>
     </Wrapper>
