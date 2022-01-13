@@ -1,5 +1,7 @@
-import styled from "styled-components";
-import InButtonLabel from "./InButtonLabel";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import InButtonLabel from './InButtonLabel';
 
 const ClassCompetitorButtonWrapper = styled.div`
   box-sizing: border-box;
@@ -10,36 +12,58 @@ const ClassCompetitorButtonWrapper = styled.div`
   height: 4.375rem;
   margin: 1rem;
   padding: 1rem;
-  color: #323F4B;
+  color: #323f4b;
   font-family: 'Mulish', sans-serif;
   font-size: 1.25em;
   font-weight: 700;
   font-style: normal;
   line-height: 1.5rem;
   background: white;
-  border: solid 1px #323F4B;
-  border-radius: 0.75rem;
-;
+  border: solid 1px #323f4b;
+  border-radius: 0.75rem; ;
 `;
 
 const ClassCompetitorButton = (props) => {
-  const {type, classNumber, nameOfCompetitor, contestantsAmount, exercisesAmount, exercisesCompleted, no, classCompleted} = props;
+  const {
+    type,
+    classNumber,
+    classCompleted,
+    contestantsAmount,
+    no,
+    nameOfCompetitor,
+    exercisesCompleted,
+    exercisesAmount,
+  } = props;
 
-    return <ClassCompetitorButtonWrapper>
-
-      { type === 'class' && <>Klasa {classNumber}</> }
-      { type === 'competitor' && <>{no}. {nameOfCompetitor}</> }
+  return (
+    <ClassCompetitorButtonWrapper>
+      {type === 'class' && <>Klasa {classNumber}</>}
+      {type === 'competitor' && (
+        <>
+          {no}. {nameOfCompetitor}
+        </>
+      )}
 
       <InButtonLabel
         type={type}
-        contestantsAmount={contestantsAmount}
-        exercisesAmount={exercisesAmount}
-        exercisesCompleted={exercisesCompleted}
         classCompleted={classCompleted}
+        contestantsAmount={contestantsAmount}
+        exercisesCompleted={exercisesCompleted}
+        exercisesAmount={exercisesAmount}
       />
-
     </ClassCompetitorButtonWrapper>
+  );
+};
 
+ClassCompetitorButton.propTypes = {
+  type: PropTypes.string,
+  classNumber: PropTypes.number,
+  classCompleted: PropTypes.bool,
+  no: PropTypes.number,
+  nameOfCompetitor: PropTypes.string,
+  contestantsAmount: PropTypes.number,
+  exercisesCompleted: PropTypes.number,
+  exercisesAmount: PropTypes.number,
 };
 
 export default ClassCompetitorButton;

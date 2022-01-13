@@ -1,9 +1,8 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Button = styled.button`
   // component "stylowy"
-
-  display: block;
   width: 343px;
   height: 50px;
   color: ${(props) => (props.primary ? 'black' : 'whitesmoke')};
@@ -18,6 +17,11 @@ const Button = styled.button`
 
 const PriSecBtn = (props) => {
   return <Button primary={props.primary}>{props.text}</Button>;
+};
+
+PriSecBtn.propTypes = {
+  primary: PropTypes.bool,
+  text: PropTypes.string,
 };
 
 export default PriSecBtn;
