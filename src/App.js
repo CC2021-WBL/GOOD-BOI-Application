@@ -1,18 +1,33 @@
-import './App.css';
-import PriSecBtn from './components/PriSecBtn';
-import HomePage from './components/pages/HomePage';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import ClassCompetitorsPage from "./Pages/ClassCompetitorsPage/ClassCompetitorsPage";
+import ClassesPage from "./Pages/ClassesPage/ClassesPage";
+import ClassSummaryPage from "./Pages/ClassSummaryPage/ClassSummaryPage";
+import ContestsPage from "./Pages/ContestsPage/ContestsPage";
+import ExercisesPage from "./Pages/ExercisesPage/ExercisesPage";
+import HomePage from "./Pages/HomePage/HomePage";
+import LoginPage from "./Pages/LoginPage/LoginPage";
+import SingleSummaryPage from "./Pages/SingleSummaryPage/SingleSummaryPage";
 
 function App() {
   const a = 1;
 
   return (
     <div className="App">
-      {/* #24/UI/Primary-secondary-btns - put here for test purposes only */}
-      <PriSecBtn primary text="PRIMARY" />
-      <PriSecBtn secondary text="SECONDARY" />
-      {/* ==== */}
-
-      <HomePage />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/contests" element={<ContestsPage />}>
+          <Route path=":contestId/classes" element={<ClassesPage />}>
+            <Route path=":classId" element={<ClassCompetitorsPage />}>
+              <Route path=":dogId" element={<ExercisesPage />}>
+                <Route path="summary" element={<SingleSummaryPage />} />
+              </Route>
+              <Route path="leaderboard" element={<ClassSummaryPage />} />
+            </Route>
+          </Route>
+        </Route>
+      </Routes>
     </div>
   );
 }
