@@ -4,7 +4,7 @@ import ClassCompetitorsPage from "./Pages/ClassCompetitorsPage/ClassCompetitorsP
 import ClassesPage from "./Pages/ClassesPage/ClassesPage";
 import ClassSummaryPage from "./Pages/ClassSummaryPage/ClassSummaryPage";
 import ContestsPage from "./Pages/ContestsPage/ContestsPage";
-import ExercisesPage from "./Pages/ExercisesPage/ExcersisesPage";
+import ExercisesPage from "./Pages/ExercisesPage/ExercisesPage";
 import HomePage from "./Pages/HomePage/HomePage";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import SingleSummaryPage from "./Pages/SingleSummaryPage/SingleSummaryPage";
