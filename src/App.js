@@ -18,8 +18,8 @@ function App() {
         <Route path="/contests" element={<ContestsPage />}>
           <Route path=":contestId/classes" element={<ClassesPage />}>
             <Route path=":classId" element={<ClassCompetitorsPage />}>
-              <Route path="excersises" element={<ExcersisesPage />}>
-                <Route path=":dogId/summary" element={<SingleSummaryPage />} />
+              <Route path=":dogId" element={<ExcersisesPage />}>
+                <Route path="summary" element={<SingleSummaryPage />} />
               </Route>
               <Route path="leaderboard" element={<ClassSummaryPage />} />
             </Route>
