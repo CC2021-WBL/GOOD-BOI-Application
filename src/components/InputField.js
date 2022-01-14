@@ -1,3 +1,5 @@
+import propTypes from "prop-types";
+
 const InputField = ({
   id,
   type,
@@ -18,6 +20,16 @@ const InputField = ({
         ref={reference}></input>
     </>
   );
+};
+
+InputField.propTypes = {
+  labelText: propTypes.string,
+  htmlFor: propTypes.string,
+  id: propTypes.string,
+  type: propTypes.string,
+  placeholder: propTypes.string,
+  required: propTypes.bool,
+  reference: propTypes.object,
 };
 
 export default InputField;
