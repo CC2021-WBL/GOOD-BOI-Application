@@ -1,11 +1,9 @@
 import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
 import { useRef } from "react";
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
+import InputField from "../InputField";
+import Card from "../Card";
+import PriSecBtn from "../PriSecBtn";
 
 const StyledForm = styled.form`
   width: 343px;
@@ -37,11 +35,11 @@ const LoginPage = () => {
     event.preventDefault();
 
     const enteredLogin = loginInputRef.current.value;
-    const enteredEmail = passInputRef.current.value;
+    const enteredPassword = passInputRef.current.value;
 
     const data = {
       login: enteredLogin,
-      email: enteredEmail,
+      password: enteredPassword,
     };
 
     // Checking if submitted data apears in an object
@@ -50,26 +48,31 @@ const LoginPage = () => {
   };
 
   return (
-    <Wrapper>
+    <Card>
       <StyledForm onSubmit={submitHandler}>
-        <label htmlFor="login">Login</label>
-        <input
+        <InputField
+          labelText="Login"
+          htmlFor="login"
           type="text"
           placeholder="&#xF007; Login"
           id="login"
+          reference={loginInputRef}
           required
-          ref={loginInputRef}></input>
-        <label htmlFor="password">Password</label>
-        <input
+        />
+
+        <InputField
+          labelText="Password"
+          htmlFor="password"
           type="password"
-          placeholder="&#xf084; Password"
           id="password"
+          placeholder="&#xf084; Password"
+          reference={passInputRef}
           required
-          ref={passInputRef}></input>
+        />
         <p>Zapomniałeś hasła ?</p>
-        <button>Zaloguj się</button>
+        <PriSecBtn text="Zaloguj się" />
       </StyledForm>
-    </Wrapper>
+    </Card>
   );
 };
 
