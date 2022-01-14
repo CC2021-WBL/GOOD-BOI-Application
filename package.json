@@ -35,7 +35,8 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "not ie <= 11"
     ],
     "development": [
       "last 1 chrome version",
@@ -44,6 +45,10 @@
     ]
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^2.0.2"
+    "babel-plugin-styled-components": "^2.0.2",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "prettier": "2.5.1"
   }
 }

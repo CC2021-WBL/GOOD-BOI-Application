@@ -1,0 +1,5 @@
+const excercises = {
+    class0: [
+        
+    ]
+}
