@@ -14,6 +14,8 @@ const SingleContestPage = () => {
 
 }
 function App() {
+  const a = 1;
+
   return (
     <div className="App">
       <Routes>
@@ -33,3 +35,6 @@ function App() {
 }
 
 export default App;
+// "eslint-config-prettier": "^8.3.0",
+// "eslint-plugin-react-hooks": "^4.3.0",
+// "prettier": "^2.5.1"
