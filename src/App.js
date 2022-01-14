@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import ClassesPage from "./components/pages/ClassesPage";
-import ClassSummaryPage from "./components/pages/ClassSummaryPage";
-import ClassCompetitorsPage from "./components/pages/ClassCompetitorsPage";
-import ContestsPage from "./components/pages/ContestsPage";
-import ExcersisesPage from "./components/pages/ExcersisesPage";
-import HomePage from "./components/pages/HomePage";
-import LoginPage from "./components/pages/LoginPage";
-import SingleSummaryPage from "./components/pages/SingleSummaryPage";
+import ClassCompetitorsPage from "./Pages/ClassCompetitorsPage/ClassCompetitorsPage";
+import ClassesPage from "./Pages/ClassesPage/ClassesPage";
+import ClassSummaryPage from "./Pages/ClassSummaryPage/ClassSummaryPage";
+import ContestsPage from "./Pages/ContestsPage/ContestsPage";
+import ExercisesPage from "./Pages/ExercisesPage/ExercisesPage";
+import HomePage from "./Pages/HomePage/HomePage";
+import LoginPage from "./Pages/LoginPage/LoginPage";
+import SingleSummaryPage from "./Pages/SingleSummaryPage/SingleSummaryPage";
 
 const SingleContestPage = () => {
   return <h1>I am a single Contest Page Component</h1>;
@@ -23,7 +23,7 @@ function App() {
           <Route path="contests/:contestsId" element={<SingleContestPage />}/>
           <Route path="contests/:contestsId/classes" element={<ClassesPage />}/>
           <Route path="contests/:contestsId/classes/:classId" element={<ClassCompetitorsPage />}/>
-          <Route path="contests/:contestsId/classes/:classId/:dogId" element={<ExcersisesPage />}/>
+          <Route path="contests/:contestsId/classes/:classId/:dogId" element={<ExercisesPage />}/>
           <Route path="contests/:contestsId/classes/:classId/:dogId/summary" element={<SingleSummaryPage />} />
           <Route path="contests/:contestsId/classes/:classId/leaderboard" element={<ClassSummaryPage />} />
         </Route>
