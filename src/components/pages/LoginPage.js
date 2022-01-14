@@ -31,13 +31,13 @@ const StyledForm = styled.form`
 
 const LoginPage = () => {
   const loginInputRef = useRef();
-  const emailInputRef = useRef();
+  const passInputRef = useRef();
 
   const submitHandler = (event) => {
     event.preventDefault();
 
     const enteredLogin = loginInputRef.current.value;
-    const enteredEmail = emailInputRef.current.value;
+    const enteredEmail = passInputRef.current.value;
 
     const data = {
       login: enteredLogin,
@@ -65,7 +65,7 @@ const LoginPage = () => {
           placeholder="&#xf084; Password"
           id="password"
           required
-          ref={emailInputRef}></input>
+          ref={passInputRef}></input>
         <p>Zapomniałeś hasła ?</p>
         <button>Zaloguj się</button>
       </StyledForm>
