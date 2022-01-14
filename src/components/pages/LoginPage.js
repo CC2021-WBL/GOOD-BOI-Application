@@ -59,11 +59,11 @@ const LoginPage = () => {
           id="login"
           required
           ref={loginInputRef}></input>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="password">Password</label>
         <input
-          type="mail"
-          placeholder="&#xF199; Username"
-          id="email"
+          type="password"
+          placeholder="&#xf084; Password"
+          id="password"
           required
           ref={emailInputRef}></input>
         <p>Zapomniałeś hasła ?</p>
