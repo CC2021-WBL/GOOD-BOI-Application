@@ -1,5 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import ClassCompetitorsPage from "./Pages/ClassCompetitorsPage/ClassCompetitorsPage";
+import ClassesPage from "./Pages/ClassesPage/ClassesPage";
+import ClassSummaryPage from "./Pages/ClassSummaryPage/ClassSummaryPage";
+import ContestsPage from "./Pages/ContestsPage/ContestsPage";
+import ExcersisesPage from "./Pages/ExercisesPage/ExcersisesPage";
+import HomePage from "./Pages/HomePage/HomePage";
+import LoginPage from "./Pages/LoginPage/LoginPage";
+import SingleSummaryPage from "./Pages/SingleSummaryPage/SingleSummaryPage";
 
 function App() {
   return (
