@@ -35,7 +35,8 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "not ie <= 11"
     ],
     "development": [
       "last 1 chrome version",
@@ -45,5 +46,10 @@
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^2.0.2"
-  }
+  },
+"engines": {
+  "node": "16.13.2",
+  "npm": "8.1.2"
+}
+
 }
