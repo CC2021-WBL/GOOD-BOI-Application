@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import InButtonLabel from './InButtonLabel';
+import InButtonLabel from '../Atoms/InButtonLabel';
 
 const ClassCompetitorButtonWrapper = styled.div`
   box-sizing: border-box;
