@@ -4,7 +4,7 @@ import ClassCompetitorsPage from "./Pages/ClassCompetitorsPage/ClassCompetitorsP
 import ClassesPage from "./Pages/ClassesPage/ClassesPage";
 import ClassSummaryPage from "./Pages/ClassSummaryPage/ClassSummaryPage";
 import ContestsPage from "./Pages/ContestsPage/ContestsPage";
-import ExcersisesPage from "./Pages/ExercisesPage/ExcersisesPage";
+import ExercisesPage from "./Pages/ExercisesPage/ExcersisesPage";
 import HomePage from "./Pages/HomePage/HomePage";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import SingleSummaryPage from "./Pages/SingleSummaryPage/SingleSummaryPage";
@@ -18,7 +18,7 @@ function App() {
         <Route path="/contests" element={<ContestsPage />}>
           <Route path=":contestId/classes" element={<ClassesPage />}>
             <Route path=":classId" element={<ClassCompetitorsPage />}>
-              <Route path=":dogId" element={<ExcersisesPage />}>
+              <Route path=":dogId" element={<ExercisesPage />}>
                 <Route path="summary" element={<SingleSummaryPage />} />
               </Route>
               <Route path="leaderboard" element={<ClassSummaryPage />} />
