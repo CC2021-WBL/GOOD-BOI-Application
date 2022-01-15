@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import propTypes from 'prop-types';
 
 const CardWrapper = styled.div`
   display: flex;
@@ -7,8 +8,11 @@ const CardWrapper = styled.div`
 `;
 
 const Card = (props) => {
-  // eslint-disable-next-line react/prop-types
   return <CardWrapper>{props.children}</CardWrapper>;
+};
+
+Card.propTypes = {
+  children: propTypes.node,
 };
 
 export default Card;
