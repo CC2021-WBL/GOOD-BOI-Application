@@ -1,13 +1,15 @@
-import propTypes from "prop-types";
+import React from 'react';
+import propTypes from 'prop-types';
 
 const InputField = ({
   id,
   type,
   placeholder,
   required,
-  reference,
   htmlFor,
   labelText,
+  value,
+  onChange,
 }) => {
   return (
     <>
@@ -17,7 +19,9 @@ const InputField = ({
         type={type}
         placeholder={placeholder}
         required={required}
-        ref={reference}></input>
+        value={value}
+        onChange={onChange}
+      />
     </>
   );
 };
@@ -29,7 +33,8 @@ InputField.propTypes = {
   type: propTypes.string,
   placeholder: propTypes.string,
   required: propTypes.bool,
-  reference: propTypes.object,
+  value: propTypes.string,
+  onChange: propTypes.func,
 };
 
 export default InputField;

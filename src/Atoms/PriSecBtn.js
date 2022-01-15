@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 const Button = styled.button`
@@ -17,6 +18,7 @@ const Button = styled.button`
 `;
 
 const PriSecBtn = (props) => {
+  // eslint-disable-next-line react/prop-types
   return <Button primary={props.primary}>{props.text}</Button>;
 };
 

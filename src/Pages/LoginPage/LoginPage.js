@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import 'font-awesome/css/font-awesome.min.css';
-import { useRef } from 'react';
 import InputField from '../../Atoms/InputField';
 import Card from '../../Atoms/Card';
 import PriSecBtn from '../../Atoms/PriSecBtn';
+import { useState } from 'react';
 
 const StyledForm = styled.form`
   width: 343px;
@@ -29,22 +29,14 @@ const StyledForm = styled.form`
 `;
 
 const LoginPage = () => {
-  const loginInputRef = useRef();
-  const passInputRef = useRef();
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
 
   const submitHandler = (event) => {
     event.preventDefault();
 
-    const enteredLogin = loginInputRef.current.value;
-    const enteredPassword = passInputRef.current.value;
-
-    const data = {
-      login: enteredLogin,
-      password: enteredPassword,
-    };
-
-    // Checking if submitted data apears in an object
-
+    const data = { login, password };
+    //test, after submit, entered user data
     console.log(data);
   };
 
@@ -57,8 +49,9 @@ const LoginPage = () => {
           type="text"
           placeholder="&#xF007; Login"
           id="login"
-          reference={loginInputRef}
           required
+          value={login}
+          onChange={(event) => setLogin(event.target.value)}
         />
 
         <InputField
@@ -67,8 +60,9 @@ const LoginPage = () => {
           type="password"
           id="password"
           placeholder="&#xf084; Password"
-          reference={passInputRef}
           required
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
         />
         <p>Zapomniałeś hasła ?</p>
         <PriSecBtn text="Zaloguj się" />

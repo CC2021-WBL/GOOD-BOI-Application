@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const CardWrapper = styled.div`
   display: flex;
@@ -6,6 +7,7 @@ const CardWrapper = styled.div`
 `;
 
 const Card = (props) => {
+  // eslint-disable-next-line react/prop-types
   return <CardWrapper>{props.children}</CardWrapper>;
 };
 
