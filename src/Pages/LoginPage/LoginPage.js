@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import "font-awesome/css/font-awesome.min.css";
-import { useRef } from "react";
-import InputField from "../InputField";
-import Card from "../Card";
-import PriSecBtn from "../PriSecBtn";
+import styled from 'styled-components';
+import 'font-awesome/css/font-awesome.min.css';
+import { useRef } from 'react';
+import InputField from '../../Atoms/InputField';
+import Card from '../../Atoms/Card';
+import PriSecBtn from '../../Atoms/PriSecBtn';
 
 const StyledForm = styled.form`
   width: 343px;
