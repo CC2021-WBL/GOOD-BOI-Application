@@ -1,9 +1,10 @@
 import 'font-awesome/css/font-awesome.min.css';
 import InputField from '../../Atoms/InputField/InputField';
-import Card from '../../Atoms/Card/Card';
+import Card from '../../Atoms/CardWrapper/CardWrapper';
 import PriSecBtn from '../../Atoms/PriSecBtn/PriSecBtn';
 import { useState } from 'react';
 import StyledForm from './LoginPageStyled';
+import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
   const [login, setLogin] = useState('');
@@ -41,7 +42,9 @@ const LoginPage = () => {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
-        <p>Zapomniałeś hasła ?</p>
+        <Link to="/forgot" className="forgot-pass">
+          Zapomniałeś/aś hasła ?
+        </Link>
         <PriSecBtn text="Zaloguj się" />
       </StyledForm>
     </Card>
