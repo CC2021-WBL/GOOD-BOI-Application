@@ -8,9 +8,15 @@ import HomePage from './Pages/HomePage/HomePage';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import SingleSummaryPage from './Pages/SingleSummaryPage/SingleSummaryPage';
 import { Route, Routes } from 'react-router-dom';
+import Footer from './Molecules/Footer/Footer';
 
 const SingleContestPage = () => {
-  return <h1>I am a single Contest Page Component</h1>;
+  return (
+    <>
+      <h1>I am a single Contest Page Component</h1>;
+      <Footer />
+    </>
+  );
 };
 function App() {
   return (

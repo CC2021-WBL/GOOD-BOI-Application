@@ -1,5 +1,6 @@
 import ClassOrDogButton from '../../Molecules/ClassCompetitorButton/ClassOrDogButton';
 import RANDOM_CONTEST from '../../Data/Dummy-data/test-data-random-contest';
+import Footer from '../../Molecules/Footer/Footer';
 
 const ClassesPage = () => {
   return (
@@ -19,6 +20,7 @@ const ClassesPage = () => {
           />
         );
       })}
+      <Footer />
     </>
   );
 };
