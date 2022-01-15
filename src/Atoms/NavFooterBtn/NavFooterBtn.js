@@ -11,16 +11,4 @@ NavFooterBtn.propTypes = {
   active: propTypes.active,
 };
 
-//
-// const PriSecBtn = (props) => {
-//   return (
-//     <PriSecBtnStyled primary={props.primary}>{props.text}</PriSecBtnStyled>
-//   );
-// };
-
-// PriSecBtn.propTypes = {
-//   primary: propTypes.string,
-//   text: propTypes.string,
-// };
-//
 export default NavFooterBtn;
