@@ -1,5 +1,27 @@
+import React from 'react';
+import ClassOrDogButton from '../../Molecules/ClassCompetitorButton/ClassOrDogButton';
+import RANDOM_CONTEST from '../../Data/TestData/test-data-random-contest';
+
 const ClassesPage = () => {
-  return <h1>I am a Classes Page Component</h1>;
+  return (
+    <>
+      {RANDOM_CONTEST.obedienceClasses.map((classObject) => {
+        const { obedienceClass, dogs, isCompleted } = classObject;
+        const { id, name } = obedienceClass;
+
+        return (
+          <ClassOrDogButton
+            key={id}
+            classInfo={{
+              name,
+              dogsAmount: dogs.length,
+              isCompleted,
+            }}
+          />
+        );
+      })}
+    </>
+  );
 };
 
 export default ClassesPage;

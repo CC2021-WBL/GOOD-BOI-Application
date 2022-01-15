@@ -1,5 +1,26 @@
+import React from 'react';
+import ClassOrDogButton from '../../Molecules/ClassCompetitorButton/ClassOrDogButton';
+import RANDOM_CONTEST from '../../Data/TestData/test-data-random-contest';
+
 const ClassCompetitorsPage = () => {
-  return <h1>I am a ClassCompetitors Page Component</h1>;
+  return (
+    <>
+      {RANDOM_CONTEST.obedienceClasses[0].dogs.map((dog, index) => {
+        const { id, dogName, exercisesCompleted, exercisesAmount } = dog;
+        return (
+          <ClassOrDogButton
+            key={id}
+            dogInfo={{
+              index,
+              dogName,
+              exercisesCompleted,
+              exercisesAmount,
+            }}
+          />
+        );
+      })}
+    </>
+  );
 };
 
 export default ClassCompetitorsPage;
