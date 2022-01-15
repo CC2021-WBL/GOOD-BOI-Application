@@ -17,33 +17,29 @@ const LabelWrapper = styled.label`
   border-radius: 0.25rem;
   line-height: 1em;
   ${(props) =>
-    props.classCompleted || props.exerciseCompleted
+    props.isClassCompleted || props.areExercisesCompleted
       ? `background: #97E3B3; color: #1A6234;  border: solid 1px #1A6234;`
       : `background: transparent`};
 `;
 
 const InButtonLabel = (props) => {
-  const {
-    type,
-    classCompleted,
-    contestantsAmount,
-    exercisesAmount,
-    exercisesCompleted,
-  } = props;
+  const { type, classInfo, competitorInfo } = props;
+  const { contestantsAmount, isCompleted } = classInfo || [];
+  const { exercisesCompleted, exercisesAmount } = competitorInfo || [];
 
   const exercisesComplete =
     exercisesAmount !== undefined && exercisesCompleted === exercisesAmount;
 
   return (
     <LabelWrapper
-      classCompleted={classCompleted}
-      exerciseCompleted={exercisesComplete}
+      isClassCompleted={isCompleted}
+      areExercisesCompleted={exercisesComplete}
     >
-      {type === 'class' && classCompleted && <>ukończono</>}
-      {type === 'class' && !classCompleted && (
+      {type === 'class' && isCompleted && <>ukończono</>}
+      {type === 'class' && !isCompleted && (
         <>
-          {contestantsAmount}{' '}
-          {contestantsAmount === 1 ? `uczestnik` : `uczestników`}
+          {contestantsAmount}
+          {contestantsAmount === 1 ? ` uczestnik` : ` uczestników`}
         </>
       )}
       {type === 'competitor' && (
@@ -57,10 +53,8 @@ const InButtonLabel = (props) => {
 
 InButtonLabel.propTypes = {
   type: PropTypes.string,
-  classCompleted: PropTypes.bool,
-  contestantsAmount: PropTypes.number,
-  exercisesCompleted: PropTypes.number,
-  exercisesAmount: PropTypes.number,
+  classInfo: PropTypes.object,
+  competitorInfo: PropTypes.object,
 };
 
 export default InButtonLabel;

@@ -25,32 +25,22 @@ const ClassCompetitorButtonWrapper = styled.button`
 `;
 
 const ClassCompetitorButton = (props) => {
-  const {
-    type,
-    classNumber,
-    classCompleted,
-    contestantsAmount,
-    no,
-    nameOfCompetitor,
-    exercisesCompleted,
-    exercisesAmount,
-  } = props;
+  const { type, classInfo, competitorInfo } = props;
+  const { name } = classInfo || [];
+  const { index, nameOfCompetitor } = competitorInfo || [];
 
   return (
     <ClassCompetitorButtonWrapper>
-      {type === 'class' && <>Klasa {classNumber}</>}
+      {type === 'class' && <>{name}</>}
       {type === 'competitor' && (
         <>
-          {no}. {nameOfCompetitor}
+          {index + 1}. {nameOfCompetitor}
         </>
       )}
-
       <InButtonLabel
         type={type}
-        classCompleted={classCompleted}
-        contestantsAmount={contestantsAmount}
-        exercisesCompleted={exercisesCompleted}
-        exercisesAmount={exercisesAmount}
+        classInfo={classInfo}
+        competitorInfo={competitorInfo}
       />
     </ClassCompetitorButtonWrapper>
   );
@@ -58,13 +48,8 @@ const ClassCompetitorButton = (props) => {
 
 ClassCompetitorButton.propTypes = {
   type: PropTypes.string,
-  classNumber: PropTypes.number,
-  classCompleted: PropTypes.bool,
-  no: PropTypes.number,
-  nameOfCompetitor: PropTypes.string,
-  contestantsAmount: PropTypes.number,
-  exercisesCompleted: PropTypes.number,
-  exercisesAmount: PropTypes.number,
+  classInfo: PropTypes.object,
+  competitorInfo: PropTypes.object,
 };
 
 export default ClassCompetitorButton;

@@ -1,20 +1,26 @@
 import React from 'react';
 import ClassCompetitorButton from '../../Molecules/ClassCompetitorButton';
-import competitors from '../../Data/TestData/test-data-competitor';
+import RANDOM_CONTEST from '../../Data/TestData/test-data-random-contest';
 
 const ClassCompetitorsPage = () => {
   return (
     <>
-      {competitors.map((e, index) => (
-        <ClassCompetitorButton
-          type="competitor"
-          key={e.id}
-          no={index + 1}
-          nameOfCompetitor={e.nameOfCompetitor}
-          exercisesCompleted={e.exercisesCompleted}
-          exercisesAmount={e.exercisesAmount}
-        />
-      ))}
+      {RANDOM_CONTEST.classes[0].competitors.map((competitor, index) => {
+        const { nameOfCompetitor, exercisesCompleted, exercisesAmount } =
+          competitor;
+        return (
+          <ClassCompetitorButton
+            type="competitor"
+            key={competitor.id}
+            competitorInfo={{
+              index,
+              nameOfCompetitor,
+              exercisesCompleted,
+              exercisesAmount,
+            }}
+          />
+        );
+      })}
     </>
   );
 };

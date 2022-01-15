@@ -1,4 +1,4 @@
-const competitors = [
+const COMPETITORS = [
   {
     id: 'e8085155-6b82-41f4-a5e5-b4745c332ce2',
     nameOfCompetitor: 'Woof',
@@ -25,4 +25,4 @@ const competitors = [
   },
 ];
 
-export default competitors;
+export default COMPETITORS;
