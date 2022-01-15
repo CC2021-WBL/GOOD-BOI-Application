@@ -1,5 +1,5 @@
 import ClassOrDogButton from '../../Molecules/ClassCompetitorButton/ClassOrDogButton';
-import RANDOM_CONTEST from '../../Data/TestData/test-data-random-contest';
+import RANDOM_CONTEST from '../../Data/Dummy-data/test-data-random-contest';
 
 const ClassesPage = () => {
   return (
