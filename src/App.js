@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.css';
 import ClassCompetitorsPage from './Pages/ClassCompetitorsPage/ClassCompetitorsPage';
 import ClassesPage from './Pages/ClassesPage/ClassesPage';
@@ -14,8 +13,6 @@ const SingleContestPage = () => {
   return <h1>I am a single Contest Page Component</h1>;
 };
 function App() {
-  // const a = 1;
-
   return (
     <div className="App">
       <Routes>

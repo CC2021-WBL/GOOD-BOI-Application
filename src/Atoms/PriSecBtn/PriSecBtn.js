@@ -1,5 +1,4 @@
 import propTypes from 'prop-types';
-import React from 'react';
 import PriSecBtnStyled from './PriSecBtnStyled';
 
 const PriSecBtn = (props) => {

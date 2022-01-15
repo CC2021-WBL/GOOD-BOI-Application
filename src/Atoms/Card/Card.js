@@ -1,4 +1,3 @@
-import React from 'react';
 import CardWrapperStyled from './CardStyled';
 import propTypes from 'prop-types';
 
