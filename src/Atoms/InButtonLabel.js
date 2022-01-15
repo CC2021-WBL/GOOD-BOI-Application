@@ -22,7 +22,7 @@ const LabelWrapper = styled.label`
       : `background: transparent`};
 `;
 
-const InButtonLabel = ({ type, classInfo, competitorInfo }) => {
+const InButtonLabel = ({ classInfo, competitorInfo }) => {
   const { contestantsAmount, isCompleted } = classInfo || [];
   const { exercisesCompleted, exercisesAmount } = competitorInfo || [];
 
@@ -34,14 +34,14 @@ const InButtonLabel = ({ type, classInfo, competitorInfo }) => {
       isClassCompleted={isCompleted}
       areExercisesCompleted={exercisesComplete}
     >
-      {type === 'class' && isCompleted && <>ukończono</>}
-      {type === 'class' && !isCompleted && (
+      {classInfo !== undefined && isCompleted && <>ukończono</>}
+      {classInfo !== undefined && !isCompleted && (
         <>
           {contestantsAmount}
           {contestantsAmount === 1 ? ` uczestnik` : ` uczestników`}
         </>
       )}
-      {type === 'competitor' && (
+      {competitorInfo !== undefined && (
         <>
           {exercisesCompleted}/{exercisesAmount} ćwiczeń
         </>
@@ -51,7 +51,6 @@ const InButtonLabel = ({ type, classInfo, competitorInfo }) => {
 };
 
 InButtonLabel.propTypes = {
-  type: PropTypes.string,
   classInfo: PropTypes.object,
   competitorInfo: PropTypes.object,
 };

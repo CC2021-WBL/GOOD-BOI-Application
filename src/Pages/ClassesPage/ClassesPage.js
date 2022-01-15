@@ -11,7 +11,6 @@ const ClassesPage = () => {
 
         return (
           <ClassCompetitorButton
-            type="class"
             key={id}
             classInfo={{
               name,

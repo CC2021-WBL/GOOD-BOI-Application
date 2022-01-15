@@ -6,12 +6,11 @@ const ClassCompetitorsPage = () => {
   return (
     <>
       {RANDOM_CONTEST.classes[0].competitors.map((competitor, index) => {
-        const { nameOfCompetitor, exercisesCompleted, exercisesAmount } =
+        const { id, nameOfCompetitor, exercisesCompleted, exercisesAmount } =
           competitor;
         return (
           <ClassCompetitorButton
-            type="competitor"
-            key={competitor.id}
+            key={id}
             competitorInfo={{
               index,
               nameOfCompetitor,

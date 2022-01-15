@@ -24,29 +24,24 @@ const ClassCompetitorButtonWrapper = styled.button`
   border-radius: 0.75rem; ;
 `;
 
-const ClassCompetitorButton = ({ type, classInfo, competitorInfo }) => {
+const ClassCompetitorButton = ({ classInfo, competitorInfo }) => {
   const { name } = classInfo || [];
   const { index, nameOfCompetitor } = competitorInfo || [];
 
   return (
     <ClassCompetitorButtonWrapper>
-      {type === 'class' && <>{name}</>}
-      {type === 'competitor' && (
+      {classInfo !== undefined && <>{name}</>}
+      {competitorInfo !== undefined && (
         <>
           {index + 1}. {nameOfCompetitor}
         </>
       )}
-      <InButtonLabel
-        type={type}
-        classInfo={classInfo}
-        competitorInfo={competitorInfo}
-      />
+      <InButtonLabel classInfo={classInfo} competitorInfo={competitorInfo} />
     </ClassCompetitorButtonWrapper>
   );
 };
 
 ClassCompetitorButton.propTypes = {
-  type: PropTypes.string,
   classInfo: PropTypes.object,
   competitorInfo: PropTypes.object,
 };
