@@ -1,8 +1,7 @@
 // import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import React from 'react';
 
-const BlueLabel = (props) => {
+const GreyLabel = (props) => {
   return (
     <div>
       <h2>{props.text}</h2>
@@ -10,8 +9,8 @@ const BlueLabel = (props) => {
   );
 };
 
-BlueLabel.propTypes = {
+GreyLabel.propTypes = {
   text: PropTypes.string,
 };
 
-export default BlueLabel;
+export default GreyLabel;
