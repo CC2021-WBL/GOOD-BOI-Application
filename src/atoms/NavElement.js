@@ -1,8 +1,9 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import React from 'react';
+import 'font-awesome/css/font-awesome.min.css';
 const Element = styled.div`
   margin: 0;
   padding: 0;
@@ -28,7 +29,7 @@ const Wrapper = styled.div`
   gap: 12px;
   position: relative;
 
-  .arrow {
+  .fa-angle-left {
     color: #cbd2d9;
     font-size: 30px;
   }
@@ -53,7 +54,8 @@ const NavElement = (props) => {
     <>
       <Element>
         <Wrapper>
-          <FontAwesomeIcon icon={faChevronLeft} className="arrow" />
+          {/* <FontAwesomeIcon icon={faChevronLeft} className="arrow" /> */}
+          <i className="fa fa-angle-left" aria-hidden="true"></i>
           <h3 className="back">wróć</h3>
         </Wrapper>
         <h1 className="navText">{text}</h1>
