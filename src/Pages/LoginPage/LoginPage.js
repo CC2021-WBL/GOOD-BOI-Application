@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import 'font-awesome/css/font-awesome.min.css';
 import { useRef } from 'react';
