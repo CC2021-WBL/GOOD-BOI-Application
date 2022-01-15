@@ -13,6 +13,8 @@ const SingleContestPage = () => {
   return <h1>I am a single Contest Page Component</h1>;
 };
 function App() {
+  // const a = 1;
+
   return (
     <div className="App">
       <Routes>
