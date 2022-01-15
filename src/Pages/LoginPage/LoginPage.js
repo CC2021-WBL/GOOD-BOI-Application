@@ -1,4 +1,3 @@
-import React from 'react';
 import 'font-awesome/css/font-awesome.min.css';
 import InputField from '../../Atoms/InputField/InputField';
 import Card from '../../Atoms/Card/Card';
