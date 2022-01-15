@@ -1,3 +1,0 @@
-const excercises = {
-  class0: [],
-};
