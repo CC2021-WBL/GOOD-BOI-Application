@@ -1,0 +1,46 @@
+const DOGS = [
+  {
+    id: 'e8085155-6b82-41f4-a5e5-b4745c332ce2',
+    dogName: 'Woof',
+    kennelName: 'Narnia Baltica',
+    pkr: 'VIII-27165',
+    registrationNumber: '5491/XLII/11',
+    breed: 'Golden Retriever',
+    dateOfBirth: new Date(2011, 4, 22),
+    colour: 'gold',
+    chipOrTatoo: 616093900044541,
+    nameOfOwner: 'Jan',
+    surnameOfOwner: 'Kowalski',
+    exercisesCompleted: 15,
+    exercisesAmount: 15,
+  },
+  {
+    id: 'bc19ce58-907a-4079-8bf6-1ba20bdfff4a',
+    dogName: 'Naughty Boi',
+    kennelName: 'Doubleuse',
+    pkr: 'VIII-40407',
+    registrationNumber: '7747/XLII/19',
+    breed: 'Golden Retriever',
+    dateOfBirth: new Date(2019, 7, 19),
+    colour: 'gold',
+    chipOrTatoo: 752093200095647,
+    nameOfOwner: 'Janusz',
+    surnameOfOwner: 'Nowak',
+    exercisesCompleted: 3,
+    exercisesAmount: 6,
+  },
+  {
+    id: '4cc2de7d-f055-4af7-b0a1-80542630c6a1',
+    dogName: 'Pjes',
+    exercisesCompleted: 0,
+    exercisesAmount: 1,
+  },
+  {
+    id: 'e363e58f-e177-459a-8faa-fd5992da9173',
+    dogName: 'Ollie',
+    exercisesCompleted: 0,
+    exercisesAmount: 5,
+  },
+];
+
+export default DOGS;
