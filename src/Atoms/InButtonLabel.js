@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const LabelWrapper = styled.div`
+const LabelWrapper = styled.label`
   box-sizing: border-box;
   display: flex;
   justify-content: center;

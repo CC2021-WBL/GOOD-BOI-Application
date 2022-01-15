@@ -1,5 +1,22 @@
+import React from 'react';
+import classes from '../../Data/TestData/test-data-classes';
+
+import ClassCompetitorButton from '../../Molecules/ClassCompetitorButton';
+
 const ClassesPage = () => {
-  return <h1>I am a Classes Page Component</h1>;
+  return (
+    <>
+      {classes.map((e) => (
+        <ClassCompetitorButton
+          type="class"
+          key={e.id}
+          classNumber={e.classNumber}
+          contestantsAmount={e.contestantsAmount}
+          classCompleted={e.classCompleted}
+        />
+      ))}
+    </>
+  );
 };
 
 export default ClassesPage;

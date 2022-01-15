@@ -1,5 +1,3 @@
 const excercises = {
-    class0: [
-        
-    ]
-}
+  class0: [],
+};
