@@ -1,9 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const Button = styled.button`
-  // component "stylowy"
-
+const PriSecBtnStyled = styled.button`
   display: block;
   width: 343px;
   height: 50px;
@@ -17,9 +14,4 @@ const Button = styled.button`
   align-items: center;
 `;
 
-const PriSecBtn = (props) => {
-  // eslint-disable-next-line react/prop-types
-  return <Button primary={props.primary}>{props.text}</Button>;
-};
-
-export default PriSecBtn;
+export default PriSecBtnStyled;
