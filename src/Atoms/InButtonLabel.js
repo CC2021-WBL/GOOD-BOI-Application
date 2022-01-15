@@ -22,8 +22,7 @@ const LabelWrapper = styled.label`
       : `background: transparent`};
 `;
 
-const InButtonLabel = (props) => {
-  const { type, classInfo, competitorInfo } = props;
+const InButtonLabel = ({ type, classInfo, competitorInfo }) => {
   const { contestantsAmount, isCompleted } = classInfo || [];
   const { exercisesCompleted, exercisesAmount } = competitorInfo || [];
 

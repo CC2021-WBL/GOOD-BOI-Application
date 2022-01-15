@@ -24,8 +24,7 @@ const ClassCompetitorButtonWrapper = styled.button`
   border-radius: 0.75rem; ;
 `;
 
-const ClassCompetitorButton = (props) => {
-  const { type, classInfo, competitorInfo } = props;
+const ClassCompetitorButton = ({ type, classInfo, competitorInfo }) => {
   const { name } = classInfo || [];
   const { index, nameOfCompetitor } = competitorInfo || [];
 
