@@ -1,16 +1,22 @@
 import CLASSES from './test-data-classes';
-import COMPETITORS from './test-data-competitor';
+import DOGS from './test-data-dogs';
+import PARTICIPANTS from './test-data-participants';
 
 const RANDOM_CONTEST = {
   id: 'a0347677-c3c9-4edc-9d46-fed4a958fdc2',
   city: 'Ciechanów',
-  address: 'Warszawska 57',
   date: new Date(2022, 2, 8),
-  classes: [
-    { obedienceClass: CLASSES[0], competitors: COMPETITORS, isCompleted: true },
+  obedienceClasses: [
+    {
+      obedienceClass: CLASSES[0],
+      participants: PARTICIPANTS,
+      dogs: DOGS,
+      isCompleted: true,
+    },
     {
       obedienceClass: CLASSES[1],
-      competitors: COMPETITORS,
+      participants: PARTICIPANTS,
+      dogs: DOGS,
       isCompleted: false,
     },
   ],

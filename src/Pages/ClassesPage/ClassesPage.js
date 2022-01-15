@@ -1,20 +1,20 @@
 import React from 'react';
-import ClassCompetitorButton from '../../Molecules/ClassCompetitorButton';
+import ClassOrDogButton from '../../Molecules/ClassCompetitorButton/ClassOrDogButton';
 import RANDOM_CONTEST from '../../Data/TestData/test-data-random-contest';
 
 const ClassesPage = () => {
   return (
     <>
-      {RANDOM_CONTEST.classes.map((classObject) => {
-        const { obedienceClass, competitors, isCompleted } = classObject;
+      {RANDOM_CONTEST.obedienceClasses.map((classObject) => {
+        const { obedienceClass, dogs, isCompleted } = classObject;
         const { id, name } = obedienceClass;
 
         return (
-          <ClassCompetitorButton
+          <ClassOrDogButton
             key={id}
             classInfo={{
               name,
-              contestantsAmount: competitors.length,
+              dogsAmount: dogs.length,
               isCompleted,
             }}
           />
