@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import FONTS from '../../Styles/fontsStyledComponents';
+import COLORS from '../../Styles/varsStyledComponents';
 
 const ClassOrDogButtonStyled = styled.button`
   box-sizing: border-box;
@@ -10,14 +12,10 @@ const ClassOrDogButtonStyled = styled.button`
   width: calc(100% - 2rem);
   margin: 1rem;
   padding: 1rem;
-  color: #323f4b;
-  font-family: 'Mulish', sans-serif;
-  font-size: 1.25em;
-  font-weight: 700;
-  font-style: normal;
-  line-height: 1.5rem;
+  color: ${COLORS.grey800};
+  ${FONTS.h3}
   background: white;
-  border: solid 1px #323f4b;
+  border: solid 1px ${COLORS.grey800};
   border-radius: 0.75rem; ;
 `;
 
