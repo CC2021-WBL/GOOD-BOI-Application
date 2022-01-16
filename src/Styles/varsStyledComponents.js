@@ -1,4 +1,4 @@
-export const COLORS = {
+const COLORS = {
   primary801: '#093269',
   primary601: '#1264D1',
   primary501: '#2F80ED',
@@ -27,3 +27,5 @@ export const COLORS = {
   positive200: '#97E3B3',
   positive100: '#CBF1D9',
 };
+
+export default COLORS;
