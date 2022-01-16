@@ -11,7 +11,7 @@ const StyledForgotPassForm = styled.form`
     color: ${COLORS.grey800};
     ${FONTS.label_regular};
     align-self: flex-start;
-    padding: 2em 0 10px 20px;
+    padding: 2em 0 10px 10px;
   }
 
   input {
@@ -22,7 +22,7 @@ const StyledForgotPassForm = styled.form`
     border-radius: 8px;
     border: 0.5px solid ${COLORS.grey400};
     padding-left: 10px;
-    margin: 0 0 1em 0;
+    margin: 0 0 1rem 0;
   }
 
   input::placeholder {
