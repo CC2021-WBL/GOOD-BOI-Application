@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import FONTS from '../../Styles/fontsStyledComponents';
+import COLORS from '../../Styles/varsStyledComponents';
 
 const StyledForm = styled.form`
   display: flex;
@@ -6,15 +8,16 @@ const StyledForm = styled.form`
   align-items: center;
 
   label {
-    color: #323f4b;
-    font-size: 0.7em;
+    ${FONTS.body_semibold};
     align-self: flex-start;
-    padding: 2em 0 3px 20px;
+    padding: 0 0 3px 20px;
   }
 
   .forgot-pass {
     padding: 1em 0;
-    font-size: 0.8rem;
+    text-decoration: none;
+    ${FONTS.label_extrabold}
+    color: ${COLORS.primary801};
   }
 `;
 

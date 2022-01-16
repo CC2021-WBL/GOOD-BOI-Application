@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import FONTS from '../../Styles/fontsStyledComponents';
 import COLORS from '../../Styles/varsStyledComponents';
 
 const InputFieldStyled = styled.input`
@@ -6,10 +7,10 @@ const InputFieldStyled = styled.input`
   width: 90%;
   align-self: center;
   color: ${COLORS.grey400};
-  font-size: 1.2em;
+  ${FONTS.body_semibold};
   height: 48px;
   border-radius: 8px;
-  border: 1px solid ${COLORS.grey400};
+  border: 0.5px solid ${COLORS.grey400};
   padding-left: 10px;
 `;
 
