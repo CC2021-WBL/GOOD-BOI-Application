@@ -1,24 +1,24 @@
 import styled from 'styled-components';
+import FONTS from '../../Styles/fontsStyledComponents';
+import COLORS from '../../Styles/varsStyledComponents';
 
 const StyledForm = styled.form`
-  width: 343px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+
   label {
-    color: #323f4b;
-    font-size: 0.7em;
+    ${FONTS.body_semibold};
+    color: ${COLORS.grey800};
     align-self: flex-start;
-    padding: 10px 0 3px 0;
+    padding: 0 0 3px 20px;
   }
 
-  input {
-    font-family: FontAwesome;
-    color: #7b8794;
-    font-size: 1.2em;
-    height: 48px;
-    border-radius: 8px;
-    border: 1px solid #7b8794;
-    padding-left: 10px;
+  .forgot-pass {
+    padding: 1em 0;
+    text-decoration: none;
+    ${FONTS.label_extrabold}
+    color: ${COLORS.primary801};
   }
 `;
 

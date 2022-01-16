@@ -1,4 +1,4 @@
-import CardWrapperStyled from './CardStyled';
+import CardWrapperStyled from './CardWrapperStyled';
 import propTypes from 'prop-types';
 
 const CardWrapper = (props) => {
