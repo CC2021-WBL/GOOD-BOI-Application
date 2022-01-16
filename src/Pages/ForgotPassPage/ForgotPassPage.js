@@ -29,7 +29,7 @@ const ForgotPassPage = () => {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
-        <PriSecBtn text="Potwiedź" />
+        <PriSecBtn text="Potwierdź" />
       </StyledForgotPassForm>
     </CardWrapper>
   );
