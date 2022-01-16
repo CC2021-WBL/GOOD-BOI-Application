@@ -13,7 +13,7 @@ const ClassOrDogButtonStyled = styled.button`
   margin: 1rem;
   padding: 1rem;
   color: ${COLORS.grey800};
-  ${FONTS.h1}
+  ${FONTS.h3}
   background: white;
   border: solid 1px ${COLORS.grey800};
   border-radius: 0.75rem; ;
