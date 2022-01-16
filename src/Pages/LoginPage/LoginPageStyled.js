@@ -11,7 +11,7 @@ const StyledForm = styled.form`
     ${FONTS.label_regular};
     color: ${COLORS.grey800};
     align-self: flex-start;
-    padding: 10px 0 10px 20px;
+    padding: 10px 0 10px 10px;
   }
 
   .forgot-pass {
