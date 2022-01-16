@@ -4,7 +4,7 @@ import GreyLabelContainer from './GreyLabelStyled';
 const GreyLabel = (props) => {
   return (
     <GreyLabelContainer>
-      <h2 className="greyLabelText">{props.text}</h2>
+      <p className="greyLabelText">{props.text}</p>
     </GreyLabelContainer>
   );
 };
