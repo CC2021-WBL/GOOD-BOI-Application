@@ -21,6 +21,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
+        <Route path="*" element={<NotFoundPage />}></Route>
         <Route path="/" element={<HomePage />}>
           <Route path="contactForm" element={<ContactFormPage />}></Route>
           <Route path="profile" element={<ProfilePage />} />
@@ -59,7 +60,6 @@ function App() {
             element={<DogSummaryPage />}
           />
         </Route>
-        <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </div>
   );
