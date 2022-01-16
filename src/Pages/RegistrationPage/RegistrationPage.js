@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import CardWrapper from '../../Atoms/Card/Card';
+import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
 import InputField from '../../Atoms/InputField/InputField';
 import PriSecBtn from '../../Atoms/PriSecBtn/PriSecBtn';
 import RegistrationPageStyled from './RegistrationPageStyled';
