@@ -26,6 +26,12 @@ const MainBtnStyled = styled.button`
         : `${COLORS.primary201}`
       : `${COLORS.primary501}`};
   border-radius: 12px;
+  border: ${(props) =>
+    !props.primary
+      ? !props.secondary
+        ? `0.5px solid ${COLORS.grey800}`
+        : `0.5px solid ${COLORS.primary601}`
+      : `0.5px solid ${COLORS.grey800}`};
   display: flex;
   justify-content: center;
   align-items: center;
