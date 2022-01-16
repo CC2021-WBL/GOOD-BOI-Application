@@ -6,7 +6,7 @@ const SpecialButtons = ({ special, text }) => {
 };
 
 SpecialButtons.propTypes = {
-  special: propTypes.string,
+  special: propTypes.bool,
   text: propTypes.string,
 };
 

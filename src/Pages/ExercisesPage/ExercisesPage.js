@@ -1,14 +1,14 @@
+import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
 import SpecialButtonsContainer from '../../Molecules/SpecialButtonsContainer';
-import Card from '../../Atoms/Card/Card';
 
 const ExercisesPage = () => {
   return (
-    <Card>
+    <CardWrapper>
       <div>
         <h1>I am a Excersises Page Component</h1>
         <SpecialButtonsContainer></SpecialButtonsContainer>
       </div>
-    </Card>
+    </CardWrapper>
   );
 };
 
