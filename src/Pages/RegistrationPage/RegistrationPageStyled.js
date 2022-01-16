@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 
 const RegistrationPageStyled = styled.form`
-  width: 343px;
+  width: 327px;
   display: flex;
   flex-direction: column;
+  /* align-items: center; */
+
   label {
     color: #323f4b;
     font-size: 0.7em;
     align-self: flex-start;
+    padding: 0 0 3px 10px;
   }
 
   input {
@@ -20,6 +23,7 @@ const RegistrationPageStyled = styled.form`
     padding-left: 10px;
     margin: 0 0 5px 0;
   }
+
   input::placeholder {
     color: #7b8794;
   }
