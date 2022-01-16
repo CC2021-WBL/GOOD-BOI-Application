@@ -7,7 +7,7 @@ import ExercisesPage from './Pages/ExercisesPage/ExercisesPage';
 import HomePage from './Pages/HomePage/HomePage';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import { Route, Routes } from 'react-router-dom';
-import NotFoundPage from './Pages/NotFoundPage/NotFoundPageStyled';
+import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
 import RegistrationPage from './Pages/RegistrationPage/RegistrationPage';
 import DogSummaryPage from './Pages/DogSummaryPage/DogSummaryPage';
 import LeaderboardPage from './Pages/LeaderboardPage/LeaderboardPage';
@@ -43,16 +43,16 @@ function App() {
             element={<LeaderboardPage />}
           />
           <Route
+            path="role/contests/:contestsId/classes/:classId/classSummary"
+            element={<ClassSummaryPage />}
+          />
+          <Route
             path="role/contests/:contestsId/classes/:classId/:dogId"
             element={<ExercisesPage />}
           />
           <Route
             path="role/contests/:contestsId/classes/:classId/:dogId/dogSummary"
             element={<DogSummaryPage />}
-          />
-          <Route
-            path="role/contests/:contestsId/classes/:classId/classSummary"
-            element={<ClassSummaryPage />}
           />
         </Route>
         <Route path="*" element={<NotFoundPage />}></Route>
