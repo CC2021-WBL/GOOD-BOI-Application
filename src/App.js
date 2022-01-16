@@ -15,6 +15,7 @@ import RolePage from './Pages/RolePage/RolePage';
 import UnregisteredPage from './Pages/UnregisteredPage/UnregisteredPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
 import ContactFormPage from './Pages/ContactForm/ContactForm';
+import ForgotPassPage from './Pages/ForgotPassPage/ForgotPassPage';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="unRegistered" element={<UnregisteredPage />} />
           <Route path="register" element={<RegistrationPage />} />
           <Route path="login" element={<LoginPage />} />
+          <Route path="forgot" element={<ForgotPassPage />} />
           <Route path="role" element={<RolePage />} />
           <Route path="role/contests" element={<ContestsPage />} />
           <Route
