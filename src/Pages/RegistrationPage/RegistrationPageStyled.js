@@ -11,10 +11,11 @@ const RegistrationPageStyled = styled.form`
     color: ${COLORS.grey800};
     ${FONTS.label_regular};
     align-self: flex-start;
-    padding: 0 0 3px 10px;
+    padding: 0 0 5px 10px;
   }
 
   input {
+    box-sizing: border-box;
     font-family: Mulish, FontAwesome;
     color: ${COLORS.grey800};
     ${FONTS.body_semibold};
@@ -22,15 +23,16 @@ const RegistrationPageStyled = styled.form`
     border-radius: 8px;
     border: 0.5px solid ${COLORS.grey400};
     padding-left: 10px;
-    margin: 0 0 5px 0;
+    margin: 0 0 10px 0;
 
     &::placeholder {
       color: ${COLORS.grey400};
+      left: 10px;
     }
 
     &:focus {
-      outline: none;
-      border: 0.5px solid blue;
+      border: 0.5px solid transparent;
+      outline: 3px solid ${COLORS.primary201};
     }
   }
 
