@@ -8,6 +8,7 @@ import HomePage from './Pages/HomePage/HomePage';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import SingleSummaryPage from './Pages/SingleSummaryPage/SingleSummaryPage';
 import { Route, Routes } from 'react-router-dom';
+import NotFoundPage from './Pages/NotFoundPage/NotFoundPageStyled';
 
 const SingleContestPage = () => {
   return <h1>I am a single Contest Page Component</h1>;
@@ -41,6 +42,7 @@ function App() {
             element={<ClassSummaryPage />}
           />
         </Route>
+        <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </div>
   );
