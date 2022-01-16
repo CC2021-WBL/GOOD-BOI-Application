@@ -37,7 +37,7 @@ const LoginPage = () => {
           htmlFor="password"
           type="password"
           id="password"
-          placeholder="&#xf084; Password"
+          placeholder="&#xf023; Password"
           required
           value={password}
           onChange={(event) => setPassword(event.target.value)}
