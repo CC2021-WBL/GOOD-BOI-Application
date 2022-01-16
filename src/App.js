@@ -8,12 +8,9 @@ import HomePage from './Pages/HomePage/HomePage';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import SingleSummaryPage from './Pages/SingleSummaryPage/SingleSummaryPage';
 import { Route, Routes } from 'react-router-dom';
-<<<<<<< HEAD
 import Footer from './Molecules/Footer/Footer';
-=======
 import ForgotPassPage from './Pages/ForgotPassPage/ForgotPassPage';
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
->>>>>>> development
 
 const SingleContestPage = () => {
   return (
