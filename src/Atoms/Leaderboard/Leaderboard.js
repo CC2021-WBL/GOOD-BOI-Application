@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import LeaderboardBtn from "./LeaderboardBtn";
+import styled from 'styled-components';
+import LeaderboardBtn from './LeaderboardBtn';
 
 const Wrapper = styled.div`
   margin: 0 auto 0 auto;
