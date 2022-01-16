@@ -11,8 +11,9 @@ const ForgotPassPage = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    //test, after submit, entered user data
     const data = { email };
-    console.log(`User data: ${data}`);
+    console.log(data);
     navigate('/login');
   };
 
