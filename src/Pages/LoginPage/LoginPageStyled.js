@@ -9,6 +9,7 @@ const StyledForm = styled.form`
 
   label {
     ${FONTS.body_semibold};
+    color: ${COLORS.grey800};
     align-self: flex-start;
     padding: 0 0 3px 20px;
   }
