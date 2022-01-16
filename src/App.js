@@ -12,6 +12,8 @@ import RegistrationPage from './Pages/RegistrationPage/RegistrationPage';
 import DogSummaryPage from './Pages/DogSummaryPage/DogSummaryPage';
 import LeaderboardPage from './Pages/LeaderboardPage/LeaderboardPage';
 import RolePage from './Pages/RolePage/RolePage';
+import UnregisteredPage from './Pages/UnregisteredPage/UnregisteredPage';
+import ProfilePage from './Pages/ProfilePage/ProfilePage';
 
 const SingleContestPage = () => {
   return <h1>I am a single Contest Page Component</h1>;
@@ -21,6 +23,8 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<HomePage />}>
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="unRegistered" element={<UnregisteredPage />} />
           <Route path="register" element={<RegistrationPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="role" element={<RolePage />} />
