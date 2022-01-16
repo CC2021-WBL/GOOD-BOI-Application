@@ -1,12 +1,8 @@
 import propTypes from 'prop-types';
 import SpecialButtonsStyled from './SpecialBittonsStyled';
 
-const SpecialButtons = (props) => {
-  return (
-    <SpecialButtonsStyled special={props.special}>
-      {props.text}
-    </SpecialButtonsStyled>
-  );
+const SpecialButtons = ({ special, text }) => {
+  return <SpecialButtonsStyled special={special}>{text}</SpecialButtonsStyled>;
 };
 
 SpecialButtons.propTypes = {

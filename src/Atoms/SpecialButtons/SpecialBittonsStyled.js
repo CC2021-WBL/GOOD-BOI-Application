@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { COLORS } from '../../Styles/varsStyledComponents';
+import COLORS from '../../Styles/varsStyledComponents';
 
 const SpecialButtonsStyled = styled.button`
   width: 49%;

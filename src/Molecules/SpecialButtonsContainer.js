@@ -3,7 +3,7 @@ import SpecialButtons from '../Atoms/SpecialButtons/SpecialButtons';
 const SpecialButtonsContainer = () => {
   return (
     <div>
-      <SpecialButtons text="Dyskwalifikacja" special="yes">
+      <SpecialButtons text="Dyskwalifikacja" special>
         special
       </SpecialButtons>
 
