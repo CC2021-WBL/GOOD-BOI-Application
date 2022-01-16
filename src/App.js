@@ -15,9 +15,6 @@ import RolePage from './Pages/RolePage/RolePage';
 import UnregisteredPage from './Pages/UnregisteredPage/UnregisteredPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
 
-const SingleContestPage = () => {
-  return <h1>I am a single Contest Page Component</h1>;
-};
 function App() {
   return (
     <div className="App">
