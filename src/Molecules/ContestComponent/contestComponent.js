@@ -1,19 +1,24 @@
 import propTypes from 'prop-types';
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
+import ContestComponentStyled from './ContestComponenyStyled';
+import { getDataFormatDdMonthYyy } from '../../Tools/TimeFunctions';
 
 const ContestComponent = ({ contestName, contestDate, contestCity }) => {
+  const date = getDataFormatDdMonthYyy(contestDate);
+  console.log(date);
+
   return (
-    <div>
+    <ContestComponentStyled>
       <p>{contestName}</p>
-      <div>
+      <div className="double-elements">
         <time dateTime={contestDate}></time>
         <p>{contestCity}</p>
       </div>
-      <div>
+      <div className="double-elements">
         <InfoLabel dateOfContest={contestDate}></InfoLabel>
         <InfoLabel classInfo={{ dogsAmount: 30 }}></InfoLabel>
       </div>
-    </div>
+    </ContestComponentStyled>
   );
 };
 

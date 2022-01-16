@@ -5,7 +5,9 @@ import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
 const ContestsPage = () => {
   //RANDOM DATY
   //const pastDate = new Date(1972, 5, 16, 10, 0);
-  const todayDate = new Date();
+  const todayDate = new Date(2022, 2, 16);
+  console.log('today date:');
+  console.log(todayDate);
 
   return (
     <>
@@ -15,7 +17,7 @@ const ContestsPage = () => {
         contestName={RANDOM_CONTESTS[0].name}
         contestDate={todayDate}
         contestCity={RANDOM_CONTESTS[0].city}
-      ></ContestComponent>
+      />
     </>
   );
 };
