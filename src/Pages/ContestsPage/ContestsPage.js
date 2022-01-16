@@ -1,20 +1,21 @@
-import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
+// import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
+import ContestComponent from '../../Molecules/ContestComponent/ContestComponent';
+import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
 
 const ContestsPage = () => {
   //RANDOM DATY
-  const pastDate = new Date(1972, 5, 16, 10, 0);
+  //const pastDate = new Date(1972, 5, 16, 10, 0);
   const todayDate = new Date();
-  const futureDate = new Date(2077, 12, 10, 10, 0);
 
   return (
     <>
-      <h1>I am a Contests Page Component</h1>
-      <InfoLabel dateOfContest={todayDate}></InfoLabel>
-      <InfoLabel dateOfContest={futureDate}></InfoLabel>
-      <InfoLabel dateOfContest={pastDate}></InfoLabel>
-      <InfoLabel classInfo={{ dogsAmount: 15 }}></InfoLabel>
-      <InfoLabel classInfo={{ dogsAmount: 3 }}></InfoLabel>
-      <InfoLabel classInfo={{ dogsAmount: 3 }}></InfoLabel>
+      <h1>LISTA KONKURSÓW</h1>
+      <h2>WYBIERZ KONKURS</h2>
+      <ContestComponent
+        contestName={RANDOM_CONTESTS[0].name}
+        contestDate={todayDate}
+        contestCity={RANDOM_CONTESTS[0].city}
+      ></ContestComponent>
     </>
   );
 };

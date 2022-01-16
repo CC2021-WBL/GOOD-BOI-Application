@@ -1,17 +1,26 @@
 import propTypes from 'prop-types';
-import { useState } from 'react';
-import InfoLabel from '../../Atoms/InButtonLabel/InfoLabel';
+import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
 
-const contestComponent = ({ initialName, initialDate, initialCity }) => {
-  const [contestName, setContestName] = useState(initialName);
-  const [date, setDate] = useSate(initialDate);
-  const [city, setCity] = useState(initialCity);
-
+const ContestComponent = ({ contestName, contestDate, contestCity }) => {
   return (
     <div>
       <p>{contestName}</p>
+      <div>
+        <time dateTime={contestDate}></time>
+        <p>{contestCity}</p>
+      </div>
+      <div>
+        <InfoLabel dateOfContest={contestDate}></InfoLabel>
+        <InfoLabel classInfo={{ dogsAmount: 30 }}></InfoLabel>
+      </div>
     </div>
-  )
+  );
 };
 
-export default contestComponent;
+ContestComponent.propTypes = {
+  contestName: propTypes.string,
+  contestDate: propTypes.instanceOf(Date),
+  contestCity: propTypes.string,
+};
+
+export default ContestComponent;
