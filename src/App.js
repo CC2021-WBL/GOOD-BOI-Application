@@ -14,12 +14,14 @@ import LeaderboardPage from './Pages/LeaderboardPage/LeaderboardPage';
 import RolePage from './Pages/RolePage/RolePage';
 import UnregisteredPage from './Pages/UnregisteredPage/UnregisteredPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
+import ContactFormPage from './Pages/ContactForm/ContactForm';
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<HomePage />}>
+          <Route path="contactForm" element={<ContactFormPage />}></Route>
           <Route path="profile" element={<ProfilePage />} />
           <Route path="unRegistered" element={<UnregisteredPage />} />
           <Route path="register" element={<RegistrationPage />} />
