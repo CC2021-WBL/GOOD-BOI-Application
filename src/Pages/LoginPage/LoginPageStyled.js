@@ -8,10 +8,10 @@ const StyledForm = styled.form`
   align-items: center;
 
   label {
-    ${FONTS.body_semibold};
+    ${FONTS.label_regular};
     color: ${COLORS.grey800};
     align-self: flex-start;
-    padding: 0 0 3px 20px;
+    padding: 10px 0 10px 20px;
   }
 
   .forgot-pass {

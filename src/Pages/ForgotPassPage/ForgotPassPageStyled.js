@@ -11,7 +11,7 @@ const StyledForgotPassForm = styled.form`
     color: ${COLORS.grey800};
     ${FONTS.label_regular};
     align-self: flex-start;
-    padding: 2em 0 3px 20px;
+    padding: 2em 0 10px 20px;
   }
 
   input {
