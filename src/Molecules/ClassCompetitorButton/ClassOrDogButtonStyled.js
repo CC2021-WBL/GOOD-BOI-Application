@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import FONTS from '../../Styles/fontsStyledComponents';
 
 const ClassOrDogButtonStyled = styled.button`
   box-sizing: border-box;
@@ -11,11 +12,7 @@ const ClassOrDogButtonStyled = styled.button`
   margin: 1rem;
   padding: 1rem;
   color: #323f4b;
-  font-family: 'Mulish', sans-serif;
-  font-size: 1.25em;
-  font-weight: 700;
-  font-style: normal;
-  line-height: 1.5rem;
+  ${FONTS.h1}
   background: white;
   border: solid 1px #323f4b;
   border-radius: 0.75rem; ;
