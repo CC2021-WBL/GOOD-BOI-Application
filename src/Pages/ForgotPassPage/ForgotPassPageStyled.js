@@ -23,10 +23,14 @@ const StyledForgotPassForm = styled.form`
     border: 0.5px solid ${COLORS.grey400};
     padding-left: 10px;
     margin: 0 0 1rem 0;
-  }
 
-  input::placeholder {
-    color: ${COLORS.grey400};
+    &::placeholder {
+      color: ${COLORS.grey400};
+    }
+    &:focus {
+      border: 0.5px solid transparent;
+      outline: 3px solid ${COLORS.primary201};
+    }
   }
 `;
 
