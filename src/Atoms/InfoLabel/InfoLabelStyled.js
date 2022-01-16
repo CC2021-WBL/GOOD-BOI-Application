@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import FONTS from '../../Styles/fontsStyledComponents';
 
 const LabelStyled = styled.label`
   box-sizing: border-box;
@@ -7,10 +8,7 @@ const LabelStyled = styled.label`
   align-items: center;
   padding: 0.375rem;
   height: 1.25rem;
-  font-family: 'Mulish', sans-serif;
-  font-size: 0.7em;
-  font-style: normal;
-  font-weight: 400;
+  ${FONTS.caption}
   border: solid 1px #323f4b;
   border-radius: 0.25rem;
   line-height: 1em;
