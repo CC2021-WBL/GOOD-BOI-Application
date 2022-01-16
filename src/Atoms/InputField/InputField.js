@@ -1,4 +1,5 @@
 import propTypes from 'prop-types';
+import InputFieldStyled from './InputFieldStyled';
 
 const InputField = ({
   id,
@@ -13,7 +14,7 @@ const InputField = ({
   return (
     <>
       <label htmlFor={htmlFor}>{labelText}</label>
-      <input
+      <InputFieldStyled
         id={id}
         type={type}
         placeholder={placeholder}

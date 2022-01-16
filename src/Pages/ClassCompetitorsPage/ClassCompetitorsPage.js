@@ -1,11 +1,11 @@
 import Footer from '../../Molecules/Footer/Footer';
 import ClassOrDogButton from '../../Molecules/ClassCompetitorButton/ClassOrDogButton';
-import RANDOM_CONTEST from '../../Data/Dummy-data/test-data-random-contest';
+import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
 
 const ClassCompetitorsPage = () => {
   return (
     <>
-      {RANDOM_CONTEST.obedienceClasses[0].dogs.map((dog, index) => {
+      {RANDOM_CONTESTS[0].obedienceClasses[0].dogs.map((dog, index) => {
         const { id, dogName, exercisesCompleted, exercisesAmount } = dog;
         return (
           <ClassOrDogButton
