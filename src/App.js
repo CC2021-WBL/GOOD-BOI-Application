@@ -6,9 +6,12 @@ import ContestsPage from './Pages/ContestsPage/ContestsPage';
 import ExercisesPage from './Pages/ExercisesPage/ExercisesPage';
 import HomePage from './Pages/HomePage/HomePage';
 import LoginPage from './Pages/LoginPage/LoginPage';
-import SingleSummaryPage from './Pages/SingleSummaryPage/SingleSummaryPage';
 import { Route, Routes } from 'react-router-dom';
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPageStyled';
+import RegistrationPage from './Pages/RegistrationPage/RegistrationPage';
+import DogSummaryPage from './Pages/DogSummaryPage/DogSummaryPage';
+import LeaderboardPage from './Pages/LeaderboardPage/LeaderboardPage';
+import RolePage from './Pages/RolePage/RolePage';
 
 const SingleContestPage = () => {
   return <h1>I am a single Contest Page Component</h1>;
@@ -18,27 +21,36 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<HomePage />}>
+          <Route path="register" element={<RegistrationPage />} />
           <Route path="login" element={<LoginPage />} />
-          <Route path="contests" element={<ContestsPage />} />
-          <Route path="contests/:contestsId" element={<SingleContestPage />} />
+          <Route path="role" element={<RolePage />} />
+          <Route path="role/contests" element={<ContestsPage />} />
           <Route
-            path="contests/:contestsId/classes"
+            path="role/contests/:contestsId"
+            element={<SingleContestPage />}
+          />
+          <Route
+            path="role/contests/:contestsId/classes"
             element={<ClassesPage />}
           />
           <Route
-            path="contests/:contestsId/classes/:classId"
+            path="role/contests/:contestsId/classes/:classId"
             element={<ClassCompetitorsPage />}
           />
           <Route
-            path="contests/:contestsId/classes/:classId/:dogId"
+            path="role/contests/:contestsId/classes/:classId/leaderboard"
+            element={<LeaderboardPage />}
+          />
+          <Route
+            path="role/contests/:contestsId/classes/:classId/:dogId"
             element={<ExercisesPage />}
           />
           <Route
-            path="contests/:contestsId/classes/:classId/:dogId/summary"
-            element={<SingleSummaryPage />}
+            path="role/contests/:contestsId/classes/:classId/:dogId/dogSummary"
+            element={<DogSummaryPage />}
           />
           <Route
-            path="contests/:contestsId/classes/:classId/leaderboard"
+            path="role/contests/:contestsId/classes/:classId/classSummary"
             element={<ClassSummaryPage />}
           />
         </Route>
