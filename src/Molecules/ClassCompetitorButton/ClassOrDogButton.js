@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import ClassOrDogButtonStyled from './ClassOrDogButtonStyled';
-import InfoLabel from '../../Atoms/InButtonLabel/InfoLabel';
+import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
 
 const ClassOrDogButton = ({ classInfo, dogInfo }) => {
   const { name } = classInfo || [];
