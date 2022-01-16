@@ -3,15 +3,15 @@ import FONTS from '../../Styles/fontsStyledComponents';
 import COLORS from '../../Styles/varsStyledComponents';
 
 const StyledForgotPassForm = styled.form`
-  width: 343px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   label {
     color: ${COLORS.grey800};
     ${FONTS.label_regular};
     align-self: flex-start;
-    padding: 2em 0 3px 0;
+    padding: 2em 0 3px 20px;
   }
 
   input {

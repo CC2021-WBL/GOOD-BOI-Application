@@ -8,8 +8,8 @@ const ClassOrDogButton = ({ classInfo, dogInfo }) => {
 
   return (
     <ClassOrDogButtonStyled>
-      {classInfo !== undefined && <>{name}</>}
-      {dogInfo !== undefined && (
+      {classInfo && <>{name}</>}
+      {dogInfo && (
         <>
           {index + 1}. {dogName}
         </>

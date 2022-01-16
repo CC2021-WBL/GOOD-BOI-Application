@@ -7,13 +7,13 @@ import StyledForm from './LoginPageStyled';
 import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
-  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const submitHandler = (event) => {
     event.preventDefault();
 
-    const data = { login, password };
+    const data = { email, password };
     //test, after submit, entered user data
     console.log(data);
   };
@@ -22,14 +22,14 @@ const LoginPage = () => {
     <Card>
       <StyledForm onSubmit={submitHandler}>
         <InputField
-          labelText="Login"
-          htmlFor="login"
-          type="text"
-          placeholder="&#xF007; Login"
-          id="login"
+          labelText="Email"
+          htmlFor="email"
+          type="email"
+          placeholder="&#xf0e0; Email"
+          id="email"
           required
-          value={login}
-          onChange={(event) => setLogin(event.target.value)}
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
         />
 
         <InputField
@@ -37,7 +37,7 @@ const LoginPage = () => {
           htmlFor="password"
           type="password"
           id="password"
-          placeholder="&#xf084; Password"
+          placeholder="&#xf023; Hasło"
           required
           value={password}
           onChange={(event) => setPassword(event.target.value)}
