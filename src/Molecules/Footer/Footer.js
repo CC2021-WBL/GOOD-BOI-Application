@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 import FooterProfileBtn from '../../Atoms/FooterProfileBtn/FooterProfileBtn';
 import { Logo, LogoWrapper, Copy, Wrapper } from './FooterStyled';
-import logo from '../../Data/Svgs/logo.svg';
+import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
 
 const Footer = () => {
   return (
@@ -9,7 +9,12 @@ const Footer = () => {
       <Wrapper>
         <LogoWrapper>
           <Logo>
-            <img className="logo" src={logo} alt="logo" width="35px" />
+            <img
+              className="logo"
+              src={logoDevsOnTheWaves}
+              alt="logo"
+              width="35px"
+            />
           </Logo>
           <Copy>
             Copyright <br />
