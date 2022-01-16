@@ -4,7 +4,7 @@ import COLORS from '../../Styles/varsStyledComponents';
 
 const InputFieldStyled = styled.input`
   font-family: Mulish, FontAwesome;
-  width: 90%;
+  width: 95%;
   align-self: center;
   color: ${COLORS.grey400};
   ${FONTS.body_semibold};
