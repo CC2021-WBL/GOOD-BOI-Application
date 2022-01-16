@@ -4,12 +4,10 @@ import MainBtnStyled from './MainBtnStyled';
 // function primary, secondary, trinary
 const MainBtn = (props) => {
   const { primary, secondary, ternary, text } = props;
-  function doOnClick() {
-    return console.log('Main button clicked');
-  }
+
   return (
     <MainBtnStyled
-      onClick={doOnClick}
+      onClick={props.onClick}
       primary={primary}
       secondary={secondary}
       ternary={ternary}
@@ -24,6 +22,7 @@ MainBtn.propTypes = {
   secondary: propTypes.string,
   ternary: propTypes.string,
   text: propTypes.string,
+  onClick: propTypes.func, // TODO: do sprawdzenia
 };
 
 export default MainBtn;
