@@ -1,11 +1,11 @@
-// import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import GreyLabelContainer from './GreyLabelStyled';
 
 const GreyLabel = (props) => {
   return (
-    <div>
-      <h2>{props.text}</h2>
-    </div>
+    <GreyLabelContainer>
+      <h2 className="greyLabelText">{props.text}</h2>
+    </GreyLabelContainer>
   );
 };
 
