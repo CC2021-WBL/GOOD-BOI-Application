@@ -1,10 +1,10 @@
 import ClassOrDogButton from '../../Molecules/ClassCompetitorButton/ClassOrDogButton';
-import RANDOM_CONTEST from '../../Data/Dummy-data/test-data-random-contest';
+import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
 
 const ClassesPage = () => {
   return (
     <>
-      {RANDOM_CONTEST.obedienceClasses.map((classObject) => {
+      {RANDOM_CONTESTS[0].obedienceClasses.map((classObject) => {
         const { obedienceClass, dogs, isCompleted } = classObject;
         const { id, name } = obedienceClass;
 
