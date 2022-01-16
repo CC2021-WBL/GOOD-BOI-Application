@@ -24,7 +24,7 @@ const ForgotPassPage = () => {
           htmlFor="email"
           type="email"
           placeholder="&#xf0e0; Email"
-          id="login"
+          id="email"
           required
           value={email}
           onChange={(event) => setEmail(event.target.value)}
