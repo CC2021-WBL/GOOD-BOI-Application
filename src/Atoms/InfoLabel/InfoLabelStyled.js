@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import FONTS from '../../Styles/fontsStyledComponents';
+import COLORS from '../../Styles/varsStyledComponents';
 
 const LabelStyled = styled.label`
   box-sizing: border-box;
@@ -9,12 +10,12 @@ const LabelStyled = styled.label`
   padding: 0.375rem;
   height: 1.25rem;
   ${FONTS.caption}
-  border: solid 1px #323f4b;
+  border: solid 1px ${COLORS.grey800};
   border-radius: 0.25rem;
   line-height: 1em;
   ${(props) =>
     props.isClassCompleted || props.areExercisesCompleted
-      ? `background: #97E3B3; color: #1A6234;  border: solid 1px #1A6234;`
+      ? `background: ${COLORS.positive200}; color: ${COLORS.positive600};  border: solid 1px  ${COLORS.positive600};`
       : `background: transparent`};
 `;
 
