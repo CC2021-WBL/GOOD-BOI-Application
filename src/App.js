@@ -28,7 +28,7 @@ function App() {
           <Route path="role/contests" element={<ContestsPage />} />
           <Route
             path="role/contests/:contestsId"
-            element={<SingleContestPage />}
+            element={<DogSummaryPage />}
           />
           <Route
             path="role/contests/:contestsId/classes"
