@@ -41,7 +41,7 @@ const RegistrationPage = () => {
           htmlFor="password"
           type="password"
           id="password"
-          placeholder="&#xf023; Password"
+          placeholder="&#xf023; Hasło"
           required
           value={password}
           onChange={(event) => setPassword(event.target.value)}

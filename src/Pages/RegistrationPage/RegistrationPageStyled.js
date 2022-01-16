@@ -27,7 +27,6 @@ const RegistrationPageStyled = styled.form`
 
     &::placeholder {
       color: ${COLORS.grey400};
-      left: 10px;
     }
 
     &:focus {
@@ -47,7 +46,7 @@ const RegistrationPageStyled = styled.form`
     input[type='checkbox'] {
       cursor: pointer;
       width: 30px;
-      margin: 0 10px 0 0;
+      margin: 0 10px;
       padding: 0 5px;
     }
   }
