@@ -10,4 +10,3 @@ const Logo = () => {
 };
 
 export default Logo;
-i;
