@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 
 const StyledForgotPassForm = styled.form`
-  width: 343px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+
   label {
     color: #323f4b;
     font-size: 0.7em;
     align-self: flex-start;
-    padding: 2em 0 3px 0;
+    padding: 2em 0 3px 20px;
   }
 
   input {
