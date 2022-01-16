@@ -1,7 +1,7 @@
 import 'font-awesome/css/font-awesome.min.css';
 import InputField from '../../Atoms/InputField/InputField';
 import Card from '../../Atoms/Card/Card';
-import PriSecBtn from '../../Atoms/PriSecBtn/PriSecBtn';
+import MainBtn from '../../Atoms/MainBtn/MainBtn';
 import { useState } from 'react';
 import StyledForm from './LoginPageStyled';
 
@@ -42,7 +42,7 @@ const LoginPage = () => {
           onChange={(event) => setPassword(event.target.value)}
         />
         <p>Zapomniałeś hasła ?</p>
-        <PriSecBtn text="Zaloguj się" />
+        <MainBtn text="Zaloguj się" />
       </StyledForm>
     </Card>
   );
