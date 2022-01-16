@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { COLORS } from '../../Styles/varsStyledComponents';
 
-export const Wrapper = styled.div`
+export const LinkWrapper = styled.div`
   height: 100%;
   width: 33%;
   display: flex;
   align-items: center;
   gap: 5px;
+  cursor: pointer;
 
   .arrowLeft {
     color: ${COLORS.grey200};
@@ -20,7 +21,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Element = styled.div`
+export const NavElementContainer = styled.div`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -38,6 +39,13 @@ export const Element = styled.div`
   }
 `;
 
-export const Div = styled.div`
+export const Logo = styled.div`
   width: 33%;
+  display: flex;
+  justify-content: flex-end;
+
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
 `;

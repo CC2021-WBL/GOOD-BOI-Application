@@ -1,8 +1,10 @@
 import { Outlet, Link } from 'react-router-dom';
+import NavElement from '../../Organisms/NavElement/NavElement';
+
 const HomePage = () => {
   return (
     <>
-      <h1>I am a HOME Page Component</h1>
+      <NavElement text="Strona główna" />
       <Link to="/login">Login--|</Link>
       <Link to="/contests">--Contests--|</Link>
       <Link to="/contests/1">--Single contest--|</Link>
