@@ -12,12 +12,15 @@ const RegistrationPage = () => {
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [street, setStreet] = useState('');
+  const [zipcode, setZipcode] = useState('');
+  const [city, setCity] = useState('');
   const navigate = useNavigate();
 
   const submitHandler = (event) => {
     event.preventDefault();
 
-    const data = { name, surname, email, password };
+    const data = { name, surname, email, password, street, zipcode, city };
 
     //test, after submit, entered user data
     console.log(data);
@@ -67,6 +70,36 @@ const RegistrationPage = () => {
           required
           value={surname}
           onChange={(event) => setSurname(event.target.value)}
+        />
+        <InputField
+          labelText="Ulica i nr domu"
+          htmlFor="street"
+          type="text"
+          placeholder="&#xf015; Ulica i nr domu"
+          id="street"
+          required
+          value={street}
+          onChange={(event) => setStreet(event.target.value)}
+        />
+        <InputField
+          labelText="Kod Pocztowy"
+          htmlFor="zipcode"
+          type="text"
+          placeholder="&#xf015; Kod Pocztowy"
+          id="zipcode"
+          required
+          value={zipcode}
+          onChange={(event) => setZipcode(event.target.value)}
+        />
+        <InputField
+          labelText="Miasto"
+          htmlFor="city"
+          type="text"
+          placeholder="&#xf015; Miasto"
+          id="city"
+          required
+          value={city}
+          onChange={(event) => setCity(event.target.value)}
         />
         <CheckboxAgreeField text="Zapoznałem się z regulaminem GOOD BOI i akceptuję jego postanowienia" />
         <PriSecBtn text="Zarejestruj się" />
