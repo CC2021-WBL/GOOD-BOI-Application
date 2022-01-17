@@ -12,6 +12,7 @@ const EditAcceptStyled = styled.button`
   align-items: center;
   border: 0;
   border-radius: 0 0.75rem 0.75rem 0;
+  cursor: pointer;
   ${FONTS.label_regular};
   ${(props) =>
     props.toggle

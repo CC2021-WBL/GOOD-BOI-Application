@@ -1,24 +1,25 @@
-import propTypes from 'prop-types';
 import PropTypes from 'prop-types';
 import PointsText from '../../Atoms/PointsText/PointsText';
 import PointsInput from '../PointsForm/PointsForm';
 import PointsStyled from './PointsStyled';
 
-const Points = ({ points, toggle }) => {
+const Points = ({ exerciseInfo, toggle, onChange }) => {
+  const { codeName, result } = exerciseInfo;
   return (
     <PointsStyled>
       {toggle ? (
-        <PointsText points={points}></PointsText>
+        <PointsText points={result}></PointsText>
       ) : (
-        <PointsInput points={points} />
+        <PointsInput points={result} codeName={codeName} onChange={onChange} />
       )}
     </PointsStyled>
   );
 };
 
 Points.propTypes = {
-  points: propTypes.number,
+  exerciseInfo: PropTypes.object,
   toggle: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 
 export default Points;
