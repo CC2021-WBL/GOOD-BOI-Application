@@ -4,7 +4,7 @@ import COLORS from '../../Styles/varsStyledComponents';
 
 const ContestComponentStyled = styled.div`
   box-sizing: border-box;
-  padding: 1rem 1rem 1.2rem 1rem;
+  padding: 1.25rem 1.25rem 1.375rem 1.25rem;
   margin: auto;
   width: calc(100% - 2rem);
   height: auto;
@@ -24,6 +24,8 @@ const ContestInsideElementStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   border-top: 1px solid lightgrey;
+  ${FONTS.label_extrabold}
+  color: ${COLORS.grey400}
 `;
 
 const ContestNameStyled = styled.h3`
