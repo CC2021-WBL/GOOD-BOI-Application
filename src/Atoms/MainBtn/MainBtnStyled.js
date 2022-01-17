@@ -9,28 +9,27 @@ export const Wrapper = styled.div`
 `;
 
 const MainBtnStyled = styled.button`
-  display: block;
   width: 343px;
   height: 50px;
   color: ${(props) =>
-    !props.primary
-      ? !props.secondary
-        ? `${COLORS.grey800}`
-        : `${COLORS.primary601}`
-      : `${COLORS.white}`};
+    props.primary
+      ? COLORS.white
+      : props.secondary
+      ? COLORS.primary601
+      : COLORS.grey800};
   ${FONTS.button};
   background: ${(props) =>
-    !props.primary
-      ? !props.secondary
-        ? 'transparent'
-        : `${COLORS.primary201}`
-      : `${COLORS.primary501}`};
+    props.primary
+      ? COLORS.primary501
+      : props.secondary
+      ? COLORS.primary201
+      : 'transparent'};
   border-radius: 12px;
   border: ${(props) =>
-    !props.primary
-      ? !props.secondary
-        ? `0.5px solid ${COLORS.grey800}`
-        : `0.5px solid ${COLORS.primary601}`
+    props.primary
+      ? `0.5px solid ${COLORS.grey800}`
+      : props.secondary
+      ? `0.5px solid ${COLORS.primary601}`
       : `0.5px solid ${COLORS.grey800}`};
   display: flex;
   justify-content: center;

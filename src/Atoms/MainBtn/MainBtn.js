@@ -21,8 +21,8 @@ MainBtn.propTypes = {
   primary: propTypes.string,
   secondary: propTypes.string,
   ternary: propTypes.string,
-  text: propTypes.string,
-  onClick: propTypes.func, // TODO: do sprawdzenia
+  text: propTypes.string.isRequired,
+  onClick: propTypes.func,
 };
 
 export default MainBtn;
