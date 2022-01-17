@@ -1,12 +1,11 @@
+import ExerciseCard from '../../Molecules/ExerciseCard/ExerciseCard';
 import PropTypes from 'prop-types';
 import ExerciseCardsContainerStyled from './ExerciseCardsContainerStyled';
-import ExerciseCard from '../../Molecules/ExerciseCard/ExerciseCard';
 import { useState } from 'react';
 
 const ExerciseCardsContainer = ({ performanceObject }) => {
-  const [performance, setPerformance] = useState(performanceObject);
-  const { exercises, obedienceClassName } = performance;
-  console.log(performance);
+  const { exercises, obedienceClassName } = performanceObject;
+  const [exercisesResults, setExercisesResults] = useState(exercises);
 
   const performanceSaveHandler = (event) => {
     if (
@@ -16,18 +15,19 @@ const ExerciseCardsContainer = ({ performanceObject }) => {
     ) {
       console.log('Choose points from 0 to 10.');
     } else {
-      setPerformance((prevState) => ({
-        ...prevState,
-        codename: event.target.id,
-        result: event.target.value,
-      }));
-      console.log(performance);
+      setExercisesResults((prevState) => {
+        prevState.find(
+          (exercise) => exercise.codeName === event.target.id,
+        ).result = Number(event.target.value);
+        console.log(performanceObject);
+        return prevState;
+      });
     }
   };
 
   return (
     <ExerciseCardsContainerStyled>
-      {exercises.map((exercise) => (
+      {exercisesResults.map((exercise) => (
         <ExerciseCard
           key={exercise.codeName}
           exerciseInfo={exercise}
