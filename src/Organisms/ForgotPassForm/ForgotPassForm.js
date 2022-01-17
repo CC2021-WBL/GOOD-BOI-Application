@@ -6,7 +6,7 @@ import ForgotPassFormStyled from './ForgotPassFormStyled';
 import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 
-const ForgotPassPage = () => {
+const ForgotPassForm = () => {
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
 
@@ -37,4 +37,4 @@ const ForgotPassPage = () => {
   );
 };
 
-export default ForgotPassPage;
+export default ForgotPassForm;
