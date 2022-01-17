@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import Exercise from '../../Atoms/Exercise/Exercise';
-import Point from '../../Atoms/Point/Point';
 import EditAccept from '../../Atoms/EditAccept/EditAccept';
 import ExerciseCardStyled from './ExerciseCardStyled';
 import { useState } from 'react';
+import Points from '../Points/Points';
 
 const ExerciseCard = ({ exerciseInfo, obedienceClassName }) => {
   const { codeName, result } = exerciseInfo;
@@ -20,7 +20,7 @@ const ExerciseCard = ({ exerciseInfo, obedienceClassName }) => {
         obedienceClassName={obedienceClassName}
         toggle={toggle}
       />
-      <Point points={result} toggle={toggle} />
+      <Points points={result} toggle={toggle} />
       <EditAccept onClick={toggleHandler} toggle={toggle} />
     </ExerciseCardStyled>
   );
