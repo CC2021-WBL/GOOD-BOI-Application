@@ -1,10 +1,11 @@
-import 'font-awesome/css/font-awesome.min.css';
-import InputField from '../../Atoms/InputField/InputField';
-import Card from '../../Atoms/CardWrapper/CardWrapper';
-import PriSecBtn from '../../Atoms/PriSecBtn/PriSecBtn';
 import { useState } from 'react';
-import StyledForm from './LoginPageStyled';
 import { Link } from 'react-router-dom';
+import 'font-awesome/css/font-awesome.min.css';
+
+import StyledForm from './LoginPageStyled';
+import PriSecBtn from '../../Atoms/PriSecBtn/PriSecBtn';
+import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
+import InputField from '../../Molecules/InputField/InputField';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -19,7 +20,7 @@ const LoginPage = () => {
   };
 
   return (
-    <Card>
+    <CardWrapper>
       <StyledForm onSubmit={submitHandler}>
         <InputField
           labelText="Email"
@@ -47,7 +48,7 @@ const LoginPage = () => {
         </Link>
         <PriSecBtn text="Zaloguj się" />
       </StyledForm>
-    </Card>
+    </CardWrapper>
   );
 };
 

@@ -1,9 +1,10 @@
-import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
-import InputField from '../../Atoms/InputField/InputField';
-import PriSecBtn from '../../Atoms/PriSecBtn/PriSecBtn';
 import { useState } from 'react';
-import StyledForgotPassForm from './ForgotPassPageStyled';
 import { useNavigate } from 'react-router-dom';
+
+import PriSecBtn from '../../Atoms/PriSecBtn/PriSecBtn';
+import StyledForgotPassForm from './ForgotPassPageStyled';
+import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
+import InputField from '../../Molecules/InputField/InputField';
 
 const ForgotPassPage = () => {
   const [email, setEmail] = useState('');
@@ -30,7 +31,7 @@ const ForgotPassPage = () => {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
-        <PriSecBtn text="Potwiedź" />
+        <PriSecBtn text="Potwierdź" />
       </StyledForgotPassForm>
     </CardWrapper>
   );

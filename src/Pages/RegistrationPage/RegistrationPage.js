@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
-import InputField from '../../Atoms/InputField/InputField';
-import PriSecBtn from '../../Atoms/PriSecBtn/PriSecBtn';
-import RegistrationPageStyled from './RegistrationPageStyled';
 import { useNavigate } from 'react-router-dom';
+
+import PriSecBtn from '../../Atoms/PriSecBtn/PriSecBtn';
+import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
+import RegistrationPageStyled from './RegistrationPageStyled';
+import InputField from '../../Molecules/InputField/InputField';
+import CheckboxAgreeField from '../../Atoms/CheckboxAgreeField/CheckboxAgreeField';
 
 const RegistrationPage = () => {
   const [name, setName] = useState('');
@@ -66,12 +68,7 @@ const RegistrationPage = () => {
           value={surname}
           onChange={(event) => setSurname(event.target.value)}
         />
-        <div className="checkboxWrap">
-          <input type="checkbox" required />
-          <p>
-            Zapoznałem się z regulaminem GOOD BOI i akceptuję jego postanowienia
-          </p>
-        </div>
+        <CheckboxAgreeField text="Zapoznałem się z regulaminem GOOD BOI i akceptuję jego postanowienia" />
         <PriSecBtn text="Zarejestruj się" />
       </RegistrationPageStyled>
     </CardWrapper>

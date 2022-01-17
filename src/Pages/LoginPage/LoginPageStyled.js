@@ -5,14 +5,6 @@ import COLORS from '../../Styles/varsStyledComponents';
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center;
-
-  label {
-    ${FONTS.body_semibold};
-    color: ${COLORS.grey800};
-    align-self: flex-start;
-    padding: 0 0 3px 20px;
-  }
 
   .forgot-pass {
     padding: 1em 0;
