@@ -8,12 +8,13 @@ const ContestComponentStyled = styled.div`
   margin: auto;
   width: calc(100% - 2rem);
   height: auto;
-  background: ${COLORS.grey100};
+  background: ${(isClicked) => {
+    isClicked ? COLORS.positive100 : COLORS.white;
+  }};
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: space-around;
-  border: solid 1px ${COLORS.grey800};
+  border: solid 0.5px ${COLORS.grey200};
   border-radius: 0.75rem;
 `;
 
@@ -30,6 +31,7 @@ const ContestInsideElementStyled = styled.div`
 
 const ContestNameStyled = styled.h3`
   ${FONTS.h3};
+  color: ${COLORS.grey800};
 `;
 
 export {

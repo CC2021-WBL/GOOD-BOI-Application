@@ -6,13 +6,20 @@ import {
   ContestInsideElementStyled,
 } from './ContestComponenyStyled';
 import { getDataFormatDdMonthYyy } from '../../Tools/TimeFunctions';
+import { useState } from 'react/cjs/react.development';
 
 const ContestComponent = ({ contestName, contestDate, contestCity }) => {
+  const [isClicked, setIsClicked] = useState();
   const date = getDataFormatDdMonthYyy(contestDate);
   const city = contestCity.toUpperCase();
 
+  const handleClick = () => {
+    setIsClicked((isClicked) => !isClicked);
+    console.log(isClicked);
+  };
+
   return (
-    <ContestComponentStyled>
+    <ContestComponentStyled isClicked={isClicked} onClick={handleClick}>
       <ContestNameStyled>{contestName}</ContestNameStyled>
       <ContestInsideElementStyled>
         <time dateTime={date}>{date}</time>
