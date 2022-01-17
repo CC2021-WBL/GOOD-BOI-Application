@@ -13,7 +13,7 @@ const ExerciseCardsContainer = ({ performanceObject }) => {
       event.target.value > 10 ||
       event.target.value % 0.5 !== 0
     ) {
-      console.log('Choose points from 0 to 10.');
+      console.log('Choose points from 0 to 10 (with 0.5 step).');
     } else {
       setExercisesResults((prevState) => {
         prevState.find(

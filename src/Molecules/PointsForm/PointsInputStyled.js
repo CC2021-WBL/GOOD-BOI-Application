@@ -3,7 +3,8 @@ import FONTS from '../../Styles/fontsStyledComponents';
 import COLORS from '../../Styles/varsStyledComponents';
 
 const PointsInputStyled = styled.input`
-  width: 6rem;
+  width: 65%;
+  max-width: 5rem;
   height: 3rem;
   ${FONTS.h1};
   text-align: center;
