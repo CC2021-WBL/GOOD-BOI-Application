@@ -1,7 +1,7 @@
-import ExerciseCard from '../../Molecules/ExerciseCard/ExerciseCard';
-import PropTypes from 'prop-types';
-import ExerciseCardsContainerStyled from './ExerciseCardsContainerStyled';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
+import ExerciseCard from '../../Molecules/ExerciseCard/ExerciseCard';
+import ExerciseCardsContainerStyled from './ExerciseCardsContainerStyled';
 
 const ExerciseCardsContainer = ({ performanceObject }) => {
   const { exercises, obedienceClassName } = performanceObject;
@@ -35,8 +35,6 @@ const ExerciseCardsContainer = ({ performanceObject }) => {
           onChange={performanceSaveHandler}
         />
       ))}
-
-      <input onChange={performanceSaveHandler} />
     </ExerciseCardsContainerStyled>
   );
 };
