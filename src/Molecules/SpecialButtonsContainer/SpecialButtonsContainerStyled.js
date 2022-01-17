@@ -5,8 +5,7 @@ const SpecialButtonsContainerStyled = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: calc(100% - 0.75rem);
   height: 3rem;
-  margin: 0.375rem;
+  margin: 0 0.375rem 0 0.375rem;
 `;
 export default SpecialButtonsContainerStyled;
