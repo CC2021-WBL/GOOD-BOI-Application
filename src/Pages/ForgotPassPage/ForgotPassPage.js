@@ -12,7 +12,7 @@ const ForgotPassPage = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     const data = { email };
-    console.log(`User data: ${data}`);
+    console.log(data);
     navigate('/login');
   };
 
