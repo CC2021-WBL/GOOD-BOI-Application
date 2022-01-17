@@ -5,7 +5,8 @@ import EditAccept from '../../Atoms/EditAccept/EditAccept';
 import ExerciseCardStyled from './ExerciseCardStyled';
 import { useState } from 'react';
 
-const ExerciseCard = ({ exerciseName, points }) => {
+const ExerciseCard = ({ exerciseInfo, obedienceClassName }) => {
+  const { codeName, result } = exerciseInfo;
   const [toggle, setToggle] = useState(true);
 
   const toggleHandler = () => {
@@ -14,8 +15,12 @@ const ExerciseCard = ({ exerciseName, points }) => {
 
   return (
     <ExerciseCardStyled>
-      <Exercise exerciseName={exerciseName} toggle={toggle} />
-      <Point points={points} toggle={toggle} />
+      <Exercise
+        codeName={codeName}
+        obedienceClassName={obedienceClassName}
+        toggle={toggle}
+      />
+      <Point points={result} toggle={toggle} />
       <EditAccept onClick={toggleHandler} toggle={toggle} />
     </ExerciseCardStyled>
   );
@@ -23,8 +28,9 @@ const ExerciseCard = ({ exerciseName, points }) => {
 
 ExerciseCard.propTypes = {
   exerciseName: PropTypes.string,
+  obedienceClassName: PropTypes.string,
   points: PropTypes.number,
-  active: PropTypes.bool.isRequired,
+  exerciseInfo: PropTypes.object,
 };
 
 export default ExerciseCard;

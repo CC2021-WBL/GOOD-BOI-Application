@@ -1,17 +1,25 @@
 import PropTypes from 'prop-types';
 import ExerciseCardsContainerStyled from './ExerciseCardsContainerStyled';
+import ExerciseCard from '../../Molecules/ExerciseCard/ExerciseCard';
 
-const ExerciseCardsContainer = ({ children }) => {
+const ExerciseCardsContainer = ({ performanceObject }) => {
+  const { exercises, obedienceClassName } = performanceObject;
+
   return (
-    <ExerciseCardsContainerStyled>{children}</ExerciseCardsContainerStyled>
+    <ExerciseCardsContainerStyled>
+      {exercises.map((exercise) => (
+        <ExerciseCard
+          key={exercise.codeName}
+          exerciseInfo={exercise}
+          obedienceClassName={obedienceClassName}
+        />
+      ))}
+    </ExerciseCardsContainerStyled>
   );
 };
 
 ExerciseCardsContainer.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  performanceObject: PropTypes.object,
 };
 
 export default ExerciseCardsContainer;
