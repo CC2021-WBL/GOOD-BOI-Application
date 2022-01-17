@@ -28,14 +28,14 @@ const InputField = ({
 };
 
 InputField.propTypes = {
-  htmlFor: propTypes.string,
-  labelText: propTypes.string,
-  id: propTypes.string,
-  type: propTypes.string,
+  htmlFor: propTypes.string.isRequired,
+  labelText: propTypes.string.isRequired,
+  id: propTypes.string.isRequired,
+  type: propTypes.string.isRequired,
   placeholder: propTypes.string,
-  required: propTypes.bool,
-  value: propTypes.string,
-  onChange: propTypes.func,
+  required: propTypes.bool.isRequired,
+  value: propTypes.string.isRequired,
+  onChange: propTypes.func.isRequired,
 };
 
 export default InputField;

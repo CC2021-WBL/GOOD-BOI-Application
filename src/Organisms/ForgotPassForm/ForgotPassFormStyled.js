@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const RegistrationPageStyled = styled.form`
+const ForgotPassFormStyled = styled.form`
   display: flex;
   flex-direction: column;
 `;
 
-export default RegistrationPageStyled;
+export default ForgotPassFormStyled;

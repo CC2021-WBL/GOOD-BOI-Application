@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import FONTS from '../../Styles/fontsStyledComponents';
 import COLORS from '../../Styles/varsStyledComponents';
 
-const StyledForm = styled.form`
+const LoginFormStyled = styled.form`
   display: flex;
   flex-direction: column;
 
@@ -14,4 +14,4 @@ const StyledForm = styled.form`
   }
 `;
 
-export default StyledForm;
+export default LoginFormStyled;

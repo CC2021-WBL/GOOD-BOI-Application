@@ -6,8 +6,8 @@ const InputLabel = ({ htmlFor, labelText }) => {
 };
 
 InputLabel.propTypes = {
-  labelText: propTypes.string,
-  htmlFor: propTypes.string,
+  labelText: propTypes.string.isRequired,
+  htmlFor: propTypes.string.isRequired,
 };
 
 export default InputLabel;

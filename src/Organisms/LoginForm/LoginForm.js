@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'font-awesome/css/font-awesome.min.css';
 
-import StyledForm from './LoginPageStyled';
 import PriSecBtn from '../../Atoms/PriSecBtn/PriSecBtn';
 import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
 import InputField from '../../Molecules/InputField/InputField';
+import LoginFormStyled from './LoginFormStyled';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -21,7 +21,7 @@ const LoginPage = () => {
 
   return (
     <CardWrapper>
-      <StyledForm onSubmit={submitHandler}>
+      <LoginFormStyled onSubmit={submitHandler}>
         <InputField
           labelText="Email"
           htmlFor="email"
@@ -47,7 +47,7 @@ const LoginPage = () => {
           Zapomniałeś/aś hasła ?
         </Link>
         <PriSecBtn text="Zaloguj się" />
-      </StyledForm>
+      </LoginFormStyled>
     </CardWrapper>
   );
 };

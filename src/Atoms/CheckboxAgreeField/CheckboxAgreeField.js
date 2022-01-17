@@ -11,7 +11,7 @@ const CheckboxAgreeField = ({ text }) => {
 };
 
 CheckboxAgreeField.propTypes = {
-  text: propTypes.string,
+  text: propTypes.string.isRequired,
 };
 
 export default CheckboxAgreeField;

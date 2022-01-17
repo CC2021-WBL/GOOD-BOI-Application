@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import PriSecBtn from '../../Atoms/PriSecBtn/PriSecBtn';
-import StyledForgotPassForm from './ForgotPassPageStyled';
+import ForgotPassFormStyled from './ForgotPassFormStyled';
 import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 
@@ -20,7 +20,7 @@ const ForgotPassPage = () => {
 
   return (
     <CardWrapper>
-      <StyledForgotPassForm onSubmit={submitHandler}>
+      <ForgotPassFormStyled onSubmit={submitHandler}>
         <InputField
           labelText="Na jaki email wysłać powiadomienie ?"
           htmlFor="email"
@@ -32,7 +32,7 @@ const ForgotPassPage = () => {
           onChange={(event) => setEmail(event.target.value)}
         />
         <PriSecBtn text="Potwierdź" />
-      </StyledForgotPassForm>
+      </ForgotPassFormStyled>
     </CardWrapper>
   );
 };
