@@ -1,7 +1,7 @@
 import styled from 'styled-components';
+import COLORS from '../../Styles/varsStyledComponents';
 
-export const Wrapper = styled.div`
-  display: block;
+export const FooterWrapper = styled.div`
   position: fixed;
   bottom: 0;
   left: 0;
@@ -9,9 +9,9 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: flex;
   justify-content: space-between;
-  margin: 0 25px 0 25px;
+  margin: 0 25px;
   height: 77px;
-  border-top: 2px solid #f5f7fa;
+  border-top: 2px solid ${COLORS.grey00};
 `;
 
 export const LogoWrapper = styled.div`
@@ -19,7 +19,7 @@ export const LogoWrapper = styled.div`
   pointer-events: none;
 `;
 
-export const Logo = styled.div`
+export const DevsLogo = styled.div`
   align-self: center;
 `;
 

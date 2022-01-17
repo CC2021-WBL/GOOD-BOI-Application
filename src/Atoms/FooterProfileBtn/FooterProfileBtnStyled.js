@@ -1,10 +1,17 @@
 import styled from 'styled-components';
+import FONTS from '../../Styles/fontsStyledComponents';
+import COLORS from '../../Styles/varsStyledComponents';
 
-export const Wrapper = styled.button`
+export const ProfileBtnWrapper = styled.button`
   font-size: 26px;
-  color: grey;
-  display: block;
+  color: ${COLORS.grey400};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
   width: auto;
+  height: 50px;
   background: transparent;
   border: none;
   &:hover {
@@ -13,10 +20,6 @@ export const Wrapper = styled.button`
 `;
 
 export const Div = styled.div`
-  font-size: 12px;
-  display: block;
-  width: auto;
-  position: relative;
-  top: -5px;
+  ${FONTS.label_regular}
   color: black;
 `;

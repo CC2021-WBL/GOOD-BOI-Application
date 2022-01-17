@@ -1,28 +1,28 @@
 import propTypes from 'prop-types';
 import FooterProfileBtn from '../../Atoms/FooterProfileBtn/FooterProfileBtn';
-import { Logo, LogoWrapper, Copy, Wrapper } from './FooterStyled';
+import { DevsLogo, LogoWrapper, Copy, FooterWrapper } from './FooterStyled';
 import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
 
 const Footer = () => {
   return (
     <>
-      <Wrapper>
+      <FooterWrapper>
         <LogoWrapper>
-          <Logo>
+          <DevsLogo>
             <img
               className="logo"
               src={logoDevsOnTheWaves}
               alt="logo"
               width="35px"
             />
-          </Logo>
+          </DevsLogo>
           <Copy>
             Copyright <br />
             #Devs on the Waves
           </Copy>
         </LogoWrapper>
         <FooterProfileBtn />
-      </Wrapper>
+      </FooterWrapper>
     </>
   );
 };
