@@ -11,6 +11,17 @@ const DOGS = [
     chipOrTatoo: 616093900044541,
     nameOfOwner: 'Jan',
     surnameOfOwner: 'Kowalski',
+    exercises: {
+      ['64268e7d-a891-4cb6-841b-603dff67956d']: 10,
+      ['6fbea288-3eef-40c4-8c89-80f655da6a23']: 5,
+      ['14eec3e6-cb8a-4988-b30e-9ab91e57e9a2']: 7,
+      ['24fd9ab9-f008-47a0-bb8d-d5487bd03458']: 6.5,
+      ['d342a963-1391-4aa3-8fa3-743a6eac4e28']: undefined,
+      ['d89f996a-7085-4a75-a42a-062bb952450c']: undefined,
+      ['3def9e5c-5420-44ef-b49b-5c8c54c5d326']: undefined,
+      ['dcd2cd35-6fa5-4123-85b8-b027e1f842b6']: undefined,
+    },
+
     exercisesCompleted: 15,
     exercisesAmount: 15,
   },

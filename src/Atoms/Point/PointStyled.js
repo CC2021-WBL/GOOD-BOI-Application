@@ -4,11 +4,12 @@ import FONTS from '../../Styles/fontsStyledComponents';
 import COLORS from '../../Styles/varsStyledComponents';
 
 const PointStyled = styled(ExerciseCardStyled)`
-  margin: 0;
+  box-sizing: border-box;
   width: 25%;
+  margin: 0;
   justify-content: center;
+  align-items: center;
   ${FONTS.h1};
-  border-radius: 0;
   ${(props) =>
     props.toggle
       ? `background-color: ${COLORS.positive200};`

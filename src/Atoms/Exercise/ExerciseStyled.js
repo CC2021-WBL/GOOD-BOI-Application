@@ -4,12 +4,14 @@ import ExerciseCardStyled from '../../Molecules/ExerciseCard/ExerciseCardStyled'
 import COLORS from '../../Styles/varsStyledComponents';
 
 const ExerciseStyled = styled(ExerciseCardStyled)`
-  margin: 0;
+  box-sizing: border-box;
   width: 50%;
-  text-align: left;
+  margin: 0;
   padding: 0.625rem;
-  ${FONTS.body_semibold};
+  align-items: center;
+  text-align: left;
   border-radius: 0.75rem 0 0 0.75rem;
+  ${FONTS.body_semibold};
   ${(props) =>
     props.toggle
       ? `background-color: ${COLORS.positive200};`
