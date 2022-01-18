@@ -16,7 +16,6 @@ const LinkWrapperStyled = styled.div`
   }
 
   .back {
-    font-family: Mulish;
     color: ${COLORS.grey200};
     ${FONTS.caption}
   }

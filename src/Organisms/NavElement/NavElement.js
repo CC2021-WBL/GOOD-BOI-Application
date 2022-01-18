@@ -2,13 +2,11 @@ import PropTypes from 'prop-types';
 import { BsChevronLeft } from 'react-icons/bs';
 import { NavElementStyled } from './NavElementStyled';
 import LinkWrapperStyled from '../../Atoms/NavElementStyled/LinkWrapperStyled';
-import AppLogo from '../../assets/AppLogo.png';
+import AppLogo from '../../Assets/AppLogo.png';
 import { useNavigate } from 'react-router-dom';
 import LogoStyled from '../../Atoms/NavElementStyled/LogoStyled';
 
-const NavElement = (props) => {
-  const { text } = props;
-
+const NavElement = ({ text }) => {
   const navigate = useNavigate();
   return (
     <NavElementStyled>
@@ -27,7 +25,7 @@ const NavElement = (props) => {
 };
 
 NavElement.propTypes = {
-  text: PropTypes.string,
+  text: PropTypes.string.isRequired,
 };
 
 export default NavElement;

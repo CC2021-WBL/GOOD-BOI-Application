@@ -3,9 +3,6 @@ import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
 
 export const NavElementStyled = styled.div`
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,8 +14,6 @@ export const NavElementStyled = styled.div`
   .navText {
     color: ${COLORS.grey800};
     width: 33%;
-    font-family: Mulish;
-
     ${FONTS.h3}
   }
 `;
