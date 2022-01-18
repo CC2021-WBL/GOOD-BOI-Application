@@ -6,11 +6,7 @@ import { BiCheckCircle } from 'react-icons/bi';
 const EditAccept = ({ onClick, toggle }) => {
   return (
     <EditAcceptStyled onClick={onClick} toggle={toggle}>
-      {toggle ? (
-        <FaRegEdit size={`1.5rem`} />
-      ) : (
-        <BiCheckCircle size={`1.5rem`} />
-      )}
+      {toggle ? <FaRegEdit size={`1.5em`} /> : <BiCheckCircle size={`1.5em`} />}
       {toggle ? `edycja` : 'zapisz'}
     </EditAcceptStyled>
   );
