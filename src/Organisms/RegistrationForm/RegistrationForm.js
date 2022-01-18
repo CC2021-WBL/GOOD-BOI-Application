@@ -34,6 +34,13 @@ const RegistrationForm = () => {
     navigate('/login');
   };
 
+  const handleInputChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
   return (
     <CardWrapper>
       <RegistrationFormStyled onSubmit={submitHandler}>
@@ -45,28 +52,28 @@ const RegistrationForm = () => {
           id="email"
           required
           value={setFormData.email}
-          onChange={(event) =>
-            setFormData({
-              ...formData,
-              [event.target.name]: event.target.value,
-            })
-          }
+          onChange={handleInputChange}
         />
 
         <InputField
-          labelText="Password"
+          labelText="Hasło"
           htmlFor="password"
           type="password"
           id="password"
           placeholder="&#xf023; Hasło"
           required
           value={setFormData.password}
-          onChange={(event) =>
-            setFormData({
-              ...formData,
-              [event.target.name]: event.target.value,
-            })
-          }
+          onChange={handleInputChange}
+        />
+        <InputField
+          labelText="Powtórz Hasło"
+          htmlFor="password"
+          type="password"
+          id="password"
+          placeholder="&#xf023; Powtórz Hasło"
+          required
+          value={setFormData.password}
+          onChange={handleInputChange}
         />
         <InputField
           labelText="Imię"
@@ -76,12 +83,7 @@ const RegistrationForm = () => {
           id="firstname"
           required
           value={setFormData.firstname}
-          onChange={(event) =>
-            setFormData({
-              ...formData,
-              [event.target.name]: event.target.value,
-            })
-          }
+          onChange={handleInputChange}
         />
         <InputField
           labelText="Nazwisko"
@@ -91,12 +93,7 @@ const RegistrationForm = () => {
           id="surname"
           required
           value={setFormData.surname}
-          onChange={(event) =>
-            setFormData({
-              ...formData,
-              [event.target.name]: event.target.value,
-            })
-          }
+          onChange={handleInputChange}
         />
         <InputField
           labelText="Ulica i nr domu"
@@ -106,12 +103,7 @@ const RegistrationForm = () => {
           id="street"
           required
           value={setFormData.street}
-          onChange={(event) =>
-            setFormData({
-              ...formData,
-              [event.target.name]: event.target.value,
-            })
-          }
+          onChange={handleInputChange}
         />
         <InputField
           labelText="Kod Pocztowy"
@@ -121,12 +113,7 @@ const RegistrationForm = () => {
           id="zipcode"
           required
           value={setFormData.zipcode}
-          onChange={(event) =>
-            setFormData({
-              ...formData,
-              [event.target.name]: event.target.value,
-            })
-          }
+          onChange={handleInputChange}
         />
         <InputField
           labelText="Miasto"
@@ -136,12 +123,7 @@ const RegistrationForm = () => {
           id="city"
           required
           value={setFormData.city}
-          onChange={(event) =>
-            setFormData({
-              ...formData,
-              [event.target.name]: event.target.value,
-            })
-          }
+          onChange={handleInputChange}
         />
         <CheckboxAgreeField text="Zapoznałem się z regulaminem GOOD BOI i akceptuję jego postanowienia" />
         <PriSecBtn text="Zarejestruj się" />
