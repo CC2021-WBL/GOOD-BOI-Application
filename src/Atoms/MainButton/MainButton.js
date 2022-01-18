@@ -1,23 +1,23 @@
 import propTypes from 'prop-types';
-import MainBtnStyled from './MainBtnStyled';
+import MainButtonStyled from './MainButtonStyled';
 
 // function primary, secondary, ternary
-const MainBtn = (props) => {
+const MainButton = (props) => {
   const { primary, secondary, ternary, text } = props;
 
   return (
-    <MainBtnStyled
+    <MainButtonStyled
       onClick={props.onClick}
       primary={primary}
       secondary={secondary}
       ternary={ternary}
     >
       {text.toUpperCase()}
-    </MainBtnStyled>
+    </MainButtonStyled>
   );
 };
 
-MainBtn.propTypes = {
+MainButton.propTypes = {
   primary: propTypes.bool,
   secondary: propTypes.bool,
   ternary: propTypes.bool,
@@ -25,4 +25,4 @@ MainBtn.propTypes = {
   onClick: propTypes.func,
 };
 
-export default MainBtn;
+export default MainButton;

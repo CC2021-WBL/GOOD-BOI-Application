@@ -31,18 +31,19 @@ const borderHandler = (props) => {
     return `border: 0.5px solid ${COLORS.grey800};`;
   }
 };
-const MainBtnStyled = styled.button`
-  width: 343px;
-  height: 50px;
-  ${FONTS.button};
-  // Bg colors:
-  ${(props) => handleBgAndColor(props)};
-  border-radius: 12px;
-  // Border properties:
-  ${(props) => borderHandler(props)};
+const MainButtonStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 3.25rem;
+  margin: 0.25rem 0 0.25rem 0;
+  ${FONTS.button};
+  // Bg colors:
+  ${(props) => handleBgAndColor(props)};
+  border-radius: 0.75rem;
+  // Border properties:
+  ${(props) => borderHandler(props)};
 `;
 
 // primary color: white ; background: #2f80ed (niebieskie ciemniejszy)
@@ -53,4 +54,4 @@ const MainBtnStyled = styled.button`
 // primary201: '#ACCCF8', ${COLORS.primary201}
 // grey800: '#323F4B', ${COLORS.grey800}
 
-export default MainBtnStyled;
+export default MainButtonStyled;

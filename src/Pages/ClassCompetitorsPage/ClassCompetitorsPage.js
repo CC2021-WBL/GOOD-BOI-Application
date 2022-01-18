@@ -1,7 +1,7 @@
 import ClassOrDogButton from '../../Molecules/ClassCompetitorButton/ClassOrDogButton';
 import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
-import { Wrapper } from '../../Atoms/MainBtn/MainBtnStyled';
-import MainBtn from '../../Atoms/MainBtn/MainBtn';
+import { Wrapper } from '../../Atoms/MainButton/MainButtonStyled';
+import MainButton from '../../Atoms/MainButton/MainButton';
 
 const ClassCompetitorsPage = () => {
   function secondaryBtnHandler() {
@@ -24,7 +24,7 @@ const ClassCompetitorsPage = () => {
         );
       })}
       <Wrapper>
-        <MainBtn
+        <MainButton
           onClick={secondaryBtnHandler}
           secondary
           text="ZAKOŃCZ KONKURS"

@@ -1,11 +1,11 @@
-import MainBtn from '../../Atoms/MainBtn/MainBtn';
+import MainButton from '../../Atoms/MainButton/MainButton';
 const ClassSummaryPage = () => {
   return (
     <>
       <h1>I am a ClassSummary Page Component</h1>;
-      <MainBtn primary text="primary btn" />
-      <MainBtn secondary text="secondary btn" />
-      <MainBtn trinary text="trinary btn" />
+      <MainButton primary text="primary btn" />
+      <MainButton secondary text="secondary btn" />
+      <MainButton trinary text="trinary btn" />
     </>
   );
 };
