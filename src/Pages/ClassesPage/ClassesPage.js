@@ -1,4 +1,3 @@
-import React from 'react';
 import ClassOrDogButton from '../../Molecules/ClassCompetitorButton/ClassOrDogButton';
 import RANDOM_CONTEST from '../../Data/TestData/test-data-random-contest';
 
