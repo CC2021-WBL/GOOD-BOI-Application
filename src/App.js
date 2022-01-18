@@ -11,6 +11,7 @@ import { Route, Routes } from 'react-router-dom';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
+import LandingPage from './Pages/LandingPage/LandingPage';
 
 const SingleContestPage = () => {
   return <h1>I am a single Contest Page Component</h1>;
@@ -20,6 +21,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<HomePage />}>
+          <Route path="landing" element={<LandingPage />} />
           <Route path="login" element={<LoginForm />} />
           <Route path="register" element={<RegistrationForm />} />
           <Route path="forgot" element={<ForgotPassForm />} />

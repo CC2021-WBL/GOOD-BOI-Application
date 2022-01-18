@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import MainBtn from '../../Atoms/MainBtn/MainBtn';
+import MainButton from '../../Atoms/MainButton/MainButton';
 import ForgotPassFormStyled from './ForgotPassFormStyled';
 import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
 import InputField from '../../Molecules/InputField/InputField';
@@ -31,7 +31,7 @@ const ForgotPassForm = () => {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
-        <MainBtn primary text="Potwierdź" />
+        <MainButton primary text="Potwierdź" />
       </ForgotPassFormStyled>
     </CardWrapper>
   );

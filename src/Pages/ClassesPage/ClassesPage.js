@@ -1,7 +1,7 @@
-import ClassOrDogButton from '../../Molecules/ClassCompetitorButton/ClassOrDogButton';
+import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
-import { Wrapper } from '../../Atoms/MainBtn/MainBtnStyled';
-import MainBtn from '../../Atoms/MainBtn/MainBtn';
+import { Wrapper } from '../../Atoms/MainButton/MainButtonStyled';
+import MainButton from '../../Atoms/MainButton/MainButton';
 
 const ClassesPage = () => {
   function secondaryBtnHandler() {
@@ -26,7 +26,11 @@ const ClassesPage = () => {
         );
       })}
       <Wrapper>
-        <MainBtn onClick={secondaryBtnHandler} secondary text="ZAKOŃCZ KLASĘ" />
+        <MainButton
+          onClick={secondaryBtnHandler}
+          secondary
+          text="ZAKOŃCZ KLASĘ"
+        />
       </Wrapper>
     </>
   );
