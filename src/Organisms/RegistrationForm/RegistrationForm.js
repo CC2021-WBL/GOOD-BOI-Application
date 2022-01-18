@@ -69,7 +69,7 @@ const RegistrationForm = () => {
           labelText="Powtórz Hasło"
           htmlFor="password"
           type="password"
-          id="password"
+          id="repeat-password"
           placeholder="&#xf023; Powtórz Hasło"
           required
           value={setFormData.password}
