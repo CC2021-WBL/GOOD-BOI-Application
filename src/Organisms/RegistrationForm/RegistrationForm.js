@@ -8,19 +8,33 @@ import InputField from '../../Molecules/InputField/InputField';
 import CheckboxAgreeField from '../../Atoms/CheckboxAgreeField/CheckboxAgreeField';
 
 const RegistrationForm = () => {
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [street, setStreet] = useState('');
-  const [zipcode, setZipcode] = useState('');
-  const [city, setCity] = useState('');
+  const initialState = {
+    name: '',
+    surname: '',
+    email: '',
+    password: '',
+    street: '',
+    zipcode: '',
+    city: '',
+  };
+
+  const [formData, setFormData] = useState(initialState);
+  // const [name, setName] = useState(initialState);
+  // const [surname, setSurname] = useState(initialState);
+  // const [email, setEmail] = useState(initialState);
+  // const [password, setPassword] = useState(initialState);
+  // const [street, setStreet] = useState(initialState);
+  // const [zipcode, setZipcode] = useState(initialState);
+  // const [city, setCity] = useState(initialState);
   const navigate = useNavigate();
 
   const submitHandler = (event) => {
     event.preventDefault();
-
-    const data = { name, surname, email, password, street, zipcode, city };
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+    const data = { ...formData };
 
     //test, after submit, entered user data
     console.log(data);
@@ -37,8 +51,13 @@ const RegistrationForm = () => {
           placeholder="&#xf0e0; Email"
           id="email"
           required
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          value={setFormData.email}
+          onChange={(event) =>
+            setFormData({
+              ...formData,
+              [event.target.name]: event.target.value,
+            })
+          }
         />
 
         <InputField
@@ -48,18 +67,28 @@ const RegistrationForm = () => {
           id="password"
           placeholder="&#xf023; Hasło"
           required
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
+          value={setFormData.password}
+          onChange={(event) =>
+            setFormData({
+              ...formData,
+              [event.target.name]: event.target.value,
+            })
+          }
         />
         <InputField
           labelText="Imię"
-          htmlFor="name"
+          htmlFor="firstname"
           type="text"
           placeholder="&#xF007; Imię"
-          id="name"
+          id="firstname"
           required
-          value={name}
-          onChange={(event) => setName(event.target.value)}
+          value={setFormData.firstname}
+          onChange={(event) =>
+            setFormData({
+              ...formData,
+              [event.target.name]: event.target.value,
+            })
+          }
         />
         <InputField
           labelText="Nazwisko"
@@ -68,8 +97,13 @@ const RegistrationForm = () => {
           placeholder="&#xF007; Nazwisko"
           id="surname"
           required
-          value={surname}
-          onChange={(event) => setSurname(event.target.value)}
+          value={setFormData.surname}
+          onChange={(event) =>
+            setFormData({
+              ...formData,
+              [event.target.name]: event.target.value,
+            })
+          }
         />
         <InputField
           labelText="Ulica i nr domu"
@@ -78,8 +112,13 @@ const RegistrationForm = () => {
           placeholder="&#xf015; Ulica i nr domu"
           id="street"
           required
-          value={street}
-          onChange={(event) => setStreet(event.target.value)}
+          value={setFormData.street}
+          onChange={(event) =>
+            setFormData({
+              ...formData,
+              [event.target.name]: event.target.value,
+            })
+          }
         />
         <InputField
           labelText="Kod Pocztowy"
@@ -88,8 +127,13 @@ const RegistrationForm = () => {
           placeholder="&#xf015; Kod Pocztowy"
           id="zipcode"
           required
-          value={zipcode}
-          onChange={(event) => setZipcode(event.target.value)}
+          value={setFormData.zipcode}
+          onChange={(event) =>
+            setFormData({
+              ...formData,
+              [event.target.name]: event.target.value,
+            })
+          }
         />
         <InputField
           labelText="Miasto"
@@ -98,8 +142,13 @@ const RegistrationForm = () => {
           placeholder="&#xf015; Miasto"
           id="city"
           required
-          value={city}
-          onChange={(event) => setCity(event.target.value)}
+          value={setFormData.city}
+          onChange={(event) =>
+            setFormData({
+              ...formData,
+              [event.target.name]: event.target.value,
+            })
+          }
         />
         <CheckboxAgreeField text="Zapoznałem się z regulaminem GOOD BOI i akceptuję jego postanowienia" />
         <PriSecBtn text="Zarejestruj się" />
