@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import PriSecBtn from '../../Atoms/PriSecBtn/PriSecBtn';
+import MainButton from '../../Atoms/MainButton/MainButton';
 import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
 import RegistrationFormStyled from './RegistrationFormStyled';
 import InputField from '../../Molecules/InputField/InputField';
@@ -127,7 +127,7 @@ const RegistrationForm = () => {
           onChange={handleInputChange}
         />
         <CheckboxAgreeField text="Zapoznałem się z regulaminem GOOD BOI i akceptuję jego postanowienia" />
-        <PriSecBtn text="Zarejestruj się" />
+        <MainButton primary text="Zarejestruj się" />
       </RegistrationFormStyled>
     </CardWrapper>
   );

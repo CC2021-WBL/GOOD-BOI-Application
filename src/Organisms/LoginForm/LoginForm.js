@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'font-awesome/css/font-awesome.min.css';
 
-import PriSecBtn from '../../Atoms/PriSecBtn/PriSecBtn';
+import MainButton from '../../Atoms/MainButton/MainButton';
 import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 import LoginFormStyled from './LoginFormStyled';
@@ -46,7 +46,7 @@ const LoginForm = () => {
         <Link to="/forgot" className="forgot-pass">
           Zapomniałeś/aś hasła ?
         </Link>
-        <PriSecBtn text="Zaloguj się" />
+        <MainButton primary text="Zaloguj się" />
       </LoginFormStyled>
     </CardWrapper>
   );
