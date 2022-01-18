@@ -1,5 +1,4 @@
 import { Outlet, Link } from 'react-router-dom';
-import NavElement from '../../Organisms/NavElement/NavElement';
 
 const HomePage = () => {
   return (
