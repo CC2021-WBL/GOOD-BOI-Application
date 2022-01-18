@@ -9,10 +9,11 @@ import CheckboxAgreeField from '../../Atoms/CheckboxAgreeField/CheckboxAgreeFiel
 
 const RegistrationForm = () => {
   const initialState = {
-    name: '',
+    firstname: '',
     surname: '',
     email: '',
     password: '',
+    ['repeat-password']: '',
     street: '',
     zipcode: '',
     city: '',
@@ -25,7 +26,7 @@ const RegistrationForm = () => {
     event.preventDefault();
     setFormData({
       ...formData,
-      [event.target.name]: event.target.value,
+      [event.target.id]: event.target.value,
     });
     const data = { ...formData };
 
@@ -37,7 +38,7 @@ const RegistrationForm = () => {
   const handleInputChange = (event) => {
     setFormData({
       ...formData,
-      [event.target.name]: event.target.value,
+      [event.target.id]: event.target.value,
     });
   };
 
