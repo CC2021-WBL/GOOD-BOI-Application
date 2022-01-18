@@ -5,11 +5,12 @@ import ClassSummaryPage from './Pages/ClassSummaryPage/ClassSummaryPage';
 import ContestsPage from './Pages/ContestsPage/ContestsPage';
 import ExercisesPage from './Pages/ExercisesPage/ExercisesPage';
 import HomePage from './Pages/HomePage/HomePage';
-import LoginPage from './Pages/LoginPage/LoginPage';
+import LoginForm from './Organisms/LoginForm/LoginForm';
 import SingleSummaryPage from './Pages/SingleSummaryPage/SingleSummaryPage';
 import { Route, Routes } from 'react-router-dom';
-import ForgotPassPage from './Pages/ForgotPassPage/ForgotPassPage';
+import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
+import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
 
 const SingleContestPage = () => {
   return <h1>I am a single Contest Page Component</h1>;
@@ -19,8 +20,9 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<HomePage />}>
-          <Route path="login" element={<LoginPage />} />
-          <Route path="forgot" element={<ForgotPassPage />} />
+          <Route path="login" element={<LoginForm />} />
+          <Route path="register" element={<RegistrationForm />} />
+          <Route path="forgot" element={<ForgotPassForm />} />
           <Route path="contests" element={<ContestsPage />} />
           <Route path="contests/:contestsId" element={<SingleContestPage />} />
           <Route
