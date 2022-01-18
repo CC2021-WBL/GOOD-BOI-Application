@@ -1,12 +1,13 @@
-import 'font-awesome/css/font-awesome.min.css';
-import InputField from '../../Atoms/InputField/InputField';
-import Card from '../../Atoms/CardWrapper/CardWrapper';
-import PriSecBtn from '../../Atoms/PriSecBtn/PriSecBtn';
 import { useState } from 'react';
-import StyledForm from './LoginPageStyled';
 import { Link } from 'react-router-dom';
+import 'font-awesome/css/font-awesome.min.css';
 
-const LoginPage = () => {
+import MainButton from '../../Atoms/MainButton/MainButton';
+import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
+import InputField from '../../Molecules/InputField/InputField';
+import LoginFormStyled from './LoginFormStyled';
+
+const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -19,8 +20,8 @@ const LoginPage = () => {
   };
 
   return (
-    <Card>
-      <StyledForm onSubmit={submitHandler}>
+    <CardWrapper>
+      <LoginFormStyled onSubmit={submitHandler}>
         <InputField
           labelText="Email"
           htmlFor="email"
@@ -45,10 +46,10 @@ const LoginPage = () => {
         <Link to="/forgot" className="forgot-pass">
           Zapomniałeś/aś hasła ?
         </Link>
-        <PriSecBtn text="Zaloguj się" />
-      </StyledForm>
-    </Card>
+        <MainButton primary text="Zaloguj się" />
+      </LoginFormStyled>
+    </CardWrapper>
   );
 };
 
-export default LoginPage;
+export default LoginForm;
