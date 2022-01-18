@@ -19,13 +19,6 @@ const RegistrationForm = () => {
   };
 
   const [formData, setFormData] = useState(initialState);
-  // const [name, setName] = useState(initialState);
-  // const [surname, setSurname] = useState(initialState);
-  // const [email, setEmail] = useState(initialState);
-  // const [password, setPassword] = useState(initialState);
-  // const [street, setStreet] = useState(initialState);
-  // const [zipcode, setZipcode] = useState(initialState);
-  // const [city, setCity] = useState(initialState);
   const navigate = useNavigate();
 
   const submitHandler = (event) => {
