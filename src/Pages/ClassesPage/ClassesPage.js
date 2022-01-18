@@ -1,7 +1,13 @@
 import ClassOrDogButton from '../../Molecules/ClassCompetitorButton/ClassOrDogButton';
 import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
+import { Wrapper } from '../../Atoms/MainBtn/MainBtnStyled';
+import MainBtn from '../../Atoms/MainBtn/MainBtn';
 
 const ClassesPage = () => {
+  function secondaryBtnHandler() {
+    console.log('secondary button clicked');
+  }
+
   return (
     <>
       {RANDOM_CONTESTS[0].obedienceClasses.map((classObject) => {
@@ -19,6 +25,9 @@ const ClassesPage = () => {
           />
         );
       })}
+      <Wrapper>
+        <MainBtn onClick={secondaryBtnHandler} secondary text="ZAKOŃCZ KLASĘ" />
+      </Wrapper>
     </>
   );
 };
