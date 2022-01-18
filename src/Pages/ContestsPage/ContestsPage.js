@@ -1,5 +1,5 @@
 // import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
-import ContestComponent from '../../Molecules/ContestComponent/ContestComponent';
+import ContestComponent from '../../Molecules/ContestComponent/contestComponent';
 import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
 
 const ContestsPage = () => {
