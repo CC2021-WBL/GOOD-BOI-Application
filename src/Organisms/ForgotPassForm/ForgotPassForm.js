@@ -1,11 +1,12 @@
-import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
-import InputField from '../../Atoms/InputField/InputField';
-import MainBtn from '../../Atoms/MainBtn/MainBtn';
 import { useState } from 'react';
-import StyledForgotPassForm from './ForgotPassPageStyled';
 import { useNavigate } from 'react-router-dom';
 
-const ForgotPassPage = () => {
+import MainBtn from '../../Atoms/MainBtn/MainBtn';
+import ForgotPassFormStyled from './ForgotPassFormStyled';
+import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
+import InputField from '../../Molecules/InputField/InputField';
+
+const ForgotPassForm = () => {
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
 
@@ -19,21 +20,21 @@ const ForgotPassPage = () => {
 
   return (
     <CardWrapper>
-      <StyledForgotPassForm onSubmit={submitHandler}>
+      <ForgotPassFormStyled onSubmit={submitHandler}>
         <InputField
           labelText="Na jaki email wysłać powiadomienie ?"
           htmlFor="email"
           type="email"
           placeholder="&#xf0e0; Email"
-          id="login"
+          id="email"
           required
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
-        <MainBtn primary text="Potwiedź" />
-      </StyledForgotPassForm>
+        <MainBtn text="Potwierdź" />
+      </ForgotPassFormStyled>
     </CardWrapper>
   );
 };
 
-export default ForgotPassPage;
+export default ForgotPassForm;
