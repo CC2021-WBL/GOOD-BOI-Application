@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types';
-import GreyLabelContainer from './GreyLabelStyled';
 
-const GreyLabel = (props) => {
+import GreyLabelStyled from './GreyLabelStyled';
+
+const GreyLabel = ({ text }) => {
   return (
-    <GreyLabelContainer>
-      <p className="greyLabelText">{props.text}</p>
-    </GreyLabelContainer>
+    <GreyLabelStyled>
+      <p className="greyLabelText">{text}</p>
+    </GreyLabelStyled>
   );
 };
 
 GreyLabel.propTypes = {
-  text: PropTypes.string,
+  text: PropTypes.string.isRequired,
 };
 
 export default GreyLabel;
