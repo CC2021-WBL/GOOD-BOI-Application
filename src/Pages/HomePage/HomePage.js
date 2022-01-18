@@ -1,16 +1,16 @@
-import Logo from '../../Atoms/Logo/Logo';
-import Card from '../../Atoms/Card/Card';
-import PriSecBtn from '../../Atoms/PriSecBtn/PriSecBtn';
-
+import { Outlet, Link } from 'react-router-dom';
 const HomePage = () => {
   return (
     <>
-      <Card>
-        <Logo />
-      </Card>
-      <PriSecBtn text="ZALOGUJ SIĘ" />
-      <PriSecBtn text="ZAREJESTRUJ SIĘ" />
-      <PriSecBtn text="PORTAL GOOD BOI" />
+      <h1>I am a HOME Page Component</h1>
+      <Link to="/login">Login--|</Link>
+      <Link to="/contests">--Contests--|</Link>
+      <Link to="/contests/1">--Single contest--|</Link>
+      <Link to="/contests/1/classes">--Classes page--|</Link>
+      <Link to="/contests/1/classes/1">--Single class list |</Link>
+      <Link to="/contests/1/classes/1/woof">--Woofs exercises |</Link>
+      <Link to="/contests/1/classes/1/woof/summary">--Woofs exercises</Link>
+      <Outlet />
     </>
   );
 };
