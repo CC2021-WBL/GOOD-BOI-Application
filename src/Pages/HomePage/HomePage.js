@@ -5,6 +5,8 @@ const HomePage = () => {
   return (
     <>
       <NavElement text="Strona główna" />
+      <h1>I am a HOME Page Component</h1>
+      <Link to="/landing">Landing page--|</Link>
       <Link to="/login">Login--|</Link>
       <Link to="/contests">--Contests--|</Link>
       <Link to="/contests/1">--Single contest--|</Link>

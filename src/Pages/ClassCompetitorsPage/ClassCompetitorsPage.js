@@ -1,7 +1,12 @@
-import ClassOrDogButton from '../../Molecules/ClassCompetitorButton/ClassOrDogButton';
+import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
+import { Wrapper } from '../../Atoms/MainButton/MainButtonStyled';
+import MainButton from '../../Atoms/MainButton/MainButton';
 
 const ClassCompetitorsPage = () => {
+  function secondaryBtnHandler() {
+    console.log('secondary button clicked');
+  }
   return (
     <>
       {RANDOM_CONTESTS[0].obedienceClasses[0].dogs.map((dog, index) => {
@@ -18,6 +23,13 @@ const ClassCompetitorsPage = () => {
           />
         );
       })}
+      <Wrapper>
+        <MainButton
+          onClick={secondaryBtnHandler}
+          secondary
+          text="ZAKOŃCZ KONKURS"
+        />
+      </Wrapper>
     </>
   );
 };
