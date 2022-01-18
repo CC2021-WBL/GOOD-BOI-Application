@@ -12,7 +12,7 @@ const MainBtn = (props) => {
       secondary={secondary}
       ternary={ternary}
     >
-      {text}
+      {text.toUpperCase()}
     </MainBtnStyled>
   );
 };

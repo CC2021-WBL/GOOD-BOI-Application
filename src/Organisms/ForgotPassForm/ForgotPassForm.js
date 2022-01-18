@@ -31,7 +31,7 @@ const ForgotPassForm = () => {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
-        <MainBtn text="Potwierdź" />
+        <MainBtn primary text="Potwierdź" />
       </ForgotPassFormStyled>
     </CardWrapper>
   );

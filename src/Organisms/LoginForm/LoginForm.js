@@ -46,7 +46,7 @@ const LoginForm = () => {
         <Link to="/forgot" className="forgot-pass">
           Zapomniałeś/aś hasła ?
         </Link>
-        <MainBtn text="Zaloguj się" />
+        <MainBtn primary text="Zaloguj się" />
       </LoginFormStyled>
     </CardWrapper>
   );
