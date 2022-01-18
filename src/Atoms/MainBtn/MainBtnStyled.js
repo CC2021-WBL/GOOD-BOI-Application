@@ -8,33 +8,43 @@ export const Wrapper = styled.div`
   align-items: center;
 `;
 
+const handleBgAndColor = (props) => {
+  if (props.primary) {
+    return `color: ${COLORS.white}; background: ${COLORS.primary501};`;
+  }
+  if (props.secondary) {
+    return `color: ${COLORS.primary601}; background: ${COLORS.primary201};`;
+  }
+  if (props.ternary) {
+    return `color: ${COLORS.grey800}; background: transparent;`;
+  }
+};
+
+const borderHandler = (props) => {
+  if (props.primary) {
+    return `border: 0.5px solid ${COLORS.grey800};`;
+  }
+  if (props.secondary) {
+    return `border: 0.5px solid ${COLORS.primary601};`;
+  }
+  if (props.ternary) {
+    return `border: 0.5px solid ${COLORS.grey800};`;
+  }
+};
 const MainBtnStyled = styled.button`
   width: 343px;
   height: 50px;
-  color: ${(props) =>
-    props.primary
-      ? COLORS.white
-      : props.secondary
-      ? COLORS.primary601
-      : COLORS.grey800};
   ${FONTS.button};
-  background: ${(props) =>
-    props.primary
-      ? COLORS.primary501
-      : props.secondary
-      ? COLORS.primary201
-      : 'transparent'};
+  // Bg colors:
+  ${(props) => handleBgAndColor(props)};
   border-radius: 12px;
-  border: ${(props) =>
-    props.primary
-      ? `0.5px solid ${COLORS.grey800}`
-      : props.secondary
-      ? `0.5px solid ${COLORS.primary601}`
-      : `0.5px solid ${COLORS.grey800}`};
+  // Border properties:
+  ${(props) => borderHandler(props)};
   display: flex;
   justify-content: center;
   align-items: center;
 `;
+
 // primary color: white ; background: #2f80ed (niebieskie ciemniejszy)
 // secondary color: #1264D1 (ciemnoniebieski); background: #ACCCF8 (jasnoniebieski)
 // trinary color: #323F4B ; background: transparent

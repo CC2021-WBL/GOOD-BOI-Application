@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 import MainBtnStyled from './MainBtnStyled';
 
-// function primary, secondary, trinary
+// function primary, secondary, ternary
 const MainBtn = (props) => {
   const { primary, secondary, ternary, text } = props;
 
@@ -18,9 +18,9 @@ const MainBtn = (props) => {
 };
 
 MainBtn.propTypes = {
-  primary: propTypes.string,
-  secondary: propTypes.string,
-  ternary: propTypes.string,
+  primary: propTypes.bool,
+  secondary: propTypes.bool,
+  ternary: propTypes.bool,
   text: propTypes.string.isRequired,
   onClick: propTypes.func,
 };
