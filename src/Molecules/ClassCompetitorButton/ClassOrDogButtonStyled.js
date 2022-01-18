@@ -16,7 +16,7 @@ const ClassOrDogButtonStyled = styled.button`
   ${FONTS.h3}
   background: white;
   border: solid 1px ${COLORS.grey800};
-  border-radius: 0.75rem; ;
+  border-radius: 0.75rem;
 `;
 
 export default ClassOrDogButtonStyled;
