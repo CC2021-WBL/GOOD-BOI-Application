@@ -5,18 +5,50 @@ import Backdrop from '../../Organisms/Modals/Backdrop';
 import DOGS from '../../Data/Dummy-data/test-data-dogs';
 import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
 import SpecialButtonsContainer from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainer';
+const modalData = {
+  penalty: {
+    about: 'KAra',
+    back: 'Anuluj',
+    title: '?!?!?!',
+    confirmation: 'Siur??',
+    theme: 'yellow',
+  },
+  disqualify: {
+    about: 'Dyskwalifikacja',
+    back: 'Anuluj',
+    title: '!!!!!',
+    confirmation: 'Na pewno?',
+    theme: 'red',
+  },
+};
 
 const ExercisesPage = () => {
   // OUR ROUTE: http://localhost:3000/contests/1/classes/1/Woof
   // so when we click our page we must GET data from database about our dog performance
   // in the future we will use more IDs than other properties
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  function openModalHandler() {
-    setModalIsOpen(true);
-  }
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
+  const [isPenaltyModalOpen, setIsPenaltyModalOpen] = useState(false);
+  const handleDesqualification = () => {
+    console.log(`Doggo o imieniu ${ourTestDogName} wylatuje z konkursu`);
+    setIsDisqualifyModalOpen(false);
+  };
+  const handlePenalty = () => {
+    console.log(`Doggo o imieniu ${ourTestDogName} ma mnie o 10pkt`);
+    setIsPenaltyModalOpen(false);
+  };
+  const openDisqualifyModalHandler = () => {
+    console.log('disqualification comin');
+    setIsDisqualifyModalOpen(true);
+  };
+  const openPenaltyModalHandler = () => {
+    console.log('penalty coming');
+    setIsPenaltyModalOpen(true);
+  };
 
   function closeModalHandler() {
-    setModalIsOpen(false);
+    setIsPenaltyModalOpen(false);
+    setIsDisqualifyModalOpen(false);
   }
 
   const ourTestDogName = 'Woof';
@@ -28,30 +60,25 @@ const ExercisesPage = () => {
 
   return (
     <>
-      {/* <Modal
-        modalTitle="Are you sure?"
-        modalAbout="bbbb"
-        modalConfirmation="na pewno?"
-        modalBack="wróć"
-        yellow
-        onClick={closeModalHandler}
-      /> */}
-      {modalIsOpen && (
+      {(isDisqualifyModalOpen || isPenaltyModalOpen) && (
         <Modal
-          modalTitle="Are you sure?"
-          modalAbout="bbbb"
-          modalConfirmation="na pewno?"
-          modalBack="wróć"
-          yellow
-          onClick={closeModalHandler}
+          modalData={
+            isDisqualifyModalOpen ? modalData.disqualify : modalData.penalty
+          }
+          onCloseHandler={closeModalHandler}
+          onConfirmHandler={
+            isDisqualifyModalOpen ? handleDesqualification : handlePenalty
+          }
         />
       )}
-      {modalIsOpen && <Backdrop onClick={closeModalHandler} />}
-      <h1 aria-hidden="true" onClick={openModalHandler}>
-        aaa
-      </h1>
+      {(isDisqualifyModalOpen || isPenaltyModalOpen) && (
+        <Backdrop onClick={closeModalHandler} />
+      )}
 
-      <SpecialButtonsContainer handler={openModalHandler} />
+      <SpecialButtonsContainer
+        openDisqualifyModalHandler={openDisqualifyModalHandler}
+        openPenaltyModalHandler={openPenaltyModalHandler}
+      />
 
       <ExerciseCardsContainer
         performanceObject={ourTestPerformanceObject}

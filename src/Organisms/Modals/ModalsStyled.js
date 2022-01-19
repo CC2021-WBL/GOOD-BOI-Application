@@ -12,6 +12,7 @@ const ModalContainer = styled.div`
   transform: translate(-50%, -60%);
   cursor: pointer;
   .confirmationWrapper {
+    // TODO: tutaj ogarniasz theme
     background: ${(props) =>
       props.red
         ? COLORS.negative100
