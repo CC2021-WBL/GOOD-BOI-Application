@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import MainButton from '../../Atoms/MainButton/MainButton';
-import ForgotPassFormStyled from './ForgotPassFormStyled';
 import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
+import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 
 const ForgotPassForm = () => {
@@ -20,7 +20,7 @@ const ForgotPassForm = () => {
 
   return (
     <CardWrapper>
-      <ForgotPassFormStyled onSubmit={submitHandler}>
+      <FormWrapper onSubmit={submitHandler}>
         <InputField
           labelText="Na jaki email wysłać powiadomienie ?"
           htmlFor="email"
@@ -32,7 +32,7 @@ const ForgotPassForm = () => {
           onChange={(event) => setEmail(event.target.value)}
         />
         <MainButton primary text="Potwierdź" />
-      </ForgotPassFormStyled>
+      </FormWrapper>
     </CardWrapper>
   );
 };

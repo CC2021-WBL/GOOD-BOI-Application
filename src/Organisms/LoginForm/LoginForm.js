@@ -4,8 +4,8 @@ import 'font-awesome/css/font-awesome.min.css';
 
 import MainButton from '../../Atoms/MainButton/MainButton';
 import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
+import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
-import LoginFormStyled from './LoginFormStyled';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -21,7 +21,7 @@ const LoginForm = () => {
 
   return (
     <CardWrapper>
-      <LoginFormStyled onSubmit={submitHandler}>
+      <FormWrapper onSubmit={submitHandler}>
         <InputField
           labelText="Email"
           htmlFor="email"
@@ -47,7 +47,7 @@ const LoginForm = () => {
           Zapomniałeś/aś hasła ?
         </Link>
         <MainButton primary text="Zaloguj się" />
-      </LoginFormStyled>
+      </FormWrapper>
     </CardWrapper>
   );
 };
