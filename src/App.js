@@ -1,28 +1,24 @@
-import './App.css';
-import ClassCompetitorsPage from './Pages/ClassCompetitorsPage/ClassCompetitorsPage';
-import ClassesPage from './Pages/ClassesPage/ClassesPage';
-import ClassSummaryPage from './Pages/ClassSummaryPage/ClassSummaryPage';
-import ContestsPage from './Pages/ContestsPage/ContestsPage';
-import ExercisesPage from './Pages/ExercisesPage/ExercisesPage';
-import HomePage from './Pages/HomePage/HomePage';
-import LoginPage from './Pages/LoginPage/LoginPage';
 import { Route, Routes } from 'react-router-dom';
+
+import HomePage from './Pages/HomePage/HomePage';
+import RolePage from './Pages/RolePage/RolePage';
+import LoginForm from './Organisms/LoginForm/LoginForm';
+import ClassesPage from './Pages/ClassesPage/ClassesPage';
+import ProfilePage from './Pages/ProfilePage/ProfilePage';
+import LandingPage from './Pages/LandingPage/LandingPage';
+import ContestsPage from './Pages/ContestsPage/ContestsPage';
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
-import RegistrationPage from './Pages/RegistrationPage/RegistrationPage';
+import ContactFormPage from './Pages/ContactForm/ContactForm';
+import ExercisesPage from './Pages/ExercisesPage/ExercisesPage';
 import DogSummaryPage from './Pages/DogSummaryPage/DogSummaryPage';
 import LeaderboardPage from './Pages/LeaderboardPage/LeaderboardPage';
-import RolePage from './Pages/RolePage/RolePage';
-import UnregisteredPage from './Pages/UnregisteredPage/UnregisteredPage';
-import ProfilePage from './Pages/ProfilePage/ProfilePage';
-import ContactFormPage from './Pages/ContactForm/ContactForm';
-import ForgotPassPage from './Pages/ForgotPassPage/ForgotPassPage';
-import LoginForm from './Organisms/LoginForm/LoginForm';
-import SingleSummaryPage from './Pages/SingleSummaryPage/SingleSummaryPage';
-import { Route, Routes } from 'react-router-dom';
-import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
-import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
-import LandingPage from './Pages/LandingPage/LandingPage';
+import ClassSummaryPage from './Pages/ClassSummaryPage/ClassSummaryPage';
+import UnregisteredPage from './Pages/UnregisteredPage/UnregisteredPage';
+import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
+import ClassCompetitorsPage from './Pages/ClassCompetitorsPage/ClassCompetitorsPage';
+
+import './App.css';
 
 function App() {
   return (
@@ -33,9 +29,9 @@ function App() {
           <Route path="contactForm" element={<ContactFormPage />}></Route>
           <Route path="profile" element={<ProfilePage />} />
           <Route path="unRegistered" element={<UnregisteredPage />} />
-          <Route path="register" element={<RegistrationPage />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="forgot" element={<ForgotPassPage />} />
+          <Route path="register" element={<RegistrationForm />} />
+          <Route path="login" element={<LoginForm />} />
+          <Route path="forgot" element={<ForgotPassForm />} />
           <Route path="landing" element={<LandingPage />} />
           <Route path="login" element={<LoginForm />} />
           <Route path="register" element={<RegistrationForm />} />
