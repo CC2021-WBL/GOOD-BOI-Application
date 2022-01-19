@@ -18,7 +18,7 @@ const ContestComponent = ({ contestId, contestIndex }) => {
     hour: '10:00',
     city: 'info wkrótce',
   };
-
+  // to test navigation uncomment rest of commented code at that page
   const [isClicked, setIsClicked] = useState();
   const [contestData, setContestData] = useState(initialData);
   //  let navigate = useNavigate();
