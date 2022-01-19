@@ -1,7 +1,7 @@
 import CardWrapperStyled from './CardWrapperStyled';
 import propTypes from 'prop-types';
 
-const CardWrapper = (children) => {
+const CardWrapper = ({ children }) => {
   return <CardWrapperStyled>{children}</CardWrapperStyled>;
 };
 
