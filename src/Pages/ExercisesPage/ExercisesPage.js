@@ -51,7 +51,7 @@ const ExercisesPage = () => {
         aaa
       </h1>
 
-      <SpecialButtonsContainer></SpecialButtonsContainer>
+      <SpecialButtonsContainer handler={openModalHandler} />
 
       <ExerciseCardsContainer
         performanceObject={ourTestPerformanceObject}
