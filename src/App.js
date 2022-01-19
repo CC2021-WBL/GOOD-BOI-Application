@@ -16,6 +16,13 @@ import UnregisteredPage from './Pages/UnregisteredPage/UnregisteredPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
 import ContactFormPage from './Pages/ContactForm/ContactForm';
 import ForgotPassPage from './Pages/ForgotPassPage/ForgotPassPage';
+import LoginForm from './Organisms/LoginForm/LoginForm';
+import SingleSummaryPage from './Pages/SingleSummaryPage/SingleSummaryPage';
+import { Route, Routes } from 'react-router-dom';
+import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
+import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
+import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
+import LandingPage from './Pages/LandingPage/LandingPage';
 
 function App() {
   return (
@@ -29,6 +36,10 @@ function App() {
           <Route path="register" element={<RegistrationPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="forgot" element={<ForgotPassPage />} />
+          <Route path="landing" element={<LandingPage />} />
+          <Route path="login" element={<LoginForm />} />
+          <Route path="register" element={<RegistrationForm />} />
+          <Route path="forgot" element={<ForgotPassForm />} />
           <Route path="role" element={<RolePage />} />
           <Route path="role/contests" element={<ContestsPage />} />
           <Route
