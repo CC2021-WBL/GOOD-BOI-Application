@@ -8,9 +8,8 @@ const ContestComponentStyled = styled.div`
   margin: auto;
   width: calc(100% - 2rem);
   height: auto;
-  background: ${(isClicked) => {
-    isClicked ? COLORS.positive100 : COLORS.white;
-  }};
+  background-color: ${(props) =>
+    props.isClicked ? COLORS.positive100 : COLORS.white};
   display: flex;
   flex-direction: column;
   justify-content: space-around;
