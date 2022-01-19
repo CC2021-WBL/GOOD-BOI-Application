@@ -2,8 +2,8 @@ import propTypes from 'prop-types';
 
 import FormWrapperStyled from './FormWrapperStyled';
 
-const FormWrapper = (props) => {
-  return <FormWrapperStyled>{props.children}</FormWrapperStyled>;
+const FormWrapper = (children) => {
+  return <FormWrapperStyled>{children}</FormWrapperStyled>;
 };
 
 FormWrapper.propTypes = {
