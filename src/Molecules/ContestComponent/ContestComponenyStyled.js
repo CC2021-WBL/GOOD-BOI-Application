@@ -6,7 +6,7 @@ const ContestComponentStyled = styled.div`
   box-sizing: border-box;
   padding: 1.25rem 1.25rem 1.375rem 1.25rem;
   margin: auto;
-  width: calc(100% - 2rem);
+  width: calc(100% - 2.525rem);
   height: auto;
   background-color: ${(props) =>
     props.isClicked ? COLORS.positive100 : COLORS.white};
@@ -25,7 +25,7 @@ const ContestInsideElementStyled = styled.div`
   align-items: center;
   border-top: 1px solid lightgrey;
   ${FONTS.label_extrabold}
-  color: ${COLORS.grey400}
+  color: ${(props) => (props.isClicked ? COLORS.positive600 : COLORS.grey400)};
 `;
 
 const ContestNameStyled = styled.h3`

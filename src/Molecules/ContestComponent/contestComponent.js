@@ -8,15 +8,31 @@ import {
 } from './ContestComponenyStyled';
 import { getDataFormatDdMonthYyy } from '../../Tools/TimeFunctions';
 import { useState } from 'react/cjs/react.development';
+import { useEffect } from 'react';
 // import { useNavigate } from 'react-router-dom';
 
 const ContestComponent = ({ contestId, contestIndex }) => {
+  const initialData = {
+    contestNname: 'info wkrótce',
+    date: '',
+    hour: '10:00',
+    city: 'info wkrótce',
+  };
+
   const [isClicked, setIsClicked] = useState();
+  const [contestData, setContestData] = useState(initialData);
   //  let navigate = useNavigate();
-  const name = RANDOM_CONTESTS[contestIndex].name;
-  const date = getDataFormatDdMonthYyy(RANDOM_CONTESTS[contestIndex].date);
-  const city = RANDOM_CONTESTS[contestIndex].city.toUpperCase();
-  console.log(contestId);
+
+  useEffect(() => {
+    // mock for fetch() from database
+    setContestData({
+      ...contestData,
+      contestName: RANDOM_CONTESTS[contestIndex].name,
+      date: getDataFormatDdMonthYyy(RANDOM_CONTESTS[contestIndex].date),
+      city: RANDOM_CONTESTS[contestIndex].city.toUpperCase(),
+    });
+    console.log(contestId);
+  }, []);
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -27,10 +43,12 @@ const ContestComponent = ({ contestId, contestIndex }) => {
 
   return (
     <ContestComponentStyled isClicked={isClicked} onClick={handleClick}>
-      <ContestNameStyled>{name}</ContestNameStyled>
+      <ContestNameStyled>{contestData.contestName}</ContestNameStyled>
       <ContestInsideElementStyled>
-        <time dateTime={date}>{date}</time>
-        <p>{city}</p>
+        <time dateTime={contestData.date}>
+          {contestData.date}, {contestData.hour}
+        </time>
+        <p>{contestData.city}</p>
       </ContestInsideElementStyled>
       <ContestInsideElementStyled>
         <InfoLabel classInfo={{ dogsAmount: 30 }}></InfoLabel>
