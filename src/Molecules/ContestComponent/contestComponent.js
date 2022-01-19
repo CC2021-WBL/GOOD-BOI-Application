@@ -44,7 +44,7 @@ const ContestComponent = ({ contestId, contestIndex }) => {
   return (
     <ContestComponentStyled isClicked={isClicked} onClick={handleClick}>
       <ContestNameStyled>{contestData.contestName}</ContestNameStyled>
-      <ContestInsideElementStyled>
+      <ContestInsideElementStyled isClicked={isClicked}>
         <time dateTime={contestData.date}>
           {contestData.date}, {contestData.hour}
         </time>

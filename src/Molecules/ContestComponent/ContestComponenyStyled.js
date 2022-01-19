@@ -24,7 +24,7 @@ const ContestInsideElementStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   border-top: 1px solid lightgrey;
-  ${FONTS.label_extrabold}
+  ${FONTS.label_extrabold};
   color: ${(props) => (props.isClicked ? COLORS.positive600 : COLORS.grey400)};
 `;
 
