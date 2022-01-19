@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+
 import FONTS from '../../Styles/fontsStyledComponents';
 import COLORS from '../../Styles/varsStyledComponents';
 
-const LoginFormStyled = styled.form`
+const FormWrapperStyled = styled.form`
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   .forgot-pass {
     padding: 1em 0;
@@ -14,4 +16,4 @@ const LoginFormStyled = styled.form`
   }
 `;
 
-export default LoginFormStyled;
+export default FormWrapperStyled;
