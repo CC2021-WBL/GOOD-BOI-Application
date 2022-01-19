@@ -2,7 +2,7 @@ import propTypes from 'prop-types';
 import ModalContainer from './ModalsStyled';
 import { BsChevronLeft } from 'react-icons/bs';
 
-const Modals = (props) => {
+const Modal = (props) => {
   const {
     modalAbout,
     modalBack,
@@ -31,7 +31,7 @@ const Modals = (props) => {
   );
 };
 
-Modals.propTypes = {
+Modal.propTypes = {
   modalTitle: propTypes.string,
   modalAbout: propTypes.string,
   modalConfirmation: propTypes.string,
@@ -42,4 +42,4 @@ Modals.propTypes = {
   onClick: propTypes.func,
 };
 
-export default Modals;
+export default Modal;
