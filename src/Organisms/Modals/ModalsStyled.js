@@ -7,7 +7,9 @@ const ModalContainer = styled.div`
   height: 306px;
   z-index: 10;
   position: fixed;
-
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
   cursor: pointer;
   .confirmationWrapper {
     background: ${(props) =>

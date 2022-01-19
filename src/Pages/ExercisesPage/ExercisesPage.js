@@ -28,15 +28,14 @@ const ExercisesPage = () => {
 
   return (
     <>
-      <h1 aria-hidden="true" onClick={openModalHandler}>
-        aaa
-      </h1>
-      <SpecialButtonsContainer></SpecialButtonsContainer>
-      <ExerciseCardsContainer
-        performanceObject={ourTestPerformanceObject}
-      ></ExerciseCardsContainer>
-
-      {modalIsOpen && <Backdrop onClick={closeModalHandler} />}
+      {/* <Modal
+        modalTitle="Are you sure?"
+        modalAbout="bbbb"
+        modalConfirmation="na pewno?"
+        modalBack="wróć"
+        yellow
+        onClick={closeModalHandler}
+      /> */}
       {modalIsOpen && (
         <Modal
           modalTitle="Are you sure?"
@@ -47,6 +46,16 @@ const ExercisesPage = () => {
           onClick={closeModalHandler}
         />
       )}
+      {modalIsOpen && <Backdrop onClick={closeModalHandler} />}
+      <h1 aria-hidden="true" onClick={openModalHandler}>
+        aaa
+      </h1>
+
+      <SpecialButtonsContainer></SpecialButtonsContainer>
+
+      <ExerciseCardsContainer
+        performanceObject={ourTestPerformanceObject}
+      ></ExerciseCardsContainer>
     </>
   );
 };
