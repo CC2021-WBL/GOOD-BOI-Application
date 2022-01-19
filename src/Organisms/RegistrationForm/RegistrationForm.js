@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import MainButton from '../../Atoms/MainButton/MainButton';
 import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
-import RegistrationFormStyled from './RegistrationFormStyled';
+import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 import CheckboxAgreeField from '../../Atoms/CheckboxAgreeField/CheckboxAgreeField';
 
@@ -44,7 +44,7 @@ const RegistrationForm = () => {
 
   return (
     <CardWrapper>
-      <RegistrationFormStyled onSubmit={submitHandler}>
+      <FormWrapper onSubmit={submitHandler}>
         <InputField
           labelText="Email"
           htmlFor="email"
@@ -128,7 +128,7 @@ const RegistrationForm = () => {
         />
         <CheckboxAgreeField text="Zapoznałem się z regulaminem GOOD BOI i akceptuję jego postanowienia" />
         <MainButton primary text="Zarejestruj się" />
-      </RegistrationFormStyled>
+      </FormWrapper>
     </CardWrapper>
   );
 };
