@@ -8,7 +8,6 @@ import LinkWrapperStyled from '../../Atoms/NavElementStyled/LinkWrapperStyled';
 
 import { NavElementStyled } from './NavElementStyled';
 
-
 const NavElement = ({ text }) => {
   const navigate = useNavigate();
   return (
