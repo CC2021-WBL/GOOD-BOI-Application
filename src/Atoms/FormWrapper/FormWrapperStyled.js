@@ -13,7 +13,7 @@ const FormWrapperStyled = styled.form`
     align-self: flex-start;
     font-size: 10px;
     letter-spacing: 1px;
-    padding: 0 0 0 5px;
+    padding: 0 0 0 10px;
   }
 
   .forgot-pass {

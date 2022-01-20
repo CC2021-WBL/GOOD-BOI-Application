@@ -14,7 +14,7 @@ const validateData = (formData) => {
   }
 
   if (formData.reapeatpass !== formData.password) {
-    errors.repeatpass = 'Powtórzone hasło niezgodne';
+    errors.repeatpass = 'Powtórzone hasło różni się';
   }
 
   if (!formData.firstname.trim()) {

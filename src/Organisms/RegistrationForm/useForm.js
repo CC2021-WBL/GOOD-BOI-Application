@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useForm = (validate) => {
+const useForm = (validateData) => {
   const initialState = {
     firstname: '',
     surname: '',
@@ -25,7 +25,7 @@ const useForm = (validate) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    setErrors(validate(formData));
+    setErrors(validateData(formData));
     // setFormData({
     //   ...formData,
     //   [event.target.id]: event.target.value,

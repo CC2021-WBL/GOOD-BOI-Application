@@ -62,7 +62,9 @@ const RegistrationForm = () => {
           value={formData.email}
           onChange={handleInputChange}
         />
+
         {errors.email && <p>{errors.email}</p>}
+
         <InputField
           labelText="Hasło"
           htmlFor="password"
@@ -73,7 +75,9 @@ const RegistrationForm = () => {
           value={formData.password}
           onChange={handleInputChange}
         />
-        {errors.password && <p>{errors.password}</p>}
+
+        {/* {errors.password && <p>{errors.password}</p>} */}
+
         <InputField
           labelText="Powtórz Hasło"
           htmlFor="password"
@@ -87,7 +91,8 @@ const RegistrationForm = () => {
         {formData.repeatpass}
         {formData.password}
 
-        {errors.repeatpass && <p>{errors.repeatpass}</p>}
+        {/* {errors.repeatpass ? <p>{errors.repeatpass}</p> : null} */}
+
         <InputField
           labelText="Imię"
           htmlFor="firstname"
@@ -98,7 +103,9 @@ const RegistrationForm = () => {
           value={formData.firstname}
           onChange={handleInputChange}
         />
-        {errors.firstname && <p>{errors.firstname}</p>}
+
+        {/* {errors.firstname && <p>{errors.firstname}</p>} */}
+
         <InputField
           labelText="Nazwisko"
           htmlFor="surname"
@@ -109,7 +116,7 @@ const RegistrationForm = () => {
           value={formData.surname}
           onChange={handleInputChange}
         />
-        {errors.surname && <p>{errors.surname}</p>}
+        {/* {errors.surname && <p>{errors.surname}</p>} */}
         <InputField
           labelText="Ulica i nr domu"
           htmlFor="street"
@@ -120,7 +127,7 @@ const RegistrationForm = () => {
           value={formData.street}
           onChange={handleInputChange}
         />
-        {errors.street && <p>{errors.street}</p>}
+        {/* {errors.street && <p>{errors.street}</p>} */}
         <InputField
           labelText="Kod Pocztowy"
           htmlFor="zipcode"
@@ -131,7 +138,7 @@ const RegistrationForm = () => {
           value={formData.zipcode}
           onChange={handleInputChange}
         />
-        {errors.zipcode && <p>{errors.zipcode}</p>}
+        {/* {errors.zipcode && <p>{errors.zipcode}</p>} */}
         <InputField
           labelText="Miasto"
           htmlFor="city"
@@ -142,7 +149,7 @@ const RegistrationForm = () => {
           value={formData.city}
           onChange={handleInputChange}
         />
-        {errors.city && <p>{errors.city}</p>}
+        {/* {errors.city && <p>{errors.city}</p>} */}
         <CheckboxAgreeField text="Zapoznałem się z regulaminem GOOD BOI i akceptuję jego postanowienia" />
         <MainButton primary text="Zarejestruj się" />
       </FormWrapper>
