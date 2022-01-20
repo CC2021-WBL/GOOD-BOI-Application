@@ -1,63 +1,82 @@
+const ERRORS = {
+  email: {
+    name: 'email',
+    required: 'Email jest wymagany',
+    invalid: 'Niepoprawny adres email',
+  },
+  password: {
+    name: 'password',
+    required: 'Hasło jest wymagane',
+    invalid: 'Hasło musi mieć więcej niż 4 znaki',
+    minLength: 4,
+  },
+  repeatpass: {
+    name: 'repeatpass',
+    required: 'Hasło jest wymagane',
+    invalid: 'Powtórzone hasło różni się',
+    minLength: 4,
+  },
+  firstname: {
+    name: 'firstname',
+    required: 'Imię jest wymagane',
+    invalid: 'Imię musi mieć więcej niż 4 znaki',
+    minLength: 4,
+  },
+  surname: {
+    name: 'surname',
+    required: 'Nazwisko jest wymagane',
+    invalid: 'Nazwisko musi mieć więcej niż 4 znaki',
+    minLength: 4,
+  },
+  street: {
+    name: 'street',
+    required: 'Ulica jest wymagana',
+    invalid: 'Ulica musi mieć więcej niż 4 znaki',
+    minLength: 4,
+  },
+  zipcode: {
+    name: 'zipcode',
+    required: 'Kod jest wymaganya',
+    invalid: 'Kod musi mieć więcej niż 5 znaków',
+    minLength: 5,
+  },
+  city: {
+    name: 'city',
+    required: 'Miasto jest wymagane',
+    invalid: 'Miasto musi mieć więcej niż 3 znaków',
+    minLength: 3,
+  },
+};
+
 const validateData = (formData) => {
-  const {
-    email,
-    password,
-    repeatpass,
-    firstname,
-    surname,
-    street,
-    city,
-    zipcode,
-  } = formData;
-
   let errors = {};
+  const emailRgx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
-  if (!email) {
-    errors.email = 'Email jest wymagany';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
-    errors.email = 'Niepoprawny adres email';
-  }
+  const validateInput = ([inputName, inputValue]) => {
+    if (!inputValue) {
+      errors[inputName] = ERRORS[inputName]['required'];
+      return;
+    }
+    switch (inputName) {
+      case ERRORS.email.name:
+        if (!inputValue.match(emailRgx))
+          errors[inputName] = ERRORS[inputName].invalid;
+        break;
+      case ERRORS.repeatpass.name:
+        if (inputValue === formData[ERRORS.password.name])
+          errors[inputName] = ERRORS[inputName].invalid;
+        break;
+      default:
+        if (inputValue.length < ERRORS[inputName].minLength)
+          errors[inputName] = ERRORS[inputName].invalid;
+        break;
+    }
+  };
 
-  if (!password) {
-    errors.password = 'Hasło jest wymagane';
-  } else if (password.length < 4) {
-    errors.password = 'Hasło musi mieć więcej niż 4 znaki';
-  }
-
-  if (repeatpass.trim() !== password.trim()) {
-    errors.repeatpass = 'Powtórzone hasło różni się';
-  }
-
-  if (!firstname.trim()) {
-    errors.firstname = 'Imię jest wymagane';
-  } else if (firstname.length < 4) {
-    errors.firstname = 'Imię musi mieć więcej niż 4 znaki';
-  }
-
-  if (!surname.trim()) {
-    errors.surname = 'Nazwisko jest wymagane';
-  } else if (surname.length < 4) {
-    errors.surname = 'Nazwisko musi mieć więcej niż 4 znaki';
-  }
-
-  if (!street) {
-    errors.street = 'Podaj Ulicę';
-  } else if (street.length < 4) {
-    errors.street = 'Nazwa ulicy musi mieć więcej niż 4 znaki';
-  }
-
-  if (!zipcode) {
-    errors.zipcode = 'Podaj Kod Pocztowy';
-  } else if (zipcode.length < 4) {
-    errors.zipcode = 'Kod pocztowy powinien mieć więcej niż 4 znaki';
-  }
-
-  if (!city) {
-    errors.city = 'Podaj Miasto';
-  } else if (firstname.length < 4) {
-    errors.city = 'Nazwa miasta musi być dluższa niż 4 znaki';
-  }
-
+  const inputsKeys = Object.entries(formData);
+  inputsKeys.forEach(([key, value]) => {
+    validateInput([key, value.trim()]);
+  });
   return errors;
 };
 
