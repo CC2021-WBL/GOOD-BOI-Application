@@ -11,8 +11,6 @@ const LeaderboardListElementStyled = styled.div`
   border: none;
   cursor: pointer;
   border-bottom: 1px solid #9aa5b1;
-  /* font-size: 15px;
-  font-weight: 600; */
   ${FONTS.body_semibold};
   justify-content: space-between;
   align-items: center;
