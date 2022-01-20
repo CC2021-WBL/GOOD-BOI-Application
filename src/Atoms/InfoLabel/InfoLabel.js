@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types';
 import InfoLabelStyled from './InfoLabelStyled';
 
-const PAST = 'archiwalny';
-const PRESENT = 'w trakcie';
-const FUTURE = 'nadchodzący';
+const TIME = {
+  PAST: 'archiwalny',
+  PRESENT: 'w trakcie',
+  FUTURE: 'nadchodzący',
+  UNKNOWN: 'loading...',
+};
 
 const InfoLabel = ({
   classInfo,
@@ -40,15 +43,15 @@ const InfoLabel = ({
   if (!startDateOfContest) {
     dateTextInfo = '';
   } else if (startDateOfContest < todayDate.subtractMinutes(15)) {
-    dateTextInfo = PAST;
+    dateTextInfo = TIME.PAST;
   } else if (
     todayDate > startDateOfContest.subtractMinutes(15) &&
     todayDate < startDateOfContest.addHours(5)
   ) {
-    dateTextInfo = PRESENT;
+    dateTextInfo = TIME.PRESENT;
   } else if (startDateOfContest > todayDate) {
-    dateTextInfo = FUTURE;
-  }
+    dateTextInfo = TIME.FUTURE;
+  } else dateTextInfo = TIME.UNKNOWN;
 
   return (
     <InfoLabelStyled
@@ -57,9 +60,10 @@ const InfoLabel = ({
       dateTextInfo={dateTextInfo}
     >
       {/*CONDITIONAL FOR DATE */}
-      {dateTextInfo === PAST && <>{PAST}</>}
-      {dateTextInfo === PRESENT && <>{PRESENT}</>}
-      {dateTextInfo === FUTURE && <>{FUTURE}</>}
+      {dateTextInfo === TIME.PAST && <>{TIME.PAST}</>}
+      {dateTextInfo === TIME.PRESENT && <>{TIME.PRESENT}</>}
+      {dateTextInfo === TIME.FUTURE && <>{TIME.FUTURE}</>}
+      {dateTextInfo === TIME.UNKNOWN && <>{TIME.UNKNOWN}</>}
 
       {/*CONDITIONAL FOR CLASSES */}
       {classInfo && isCompleted && <>ukończono</>}
