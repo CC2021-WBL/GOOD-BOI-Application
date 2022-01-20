@@ -4,10 +4,12 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { GlobalStyles } from './Styles/globalStyles';
 
 ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>
+      <GlobalStyles />
       <App />
     </React.StrictMode>
   </BrowserRouter>,

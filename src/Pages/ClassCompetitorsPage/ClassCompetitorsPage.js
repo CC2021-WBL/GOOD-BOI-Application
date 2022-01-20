@@ -1,10 +1,15 @@
-import ClassOrDogButton from '../../Molecules/ClassCompetitorButton/ClassOrDogButton';
-import RANDOM_CONTEST from '../../Data/Dummy-data/test-data-random-contest';
+import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
+import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
+import { Wrapper } from '../../Atoms/MainButton/MainButtonStyled';
+import MainButton from '../../Atoms/MainButton/MainButton';
 
 const ClassCompetitorsPage = () => {
+  function secondaryBtnHandler() {
+    console.log('secondary button clicked');
+  }
   return (
     <>
-      {RANDOM_CONTEST.obedienceClasses[0].dogs.map((dog, index) => {
+      {RANDOM_CONTESTS[0].obedienceClasses[0].dogs.map((dog, index) => {
         const { id, dogName, exercisesCompleted, exercisesAmount } = dog;
         return (
           <ClassOrDogButton
@@ -18,6 +23,13 @@ const ClassCompetitorsPage = () => {
           />
         );
       })}
+      <Wrapper>
+        <MainButton
+          onClick={secondaryBtnHandler}
+          secondary
+          text="ZAKOŃCZ KONKURS"
+        />
+      </Wrapper>
     </>
   );
 };
