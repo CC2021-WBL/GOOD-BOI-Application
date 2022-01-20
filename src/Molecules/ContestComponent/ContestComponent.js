@@ -1,13 +1,12 @@
 import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
 import propTypes from 'prop-types';
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
-import {
-  ContestComponentStyled,
-  ContestNameStyled,
-  ContestInsideElementStyled,
-} from './ContestComponenyStyled';
+import { ContestComponentStyled } from './ContestComponentStyled';
 import { getDataFormatDdMonthYyy } from '../../Tools/TimeFunctions';
 import { useState, useEffect } from 'react';
+import ContestName from '../../Atoms/ContestName/ContestName';
+import TimeAndCity from '../../Atoms/TimeAndCity/TimeAndCity';
+import ContestInsideElement from './ContestInsideElement';
 
 // import { useNavigate } from 'react-router-dom';
 
@@ -42,20 +41,21 @@ const ContestComponent = ({ contestId, contestIndex }) => {
   };
 
   return (
-    <ContestComponentStyled isClicked={isClicked} onClick={handleClick}>
-      <ContestNameStyled>{contestData.contestName}</ContestNameStyled>
-      <ContestInsideElementStyled isClicked={isClicked}>
-        <time dateTime={contestData.date}>
-          {contestData.date}, {contestData.hour}
-        </time>
-        <p>{contestData.city}</p>
-      </ContestInsideElementStyled>
-      <ContestInsideElementStyled>
-        <InfoLabel classInfo={{ dogsAmount: 30 }}></InfoLabel>
-        <InfoLabel
-          dateOfContest={RANDOM_CONTESTS[contestIndex].date}
-        ></InfoLabel>
-      </ContestInsideElementStyled>
+    <ContestComponentStyled
+      isClicked={isClicked}
+      onClick={handleClick}
+      contestData={{ contestData }}
+    >
+      <ContestName contestName={contestData.contestName} />
+
+      <ContestInsideElement>
+        <TimeAndCity contestData={contestData} />
+      </ContestInsideElement>
+
+      <ContestInsideElement>
+        <InfoLabel classInfo={{ dogsAmount: 30 }} />
+        <InfoLabel dateOfContest={RANDOM_CONTESTS[contestIndex].date} />
+      </ContestInsideElement>
     </ContestComponentStyled>
   );
 };

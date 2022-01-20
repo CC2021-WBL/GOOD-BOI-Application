@@ -6,7 +6,7 @@ const ContestComponentStyled = styled.div`
   box-sizing: border-box;
   padding: 1.25rem 1.25rem 1.375rem 1.25rem;
   margin: auto;
-  width: calc(100% - 2.525rem);
+  width: 100%;
   height: auto;
   background-color: ${(props) =>
     props.isClicked ? COLORS.positive100 : COLORS.white};

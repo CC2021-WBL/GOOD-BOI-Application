@@ -14,6 +14,7 @@ const InfoLabel = ({ classInfo, dogInfo, dateOfContest = '' }) => {
 
   if (dateOfContest) {
     date = dateOfContest.toISOString().substring(0, 10);
+    console.log(date);
   } else {
     date = '';
   }
@@ -47,9 +48,9 @@ const InfoLabel = ({ classInfo, dogInfo, dateOfContest = '' }) => {
       dateTextInfo={dateTextInfo}
     >
       {/*CONDITIONAL FOR DATE */}
-      {dateTextInfo === 'in-past' && <>{date} / archiwalny</>}
-      {dateTextInfo === 'in-progress' && <>{date} / w trakcie</>}
-      {dateTextInfo === 'in-future' && <>{date} / nadchodzący</>}
+      {dateTextInfo === 'in-past' && <>archiwalny</>}
+      {dateTextInfo === 'in-progress' && <>w trakcie</>}
+      {dateTextInfo === 'in-future' && <>nadchodzący</>}
 
       {/*CONDITIONAL FOR CLASSES */}
       {classInfo && isCompleted && <>ukończono</>}
