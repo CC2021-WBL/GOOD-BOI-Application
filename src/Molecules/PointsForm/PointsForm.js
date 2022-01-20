@@ -7,6 +7,7 @@ const PointsForm = ({ points, codeName, onChange }) => {
     <PointsFormStyled>
       <PointsInputStyled
         type="number"
+        inputmode="decimal"
         id={codeName}
         className="points_input"
         defaultValue={points}
