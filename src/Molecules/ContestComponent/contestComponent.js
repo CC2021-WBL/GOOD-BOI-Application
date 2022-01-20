@@ -13,7 +13,7 @@ import { useState, useEffect } from 'react';
 
 const ContestComponent = ({ contestId, contestIndex }) => {
   const initialData = {
-    contestNname: 'info wkrótce',
+    contestName: 'info wkrótce',
     date: '',
     hour: '10:00',
     city: 'info wkrótce',
@@ -21,6 +21,7 @@ const ContestComponent = ({ contestId, contestIndex }) => {
   // to test navigation uncomment rest of commented code at that page
   const [isClicked, setIsClicked] = useState();
   const [contestData, setContestData] = useState(initialData);
+  const { contestName, date, hour, city } = contestData;
   //  let navigate = useNavigate();
 
   useEffect(() => {
@@ -43,12 +44,12 @@ const ContestComponent = ({ contestId, contestIndex }) => {
 
   return (
     <ContestComponentStyled isClicked={isClicked} onClick={handleClick}>
-      <ContestNameStyled>{contestData.contestName}</ContestNameStyled>
+      <ContestNameStyled>{contestName}</ContestNameStyled>
       <ContestInsideElementStyled isClicked={isClicked}>
-        <time dateTime={contestData.date}>
-          {contestData.date}, {contestData.hour}
+        <time dateTime={date}>
+          {date}, {hour}
         </time>
-        <p>{contestData.city}</p>
+        <p>{city}</p>
       </ContestInsideElementStyled>
       <ContestInsideElementStyled>
         <InfoLabel classInfo={{ dogsAmount: 30 }}></InfoLabel>
