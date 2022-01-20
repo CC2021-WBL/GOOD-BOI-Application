@@ -3,7 +3,6 @@ import FONTS from '../../Styles/fontsStyledComponents';
 import COLORS from '../../Styles/varsStyledComponents';
 
 const ContestComponentStyled = styled.div`
-  box-sizing: border-box;
   padding: 1.25rem 1.25rem 1.375rem 1.25rem;
   margin: auto;
   width: 100%;
@@ -20,7 +19,6 @@ const ContestComponentStyled = styled.div`
 const ContestInsideElementStyled = styled.div`
   padding: 10px;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   border-top: 1px solid lightgrey;

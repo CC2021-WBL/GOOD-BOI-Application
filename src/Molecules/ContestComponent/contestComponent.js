@@ -5,7 +5,7 @@ import {
   ContestComponentStyled,
   ContestNameStyled,
   ContestInsideElementStyled,
-} from './ContestComponenyStyled';
+} from './ContestComponentStyled';
 import { getDataFormatDdMonthYyy } from '../../Tools/TimeFunctions';
 import { useState, useEffect } from 'react';
 
@@ -62,7 +62,7 @@ const ContestComponent = ({ contestId, contestIndex }) => {
 };
 
 ContestComponent.propTypes = {
-  contestId: propTypes.string,
+  contestId: propTypes.string.isRequired,
   contestDate: propTypes.instanceOf(Date),
   contestIndex: propTypes.number,
 };
