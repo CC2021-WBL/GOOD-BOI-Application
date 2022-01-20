@@ -14,7 +14,7 @@ const useForm = (validateData) => {
 
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState({});
-  // const [isSubmitting, setIsSubmitting] = useState(false);
+  // const [setIsSubmitting] = useState(false);
 
   const handleInputChange = (event) => {
     setFormData({
@@ -28,6 +28,9 @@ const useForm = (validateData) => {
     event.preventDefault();
     setErrors(validateData(formData));
     // setIsSubmitting(true);
+    const data = { ...formData };
+
+    console.log(data);
   };
 
   return { handleInputChange, formData, submitHandler, errors };

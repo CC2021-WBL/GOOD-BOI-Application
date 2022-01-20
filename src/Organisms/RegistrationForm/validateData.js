@@ -48,8 +48,8 @@ const validateData = (formData) => {
 
   if (!zipcode) {
     errors.zipcode = 'Podaj Kod Pocztowy';
-  } else if (zipcode.length > 5) {
-    errors.zipcode = 'Kod pocztowy powinien mieć mniej niż 6 znaków';
+  } else if (zipcode.length < 4) {
+    errors.zipcode = 'Kod pocztowy powinien mieć więcej niż 4 znaki';
   }
 
   if (!city) {
