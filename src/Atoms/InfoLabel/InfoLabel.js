@@ -1,22 +1,32 @@
 import PropTypes from 'prop-types';
 import InfoLabelStyled from './InfoLabelStyled';
 
-const InfoLabel = ({ classInfo, dogInfo, dateOfContest = '' }) => {
+const PAST = 'archiwalny';
+const PRESENT = 'w trakcie';
+const FUTURE = 'nadchodzący';
+
+const InfoLabel = ({
+  classInfo,
+  dogInfo,
+  startDateOfContest = '',
+  endDateOfContest = '',
+}) => {
   const { dogsAmount, isCompleted } = classInfo || [];
   const { exercisesCompleted, exercisesAmount } = dogInfo || [];
 
   const exercisesComplete =
     exercisesAmount !== undefined && exercisesCompleted === exercisesAmount;
 
+  console.log(endDateOfContest);
   const todayDate = new Date();
-  let date;
+  // let date;
   let dateTextInfo;
 
-  if (dateOfContest) {
-    date = dateOfContest.toISOString().substring(0, 10);
+  /*   if (startDateOfContest) {
+    date = startDateOfContest.toISOString().substring(0, 10);
   } else {
     date = '';
-  }
+  } */
 
   Date.prototype.addHours = function (h) {
     this.setTime(this.getTime() + h * 60 * 60 * 1000);
@@ -27,17 +37,17 @@ const InfoLabel = ({ classInfo, dogInfo, dateOfContest = '' }) => {
     return this;
   };
 
-  if (!dateOfContest) {
+  if (!startDateOfContest) {
     dateTextInfo = '';
-  } else if (dateOfContest < todayDate.subtractMinutes(15)) {
-    dateTextInfo = 'in-past';
+  } else if (startDateOfContest < todayDate.subtractMinutes(15)) {
+    dateTextInfo = PAST;
   } else if (
-    todayDate > dateOfContest.subtractMinutes(15) &&
-    todayDate < dateOfContest.addHours(5)
+    todayDate > startDateOfContest.subtractMinutes(15) &&
+    todayDate < startDateOfContest.addHours(5)
   ) {
-    dateTextInfo = 'in-progress';
-  } else if (dateOfContest > todayDate) {
-    dateTextInfo = 'in-future';
+    dateTextInfo = PRESENT;
+  } else if (startDateOfContest > todayDate) {
+    dateTextInfo = FUTURE;
   }
 
   return (
@@ -47,9 +57,9 @@ const InfoLabel = ({ classInfo, dogInfo, dateOfContest = '' }) => {
       dateTextInfo={dateTextInfo}
     >
       {/*CONDITIONAL FOR DATE */}
-      {dateTextInfo === 'in-past' && <>{date} / archiwalny</>}
-      {dateTextInfo === 'in-progress' && <>{date} / w trakcie</>}
-      {dateTextInfo === 'in-future' && <>{date} / nadchodzący</>}
+      {dateTextInfo === PAST && <>{PAST}</>}
+      {dateTextInfo === PRESENT && <>{PRESENT}</>}
+      {dateTextInfo === FUTURE && <>{FUTURE}</>}
 
       {/*CONDITIONAL FOR CLASSES */}
       {classInfo && isCompleted && <>ukończono</>}
@@ -73,7 +83,8 @@ const InfoLabel = ({ classInfo, dogInfo, dateOfContest = '' }) => {
 InfoLabel.propTypes = {
   classInfo: PropTypes.object,
   dogInfo: PropTypes.object,
-  dateOfContest: PropTypes.instanceOf(Date),
+  startDateOfContest: PropTypes.instanceOf(Date),
+  endDateOfContest: PropTypes.instanceOf(Date),
 };
 
 export default InfoLabel;
