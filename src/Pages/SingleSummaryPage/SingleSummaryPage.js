@@ -1,5 +1,8 @@
+import LeaderboardList from '../../Atoms/Leaderboard/LeaderboardList';
+import WYNIK_RANDOMOWEGO_PSA from '../../Atoms/Leaderboard/RandomDogResult';
+
 const SingleSummaryPage = () => {
-  return <h1>I am a SingleSummary Page Component</h1>;
+  return <LeaderboardList result={WYNIK_RANDOMOWEGO_PSA} />;
 };
 
 export default SingleSummaryPage;
