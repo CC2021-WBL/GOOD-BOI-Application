@@ -41,11 +41,7 @@ const ContestComponent = ({ contestId, contestIndex }) => {
   };
 
   return (
-    <ContestComponentStyled
-      isClicked={isClicked}
-      onClick={handleClick}
-      contestData={{ contestData }}
-    >
+    <ContestComponentStyled isClicked={isClicked} onClick={handleClick}>
       <ContestName contestName={contestData.contestName} />
 
       <ContestInsideElement>
