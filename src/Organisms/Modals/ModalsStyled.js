@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import COLORS from '../../Styles/varsStyledComponents';
-// import FONTS from '../../Styles/fontsStyledComponents';
+import FONTS from '../../Styles/fontsStyledComponents';
 
 const ModalContainer = styled.div`
   width: 252px;
@@ -12,31 +12,56 @@ const ModalContainer = styled.div`
   transform: translate(-50%, -60%);
   cursor: pointer;
   .confirmationWrapper {
-    // TODO: tutaj ogarniasz theme
-    background: ${(props) =>
-      props.red
-        ? COLORS.negative100
-        : props.yellow
-        ? COLORS.warning100
-        : props.blue
-        ? COLORS.primary201
-        : COLORS.warning600};
+    ${(props) =>
+      props.theme &&
+      `
+        color: ${props.theme.color};
+        background: ${props.theme.background};`}
 
     width: 100%;
     height: 191px;
     border-radius: 12px 12px 0px 0px;
+    /* padding: 19px 31px; */
+
+    display: flex;
+    /* align-items: center;*/
+    flex-direction: column;
+    justify-content: space-around;
+    /* align-content: center; */
+    .title {
+      ${FONTS.h3};
+      /* margin: 0 0 25px 0; */
+    }
+    .about,
+    .confirmation {
+      ${FONTS.caption};
+      /* margin: 0 0 20px 0; */
+    }
   }
 
   .modalBackWrapper {
     width: 100%;
     height: 115px;
-    left: 0px;
-    top: 191px;
-
     background: #fff8f8;
     border-radius: 0px 0px 12px 12px;
-    p {
-      margin: 0;
+    display: flex;
+    align-items: center;
+    border: none;
+    .modalBack {
+      width: 100%;
+      margin: 0 25px;
+      display: flex;
+      align-items: center;
+      .arrow {
+        font-size: 30px;
+        color: ${COLORS.grey400};
+      }
+      .back {
+        ${FONTS.caption};
+        color: ${COLORS.grey400};
+        margin: 0 0 0 15px;
+        text-align: left;
+      }
     }
   }
 `;

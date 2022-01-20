@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from './SpecialButtonsContainerStyled';
-// import propTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 const SpecialButtonsContainer = ({
   openDisqualifyModalHandler,
@@ -20,7 +19,9 @@ const SpecialButtonsContainer = ({
 };
 
 SpecialButtonsContainer.propTypes = {
-  // handler: propTypes.func.isRequired,
+  handler: propTypes.func,
+  openDisqualifyModalHandler: propTypes.func,
+  openPenaltyModalHandler: propTypes.func,
 };
 
 export default SpecialButtonsContainer;
