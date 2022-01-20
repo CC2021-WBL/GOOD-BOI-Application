@@ -13,7 +13,7 @@ const ContestComponentStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  border: solid 0.5px ${COLORS.grey200};
+  border: solid 1px ${COLORS.grey200};
   border-radius: 0.75rem;
 `;
 

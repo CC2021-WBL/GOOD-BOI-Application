@@ -7,7 +7,7 @@ import {
   ContestInsideElementStyled,
 } from './ContestComponenyStyled';
 import { getDataFormatDdMonthYyy } from '../../Tools/TimeFunctions';
-import { useState, useEffect } from 'react/cjs/react.development';
+import { useState, useEffect } from 'react';
 
 // import { useNavigate } from 'react-router-dom';
 
