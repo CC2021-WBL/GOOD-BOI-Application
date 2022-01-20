@@ -11,9 +11,11 @@ const validateData = (formData) => {
 
   if (!formData.password) {
     errors.password = 'Hasło jest wymagane';
+  } else if (formData.password.length < 4) {
+    errors.password = 'Hasło musi mieć więcej niż 4 znaki';
   }
 
-  if (formData.reapeatpass !== formData.password) {
+  if (formData.repeatpass.trim() !== formData.password.trim()) {
     errors.repeatpass = 'Powtórzone hasło różni się';
   }
 

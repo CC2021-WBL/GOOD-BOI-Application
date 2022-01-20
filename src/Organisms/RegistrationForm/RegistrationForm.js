@@ -1,53 +1,14 @@
-// import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-
+import useForm from './useForm.js';
+import validateData from './validateData';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 import CheckboxAgreeField from '../../Atoms/CheckboxAgreeField/CheckboxAgreeField';
-import useForm from './useForm';
-import validateData from './validateData';
 
 const RegistrationForm = () => {
   const { handleInputChange, submitHandler, formData, errors } =
     useForm(validateData);
-
-  //--------------------
-
-  // const initialState = {
-  //   firstname: '',
-  //   surname: '',
-  //   email: '',
-  //   password: '',
-  //   ['repeat-password']: '',
-  //   street: '',
-  //   zipcode: '',
-  //   city: '',
-  // };
-
-  // const [formData, setFormData] = useState(initialState);
-  // const navigate = useNavigate();
-
-  // const submitHandler = (event) => {
-  //   event.preventDefault();
-  //   setFormData({
-  //     ...formData,
-  //     [event.target.id]: event.target.value,
-  //   });
-  //   const data = { ...formData };
-
-  //   //test, after submit, entered user data
-  //   console.log(data);
-  //   navigate('/login');
-  // };
-
-  // const handleInputChange = (event) => {
-  //   setFormData({
-  //     ...formData,
-  //     [event.target.id]: event.target.value,
-  //   });
-  // };
 
   return (
     <CardWrapper>
@@ -76,7 +37,7 @@ const RegistrationForm = () => {
           onChange={handleInputChange}
         />
 
-        {/* {errors.password && <p>{errors.password}</p>} */}
+        {errors.password && <p>{errors.password}</p>}
 
         <InputField
           labelText="Powtórz Hasło"
@@ -88,10 +49,8 @@ const RegistrationForm = () => {
           value={formData.repeatpass}
           onChange={handleInputChange}
         />
-        {formData.repeatpass}
-        {formData.password}
 
-        {/* {errors.repeatpass ? <p>{errors.repeatpass}</p> : null} */}
+        {errors.repeatpass && <p>{errors.repeatpass}</p>}
 
         <InputField
           labelText="Imię"
