@@ -1,14 +1,18 @@
+import { Link } from 'react-router-dom';
 import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
-import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
+
 import MainButton from '../../Atoms/MainButton/MainButton';
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 
 const RolePage = () => {
   return (
     <CardWrapper>
-      <FormWrapper>
+      <ColumnWrapper>
         <h1> Choose Your Role!</h1>
-        <MainButton text="Obsługa" primary />
-      </FormWrapper>
+        <Link to="/contests" style={{ textDecoration: 'none' }}>
+          <MainButton text="Obsługa" primary />
+        </Link>
+      </ColumnWrapper>
     </CardWrapper>
   );
 };
