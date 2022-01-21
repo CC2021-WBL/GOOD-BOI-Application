@@ -8,6 +8,14 @@ const FormWrapperStyled = styled.form`
   flex-direction: column;
   width: 100%;
 
+  p {
+    color: red;
+    align-self: flex-start;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 0 0 0 10px;
+  }
+
   .forgot-pass {
     padding: 1em 0;
     text-decoration: none;

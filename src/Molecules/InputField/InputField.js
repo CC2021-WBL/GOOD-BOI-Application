@@ -6,7 +6,7 @@ const InputField = ({
   id,
   type,
   placeholder,
-  required,
+  // required,
   value,
   onChange,
   htmlFor,
@@ -19,7 +19,7 @@ const InputField = ({
         id={id}
         type={type}
         placeholder={placeholder}
-        required={required}
+        // required={required}
         value={value}
         onChange={onChange}
       />
@@ -33,7 +33,7 @@ InputField.propTypes = {
   id: propTypes.string.isRequired,
   type: propTypes.string.isRequired,
   placeholder: propTypes.string,
-  required: propTypes.bool.isRequired,
+  // required: propTypes.bool.isRequired,
   value: propTypes.string,
   onChange: propTypes.func.isRequired,
 };
