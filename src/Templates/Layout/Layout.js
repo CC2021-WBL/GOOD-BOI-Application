@@ -6,8 +6,8 @@ import NavElement from '../../Organisms/NavElement/NavElement';
 const Layout = () => {
   return (
     <>
-      <NavElement text="test2" />
-      <GreyLabel text="Fixme" />
+      <NavElement text="WannaBe" />
+      <GreyLabel text="Make me Dynamic Please!" />
       <Outlet />
       <Footer />
     </>
