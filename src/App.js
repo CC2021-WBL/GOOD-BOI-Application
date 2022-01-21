@@ -12,6 +12,7 @@ import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
 import LandingPage from './Pages/LandingPage/LandingPage';
+import RegisterDoggoPage from './Pages/RegisterDoggoPage/RegisterDoggoPage';
 
 const SingleContestPage = () => {
   return <h1>I am a single Contest Page Component</h1>;
@@ -26,6 +27,7 @@ function App() {
           <Route path="register" element={<RegistrationForm />} />
           <Route path="forgot" element={<ForgotPassForm />} />
           <Route path="contests" element={<ContestsPage />} />
+          <Route path="registerDoggo" element={<RegisterDoggoPage />}></Route>
           <Route path="contests/:contestsId" element={<SingleContestPage />} />
           <Route
             path="contests/:contestsId/classes"
