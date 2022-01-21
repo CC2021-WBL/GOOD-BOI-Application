@@ -18,6 +18,7 @@ import UnregisteredPage from './Pages/UnregisteredPage/UnregisteredPage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 
 import './App.css';
+import LayoutWithLabel from './Templates/LayoutWithLabel/LayoutWithLabel';
 
 function App() {
   return (
@@ -31,9 +32,11 @@ function App() {
           <Route path="register" element={<RegistrationForm />} />
           <Route path="unRegistered" element={<UnregisteredPage />} />
           <Route path="login" element={<LoginForm />} />
+        </Route>
+        <Route element={<LayoutWithLabel />}>
           <Route path="role" element={<RolePage />} />
           <Route path="contests" element={<ContestsPage />}>
-            <Route path=":contestId/classes" element={<ClassesPage />}></Route>
+            <Route path="/contests/:contestId" element={<ClassesPage />} />
             <Route path=":classId" element={<LeaderboardPage />}>
               <Route path="leaderboard" element={<ClassSummaryPage />} />
               <Route path=":dogId" element={<ExercisesPage />}>
