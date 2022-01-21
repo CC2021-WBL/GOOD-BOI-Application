@@ -21,7 +21,7 @@ const modalData = {
       color: `${COLORS.negative600}`,
     },
   },
-  evaluate: {
+  endEvaluation: {
     title: 'ZAKOŃCZ OCENIANIE',
     about: 'Kliknięcie = zamknięcie formularza i wyświetlenie podsumowania ',
     back: 'wróć do formularza oceny',
@@ -30,7 +30,7 @@ const modalData = {
       color: `${COLORS.primary601}`,
     },
   },
-  end: {
+  endContest: {
     title: 'ZAKOŃCZ KONKURS',
     about: 'Kliknięcie spowoduje ZAMKNIĘCIE KONKURSU',
     back: 'wróć do formularza oceny',

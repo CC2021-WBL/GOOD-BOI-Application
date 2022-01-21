@@ -12,7 +12,7 @@ import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
 import LandingPage from './Pages/LandingPage/LandingPage';
-
+import ModalsTest from './Pages/ModalsTest';
 const SingleContestPage = () => {
   return <h1>I am a single Contest Page Component</h1>;
 };
@@ -47,6 +47,7 @@ function App() {
             path="contests/:contestsId/classes/:classId/leaderboard"
             element={<ClassSummaryPage />}
           />
+          <Route path="ModalsTest" element={<ModalsTest />} />
         </Route>
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
