@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import { BsChevronLeft } from 'react-icons/bs';
-import { NavElementStyled } from './NavElementStyled';
-import LinkWrapperStyled from '../../Atoms/NavElementStyled/LinkWrapperStyled';
-import AppLogo from '../../Assets/AppLogo.png';
 import { useNavigate } from 'react-router-dom';
+
+import AppLogo from '../../Assets/AppLogo.png';
 import LogoStyled from '../../Atoms/NavElementStyled/LogoStyled';
+import LinkWrapperStyled from '../../Atoms/NavElementStyled/LinkWrapperStyled';
+
+import { NavElementStyled } from './NavElementStyled';
 
 const NavElement = ({ text }) => {
   const navigate = useNavigate();
