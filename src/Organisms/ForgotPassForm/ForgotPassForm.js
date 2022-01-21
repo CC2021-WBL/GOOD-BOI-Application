@@ -12,7 +12,6 @@ const ForgotPassForm = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    //test, after submit, entered user data
     const data = { email };
     console.log(data);
     navigate('/login');
@@ -21,8 +20,10 @@ const ForgotPassForm = () => {
   return (
     <CardWrapper>
       <FormWrapper onSubmit={submitHandler}>
+        <p className="forgot-pass">Zapomniałeś hasła ?</p>
+        <div>Wpisz maila na którego mamy wysłać nowe hasło</div>
         <InputField
-          labelText="Na jaki email wysłać powiadomienie ?"
+          labelText="Email"
           htmlFor="email"
           type="email"
           placeholder="&#xf0e0; Email"
@@ -31,7 +32,7 @@ const ForgotPassForm = () => {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
-        <MainButton primary text="Potwierdź" />
+        <MainButton primary text="Resetuj Hasło" />
       </FormWrapper>
     </CardWrapper>
   );
