@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import modalData from '../../Consts/modalData';
+import modalData from '../../Data/modalData';
 import Modal from '../../Organisms/Modals/Modal';
-import Backdrop from '../../Organisms/Modals/Backdrop';
+import Backdrop from '../../Atoms/Modal/Backdrop';
 import DOGS from '../../Data/Dummy-data/test-data-dogs';
 import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
 import SpecialButtonsContainer from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainer';
