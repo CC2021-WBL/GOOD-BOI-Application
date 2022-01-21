@@ -1,5 +1,5 @@
 const RolePage = () => {
-  return <h1> I am role selection page</h1>;
+  return <h1> Choose Your Role!</h1>;
 };
 
 export default RolePage;

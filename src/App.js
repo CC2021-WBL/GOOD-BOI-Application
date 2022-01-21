@@ -26,25 +26,18 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route element={<Layout />}>
           <Route path="forgot" element={<ForgotPassForm />} />
-          <Route path="login" element={<LoginForm />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="contactForm" element={<ContactFormPage />} />
           <Route path="register" element={<RegistrationForm />} />
           <Route path="unRegistered" element={<UnregisteredPage />} />
-          <Route path="role" element={<RolePage />}>
-            <Route path="contests" element={<ContestsPage />}>
-              <Route
-                path=":contestId/classes"
-                element={<ClassesPage />}
-              ></Route>
-              <Route path=":classId" element={<LeaderboardPage />}>
-                <Route path="leaderboard" element={<ClassSummaryPage />} />
-                <Route path=":dogId" element={<ExercisesPage />}>
-                  <Route
-                    path=":dogId/dogSummary"
-                    element={<DogSummaryPage />}
-                  />
-                </Route>
+          <Route path="login" element={<LoginForm />} />
+          <Route path="role" element={<RolePage />} />
+          <Route path="contests" element={<ContestsPage />}>
+            <Route path=":contestId/classes" element={<ClassesPage />}></Route>
+            <Route path=":classId" element={<LeaderboardPage />}>
+              <Route path="leaderboard" element={<ClassSummaryPage />} />
+              <Route path=":dogId" element={<ExercisesPage />}>
+                <Route path=":dogId/dogSummary" element={<DogSummaryPage />} />
               </Route>
             </Route>
           </Route>
