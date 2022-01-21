@@ -5,7 +5,7 @@ const LeaderboardListElementStyled = styled.div`
   display: flex;
   align-self: center;
   width: 100%;
-  min-height: 3rem;
+  height: 3rem;
   color: black;
   background: transparent;
   border: none;
@@ -14,6 +14,8 @@ const LeaderboardListElementStyled = styled.div`
   ${FONTS.body_semibold};
   justify-content: space-between;
   align-items: center;
+  white-space: nowrap;
+  overflow-y: scroll;
   &:hover {
     background: #f5f5f5;
   }
