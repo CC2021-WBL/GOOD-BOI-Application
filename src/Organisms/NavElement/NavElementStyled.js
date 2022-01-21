@@ -8,7 +8,7 @@ export const NavElementStyled = styled.div`
   align-items: center;
   width: 100%;
   height: 3.75rem;
-  border: 0.5px solid ${COLORS.grey400};
+  border-bottom: 0.5px solid ${COLORS.grey400};
   padding: 0 1rem 0 0.563rem;
 
   .navText {
