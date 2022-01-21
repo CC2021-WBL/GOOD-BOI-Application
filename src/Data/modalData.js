@@ -23,7 +23,8 @@ const modalData = {
   },
   endEvaluation: {
     title: 'ZAKOŃCZ OCENIANIE',
-    about: 'Kliknięcie = zamknięcie formularza i wyświetlenie podsumowania ',
+    about: 'Kliknięcie spowoduje zamkniecie formularza oceny zawodnika.',
+    confirmation: 'CZY POTWIERDZASZ?',
     back: 'wróć do formularza oceny',
     theme: {
       background: `${COLORS.primary101}`,
@@ -32,7 +33,8 @@ const modalData = {
   },
   endContest: {
     title: 'ZAKOŃCZ KONKURS',
-    about: 'Kliknięcie spowoduje ZAMKNIĘCIE KONKURSU',
+    about: 'Kliknięcie spowoduje zamkniecie wszystkich formularzy zawodników',
+    confirmation: 'CZY POTWIERDZASZ?',
     back: 'wróć do formularza oceny',
     theme: {
       background: `${COLORS.primary101}`,
@@ -41,7 +43,9 @@ const modalData = {
   },
 
   goodRegistration: {
-    title: 'Rejestracja udana. Kliknij tu, żeby się zalogować',
+    title: 'Rejestracja udana.',
+    about: 'Cieszymy się, że z nami jesteś!',
+    confirmation: 'KLIKNIJ TU, ŻEBY SIĘ ZALOGOWAĆ.',
     back: 'wróć do strony głównej',
     theme: {
       background: `${COLORS.positive100}`,
@@ -51,6 +55,8 @@ const modalData = {
 
   badRegistration: {
     title: 'Rejestracja nieudana',
+    about: 'Coś poszło nie tak.',
+    confirmation: 'SPRÓBUJ PONOWNIE PÓŹNIEJ',
     back: 'Wróć do formularza rejestacji ',
     theme: {
       background: `${COLORS.negative100}`,
