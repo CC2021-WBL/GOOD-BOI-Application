@@ -19,7 +19,7 @@ const ExercisesPage = () => {
     setIsDisqualifyModalOpen(false);
   };
   const handlePenalty = () => {
-    console.log(`Doggo o imieniu ${ourTestDogName} ma mniej o 10pkt`);
+    console.log(`Doggo o imieniu ${ourTestDogName} dostaje żółtą kartkę`);
     setIsPenaltyModalOpen(false);
   };
   const openDisqualifyModalHandler = () => {

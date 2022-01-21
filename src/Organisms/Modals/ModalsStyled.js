@@ -21,21 +21,19 @@ const ModalContainer = styled.div`
     width: 100%;
     height: 191px;
     border-radius: 12px 12px 0px 0px;
-    /* padding: 19px 31px; */
+    padding: 19px 31px;
 
     display: flex;
-    /* align-items: center;*/
+
     flex-direction: column;
-    justify-content: space-around;
-    /* align-content: center; */
+    justify-content: space-between;
+
     .title {
       ${FONTS.h3};
-      /* margin: 0 0 25px 0; */
     }
     .about,
     .confirmation {
       ${FONTS.caption};
-      /* margin: 0 0 20px 0; */
     }
   }
 
@@ -47,15 +45,18 @@ const ModalContainer = styled.div`
     display: flex;
     align-items: center;
     border: none;
+
     .modalBack {
       width: 100%;
       margin: 0 25px;
       display: flex;
       align-items: center;
+
       .arrow {
         font-size: 30px;
         color: ${COLORS.grey400};
       }
+
       .back {
         ${FONTS.caption};
         color: ${COLORS.grey400};
