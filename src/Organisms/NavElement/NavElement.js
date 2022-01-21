@@ -7,6 +7,7 @@ import LogoStyled from '../../Atoms/NavElementStyled/LogoStyled';
 import LinkWrapperStyled from '../../Atoms/NavElementStyled/LinkWrapperStyled';
 
 import { NavElementStyled } from './NavElementStyled';
+import { Link } from 'react-router-dom';
 
 const NavElement = ({ text }) => {
   const navigate = useNavigate();
@@ -20,7 +21,9 @@ const NavElement = ({ text }) => {
 
       <h1 className="navText">{text}</h1>
       <LogoStyled>
-        <img src={AppLogo} alt="Logo aplikacji" className="logo" />
+        <Link to="/">
+          <img src={AppLogo} alt="Logo aplikacji" className="logo" />
+        </Link>
       </LogoStyled>
     </NavElementStyled>
   );
