@@ -17,7 +17,6 @@ const InputFieldStyled = styled.input`
   &::placeholder {
     color: ${COLORS.grey400};
   }
-
   &:focus {
     border: 0.5px solid transparent;
     outline: 3px solid ${COLORS.primary201};
