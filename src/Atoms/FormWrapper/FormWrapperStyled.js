@@ -19,8 +19,13 @@ const FormWrapperStyled = styled.form`
   .forgot-pass {
     padding: 1em 0;
     text-decoration: none;
-    ${FONTS.label_extrabold}
+    ${FONTS.body_bold}
     color: ${COLORS.primary801};
+  }
+
+  div {
+    padding: 0 30px 10px;
+    color: ${COLORS.grey400};
   }
 `;
 
