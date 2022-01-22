@@ -35,13 +35,24 @@ function App() {
         </Route>
         <Route element={<LayoutWithLabel />}>
           <Route path="role" element={<RolePage />} />
-          <Route path="contests" element={<ContestsPage />}>
-            <Route path="/contests/:contestId" element={<ClassesPage />} />
-            <Route path=":classId" element={<LeaderboardPage />}>
-              <Route path="leaderboard" element={<ClassSummaryPage />} />
-              <Route path=":dogId" element={<ExercisesPage />}>
-                <Route path=":dogId/dogSummary" element={<DogSummaryPage />} />
-              </Route>
+          <Route path="contests" element={<ContestsPage />} />
+          <Route path="contests/:contestId/classes" element={<ClassesPage />} />
+          <Route
+            path="contests/:contestId/classes/:classId"
+            element={<LeaderboardPage />}
+          >
+            <Route
+              path="contests/:contestId/classes/:classId/leaderboard"
+              element={<ClassSummaryPage />}
+            />
+            <Route
+              path="contests/:contestId/classes/:classId/:dogId"
+              element={<ExercisesPage />}
+            >
+              <Route
+                path="contests/:contestId/classes/:classId/:dogId/dogSummary"
+                element={<DogSummaryPage />}
+              />
             </Route>
           </Route>
         </Route>
