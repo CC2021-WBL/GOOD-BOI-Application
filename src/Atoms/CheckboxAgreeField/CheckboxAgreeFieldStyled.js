@@ -16,8 +16,9 @@ const CheckboxAgreeFieldStyled = styled.div`
     margin: 0 10px 0 0;
     padding: 0 5px;
   }
-  div {
+  .checkbox-text {
     font-size: 1rem;
+    padding: 10px 0;
   }
 `;
 

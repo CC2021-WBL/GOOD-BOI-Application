@@ -10,7 +10,7 @@ const FormWrapperStyled = styled.form`
 
   p {
     color: red;
-    align-self: flex-start;
+    align-self: center;
     font-size: 10px;
     letter-spacing: 1px;
     padding: 0 0 0 10px;
@@ -23,7 +23,7 @@ const FormWrapperStyled = styled.form`
     color: ${COLORS.primary801};
   }
 
-  div {
+  .forgot-pass-text {
     padding: 0 30px 10px;
     color: ${COLORS.grey400};
   }

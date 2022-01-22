@@ -5,7 +5,7 @@ const CheckboxAgreeField = ({ text }) => {
   return (
     <CheckboxAgreeFieldStyled>
       <input type="checkbox" required />
-      <div>{text}</div>
+      <div className="checkbox-text">{text}</div>
     </CheckboxAgreeFieldStyled>
   );
 };
