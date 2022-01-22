@@ -7,7 +7,12 @@ const DoggoForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      pedigreeName: '',
+      kennelName: '',
+    },
+  });
 
   console.log(errors);
 
@@ -23,6 +28,7 @@ const DoggoForm = () => {
           {...register('pedigreeName', { required: true })}
           placeholder="Imię rodowodowe"
         />
+        <p>{errors.pedigreeName?.message}</p>
         <input
           {...register('kennelName', {
             required: true,
@@ -36,7 +42,11 @@ const DoggoForm = () => {
           })}
           placeholder="Pełna rasa psa / suki"
         />
-        <input {...register('sex', { required: true })} placeholder="płeć" />
+        <p>Wybierz płeć</p>
+        <select {...register('gender', { required: true })}>
+          <option value="female">suka</option>
+          <option value="male">pies</option>
+        </select>
         <input
           {...register('dateOfBirth', { required: true })}
           placeholder="Data urodzenia"
