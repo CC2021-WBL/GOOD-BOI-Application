@@ -1,6 +1,7 @@
 import propTypes from 'prop-types';
-import LeaderboardListElement from './LeaderboardListElement';
+
 import LeaderboardListStyled from './LeaderboardListStyled';
+import LeaderboardListElement from './../../Atoms/Leaderboard/LeaderboardListElement';
 
 const LeaderboardList = ({ result }) => {
   return (

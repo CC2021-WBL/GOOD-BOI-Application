@@ -1,6 +1,6 @@
 import SummaryLineStyled from './SummaryLineStyled';
 import propTypes from 'prop-types';
-import { penaltyScore } from './TotalDogScoreCalc';
+import { penaltyScore } from './totalDogScoreCalc';
 
 const SummaryLine = ({ result }) => {
   const scoresArr = result.map((score) => {
