@@ -1,16 +1,19 @@
-import './App.css';
-import ClassCompetitorsPage from './Pages/ClassCompetitorsPage/ClassCompetitorsPage';
-import ClassesPage from './Pages/ClassesPage/ClassesPage';
-import ClassSummaryPage from './Pages/ClassSummaryPage/ClassSummaryPage';
-import ContestsPage from './Pages/ContestsPage/ContestsPage';
-import ExercisesPage from './Pages/ExercisesPage/ExercisesPage';
-import HomePage from './Pages/HomePage/HomePage';
-import LoginPage from './Pages/LoginPage/LoginPage';
-import SingleSummaryPage from './Pages/SingleSummaryPage/SingleSummaryPage';
 import { Route, Routes } from 'react-router-dom';
-import Footer from './Molecules/Footer/Footer';
-import ForgotPassPage from './Pages/ForgotPassPage/ForgotPassPage';
+import Layout from './Templates/Layout/Layout';
+import LoginForm from './Organisms/LoginForm/LoginForm';
+import ClassesPage from './Pages/ClassesPage/ClassesPage';
+import LandingPage from './Pages/LandingPage/LandingPage';
+import ContestsPage from './Pages/ContestsPage/ContestsPage';
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
+import ExercisesPage from './Pages/ExercisesPage/ExercisesPage';
+import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
+import ClassSummaryPage from './Pages/ClassSummaryPage/ClassSummaryPage';
+import SingleSummaryPage from './Pages/SingleSummaryPage/SingleSummaryPage';
+import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
+import ClassCompetitorsPage from './Pages/ClassCompetitorsPage/ClassCompetitorsPage';
+import Footer from './Molecules/Footer/Footer';
+
+import './App.css';
 
 const SingleContestPage = () => {
   return (
@@ -24,31 +27,26 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<HomePage />}>
-          <Route path="login" element={<LoginPage />} />
-          <Route path="forgot" element={<ForgotPassPage />} />
-          <Route path="contests" element={<ContestsPage />} />
-          <Route path="contests/:contestsId" element={<SingleContestPage />} />
-          <Route
-            path="contests/:contestsId/classes"
-            element={<ClassesPage />}
-          />
-          <Route
-            path="contests/:contestsId/classes/:classId"
-            element={<ClassCompetitorsPage />}
-          />
-          <Route
-            path="contests/:contestsId/classes/:classId/:dogId"
-            element={<ExercisesPage />}
-          />
-          <Route
-            path="contests/:contestsId/classes/:classId/:dogId/summary"
-            element={<SingleSummaryPage />}
-          />
-          <Route
-            path="contests/:contestsId/classes/:classId/leaderboard"
-            element={<ClassSummaryPage />}
-          />
+        <Route path="/" element={<LandingPage />} />
+        <Route element={<Layout />}>
+          <Route path="forgot" element={<ForgotPassForm />} />
+          <Route path="login" element={<LoginForm />} />
+          <Route path="register" element={<RegistrationForm />} />
+          <Route path="contests" element={<ContestsPage />}>
+            <Route path=":contestsId" element={<SingleContestPage />} />
+            <Route path=":contestsId/classes" element={<ClassesPage />}>
+              <Route path=":classId" element={<ClassCompetitorsPage />} />
+              <Route
+                path=":classId/leaderboard"
+                element={<ClassSummaryPage />}
+              />
+              <Route path=":classId/:dogId" element={<ExercisesPage />} />
+              <Route
+                path=":classId/:dogId/summary"
+                element={<SingleSummaryPage />}
+              />
+            </Route>
+          </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
