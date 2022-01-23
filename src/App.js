@@ -12,6 +12,7 @@ import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
 import LandingPage from './Pages/LandingPage/LandingPage';
+import ContactForm from './Pages/ContactFormPage/ContactFormPage';
 
 const SingleContestPage = () => {
   return <h1>I am a single Contest Page Component</h1>;
@@ -49,6 +50,7 @@ function App() {
           />
         </Route>
         <Route path="*" element={<NotFoundPage />}></Route>
+        <Route path="contactForm" element={<ContactForm />}></Route>
       </Routes>
     </div>
   );
