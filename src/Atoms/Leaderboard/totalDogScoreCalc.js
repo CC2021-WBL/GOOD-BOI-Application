@@ -1,4 +1,4 @@
-import WYNIK_RANDOMOWEGO_PSA from './../../Data/Dummy-data/RandomDogResult';
+import WYNIK_RANDOMOWEGO_PSA from '../../Data/Dummy-data/RandomDogResult';
 
 //jesli istnieje to zlicz punkty penalty
 // najpierw trzeba stworzyc nowa tablice z penalty
