@@ -8,7 +8,7 @@ export const Div = styled.div`
 `;
 
 export const FooterProfileButtonStyled = styled.button`
-  font-size: 26px;
+  font-size: 1.625rem;
   color: ${COLORS.grey400};
   display: flex;
   flex-direction: column;
@@ -19,7 +19,4 @@ export const FooterProfileButtonStyled = styled.button`
   height: 50px;
   background: transparent;
   border: none;
-  &:hover {
-    background: #f5f5f5;
-  }
 `;
