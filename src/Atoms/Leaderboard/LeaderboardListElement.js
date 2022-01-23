@@ -4,10 +4,9 @@ import LeaderboardListElementStyled from './LeaderboardListElementStyled';
 const LeaderboardListElement = ({ text, score, index }) => {
   return (
     <LeaderboardListElementStyled>
-      <div className="justifyLeft">
-        {index + 1}. {text}
-      </div>
-      <div className="justifyRight">{score}</div>
+      <div className="index">{index + 1}.</div>
+      <div className="excersizes">{text}</div>
+      <div className="points">{score}</div>
     </LeaderboardListElementStyled>
   );
 };
