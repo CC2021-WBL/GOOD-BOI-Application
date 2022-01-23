@@ -10,7 +10,7 @@ const FormWrapperStyled = styled.form`
 
   p {
     color: red;
-    align-self: center;
+    align-self: flex-start;
     font-size: 10px;
     letter-spacing: 1px;
     padding: 0 0 0 10px;
