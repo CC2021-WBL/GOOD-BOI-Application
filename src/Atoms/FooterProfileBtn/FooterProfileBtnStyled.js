@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import FONTS from '../../Styles/fontsStyledComponents';
 import COLORS from '../../Styles/varsStyledComponents';
 
-export const ProfileBtnWrapper = styled.button`
+export const ProfileBtnWrapper = styled.div`
   font-size: 26px;
   color: ${COLORS.grey400};
   display: flex;
@@ -14,9 +14,7 @@ export const ProfileBtnWrapper = styled.button`
   height: 50px;
   background: transparent;
   border: none;
-  &:hover {
-    background: #f5f5f5;
-  }
+  cursor: default;
 `;
 
 export const Div = styled.div`

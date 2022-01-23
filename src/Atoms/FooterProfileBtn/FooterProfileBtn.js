@@ -3,9 +3,7 @@ import { FaUserCircle } from 'react-icons/fa';
 import { ProfileBtnWrapper } from './FooterProfileBtnStyled';
 import { Div } from './FooterProfileBtnStyled';
 
-function clickHandler() {
-  console.log('clicked profie button');
-}
+function clickHandler() {}
 const ProfileBtn = () => {
   return (
     <>

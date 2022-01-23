@@ -20,6 +20,6 @@ export const FooterProfileButtonStyled = styled.button`
   background: transparent;
   border: none;
   &:hover {
-    background: #f5f5f5;
+    background: red;
   }
 `;

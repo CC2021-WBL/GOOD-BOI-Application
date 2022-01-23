@@ -9,9 +9,11 @@ export const FooterWrapper = styled.div`
   display: flex;
   flex-direction: flex;
   justify-content: space-between;
-  margin: 0 25px;
-  height: 77px;
+  margin: 0;
+  padding: 0 1rem;
+  height: 4.8125rem;
   border-top: 2px solid ${COLORS.grey00};
+  background: white;
 `;
 
 export const LogoWrapper = styled.div`
