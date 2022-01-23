@@ -10,6 +10,7 @@ const TextArea = ({
   onChange,
   htmlFor,
   labelText,
+  name,
 }) => {
   return (
     <>
@@ -20,6 +21,7 @@ const TextArea = ({
         required={required}
         value={value}
         onChange={onChange}
+        name={name}
       />
     </>
   );
@@ -34,6 +36,7 @@ TextArea.propTypes = {
   required: propTypes.bool.isRequired,
   value: propTypes.string,
   onChange: propTypes.func.isRequired,
+  name: propTypes.string.isRequired,
 };
 
 export default TextArea;

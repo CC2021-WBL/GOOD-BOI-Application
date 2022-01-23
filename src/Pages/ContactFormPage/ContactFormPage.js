@@ -19,7 +19,7 @@ const ContactForm = () => {
   const navigate = useNavigate();
   // const form = useRef();
   const submitHandler = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     setFormData({
       ...formData,
       [event.target.id]: event.target.value,
@@ -34,8 +34,8 @@ const ContactForm = () => {
 
     emailjs
       .sendForm(
-        'service_z1iu8bd',
-        'contact_form',
+        'service_ypr0zj8',
+        'template_z0d7tqj',
         event.target,
         'user_pR6XzZUshqc9XuxuBLUzf',
       )
@@ -47,6 +47,8 @@ const ContactForm = () => {
           console.log(error.text);
         },
       );
+
+    console.log(event.target);
   };
 
   const handleInputChange = (event) => {
@@ -58,7 +60,7 @@ const ContactForm = () => {
 
   return (
     <CardWrapper>
-      <FormWrapper onSubmit={submitHandler}>
+      <FormWrapper onSubmit={submitHandler} id="form">
         <InputField
           labelText="Email"
           htmlFor="email"
