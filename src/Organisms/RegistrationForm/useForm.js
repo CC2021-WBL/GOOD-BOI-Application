@@ -14,7 +14,7 @@ const useForm = (callback, validateData) => {
 
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState({});
-  const [isSumbmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (event) => {
     const { id, value } = event.target;
@@ -23,7 +23,6 @@ const useForm = (callback, validateData) => {
       [id]: value,
     });
   };
-  //   const navigate = useNavigate();
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -35,7 +34,7 @@ const useForm = (callback, validateData) => {
   };
 
   useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSumbmitting) {
+    if (Object.keys(errors).length === 0 && isSubmitting) {
       callback();
     }
   }, [errors]);
