@@ -13,12 +13,13 @@ import ExercisesPage from './Pages/ExercisesPage/ExercisesPage';
 import DogSummaryPage from './Pages/DogSummaryPage/DogSummaryPage';
 import LeaderboardPage from './Pages/LeaderboardPage/LeaderboardPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
-import ClassSummaryPage from './Pages/ClassSummaryPage/ClassSummaryPage';
+// import ClassSummaryPage from './Pages/ClassSummaryPage/ClassSummaryPage';
 import UnregisteredPage from './Pages/UnregisteredPage/UnregisteredPage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 
 import './App.css';
 import LayoutWithLabel from './Templates/LayoutWithLabel/LayoutWithLabel';
+import ClassCompetitorsPage from './Pages/ClassCompetitorsPage/ClassCompetitorsPage';
 
 function App() {
   return (
@@ -39,22 +40,20 @@ function App() {
           <Route path="contests/:contestId/classes" element={<ClassesPage />} />
           <Route
             path="contests/:contestId/classes/:classId"
+            element={<ClassCompetitorsPage />}
+          />
+          <Route
+            path="contests/:contestId/classes/:classId/leaderboard"
             element={<LeaderboardPage />}
-          >
-            <Route
-              path="contests/:contestId/classes/:classId/leaderboard"
-              element={<ClassSummaryPage />}
-            />
-            <Route
-              path="contests/:contestId/classes/:classId/:dogId"
-              element={<ExercisesPage />}
-            >
-              <Route
-                path="contests/:contestId/classes/:classId/:dogId/dogSummary"
-                element={<DogSummaryPage />}
-              />
-            </Route>
-          </Route>
+          />
+          <Route
+            path="contests/:contestId/classes/:classId/:dogId"
+            element={<ExercisesPage />}
+          />
+          <Route
+            path="contests/:contestId/classes/:classId/:dogId/dogSummary"
+            element={<DogSummaryPage />}
+          />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
