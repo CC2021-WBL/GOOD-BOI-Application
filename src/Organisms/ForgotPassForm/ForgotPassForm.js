@@ -21,7 +21,9 @@ const ForgotPassForm = () => {
     <CardWrapper>
       <FormWrapper onSubmit={submitHandler}>
         <p className="forgot-pass">Zapomniałeś hasła ?</p>
-        <div>Wpisz maila na którego mamy wysłać nowe hasło</div>
+        <div className="forgot-pass-text">
+          Wpisz maila na którego mamy wysłać nowe hasło
+        </div>
         <InputField
           labelText="Email"
           htmlFor="email"
