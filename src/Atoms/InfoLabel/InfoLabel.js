@@ -35,10 +35,7 @@ const InfoLabel = ({
       dogsAmount={dogsAmount}
     >
       {/*CONDITIONAL FOR DATE */}
-      {dateTextInfo === TIME.PAST && !dogsAmount && <>{TIME.PAST}</>}
-      {dateTextInfo === TIME.PRESENT && !dogsAmount && <>{TIME.PRESENT}</>}
-      {dateTextInfo === TIME.FUTURE && !dogsAmount && <>{TIME.FUTURE}</>}
-      {dateTextInfo === TIME.UNKNOW && !dogsAmount && <>{TIME.UNKNOWN}</>}
+      {dateTextInfo && !dogsAmount && <>{dateTextInfo}</>}
 
       {/*CONDITIONAL FOR CLASSES */}
       {classInfo && isCompleted && <>ukończono</>}

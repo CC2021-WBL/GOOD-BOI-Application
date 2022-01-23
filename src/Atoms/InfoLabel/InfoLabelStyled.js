@@ -15,7 +15,9 @@ const InfoLabelStyled = styled.label`
   border-radius: 0.25rem;
   line-height: 1em;
   ${(props) =>
-    props.dateTextInfo === TIME.PRESENT || props.isClassCompleted
+    props.dateTextInfo === TIME.PRESENT ||
+    props.isClassCompleted ||
+    props.areExercisesCompleted
       ? `background: ${COLORS.positive100}; color: ${COLORS.positive600};  border: solid 1px  ${COLORS.positive600};`
       : ``};
   ${(props) =>
@@ -27,11 +29,8 @@ const InfoLabelStyled = styled.label`
       ? `background: ${COLORS.grey100}; color: ${COLORS.grey800};  border: solid 1px  ${COLORS.grey800};`
       : ``};
   ${(props) =>
-    props.areExercisesCompleted
-      ? `background: ${COLORS.positive200}; color: ${COLORS.positive600};  border: solid 1px  ${COLORS.positive600};`
-      : ``};
-  ${(props) =>
-    props.dogsAmount
+    (props.dogsAmount && props.isClassCompleted === false) ||
+    (props.dogsAmount && props.dateTextInfo)
       ? `background: ${COLORS.white}; color: ${COLORS.grey800};  border: solid 1px  ${COLORS.grey800};`
       : ``};
   ${(props) =>
