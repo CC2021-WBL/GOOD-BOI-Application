@@ -1,13 +1,12 @@
 import styled from 'styled-components';
+import FONTS from '../../Styles/fontsStyledComponents';
 
 const CheckboxAgreeFieldStyled = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
   text-align: left;
-  font-size: 0.875rem;
-  line-height: 15.96px;
-  letter-spacing: 0.2px;
+  ${FONTS.caption}
 
   input[type='checkbox'] {
     cursor: pointer;
