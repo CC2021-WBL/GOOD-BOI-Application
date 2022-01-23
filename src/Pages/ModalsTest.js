@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import modalData from '../Data/modalData';
-import Modal from '../Organisms/Modals/Modal';
+import Modal from '../Organisms/Modal/Modal';
 import Backdrop from '../Atoms/Modal/Backdrop';
 const ModalsTestWrapper = styled.div`
   width: 100%;

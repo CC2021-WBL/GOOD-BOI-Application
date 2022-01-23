@@ -1,5 +1,5 @@
 import propTypes from 'prop-types';
-import ModalContainer from './ModalsStyled';
+import ModalContainer from './ModalStyled';
 import { BsChevronLeft } from 'react-icons/bs';
 
 const Modal = ({ onCloseHandler, modalData, onConfirmHandler }) => {
