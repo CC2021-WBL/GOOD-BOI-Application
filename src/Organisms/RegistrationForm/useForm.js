@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const useForm = (validateData) => {
+const useForm = (callback, validateData) => {
   const initialState = {
     firstname: '',
     surname: '',
@@ -14,24 +14,30 @@ const useForm = (validateData) => {
 
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState({});
-  // const [setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (event) => {
+    const { id, value } = event.target;
     setFormData({
       ...formData,
-      [event.target.id]: event.target.value,
+      [id]: value,
     });
   };
-  //   const navigate = useNavigate();
 
   const submitHandler = (event) => {
     event.preventDefault();
     setErrors(validateData(formData));
-    // setIsSubmitting(true);
+    setIsSubmitting(true);
     const data = { ...formData };
 
     console.log(data);
   };
+
+  useEffect(() => {
+    if (Object.keys(errors).length === 0 && isSubmitting) {
+      callback();
+    }
+  }, [errors]);
 
   return { handleInputChange, formData, submitHandler, errors };
 };

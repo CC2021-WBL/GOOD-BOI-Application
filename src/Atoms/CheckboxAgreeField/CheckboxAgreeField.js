@@ -4,8 +4,10 @@ import CheckboxAgreeFieldStyled from './CheckboxAgreeFieldStyled';
 const CheckboxAgreeField = ({ text }) => {
   return (
     <CheckboxAgreeFieldStyled>
-      <input type="checkbox" required />
-      <div>{text}</div>
+      <input id="register-checkbox" type="checkbox" required />
+      <label htmlFor="register-checkbox" className="checkbox-text">
+        {text}
+      </label>
     </CheckboxAgreeFieldStyled>
   );
 };

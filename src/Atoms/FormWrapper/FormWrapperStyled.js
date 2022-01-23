@@ -23,7 +23,7 @@ const FormWrapperStyled = styled.form`
     color: ${COLORS.primary801};
   }
 
-  div {
+  .forgot-pass-text {
     padding: 0 30px 10px;
     color: ${COLORS.grey400};
   }
