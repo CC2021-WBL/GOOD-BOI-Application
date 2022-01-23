@@ -5,8 +5,8 @@ import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 import CheckboxAgreeField from '../../Atoms/CheckboxAgreeField/CheckboxAgreeField';
+import propTypes from 'prop-types';
 
-// eslint-disable-next-line react/prop-types
 const RegistrationFormSignup = ({ submitForm }) => {
   const { handleInputChange, submitHandler, formData, errors } = useForm(
     submitForm,
@@ -101,6 +101,10 @@ const RegistrationFormSignup = ({ submitForm }) => {
       </FormWrapper>
     </CardWrapper>
   );
+};
+
+RegistrationFormSignup.propTypes = {
+  submitForm: propTypes.func.isRequired,
 };
 
 export default RegistrationFormSignup;
