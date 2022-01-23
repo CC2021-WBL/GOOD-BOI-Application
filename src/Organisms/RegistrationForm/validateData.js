@@ -54,7 +54,7 @@ const validateData = (formData) => {
 
   if (!city) {
     errors.city = 'Podaj Miasto';
-  } else if (firstname.length < 4) {
+  } else if (city.length < 4) {
     errors.city = 'Nazwa miasta musi być dluższa niż 4 znaki';
   }
 
