@@ -1,12 +1,6 @@
 import PropTypes from 'prop-types';
 import InfoLabelStyled from './InfoLabelStyled';
-
-const TIME = {
-  PAST: 'archiwalny',
-  PRESENT: 'w trakcie',
-  FUTURE: 'nadchodzący',
-  UNKNOWN: 'loading...',
-};
+import { TIME } from '../../Consts/infoLabelConsts';
 
 const InfoLabel = ({
   classInfo,
@@ -20,50 +14,31 @@ const InfoLabel = ({
   const exercisesComplete =
     exercisesAmount !== undefined && exercisesCompleted === exercisesAmount;
 
-  console.log(endDateOfContest);
   const todayDate = new Date();
-  // let date;
   let dateTextInfo;
-
-  /*   if (startDateOfContest) {
-    date = startDateOfContest.toISOString().substring(0, 10);
-  } else {
-    date = '';
-  } */
-
-  Date.prototype.addHours = function (h) {
-    this.setTime(this.getTime() + h * 60 * 60 * 1000);
-    return this;
-  };
-  Date.prototype.subtractMinutes = function (min) {
-    this.setTime(this.getTime() - min * 60 * 1000);
-    return this;
-  };
 
   if (!startDateOfContest) {
     dateTextInfo = '';
-  } else if (startDateOfContest < todayDate.subtractMinutes(15)) {
+  } else if (endDateOfContest < todayDate) {
     dateTextInfo = TIME.PAST;
-  } else if (
-    todayDate > startDateOfContest.subtractMinutes(15) &&
-    todayDate < startDateOfContest.addHours(5)
-  ) {
+  } else if (todayDate >= startDateOfContest && todayDate <= endDateOfContest) {
     dateTextInfo = TIME.PRESENT;
   } else if (startDateOfContest > todayDate) {
     dateTextInfo = TIME.FUTURE;
-  } else dateTextInfo = TIME.UNKNOWN;
+  }
 
   return (
     <InfoLabelStyled
       isClassCompleted={isCompleted}
       areExercisesCompleted={exercisesComplete}
       dateTextInfo={dateTextInfo}
+      dogsAmount={dogsAmount}
     >
       {/*CONDITIONAL FOR DATE */}
-      {dateTextInfo === TIME.PAST && <>{TIME.PAST}</>}
-      {dateTextInfo === TIME.PRESENT && <>{TIME.PRESENT}</>}
-      {dateTextInfo === TIME.FUTURE && <>{TIME.FUTURE}</>}
-      {dateTextInfo === TIME.UNKNOWN && <>{TIME.UNKNOWN}</>}
+      {dateTextInfo === TIME.PAST && !dogsAmount && <>{TIME.PAST}</>}
+      {dateTextInfo === TIME.PRESENT && !dogsAmount && <>{TIME.PRESENT}</>}
+      {dateTextInfo === TIME.FUTURE && !dogsAmount && <>{TIME.FUTURE}</>}
+      {dateTextInfo === TIME.UNKNOW && !dogsAmount && <>{TIME.UNKNOWN}</>}
 
       {/*CONDITIONAL FOR CLASSES */}
       {classInfo && isCompleted && <>ukończono</>}

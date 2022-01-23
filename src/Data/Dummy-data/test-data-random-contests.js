@@ -7,7 +7,8 @@ const RANDOM_CONTESTS = [
     id: 'a0347677-c3c9-4edc-9d46-fed4a958fdc2',
     name: 'XII Zawody im. Pana Starosty',
     city: 'Gdańsk',
-    date: new Date(2022, 3, 21, 10, 0),
+    date: new Date(2022, 0, 24, 10, 0),
+    endDate: new Date(2022, 0, 24, 18, 0),
     obedienceClasses: [
       {
         obedienceClass: CLASSES[0],

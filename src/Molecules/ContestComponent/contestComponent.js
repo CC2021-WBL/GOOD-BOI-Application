@@ -6,7 +6,10 @@ import {
   ContestNameStyled,
   ContestInsideElementStyled,
 } from './ContestComponentStyled';
-import { getDataFormatDdMonthYyy } from '../../Tools/TimeFunctions';
+import {
+  getDataFormatDdMonthYyy,
+  getHourAndMinutesFromDate,
+} from '../../Tools/TimeFunctions';
 import { useState, useEffect } from 'react';
 
 // import { useNavigate } from 'react-router-dom';
@@ -14,14 +17,15 @@ import { useState, useEffect } from 'react';
 const ContestComponent = ({ contestId, contestIndex }) => {
   const initialData = {
     contestName: 'info wkrótce',
-    date: '',
-    hour: '10:00',
+    startDate: new Date(),
+    endDate: new Date(),
+    hour: '',
     city: 'info wkrótce',
   };
   // to test navigation uncomment rest of commented code at that page
   const [isClicked, setIsClicked] = useState();
   const [contestData, setContestData] = useState(initialData);
-  const { contestName, date, hour, city } = contestData;
+  const { contestName, startDate, endDate, hour, city } = contestData;
   //  let navigate = useNavigate();
 
   useEffect(() => {
@@ -29,11 +33,15 @@ const ContestComponent = ({ contestId, contestIndex }) => {
     setContestData({
       ...contestData,
       contestName: RANDOM_CONTESTS[contestIndex].name,
-      date: getDataFormatDdMonthYyy(RANDOM_CONTESTS[contestIndex].date),
+      startDate: RANDOM_CONTESTS[contestIndex].date,
+      endDate: RANDOM_CONTESTS[contestIndex].endDate,
+      hour: getHourAndMinutesFromDate(RANDOM_CONTESTS[contestIndex].date),
       city: RANDOM_CONTESTS[contestIndex].city.toUpperCase(),
     });
     console.log(contestId);
   }, []);
+
+  const stringDate = getDataFormatDdMonthYyy(startDate);
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -46,15 +54,20 @@ const ContestComponent = ({ contestId, contestIndex }) => {
     <ContestComponentStyled isClicked={isClicked} onClick={handleClick}>
       <ContestNameStyled>{contestName}</ContestNameStyled>
       <ContestInsideElementStyled isClicked={isClicked}>
-        <time dateTime={date}>
-          {date}, {hour}
+        <time dateTime={stringDate}>
+          {stringDate}, {hour}
         </time>
         <p>{city}</p>
       </ContestInsideElementStyled>
       <ContestInsideElementStyled>
-        <InfoLabel classInfo={{ dogsAmount: 30 }}></InfoLabel>
         <InfoLabel
-          dateOfContest={RANDOM_CONTESTS[contestIndex].date}
+          classInfo={{ dogsAmount: 30 }}
+          endDateOfContest={endDate}
+          startDateOfContest={startDate}
+        ></InfoLabel>
+        <InfoLabel
+          startDateOfContest={startDate}
+          endDateOfContest={endDate}
         ></InfoLabel>
       </ContestInsideElementStyled>
     </ContestComponentStyled>
