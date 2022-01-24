@@ -7,6 +7,7 @@ const Layout = () => {
     <>
       <NavElement text="test2" />
       <Outlet />
+      <div style={{ height: '87px' }}></div>
       <Footer />
     </>
   );
