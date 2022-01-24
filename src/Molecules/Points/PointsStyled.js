@@ -3,13 +3,12 @@ import FONTS from '../../Styles/fontsStyledComponents';
 import COLORS from '../../Styles/varsStyledComponents';
 
 const PointsTextStyled = styled.div`
-  box-sizing: border-box;
   width: 25%;
-  margin: 0;
-  justify-content: center;
   align-items: center;
-  ${FONTS.h1};
+  justify-content: center;
+  margin: 0;
   background-color: ${COLORS.positive200};
+  ${FONTS.h1};
 `;
 
 export default PointsTextStyled;
