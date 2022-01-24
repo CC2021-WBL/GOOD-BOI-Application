@@ -1,4 +1,5 @@
 import './App.css';
+import './App.css';
 
 import { Route, Routes } from 'react-router-dom';
 
@@ -15,6 +16,7 @@ import LayoutWithLabel from './Templates/LayoutWithLabel/LayoutWithLabel';
 import LeaderboardPage from './Pages/LeaderboardPage/LeaderboardPage';
 // import HomePage from './Pages/HomePage/HomePage';
 import LoginForm from './Organisms/LoginForm/LoginForm';
+import ModalsTest from './Pages/ModalsTest';
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
@@ -86,7 +88,9 @@ function App() {
             />
           </Route> */}
         </Route>
-        <Route path="*" element={<NotFoundPage />} />
+
+        <Route path="ModalsTest" element={<ModalsTest />} />
+        <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </div>
   );
