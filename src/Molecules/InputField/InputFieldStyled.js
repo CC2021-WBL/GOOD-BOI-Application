@@ -3,15 +3,14 @@ import FONTS from '../../Styles/fontsStyledComponents';
 import COLORS from '../../Styles/varsStyledComponents';
 
 const InputFieldStyled = styled.input`
-  ${FONTS.body_semibold};
-  color: ${COLORS.grey400};
-  box-sizing: border-box;
-  font-family: Mulish, FontAwesome;
   width: 100%;
   height: 3rem;
-  border-radius: 8px;
-  border: 0.5px solid ${COLORS.grey400};
   padding-left: 10px;
+  border: 0.5px solid ${COLORS.grey400};
+  border-radius: 8px;
+  color: ${COLORS.grey400};
+  font-family: Mulish, FontAwesome;
+  ${FONTS.body_semibold};
 
   &::placeholder {
     color: ${COLORS.grey400};
