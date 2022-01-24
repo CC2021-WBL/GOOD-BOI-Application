@@ -17,6 +17,7 @@ const FormWrapperStyled = styled.form`
   }
 
   .forgot-pass {
+    align-self: center;
     padding: 1em 0;
     color: ${COLORS.primary801};
     ${FONTS.body_bold}
