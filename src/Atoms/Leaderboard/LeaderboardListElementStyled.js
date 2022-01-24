@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import FONTS from '../../Styles/fontsStyledComponents';
+import styled from 'styled-components';
 
 const LeaderboardListElementStyled = styled.div`
   display: flex;
@@ -10,16 +10,13 @@ const LeaderboardListElementStyled = styled.div`
   border-bottom: 1px solid #9aa5b1;
   ${FONTS.body_semibold};
   justify-content: space-between;
-  &:hover {
-    background: #f5f5f5;
-  }
+
   .excersizes {
     justify-content: flex-start;
     justify-self: flex-start;
-    align-self: center; // ok
+    align-self: center;
     text-align: left;
     margin: 0 auto 0 0.5rem;
-    flex-wrap: wrap-reverse;
   }
   .index {
     margin-left: 1rem;

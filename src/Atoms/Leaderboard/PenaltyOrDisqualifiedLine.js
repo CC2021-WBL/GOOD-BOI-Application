@@ -20,12 +20,10 @@ const PenaltyOrDisqualifiedLine = ({ result }) => {
     console.log(accu + val);
     return accu + val;
   });
-  console.log('penaltyExists ' + penaltiesExist);
-  console.log('is disqualified ' + isDisqualified);
 
   if (isDisqualified) {
     return (
-      <PenaltyOrDisqualifiedLineStyled DisqualifiedColor>
+      <PenaltyOrDisqualifiedLineStyled disqualifiedColor>
         Dyskwalifikacja
       </PenaltyOrDisqualifiedLineStyled>
     );

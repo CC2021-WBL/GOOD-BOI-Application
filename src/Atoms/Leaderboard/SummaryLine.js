@@ -1,6 +1,6 @@
 import SummaryLineStyled from './SummaryLineStyled';
+import { penaltyScore } from './penaltyScoreCalc';
 import propTypes from 'prop-types';
-import { penaltyScore } from './totalDogScoreCalc';
 
 const SummaryLine = ({ result }) => {
   const scoresArr = result.map((score) => {
@@ -11,9 +11,10 @@ const SummaryLine = ({ result }) => {
   });
 
   const isDisqualified = result.some((element) => element.disqualified);
-  function punkty() {
+  // points aquired by a dog in all excersizes/tests at one selected class
+  function pointsAquired() {
     if (score < 5 && score > 1) {
-      return 'punkty.';
+      return 'pointsAquired.';
     } else if (score == 1) {
       return 'punkt.';
     } else return 'punktów.';
@@ -23,7 +24,7 @@ const SummaryLine = ({ result }) => {
       <div>
         {isDisqualified
           ? 'Zawodnik zdyskwalifikowany'
-          : `Uczestnik zdobył ${score + penaltyScore} ${punkty()}`}
+          : `Uczestnik zdobył ${score + penaltyScore} ${pointsAquired()}`}
       </div>
     </SummaryLineStyled>
   );

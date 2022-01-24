@@ -1,17 +1,16 @@
-import propTypes from 'prop-types';
-
-import LeaderboardListStyled from './LeaderboardListStyled';
 import LeaderboardListElement from './../../Atoms/Leaderboard/LeaderboardListElement';
+import LeaderboardListStyled from './LeaderboardListStyled';
+import propTypes from 'prop-types';
 
 const LeaderboardList = ({ result }) => {
   return (
     <LeaderboardListStyled>
-      {result.map((elementTablicy, index) => {
+      {result.map((arrElement, index) => {
         return (
           <LeaderboardListElement
             key={index}
-            text={elementTablicy.text}
-            score={elementTablicy.score}
+            text={arrElement.text}
+            score={arrElement.score}
             index={index}
           />
         );
