@@ -3,13 +3,13 @@ import propTypes from 'prop-types';
 
 // function primary, secondary, ternary
 const ButtonExercises = (props) => {
-  const { endingButton, goBackButtton, text } = props;
+  const { endingButton, goBack, text } = props;
 
   return (
     <ButtonExercisesStyled
       onClick={props.onClick}
       endingButton={endingButton}
-      goBackButtton={goBackButtton}
+      goBack={goBack}
     >
       {text.toUpperCase()}
     </ButtonExercisesStyled>
@@ -18,7 +18,7 @@ const ButtonExercises = (props) => {
 
 ButtonExercises.propTypes = {
   endingButton: propTypes.bool,
-  goBackButtton: propTypes.bool,
+  goBack: propTypes.bool,
   text: propTypes.string.isRequired,
   onClick: propTypes.func,
 };

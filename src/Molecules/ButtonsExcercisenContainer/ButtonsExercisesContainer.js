@@ -4,7 +4,7 @@ import ButtonExercisesContainerStyled from './ButtonExercisesContainerStyled';
 const ButtonExercisesContainer = () => {
   return (
     <ButtonExercisesContainerStyled>
-      <ButtonExercises goBackButton text={'Zapisz i wróć do listy'} />
+      <ButtonExercises goBack text={'Zapisz i wróć do listy'} />
       <ButtonExercises endingButton text={'Zakończ ocenianie'} />
     </ButtonExercisesContainerStyled>
   );

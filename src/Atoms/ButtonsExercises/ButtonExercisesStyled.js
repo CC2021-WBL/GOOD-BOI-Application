@@ -6,8 +6,8 @@ const handleBgAndColor = (props) => {
   if (props.endingButton) {
     return `color: ${COLORS.primary101}; background: ${COLORS.primary501};`;
   }
-  if (props.goBackButton) {
-    return `color: ${COLORS.primary101}; background: ${COLORS.warning100};`;
+  if (props.goBack) {
+    return `color: ${COLORS.primary601}; background: ${COLORS.primary101};`;
   }
 };
 
