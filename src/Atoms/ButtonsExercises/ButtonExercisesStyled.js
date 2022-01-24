@@ -4,10 +4,10 @@ import styled from 'styled-components';
 
 const handleBgAndColor = (props) => {
   if (props.endingButton) {
-    return `color: ${COLORS.primary101}; background: ${COLORS.primary501};`;
+    return `color: ${COLORS.grey800}; background: ${COLORS.grey100};`;
   }
   if (props.goBack) {
-    return `color: ${COLORS.primary601}; background: ${COLORS.primary101};`;
+    return `color: ${COLORS.primary801}; background: ${COLORS.primary201}; &:before {font-familycontent''; width: 100px; height:100px; background: red; position: absolute}`;
   }
 };
 

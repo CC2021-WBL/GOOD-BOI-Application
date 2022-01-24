@@ -60,11 +60,11 @@ const ExercisesPage = () => {
         openDisqualifyModalHandler={openDisqualifyModalHandler}
         openPenaltyModalHandler={openPenaltyModalHandler}
       />
-      <ButtonExercisesContainer></ButtonExercisesContainer>
 
       <ExerciseCardsContainer
         performanceObject={ourTestPerformanceObject}
       ></ExerciseCardsContainer>
+      <ButtonExercisesContainer></ButtonExercisesContainer>
     </>
   );
 };
