@@ -3,12 +3,12 @@ import FONTS from '../../Styles/fontsStyledComponents';
 import COLORS from '../../Styles/varsStyledComponents';
 
 const LinkWrapperStyled = styled.div`
-  height: 100%;
-  width: 33%;
   display: flex;
+  width: 33%;
+  height: 100%;
   align-items: center;
-  gap: 5px;
   cursor: pointer;
+  gap: 5px;
 
   .arrowLeft {
     color: ${COLORS.grey200};

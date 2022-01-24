@@ -5,19 +5,19 @@ const CheckboxAgreeFieldStyled = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
-  text-align: left;
   ${FONTS.caption}
+  text-align: left;
 
   input[type='checkbox'] {
-    cursor: pointer;
     width: 30px;
     height: 30px;
-    margin: 0 10px 0 0;
     padding: 0 5px;
+    margin: 0 10px 0 0;
+    cursor: pointer;
   }
   .checkbox-text {
-    font-size: 1rem;
     padding: 10px 0;
+    font-size: 1rem;
   }
 `;
 
