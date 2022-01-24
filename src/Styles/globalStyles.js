@@ -7,9 +7,9 @@ font-size: 16px;
 
 }
 *{
-    font-family: 'Mulish', sans-serif;
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Mulish', sans-serif;
 }
 `;
