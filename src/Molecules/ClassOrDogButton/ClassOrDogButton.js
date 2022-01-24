@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+
 import ClassOrDogButtonStyled from './ClassOrDogButtonStyled';
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
-import { useNavigate } from 'react-router-dom';
 
 const ClassOrDogButton = ({ classInfo, dogInfo }) => {
   const navigate = useNavigate();
@@ -9,10 +10,17 @@ const ClassOrDogButton = ({ classInfo, dogInfo }) => {
   const { name } = classInfo || [];
   const { index, dogName } = dogInfo || [];
 
+  const word = () => {
+    if (name) {
+      return name;
+    } else if (dogName) {
+      return dogName;
+    }
+  };
+
   const clickHandler = (event) => {
     event.preventDefault();
-    console.log(name);
-    navigate(`./${name}`);
+    navigate(`./${word()}`);
   };
 
   return (
