@@ -4,16 +4,16 @@ import FONTS from '../../Styles/fontsStyledComponents';
 
 export const NavElementStyled = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
   height: 3.75rem;
-  border: 0.5px solid ${COLORS.grey400};
+  align-items: center;
+  justify-content: space-between;
   padding: 0 1rem 0 0.563rem;
+  border: 0.5px solid ${COLORS.grey400};
 
   .navText {
-    color: ${COLORS.grey800};
     width: 33%;
+    color: ${COLORS.grey800};
     ${FONTS.h3}
   }
 `;
