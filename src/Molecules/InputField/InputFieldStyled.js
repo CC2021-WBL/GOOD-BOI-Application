@@ -12,15 +12,18 @@ const InputFieldStyled = styled.input`
   border-radius: 8px;
   border: 0.5px solid ${COLORS.grey400};
   padding-left: 10px;
-  margin: 0 0 10px 0;
 
   &::placeholder {
     color: ${COLORS.grey400};
   }
-
   &:focus {
     border: 0.5px solid transparent;
     outline: 3px solid ${COLORS.primary201};
+  }
+
+  &:invalid {
+    border: 0.5px solid transparent;
+    outline: 3px solid tomato;
   }
 `;
 

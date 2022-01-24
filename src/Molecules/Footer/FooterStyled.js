@@ -8,9 +8,11 @@ export const FooterStyled = styled.div`
   right: 0;
   display: flex;
   justify-content: space-between;
-  margin: 0 25px;
+  margin: 0;
+  padding: 0 1rem;
   height: 77px;
   border-top: 2px solid ${COLORS.grey00};
+  background: ${COLORS.white};
 `;
 
 export const LogoStyled = styled.div`
@@ -23,7 +25,7 @@ export const DevsLogo = styled.div`
 `;
 
 export const Copy = styled.div`
-  font-size: 12px;
+  font-size: 0.75rem;
   text-align: left;
   align-self: center;
   margin: 0 0 0 10px;
