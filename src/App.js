@@ -13,7 +13,7 @@ import ClassSummaryPage from './Pages/ClassSummaryPage/ClassSummaryPage';
 import SingleSummaryPage from './Pages/SingleSummaryPage/SingleSummaryPage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import ClassCompetitorsPage from './Pages/ClassCompetitorsPage/ClassCompetitorsPage';
-
+import ModalsTest from './Pages/ModalsTest';
 import './App.css';
 
 const SingleContestPage = () => {
@@ -56,6 +56,8 @@ function App() {
             />
           </Route>
         </Route>
+
+        <Route path="ModalsTest" element={<ModalsTest />} />
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </div>
