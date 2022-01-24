@@ -25,7 +25,8 @@ const InfoLabelStyled = styled.label`
       ? `background: ${COLORS.primary101}; color: ${COLORS.primary801};  border: solid 1px  ${COLORS.primary801};`
       : ``};
   ${(props) =>
-    props.dateTextInfo === TIME.PAST
+    props.dateTextInfo === TIME.PAST ||
+    (props.dogsAmount && props.dateTextInfo === TIME.PAST)
       ? `background: ${COLORS.grey100}; color: ${COLORS.grey800};  border: solid 1px  ${COLORS.grey800};`
       : ``};
   ${(props) =>
