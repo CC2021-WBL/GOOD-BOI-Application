@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useState } from 'react';
-import modalData from '../Data/modalData';
+import modalData from '../Consts/modalData';
 import Modal from '../Organisms/Modal/Modal';
 import Backdrop from '../Atoms/Modal/Backdrop';
 const ModalsTestWrapper = styled.div`

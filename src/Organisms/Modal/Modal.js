@@ -31,14 +31,14 @@ const Modal = ({ onCloseHandler, modalData, onConfirmHandler }) => {
 };
 
 Modal.propTypes = {
-  modalTitle: propTypes.string,
-  modalAbout: propTypes.string,
-  modalConfirmation: propTypes.string,
-  modalBack: propTypes.string,
-  onClick: propTypes.func,
-  onCloseHandler: propTypes.func,
-  modalData: propTypes.object,
-  onConfirmHandler: propTypes.func,
+  modalTitle: propTypes.string.isRequired,
+  modalAbout: propTypes.string.isRequired,
+  modalConfirmation: propTypes.string.isRequired,
+  modalBack: propTypes.string.isRequired,
+  onClick: propTypes.func.isRequired,
+  onCloseHandler: propTypes.func.isRequired,
+  modalData: propTypes.object.isRequired,
+  onConfirmHandler: propTypes.func.isRequired,
 };
 
 export default Modal;

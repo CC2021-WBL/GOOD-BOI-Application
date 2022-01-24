@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import modalData from '../../Data/modalData';
+import modalData from '../../Consts/modalData';
 import Modal from '../../Organisms/Modal/Modal';
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import DOGS from '../../Data/Dummy-data/test-data-dogs';
@@ -14,20 +14,16 @@ const ExercisesPage = () => {
 
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
   const [isPenaltyModalOpen, setIsPenaltyModalOpen] = useState(false);
-  const handleDesqualification = () => {
-    console.log(`Doggo o imieniu ${ourTestDogName} wylatuje z konkursu`);
+  const handleDisqualification = () => {
     setIsDisqualifyModalOpen(false);
   };
   const handlePenalty = () => {
-    console.log(`Doggo o imieniu ${ourTestDogName} dostaje żółtą kartkę`);
     setIsPenaltyModalOpen(false);
   };
   const openDisqualifyModalHandler = () => {
-    console.log('disqualification coming');
     setIsDisqualifyModalOpen(true);
   };
   const openPenaltyModalHandler = () => {
-    console.log('penalty coming');
     setIsPenaltyModalOpen(true);
   };
 
@@ -52,7 +48,7 @@ const ExercisesPage = () => {
           }
           onCloseHandler={closeModalHandler}
           onConfirmHandler={
-            isDisqualifyModalOpen ? handleDesqualification : handlePenalty
+            isDisqualifyModalOpen ? handleDisqualification : handlePenalty
           }
         />
       )}

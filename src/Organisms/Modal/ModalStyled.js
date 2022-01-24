@@ -7,18 +7,18 @@ const ModalContainer = styled.div`
   z-index: 10;
   top: 50%;
   left: 50%;
-  width: 252px;
-  height: 306px;
+  width: 15.75rem;
+  height: 19.125rem;
   cursor: pointer;
   transform: translate(-50%, -60%);
   .confirmationWrapper {
     display: flex;
     width: 100%;
-    height: 191px;
+    height: 11.9375rem;
     flex-direction: column;
     justify-content: space-between;
-    padding: 19px 31px;
-    border-radius: 12px 12px 0px 0px;
+    padding: 1.1875rem 1.9375rem;
+    border-radius: 0.75rem 0.75rem 0rem 0rem;
 
     ${(props) =>
       props.theme &&
@@ -37,25 +37,25 @@ const ModalContainer = styled.div`
   .modalBackWrapper {
     display: flex;
     width: 100%;
-    height: 115px;
+    height: 7.1875rem;
     align-items: center;
     border: none;
     background: #fff8f8;
-    border-radius: 0px 0px 12px 12px;
+    border-radius: 0rem 0rem 0.75rem 0.75rem;
 
     .modalBack {
       display: flex;
       width: 100%;
       align-items: center;
-      margin: 0 25px;
+      margin: 0 1.5625rem;
 
       .arrow {
         color: ${COLORS.grey400};
-        font-size: 30px;
+        font-size: 1.875rem;
       }
 
       .back {
-        margin: 0 0 0 15px;
+        margin: 0 0 0 0.9375rem;
         color: ${COLORS.grey400};
         ${FONTS.caption};
         text-align: left;
