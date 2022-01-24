@@ -1,6 +1,7 @@
 import propTypes from 'prop-types';
-import ModalContainer from './ModalStyled';
 import { BsChevronLeft } from 'react-icons/bs';
+
+import ModalContainer from './ModalStyled';
 
 const Modal = ({ onCloseHandler, modalData, onConfirmHandler }) => {
   console.log(modalData);
@@ -31,11 +32,11 @@ const Modal = ({ onCloseHandler, modalData, onConfirmHandler }) => {
 };
 
 Modal.propTypes = {
-  modalTitle: propTypes.string.isRequired,
-  modalAbout: propTypes.string.isRequired,
-  modalConfirmation: propTypes.string.isRequired,
-  modalBack: propTypes.string.isRequired,
-  onClick: propTypes.func.isRequired,
+  modalTitle: propTypes.string,
+  modalAbout: propTypes.string,
+  modalConfirmation: propTypes.string,
+  modalBack: propTypes.string,
+  onClick: propTypes.func,
   onCloseHandler: propTypes.func.isRequired,
   modalData: propTypes.object.isRequired,
   onConfirmHandler: propTypes.func.isRequired,
