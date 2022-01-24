@@ -1,7 +1,7 @@
-import SpecialButtonsContainer from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainer';
-
-import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
+import ButtonExercisesContainer from '../../Molecules/ButtonsExcercisenContainer/ButtonsExercisesContainer';
 import DOGS from '../../Data/Dummy-data/test-data-dogs';
+import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
+import SpecialButtonsContainer from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainer';
 
 const ExercisesPage = () => {
   // OUR ROUTE: http://localhost:3000/contests/1/classes/1/Woof
@@ -18,6 +18,7 @@ const ExercisesPage = () => {
   return (
     <>
       <SpecialButtonsContainer></SpecialButtonsContainer>
+      <ButtonExercisesContainer></ButtonExercisesContainer>
       <ExerciseCardsContainer
         performanceObject={ourTestPerformanceObject}
       ></ExerciseCardsContainer>
