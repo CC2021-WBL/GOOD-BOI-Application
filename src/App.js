@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 
 import Layout from './Templates/Layout/Layout';
+import HomePage from './Pages/HomePage/HomePage';
 import LoginForm from './Organisms/LoginForm/LoginForm';
 import ClassesPage from './Pages/ClassesPage/ClassesPage';
 import LandingPage from './Pages/LandingPage/LandingPage';
@@ -12,7 +13,6 @@ import ClassSummaryPage from './Pages/ClassSummaryPage/ClassSummaryPage';
 import SingleSummaryPage from './Pages/SingleSummaryPage/SingleSummaryPage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import ClassCompetitorsPage from './Pages/ClassCompetitorsPage/ClassCompetitorsPage';
-import HomePage from './Pages/HomePage/HomePage';
 
 import './App.css';
 
