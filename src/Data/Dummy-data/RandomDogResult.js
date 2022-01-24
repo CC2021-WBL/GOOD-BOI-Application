@@ -33,7 +33,7 @@ const WYNIK_RANDOMOWEGO_PSA = [
     score: 20,
   },
   {
-    text: 'Obieganie grupy pachołkóww / walca z przywołaniem',
+    text: 'Obieganie grupy pachołków / walca z przywołaniem',
     score: 35,
   },
   {

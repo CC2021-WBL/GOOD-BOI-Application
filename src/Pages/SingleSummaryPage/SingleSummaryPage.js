@@ -1,3 +1,4 @@
+import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
 import LeaderboardList from './../../Molecules/LeaderboardList/LeaderboardList';
 import MainButton from './../../Atoms/MainButton/MainButton';
 import PenaltyOrDisqualifiedLine from '../../Atoms/Leaderboard/PenaltyOrDisqualifiedLine';
@@ -8,7 +9,7 @@ const sendDataHandler = () => {};
 
 const SingleSummaryPage = () => {
   return (
-    <>
+    <CardWrapper column>
       <LeaderboardList result={WYNIK_RANDOMOWEGO_PSA} />
       <PenaltyOrDisqualifiedLine result={WYNIK_RANDOMOWEGO_PSA} />
       <SummaryLine result={WYNIK_RANDOMOWEGO_PSA} />
@@ -17,7 +18,7 @@ const SingleSummaryPage = () => {
         secondary
         onClick={sendDataHandler}
       />
-    </>
+    </CardWrapper>
   );
 };
 

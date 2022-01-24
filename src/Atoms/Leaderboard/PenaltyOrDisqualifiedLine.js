@@ -1,5 +1,6 @@
-import PenaltyOrDisqualifiedLineStyled from './PenaltyOrDisqualifiedLineStyled';
 import propTypes from 'prop-types';
+
+import PenaltyOrDisqualifiedLineStyled from './PenaltyOrDisqualifiedLineStyled';
 
 const PenaltyOrDisqualifiedLine = ({ result }) => {
   // check if penalties exists
@@ -17,7 +18,6 @@ const PenaltyOrDisqualifiedLine = ({ result }) => {
   const isDisqualified = result.some((element) => element.disqualified);
 
   const penaltyScore = penaltyArr.reduce((accu, val) => {
-    console.log(accu + val);
     return accu + val;
   });
 
