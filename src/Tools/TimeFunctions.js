@@ -18,3 +18,7 @@ export const getHourAndMinutesFromDate = (date = Date) => {
   }
   return `${hour}:${minutes}`;
 };
+
+export const getPointOnTimeLine = (startDate, endDate) => {
+  
+}

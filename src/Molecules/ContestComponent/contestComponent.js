@@ -1,16 +1,17 @@
-import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
-import propTypes from 'prop-types';
-import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
 import {
   ContestComponentStyled,
-  ContestNameStyled,
   ContestInsideElementStyled,
+  ContestNameStyled,
 } from './ContestComponentStyled';
 import {
   getDataFormatDdMonthYyy,
   getHourAndMinutesFromDate,
 } from '../../Tools/TimeFunctions';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
+import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
+import propTypes from 'prop-types';
 
 // import { useNavigate } from 'react-router-dom';
 

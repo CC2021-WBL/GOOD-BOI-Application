@@ -29,7 +29,7 @@ const InfoLabelStyled = styled.label`
       ? `background: ${COLORS.grey100}; color: ${COLORS.grey800};  border: solid 1px  ${COLORS.grey800};`
       : ``};
   ${(props) =>
-    (props.dogsAmount && props.isClassCompleted === false) ||
+    (props.dogsAmount && !props.isClassCompleted) ||
     (props.dogsAmount && props.dateTextInfo)
       ? `background: ${COLORS.white}; color: ${COLORS.grey800};  border: solid 1px  ${COLORS.grey800};`
       : ``};
