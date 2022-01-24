@@ -1,6 +1,7 @@
+import propTypes from 'prop-types';
+
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from './SpecialButtonsContainerStyled';
-import propTypes from 'prop-types';
 
 const SpecialButtonsContainer = ({
   openDisqualifyModalHandler,
@@ -19,7 +20,7 @@ const SpecialButtonsContainer = ({
 };
 
 SpecialButtonsContainer.propTypes = {
-  handler: propTypes.func.isRequired,
+  handler: propTypes.func,
   openDisqualifyModalHandler: propTypes.func.isRequired,
   openPenaltyModalHandler: propTypes.func.isRequired,
 };

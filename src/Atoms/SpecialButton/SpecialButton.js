@@ -1,4 +1,5 @@
 import propTypes from 'prop-types';
+
 import SpecialButtonStyled from './SpecialButtonStyled';
 
 const SpecialButton = ({ special, text, handler }) => {
@@ -10,7 +11,7 @@ const SpecialButton = ({ special, text, handler }) => {
 };
 
 SpecialButton.propTypes = {
-  special: propTypes.bool.isRequired,
+  special: propTypes.bool,
   text: propTypes.string.isRequired,
   handler: propTypes.func.isRequired,
 };
