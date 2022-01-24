@@ -3,14 +3,13 @@ import FONTS from '../../Styles/fontsStyledComponents';
 import COLORS from '../../Styles/varsStyledComponents';
 
 const EditAcceptStyled = styled.button`
-  box-sizing: border-box;
-  width: 25%;
-  margin: 0;
   display: flex;
+  width: 25%;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   border: 0;
+  margin: 0;
   border-radius: 0 0.75rem 0.75rem 0;
   cursor: pointer;
   ${FONTS.label_regular};
