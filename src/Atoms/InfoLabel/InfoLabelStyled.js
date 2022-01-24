@@ -4,16 +4,15 @@ import COLORS from '../../Styles/varsStyledComponents';
 import { TIME } from '../../Consts/infoLabelConsts';
 
 const InfoLabelStyled = styled.label`
-  box-sizing: border-box;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.375rem;
   height: 1.25rem;
-  ${FONTS.caption}
+  align-items: center;
+  justify-content: center;
+  padding: 0.375rem;
   border: solid 1px ${COLORS.grey800};
   border-radius: 0.25rem;
   line-height: 1em;
+  ${FONTS.caption}
   ${(props) =>
     props.dateTextInfo === TIME.PRESENT ||
     props.isClassCompleted ||

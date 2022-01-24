@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const LogoStyled = styled.div`
-  width: 33%;
   display: flex;
+  width: 33%;
   justify-content: flex-end;
 
   .logo {
