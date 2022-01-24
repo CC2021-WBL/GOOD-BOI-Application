@@ -16,10 +16,13 @@ import ClassCompetitorsPage from './Pages/ClassCompetitorsPage/ClassCompetitorsP
 import ModalsTest from './Pages/ModalsTest';
 import './App.css';
 
+import propTypes from 'prop-types';
+
 const SingleContestPage = () => {
   return <h1>I am a single Contest Page Component</h1>;
 };
-function App() {
+function App(props) {
+  console.log(props.location);
   return (
     <div className="App">
       <Routes>
@@ -60,10 +63,16 @@ function App() {
         <Route path="ModalsTest" element={<ModalsTest />} />
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
+
+      {/* <h1>{console.log(props.location.pathname)}</h1> */}
     </div>
   );
 }
 
+App.propTypes = {
+  props: propTypes.object,
+  location: propTypes.string,
+};
 export default App;
 // "eslint-config-prettier": "^8.3.0",
 // "eslint-plugin-react-hooks": "^4.3.0",
