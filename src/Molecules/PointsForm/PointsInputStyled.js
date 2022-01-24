@@ -6,10 +6,10 @@ const PointsInputStyled = styled.input`
   width: 65%;
   max-width: 5rem;
   height: 3rem;
+  border: 1px ${COLORS.grey800};
+  border-radius: 0.75rem;
   ${FONTS.h1};
   text-align: center;
-  border-radius: 0.75rem;
-  border: 1px ${COLORS.grey800};
 
   :focus {
     color: black;
