@@ -3,16 +3,15 @@ import FONTS from '../../Styles/fontsStyledComponents';
 import COLORS from '../../Styles/varsStyledComponents';
 
 const InfoLabelStyled = styled.label`
-  box-sizing: border-box;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.375rem;
   height: 1.25rem;
-  ${FONTS.caption}
+  align-items: center;
+  justify-content: center;
+  padding: 0.375rem;
   border: solid 1px ${COLORS.grey800};
   border-radius: 0.25rem;
   line-height: 1em;
+  ${FONTS.caption}
   ${(props) =>
     props.dateTextInfo === 'in-progress' || props.isClassCompleted
       ? `background: ${COLORS.positive100}; color: ${COLORS.positive600};  border: solid 1px  ${COLORS.positive600};`
