@@ -19,9 +19,9 @@ const SpecialButtonsContainer = ({
 };
 
 SpecialButtonsContainer.propTypes = {
-  handler: propTypes.func,
-  openDisqualifyModalHandler: propTypes.func,
-  openPenaltyModalHandler: propTypes.func,
+  handler: propTypes.func.isRequired,
+  openDisqualifyModalHandler: propTypes.func.isRequired,
+  openPenaltyModalHandler: propTypes.func.isRequired,
 };
 
 export default SpecialButtonsContainer;
