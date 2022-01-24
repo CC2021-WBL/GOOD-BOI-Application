@@ -1,25 +1,26 @@
+import './App.css';
+
 import { Route, Routes } from 'react-router-dom';
 
-import Layout from './Templates/Layout/Layout';
-import RolePage from './Pages/RolePage/RolePage';
-import LoginForm from './Organisms/LoginForm/LoginForm';
+import ClassCompetitorsPage from './Pages/ClassCompetitorsPage/ClassCompetitorsPage';
 import ClassesPage from './Pages/ClassesPage/ClassesPage';
-import ProfilePage from './Pages/ProfilePage/ProfilePage';
-import LandingPage from './Pages/LandingPage/LandingPage';
-import ContestsPage from './Pages/ContestsPage/ContestsPage';
-import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
 import ContactFormPage from './Pages/ContactForm/ContactForm';
-import ExercisesPage from './Pages/ExercisesPage/ExercisesPage';
+import ContestsPage from './Pages/ContestsPage/ContestsPage';
 import DogSummaryPage from './Pages/DogSummaryPage/DogSummaryPage';
-import LeaderboardPage from './Pages/LeaderboardPage/LeaderboardPage';
+import ExercisesPage from './Pages/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
+import LandingPage from './Pages/LandingPage/LandingPage';
+import Layout from './Templates/Layout/Layout';
+import LayoutWithLabel from './Templates/LayoutWithLabel/LayoutWithLabel';
+import LeaderboardPage from './Pages/LeaderboardPage/LeaderboardPage';
+// import HomePage from './Pages/HomePage/HomePage';
+import LoginForm from './Organisms/LoginForm/LoginForm';
+import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
+import ProfilePage from './Pages/ProfilePage/ProfilePage';
+import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
+import RolePage from './Pages/RolePage/RolePage';
 // import ClassSummaryPage from './Pages/ClassSummaryPage/ClassSummaryPage';
 import UnregisteredPage from './Pages/UnregisteredPage/UnregisteredPage';
-import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
-
-import './App.css';
-import LayoutWithLabel from './Templates/LayoutWithLabel/LayoutWithLabel';
-import ClassCompetitorsPage from './Pages/ClassCompetitorsPage/ClassCompetitorsPage';
 
 function App() {
   return (
@@ -54,6 +55,36 @@ function App() {
             path="contests/:contestId/classes/:classId/:dogId/dogSummary"
             element={<DogSummaryPage />}
           />
+          {/* <Route element={<HomePage />}>
+            <Route path="forgot" element={<ForgotPassForm />} />
+            <Route path="login" element={<LoginForm />} />
+            <Route path="register" element={<RegistrationForm />} />
+            <Route path="contests" element={<ContestsPage />} />
+            <Route
+              path="contests/:contestsId"
+              element={<SingleContestPage />}
+            />
+            <Route
+              path="contests/:contestsId/classes"
+              element={<ClassesPage />}
+            />
+            <Route
+              path="contests/:contestsId/classes/:classId"
+              element={<ClassCompetitorsPage />}
+            />
+            <Route
+              path="contests/:contestsId/classes/:classId/leaderboard"
+              element={<ClassSummaryPage />}
+            />
+            <Route
+              path="contests/:contestsId/classes/:classId/:dogId"
+              element={<ExercisesPage />}
+            />
+            <Route
+              path="contests/:contestsId/classes/:classId/:dogId/summary"
+              element={<SingleSummaryPage />}
+            />
+          </Route> */}
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
