@@ -3,31 +3,28 @@ import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
 
 const ModalContainer = styled.div`
-  width: 252px;
-  height: 306px;
-  z-index: 10;
   position: fixed;
+  z-index: 10;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -60%);
+  width: 252px;
+  height: 306px;
   cursor: pointer;
+  transform: translate(-50%, -60%);
   .confirmationWrapper {
+    display: flex;
+    width: 100%;
+    height: 191px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 19px 31px;
+    border-radius: 12px 12px 0px 0px;
+
     ${(props) =>
       props.theme &&
       `
         color: ${props.theme.color};
         background: ${props.theme.background};`}
-
-    width: 100%;
-    height: 191px;
-    border-radius: 12px 12px 0px 0px;
-    padding: 19px 31px;
-
-    display: flex;
-
-    flex-direction: column;
-    justify-content: space-between;
-
     .title {
       ${FONTS.h3};
     }
@@ -38,29 +35,29 @@ const ModalContainer = styled.div`
   }
 
   .modalBackWrapper {
+    display: flex;
     width: 100%;
     height: 115px;
-    background: #fff8f8;
-    border-radius: 0px 0px 12px 12px;
-    display: flex;
     align-items: center;
     border: none;
+    background: #fff8f8;
+    border-radius: 0px 0px 12px 12px;
 
     .modalBack {
-      width: 100%;
-      margin: 0 25px;
       display: flex;
+      width: 100%;
       align-items: center;
+      margin: 0 25px;
 
       .arrow {
-        font-size: 30px;
         color: ${COLORS.grey400};
+        font-size: 30px;
       }
 
       .back {
-        ${FONTS.caption};
-        color: ${COLORS.grey400};
         margin: 0 0 0 15px;
+        color: ${COLORS.grey400};
+        ${FONTS.caption};
         text-align: left;
       }
     }
