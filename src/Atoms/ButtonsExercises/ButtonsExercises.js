@@ -2,7 +2,6 @@ import ButtonExercisesStyled from './ButtonExercisesStyled';
 import { FaChevronLeft } from 'react-icons/fa';
 import propTypes from 'prop-types';
 
-// function primary, secondary, ternary
 const ButtonExercises = (props) => {
   const { endingButton, goBack, text } = props;
 

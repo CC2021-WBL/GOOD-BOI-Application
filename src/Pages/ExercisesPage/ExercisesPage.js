@@ -8,10 +8,6 @@ import modalData from '../../Consts/modalData';
 import { useState } from 'react';
 
 const ExercisesPage = () => {
-  // OUR ROUTE: http://localhost:3000/contests/1/classes/1/Woof
-  // so when we click our page we must GET data from database about our dog performance
-  // in the future we will use more IDs than other properties
-
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
   const [isPenaltyModalOpen, setIsPenaltyModalOpen] = useState(false);
   const handleDisqualification = () => {
