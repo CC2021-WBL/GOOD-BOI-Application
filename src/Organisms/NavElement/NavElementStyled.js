@@ -5,6 +5,7 @@ import FONTS from '../../Styles/fontsStyledComponents';
 
 export const NavElementStyled = styled.div`
   position: fixed;
+  background-color: white;
   display: flex;
   width: 100%;
   height: 3.75rem;

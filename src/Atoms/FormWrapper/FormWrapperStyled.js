@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import FONTS from '../../Styles/fontsStyledComponents';
 import COLORS from '../../Styles/varsStyledComponents';
+import FONTS from '../../Styles/fontsStyledComponents';
 
 const FormWrapperStyled = styled.form`
   display: flex;
