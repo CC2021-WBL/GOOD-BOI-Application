@@ -20,10 +20,10 @@ const InputFieldStyled = styled.input`
     outline: 3px solid ${COLORS.primary201};
   }
 
-  &:invalid {
+  /* &:invalid {
     border: 0.5px solid transparent;
     outline: 3px solid tomato;
-  }
+  } */
 `;
 
 export default InputFieldStyled;
