@@ -1,17 +1,13 @@
-import { useState } from 'react';
-
-import modalData from '../../Consts/modalData';
-import Modal from '../../Organisms/Modal/Modal';
 import Backdrop from '../../Atoms/Modal/Backdrop';
+import ButtonExercisesContainer from '../../Molecules/ButtonsExcercisenContainer/ButtonsExercisesContainer';
 import DOGS from '../../Data/Dummy-data/test-data-dogs';
 import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
+import Modal from '../../Organisms/Modal/Modal';
 import SpecialButtonsContainer from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainer';
+import modalData from '../../Consts/modalData';
+import { useState } from 'react';
 
 const ExercisesPage = () => {
-  // OUR ROUTE: http://localhost:3000/contests/1/classes/1/Woof
-  // so when we click our page we must GET data from database about our dog performance
-  // in the future we will use more IDs than other properties
-
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
   const [isPenaltyModalOpen, setIsPenaltyModalOpen] = useState(false);
   const handleDisqualification = () => {
@@ -64,6 +60,7 @@ const ExercisesPage = () => {
       <ExerciseCardsContainer
         performanceObject={ourTestPerformanceObject}
       ></ExerciseCardsContainer>
+      <ButtonExercisesContainer></ButtonExercisesContainer>
     </>
   );
 };

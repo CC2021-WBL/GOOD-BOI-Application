@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import MainButton from '../../Atoms/MainButton/MainButton';
@@ -11,7 +10,7 @@ import TextArea from '../../Atoms/TextArea/TextArea';
 import emailjs from '@emailjs/browser';
 const emailRgx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
-const ContactForm = () => {
+const ContactFormPage = () => {
   const initialState = {
     email: '',
     message: '',
@@ -113,4 +112,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default ContactFormPage;
