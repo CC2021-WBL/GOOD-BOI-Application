@@ -15,6 +15,7 @@ import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import ClassCompetitorsPage from './Pages/ClassCompetitorsPage/ClassCompetitorsPage';
 import ModalsTest from './Pages/ModalsTest';
 import './App.css';
+import ContestDetailsPage from './Pages/ContestDetailsPage/ContestDetailsPage';
 
 const SingleContestPage = () => {
   return <h1>I am a single Contest Page Component</h1>;
@@ -54,10 +55,12 @@ function App() {
               path="contests/:contestsId/classes/:classId/:dogId/summary"
               element={<SingleSummaryPage />}
             />
+            <Route path="/contestDetails" element={<ContestDetailsPage />} />
           </Route>
         </Route>
-
+        <Route path="user" element={<LandingPage />} />
         <Route path="ModalsTest" element={<ModalsTest />} />
+
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </div>

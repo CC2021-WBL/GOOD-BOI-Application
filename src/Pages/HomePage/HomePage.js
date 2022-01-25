@@ -15,6 +15,7 @@ const HomePage = () => {
       <LinkStyled to="/contests/1/classes/1/woof/summary">
         Woofs exercises
       </LinkStyled>
+      <LinkStyled to="/contestDetails/">contestDetails</LinkStyled>
       <Outlet />
     </>
   );
