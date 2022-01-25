@@ -1,6 +1,6 @@
-import propTypes from 'prop-types';
-
 import PenaltyOrDisqualifiedLineStyled from './PenaltyOrDisqualifiedLineStyled';
+import checkIfDisqualified from '../../Tools/checkIfDisqualified';
+import propTypes from 'prop-types';
 
 const PenaltyOrDisqualifiedLine = ({ result }) => {
   // check if penalties exists
@@ -15,19 +15,17 @@ const PenaltyOrDisqualifiedLine = ({ result }) => {
     } else return 0;
   });
 
-  const isDisqualified = result.some((element) => element.disqualified);
-
   const penaltyScore = penaltyArr.reduce((accu, val) => {
     return accu + val;
   });
 
-  if (isDisqualified) {
+  if (checkIfDisqualified({ result })) {
     return (
       <PenaltyOrDisqualifiedLineStyled disqualifiedColor>
         Dyskwalifikacja
       </PenaltyOrDisqualifiedLineStyled>
     );
-  } else if (penaltiesExist && !isDisqualified) {
+  } else if (penaltiesExist && !checkIfDisqualified) {
     return (
       <PenaltyOrDisqualifiedLineStyled>
         <div>Żółta kartka</div>

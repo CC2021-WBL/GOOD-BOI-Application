@@ -12,7 +12,7 @@ const WYNIK_RANDOMOWEGO_PSA = [
   {
     text: 'Stój lub siad lub waruj w marszu',
     score: 24,
-    // penalty: -10,
+    penalty: -10,
   },
   {
     text: 'Przywołanie',
