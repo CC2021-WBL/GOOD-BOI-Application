@@ -1,17 +1,26 @@
 import PropTypes from 'prop-types';
 import { BsChevronLeft } from 'react-icons/bs';
-import { useNavigate, useLocation } from 'react-router-dom';
+import {
+  useNavigate,
+  // useLocation
+} from 'react-router-dom';
 
+// import pathData from '../../Consts/pathData';
 import AppLogo from '../../Assets/AppLogo.png';
+// import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
 import LogoStyled from '../../Atoms/NavElementStyled/LogoStyled';
 import LinkWrapperStyled from '../../Atoms/NavElementStyled/LinkWrapperStyled';
 
 import { NavElementStyled } from './NavElementStyled';
+import NavLabel from './NavLabel';
 
 const NavElement = () => {
   const navigate = useNavigate();
   // const { name } = useParams();
-  const path = useLocation();
+  // const locationPath = useLocation();
+
+  // const foundPath = pathData.find((e) => e.path === locationPath.pathname);
+
   return (
     <NavElementStyled>
       <LinkWrapperStyled onClick={() => navigate(-1)}>
@@ -19,15 +28,15 @@ const NavElement = () => {
 
         <h3 className="back">wróć</h3>
       </LinkWrapperStyled>
-      {/* {name === 'aaa' ? (
-        <h1 className="navText">{path}</h1>
-      ) : (
-        <h1 className="navText">222</h1>
-      )} */}
-      {/* // <h1 className="navText">{name}</h1> */}
-      {/* <h1>{if(path.pathname==="/login"){<h1>Login page aaaa</h1>}}</h1> */}
 
-      {path.pathname === '/login' ? <h1>Login page aaaa</h1> : <h1>dupa</h1>}
+      {/* {foundPath.path === locationPath.pathname && foundPath.label ? (
+        <>
+          <h1>{foundPath.text}</h1> <GreyLabel text={foundPath.label} />
+        </>
+      ) : (
+        <h1>{foundPath.text}</h1>
+      )} */}
+      {NavLabel()}
       <LogoStyled>
         <img src={AppLogo} alt="Logo aplikacji" className="logo" />
       </LogoStyled>

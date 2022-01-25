@@ -21,8 +21,7 @@ import propTypes from 'prop-types';
 const SingleContestPage = () => {
   return <h1>I am a single Contest Page Component</h1>;
 };
-function App(props) {
-  console.log(props.location);
+function App() {
   return (
     <div className="App">
       <Routes>
@@ -64,7 +63,6 @@ function App(props) {
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
 
-      {/* <h1>{console.log(props.location.pathname)}</h1> */}
     </div>
   );
 }
