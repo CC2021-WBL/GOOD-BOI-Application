@@ -15,7 +15,7 @@ const LeaderboardListElementStyled = styled.div`
   ${FONTS.body_semibold};
 
   .excersises {
-    justify-content: flex-start; 
+    justify-content: flex-start;
     margin: 0 auto 0 0.5rem;
     justify-self: flex-start;
     text-align: left;
