@@ -1,4 +1,5 @@
 import ButtonExercisesStyled from './ButtonExercisesStyled';
+import { FaChevronLeft } from 'react-icons/fa';
 import propTypes from 'prop-types';
 
 // function primary, secondary, ternary
@@ -11,6 +12,7 @@ const ButtonExercises = (props) => {
       endingButton={endingButton}
       goBack={goBack}
     >
+      {goBack && <FaChevronLeft />}
       {text.toUpperCase()}
     </ButtonExercisesStyled>
   );
