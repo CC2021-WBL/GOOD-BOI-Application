@@ -62,7 +62,6 @@ function App() {
         <Route path="ModalsTest" element={<ModalsTest />} />
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
-
     </div>
   );
 }
