@@ -12,8 +12,7 @@ import { useEffect, useState } from 'react';
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
 import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
 import propTypes from 'prop-types';
-
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ContestComponent = ({ contestId, contestIndex }) => {
   const initialData = {
@@ -26,8 +25,9 @@ const ContestComponent = ({ contestId, contestIndex }) => {
   // to test navigation uncomment rest of commented code at that page
   const [isClicked, setIsClicked] = useState();
   const [contestData, setContestData] = useState(initialData);
+
   const { contestName, startDate, endDate, hour, city } = contestData;
-  //  let navigate = useNavigate();
+  let navigate = useNavigate();
 
   useEffect(() => {
     // mock for fetch() from database
@@ -47,7 +47,7 @@ const ContestComponent = ({ contestId, contestIndex }) => {
   const handleClick = (event) => {
     event.preventDefault();
     setIsClicked((isClicked) => !isClicked);
-    // navigate(`./${contestId}/classes`);
+    navigate(`./${contestId}/classes`);
     //navigate musi przekazać dane o klasach jakie mają się odbyć i nazwach psów w tych klasach?
   };
 
