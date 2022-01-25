@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 const ColumnWrapperStyled = styled.form`
   display: flex;
-  flex-direction: column;
   width: 100%;
+  flex-direction: column;
 `;
 
 export default ColumnWrapperStyled;
