@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
-import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
+
 import Footer from '../../Molecules/Footer/Footer';
+import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
 import NavElement from '../../Organisms/NavElement/NavElement';
 
 const LayoutWithLabel = () => {
@@ -9,6 +10,7 @@ const LayoutWithLabel = () => {
       <NavElement text="WannaBe" />
       <GreyLabel text="Make me Dynamic Please!" />
       <Outlet />
+      <div style={{ height: '87px' }}></div>
       <Footer />
     </>
   );
