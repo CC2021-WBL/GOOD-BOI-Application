@@ -2,7 +2,7 @@ const WYNIK_RANDOMOWEGO_PSA = [
   {
     text: 'Siad w grupie przez 1 minutę, przewodnik w zasięgu wzroku',
     score: 34,
-    // disqualified: 'true',
+    disqualified: 'true',
   },
   {
     text: 'Chodzenie przy nodze',
