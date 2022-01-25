@@ -46,7 +46,9 @@ const LoginForm = () => {
         <Link to="/forgot" className="forgot-pass">
           Zapomniałeś/aś hasła ?
         </Link>
-        <MainButton primary text="Zaloguj się" />
+        <Link to="/role" style={{ textDecoration: 'none' }}>
+          <MainButton primary text="Zaloguj się" />
+        </Link>
       </FormWrapper>
     </CardWrapper>
   );

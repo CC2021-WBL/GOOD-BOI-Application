@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import COLORS from '../../Styles/varsStyledComponents';
 
 export const FooterStyled = styled.div`
@@ -10,6 +11,7 @@ export const FooterStyled = styled.div`
   height: 77px;
   justify-content: space-between;
   padding: 0 1rem;
+  align-items: center;
 
   border-top: 2px solid ${COLORS.grey00};
   margin: 0;
