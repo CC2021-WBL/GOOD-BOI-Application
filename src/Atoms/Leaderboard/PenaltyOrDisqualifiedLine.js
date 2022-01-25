@@ -25,7 +25,7 @@ const PenaltyOrDisqualifiedLine = ({ result }) => {
         Dyskwalifikacja
       </PenaltyOrDisqualifiedLineStyled>
     );
-  } else if (penaltiesExist && !checkIfDisqualified) {
+  } else if (penaltiesExist && !checkIfDisqualified({ result })) {
     return (
       <PenaltyOrDisqualifiedLineStyled>
         <div>Żółta kartka</div>
