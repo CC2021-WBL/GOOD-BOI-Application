@@ -7,7 +7,8 @@ const handleBgAndColor = (props) => {
     return `color: ${COLORS.grey800}; background: ${COLORS.grey100};`;
   }
   if (props.goBack) {
-    return `color: ${COLORS.primary801}; background: ${COLORS.primary201}; &:before {font-familycontent''; width: 100px; height:100px; background: red; position: absolute}`;
+    return `color: ${COLORS.primary801}; background: ${COLORS.primary201}; 
+    :before {content: "<" ; width: 100px; height:100px; position: absolute; transform: translate(-70px) scale(1.2)}`;
   }
 };
 
