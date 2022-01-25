@@ -1,5 +1,4 @@
 import './App.css';
-import './App.css';
 
 import { Route, Routes } from 'react-router-dom';
 
@@ -20,8 +19,10 @@ import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import RolePage from './Pages/RolePage/RolePage';
+import SettingsPage from './Pages/SettingsPage/SettingsPage';
 // import ClassSummaryPage from './Pages/ClassSummaryPage/ClassSummaryPage';
 import UnregisteredPage from './Pages/UnregisteredPage/UnregisteredPage';
+import UserDataPage from './Pages/UserDataPage/UserDataPage';
 
 function App() {
   return (
@@ -29,8 +30,12 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route element={<Layout />}>
+          {/* //user views */}
+          <Route path="user" element={<ProfilePage />} />
+          <Route path="settings" element={<SettingsPage />} />
+          <Route path="userdata" element={<UserDataPage />} />
+
           <Route path="forgot" element={<ForgotPassForm />} />
-          <Route path="profile" element={<ProfilePage />} />
           <Route path="contactForm" element={<ContactFormPage />} />
           <Route path="register" element={<RegistrationForm />} />
           <Route path="unRegistered" element={<UnregisteredPage />} />
