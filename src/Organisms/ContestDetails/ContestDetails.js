@@ -4,8 +4,9 @@ import ContestDetailsToggler from './ContestDetailsToggler';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import { useState } from 'react';
 import ContestDetailsContent from './ContestDetailsContent';
+import PropTypes from 'prop-types';
 
-const ContestDetails = () => {
+const ContestDetails = ({ contestInfo }) => {
   const [toggle, setToggle] = useState(false);
 
   const toggleHandler = () => {
@@ -19,7 +20,7 @@ const ContestDetails = () => {
         onClick={toggleHandler}
         toggle={toggle}
       ></ContestDetailsToggler>
-      {toggle && <ContestDetailsContent />}
+      {toggle && <ContestDetailsContent contestInfo={contestInfo} />}
       <div
         style={{
           margin: '1rem',
@@ -29,6 +30,10 @@ const ContestDetails = () => {
       </div>
     </ContestDetailsStyled>
   );
+};
+
+ContestDetails.propTypes = {
+  contestInfo: PropTypes.object,
 };
 
 export default ContestDetails;
