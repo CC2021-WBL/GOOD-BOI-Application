@@ -14,7 +14,6 @@ import LandingPage from './Pages/LandingPage/LandingPage';
 import Layout from './Templates/Layout/Layout';
 import LayoutWithLabel from './Templates/LayoutWithLabel/LayoutWithLabel';
 import LeaderboardPage from './Pages/LeaderboardPage/LeaderboardPage';
-// import HomePage from './Pages/HomePage/HomePage';
 import LoginForm from './Organisms/LoginForm/LoginForm';
 import ModalsTest from './Pages/ModalsTest';
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
@@ -57,36 +56,6 @@ function App() {
             path="contests/:contestId/classes/:classId/:dogId/dogSummary"
             element={<DogSummaryPage />}
           />
-          {/* <Route element={<HomePage />}>
-            <Route path="forgot" element={<ForgotPassForm />} />
-            <Route path="login" element={<LoginForm />} />
-            <Route path="register" element={<RegistrationForm />} />
-            <Route path="contests" element={<ContestsPage />} />
-            <Route
-              path="contests/:contestsId"
-              element={<SingleContestPage />}
-            />
-            <Route
-              path="contests/:contestsId/classes"
-              element={<ClassesPage />}
-            />
-            <Route
-              path="contests/:contestsId/classes/:classId"
-              element={<ClassCompetitorsPage />}
-            />
-            <Route
-              path="contests/:contestsId/classes/:classId/leaderboard"
-              element={<ClassSummaryPage />}
-            />
-            <Route
-              path="contests/:contestsId/classes/:classId/:dogId"
-              element={<ExercisesPage />}
-            />
-            <Route
-              path="contests/:contestsId/classes/:classId/:dogId/summary"
-              element={<SingleSummaryPage />}
-            />
-          </Route> */}
         </Route>
 
         <Route path="ModalsTest" element={<ModalsTest />} />
