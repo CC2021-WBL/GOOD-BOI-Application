@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import FONTS from '../../Styles/fontsStyledComponents';
 import COLORS from '../../Styles/varsStyledComponents';
+import FONTS from '../../Styles/fontsStyledComponents';
+import styled from 'styled-components';
 
 const InputFieldStyled = styled.input`
   width: 100%;
@@ -9,7 +9,7 @@ const InputFieldStyled = styled.input`
   border: 0.5px solid ${COLORS.grey400};
   border-radius: 8px;
   color: ${COLORS.grey400};
-  font-family: Mulish, FontAwesome;
+  font-family: Mulish, FontAwesome, sans-serif;
   ${FONTS.body_semibold};
 
   &::placeholder {
