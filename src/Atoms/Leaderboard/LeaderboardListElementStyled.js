@@ -4,22 +4,21 @@ import styled from 'styled-components';
 
 const LeaderboardListElementStyled = styled.div`
   display: flex;
-  align-items: center;
   width: 100%;
   min-height: 3.125rem;
-  background: transparent;
+  align-items: center;
+  align-self: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #9aa5b1;
   background: ${(props) =>
     props.disqualified ? COLORS.grey100 : 'transparent;'};
-  border-bottom: 1px solid #9aa5b1;
   ${FONTS.body_semibold};
-  justify-content: space-between;
 
   .excersises {
-    justify-content: flex-start;
-    justify-self: flex-start;
-    align-self: center;
-    text-align: left;
+    justify-content: flex-start; 
     margin: 0 auto 0 0.5rem;
+    justify-self: flex-start;
+    text-align: left;
   }
   .index {
     margin-left: 1rem;
