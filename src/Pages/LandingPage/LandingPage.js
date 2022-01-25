@@ -11,7 +11,9 @@ const LandingPage = () => {
       <Link to="/login" style={{ textDecoration: 'none' }}>
         <MainButton primary text={'zaloguj się'} />
       </Link>
-      <MainButton secondary text={'zarejestruj'} />
+      <Link to="/register" style={{ textDecoration: 'none' }}>
+        <MainButton secondary text={'zarejestruj'} />
+      </Link>
       <MainButton ternary text={'portal good boi'} />
       <Footer></Footer>
     </LandingPageStyled>
