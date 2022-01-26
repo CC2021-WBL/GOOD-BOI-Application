@@ -7,19 +7,21 @@ import {
   getHourMinutesFormat,
 } from '../../Tools/TimeFunctions';
 
-// eslint-disable-next-line react/prop-types
 const ContestDetailsContent = ({ contestInfo }) => {
-  const { date } = contestInfo;
-  console.log(date);
   /*DATE AND HOUR*/
-  let dateAndHour;
+  const { date } = contestInfo;
+  let dateAndHourText = [];
+  console.log(`${getHourMinutesFormat(date)}`);
   date &&
-    (dateAndHour = [
+    (dateAndHourText = [
       `${getDataFormatDdMonthYyy(date)}`,
       `${getHourMinutesFormat(date)}`,
     ]);
-
-  console.log(dateAndHour);
+  /*ADDRESS*/
+  const { address, city, place } = contestInfo;
+  let addressText = [];
+  address && addressText.push(address);
+  city && addressText.push(city);
   /*APPLICATION INFO*/
   const { applicationOpenDate, applicationClosedDate, applicationFeeInPLN } =
     contestInfo;
@@ -33,26 +35,28 @@ const ContestDetailsContent = ({ contestInfo }) => {
 
   return (
     <ContestDetailsContentStyled>
-      {/*DATE AND HOUR*/}
-      date && (<ContestDetailsLine textArray={dateAndHour} />){/*PLACE*/}
-      <ContestDetailsLine textArray={['UL. GRUNWALDZKA 402', 'GDAŃSK']} />
-      <ContestDetailsLine textArray={['OLIVIA BUSINESS CENTER']} />
+      {date && <ContestDetailsLine text={dateAndHourText} />}
+      {address && <ContestDetailsLine text={addressText} />}
+      {place && <ContestDetailsLine text={place} />}
+      {/*PLACE*/}
+      {/*<ContestDetailsLine text={['UL. GRUNWALDZKA 402', 'GDAŃSK']} />*/}
+      <ContestDetailsLine text={['OLIVIA BUSINESS CENTER']} />
       {/*JUDGES*/}
-      <ContestDetailsLine textArray={['SKŁAD SĘDZIOWSKI:']} />
-      <ContestDetailsLine textArray={['skład nieznany']} judge={true} />
-      <ContestDetailsLine textArray={['NATASZA URBAŃSKA']} judge={true} />
-      <ContestDetailsLine textArray={['MICHAŁ MILOWICZ']} judge={true} />
+      <ContestDetailsLine text={['SKŁAD SĘDZIOWSKI:']} />
+      <ContestDetailsLine text={['skład nieznany']} judge={true} />
+      <ContestDetailsLine text={['NATASZA URBAŃSKA']} judge={true} />
+      <ContestDetailsLine text={['MICHAŁ MILOWICZ']} judge={true} />
       {/*APPLICATION INFO*/}
       <ContestDetailsLine
-        textArray={['OTWARCIE ZGŁOSZEŃ', applicationOpenDateText]}
+        text={['OTWARCIE ZGŁOSZEŃ', applicationOpenDateText]}
         highlight={true}
       />
       <ContestDetailsLine
-        textArray={['ZGŁOSZENIA DO', applicationClosedDateText]}
+        text={['ZGŁOSZENIA DO', applicationClosedDateText]}
         highlight={true}
       />
       <ContestDetailsLine
-        textArray={['OPŁATA WPISOWA', applicationFeeInPLNText]}
+        text={['OPŁATA WPISOWA', applicationFeeInPLNText]}
         highlight={true}
       />
     </ContestDetailsContentStyled>

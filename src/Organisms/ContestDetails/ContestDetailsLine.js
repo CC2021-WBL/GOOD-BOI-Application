@@ -1,11 +1,9 @@
 import ContestDetailsLineStyled from './ContestDetailsLineStyled';
 import PropTypes from 'prop-types';
 
-const ContestDetailsLine = ({
-  textArray = [],
-  highlight = false,
-  judge = false,
-}) => {
+const ContestDetailsLine = ({ text, highlight = false, judge = false }) => {
+  let textArray = [];
+  typeof text == 'string' ? textArray.push(text) : (textArray = text);
   return (
     <ContestDetailsLineStyled highlight={highlight} judge={judge}>
       {textArray.map((text, index) => (
@@ -16,7 +14,7 @@ const ContestDetailsLine = ({
 };
 
 ContestDetailsLine.propTypes = {
-  textArray: PropTypes.array,
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   highlight: PropTypes.bool,
   judge: PropTypes.bool,
 };

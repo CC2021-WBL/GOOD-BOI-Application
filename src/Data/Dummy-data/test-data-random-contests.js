@@ -13,7 +13,7 @@ const RANDOM_CONTESTS = [
     applicationOpenDate: new Date(2022, 1, 10, 10, 0),
     applicationClosedDate: new Date(2022, 2, 20, 23, 59),
     applicationFeeInPLN: 70,
-    // date: new Date(2022, 3, 21, 10, 0),
+    date: new Date(2022, 3, 21, 10, 0),
     obedienceClasses: [
       {
         obedienceClass: CLASSES[0],
