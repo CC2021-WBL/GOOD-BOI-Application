@@ -8,7 +8,9 @@ import PropTypes from 'prop-types';
 import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
 
 const ContestDetails = ({ contestId }) => {
-  const contestInfo = RANDOM_CONTESTS.find((contest) => contest.id == contestId)
+  const contestInfo = RANDOM_CONTESTS.find(
+    (contest) => contest.id == contestId,
+  );
   const [toggle, setToggle] = useState(false);
 
   const toggleHandler = () => {
