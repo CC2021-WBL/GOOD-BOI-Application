@@ -1,7 +1,7 @@
-import ContestDetailsLine from '../ContestDetailsLine';
+import ContestDetailsLine from '../../../../Atoms/ContestDetailsLine/ContestDetailsLine';
 import PropTypes from 'prop-types';
-import { getDataFormatDdMmhYyy } from '../../../Tools/TimeFunctions';
-import { applicationInfoTextTemplate } from '../ContestDetailsCONSTS';
+import { getDataFormatDdMmhYyy } from '../../../../Tools/TimeFunctions';
+import { applicationInfoTextTemplate } from '../../../../Consts/ContestDetailsCONSTS';
 
 const ContestDetailsApplicationInfo = ({ applicationInfo }) => {
   const { applicationOpenDate, applicationClosedDate, applicationFeeInPLN } =

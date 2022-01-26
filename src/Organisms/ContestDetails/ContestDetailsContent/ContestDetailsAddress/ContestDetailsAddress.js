@@ -1,6 +1,6 @@
-import ContestDetailsLine from '../ContestDetailsLine';
+import ContestDetailsLine from '../../../../Atoms/ContestDetailsLine/ContestDetailsLine';
 import PropTypes from 'prop-types';
-import { addressTextTemplate } from '../ContestDetailsCONSTS';
+import { addressTextTemplate } from '../../../../Consts/ContestDetailsCONSTS';
 
 const ContestDetailsAddress = ({ addressInfo }) => {
   const { address, city, place } = addressInfo;

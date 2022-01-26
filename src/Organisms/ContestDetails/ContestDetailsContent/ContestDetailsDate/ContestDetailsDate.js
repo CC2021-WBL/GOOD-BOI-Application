@@ -1,10 +1,10 @@
-import ContestDetailsLine from '../ContestDetailsLine';
+import ContestDetailsLine from '../../../../Atoms/ContestDetailsLine/ContestDetailsLine';
 import PropTypes from 'prop-types';
 import {
   getDataFormatDdMonthYyy,
   getHourMinutesFormat,
-} from '../../../Tools/TimeFunctions';
-import { dateAndHourTextTemplate } from '../ContestDetailsCONSTS';
+} from '../../../../Tools/TimeFunctions';
+import { dateAndHourTextTemplate } from '../../../../Consts/ContestDetailsCONSTS';
 
 const ContestDetailsDate = ({ date }) => {
   const dateAndHourText = dateAndHourTextTemplate;

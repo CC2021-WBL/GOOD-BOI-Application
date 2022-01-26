@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import FONTS from '../../Styles/fontsStyledComponents';
+import FONTS from '../../../Styles/fontsStyledComponents';
 
 const ContestDetailsContentStyled = styled.div`
   display: flex;

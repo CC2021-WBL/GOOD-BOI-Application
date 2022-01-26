@@ -1,10 +1,10 @@
 import ContestDetailsContentStyled from './ContestDetailsContentStyled';
 import PropTypes from 'prop-types';
 
-import ContestDetailsDate from './ContestDetailsContent/ContestDetailsDate';
-import ContestDetailsAddress from './ContestDetailsContent/ContestDetailsAddress';
-import ContestDetailsJudges from './ContestDetailsContent/ContestDetailsJudges';
-import ContestDetailsApplicationInfo from './ContestDetailsContent/ContestDetailsApplicationInfo';
+import ContestDetailsDate from './ContestDetailsDate/ContestDetailsDate';
+import ContestDetailsAddress from './ContestDetailsAddress/ContestDetailsAddress';
+import ContestDetailsJudges from './ContestDetailsJudges/ContestDetailsJudges';
+import ContestDetailsApplicationInfo from './ContestDetailsApplicationInfo/ContestDetailsApplicationInfo';
 
 const ContestDetailsContent = ({ contestInfo }) => {
   const { date } = contestInfo;

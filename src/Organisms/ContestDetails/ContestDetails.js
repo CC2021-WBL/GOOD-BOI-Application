@@ -1,9 +1,9 @@
 import ContestDetailsStyled from './ContestDetailsStyled';
-import Map from './Map';
-import ContestDetailsToggler from './ContestDetailsToggler';
+import ContestDetailsMap from './ContestDetailsMap/ContestDetailsMap';
+import ContestDetailsToggler from './ContestDetailsToggler/ContestDetailsToggler';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import { useState } from 'react';
-import ContestDetailsContent from './ContestDetailsContent';
+import ContestDetailsContent from './ContestDetailsContent/ContestDetailsContent';
 import PropTypes from 'prop-types';
 import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
 
@@ -19,11 +19,8 @@ const ContestDetails = ({ contestId }) => {
 
   return (
     <ContestDetailsStyled>
-      <Map />
-      <ContestDetailsToggler
-        onClick={toggleHandler}
-        toggle={toggle}
-      ></ContestDetailsToggler>
+      <ContestDetailsMap />
+      <ContestDetailsToggler onClick={toggleHandler} toggle={toggle} />
       {toggle && <ContestDetailsContent contestInfo={contestInfo} />}
       <div
         style={{

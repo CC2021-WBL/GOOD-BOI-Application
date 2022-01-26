@@ -1,6 +1,9 @@
-import ContestDetailsLine from '../ContestDetailsLine';
+import ContestDetailsLine from '../../../../Atoms/ContestDetailsLine/ContestDetailsLine';
 import PropTypes from 'prop-types';
-import { judgesTextTemplate, toBeAnnounced } from '../ContestDetailsCONSTS';
+import {
+  judgesTextTemplate,
+  toBeAnnounced,
+} from '../../../../Consts/ContestDetailsCONSTS';
 
 const ContestDetailsJudges = ({ judges = [] }) => {
   judges.length === 0 && judges.push(toBeAnnounced);

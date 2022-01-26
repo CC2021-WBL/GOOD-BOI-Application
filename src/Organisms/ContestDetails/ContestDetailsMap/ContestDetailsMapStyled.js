@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import COLORS from '../../Styles/varsStyledComponents';
-import mapmock from '../../Assets/mockmap.png';
+import COLORS from '../../../Styles/varsStyledComponents';
+import mapmock from '../../../Assets/mockmap.png';
 
-const MapStyled = styled.div`
+const ContestDetailsMapStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,4 +11,4 @@ const MapStyled = styled.div`
   background-image: url(${mapmock});
 `;
 
-export default MapStyled;
+export default ContestDetailsMapStyled;
