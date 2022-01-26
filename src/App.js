@@ -56,8 +56,8 @@ function App() {
             path="contests/:contestId/classes/:classId/:dogId/dogSummary"
             element={<DogSummaryPage />}
           />
+          <Route path="contestDetails" element={<ContestDetailsPage />} />
         </Route>
-        <Route path="contestDetails" element={<ContestDetailsPage />} />
 
         <Route path="ModalsTest" element={<ModalsTest />} />
         <Route path="*" element={<NotFoundPage />}></Route>
