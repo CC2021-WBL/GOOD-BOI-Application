@@ -12,6 +12,7 @@ const InputFieldStyled = styled.input`
   color: ${COLORS.grey400};
   font-family: Mulish, FontAwesome, sans-serif;
   ${FONTS.body_semibold};
+
   &::placeholder {
     color: ${COLORS.grey400};
   }
@@ -19,10 +20,12 @@ const InputFieldStyled = styled.input`
     border: 0.5px solid transparent;
     outline: 3px solid ${COLORS.primary201};
   }
+
   /* &:invalid {
     border: 0.5px solid transparent;
     outline: 3px solid tomato;
   } */
+
   &.redBorder {
     border: 0.5px solid transparent;
     outline: 2px solid ${COLORS.negative400};

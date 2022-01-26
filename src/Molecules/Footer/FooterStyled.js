@@ -11,6 +11,7 @@ export const FooterStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
+
   border-top: 2px solid ${COLORS.grey00};
   margin: 0;
   background: ${COLORS.white};
