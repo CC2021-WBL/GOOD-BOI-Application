@@ -12,9 +12,7 @@ const HomePage = () => {
       <LinkStyled to="/contests/1/classes">Classes page</LinkStyled>
       <LinkStyled to="/contests/1/classes/1">Single class list</LinkStyled>
       <LinkStyled to="/contests/1/classes/1/woof">Woofs exercises</LinkStyled>
-      <LinkStyled to="/contests/1/classes/1/woof/summary">
-        Woofs exercises
-      </LinkStyled>
+      <LinkStyled to="/contests/1/classes/1/woof/summary">Woofs results</LinkStyled>
       <LinkStyled to="/contestDetails/">contestDetails</LinkStyled>
       <Outlet />
     </>
