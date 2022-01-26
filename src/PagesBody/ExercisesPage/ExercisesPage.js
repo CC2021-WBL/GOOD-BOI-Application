@@ -60,7 +60,6 @@ const ExercisesPage = () => {
       <ExerciseCardsContainer
         performanceObject={ourTestPerformanceObject}
       ></ExerciseCardsContainer>
-
       <ButtonExercisesContainer></ButtonExercisesContainer>
     </>
   );

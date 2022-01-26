@@ -9,7 +9,7 @@ import {
 import { getDataFormatDdMonthYyy } from '../../Tools/TimeFunctions';
 import { useState, useEffect } from 'react';
 
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ContestComponent = ({ contestId, contestIndex }) => {
   const initialData = {
@@ -22,7 +22,7 @@ const ContestComponent = ({ contestId, contestIndex }) => {
   const [isClicked, setIsClicked] = useState();
   const [contestData, setContestData] = useState(initialData);
   const { contestName, date, hour, city } = contestData;
-  //  let navigate = useNavigate();
+  let navigate = useNavigate();
 
   useEffect(() => {
     // mock for fetch() from database
@@ -38,7 +38,7 @@ const ContestComponent = ({ contestId, contestIndex }) => {
   const handleClick = (event) => {
     event.preventDefault();
     setIsClicked((isClicked) => !isClicked);
-    // navigate(`./${contestId}/classes`);
+    navigate(`./${contestId}/classes`);
     //navigate musi przekazać dane o klasach jakie mają się odbyć i nazwach psów w tych klasach?
   };
 
