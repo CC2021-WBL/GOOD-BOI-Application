@@ -7,11 +7,19 @@ import {
   getHourMinutesFormat,
 } from '../../Tools/TimeFunctions';
 
+// eslint-disable-next-line react/prop-types
 const ContestDetailsContent = ({ contestInfo }) => {
+  const { date } = contestInfo;
+  console.log(date);
   /*DATE AND HOUR*/
-  const dateText = `${getDataFormatDdMonthYyy(contestInfo.date)}`;
-  const hourText = `${getHourMinutesFormat(contestInfo.date)}`;
+  let dateAndHour;
+  date &&
+    (dateAndHour = [
+      `${getDataFormatDdMonthYyy(date)}`,
+      `${getHourMinutesFormat(date)}`,
+    ]);
 
+  console.log(dateAndHour);
   /*APPLICATION INFO*/
   const { applicationOpenDate, applicationClosedDate, applicationFeeInPLN } =
     contestInfo;
@@ -26,8 +34,7 @@ const ContestDetailsContent = ({ contestInfo }) => {
   return (
     <ContestDetailsContentStyled>
       {/*DATE AND HOUR*/}
-      <ContestDetailsLine textArray={[dateText, hourText]} />
-      {/*PLACE*/}
+      date && (<ContestDetailsLine textArray={dateAndHour} />){/*PLACE*/}
       <ContestDetailsLine textArray={['UL. GRUNWALDZKA 402', 'GDAŃSK']} />
       <ContestDetailsLine textArray={['OLIVIA BUSINESS CENTER']} />
       {/*JUDGES*/}
@@ -51,7 +58,6 @@ const ContestDetailsContent = ({ contestInfo }) => {
     </ContestDetailsContentStyled>
   );
 };
-
 ContestDetailsContent.propTypes = {
   contestInfo: PropTypes.object,
 };

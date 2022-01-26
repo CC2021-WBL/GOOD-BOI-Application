@@ -1,10 +1,8 @@
 import ContestDetails from '../../Organisms/ContestDetails/ContestDetails';
-import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
-const testContest = RANDOM_CONTESTS[0];
+const testContestId = 'a0347677-c3c9-4edc-9d46-fed4a958fdc2';
 
-console.log(testContest);
 const ContestDetailsPage = () => {
-  return <ContestDetails contestInfo={testContest} />;
+  return <ContestDetails contestId={testContestId} />;
 };
 
 export default ContestDetailsPage;

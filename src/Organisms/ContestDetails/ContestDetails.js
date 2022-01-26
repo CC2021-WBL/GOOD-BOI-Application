@@ -5,8 +5,10 @@ import MainButton from '../../Atoms/MainButton/MainButton';
 import { useState } from 'react';
 import ContestDetailsContent from './ContestDetailsContent';
 import PropTypes from 'prop-types';
+import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
 
-const ContestDetails = ({ contestInfo }) => {
+const ContestDetails = ({ contestId }) => {
+  const contestInfo = RANDOM_CONTESTS.find((contest) => contest.id == contestId)
   const [toggle, setToggle] = useState(false);
 
   const toggleHandler = () => {
@@ -33,7 +35,7 @@ const ContestDetails = ({ contestInfo }) => {
 };
 
 ContestDetails.propTypes = {
-  contestInfo: PropTypes.object,
+  contestId: PropTypes.string,
 };
 
 export default ContestDetails;
