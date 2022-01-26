@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import ClassCompetitorsPage from './Pages/ClassCompetitorsPage/ClassCompetitorsPage';
 import ClassesPage from './Pages/ClassesPage/ClassesPage';
+import ContestDetailsPage from './Pages/ContestDetailsPage/ContestDetailsPage';
 import ContactFormPage from './Pages/ContactForm/ContactForm';
 import ContestsPage from './Pages/ContestsPage/ContestsPage';
 import DogSummaryPage from './Pages/DogSummaryPage/DogSummaryPage';
@@ -19,10 +20,8 @@ import ModalsTest from './Pages/ModalsTest';
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
-import ClassCompetitorsPage from './Pages/ClassCompetitorsPage/ClassCompetitorsPage';
-import ModalsTest from './Pages/ModalsTest';
 import './App.css';
-import ContestDetailsPage from './Pages/ContestDetailsPage/ContestDetailsPage';
+
 import RolePage from './Pages/RolePage/RolePage';
 // import ClassSummaryPage from './Pages/ClassSummaryPage/ClassSummaryPage';
 import UnregisteredPage from './Pages/UnregisteredPage/UnregisteredPage';
