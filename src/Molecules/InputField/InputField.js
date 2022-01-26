@@ -12,6 +12,7 @@ const InputField = ({
   labelText,
   name,
   required,
+  className,
 }) => {
   return (
     <>
@@ -24,6 +25,7 @@ const InputField = ({
         onChange={onChange}
         name={name}
         required={required}
+        className={className}
       />
     </>
   );
@@ -39,6 +41,7 @@ InputField.propTypes = {
   onChange: propTypes.func.isRequired,
   name: propTypes.string.isRequired,
   required: propTypes.bool,
+  className: propTypes.string,
 };
 
 export default InputField;

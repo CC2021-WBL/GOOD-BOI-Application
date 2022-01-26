@@ -11,6 +11,7 @@ const TextArea = ({
   htmlFor,
   labelText,
   name,
+  className,
 }) => {
   return (
     <>
@@ -22,13 +23,13 @@ const TextArea = ({
         value={value}
         onChange={onChange}
         name={name}
+        className={className}
       />
     </>
   );
 };
 
 TextArea.propTypes = {
-  //   AreaText: propTypes.string.isRequired,
   htmlFor: propTypes.string.isRequired,
   labelText: propTypes.string.isRequired,
   id: propTypes.string.isRequired,
@@ -37,6 +38,7 @@ TextArea.propTypes = {
   value: propTypes.string,
   onChange: propTypes.func.isRequired,
   name: propTypes.string.isRequired,
+  className: propTypes.string,
 };
 
 export default TextArea;

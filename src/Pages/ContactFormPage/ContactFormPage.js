@@ -1,16 +1,17 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { useNavigate } from 'react-router-dom';
 
+import TextArea from '../../Atoms/TextArea/TextArea';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 import CheckboxAgreeField from '../../Atoms/CheckboxAgreeField/CheckboxAgreeField';
-import TextArea from '../../Atoms/TextArea/TextArea';
-import emailjs from '@emailjs/browser';
+
 const emailRgx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
-const ContactFormPage = () => {
+const ContactForm = () => {
   const initialState = {
     email: '',
     message: '',
@@ -38,8 +39,11 @@ const ContactFormPage = () => {
     if (!formData.message) {
       setErrors((prevState) => ({ ...prevState, message: 'Brak wiadomosci' }));
       isFormValid = false;
-    } else if (formData.message.length < 5) {
-      setErrors((prevState) => ({ ...prevState, message: 'za krotko' }));
+    } else if (formData.message.length < 20) {
+      setErrors((prevState) => ({
+        ...prevState,
+        message: 'Twoja wiadomość musi mieć minimum 20 znaków',
+      }));
       isFormValid = false;
     } else {
       setErrors({ ...errors, message: '' });
@@ -48,6 +52,7 @@ const ContactFormPage = () => {
   };
 
   const navigate = useNavigate();
+
   const submitHandler = (event) => {
     event.preventDefault();
     const isFormValid = validateForm();
@@ -81,7 +86,7 @@ const ContactFormPage = () => {
     <CardWrapper>
       <FormWrapper onSubmit={submitHandler} id="form">
         <InputField
-          labelText="Email"
+          labelText="* Email"
           htmlFor="email"
           type="email"
           placeholder="&#xf0e0; Email"
@@ -90,10 +95,11 @@ const ContactFormPage = () => {
           required
           value={setFormData.email}
           onChange={handleInputChange}
+          className={errors.email ? 'redBorder' : 'none'}
         />
         {errors.email && <p>{errors.email}</p>}
         <TextArea
-          labelText="Wpisz wiadomość"
+          labelText="* Wpisz wiadomość"
           htmlFor="message"
           id="message"
           name="message"
@@ -101,15 +107,19 @@ const ContactFormPage = () => {
           value={setFormData.message}
           onChange={handleInputChange}
           placeholder="Wpisz wiadomość"
+          className={errors.message ? 'redBorder' : 'none'}
         />
         {errors.message && <p>{errors.message}</p>}
 
-        <CheckboxAgreeField text="Zapoznałem się z regulaminem GOOD BOI i akceptuję jego postanowienia" />
-        {/* TODO: moze tu tez error? Oraz brakuje info co jest wymagane i ostylowanie inputow ktore sa niepoprawne */}
+        <CheckboxAgreeField
+          text="* Zapoznałem się z regulaminem GOOD BOI i akceptuję jego postanowienia"
+          className={errors.message ? 'redBorder' : 'none'}
+        />
+
         <MainButton primary text="Wyślij wiadomość" />
       </FormWrapper>
     </CardWrapper>
   );
 };
 
-export default ContactFormPage;
+export default ContactForm;
