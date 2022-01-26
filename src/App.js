@@ -5,8 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import ClassCompetitorsPage from './Pages/ClassCompetitorsPage/ClassCompetitorsPage';
 import ClassesPage from './Pages/ClassesPage/ClassesPage';
-import ContestDetailsPage from './Pages/ContestDetailsPage/ContestDetailsPage';
-import ContactFormPage from './Pages/ContactForm/ContactForm';
+import ContactFormPage from './Pages/ContactFormPage/ContactFormPage';
 import ContestsPage from './Pages/ContestsPage/ContestsPage';
 import DogSummaryPage from './Pages/DogSummaryPage/DogSummaryPage';
 import ExercisesPage from './Pages/ExercisesPage/ExercisesPage';
@@ -20,8 +19,6 @@ import ModalsTest from './Pages/ModalsTest';
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
-import './App.css';
-
 import RolePage from './Pages/RolePage/RolePage';
 // import ClassSummaryPage from './Pages/ClassSummaryPage/ClassSummaryPage';
 import UnregisteredPage from './Pages/UnregisteredPage/UnregisteredPage';
@@ -59,7 +56,6 @@ function App() {
             path="contests/:contestId/classes/:classId/:dogId/dogSummary"
             element={<DogSummaryPage />}
           />
-          <Route path="/contestDetails" element={<ContestDetailsPage />} />
         </Route>
 
         <Route path="ModalsTest" element={<ModalsTest />} />

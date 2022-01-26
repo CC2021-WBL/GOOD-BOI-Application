@@ -9,7 +9,7 @@ const RANDOM_CONTESTS = [
     address: 'ul. Grunwaldzka 402',
     place: 'Olivia Business Center',
     city: 'Gdańsk',
-    judges: ['Natasza Urbańska', 'Michał Milowicz'],
+    judges: ['Natasza Urbańska', 'Michał Milowicz', 'Janusz Józefowicz'],
     applicationOpenDate: new Date(2022, 1, 10, 10, 0),
     applicationClosedDate: new Date(2022, 2, 20, 23, 59),
     applicationFeeInPLN: 70,
@@ -68,6 +68,10 @@ const RANDOM_CONTESTS = [
         isCompleted: false,
       },
     ],
+  },
+  {
+    id: 'jajo-test-jajo',
+    name: 'Konkurs zgniłego jaja',
   },
 ];
 

@@ -11,9 +11,9 @@ const ContestDetailsLineStyled = styled.div`
   line-height: 2rem;
   height: 2rem;
   border-bottom: 1px solid ${COLORS.grey00};
-
+  text-transform: uppercase;
   ${(props) => props.highlight && `background-color: ${COLORS.grey100};`};
-  ${(props) => props.judge && `${FONTS.label_semibold} padding: 0 0 0 2rem;`};
+  ${(props) => props.judge && `${FONTS.label_semibold} padding: 0 0 0 1rem;`};
 `;
 
 export default ContestDetailsLineStyled;
