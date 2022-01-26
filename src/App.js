@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import ClassCompetitorsPage from './Pages/ClassCompetitorsPage/ClassCompetitorsPage';
 import ClassesPage from './Pages/ClassesPage/ClassesPage';
-import ContactFormPage from './Pages/ContactForm/ContactForm';
+import ContactFormPage from './Pages/ContactFormPage/ContactFormPage';
 import ContestsPage from './Pages/ContestsPage/ContestsPage';
 import DogSummaryPage from './Pages/DogSummaryPage/DogSummaryPage';
 import ExercisesPage from './Pages/ExercisesPage/ExercisesPage';
