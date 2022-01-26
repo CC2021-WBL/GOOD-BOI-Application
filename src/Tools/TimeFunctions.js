@@ -20,5 +20,13 @@ export const getHourAndMinutesFromDate = (date = Date) => {
 };
 
 export const getPointOnTimeLine = (startDate, endDate) => {
-  
-}
+  const todayDate = new Date();
+  if (endDate < todayDate) {
+    return 'archiwalny';
+  } else if (todayDate >= startDate && todayDate <= endDate) {
+    return 'w trakcie';
+  } else if (startDate > todayDate) {
+    return 'nadchodzący';
+  }
+  return 'loading...';
+};

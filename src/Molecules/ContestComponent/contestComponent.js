@@ -6,12 +6,14 @@ import {
 import {
   getDataFormatDdMonthYyy,
   getHourAndMinutesFromDate,
+  getPointOnTimeLine,
 } from '../../Tools/TimeFunctions';
 import { useEffect, useState } from 'react';
 
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
 import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
 import propTypes from 'prop-types';
+import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
 import { useNavigate } from 'react-router-dom';
 
 const ContestComponent = ({ contestId, contestIndex }) => {
@@ -21,16 +23,15 @@ const ContestComponent = ({ contestId, contestIndex }) => {
     endDate: new Date(),
     hour: '',
     city: 'info wkrótce',
+    doggoAmount: 0,
   };
-  // to test navigation uncomment rest of commented code at that page
-  const [isClicked, setIsClicked] = useState();
   const [contestData, setContestData] = useState(initialData);
 
-  const { contestName, startDate, endDate, hour, city } = contestData;
+  const { contestName, startDate, endDate, hour, city, doggoAmount } =
+    contestData;
   let navigate = useNavigate();
 
   useEffect(() => {
-    // mock for fetch() from database
     setContestData({
       ...contestData,
       contestName: RANDOM_CONTESTS[contestIndex].name,
@@ -38,37 +39,41 @@ const ContestComponent = ({ contestId, contestIndex }) => {
       endDate: RANDOM_CONTESTS[contestIndex].endDate,
       hour: getHourAndMinutesFromDate(RANDOM_CONTESTS[contestIndex].date),
       city: RANDOM_CONTESTS[contestIndex].city.toUpperCase(),
+      doggoAmount: 30,
     });
     console.log(contestId);
   }, []);
 
   const stringDate = getDataFormatDdMonthYyy(startDate);
+  const pointOnTimeLine = getPointOnTimeLine(startDate, endDate);
+  console.log(pointOnTimeLine);
 
   const handleClick = (event) => {
     event.preventDefault();
-    setIsClicked((isClicked) => !isClicked);
     navigate(`./${contestId}/classes`);
     //navigate musi przekazać dane o klasach jakie mają się odbyć i nazwach psów w tych klasach?
   };
 
   return (
-    <ContestComponentStyled isClicked={isClicked} onClick={handleClick}>
+    <ContestComponentStyled
+      colorMotive={setColorMotive(pointOnTimeLine)}
+      onClick={handleClick}
+    >
       <ContestNameStyled>{contestName}</ContestNameStyled>
-      <ContestInsideElementStyled isClicked={isClicked}>
+      <ContestInsideElementStyled colorMotive={setColorMotive(pointOnTimeLine)}>
         <time dateTime={stringDate}>
           {stringDate}, {hour}
         </time>
         <p>{city}</p>
       </ContestInsideElementStyled>
-      <ContestInsideElementStyled>
+      <ContestInsideElementStyled colorMotive={setColorMotive(pointOnTimeLine)}>
         <InfoLabel
-          classInfo={{ dogsAmount: 30 }}
-          endDateOfContest={endDate}
-          startDateOfContest={startDate}
+          classInfo={{ dogsAmount: doggoAmount }}
+          colorMotive={setColorMotive(pointOnTimeLine, doggoAmount)}
         ></InfoLabel>
         <InfoLabel
-          startDateOfContest={startDate}
-          endDateOfContest={endDate}
+          pointOnTimeLine={pointOnTimeLine}
+          colorMotive={setColorMotive(pointOnTimeLine)}
         ></InfoLabel>
       </ContestInsideElementStyled>
     </ContestComponentStyled>
@@ -77,7 +82,6 @@ const ContestComponent = ({ contestId, contestIndex }) => {
 
 ContestComponent.propTypes = {
   contestId: propTypes.string.isRequired,
-  contestDate: propTypes.instanceOf(Date),
   contestIndex: propTypes.number,
 };
 

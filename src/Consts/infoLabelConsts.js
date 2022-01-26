@@ -4,3 +4,10 @@ export const TIME = {
   FUTURE: 'nadchodzący',
   UNKNOWN: 'loading...',
 };
+
+export const COLORSMOTIVE = {
+  GREY: 'grey',
+  BLUE: 'blue',
+  GREEN: 'green',
+  WHITE: 'white',
+};

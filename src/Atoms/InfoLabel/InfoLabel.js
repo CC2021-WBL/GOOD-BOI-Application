@@ -1,41 +1,22 @@
-import PropTypes from 'prop-types';
 import InfoLabelStyled from './InfoLabelStyled';
-import { TIME } from '../../Consts/infoLabelConsts';
+import PropTypes from 'prop-types';
+import { COLORSMOTIVE as c } from '../../Consts/infoLabelConsts';
 
-const InfoLabel = ({
-  classInfo,
-  dogInfo,
-  startDateOfContest = '',
-  endDateOfContest = '',
-}) => {
+const InfoLabel = ({ classInfo, dogInfo, pointOnTimeLine, colorMotive }) => {
   const { dogsAmount, isCompleted } = classInfo || [];
   const { exercisesCompleted, exercisesAmount } = dogInfo || [];
 
   const exercisesComplete =
     exercisesAmount !== undefined && exercisesCompleted === exercisesAmount;
 
-  const todayDate = new Date();
-  let dateTextInfo;
-
-  if (!startDateOfContest) {
-    dateTextInfo = '';
-  } else if (endDateOfContest < todayDate) {
-    dateTextInfo = TIME.PAST;
-  } else if (todayDate >= startDateOfContest && todayDate <= endDateOfContest) {
-    dateTextInfo = TIME.PRESENT;
-  } else if (startDateOfContest > todayDate) {
-    dateTextInfo = TIME.FUTURE;
+  if (isCompleted || exercisesComplete) {
+    colorMotive = c.GREEN;
   }
 
   return (
-    <InfoLabelStyled
-      isClassCompleted={isCompleted}
-      areExercisesCompleted={exercisesComplete}
-      dateTextInfo={dateTextInfo}
-      dogsAmount={dogsAmount}
-    >
+    <InfoLabelStyled colorMotive={colorMotive}>
       {/*CONDITIONAL FOR DATE */}
-      {dateTextInfo && !dogsAmount && <>{dateTextInfo}</>}
+      {pointOnTimeLine && !dogsAmount && <>{pointOnTimeLine}</>}
 
       {/*CONDITIONAL FOR CLASSES */}
       {classInfo && isCompleted && <>ukończono</>}
@@ -59,8 +40,8 @@ const InfoLabel = ({
 InfoLabel.propTypes = {
   classInfo: PropTypes.object,
   dogInfo: PropTypes.object,
-  startDateOfContest: PropTypes.instanceOf(Date),
-  endDateOfContest: PropTypes.instanceOf(Date),
+  pointOnTimeLine: PropTypes.string,
+  colorMotive: PropTypes.string,
 };
 
 export default InfoLabel;
