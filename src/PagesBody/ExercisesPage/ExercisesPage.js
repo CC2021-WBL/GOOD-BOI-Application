@@ -62,7 +62,6 @@ const ExercisesPage = () => {
       ></ExerciseCardsContainer>
 
       <ButtonExercisesContainer></ButtonExercisesContainer>
-
     </>
   );
 };
