@@ -1,6 +1,7 @@
+import styled from 'styled-components';
+
 import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
-import styled from 'styled-components';
 
 const InputFieldStyled = styled.input`
   width: 100%;
@@ -20,9 +21,9 @@ const InputFieldStyled = styled.input`
     outline: 3px solid ${COLORS.primary201};
   }
 
-  &:invalid {
+  &.red-border {
     border: 0.5px solid transparent;
-    outline: 3px solid tomato;
+    outline: 1px solid ${COLORS.negative400};
   }
 `;
 
