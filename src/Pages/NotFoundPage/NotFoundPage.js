@@ -1,4 +1,4 @@
-import NotFound from '../../Organisms/NotFoundPage/NotFound';
+import NotFound from '../../Organisms/NotFoundContent/NotFound';
 
 const NotFoundPage = () => {
   return <NotFound />;

@@ -1,7 +1,12 @@
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 import notFound from '../../Assets/notFound.png';
-import NotFoundPageWrapperStyled from './NotFoundPageWrapperStyled';
 import MainButton from '../../Atoms/MainButton/MainButton';
+import NotFoundPageWrapperStyled from './NotFoundPageWrapperStyled';
+
 const NotFound = () => {
+  const navigate = useNavigate();
   return (
     <NotFoundPageWrapperStyled>
       <img src={notFound} alt="Dog with question mark" />
@@ -13,8 +18,14 @@ const NotFound = () => {
         </p>
       </div>
       <div className="buttons-wrapper">
-        <MainButton secondary text="wroć do poprzedniej strony" />
-        <MainButton ternary text="Formularz kontaktowy" />
+        <MainButton
+          secondary
+          text="wroć do poprzedniej strony"
+          onClick={() => navigate(-1)}
+        />
+        <Link to="/contactForm">
+          <MainButton ternary text="Formularz kontaktowy" />
+        </Link>
       </div>
     </NotFoundPageWrapperStyled>
   );
