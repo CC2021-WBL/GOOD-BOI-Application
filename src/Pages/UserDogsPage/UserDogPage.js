@@ -17,7 +17,7 @@ const UserDogPage = () => {
           />
         );
       })}
-      <MainButton secondary text="DODAJ PSA" />
+      <MainButton secondary text="DODAJ PSIAKA" />
     </div>
   );
 };
