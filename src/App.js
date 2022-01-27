@@ -7,6 +7,8 @@ import ClassesPage from './PagesBody/ClassesPage/ClassesPage';
 import ContactFormPage from './PagesBody/ContactFormPage/ContactFormPage';
 import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
+import EBtest from './Tools/EBtest';
+import ErrorBoundary from './Tools/ErrorBoundary';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
 import LandingPage from './PagesBody/LandingPage/LandingPage';
@@ -25,6 +27,9 @@ import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
 function App() {
   return (
     <div className="App">
+      <ErrorBoundary>
+        <EBtest />
+      </ErrorBoundary>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route element={<Layout />}>

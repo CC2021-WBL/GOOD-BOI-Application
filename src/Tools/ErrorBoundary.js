@@ -1,30 +1,34 @@
 import propTypes from 'prop-types';
 import { Component } from 'react';
 
-import NotFoundPage from '../PagesBody/NotFoundPage/NotFoundPage';
-
 export class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
-    this.state = { hasError: false };
+    this.state = { hasError: false, error: '', errorInfo: '' };
   }
 
   static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
+    console.log(error);
     return { hasError: true };
   }
 
   componentDidCatch(error, errorInfo) {
-    // You can also log the error to an error reporting service
-    logErrorToMyService(error, errorInfo);
+    console.log(error, errorInfo);
+    this.setState({
+      error: error,
+      errorInfo: errorInfo,
+    });
   }
 
   render() {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
-      return <NotFoundPage />;
+      return (
+        <>
+          <h4>Error: </h4> {this.state.error.toString()} <br />
+          <h4>Error Info: </h4> {this.state.errorInfo.toString()}
+        </>
+      );
     }
-
     return this.props.children;
   }
 }
