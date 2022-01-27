@@ -1,24 +1,23 @@
-import { Route, Routes } from 'react-router-dom';
-
-import Layout from './Templates/Layout/Layout';
-import HomePage from './Pages/HomePage/HomePage';
-import LoginForm from './Organisms/LoginForm/LoginForm';
-import ClassesPage from './Pages/ClassesPage/ClassesPage';
-import LandingPage from './Pages/LandingPage/LandingPage';
-import ContestsPage from './Pages/ContestsPage/ContestsPage';
-import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
-import ExercisesPage from './Pages/ExercisesPage/ExercisesPage';
-import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
-import ClassSummaryPage from './Pages/ClassSummaryPage/ClassSummaryPage';
-import SingleSummaryPage from './Pages/SingleSummaryPage/SingleSummaryPage';
-import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
-import ClassCompetitorsPage from './Pages/ClassCompetitorsPage/ClassCompetitorsPage';
-import ModalsTest from './Pages/ModalsTest';
 import './App.css';
 
-const SingleContestPage = () => {
-  return <h1>I am a single Contest Page Component</h1>;
-};
+import { Route, Routes } from 'react-router-dom';
+
+import ClassCompetitorsPage from './Pages/ClassCompetitorsPage/ClassCompetitorsPage';
+import ClassSummaryPage from './Pages/ClassSummaryPage/ClassSummaryPage';
+import ClassesPage from './Pages/ClassesPage/ClassesPage';
+import ContestsPage from './Pages/ContestsPage/ContestsPage';
+import ExercisesPage from './Pages/ExercisesPage/ExercisesPage';
+import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
+import HomePage from './Pages/HomePage/HomePage';
+import LandingPage from './Pages/LandingPage/LandingPage';
+import Layout from './Templates/Layout/Layout';
+import LoginForm from './Organisms/LoginForm/LoginForm';
+import ModalsTest from './Pages/ModalsTest';
+import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
+import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
+import SingleContestPage from './Pages/SingleContestPage/SingleContestPage';
+import SingleSummaryPage from './Pages/SingleSummaryPage/SingleSummaryPage';
+
 function App() {
   return (
     <div className="App">

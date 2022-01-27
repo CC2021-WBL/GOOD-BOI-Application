@@ -23,6 +23,7 @@ const createLeaderboard = () => {
   function getRandomNumber() {
     return Math.floor(Math.random() * 41);
   }
+  console.log(leaderboard);
   return leaderboard;
 };
 
