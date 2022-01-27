@@ -1,27 +1,26 @@
 import './App.css';
-import './App.css';
 
 import { Route, Routes } from 'react-router-dom';
 
-import ClassCompetitorsPage from './Pages/ClassCompetitorsPage/ClassCompetitorsPage';
-import ClassesPage from './Pages/ClassesPage/ClassesPage';
-import ContactFormPage from './Pages/ContactForm/ContactForm';
-import ContestsPage from './Pages/ContestsPage/ContestsPage';
-import DogSummaryPage from './Pages/DogSummaryPage/DogSummaryPage';
-import ExercisesPage from './Pages/ExercisesPage/ExercisesPage';
+import ClassCompetitorsPage from './PagesBody/ClassCompetitorsPage/ClassCompetitorsPage';
+import ClassesPage from './PagesBody/ClassesPage/ClassesPage';
+import ContactFormPage from './PagesBody/ContactFormPage/ContactFormPage';
+import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
+import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
+import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
-import LandingPage from './Pages/LandingPage/LandingPage';
+import LandingPage from './PagesBody/LandingPage/LandingPage';
 import Layout from './Templates/Layout/Layout';
 import LayoutWithLabel from './Templates/LayoutWithLabel/LayoutWithLabel';
-import LeaderboardPage from './Pages/LeaderboardPage/LeaderboardPage';
+import LeaderboardPage from './PagesBody/LeaderboardPage/LeaderboardPage';
 import LoginForm from './Organisms/LoginForm/LoginForm';
-import ModalsTest from './Pages/ModalsTest';
-import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
-import ProfilePage from './Pages/ProfilePage/ProfilePage';
+import ModalsTest from './PagesBody/ModalsTest';
+import NotFoundPage from './PagesBody/NotFoundPage/NotFoundPage';
+import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
-import RolePage from './Pages/RolePage/RolePage';
-// import ClassSummaryPage from './Pages/ClassSummaryPage/ClassSummaryPage';
-import UnregisteredPage from './Pages/UnregisteredPage/UnregisteredPage';
+import RolePage from './PagesBody/RolePage/RolePage';
+// import ClassSummaryPage from './PagesBody/ClassSummaryPage/ClassSummaryPage';
+import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
 
 function App() {
   return (

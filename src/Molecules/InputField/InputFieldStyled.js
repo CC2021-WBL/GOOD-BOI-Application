@@ -9,6 +9,7 @@ const InputFieldStyled = styled.input`
   padding: 0 0 0 10px;
   margin: 0 0 3px 0;
   border: 0.5px solid ${COLORS.grey400};
+  margin: 0 0 5px 0;
   border-radius: 8px;
   color: ${COLORS.grey400};
   font-family: Mulish, FontAwesome, sans-serif;
@@ -17,6 +18,7 @@ const InputFieldStyled = styled.input`
   &::placeholder {
     color: ${COLORS.grey400};
   }
+
   &:focus {
     border: 0.5px solid transparent;
     outline: 3px solid ${COLORS.primary201};

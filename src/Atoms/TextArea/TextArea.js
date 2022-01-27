@@ -1,48 +1,44 @@
 import propTypes from 'prop-types';
+import InputLabel from '../InputLabel/InputLabel';
+import TextAreaStyled from './TextAresStyled';
 
-import InputFieldStyled from './InputFieldStyled';
-import InputLabel from '../../Atoms/InputLabel/InputLabel';
-
-const InputField = ({
+const TextArea = ({
   id,
-  type,
   placeholder,
+  required,
   value,
   onChange,
   htmlFor,
   labelText,
   name,
-  required,
   className,
 }) => {
   return (
     <>
       <InputLabel htmlFor={htmlFor} labelText={labelText} />
-      <InputFieldStyled
+      <TextAreaStyled
         id={id}
-        type={type}
         placeholder={placeholder}
+        required={required}
         value={value}
         onChange={onChange}
         name={name}
-        required={required}
         className={className}
       />
     </>
   );
 };
 
-InputField.propTypes = {
+TextArea.propTypes = {
   htmlFor: propTypes.string.isRequired,
   labelText: propTypes.string.isRequired,
   id: propTypes.string.isRequired,
-  type: propTypes.string.isRequired,
   placeholder: propTypes.string,
+  required: propTypes.bool.isRequired,
   value: propTypes.string,
   onChange: propTypes.func.isRequired,
   name: propTypes.string.isRequired,
-  required: propTypes.bool,
   className: propTypes.string,
 };
 
-export default InputField;
+export default TextArea;
