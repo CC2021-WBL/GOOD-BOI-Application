@@ -4,7 +4,6 @@ import { BsChevronLeft } from 'react-icons/bs';
 import ModalContainer from './ModalStyled';
 
 const Modal = ({ onCloseHandler, modalData, onConfirmHandler }) => {
-  console.log(modalData);
   const { about, back, confirmation, title, theme } = modalData;
   return (
     <ModalContainer theme={theme}>
