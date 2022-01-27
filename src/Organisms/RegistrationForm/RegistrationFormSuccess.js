@@ -1,9 +1,5 @@
 const RegistrationFormSuccess = () => {
-  return (
-    <div>
-      <p>Zarejestrowano pomyślnie!</p>
-    </div>
-  );
+  return <p>Zarejestrowano pomyślnie!</p>;
 };
 
 export default RegistrationFormSuccess;

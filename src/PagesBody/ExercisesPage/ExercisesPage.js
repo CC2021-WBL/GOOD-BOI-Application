@@ -6,6 +6,7 @@ import Modal from '../../Organisms/Modal/Modal';
 import SpecialButtonsContainer from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainer';
 import modalData from '../../Consts/modalData';
 import { useState } from 'react';
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 
 const ExercisesPage = () => {
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
@@ -36,7 +37,7 @@ const ExercisesPage = () => {
   );
 
   return (
-    <>
+    <ColumnWrapper>
       {(isDisqualifyModalOpen || isPenaltyModalOpen) && (
         <Modal
           modalData={
@@ -52,16 +53,16 @@ const ExercisesPage = () => {
         <Backdrop onClick={closeModalHandler} />
       )}
 
-      <SpecialButtonsContainer
-        openDisqualifyModalHandler={openDisqualifyModalHandler}
-        openPenaltyModalHandler={openPenaltyModalHandler}
-      />
+      <ColumnWrapper paddingLeftRight={0.25}>
+        <SpecialButtonsContainer
+          openDisqualifyModalHandler={openDisqualifyModalHandler}
+          openPenaltyModalHandler={openPenaltyModalHandler}
+        />
+        <ExerciseCardsContainer performanceObject={ourTestPerformanceObject} />
+      </ColumnWrapper>
 
-      <ExerciseCardsContainer
-        performanceObject={ourTestPerformanceObject}
-      ></ExerciseCardsContainer>
-      <ButtonExercisesContainer></ButtonExercisesContainer>
-    </>
+      <ButtonExercisesContainer />
+    </ColumnWrapper>
   );
 };
 

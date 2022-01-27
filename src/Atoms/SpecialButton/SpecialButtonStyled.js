@@ -8,7 +8,7 @@ const SpecialButtonStyled = styled.button`
   background: ${(props) =>
     props.special ? COLORS.negative200 : COLORS.warning100};
   border-radius: ${(props) =>
-    props.special ? '0px 0px 0px 12px' : '0px 0px 12px 0px'};
+    props.special ? '0 0 0 0.75rem' : '0 0 0.75rem 0'};
   color: ${(props) => (props.special ? COLORS.negative600 : COLORS.warning600)};
   font-weight: bold;
   &:hover {

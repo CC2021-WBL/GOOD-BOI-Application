@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 
 import TextArea from '../../Atoms/TextArea/TextArea';
 import MainButton from '../../Atoms/MainButton/MainButton';
-import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 import CheckboxAgreeField from '../../Atoms/CheckboxAgreeField/CheckboxAgreeField';
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 
 const emailRgx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
@@ -77,7 +77,7 @@ const ContactForm = () => {
   };
 
   return (
-    <CardWrapper>
+    <ColumnWrapper paddingLeftRight={1}>
       <FormWrapper onSubmit={submitHandler} id="form">
         <InputField
           labelText="* Email"
@@ -112,7 +112,7 @@ const ContactForm = () => {
 
         <MainButton primary text="Wyślij wiadomość" />
       </FormWrapper>
-    </CardWrapper>
+    </ColumnWrapper>
   );
 };
 
