@@ -2,6 +2,8 @@ import propTypes from 'prop-types';
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import NotFoundPage from '../PagesBody/NotFoundPage/NotFoundPage';
+
 export class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +23,7 @@ export class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return <Link to="*" />;
+      return <NotFoundPage />;
     }
 
     return this.props.children;
