@@ -28,9 +28,33 @@ const useForm = (callback, validateData) => {
     event.preventDefault();
     setErrors(validateData(formData));
     setIsSubmitting(true);
-    const data = { ...formData };
 
-    console.log(data);
+    // Sending data to future server
+    const url = 'https://jsonplaceholder.typicode.com/error';
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    };
+    fetch(url, requestOptions)
+      .then((response) => response.json())
+      // checking if response is coming back
+      .then((res) => console.log(res));
+
+    // error handling tries
+    // .then(async (response) => {
+    //   const isJson = response.headers
+    //     .get('content-type')
+    //     ?.includes('application/json');
+    //   const data = isJson && (await response.json());
+
+    //   //checking if there is a response error
+
+    //   if (!response.ok) {
+    //     const error = (data && data.message) || response.status;
+    //     return Promise.reject(error);
+    //   }
+    // });
   };
 
   useEffect(() => {
