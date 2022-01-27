@@ -9,7 +9,7 @@ const ClassCompetitorsPage = () => {
     console.log('secondary button clicked');
   }
   return (
-    <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
+    <ColumnWrapper paddingLeftRight={1} paddingTop={0.25}>
       {RANDOM_CONTESTS[0].obedienceClasses[0].dogs.map((dog, index) => {
         const { id, dogName, exercisesCompleted, exercisesAmount } = dog;
         return (
