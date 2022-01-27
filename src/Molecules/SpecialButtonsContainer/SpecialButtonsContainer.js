@@ -11,10 +11,15 @@ const SpecialButtonsContainer = ({
     <SpecialButtonsContainerStyled>
       <SpecialButton
         text="Dyskwalifikacja"
-        special
+        theme="red"
         handler={openDisqualifyModalHandler}
+        special
       />
-      <SpecialButton text="-10 punktów" handler={openPenaltyModalHandler} />
+      <SpecialButton
+        text="-10 punktów"
+        theme="yellow"
+        handler={openPenaltyModalHandler}
+      />
     </SpecialButtonsContainerStyled>
   );
 };
