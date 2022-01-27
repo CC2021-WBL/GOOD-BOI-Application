@@ -6,7 +6,8 @@ import FONTS from '../../Styles/fontsStyledComponents';
 const InputFieldStyled = styled.input`
   width: 100%;
   height: 3rem;
-  padding-left: 10px;
+  padding: 0 0 0 10px;
+  margin: 0 0 3px 0;
   border: 0.5px solid ${COLORS.grey400};
   border-radius: 8px;
   color: ${COLORS.grey400};
@@ -23,7 +24,7 @@ const InputFieldStyled = styled.input`
 
   &.red-border {
     border: 0.5px solid transparent;
-    outline: 1px solid ${COLORS.negative400};
+    outline: 1.5px solid ${COLORS.negative400};
   }
 `;
 
