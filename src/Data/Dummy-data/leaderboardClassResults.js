@@ -1,7 +1,7 @@
 // dummy data representing results in one of selected classes
 // array of objects
 
-const LeaderboardClassResults = [
+const LeaderboardClassResult = [
   [
     // class0 results
     { text: 'Woof', score: 310 },
@@ -40,4 +40,4 @@ const LeaderboardClassResults = [
   ],
 ];
 
-export default LeaderboardClassResults;
+export default LeaderboardClassResult;
