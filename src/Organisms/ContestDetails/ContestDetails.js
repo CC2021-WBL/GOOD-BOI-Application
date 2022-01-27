@@ -1,4 +1,3 @@
-import ContestDetailsStyled from './ContestDetailsStyled';
 import ContestDetailsMap from './ContestDetailsMap/ContestDetailsMap';
 import ContestDetailsToggler from './ContestDetailsToggler/ContestDetailsToggler';
 import MainButton from '../../Atoms/MainButton/MainButton';
@@ -6,6 +5,8 @@ import { useState } from 'react';
 import ContestDetailsContent from './ContestDetailsContent/ContestDetailsContent';
 import PropTypes from 'prop-types';
 import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
+import { Link } from 'react-router-dom';
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 
 const ContestDetails = ({ contestId }) => {
   const contestInfo = RANDOM_CONTESTS.find(
@@ -18,7 +19,7 @@ const ContestDetails = ({ contestId }) => {
   };
 
   return (
-    <ContestDetailsStyled>
+    <ColumnWrapper>
       <ContestDetailsMap />
       <ContestDetailsToggler onClick={toggleHandler} toggle={toggle} />
       {toggle && <ContestDetailsContent contestInfo={contestInfo} />}
@@ -27,9 +28,11 @@ const ContestDetails = ({ contestId }) => {
           margin: '1rem',
         }}
       >
-        <MainButton secondary text={'ZGŁOŚ SWÓJ UDZIAŁ'} />
+        <Link to="/confirmation" style={{ textDecoration: 'none' }}>
+          <MainButton secondary text={'ZGŁOŚ SWÓJ UDZIAŁ'} />
+        </Link>
       </div>
-    </ContestDetailsStyled>
+    </ColumnWrapper>
   );
 };
 
