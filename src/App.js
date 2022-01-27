@@ -21,6 +21,7 @@ import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import RolePage from './PagesBody/RolePage/RolePage';
 // import ClassSummaryPage from './PagesBody/ClassSummaryPage/ClassSummaryPage';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
+import ConfirmationPage from './PagesBody/ConfirmationPage/ConfirmationPage';
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
         </Route>
 
         <Route path="ModalsTest" element={<ModalsTest />} />
+        <Route path="confirmation" element={<ConfirmationPage />} />
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </div>
