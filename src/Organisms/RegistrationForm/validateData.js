@@ -24,14 +24,16 @@ const validateData = (formData) => {
     errors.password = 'Hasło musi mieć więcej niż 4 znaki';
   }
 
-  if (repeatpass.trim() !== password.trim()) {
+  if (!repeatpass) {
+    errors.repeatpass = 'Powtórz hasło';
+  } else if (repeatpass.trim() !== password.trim()) {
     errors.repeatpass = 'Powtórzone hasło różni się';
   }
 
   if (!firstname.trim()) {
     errors.firstname = 'Imię jest wymagane';
-  } else if (firstname.length < 4) {
-    errors.firstname = 'Imię musi mieć więcej niż 4 znaki';
+  } else if (firstname.length < 2) {
+    errors.firstname = 'Imię musi mieć więcej niż 2 znaki';
   }
 
   if (!surname.trim()) {

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import RegistrationFormSignup from './RegistrationFormSignup';
 import RegistrationFormSuccess from './RegistrationFormSuccess';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
@@ -9,6 +10,7 @@ const RegistrationForm = () => {
   function submitForm() {
     setIsSubmitted(true);
   }
+
   return (
     <ColumnWrapper paddingLeftRight={1}>
       {!isSubmitted ? (

@@ -1,10 +1,11 @@
-import useForm from './useForm.js';
-import validateData from './validateData';
-import MainButton from '../../Atoms/MainButton/MainButton';
+import propTypes from 'prop-types';
+
+import CheckboxAgreeField from '../../Atoms/CheckboxAgreeField/CheckboxAgreeField';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
-import CheckboxAgreeField from '../../Atoms/CheckboxAgreeField/CheckboxAgreeField';
-import propTypes from 'prop-types';
+import MainButton from '../../Atoms/MainButton/MainButton';
+import useForm from './useForm.js';
+import validateData from './validateData';
 
 const RegistrationFormSignup = ({ submitForm }) => {
   const { handleInputChange, submitHandler, formData, errors } = useForm(
