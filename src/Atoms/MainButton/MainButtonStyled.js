@@ -2,12 +2,6 @@ import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 const handleBgAndColor = (props) => {
   if (props.primary) {
     return `color: ${COLORS.white}; background: ${COLORS.primary501};`;
