@@ -30,7 +30,7 @@ const useForm = (callback, validateData) => {
     setIsSubmitting(true);
 
     // Sending data to future server
-    const url = 'https://jsonplaceholder.typicode.com/error';
+    const url = 'https://jsonplaceholder.typicode.com/posts';
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
