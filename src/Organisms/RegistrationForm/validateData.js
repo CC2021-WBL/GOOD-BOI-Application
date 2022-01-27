@@ -32,8 +32,8 @@ const validateData = (formData) => {
 
   if (!firstname.trim()) {
     errors.firstname = 'Imię jest wymagane';
-  } else if (firstname.length < 4) {
-    errors.firstname = 'Imię musi mieć więcej niż 4 znaki';
+  } else if (firstname.length < 2) {
+    errors.firstname = 'Imię musi mieć więcej niż 2 znaki';
   }
 
   if (!surname.trim()) {
