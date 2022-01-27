@@ -39,7 +39,7 @@ InputField.propTypes = {
   placeholder: propTypes.string,
   value: propTypes.string,
   onChange: propTypes.func.isRequired,
-  name: propTypes.string.isRequired,
+  name: propTypes.string,
   required: propTypes.bool,
   className: propTypes.string,
 };
