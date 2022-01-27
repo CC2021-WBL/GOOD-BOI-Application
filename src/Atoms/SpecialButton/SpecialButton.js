@@ -13,7 +13,7 @@ const SpecialButton = ({ special, text, handler, theme }) => {
 SpecialButton.propTypes = {
   special: propTypes.bool,
   text: propTypes.string.isRequired,
-  handler: propTypes.func.isRequired,
+  handler: propTypes.func,
   theme: propTypes.string,
 };
 
