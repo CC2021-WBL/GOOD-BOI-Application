@@ -20,7 +20,7 @@ import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import RolePage from './PagesBody/RolePage/RolePage';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
-import UserDogPage from './Pages/UserDogsPage/UserDogPage';
+import UserDogPage from './PagesBody/UserDogsPage/UserDogPage';
 
 // import ClassSummaryPage from './Pages/ClassSummaryPage/ClassSummaryPage';
 
@@ -59,9 +59,9 @@ function App() {
             path="contests/:contestId/classes/:classId/:dogId/dogSummary"
             element={<DogSummaryPage />}
           />
-          <Route path="UserDogsPage" element={<UserDogPage />}></Route>
+          <Route path="UserDogPage" element={<UserDogPage />}></Route>
         </Route>
-
+        q
         <Route path="ModalsTest" element={<ModalsTest />} />
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
