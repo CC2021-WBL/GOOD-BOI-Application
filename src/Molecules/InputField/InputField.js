@@ -1,6 +1,7 @@
 import propTypes from 'prop-types';
-import InputLabel from '../../Atoms/InputLabel/InputLabel';
+
 import InputFieldStyled from './InputFieldStyled';
+import InputLabel from '../../Atoms/InputLabel/InputLabel';
 
 const InputField = ({
   id,
