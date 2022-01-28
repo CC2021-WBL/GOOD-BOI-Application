@@ -1,7 +1,7 @@
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
-import { Wrapper } from '../../Atoms/MainButton/MainButtonStyled';
 import MainButton from '../../Atoms/MainButton/MainButton';
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 
 const ClassesPage = () => {
   function secondaryBtnHandler() {
@@ -9,7 +9,7 @@ const ClassesPage = () => {
   }
 
   return (
-    <>
+    <ColumnWrapper paddingLeftRight={1} paddingTop={0.25}>
       {RANDOM_CONTESTS[0].obedienceClasses.map((classObject) => {
         const { obedienceClass, dogs, isCompleted } = classObject;
         const { id, name } = obedienceClass;
@@ -25,14 +25,12 @@ const ClassesPage = () => {
           />
         );
       })}
-      <Wrapper>
-        <MainButton
-          onClick={secondaryBtnHandler}
-          secondary
-          text="ZAKOŃCZ KLASĘ"
-        />
-      </Wrapper>
-    </>
+      <MainButton
+        onClick={secondaryBtnHandler}
+        secondary
+        text="ZAKOŃCZ KLASĘ"
+      />
+    </ColumnWrapper>
   );
 };
 
