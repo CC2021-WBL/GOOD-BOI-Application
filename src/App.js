@@ -28,7 +28,6 @@ import UserDogPage from './PagesBody/UserDogsPage/UserDogPage';
 
 // import ClassSummaryPage from './PagesBody/ClassSummaryPage/ClassSummaryPage';
 
-
 function App() {
   return (
     <div className="App">
