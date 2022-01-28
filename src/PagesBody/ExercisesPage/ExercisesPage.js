@@ -34,7 +34,7 @@ const ExercisesPage = () => {
   const ourTestDog = DOGS.find((dog) => dog.dogName === ourTestDogName);
   const ourTestContestName = 'XII Zawody im. Pana Starosty';
   const ourTestPerformanceObject = ourTestDog.performances.find(
-    (performance) => performance.contestName == ourTestContestName,
+    (performance) => performance.contestName === ourTestContestName,
   );
 
   return (
