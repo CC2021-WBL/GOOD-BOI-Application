@@ -9,8 +9,6 @@ const InputFieldStyled = styled.input`
   padding: 0 0 0 10px;
   border: 0.5px solid ${COLORS.grey400};
   margin: 0 0 3px 0;
-  border: 0.5px solid ${COLORS.grey400};
-  margin: 0 0 0.25rem 0;
   border-radius: 8px;
   color: ${COLORS.grey400};
   font-family: Mulish, FontAwesome, sans-serif;
