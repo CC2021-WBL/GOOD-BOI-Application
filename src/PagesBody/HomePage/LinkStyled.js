@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const LinkStyled = styled(Link)`
   padding: 0.2rem;
