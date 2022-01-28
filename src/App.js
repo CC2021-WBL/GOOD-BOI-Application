@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import ClassCompetitorsPage from './PagesBody/ClassCompetitorsPage/ClassCompetitorsPage';
 import ClassesPage from './PagesBody/ClassesPage/ClassesPage';
 import ContactFormPage from './PagesBody/ContactFormPage/ContactFormPage';
+import ContestDetailsPage from './PagesBody/ContestDetailsPage/ContestDetailsPage';
 import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
 import ErrorPage from './PagesBody/ErrorPage/ErrorPage';
@@ -61,6 +62,7 @@ function App() {
             path="contests/:contestId/classes/:classId/:dogId/dogSummary"
             element={<DogSummaryPage />}
           />
+          <Route path="contestDetails" element={<ContestDetailsPage />} />
         </Route>
 
         <Route path="ModalsTest" element={<ModalsTest />} />
