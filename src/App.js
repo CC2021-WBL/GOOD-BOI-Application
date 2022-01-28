@@ -7,6 +7,7 @@ import ClassesPage from './PagesBody/ClassesPage/ClassesPage';
 import ContactFormPage from './PagesBody/ContactFormPage/ContactFormPage';
 import ContestDetailsPage from './PagesBody/ContestDetailsPage/ContestDetailsPage';
 import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
+import DogDataPage from './PagesBody/DogDataPage/DogDataPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
@@ -27,13 +28,14 @@ import UserDogPage from './PagesBody/UserDogsPage/UserDogPage';
 
 // import ClassSummaryPage from './PagesBody/ClassSummaryPage/ClassSummaryPage';
 
+
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route element={<Layout />}>
-          <Route path="*" element={<NotFoundPage />}></Route>
+          <Route path="*" element={<NotFoundPage />} />
           {/* //user views */}
           <Route path="user" element={<ProfilePage />} />
           <Route path="forgot" element={<ForgotPassForm />} />
@@ -64,6 +66,7 @@ function App() {
             element={<DogSummaryPage />}
           />
           <Route path="UserDogPage" element={<UserDogPage />}></Route>
+          <Route path="dogData" element={<DogDataPage />} />
           <Route path="contestDetails" element={<ContestDetailsPage />} />
         </Route>
         q

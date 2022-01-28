@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import ExerciseCard from '../../Molecules/ExerciseCard/ExerciseCard';
-import ExerciseCardsContainerStyled from './ExerciseCardsContainerStyled';
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 
 const ExerciseCardsContainer = ({ performanceObject }) => {
   const { exercises, obedienceClassName } = performanceObject;
@@ -26,7 +26,7 @@ const ExerciseCardsContainer = ({ performanceObject }) => {
   };
 
   return (
-    <ExerciseCardsContainerStyled>
+    <ColumnWrapper>
       {exercisesResults.map((exercise) => (
         <ExerciseCard
           key={exercise.codeName}
@@ -35,7 +35,7 @@ const ExerciseCardsContainer = ({ performanceObject }) => {
           onChange={performanceSaveHandler}
         />
       ))}
-    </ExerciseCardsContainerStyled>
+    </ColumnWrapper>
   );
 };
 
