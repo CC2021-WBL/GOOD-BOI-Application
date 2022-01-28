@@ -6,7 +6,13 @@ const RANDOM_CONTESTS = [
   {
     id: 'a0347677-c3c9-4edc-9d46-fed4a958fdc2',
     name: 'XII Zawody im. Pana Starosty',
+    address: 'ul. Grunwaldzka 402',
+    place: 'Olivia Business Center',
     city: 'Gdańsk',
+    judges: ['Natasza Urbańska', 'Michał Milowicz', 'Janusz Józefowicz'],
+    applicationOpenDate: new Date(2022, 1, 10, 10, 0),
+    applicationClosedDate: new Date(2022, 2, 20, 23, 59),
+    applicationFeeInPLN: 70,
     date: new Date(2022, 3, 21, 10, 0),
     obedienceClasses: [
       {
@@ -62,6 +68,10 @@ const RANDOM_CONTESTS = [
         isCompleted: false,
       },
     ],
+  },
+  {
+    id: 'jajo-test-jajo',
+    name: 'Konkurs zgniłego jaja',
   },
 ];
 
