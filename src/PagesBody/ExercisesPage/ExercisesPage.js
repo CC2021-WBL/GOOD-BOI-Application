@@ -1,5 +1,6 @@
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import ButtonExercisesContainer from '../../Molecules/ButtonsExcercisenContainer/ButtonsExercisesContainer';
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import DOGS from '../../Data/Dummy-data/test-data-dogs';
 import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
 import Modal from '../../Organisms/Modal/Modal';
@@ -37,7 +38,7 @@ const ExercisesPage = () => {
   );
 
   return (
-    <>
+    <ColumnWrapper>
       {(isDisqualifyModalOpen || isPenaltyModalOpen) && (
         <Modal
           modalData={
@@ -52,25 +53,27 @@ const ExercisesPage = () => {
       {(isDisqualifyModalOpen || isPenaltyModalOpen) && (
         <Backdrop onClick={closeModalHandler} />
       )}
+      <ColumnWrapper paddingLeftRight={0.25}>
+        <SpecialButtonsContainerStyled>
+          <SpecialButton
+            text="Dyskwalifikacja"
+            theme="red"
+            handler={openDisqualifyModalHandler}
+            left
+          />
+          <SpecialButton
+            text="-10 punktów"
+            theme="yellow"
+            handler={openPenaltyModalHandler}
+            right
+          />
+        </SpecialButtonsContainerStyled>
 
-      <SpecialButtonsContainerStyled>
-        <SpecialButton
-          text="Dyskwalifikacja"
-          theme="red"
-          handler={openDisqualifyModalHandler}
-          left
-        />
-        <SpecialButton
-          text="-10 punktów"
-          theme="yellow"
-          handler={openPenaltyModalHandler}
-          right
-        />
-      </SpecialButtonsContainerStyled>
+        <ExerciseCardsContainer performanceObject={ourTestPerformanceObject} />
+      </ColumnWrapper>
 
-      <ExerciseCardsContainer performanceObject={ourTestPerformanceObject} />
       <ButtonExercisesContainer />
-    </>
+    </ColumnWrapper>
   );
 };
 
