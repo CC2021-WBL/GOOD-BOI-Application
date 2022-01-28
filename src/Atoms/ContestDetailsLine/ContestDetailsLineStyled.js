@@ -14,7 +14,9 @@ const ContestDetailsLineStyled = styled.div`
   text-transform: uppercase;
   text-align: right;
   ${(props) => props.highlight && `background-color: ${COLORS.grey100};`};
-  ${(props) => props.judge && `${FONTS.label_semibold} padding: 0 0 0 1rem;`};
+  ${(props) =>
+    props.judge &&
+    `${FONTS.label_semibold} padding: 0 0 0 1rem; line-height: 2rem;`};
 
   div:first-child {
     text-align: left;
