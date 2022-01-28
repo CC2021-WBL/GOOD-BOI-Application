@@ -1,8 +1,9 @@
+import Backdrop from '../Atoms/Modal/Backdrop';
+import Modal from '../Organisms/Modal/Modal';
+import modalData from '../Consts/modalData';
 import styled from 'styled-components';
 import { useState } from 'react';
-import modalData from '../Consts/modalData';
-import Modal from '../Organisms/Modal/Modal';
-import Backdrop from '../Atoms/Modal/Backdrop';
+
 const ModalsTestWrapper = styled.div`
   display: flex;
   width: 100%;
@@ -117,23 +118,3 @@ const ModalsTest = () => {
   );
 };
 export default ModalsTest;
-
-// {(isDisqualifyModalOpen || isPenaltyModalOpen) && (
-//     <Modal
-//       modalData={
-//         isDisqualifyModalOpen ? modalData.disqualify : modalData.penalty
-//       }
-//       onCloseHandler={closeModalHandler}
-//       onConfirmHandler={
-//         isDisqualifyModalOpen ? handleDesqualification : handlePenalty
-//       }
-//     />
-//   )}
-//   {(isDisqualifyModalOpen || isPenaltyModalOpen) && (
-//     <Backdrop onClick={closeModalHandler} />
-//   )}
-
-//   <SpecialButtonsContainer
-//     openDisqualifyModalHandler={openDisqualifyModalHandler}
-//     openPenaltyModalHandler={openPenaltyModalHandler}
-//   />

@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 
 import TextArea from '../../Atoms/TextArea/TextArea';
 import MainButton from '../../Atoms/MainButton/MainButton';
-import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 import CheckboxAgreeField from '../../Atoms/CheckboxAgreeField/CheckboxAgreeField';
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 
 const emailRgx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
@@ -77,7 +77,7 @@ const ContactForm = () => {
   };
 
   return (
-    <CardWrapper>
+    <ColumnWrapper paddingLeftRight={1}>
       <FormWrapper onSubmit={submitHandler} id="form">
         <InputField
           labelText="* Email"
@@ -89,7 +89,7 @@ const ContactForm = () => {
           required
           value={setFormData.email}
           onChange={handleInputChange}
-          className={errors.email ? 'redBorder' : 'none'}
+          className={errors.email ? 'red-border' : 'none'}
         />
         {errors.email && <p>{errors.email}</p>}
         <TextArea
@@ -101,18 +101,18 @@ const ContactForm = () => {
           value={setFormData.message}
           onChange={handleInputChange}
           placeholder="Wpisz wiadomość"
-          className={errors.message ? 'redBorder' : 'none'}
+          className={errors.message ? 'red-border' : 'none'}
         />
         {errors.message && <p>{errors.message}</p>}
 
         <CheckboxAgreeField
           text="* Zapoznałem się z regulaminem GOOD BOI i akceptuję jego postanowienia"
-          className={errors.message ? 'redBorder' : 'none'}
+          className={errors.message ? 'red-border' : 'none'}
         />
 
         <MainButton primary text="Wyślij wiadomość" />
       </FormWrapper>
-    </CardWrapper>
+    </ColumnWrapper>
   );
 };
 
