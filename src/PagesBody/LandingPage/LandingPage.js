@@ -7,7 +7,7 @@ import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 const LandingPage = () => {
   return (
     <ColumnWrapper paddingLeftRight={1}>
-      <LogoGoodBoi></LogoGoodBoi>
+      <LogoGoodBoi />
       <Link to="/login" style={{ textDecoration: 'none' }}>
         <MainButton primary text={'zaloguj się'} />
       </Link>
@@ -15,7 +15,7 @@ const LandingPage = () => {
         <MainButton secondary text={'zarejestruj'} />
       </Link>
       <MainButton ternary text={'portal good boi'} />
-      <Footer></Footer>
+      <Footer />
     </ColumnWrapper>
   );
 };
