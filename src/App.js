@@ -22,6 +22,7 @@ import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import RolePage from './PagesBody/RolePage/RolePage';
 // import ClassSummaryPage from './PagesBody/ClassSummaryPage/ClassSummaryPage';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
+import DogDataPage from './PagesBody/DogDataPage/DogDataPage';
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route element={<Layout />}>
-          <Route path="*" element={<NotFoundPage />}></Route>
+          <Route path="*" element={<NotFoundPage />} />
           {/* //user views */}
           <Route path="user" element={<ProfilePage />} />
           <Route path="forgot" element={<ForgotPassForm />} />
@@ -59,6 +60,7 @@ function App() {
             path="contests/:contestId/classes/:classId/:dogId/dogSummary"
             element={<DogSummaryPage />}
           />
+          <Route path="dogData" element={<DogDataPage />} />
           <Route path="contestDetails" element={<ContestDetailsPage />} />
         </Route>
 

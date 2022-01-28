@@ -10,7 +10,7 @@ import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 
 const ContestDetails = ({ contestId }) => {
   const contestInfo = RANDOM_CONTESTS.find(
-    (contest) => contest.id == contestId,
+    (contest) => contest.id === contestId,
   );
   const [toggle, setToggle] = useState(false);
 
