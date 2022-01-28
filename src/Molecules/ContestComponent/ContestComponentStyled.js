@@ -10,10 +10,10 @@ const ContestComponentStyled = styled.div`
   flex-direction: column;
   justify-content: space-around;
   padding: 1.25rem 1.25rem 1.375rem 1.25rem;
-  border: solid 1px
+  border: solid 3px
     ${(props) =>
-      props.colorMotive === c.GREEN ? COLORS.positive600 : COLORS.grey200};
-  margin: auto;
+      props.colorMotive === c.GREEN ? COLORS.positive400 : COLORS.grey200};
+  margin: 0.5rem auto 0.5rem;
   background-color: ${(props) =>
     props.colorMotive === c.GREEN ? COLORS.positive100 : COLORS.white};
   border-radius: 0.75rem;
