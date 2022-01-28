@@ -19,8 +19,10 @@ const SpecialButtonStyled = styled.button`
   width: 50%;
   height: 100%;
   border: none;
-  border-radius: ${(props) =>
-    props.special ? '0px 0px 0px 12px' : '0px 0px 12px 0px'};
+  border-radius: ${(props) => props.left && '0 0 0 0.75rem'};
+
+  border-radius: ${(props) => props.right && '0 0 0.75rem 0'};
+
   font-weight: bold;
   ${({ theme }) => handleColorType(theme)};
   &:hover {
