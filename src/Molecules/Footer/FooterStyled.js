@@ -1,6 +1,5 @@
-import styled from 'styled-components';
-
 import COLORS from '../../Styles/varsStyledComponents';
+import styled from 'styled-components';
 
 export const FooterStyled = styled.div`
   position: fixed;
@@ -9,9 +8,9 @@ export const FooterStyled = styled.div`
   left: 0;
   display: flex;
   height: 77px;
+  align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  align-items: center;
 
   border-top: 2px solid ${COLORS.grey00};
   margin: 0;

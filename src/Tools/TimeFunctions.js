@@ -1,13 +1,24 @@
 export const getDataFormatDdMonthYyy = (date) => {
-  const options = { day: 'numeric', month: 'long', year: 'numeric' };
-  const properDate = date.toLocaleDateString(undefined, options);
-  return properDate;
+  return date.toLocaleDateString(undefined, {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
 };
 
 export const getDataFormatDdMmhYyy = (date) => {
-  const options = { day: 'numeric', month: 'numeric', year: 'numeric' };
-  const properDate = date.toLocaleDateString(undefined, options);
-  return properDate;
+  return date.toLocaleDateString(undefined, {
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric',
+  });
+};
+
+export const getHourMinutesFormat = (date) => {
+  return date.toLocaleTimeString(navigator.language, {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
 };
 
 export const getHourAndMinutesFromDate = (date = Date) => {

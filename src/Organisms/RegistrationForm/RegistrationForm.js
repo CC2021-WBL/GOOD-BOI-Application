@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import RegistrationFormSignup from './RegistrationFormSignup';
 import RegistrationFormSuccess from './RegistrationFormSuccess';
 
@@ -8,6 +9,7 @@ const RegistrationForm = () => {
   function submitForm() {
     setIsSubmitted(true);
   }
+
   return (
     <div>
       {!isSubmitted ? (

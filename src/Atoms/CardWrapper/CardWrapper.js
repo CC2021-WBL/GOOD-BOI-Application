@@ -1,12 +1,14 @@
-import CardWrapperStyled from './CardWrapperStyled';
 import propTypes from 'prop-types';
 
-const CardWrapper = ({ children }) => {
-  return <CardWrapperStyled>{children}</CardWrapperStyled>;
+import CardWrapperStyled from './CardWrapperStyled';
+
+const CardWrapper = ({ children, column }) => {
+  return <CardWrapperStyled column={column}>{children}</CardWrapperStyled>;
 };
 
 CardWrapper.propTypes = {
   children: propTypes.node,
+  column: propTypes.bool,
 };
 
 export default CardWrapper;

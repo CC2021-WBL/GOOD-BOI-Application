@@ -1,6 +1,6 @@
-import styled from 'styled-components';
 import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -33,16 +33,14 @@ const borderHandler = (props) => {
 };
 const MainButtonStyled = styled.button`
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 3.25rem;
+  align-items: center;
+  justify-content: center;
   margin: 0.25rem 0 0.25rem 0;
-  ${FONTS.button};
-  // Bg colors:
-  ${(props) => handleBgAndColor(props)};
   border-radius: 0.75rem;
-  // Border properties:
+  ${FONTS.button};
+  ${(props) => handleBgAndColor(props)};
   ${(props) => borderHandler(props)};
 `;
 
