@@ -1,10 +1,12 @@
 import { Outlet } from 'react-router-dom';
+
 import LinkStyled from './LinkStyled';
 
 const HomePage = () => {
   return (
     <>
       <LinkStyled to="/">Landing page</LinkStyled>
+
       <LinkStyled to="/login">Login</LinkStyled>
       <LinkStyled to="register">Register</LinkStyled>
       <LinkStyled to="/contests">Contests</LinkStyled>
