@@ -63,7 +63,16 @@ const pathData = [
   { path: '/login', text: 'Logowanie' },
   { path: '/forgot', text: 'Resetuj hasło' },
   { path: '/register', text: 'Rejestracja' },
+  {
+    path: '/unRegistered',
+    text: 'Jesteś niezarejestrowany',
+    label: 'Zarejestruj się',
+  },
   { path: '/role', text: 'Wybierz rolę', label: 'bierta rolę' },
+  {
+    path: 'profile',
+    text: 'Twój profil',
+  },
   {
     path: '/contests',
     text: 'Lista konkursów',
@@ -82,6 +91,15 @@ const pathData = [
   {
     path: '/contests/:contestId/classes/:classId',
     text: 'pieski',
+    label: 'wybierz pieska',
+  },
+  {
+    path: '/contactForm',
+    text: 'Formularz kontaktowy',
+  },
+  {
+    path: 'notFound',
+    text: 'yyy',
     label: 'wybierz pieska',
   },
 ];
