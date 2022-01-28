@@ -21,6 +21,7 @@ import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import RolePage from './PagesBody/RolePage/RolePage';
 // import ClassSummaryPage from './PagesBody/ClassSummaryPage/ClassSummaryPage';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
+import DogDataPage from './PagesBody/DogDataPage/DogDataPage';
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
             path="contests/:contestId/classes/:classId/:dogId/dogSummary"
             element={<DogSummaryPage />}
           />
+          <Route path="dogData" element={<DogDataPage />} />
         </Route>
 
         <Route path="ModalsTest" element={<ModalsTest />} />

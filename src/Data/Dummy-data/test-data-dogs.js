@@ -4,11 +4,12 @@ const DOGS = [
     dogName: 'Woof',
     kennelName: 'Narnia Baltica',
     pkr: 'VIII-27165',
+    sex: 'female',
     registrationNumber: '5491/XLII/11',
     breed: 'Golden Retriever',
     dateOfBirth: new Date(2011, 4, 22),
     colour: 'gold',
-    chipOrTatoo: 616093900044541,
+    // chipOrTattoo: 616093900044541,
     nameOfOwner: 'Jan',
     surnameOfOwner: 'Kowalski',
     performances: [
