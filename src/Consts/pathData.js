@@ -78,21 +78,21 @@ const pathData = [
     text: 'Lista konkursów',
     label: 'Wybierz konkurs',
   },
-  {
-    path: '/contests/:id/classes',
-    text: 'Lista klas',
-    label: 'Tu będzie nazwa konkursu',
-  },
-  {
-    path: '/contests/:contestId/classes',
-    text: 'Lista klas',
-    label: 'Tu będzie nazwa konkursu',
-  },
-  {
-    path: '/contests/:contestId/classes/:classId',
-    text: 'pieski',
-    label: 'wybierz pieska',
-  },
+  // {
+  //   path: '/contests/:id/classes',
+  //   text: 'Lista klas',
+  //   label: 'Tu będzie nazwa konkursu',
+  // },
+  // {
+  //   path: '/contests/:contestId/classes',
+  //   text: 'Lista klas',
+  //   label: 'Tu będzie nazwa konkursu',
+  // },
+  // {
+  //   path: '/contests/:contestId/classes/:classId',
+  //   text: 'pieski',
+  //   label: 'wybierz pieska',
+  // },
   {
     path: '/contactForm',
     text: 'Formularz kontaktowy',
