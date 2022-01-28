@@ -1,5 +1,7 @@
+import NotFound from '../../Organisms/NotFoundContent/NotFound';
+
 const NotFoundPage = () => {
-  return <h1>Im not found page</h1>;
+  return <NotFound />;
 };
 
 export default NotFoundPage;
