@@ -61,6 +61,7 @@ function App() {
             element={<DogSummaryPage />}
           />
           <Route path="dogData" element={<DogDataPage />} />
+          <Route path="participantData" element={<DogDataPage />} />
           <Route path="contestDetails" element={<ContestDetailsPage />} />
         </Route>
 
