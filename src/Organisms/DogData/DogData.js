@@ -44,8 +44,13 @@ const DogData = ({ id }) => {
   return (
     <ColumnWrapper>
       <SpecialButtonsContainerStyled>
-        <SpecialButton edit text="edytuj" handler={handleEdit} />
-        <SpecialButton confirm text="potwierdź" handler={handleConfirm} />
+        <SpecialButton left text="edytuj" handler={handleEdit} theme="blue" />
+        <SpecialButton
+          right
+          text="potwierdź"
+          handler={handleConfirm}
+          theme="green"
+        />
       </SpecialButtonsContainerStyled>
       {/*//ten div jest do wywalenia - nie mamy jeszcze mądrego wrappera do paddingowania*/}
       <div style={{ padding: '0 1rem' }}>
