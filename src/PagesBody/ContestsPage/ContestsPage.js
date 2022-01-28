@@ -1,13 +1,13 @@
-import ContestComponent from '../../Molecules/ContestComponent/contestComponent';
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import ContestCard from '../../Molecules/ContestCard/ContestCard';
 import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
 
 const ContestsPage = () => {
   return (
-    <>
-      <h1>LISTA KONKURSÓW</h1>
-      <h2>WYBIERZ KONKURS</h2>
-      <ContestComponent contestId={RANDOM_CONTESTS[0].id} contestIndex={0} />
-    </>
+    <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
+      <ContestCard contestId={RANDOM_CONTESTS[0].id} contestIndex={0} />
+      <ContestCard contestId={RANDOM_CONTESTS[1].id} contestIndex={1} />
+    </ColumnWrapper>
   );
 };
 

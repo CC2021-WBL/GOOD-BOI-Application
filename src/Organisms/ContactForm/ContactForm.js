@@ -1,5 +1,5 @@
-import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
 import CheckboxAgreeField from '../../Atoms/CheckboxAgreeField/CheckboxAgreeField';
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 import MainButton from '../../Atoms/MainButton/MainButton';
@@ -76,7 +76,7 @@ const ContactForm = () => {
   };
 
   return (
-    <CardWrapper>
+    <ColumnWrapper paddingLeftRight={1}>
       <FormWrapper onSubmit={submitHandler} id="form">
         <InputField
           labelText="* Email"
@@ -111,7 +111,7 @@ const ContactForm = () => {
 
         <MainButton primary text="Wyślij wiadomość" />
       </FormWrapper>
-    </CardWrapper>
+    </ColumnWrapper>
   );
 };
 
