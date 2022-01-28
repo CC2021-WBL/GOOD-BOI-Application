@@ -1,11 +1,16 @@
 const pathData = [
   { path: '/login', text: 'Logowanie' },
-  { path: '/role', text: 'Wybierz rolę' },
+  { path: '/role', text: 'Wybierz rolę', label: 'cccccccc' },
   { path: '/register', text: 'Rejestracja' },
   { path: '/forgot', text: 'Resetuj hasło' },
   {
     path: '/role/contest',
     text: 'Lista konkursów',
+    label: 'Wybierz konkurs',
+  },
+  {
+    path: '/contactForm',
+    text: 'Formularz kontaktowy',
     label: 'Wybierz konkurs',
   },
   {
