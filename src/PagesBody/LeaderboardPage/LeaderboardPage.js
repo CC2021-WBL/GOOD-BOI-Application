@@ -1,5 +1,11 @@
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+
 const LeaderboardPage = () => {
-  return <h1>I am leaderboard page</h1>;
+  return (
+    <ColumnWrapper paddingLeftRight={1}>
+      <h1>I am leaderboard page</h1>
+    </ColumnWrapper>
+  );
 };
 
 export default LeaderboardPage;

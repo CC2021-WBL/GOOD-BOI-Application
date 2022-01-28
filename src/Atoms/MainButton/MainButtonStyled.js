@@ -2,12 +2,6 @@ import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 const handleBgAndColor = (props) => {
   if (props.primary) {
     return `color: ${COLORS.white}; background: ${COLORS.primary501};`;
@@ -37,7 +31,7 @@ const MainButtonStyled = styled.button`
   height: 3.25rem;
   align-items: center;
   justify-content: center;
-  margin: 0.25rem 0 0.25rem 0;
+  margin: 0.5rem 0 0.5rem 0;
   border-radius: 0.75rem;
   ${FONTS.button};
   ${(props) => handleBgAndColor(props)};
