@@ -1,11 +1,12 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import 'font-awesome/css/font-awesome.min.css';
 
-import MainButton from '../../Atoms/MainButton/MainButton';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
-import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import MainButton from '../../Atoms/MainButton/MainButton';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
