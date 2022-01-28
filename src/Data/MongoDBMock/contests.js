@@ -40,8 +40,8 @@ const contests = [
             summaryId: '22-03-22Ollie',
           },
           {
-            dogName: 'Norah',
-            summaryId: '22-03-22Norah',
+            dogName: 'Kluska',
+            summaryId: '22-03-22Kluska',
           },
           {
             dogName: 'Zumba',

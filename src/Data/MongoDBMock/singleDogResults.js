@@ -3,7 +3,7 @@ const singleDogResults = [
     resultId: 0,
     contestName: 'XII Zawody im. Pana Starosty',
     obedienceClassName: 'Klasa 0',
-    prize: 'do liczenia przed wpisaniem',
+    prize: 'dobra',
     exercises: [
       { codeName: '0.1', result: 10 },
       { codeName: '0.2', result: 6 },
@@ -19,7 +19,7 @@ const singleDogResults = [
     resultId: 1,
     contestName: 'Piętnasty zjazd dobrych chłopaków',
     obedienceClassName: 'Klasa 1',
-    prize: 'do liczenia przed wpisaniem',
+    prize: 'dyskwalifikacja',
     specialState: 'dyskwalifikacja',
     exercises: [
       { codeName: '0.1', result: 6 },
@@ -36,7 +36,7 @@ const singleDogResults = [
     resultId: 2,
     contestName: 'XII Zawody im. Pana Starosty',
     obedienceClassName: 'Klasa 0',
-    prize: 'do liczenia przed wpisaniem',
+    prize: 'dobra',
     exercises: [
       { codeName: '0.1', result: 10 },
       { codeName: '0.2', result: 6 },
@@ -52,7 +52,7 @@ const singleDogResults = [
     resultId: 3,
     contestName: 'Piętnasty zjazd dobrych chłopaków',
     obedienceClassName: 'Klasa 1',
-    prize: 'do liczenia przed wpisaniem',
+    prize: 'bardzo dobra',
     exercises: [
       { codeName: '0.1', result: 9 },
       { codeName: '0.2', result: 6 },
@@ -68,7 +68,7 @@ const singleDogResults = [
     resultId: 4,
     contestName: 'Konkurs grzeczności',
     obedienceClassName: 'Klasa 1',
-    prize: 'do liczenia przed wpisaniem',
+    prize: 'bardzo dobra',
     exercises: [
       { codeName: '0.1', result: 9 },
       { codeName: '0.2', result: 6 },
@@ -84,7 +84,7 @@ const singleDogResults = [
     resultId: 5,
     contestName: 'XII Zawody im. Pana Starosty',
     obedienceClassName: 'Klasa 0',
-    prize: 'do liczenia przed wpisaniem',
+    prize: 'dobra',
     exercises: [
       { codeName: '0.1', result: 6 },
       { codeName: '0.2', result: 6 },
@@ -100,7 +100,7 @@ const singleDogResults = [
     resultId: 6,
     contestName: 'Piętnasty zjazd dobrych chłopaków',
     obedienceClassName: 'Klasa 1',
-    prize: 'do liczenia przed wpisaniem',
+    prize: 'doskonała',
     exercises: [
       { codeName: '0.1', result: 9 },
       { codeName: '0.2', result: 6 },
@@ -109,6 +109,22 @@ const singleDogResults = [
       { codeName: '0.5', result: 5 },
       { codeName: '0.6', result: 8 },
       { codeName: '0.7', result: 8 },
+      { codeName: '0.8', result: 9 },
+    ],
+  },
+  {
+    resultId: 7,
+    contestName: 'XII Zawody im. Pana Starosty',
+    obedienceClassName: 'Klasa 1',
+    prize: 'doskonała',
+    exercises: [
+      { codeName: '0.1', result: 8 },
+      { codeName: '0.2', result: 7 },
+      { codeName: '0.3', result: 8 },
+      { codeName: '0.4', result: 9 },
+      { codeName: '0.5', result: 6 },
+      { codeName: '0.6', result: 7 },
+      { codeName: '0.7', result: 9 },
       { codeName: '0.8', result: 9 },
     ],
   },

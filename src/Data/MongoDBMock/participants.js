@@ -76,6 +76,10 @@ const participants = [
         dogId: 'V-11165',
         dogName: 'Ptysio',
       },
+      {
+        dogId: 'VI-15765',
+        dogName: 'Norah',
+      },
     ],
     portalRoles: ['participant'],
   },
