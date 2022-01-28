@@ -24,7 +24,6 @@
     "eject": "react-scripts eject",
     "lint:css": "stylelint ./src/**/*.js",
     "prepare": "husky install",
-    "lint": "eslint --fix . --ignore-path ./.gitignore",
     "format": "prettier --write './**/*.{js,jsx,css,md,json}' --config ./.prettierrc --ignore-path ./.gitignore"
   },
   "browserslist": {
@@ -45,11 +44,16 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.2",
     "prettier": "2.5.1",
     "stylelint": "^14.3.0",
     "stylelint-config-idiomatic-order": "^8.1.0",
     "stylelint-config-recommended": "^6.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.10.0"
+  },
+  "lint-staged": {
+    "*.js": "stylelint --fix"
   }
 }
