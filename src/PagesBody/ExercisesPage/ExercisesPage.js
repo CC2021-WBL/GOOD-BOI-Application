@@ -3,10 +3,10 @@ import ButtonExercisesContainer from '../../Molecules/ButtonsExcercisenContainer
 import DOGS from '../../Data/Dummy-data/test-data-dogs';
 import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
 import Modal from '../../Organisms/Modal/Modal';
-import SpecialButtonsContainer from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainer';
+import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
+import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
 import modalData from '../../Consts/modalData';
 import { useState } from 'react';
-import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 
 const ExercisesPage = () => {
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
@@ -53,6 +53,20 @@ const ExercisesPage = () => {
         <Backdrop onClick={closeModalHandler} />
       )}
 
+      <SpecialButtonsContainerStyled>
+        <SpecialButton
+          text="Dyskwalifikacja"
+          theme="red"
+          handler={openDisqualifyModalHandler}
+          left
+        />
+        <SpecialButton
+          text="-10 punktów"
+          theme="yellow"
+          handler={openPenaltyModalHandler}
+          right
+        />
+      </SpecialButtonsContainerStyled>
       <ColumnWrapper paddingLeftRight={0.25}>
         <SpecialButtonsContainer
           openDisqualifyModalHandler={openDisqualifyModalHandler}
