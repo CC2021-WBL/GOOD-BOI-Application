@@ -31,6 +31,9 @@ function App() {
         <Route element={<Layout />}>
           <Route path="testErrors" element={<ErrorTestPage />} />
           <Route path="error" element={<ErrorPage />} />
+          <Route path="*" element={<NotFoundPage />}></Route>
+          {/* //user views */}
+          <Route path="user" element={<ProfilePage />} />
           <Route path="forgot" element={<ForgotPassForm />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="contactForm" element={<ContactFormPage />} />
@@ -61,7 +64,6 @@ function App() {
         </Route>
 
         <Route path="ModalsTest" element={<ModalsTest />} />
-        <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </div>
   );
