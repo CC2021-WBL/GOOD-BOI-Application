@@ -1,4 +1,4 @@
-const competitors = [
+const participants = [
   {
     participantId: 'matylda1234',
     email: 'matylda@op.pl',
@@ -81,7 +81,7 @@ const competitors = [
   },
 ];
 
-export default competitors;
+export default participants;
 
 // .insertOne - dodaje 1 obiekt do kolekcji, przyjmuje obiekt
 // .insertMany - dodaje wiele obiektów do kolekcji, przyjmuje tablicę obiektów
