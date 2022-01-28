@@ -1,8 +1,8 @@
 import {
-  ContestComponentStyled,
+  ContestCardStyled,
   ContestInsideElementStyled,
   ContestNameStyled,
-} from './ContestComponentStyled';
+} from './ContestCardStyled';
 import {
   getDataFormatDdMonthYyy,
   getHourAndMinutesFromDate,
@@ -16,7 +16,7 @@ import propTypes from 'prop-types';
 import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
 import { useNavigate } from 'react-router-dom';
 
-const ContestComponent = ({ contestId, contestIndex }) => {
+const ContestCard = ({ contestId, contestIndex }) => {
   const initialData = {
     contestName: 'info wkrótce',
     startDate: new Date(),
@@ -55,7 +55,7 @@ const ContestComponent = ({ contestId, contestIndex }) => {
   };
 
   return (
-    <ContestComponentStyled
+    <ContestCardStyled
       colorMotive={setColorMotive(pointOnTimeLine)}
       onClick={handleClick}
     >
@@ -76,13 +76,13 @@ const ContestComponent = ({ contestId, contestIndex }) => {
           colorMotive={setColorMotive(pointOnTimeLine)}
         ></InfoLabel>
       </ContestInsideElementStyled>
-    </ContestComponentStyled>
+    </ContestCardStyled>
   );
 };
 
-ContestComponent.propTypes = {
+ContestCard.propTypes = {
   contestId: propTypes.string.isRequired,
   contestIndex: propTypes.number,
 };
 
-export default ContestComponent;
+export default ContestCard;

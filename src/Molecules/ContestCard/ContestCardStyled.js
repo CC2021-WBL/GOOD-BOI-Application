@@ -3,7 +3,7 @@ import FONTS from '../../Styles/fontsStyledComponents';
 import { COLORSMOTIVE as c } from '../../Consts/infoLabelConsts';
 import styled from 'styled-components';
 
-const ContestComponentStyled = styled.div`
+const ContestCardStyled = styled.div`
   display: flex;
   width: 100%;
   height: auto;
@@ -35,8 +35,4 @@ const ContestNameStyled = styled.h3`
   ${FONTS.h3};
 `;
 
-export {
-  ContestComponentStyled,
-  ContestInsideElementStyled,
-  ContestNameStyled,
-};
+export { ContestCardStyled, ContestInsideElementStyled, ContestNameStyled };
