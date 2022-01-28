@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import ClassCompetitorsPage from './PagesBody/ClassCompetitorsPage/ClassCompetitorsPage';
 import ClassesPage from './PagesBody/ClassesPage/ClassesPage';
 import ContactFormPage from './PagesBody/ContactFormPage/ContactFormPage';
+import ContestDetailsPage from './PagesBody/ContestDetailsPage/ContestDetailsPage';
 import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
@@ -32,6 +33,9 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route element={<Layout />}>
+          <Route path="*" element={<NotFoundPage />}></Route>
+          {/* //user views */}
+          <Route path="user" element={<ProfilePage />} />
           <Route path="forgot" element={<ForgotPassForm />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="contactForm" element={<ContactFormPage />} />
@@ -60,10 +64,10 @@ function App() {
             element={<DogSummaryPage />}
           />
           <Route path="UserDogPage" element={<UserDogPage />}></Route>
+          <Route path="contestDetails" element={<ContestDetailsPage />} />
         </Route>
         q
         <Route path="ModalsTest" element={<ModalsTest />} />
-        <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </div>
   );

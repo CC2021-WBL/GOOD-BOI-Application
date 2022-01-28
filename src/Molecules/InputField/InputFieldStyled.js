@@ -1,13 +1,14 @@
+import styled from 'styled-components';
+
 import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
-import styled from 'styled-components';
 
 const InputFieldStyled = styled.input`
   width: 100%;
   height: 3rem;
-  padding-left: 10px;
+  padding: 0 0 0 10px;
   border: 0.5px solid ${COLORS.grey400};
-  margin: 0 0 5px 0;
+  margin: 0 0 3px 0;
   border-radius: 8px;
   color: ${COLORS.grey400};
   font-family: Mulish, FontAwesome, sans-serif;
@@ -16,19 +17,15 @@ const InputFieldStyled = styled.input`
   &::placeholder {
     color: ${COLORS.grey400};
   }
+
   &:focus {
     border: 0.5px solid transparent;
     outline: 3px solid ${COLORS.primary201};
   }
 
-  /* &:invalid {
+  &.red-border {
     border: 0.5px solid transparent;
-    outline: 3px solid tomato;
-  } */
-
-  &.redBorder {
-    border: 0.5px solid transparent;
-    outline: 2px solid ${COLORS.negative400};
+    outline: 1.5px solid ${COLORS.negative400};
   }
 `;
 
