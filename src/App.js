@@ -7,8 +7,8 @@ import ClassesPage from './PagesBody/ClassesPage/ClassesPage';
 import ContactFormPage from './PagesBody/ContactFormPage/ContactFormPage';
 import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
-import EBtest from './Tools/EBtest';
-import ErrorBoundary from './Tools/ErrorBoundary';
+import ErrorPage from './PagesBody/ErrorPage/ErrorPage';
+import ErrorTestPage from './PagesBody/ErrorTestPage/ErrorTestPage';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
 import LandingPage from './PagesBody/LandingPage/LandingPage';
@@ -21,18 +21,16 @@ import NotFoundPage from './PagesBody/NotFoundPage/NotFoundPage';
 import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import RolePage from './PagesBody/RolePage/RolePage';
-// import ClassSummaryPage from './PagesBody/ClassSummaryPage/ClassSummaryPage';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
 
 function App() {
   return (
     <div className="App">
-      <ErrorBoundary>
-        <EBtest />
-      </ErrorBoundary>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route element={<Layout />}>
+          <Route path="testErrors" element={<ErrorTestPage />} />
+          <Route path="error" element={<ErrorPage />} />
           <Route path="forgot" element={<ForgotPassForm />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="contactForm" element={<ContactFormPage />} />

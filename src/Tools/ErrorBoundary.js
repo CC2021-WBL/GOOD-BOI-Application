@@ -1,6 +1,8 @@
 import propTypes from 'prop-types';
 import { Component } from 'react';
 
+import ErrorPage from '../PagesBody/ErrorPage/ErrorPage';
+
 export class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
@@ -13,19 +15,20 @@ export class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.log(error, errorInfo);
     this.setState({
       error: error,
       errorInfo: errorInfo,
     });
+    // console.log(error, errorInfo);
   }
 
   render() {
     if (this.state.hasError) {
       return (
         <>
+          <ErrorPage />
           <h4>Error: </h4> {this.state.error.toString()} <br />
-          <h4>Error Info: </h4> {this.state.errorInfo.toString()}
+          <h4>Error Info: </h4> {this.state.errorInfo.componentStack}
         </>
       );
     }
