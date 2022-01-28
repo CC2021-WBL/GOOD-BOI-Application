@@ -42,7 +42,7 @@ const DogData = ({ id }) => {
     : (dogData['Płeć'] = 'Suka');
 
   return (
-    <ColumnWrapper>
+    <ColumnWrapper paddingLeftRight={1}>
       <SpecialButtonsContainerStyled>
         <SpecialButton left text="edytuj" handler={handleEdit} theme="blue" />
         <SpecialButton
@@ -52,14 +52,11 @@ const DogData = ({ id }) => {
           theme="green"
         />
       </SpecialButtonsContainerStyled>
-      {/*//ten div jest do wywalenia - nie mamy jeszcze mądrego wrappera do paddingowania*/}
-      <div style={{ padding: '0 1rem' }}>
-        <ColumnWrapper style={{ padding: '0 1rem' }}>
-          {Object.entries(dogData).map((dataLine, index) => (
-            <DataLine key={index} text={dataLine} />
-          ))}
-        </ColumnWrapper>
-      </div>
+      <ColumnWrapper>
+        {Object.entries(dogData).map((dataLine, index) => (
+          <DataLine key={index} text={dataLine} />
+        ))}
+      </ColumnWrapper>
     </ColumnWrapper>
   );
 };
