@@ -23,6 +23,7 @@ const RegistrationFormSignup = ({ submitForm }) => {
         id="email"
         value={formData.email}
         onChange={handleInputChange}
+        className={errors.email ? 'red-border' : 'none'}
       />
       {errors.email && <p>{errors.email}</p>}
       <InputField
@@ -33,6 +34,7 @@ const RegistrationFormSignup = ({ submitForm }) => {
         placeholder="&#xf023; Hasło"
         value={formData.password}
         onChange={handleInputChange}
+        className={errors.password ? 'red-border' : 'none'}
       />
       {errors.password && <p>{errors.password}</p>}
       <InputField
@@ -43,6 +45,7 @@ const RegistrationFormSignup = ({ submitForm }) => {
         placeholder="&#xf023; Powtórz Hasło"
         value={formData.repeatpass}
         onChange={handleInputChange}
+        className={errors.repeatpass ? 'red-border' : 'none'}
       />
       {errors.repeatpass && <p>{errors.repeatpass}</p>}
       <InputField
@@ -53,6 +56,7 @@ const RegistrationFormSignup = ({ submitForm }) => {
         id="firstname"
         value={formData.firstname}
         onChange={handleInputChange}
+        className={errors.firstname ? 'red-border' : 'none'}
       />
       {errors.firstname && <p>{errors.firstname}</p>}
       <InputField
@@ -63,6 +67,7 @@ const RegistrationFormSignup = ({ submitForm }) => {
         id="surname"
         value={formData.surname}
         onChange={handleInputChange}
+        className={errors.surname ? 'red-border' : 'none'}
       />
       {errors.surname && <p>{errors.surname}</p>}
       <InputField
@@ -73,6 +78,7 @@ const RegistrationFormSignup = ({ submitForm }) => {
         id="street"
         value={formData.street}
         onChange={handleInputChange}
+        className={errors.street ? 'red-border' : 'none'}
       />
       {errors.street && <p>{errors.street}</p>}
       <InputField
@@ -83,6 +89,7 @@ const RegistrationFormSignup = ({ submitForm }) => {
         id="zipcode"
         value={formData.zipcode}
         onChange={handleInputChange}
+        className={errors.zipcode ? 'red-border' : 'none'}
       />
       {errors.zipcode && <p>{errors.zipcode}</p>}
       <InputField
@@ -93,6 +100,7 @@ const RegistrationFormSignup = ({ submitForm }) => {
         id="city"
         value={formData.city}
         onChange={handleInputChange}
+        className={errors.city ? 'red-border' : 'none'}
       />
       {errors.city && <p>{errors.city}</p>}
       <CheckboxAgreeField text="Zapoznałem się z regulaminem GOOD BOI i akceptuję jego postanowienia" />
