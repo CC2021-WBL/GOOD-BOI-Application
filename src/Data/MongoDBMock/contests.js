@@ -44,8 +44,8 @@ const contests = [
             summaryId: '22-03-22Kluska',
           },
           {
-            dogName: 'Zumba',
-            summaryId: '22-03-22Zumba',
+            dogName: 'Norah',
+            summaryId: '22-03-22Norah',
           },
         ],
       },
@@ -92,12 +92,12 @@ const contests = [
             summaryId: '22-05-01Ollie',
           },
           {
-            dogName: 'Norah',
-            summaryId: '22-05-01Norah',
+            dogName: 'Kluska',
+            summaryId: '22-05-01Kluska',
           },
           {
-            dogName: 'Zumba',
-            summaryId: '22-05-01Zumba',
+            dogName: 'Norah',
+            summaryId: '22-05-01Norah',
           },
         ],
       },
@@ -153,12 +153,12 @@ const contests = [
         isComleted: false,
         competingPairs: [
           {
-            dogName: 'Norah',
-            summaryId: '21-12-24Norah',
+            dogName: 'Kluska',
+            summaryId: '21-12-24Kluska',
           },
           {
-            dogName: 'Zumba',
-            summaryId: '21-12-24Zumba',
+            dogName: 'Norah',
+            summaryId: '21-12-24Norah',
           },
         ],
       },
