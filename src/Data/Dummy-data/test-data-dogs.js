@@ -9,7 +9,8 @@ const DOGS = [
     breed: 'Golden Retriever',
     dateOfBirth: new Date(2011, 4, 22),
     colour: 'gold',
-    // chipOrTattoo: 616093900044541,
+    chipOrTattoo: 616093900044541,
+    idOfOwner: 'ec7baebd-97c7-4ea3-8047-1305dc4bb243',
     nameOfOwner: 'Jan',
     surnameOfOwner: 'Kowalski',
     performances: [
