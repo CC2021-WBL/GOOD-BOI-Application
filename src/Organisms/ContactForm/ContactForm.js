@@ -89,7 +89,7 @@ const ContactForm = () => {
           required
           value={setFormData.email}
           onChange={handleInputChange}
-          className={errors.email ? 'redBorder' : 'none'}
+          className={errors.email ? 'red-border' : 'none'}
         />
         {errors.email && <p>{errors.email}</p>}
         <TextArea
@@ -101,13 +101,13 @@ const ContactForm = () => {
           value={setFormData.message}
           onChange={handleInputChange}
           placeholder="Wpisz wiadomość"
-          className={errors.message ? 'redBorder' : 'none'}
+          className={errors.message ? 'red-border' : 'none'}
         />
         {errors.message && <p>{errors.message}</p>}
 
         <CheckboxAgreeField
           text="* Zapoznałem się z regulaminem GOOD BOI i akceptuję jego postanowienia"
-          className={errors.message ? 'redBorder' : 'none'}
+          className={errors.message ? 'red-border' : 'none'}
         />
 
         <MainButton primary text="Wyślij wiadomość" />

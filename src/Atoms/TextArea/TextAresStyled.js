@@ -22,9 +22,9 @@ const TextAreaStyled = styled.textarea`
     outline: 3px solid ${COLORS.primary201};
   }
 
-  &.redBorder {
+  &.red-border {
     border: 0.5px solid transparent;
-    outline: 2px solid ${COLORS.negative400};
+    outline: 1.5px solid ${COLORS.negative400};
   }
 `;
 export default TextAreaStyled;
