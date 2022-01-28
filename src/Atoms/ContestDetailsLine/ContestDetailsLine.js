@@ -7,7 +7,7 @@ const ContestDetailsLine = ({ text, highlight = false, judge = false }) => {
   return (
     <ContestDetailsLineStyled highlight={highlight} judge={judge}>
       {textArray.map((text, index) => (
-        <p key={index}>{text}</p>
+        <div key={index}>{text}</div>
       ))}
     </ContestDetailsLineStyled>
   );

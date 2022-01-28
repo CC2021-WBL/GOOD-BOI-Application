@@ -1,4 +1,4 @@
-export const toBeAnnounced = 'TBA';
+export const toBeAnnounced = 'info wkrótce';
 
 export const dateAndHourTextTemplate = [
   `Data: ${toBeAnnounced}`,

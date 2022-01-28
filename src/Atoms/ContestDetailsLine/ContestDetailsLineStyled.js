@@ -9,11 +9,16 @@ const ContestDetailsLineStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   line-height: 2rem;
-  height: 2rem;
+  min-height: 2rem;
   border-bottom: 1px solid ${COLORS.grey00};
   text-transform: uppercase;
+  text-align: right;
   ${(props) => props.highlight && `background-color: ${COLORS.grey100};`};
   ${(props) => props.judge && `${FONTS.label_semibold} padding: 0 0 0 1rem;`};
+
+  div:first-child {
+    text-align: left;
+  }
 `;
 
 export default ContestDetailsLineStyled;
