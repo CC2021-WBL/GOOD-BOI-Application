@@ -3,7 +3,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 import MainButton from '../../Atoms/MainButton/MainButton';
@@ -21,7 +21,7 @@ const LoginForm = () => {
   };
 
   return (
-    <CardWrapper>
+    <ColumnWrapper paddingLeftRight={1}>
       <FormWrapper onSubmit={submitHandler}>
         <InputField
           labelText="Email"
@@ -51,7 +51,7 @@ const LoginForm = () => {
           <MainButton primary text="Zaloguj się" />
         </Link>
       </FormWrapper>
-    </CardWrapper>
+    </ColumnWrapper>
   );
 };
 
