@@ -23,7 +23,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint:css": "stylelint ./src/**/*.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "format": "prettier --config ./.prettierrc src/**/*.{ts,json,js,md,scss,html,java,php} --write"
   },
   "browserslist": {
     "production": [
