@@ -10,7 +10,7 @@ const contests = [
     judge: 'Alberto Makkaroni',
     steward: 'Wiesio Kapusta',
     manager: 'Jagienka Krzywobroda',
-    entryFee: 90,
+    applicationFeeInPLN: 90,
     participants: ['matylda1234', 'bogdan678', 'zosia9474'],
     obedienceClasses: {
       class0: {
@@ -61,7 +61,7 @@ const contests = [
     judge: 'Zuzzana Zezowa',
     steward: 'Zygfryd Zaduzy',
     manager: 'Zbyszko Bogdaniec',
-    entryFee: 110,
+    applicationFeeInPLN: 110,
     obedienceClasses: {
       class0: {
         isComleted: false,
@@ -110,7 +110,7 @@ const contests = [
     judge: 'Aniela Loczek',
     steward: 'Bruno Mars',
     manager: 'Gerwazy Kapusta',
-    entryFee: 70,
+    applicationFeeInPLN: 70,
     obedienceClasses: {
       class0: {
         isComleted: false,
