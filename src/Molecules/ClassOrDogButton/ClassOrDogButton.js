@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import ClassOrDogButtonStyled from './ClassOrDogButtonStyled';
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
 
-const ClassOrDogButton = ({ classInfo, dogInfo }) => {
+const ClassOrDogButton = ({ classInfo, dogInfo, noInfoLabel }) => {
   const navigate = useNavigate();
 
   const { name } = classInfo || [];
@@ -31,7 +31,7 @@ const ClassOrDogButton = ({ classInfo, dogInfo }) => {
           {index + 1}. {dogName}
         </>
       )}
-      <InfoLabel classInfo={classInfo} dogInfo={dogInfo} />
+      {noInfoLabel && <InfoLabel classInfo={classInfo} dogInfo={dogInfo} />}
     </ClassOrDogButtonStyled>
   );
 };
@@ -39,6 +39,7 @@ const ClassOrDogButton = ({ classInfo, dogInfo }) => {
 ClassOrDogButton.propTypes = {
   classInfo: PropTypes.object,
   dogInfo: PropTypes.object,
+  noInfoLabel: PropTypes.bool,
 };
 
 export default ClassOrDogButton;

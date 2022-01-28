@@ -7,6 +7,7 @@ import ClassesPage from './PagesBody/ClassesPage/ClassesPage';
 import ContactFormPage from './PagesBody/ContactFormPage/ContactFormPage';
 import ContestDetailsPage from './PagesBody/ContestDetailsPage/ContestDetailsPage';
 import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
+import DogDataPage from './PagesBody/DogDataPage/DogDataPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
@@ -17,12 +18,12 @@ import LeaderboardPage from './PagesBody/LeaderboardPage/LeaderboardPage';
 import LoginForm from './Organisms/LoginForm/LoginForm';
 import ModalsTest from './PagesBody/ModalsTest';
 import NotFoundPage from './PagesBody/NotFoundPage/NotFoundPage';
+import ParticipantDataPage from './PagesBody/ParticipantDataPage/ParticipantDataPage';
 import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import RolePage from './PagesBody/RolePage/RolePage';
 // import ClassSummaryPage from './PagesBody/ClassSummaryPage/ClassSummaryPage';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
-import DogDataPage from './PagesBody/DogDataPage/DogDataPage';
 
 function App() {
   return (
@@ -61,7 +62,7 @@ function App() {
             element={<DogSummaryPage />}
           />
           <Route path="dogData" element={<DogDataPage />} />
-          <Route path="participantData" element={<DogDataPage />} />
+          <Route path="participantData" element={<ParticipantDataPage />} />
           <Route path="contestDetails" element={<ContestDetailsPage />} />
         </Route>
 

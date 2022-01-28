@@ -21,8 +21,8 @@ const DogData = ({ id }) => {
   };
   const handleConfirm = (event) => {
     event.preventDefault();
-    console.log(dog.idOfOwner);
-    navigate(`/participantData/${dog.idOfOwner}`);
+    const idOfOwnerFromContext = '@TODO in the future';
+    navigate(`/participantData/${idOfOwnerFromContext}`);
     //navigate musi przekazać id właściela psa, żeby pokazać nam kolejny ekran z wypełnionymi
     // danymi właściciela
   };

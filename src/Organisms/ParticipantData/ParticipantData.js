@@ -14,23 +14,20 @@ const ParticipantData = ({ id }) => {
   const handleEdit = (event) => {
     event.preventDefault();
     console.log(id);
-    navigate(`/addDogForm/${id}`);
-    //navigate musi przekazać dane psa (id) do formularza który wypełni sobie inputy value z bazy
-    // danych
+    navigate(`/profileForm/${id}`);
+    //navigate musi przekazać dane participanta(id) do formularza który wypełni sobie inputy
+    //value z bazy danych
   };
   const handleConfirm = (event) => {
     event.preventDefault();
-    console.log(participant.idOfOwner);
-    navigate(`/participantData/${participant.idOfOwner}`);
-    //navigate musi przekazać id właściela psa, żeby pokazać nam kolejny ekran z wypełnionymi
-    // danymi właściciela
+    navigate(`/classChoice`);
   };
 
   const participantData = {};
   Object.keys(PARTICIPANT_DATA_TEMPLATE).forEach(
-    (prop) =>
-      (participantData[PARTICIPANT_DATA_TEMPLATE[prop]] =
-        participant[prop] || 'brak danych'),
+    (property) =>
+      (participantData[PARTICIPANT_DATA_TEMPLATE[property]] =
+        participant[property] || 'brak danych'),
   );
 
   return (
