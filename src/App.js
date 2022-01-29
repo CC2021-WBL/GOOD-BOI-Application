@@ -23,6 +23,7 @@ import NotFoundPage from './PagesBody/NotFoundPage/NotFoundPage';
 import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import RolePage from './PagesBody/RolePage/RolePage';
+import Settings from './Organisms/SettingsApp/Settings';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
 
 function App() {
@@ -68,6 +69,7 @@ function App() {
         </Route>
 
         <Route path="ModalsTest" element={<ModalsTest />} />
+        <Route path="settings" element={<Settings />} />
       </Routes>
     </div>
   );

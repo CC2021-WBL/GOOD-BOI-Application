@@ -6,7 +6,7 @@ export const GlobalStyles = createGlobalStyle`
 font-size: 16px;
 a{text-decoration:none}
 }
-*{
+*, ::before, ::after{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
