@@ -3,6 +3,9 @@ import LeaderboardListStyled from './LeaderboardListStyled';
 import checkIfDisqualified from '../../Tools/checkIfDisqualified';
 import propTypes from 'prop-types';
 
+// Leaderboardlist will accept two props when rendered on PAST CONTEST LEADERBOARD PAGE
+// Leaderboardlist will accept THREE props when rendered on DOG SUMMARY PAGE
+
 const LeaderboardList = ({ result }) => {
   let disqualified =
     checkIfDisqualified({ result }) === true ? 'disqualifiedColor' : '';
