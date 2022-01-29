@@ -1,7 +1,6 @@
-import propTypes from 'prop-types';
 import { Component } from 'react';
-
 import ErrorPage from '../PagesBody/ErrorPage/ErrorPage';
+import propTypes from 'prop-types';
 
 export class ErrorBoundary extends Component {
   constructor(props) {
@@ -28,7 +27,7 @@ export class ErrorBoundary extends Component {
         <>
           <ErrorPage />
           <h4>Error: </h4> {this.state.error.toString()} <br />
-          <h4>Error Info: </h4> {this.state.errorInfo.componentStack}
+          {/* <h4>Error Info: </h4> {this.state.errorInfo.componentStack} */}
         </>
       );
     }
