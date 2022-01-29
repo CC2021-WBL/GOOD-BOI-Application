@@ -24,6 +24,10 @@ import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import RolePage from './PagesBody/RolePage/RolePage';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
+import { createContext } from 'react';
+
+export const DataContext = createContext();
+
 
 function App() {
   return (
@@ -43,30 +47,34 @@ function App() {
           <Route path="unRegistered" element={<UnregisteredPage />} />
           <Route path="login" element={<LoginForm />} />
         </Route>
-        <Route element={<LayoutWithLabel />}>
-          <Route path="role" element={<RolePage />} />
-          <Route path="contests" element={<ContestsPage />} />
-          <Route path="contests/:contestId/classes" element={<ClassesPage />} />
-          <Route
-            path="contests/:contestId/classes/:classId"
-            element={<ClassCompetitorsPage />}
-          />
-          <Route
-            path="contests/:contestId/classes/:classId/leaderboard"
-            element={<LeaderboardPage />}
-          />
-          <Route
-            path="contests/:contestId/classes/:classId/:dogId"
-            element={<ExercisesPage />}
-          />
-          <Route
-            path="contests/:contestId/classes/:classId/:dogId/dogSummary"
-            element={<DogSummaryPage />}
-          />
-          <Route path="dogData" element={<DogDataPage />} />
-          <Route path="contestDetails" element={<ContestDetailsPage />} />
-        </Route>
-
+        <DataContext.Provider value={true}>
+          <Route element={<LayoutWithLabel />}>
+            <Route path="role" element={<RolePage />} />
+            <Route path="contests" element={<ContestsPage />} />
+            <Route
+              path="contests/:contestId/classes"
+              element={<ClassesPage />}
+            />
+            <Route
+              path="contests/:contestId/classes/:classId"
+              element={<ClassCompetitorsPage />}
+            />
+            <Route
+              path="contests/:contestId/classes/:classId/leaderboard"
+              element={<LeaderboardPage />}
+            />
+            <Route
+              path="contests/:contestId/classes/:classId/:dogId"
+              element={<ExercisesPage />}
+            />
+            <Route
+              path="contests/:contestId/classes/:classId/:dogId/dogSummary"
+              element={<DogSummaryPage />}
+            />
+            <Route path="dogData" element={<DogDataPage />} />
+            <Route path="contestDetails" element={<ContestDetailsPage />} />
+          </Route>
+        </DataContext.Provider>
         <Route path="ModalsTest" element={<ModalsTest />} />
       </Routes>
     </div>
