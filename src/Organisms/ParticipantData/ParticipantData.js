@@ -6,7 +6,6 @@ import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContain
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import PARTICIPANTS from '../../Data/Dummy-data/test-data-participants';
 import PARTICIPANT_DATA_TEMPLATE from '../../Consts/ParticipantDataCONSTS';
-
 const ParticipantData = ({ id }) => {
   let navigate = useNavigate();
   const participant = PARTICIPANTS.find((participant) => (participant.id = id));
@@ -18,6 +17,7 @@ const ParticipantData = ({ id }) => {
     //navigate musi przekazać dane participanta(id) do formularza który wypełni sobie inputy
     //value z bazy danych
   };
+
   const handleConfirm = (event) => {
     event.preventDefault();
     navigate(`/classChoice`);
@@ -29,6 +29,23 @@ const ParticipantData = ({ id }) => {
       (participantData[PARTICIPANT_DATA_TEMPLATE[property]] =
         participant[property] || 'brak danych'),
   );
+
+  const { address, street, numberOfHouse, city, postalCode } =
+    PARTICIPANT_DATA_TEMPLATE;
+
+  // Add street and number of house in one property 'Adres'
+  participantData[
+    address
+  ] = `${participantData[street]} ${participantData[numberOfHouse]}`;
+
+  // Add postal code and city in one property 'City'
+  participantData[
+    city
+  ] = `${participantData[postalCode]} ${participantData[city]}`;
+
+  delete participantData[street];
+  delete participantData[numberOfHouse];
+  delete participantData[postalCode];
 
   return (
     <ColumnWrapper paddingLeftRight={1}>
