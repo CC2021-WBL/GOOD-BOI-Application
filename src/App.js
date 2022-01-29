@@ -72,7 +72,6 @@ function App() {
           <Route path="dogData" element={<DogDataPage />} />
           <Route path="contestDetails" element={<ContestDetailsPage />} />
         </Route>
-        q
         <Route path="ModalsTest" element={<ModalsTest />} />
       </Routes>
     </div>
