@@ -107,6 +107,7 @@ const ContactForm = () => {
         <CheckboxAgreeField
           text="* Zapoznałem się z regulaminem GOOD BOI i akceptuję jego postanowienia"
           className={errors.message ? 'red-border' : 'none'}
+          data-testid="my-checkbox"
         />
 
         <MainButton primary text="Wyślij wiadomość" />

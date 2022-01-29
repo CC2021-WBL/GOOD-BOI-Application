@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 
 import InputField from '../../Molecules/InputField/InputField';
 import TextArea from '../../Atoms/TextArea/TextArea';
+import userEvent from '@testing-library/user-event';
 
 describe('TextArea', () => {
   it('should renders input field', () => {
@@ -14,9 +15,7 @@ describe('TextArea', () => {
         id="email"
         name="email"
         required
-        // value={setFormData.email}
         onChange={() => {}}
-        // className={errors.email ? 'red-border' : 'none'}
       />,
     );
   });
@@ -30,12 +29,28 @@ describe('TextArea', () => {
         required
         onChange={() => {}}
         placeholder="Wpisz wiadomość"
-        // className={errors.message ? 'red-border' : 'none'}
       />,
     );
 
     const textarea = screen.getByPlaceholderText('Wpisz wiadomość');
 
     expect(textarea).not.toBeInTheDocument();
+  });
+
+  it('render component checkbox', () => {
+    render(
+      <input
+        id="register-checkbox"
+        type="checkbox"
+        required
+        data-testid="my-checkbox"
+      />,
+    );
+
+    const checkbox = screen.getByTestId('my-checkbox');
+    expect(checkbox).toBeInTheDocument();
+    expect(checkbox).not.toBeChecked();
+    userEvent.click(checkbox);
+    expect(checkbox.checked).toEqual(true);
   });
 });
