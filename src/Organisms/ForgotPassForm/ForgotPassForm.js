@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import MainButton from '../../Atoms/MainButton/MainButton';
-import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 
 const ForgotPassForm = () => {
   const [email, setEmail] = useState('');
@@ -18,7 +18,7 @@ const ForgotPassForm = () => {
   };
 
   return (
-    <CardWrapper>
+    <ColumnWrapper paddingLeftRight={1}>
       <FormWrapper onSubmit={submitHandler}>
         <p className="forgot-pass">Zapomniałeś hasła ?</p>
         <div className="forgot-pass-text">
@@ -36,7 +36,7 @@ const ForgotPassForm = () => {
         />
         <MainButton primary text="Resetuj Hasło" />
       </FormWrapper>
-    </CardWrapper>
+    </ColumnWrapper>
   );
 };
 

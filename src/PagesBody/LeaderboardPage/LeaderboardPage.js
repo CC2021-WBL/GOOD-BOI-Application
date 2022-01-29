@@ -1,3 +1,4 @@
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import LeaderboardClassResult from './../../Data/Dummy-data/leaderboardClassResults';
 import LeaderboardList from './../../Molecules/LeaderboardList/LeaderboardList';
 import MainButtonStyled from './../../Atoms/MainButton/MainButton';
@@ -12,12 +13,12 @@ const LeaderboardPage = () => {
     },
   );
   return (
-    <>
+    <ColumnWrapper paddingLeftRight={1}>
       <h1>I am leaderboard page</h1>
       <LeaderboardList result={sortedLeaderboardClassResults} />
       <br></br>
       <MainButtonStyled primary text="drukuj protokół" />
-    </>
+    </ColumnWrapper>
   );
 };
 
