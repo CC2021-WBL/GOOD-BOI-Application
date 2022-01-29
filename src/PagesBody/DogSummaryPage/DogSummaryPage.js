@@ -7,9 +7,9 @@ import WYNIK_RANDOMOWEGO_PSA from './../../Data/Dummy-data/RandomDogResult';
 
 const sendDataHandler = () => {};
 
-const fakeId = 'a0347677-c3c9-4edc-9d46-fed4a958fdc2';
-const fakeClass = '1';
-const fakeDogName = 'Kluska';
+// const fakeId = 'a0347677-c3c9-4edc-9d46-fed4a958fdc2';
+// const fakeClass = '1';
+// const fakeDogName = 'Kluska';
 
 const DogSummaryPage = () => {
   return (

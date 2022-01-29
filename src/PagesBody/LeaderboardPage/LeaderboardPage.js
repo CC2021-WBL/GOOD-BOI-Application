@@ -18,16 +18,6 @@ const LeaderboardPage = () => {
     (object) => object.summaryId,
   );
 
-  // const fakeDogSummaryId = '22-03-22Woof';
-  // const fakeDogSummary = individualSummaryInCurrentCompetiton.find(
-  //   (summary) => summary.competingPairsId === fakeDogSummaryId,
-  // );
-  // console.log(fakeDogSummary);
-  // const fakeDogResult = {
-  //   text: fakeDogSummary.dogName,
-  //   score: fakeDogSummary.summaryResult,
-  // };
-
   const finalLeaderboardArr = resultsIdArr.map((summaryId) => {
     let fakeDogSummary = individualSummaryInCurrentCompetiton.find(
       (summary) => summary.competingPairsId === summaryId,
