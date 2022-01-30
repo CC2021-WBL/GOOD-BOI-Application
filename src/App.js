@@ -23,6 +23,7 @@ import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import RolePage from './PagesBody/RolePage/RolePage';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
+import UserDataPage from './PagesBody/UserDataPage/UserDataPage';
 
 function App() {
   return (
@@ -37,13 +38,14 @@ function App() {
           <Route path="error" element={<ErrorPage />} />
           <Route path="*" element={<NotFoundPage />}></Route>
           {/* //user views */}
+          <Route path="userData" element={<UserDataPage />} />
           <Route path="forgot" element={<ForgotPassForm />} />
           <Route path="contactForm" element={<ContactFormPage />} />
           <Route path="register" element={<RegistrationForm />} />
           <Route path="unRegistered" element={<UnregisteredPage />} />
           <Route path="login" element={<LoginForm />} />
         </Route>
-        <Route element={<Layout withlabel />}>
+        <Route element={<Layout withLabel />}>
           <Route path="role" element={<RolePage />} />
           <Route path="contests" element={<ContestsPage />} />
           <Route path="contests/:contestId/classes" element={<ClassesPage />} />

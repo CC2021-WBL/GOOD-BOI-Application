@@ -3,15 +3,28 @@ import styled from 'styled-components';
 import COLORS from '../../Styles/varsStyledComponents';
 
 const UserAddressStyled = styled.div`
-  text-align: start;
+  display: flex;
+  justify-content: space-between;
   border-bottom: 0.5px solid ${COLORS.grey300};
 
-  &:last-child {
-    padding-bottom: 10px;
+  .address-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    p {
+      color: ${COLORS.grey400};
+    }
+
+    p:last-of-type {
+      padding-bottom: 10px;
+    }
   }
 
-  p {
-    color: ${COLORS.grey400};
+  .edit-btn {
+    cursor: pointer;
+    border: none;
+    background-color: white;
   }
 `;
 

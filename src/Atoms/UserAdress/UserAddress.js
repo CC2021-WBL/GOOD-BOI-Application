@@ -1,7 +1,9 @@
+import propTypes from 'prop-types';
+
 import PARTICIPANTS from '../../Data/Dummy-data/test-data-participants';
 import UserAddressStyled from './UserAddressStyled';
 
-const UserAddress = () => {
+const UserAddress = ({ withEdit }) => {
   // userId otrzymane z contextu lub propsa
 
   // TODO co w przypadku kiedy nie znajdziemy id ?
@@ -12,10 +14,17 @@ const UserAddress = () => {
   );
   return (
     <UserAddressStyled>
-      <p>{`${userObject.street} ${userObject.numberOfHosue}`}</p>
-      <p>{`${userObject.postalCode} ${userObject.city}`}</p>
+      <div className="address-container">
+        <p>{`${userObject.street} ${userObject.numberOfHosue}`}</p>
+        <p>{`${userObject.postalCode} ${userObject.city}`}</p>
+      </div>
+      {withEdit && <button className="edit-btn">edytuj dane</button>}
     </UserAddressStyled>
   );
+};
+
+UserAddress.propTypes = {
+  withEdit: propTypes.bool,
 };
 
 export default UserAddress;
