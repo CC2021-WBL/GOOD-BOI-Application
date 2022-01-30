@@ -1,7 +1,6 @@
-import { DevsLogo, LogoStyled, Copy, FooterStyled } from './FooterStyled';
-import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
 import FooterProfileButton from '../../Atoms/FooterProfileButton/FooterProfileButton';
-import { Link } from 'react-router-dom';
+import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
+import { Copy, DevsLogo, FooterStyled, LogoStyled } from './FooterStyled';
 
 const Footer = () => {
   return (
@@ -20,9 +19,7 @@ const Footer = () => {
           #Devs on the Waves
         </Copy>
       </LogoStyled>
-      <Link to="profile" style={{ textDecoration: 'none' }}>
-        <FooterProfileButton />
-      </Link>
+      <FooterProfileButton />
     </FooterStyled>
   );
 };

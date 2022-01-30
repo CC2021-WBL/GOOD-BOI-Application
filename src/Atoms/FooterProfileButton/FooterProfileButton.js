@@ -1,9 +1,14 @@
 import propTypes from 'prop-types';
 import { FaUserCircle } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+
 import { Div, FooterProfileButtonStyled } from './FooterProfileButtonStyled';
 
-function clickHandler() {}
 const FooterProfileButton = () => {
+  const navigate = useNavigate();
+  function clickHandler() {
+    navigate('./profile');
+  }
   return (
     <FooterProfileButtonStyled onClick={clickHandler}>
       <FaUserCircle />
