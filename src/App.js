@@ -43,7 +43,7 @@ function App() {
           <Route path="unRegistered" element={<UnregisteredPage />} />
           <Route path="login" element={<LoginForm />} />
         </Route>
-        <Route element={<Layout withlabel />}>
+        <Route element={<Layout withLabel />}>
           <Route path="role" element={<RolePage />} />
           <Route path="contests" element={<ContestsPage />} />
           <Route path="contests/:contestId/classes" element={<ClassesPage />} />
