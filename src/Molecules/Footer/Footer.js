@@ -1,8 +1,10 @@
+import propTypes from 'prop-types';
+
 import FooterProfileButton from '../../Atoms/FooterProfileButton/FooterProfileButton';
 import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
 import { Copy, DevsLogo, FooterStyled, LogoStyled } from './FooterStyled';
 
-const Footer = () => {
+const Footer = ({ withSettings }) => {
   return (
     <FooterStyled>
       <LogoStyled>
@@ -19,9 +21,18 @@ const Footer = () => {
           #Devs on the Waves
         </Copy>
       </LogoStyled>
-      <FooterProfileButton />
+
+      {withSettings ? (
+        <FooterProfileButton withSettings />
+      ) : (
+        <FooterProfileButton />
+      )}
     </FooterStyled>
   );
+};
+
+Footer.propTypes = {
+  withSettings: propTypes.bool,
 };
 
 export default Footer;

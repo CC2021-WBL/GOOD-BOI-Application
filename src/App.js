@@ -29,14 +29,15 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route element={<Layout withSettings />}>
+          <Route path="user" element={<ProfilePage />} />
+        </Route>
         <Route element={<Layout />}>
           <Route path="testErrors" element={<ErrorTestPage />} />
           <Route path="error" element={<ErrorPage />} />
           <Route path="*" element={<NotFoundPage />}></Route>
           {/* //user views */}
-          <Route path="user" element={<ProfilePage />} />
           <Route path="forgot" element={<ForgotPassForm />} />
-          <Route path="profile" element={<ProfilePage />} />
           <Route path="contactForm" element={<ContactFormPage />} />
           <Route path="register" element={<RegistrationForm />} />
           <Route path="unRegistered" element={<UnregisteredPage />} />
