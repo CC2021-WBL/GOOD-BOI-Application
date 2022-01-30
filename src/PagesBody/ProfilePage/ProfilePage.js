@@ -3,7 +3,14 @@ import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 const ProfilePage = () => {
   return (
     <ColumnWrapper paddingLeftRight={1}>
-      <h1> I am Profile page</h1>
+      <div>
+        <h2>Alicja Kondrat</h2>
+      </div>
+      <div>
+        <p>Street</p>
+        <p>Zip-Code</p>
+        <p>Town </p>
+      </div>
     </ColumnWrapper>
   );
 };

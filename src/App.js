@@ -15,7 +15,6 @@ import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
 import LandingPage from './PagesBody/LandingPage/LandingPage';
 import Layout from './Templates/Layout/Layout';
-import LayoutWithLabel from './Templates/LayoutWithLabel/LayoutWithLabel';
 import LeaderboardPage from './PagesBody/LeaderboardPage/LeaderboardPage';
 import LoginForm from './Organisms/LoginForm/LoginForm';
 import ModalsTest from './PagesBody/ModalsTest';
@@ -43,7 +42,7 @@ function App() {
           <Route path="unRegistered" element={<UnregisteredPage />} />
           <Route path="login" element={<LoginForm />} />
         </Route>
-        <Route element={<LayoutWithLabel />}>
+        <Route element={<Layout withlabel />}>
           <Route path="role" element={<RolePage />} />
           <Route path="contests" element={<ContestsPage />} />
           <Route path="contests/:contestId/classes" element={<ClassesPage />} />
