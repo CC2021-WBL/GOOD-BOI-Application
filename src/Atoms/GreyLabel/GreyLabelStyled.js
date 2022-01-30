@@ -4,11 +4,11 @@ import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
 
 const GreyLabelStyled = styled.div`
-  background: ${COLORS.grey00};
-  height: 2.5rem;
   display: flex;
-  justify-content: center;
+  height: 2.5rem;
   align-items: center;
+  justify-content: center;
+  background: ${COLORS.grey00};
 
   .greyLabelText {
     color: ${COLORS.grey800};

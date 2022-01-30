@@ -1,11 +1,12 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import 'font-awesome/css/font-awesome.min.css';
 
-import MainButton from '../../Atoms/MainButton/MainButton';
-import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
+import MainButton from '../../Atoms/MainButton/MainButton';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -20,7 +21,7 @@ const LoginForm = () => {
   };
 
   return (
-    <CardWrapper>
+    <ColumnWrapper paddingLeftRight={1}>
       <FormWrapper onSubmit={submitHandler}>
         <InputField
           labelText="Email"
@@ -46,9 +47,11 @@ const LoginForm = () => {
         <Link to="/forgot" className="forgot-pass">
           Zapomniałeś/aś hasła ?
         </Link>
-        <MainButton primary text="Zaloguj się" />
+        <Link to="/role" style={{ textDecoration: 'none' }}>
+          <MainButton primary text="Zaloguj się" />
+        </Link>
       </FormWrapper>
-    </CardWrapper>
+    </ColumnWrapper>
   );
 };
 

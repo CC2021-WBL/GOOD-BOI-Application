@@ -1,18 +1,18 @@
 import styled from 'styled-components';
-import FONTS from '../../Styles/fontsStyledComponents';
+
 import COLORS from '../../Styles/varsStyledComponents';
+import FONTS from '../../Styles/fontsStyledComponents';
 
 const InputFieldStyled = styled.input`
-  ${FONTS.body_semibold};
-  color: ${COLORS.grey400};
-  box-sizing: border-box;
-  font-family: Mulish, FontAwesome;
   width: 100%;
   height: 3rem;
-  border-radius: 8px;
+  padding: 0 0 0 10px;
   border: 0.5px solid ${COLORS.grey400};
-  padding-left: 10px;
-  margin: 0 0 10px 0;
+  margin: 0 0 3px 0;
+  border-radius: 8px;
+  color: ${COLORS.grey400};
+  font-family: Mulish, FontAwesome, sans-serif;
+  ${FONTS.body_semibold};
 
   &::placeholder {
     color: ${COLORS.grey400};
@@ -21,6 +21,11 @@ const InputFieldStyled = styled.input`
   &:focus {
     border: 0.5px solid transparent;
     outline: 3px solid ${COLORS.primary201};
+  }
+
+  &.red-border {
+    border: 0.5px solid transparent;
+    outline: 1.5px solid ${COLORS.negative400};
   }
 `;
 

@@ -5,18 +5,18 @@ import COLORS from '../../Styles/varsStyledComponents';
 const ClassOrDogButtonStyled = styled.button`
   box-sizing: border-box;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  width: 100%;
   height: 4.375rem;
-  width: calc(100% - 2rem);
-  margin: 1rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   padding: 1rem;
+  border: solid 1px ${COLORS.grey800};
+  margin: 0.5rem 0;
+  background: white;
+  border-radius: 0.75rem;
   color: ${COLORS.grey800};
   ${FONTS.h3}
-  background: white;
-  border: solid 1px ${COLORS.grey800};
-  border-radius: 0.75rem;
 `;
 
 export default ClassOrDogButtonStyled;

@@ -1,33 +1,33 @@
-import styled from 'styled-components';
-import FONTS from '../../Styles/fontsStyledComponents';
 import COLORS from '../../Styles/varsStyledComponents';
+import FONTS from '../../Styles/fontsStyledComponents';
+import { COLORSMOTIVE as c } from '../../Consts/infoLabelConsts';
+import styled from 'styled-components';
 
 const InfoLabelStyled = styled.label`
-  box-sizing: border-box;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.375rem;
   height: 1.25rem;
-  ${FONTS.caption}
+  align-items: center;
+  justify-content: center;
+  padding: 0.375rem;
   border: solid 1px ${COLORS.grey800};
   border-radius: 0.25rem;
   line-height: 1em;
+  ${FONTS.caption}
   ${(props) =>
-    props.dateTextInfo === 'in-progress' || props.isClassCompleted
+    props.colorMotive === c.GREEN
       ? `background: ${COLORS.positive100}; color: ${COLORS.positive600};  border: solid 1px  ${COLORS.positive600};`
       : ``};
   ${(props) =>
-    props.dateTextInfo === 'in-future'
+    props.colorMotive === c.BLUE
       ? `background: ${COLORS.primary101}; color: ${COLORS.primary801};  border: solid 1px  ${COLORS.primary801};`
       : ``};
   ${(props) =>
-    props.dateTextInfo === 'in-past'
+    props.colorMotive === c.GREY
       ? `background: ${COLORS.grey100}; color: ${COLORS.grey800};  border: solid 1px  ${COLORS.grey800};`
       : ``};
   ${(props) =>
-    props.areExercisesCompleted
-      ? `background: ${COLORS.positive200}; color: ${COLORS.positive600};  border: solid 1px  ${COLORS.positive600};`
+    props.colorMotive === c.WHITE
+      ? `background: ${COLORS.white}; color: ${COLORS.grey800};  border: solid 1px  ${COLORS.grey800};`
       : ``};
 `;
 

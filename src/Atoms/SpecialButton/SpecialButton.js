@@ -1,13 +1,25 @@
-import propTypes from 'prop-types';
 import SpecialButtonStyled from './SpecialButtonStyled';
+import propTypes from 'prop-types';
 
-const SpecialButton = ({ special, text }) => {
-  return <SpecialButtonStyled special={special}>{text}</SpecialButtonStyled>;
+const SpecialButton = ({ left, right, text, handler, theme }) => {
+  return (
+    <SpecialButtonStyled
+      onClick={handler}
+      left={left}
+      right={right}
+      theme={theme}
+    >
+      {text}
+    </SpecialButtonStyled>
+  );
 };
 
 SpecialButton.propTypes = {
-  special: propTypes.bool,
-  text: propTypes.string,
+  left: propTypes.bool,
+  right: propTypes.bool,
+  text: propTypes.string.isRequired,
+  handler: propTypes.func,
+  theme: propTypes.string,
 };
 
 export default SpecialButton;

@@ -1,16 +1,19 @@
 import propTypes from 'prop-types';
-import InputLabel from '../../Atoms/InputLabel/InputLabel';
+
 import InputFieldStyled from './InputFieldStyled';
+import InputLabel from '../../Atoms/InputLabel/InputLabel';
 
 const InputField = ({
   id,
   type,
   placeholder,
-  required,
   value,
   onChange,
   htmlFor,
   labelText,
+  name,
+  required,
+  className,
 }) => {
   return (
     <>
@@ -19,9 +22,11 @@ const InputField = ({
         id={id}
         type={type}
         placeholder={placeholder}
-        required={required}
         value={value}
         onChange={onChange}
+        name={name}
+        required={required}
+        className={className}
       />
     </>
   );
@@ -33,9 +38,11 @@ InputField.propTypes = {
   id: propTypes.string.isRequired,
   type: propTypes.string.isRequired,
   placeholder: propTypes.string,
-  required: propTypes.bool.isRequired,
   value: propTypes.string,
   onChange: propTypes.func.isRequired,
+  name: propTypes.string,
+  required: propTypes.bool,
+  className: propTypes.string,
 };
 
 export default InputField;

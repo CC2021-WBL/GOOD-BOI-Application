@@ -2,9 +2,7 @@ import propTypes from 'prop-types';
 import { FaUserCircle } from 'react-icons/fa';
 import { Div, FooterProfileButtonStyled } from './FooterProfileButtonStyled';
 
-function clickHandler() {
-  console.log('clicked profie button');
-}
+function clickHandler() {}
 const FooterProfileButton = () => {
   return (
     <FooterProfileButtonStyled onClick={clickHandler}>

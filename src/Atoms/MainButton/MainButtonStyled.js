@@ -1,12 +1,6 @@
-import styled from 'styled-components';
 import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
-
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+import styled from 'styled-components';
 
 const handleBgAndColor = (props) => {
   if (props.primary) {
@@ -33,16 +27,14 @@ const borderHandler = (props) => {
 };
 const MainButtonStyled = styled.button`
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 3.25rem;
-  margin: 0.25rem 0 0.25rem 0;
-  ${FONTS.button};
-  // Bg colors:
-  ${(props) => handleBgAndColor(props)};
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem 0 0.5rem 0;
   border-radius: 0.75rem;
-  // Border properties:
+  ${FONTS.button};
+  ${(props) => handleBgAndColor(props)};
   ${(props) => borderHandler(props)};
 `;
 
