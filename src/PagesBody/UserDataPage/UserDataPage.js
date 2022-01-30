@@ -1,17 +1,7 @@
-import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import ProfileCardStyled from '../../Molecules/ProfileCard/ProfileCardStyled';
-import UserAddress from '../../Atoms/UserAdress/UserAddress';
-import UserNameAndImg from '../../Atoms/UserNameAndImg/UserNameAndImg';
+import UserData from '../../Organisms/UserData/UserData';
 
 const UserDataPage = () => {
-  return (
-    <ColumnWrapper paddingLeftRight={1}>
-      <ProfileCardStyled>
-        <UserNameAndImg />
-        <UserAddress withEdit />
-      </ProfileCardStyled>
-    </ColumnWrapper>
-  );
+  return <UserData />;
 };
 
 export default UserDataPage;

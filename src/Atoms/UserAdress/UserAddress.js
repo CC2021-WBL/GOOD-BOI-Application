@@ -1,6 +1,8 @@
 import propTypes from 'prop-types';
+import { useState } from 'react';
 
 import PARTICIPANTS from '../../Data/Dummy-data/test-data-participants';
+import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
 import UserAddressStyled from './UserAddressStyled';
 
 const UserAddress = ({ withEdit }) => {
@@ -12,19 +14,40 @@ const UserAddress = ({ withEdit }) => {
   let userObject = PARTICIPANTS.find(
     (participant) => participant.id === userId,
   );
+
+  const [toggle, setToggle] = useState(false);
+
+  const toggleHandler = () => {
+    setToggle((prevState) => !prevState);
+  };
+
+  const submitForm = () => {};
+
   return (
-    <UserAddressStyled>
-      <div className="address-container">
-        <p>{`${userObject.street} ${userObject.numberOfHosue}`}</p>
-        <p>{`${userObject.postalCode} ${userObject.city}`}</p>
-      </div>
-      {withEdit && <button className="edit-btn">edytuj dane</button>}
-    </UserAddressStyled>
+    <>
+      <UserAddressStyled>
+        <div className="address-container">
+          <p>{`${userObject.street} ${userObject.numberOfHosue}`}</p>
+          <p>{`${userObject.postalCode} ${userObject.city}`}</p>
+        </div>
+        {withEdit && (
+          <button className="edit-btn" onClick={toggleHandler} toggle="true">
+            edytuj dane
+          </button>
+        )}
+      </UserAddressStyled>
+      {toggle && (
+        <>
+          <RegistrationFormSignup submitForm={submitForm} editData />
+        </>
+      )}
+    </>
   );
 };
 
 UserAddress.propTypes = {
   withEdit: propTypes.bool,
+  toggle: propTypes.bool,
 };
 
 export default UserAddress;

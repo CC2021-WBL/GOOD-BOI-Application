@@ -7,13 +7,81 @@ import MainButton from '../../Atoms/MainButton/MainButton';
 import useForm from './useForm.js';
 import validateData from './validateData';
 
-const RegistrationFormSignup = ({ submitForm }) => {
+// eslint-disable-next-line react/prop-types
+const RegistrationFormSignup = ({ submitForm, editData }) => {
   const { handleInputChange, submitHandler, formData, errors } = useForm(
     submitForm,
     validateData,
   );
 
-  return (
+  // return (<>
+  //   {(()=> {
+  //     if (editEmail) {
+
+  //     }
+  //   })}
+  // </>
+  // )
+  return editData ? (
+    <FormWrapper onSubmit={submitHandler}>
+      <InputField
+        labelText="Imię"
+        htmlFor="firstname"
+        type="text"
+        placeholder="&#xF007; Imię"
+        id="firstname"
+        value={formData.firstname}
+        onChange={handleInputChange}
+        className={errors.firstname ? 'red-border' : 'none'}
+      />
+      {errors.firstname && <p>{errors.firstname}</p>}
+      <InputField
+        labelText="Nazwisko"
+        htmlFor="surname"
+        type="text"
+        placeholder="&#xF007; Nazwisko"
+        id="surname"
+        value={formData.surname}
+        onChange={handleInputChange}
+        className={errors.surname ? 'red-border' : 'none'}
+      />
+      {errors.surname && <p>{errors.surname}</p>}
+      <InputField
+        labelText="Ulica i nr domu"
+        htmlFor="street"
+        type="text"
+        placeholder="&#xf015; Ulica i nr domu"
+        id="street"
+        value={formData.street}
+        onChange={handleInputChange}
+        className={errors.street ? 'red-border' : 'none'}
+      />
+      {errors.street && <p>{errors.street}</p>}
+      <InputField
+        labelText="Kod Pocztowy"
+        htmlFor="zipcode"
+        type="text"
+        placeholder="&#xf015; Kod Pocztowy"
+        id="zipcode"
+        value={formData.zipcode}
+        onChange={handleInputChange}
+        className={errors.zipcode ? 'red-border' : 'none'}
+      />
+      {errors.zipcode && <p>{errors.zipcode}</p>}
+      <InputField
+        labelText="Miasto"
+        htmlFor="city"
+        type="text"
+        placeholder="&#xf015; Miasto"
+        id="city"
+        value={formData.city}
+        onChange={handleInputChange}
+        className={errors.city ? 'red-border' : 'none'}
+      />
+      {errors.city && <p>{errors.city}</p>}
+      <MainButton primary text="Zapisz zmiany" />
+    </FormWrapper>
+  ) : (
     <FormWrapper onSubmit={submitHandler}>
       <InputField
         labelText="Email"

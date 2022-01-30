@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import RegistrationFormSignup from './RegistrationFormSignup';
 import RegistrationFormSuccess from './RegistrationFormSuccess';
-import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 
-const RegistrationForm = () => {
+// eslint-disable-next-line react/prop-types
+const RegistrationForm = ({ editData }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   function submitForm() {
@@ -14,7 +15,7 @@ const RegistrationForm = () => {
   return (
     <ColumnWrapper paddingLeftRight={1}>
       {!isSubmitted ? (
-        <RegistrationFormSignup submitForm={submitForm} />
+        <RegistrationFormSignup submitForm={submitForm} editData={editData} />
       ) : (
         <RegistrationFormSuccess />
       )}
