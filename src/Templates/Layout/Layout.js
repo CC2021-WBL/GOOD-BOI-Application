@@ -3,14 +3,15 @@ import { Outlet } from 'react-router-dom';
 
 import Footer from '../../Molecules/Footer/Footer';
 import GhostFooterStyled from '../../Molecules/Footer/GhostFooterStyled';
-import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
+// import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
 import NavElement from '../../Organisms/NavElement/NavElement';
 
-const Layout = ({ withLabel, withSettings }) => {
+const Layout = ({ withSettings }) => {
   return (
     <>
-      <NavElement text="WannaBe..." />
-      {withLabel && <GreyLabel text="Make me Dynamic Please!" />}
+      <NavElement text="Wanna be.." />
+      {/* <div style={{ height: '20px' }}></div> */}
+      {/* {withLabel && <GreyLabel text="nie wiem" />} */}
       <Outlet />
       <GhostFooterStyled />
       {withSettings ? <Footer withSettings /> : <Footer />}

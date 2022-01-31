@@ -1,17 +1,28 @@
 import PropTypes from 'prop-types';
 import { BsChevronLeft } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
+// import pathData from '../../Consts/pathData';
 import AppLogo from '../../Assets/AppLogo.png';
+import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
 import LinkWrapperStyled from '../../Atoms/NavElementStyled/LinkWrapperStyled';
 import LogoStyled from '../../Atoms/NavElementStyled/LogoStyled';
+import pathData from '../../Consts/pathData';
+// import NavLabel from './NavLabel';
 import { NavElementStyled } from './NavElementStyled';
 
-const NavElement = ({ text }) => {
+const NavElement = () => {
   const navigate = useNavigate();
+  // const { name } = useParams();
+  const locationPath = useLocation();
+  console.log(location);
+
+  const foundPath = pathData.find((e) => e.path === locationPath.pathname);
+  console.log(foundPath);
+  console.log(foundPath.label);
+
   return (
-    <div style={{ height: '60px' }}>
+    <>
       <NavElementStyled>
         <LinkWrapperStyled onClick={() => navigate(-1)}>
           <BsChevronLeft className="arrowLeft" />
@@ -19,14 +30,24 @@ const NavElement = ({ text }) => {
           <h3 className="back">wróć</h3>
         </LinkWrapperStyled>
 
-        <h1 className="navText">{text}</h1>
+        {foundPath.path === locationPath.pathname && (
+          <>
+            <h1>{foundPath.text}</h1>
+          </>
+        )}
+
         <LogoStyled>
-          <Link to="/">
-            <img src={AppLogo} alt="Logo aplikacji" className="logo" />
-          </Link>
+          <img src={AppLogo} alt="Logo aplikacji" className="logo" />
         </LogoStyled>
       </NavElementStyled>
-    </div>
+
+      {foundPath.label && (
+        <>
+          <div style={{ height: '60px' }}></div>
+          <GreyLabel text={foundPath.label} />
+        </>
+      )}
+    </>
   );
 };
 
