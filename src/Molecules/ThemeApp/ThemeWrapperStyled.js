@@ -16,8 +16,8 @@ const ThemeWrapperStyled = styled.div`
   }
 
   div {
-    width: 7rem;
     display: flex;
+    width: 7rem;
     align-items: center;
     justify-content: space-between;
     .switch {
