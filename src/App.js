@@ -28,23 +28,19 @@ import RolePage from './PagesBody/RolePage/RolePage';
 import SettingsPage from './PagesBody/SettingsPage/SettingsPage';
 import { ThemeProvider } from 'styled-components';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
-import { useState } from 'react';
-
-// import Settings from './Organisms/SettingsApp/Settings';
+import { useDarkMode } from './Organisms/SettingsApp/useDarkMode';
 
 function App() {
-  const [theme, setTheme] = useState('light');
-  const themeToggler = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light');
-  };
+  const [theme, themeToggler] = useDarkMode();
+
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
   console.log(theme);
 
   return (
-    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+    <ThemeProvider theme={themeMode}>
       <>
         <GlobalStyles />
         <div className="App">
-          {/* <button onClick={themeToggler}>Switch Theme</button> */}
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route element={<Layout />}>
