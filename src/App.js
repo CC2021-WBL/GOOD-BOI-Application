@@ -7,6 +7,7 @@ import ClassesPage from './PagesBody/ClassesPage/ClassesPage';
 import ContactFormPage from './PagesBody/ContactFormPage/ContactFormPage';
 import ContestDetailsPage from './PagesBody/ContestDetailsPage/ContestDetailsPage';
 import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
+import { DataThemeProvider } from './Context/DataContext';
 import DogDataPage from './PagesBody/DogDataPage/DogDataPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
 import ErrorPage from './PagesBody/ErrorPage/ErrorPage';
@@ -23,6 +24,12 @@ import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import RolePage from './PagesBody/RolePage/RolePage';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
+
+// import { ParticipantContextProvider } from './Context/ParticipantContext';
+
+
+
+
 
 function App() {
   return (
@@ -44,27 +51,78 @@ function App() {
           <Route path="login" element={<LoginForm />} />
         </Route>
         <Route element={<Layout withLabel />}>
-          <Route path="role" element={<RolePage />} />
-          <Route path="contests" element={<ContestsPage />} />
-          <Route path="contests/:contestId/classes" element={<ClassesPage />} />
+          <Route
+            path="role"
+            element={
+              <DataThemeProvider>
+                <RolePage />
+              </DataThemeProvider>
+            }
+          />
+          <Route
+            path="contests"
+            element={
+              <DataThemeProvider>
+                <ContestsPage />
+              </DataThemeProvider>
+            }
+          />
+          <Route
+            path="contests/:contestId/classes"
+            element={
+              <DataThemeProvider>
+                <ClassesPage />
+              </DataThemeProvider>
+            }
+          />
           <Route
             path="contests/:contestId/classes/:classId"
-            element={<ClassCompetitorsPage />}
+            element={
+              <DataThemeProvider>
+                <ClassCompetitorsPage />
+              </DataThemeProvider>
+            }
           />
           <Route
             path="contests/:contestId/classes/:classId/leaderboard"
-            element={<LeaderboardPage />}
+            element={
+              <DataThemeProvider>
+                <LeaderboardPage />
+              </DataThemeProvider>
+            }
           />
           <Route
             path="contests/:contestId/classes/:classId/:dogId"
-            element={<ExercisesPage />}
+            element={
+              <DataThemeProvider>
+                <ExercisesPage />
+              </DataThemeProvider>
+            }
           />
           <Route
             path="contests/:contestId/classes/:classId/:dogId/dogSummary"
-            element={<DogSummaryPage />}
+            element={
+              <DataThemeProvider>
+                <DogSummaryPage />
+              </DataThemeProvider>
+            }
           />
-          <Route path="dogData" element={<DogDataPage />} />
-          <Route path="contestDetails" element={<ContestDetailsPage />} />
+          <Route
+            path="dogData"
+            element={
+              <DataThemeProvider>
+                <DogDataPage />
+              </DataThemeProvider>
+            }
+          />
+          <Route
+            path="contestDetails"
+            element={
+              <DataThemeProvider>
+                <ContestDetailsPage />
+              </DataThemeProvider>
+            }
+          />
         </Route>
 
         <Route path="ModalsTest" element={<ModalsTest />} />
