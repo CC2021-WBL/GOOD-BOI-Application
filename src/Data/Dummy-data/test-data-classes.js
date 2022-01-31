@@ -3,7 +3,7 @@ const CLASSES = [
     id: 'ddcb2781-2101-40b2-9739-a80a156d1c52',
     name: 'Klasa 0',
     pointsToGain: 140,
-    exercises: [
+    exersises: [
       {
         id: '64268e7d-a891-4cb6-841b-603dff67956d',
         codeName: '0.1',
@@ -100,7 +100,7 @@ const CLASSES = [
     id: '',
     name: 'Klasa 1',
     pointsToGain: 320,
-    exercises: [
+    exersises: [
       {
         id: '',
         codeName: '1.1',

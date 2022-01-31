@@ -47,17 +47,3 @@ const klasy = {
     3.1: 'Zmiany pozycji na odległość',
   },
 };
-
-// TODO: This file to become a translator function for the LeaderboardList refactoring
-// will translate from input: excersise numer "3.1" into excersise description
-const fakeClass = '3';
-let className;
-fakeClass === '3' && (className = 'class3');
-fakeClass === '2' && (className = 'class2');
-fakeClass === '1' && (className = 'class1');
-
-console.log(className);
-const excersiseCode = 3.4;
-
-console.log(excersiseCode + ' ' + klasy[className][excersiseCode]);
-/// function translating excersise code to excersise text
