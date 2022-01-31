@@ -19,6 +19,8 @@ describe('TextArea', () => {
       />,
     );
   });
+
+  //intentionally not pass
   it('renders textarea to fill with message', () => {
     render(
       <TextArea
