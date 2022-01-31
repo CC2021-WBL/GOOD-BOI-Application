@@ -15,7 +15,7 @@ const contests = [
     applicationFeeInPLN: 90,
     participants: ['matylda1234', 'bogdan678', 'zosia9474'],
     obedienceClasses: {
-      class0: {
+      0: {
         isComleted: false,
         competingPairs: [
           {
@@ -32,7 +32,7 @@ const contests = [
           },
         ],
       },
-      class1: {
+      1: {
         isComleted: false,
         competingPairs: [
           {
@@ -67,7 +67,7 @@ const contests = [
     manager: 'Zbyszko Bogdaniec',
     applicationFeeInPLN: 110,
     obedienceClasses: {
-      class0: {
+      0: {
         isComleted: false,
         competingPairs: [
           {
@@ -84,7 +84,7 @@ const contests = [
           },
         ],
       },
-      class1: {
+      1: {
         isComleted: false,
         competingPairs: [
           {
@@ -118,7 +118,7 @@ const contests = [
     manager: 'Gerwazy Kapusta',
     applicationFeeInPLN: 70,
     obedienceClasses: {
-      class0: {
+      0: {
         isComleted: false,
         competingPairs: [
           {
@@ -127,7 +127,7 @@ const contests = [
           },
         ],
       },
-      class1: {
+      1: {
         isComleted: false,
         competingPairs: [
           {
@@ -136,7 +136,7 @@ const contests = [
           },
         ],
       },
-      class2: {
+      2: {
         isComleted: false,
         competingPairs: [
           {
@@ -149,7 +149,7 @@ const contests = [
           },
         ],
       },
-      class3: {
+      3: {
         isComleted: false,
         competingPairs: [
           {

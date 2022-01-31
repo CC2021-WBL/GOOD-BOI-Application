@@ -2,7 +2,7 @@ const individualSummaryInCurrentCompetiton = [
   {
     competingPairsId: '22-03-22Woof',
     contestId: 'a0347677-c3c9-4edc-9d46-fed4a958fdc2',
-    classNumber: 'class0',
+    obedienceClass: 0,
     dogId: 'VIII-40407',
     dogName: 'Woof',
     particpantId: 'matylda1234',
@@ -11,7 +11,7 @@ const individualSummaryInCurrentCompetiton = [
   {
     competingPairsId: '22-03-22Nosek',
     contestId: 'a0347677-c3c9-4edc-9d46-fed4a958fdc2',
-    classNumber: 'class0',
+    obedienceClass: 0,
     dogId: 'VIII-27165',
     dogName: 'Nosek',
     particpantId: 'bogdan678',
@@ -20,7 +20,7 @@ const individualSummaryInCurrentCompetiton = [
   {
     competingPairsId: '22-03-22Ptysio',
     contestId: 'a0347677-c3c9-4edc-9d46-fed4a958fdc2',
-    classNumber: 'class0',
+    obedienceClass: 0,
     dogId: 'V-11165',
     dogName: 'Ptysio',
     particpantId: 'zosia9474',
@@ -29,7 +29,7 @@ const individualSummaryInCurrentCompetiton = [
   {
     competingPairsId: '22-03-22Ollie',
     contestId: 'a0347677-c3c9-4edc-9d46-fed4a958fdc2',
-    classNumber: 'class1',
+    obedienceClass: 1,
     dogId: 'X-37657',
     dogName: 'Ollie',
     particpantId: 'eustachy123',
@@ -38,7 +38,7 @@ const individualSummaryInCurrentCompetiton = [
   {
     competingPairsId: '22-03-22Kluska',
     contestId: 'a0347677-c3c9-4edc-9d46-fed4a958fdc2',
-    classNumber: 'class1',
+    obedienceClass: 1,
     dogId: 'VII-27885',
     dogName: 'Kluska',
     particpantId: 'matylda1234',
@@ -47,7 +47,7 @@ const individualSummaryInCurrentCompetiton = [
   {
     competingPairsId: '22-03-22Norah',
     contestId: 'a0347677-c3c9-4edc-9d46-fed4a958fdc2',
-    classNumber: 'class1',
+    obedienceClass: 1,
     dogId: 'VI-15765',
     dogName: 'Norah',
     particpantId: 'zosia9474',
@@ -56,7 +56,7 @@ const individualSummaryInCurrentCompetiton = [
   {
     competingPairsId: '22-05-01Woof',
     contestId: '3845029d-e97d-41ed-997f-2299d09ef648',
-    classNumber: 'class0',
+    obedienceClass: 0,
     dogId: 'VIII-40407',
     dogName: 'Woof',
     particpantId: 'matylda1234',
@@ -65,7 +65,7 @@ const individualSummaryInCurrentCompetiton = [
   {
     competingPairsId: '22-05-01Nosek',
     contestId: '3845029d-e97d-41ed-997f-2299d09ef648',
-    classNumber: 'class0',
+    obedienceClass: 0,
     dogId: 'VIII-27165',
     dogName: 'Nosek',
     particpantId: 'bogdan678',
@@ -74,7 +74,7 @@ const individualSummaryInCurrentCompetiton = [
   {
     competingPairsId: '22-05-01Ptysio',
     contestId: '3845029d-e97d-41ed-997f-2299d09ef648',
-    classNumber: 'class0',
+    obedienceClass: 0,
     dogId: 'V-11165',
     dogName: 'Ptysio',
     particpantId: 'zosia9474',
@@ -83,7 +83,7 @@ const individualSummaryInCurrentCompetiton = [
   {
     competingPairsId: '22-05-01Ollie',
     contestId: '3845029d-e97d-41ed-997f-2299d09ef648',
-    classNumber: 'class1',
+    obedienceClass: 1,
     dogId: 'X-37657',
     dogName: 'Ollie',
     particpantId: 'eustachy123',
@@ -92,7 +92,7 @@ const individualSummaryInCurrentCompetiton = [
   {
     competingPairsId: '22-05-01Kluska',
     contestId: '3845029d-e97d-41ed-997f-2299d09ef648',
-    classNumber: 'class1',
+    obedienceClass: 1,
     dogId: 'VII-27885',
     dogName: 'Kluska',
     particpantId: 'matylda1234',
@@ -101,7 +101,7 @@ const individualSummaryInCurrentCompetiton = [
   {
     competingPairsId: '22-05-01Norah',
     contestId: '3845029d-e97d-41ed-997f-2299d09ef648',
-    classNumber: 'class1',
+    obedienceClass: 1,
     dogId: 'VI-15765',
     dogName: 'Norah',
     particpantId: 'zosia9474',
@@ -111,7 +111,7 @@ const individualSummaryInCurrentCompetiton = [
   {
     competingPairsId: '21-12-24Woof',
     contestId: 'c9e7b738-f8e6-4300-9087-332ad5a28b4f',
-    classNumber: 'class0',
+    obedienceClass: 0,
     dogId: 'VIII-40407',
     dogName: 'Woof',
     particpantId: 'matylda1234',
@@ -120,7 +120,7 @@ const individualSummaryInCurrentCompetiton = [
   {
     competingPairsId: '21-12-24Nosek',
     contestId: 'c9e7b738-f8e6-4300-9087-332ad5a28b4f',
-    classNumber: 'class1',
+    obedienceClass: 1,
     dogId: 'VIII-27165',
     dogName: 'Nosek',
     particpantId: 'bogdan678',
@@ -129,7 +129,7 @@ const individualSummaryInCurrentCompetiton = [
   {
     competingPairsId: '21-12-24Ptysio',
     contestId: 'c9e7b738-f8e6-4300-9087-332ad5a28b4f',
-    classNumber: 'class2',
+    obedienceClass: 2,
     dogId: 'V-11165',
     dogName: 'Ptysio',
     particpantId: 'zosia9474',
@@ -138,7 +138,7 @@ const individualSummaryInCurrentCompetiton = [
   {
     competingPairsId: '21-12-24Ollie',
     contestId: 'c9e7b738-f8e6-4300-9087-332ad5a28b4f',
-    classNumber: 'class2',
+    obedienceClass: 2,
     dogId: 'X-37657',
     dogName: 'Ollie',
     particpantId: 'eustachy123',
@@ -147,7 +147,7 @@ const individualSummaryInCurrentCompetiton = [
   {
     competingPairsId: '21-12-24Kluska',
     contestId: 'c9e7b738-f8e6-4300-9087-332ad5a28b4f',
-    classNumber: 'class3',
+    obedienceClass: 3,
     dogId: 'VIII-40407',
     dogName: 'Kluska',
     particpantId: 'matylda1234',
@@ -156,7 +156,7 @@ const individualSummaryInCurrentCompetiton = [
   {
     competingPairsId: '21-12-24Norah',
     contestId: 'c9e7b738-f8e6-4300-9087-332ad5a28b4f',
-    classNumber: 'class3',
+    obedienceClass: 3,
     dogId: 'VI-15765',
     dogName: 'Norah',
     particpantId: 'zosia9474',
