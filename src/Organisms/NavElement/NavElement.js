@@ -1,3 +1,5 @@
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import AppLogo from '../../Assets/AppLogo.png';
 import { BsChevronLeft } from 'react-icons/bs';
 import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
@@ -6,14 +8,6 @@ import LogoStyled from '../../Atoms/NavElementStyled/LogoStyled';
 import { NavElementStyled } from './NavElementStyled';
 import PropTypes from 'prop-types';
 import pathData from '../../Consts/pathData';
-import { useLocation } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-
-// import { useNavigate } from 'react-router-dom';
-
-// import pathData from '../../Consts/pathData';
-
-// import LogoStyled from '../../Atoms/NavElementStyled/LogoStyled';
 
 const NavElement = () => {
   const navigate = useNavigate();
@@ -21,10 +15,7 @@ const NavElement = () => {
   const locationPath = useLocation();
   console.log(locationPath);
   const foundPath = pathData.find((e) => e.path === locationPath.pathname);
-  // if (!foundPath.label){}
-  // const aa=()=>{}
-  // console.log(foundPath);
-  // console.log(foundPath.label);
+
   return (
     <>
       <NavElementStyled>
@@ -41,7 +32,7 @@ const NavElement = () => {
           <img src={AppLogo} alt="Logo aplikacji" className="logo" />
         </LogoStyled>
       </NavElementStyled>
-      {foundPath !== undefined && (
+      {foundPath.label !== undefined && (
         <>
           <div style={{ height: '60px' }} />
           <GreyLabel text={foundPath.label} />

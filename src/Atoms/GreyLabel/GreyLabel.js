@@ -1,9 +1,14 @@
-import GreyLabelPath from './GreyLabelPath';
+// import GreyLabelPath from './GreyLabelPath';
+
 import GreyLabelStyled from './GreyLabelStyled';
 import PropTypes from 'prop-types';
 
-const GreyLabel = () => {
-  return <GreyLabelStyled>{GreyLabelPath()}</GreyLabelStyled>;
+const GreyLabel = ({ text }) => {
+  return (
+    <GreyLabelStyled>
+      <p className="greyLabelText">{text}</p>
+    </GreyLabelStyled>
+  );
 };
 
 GreyLabel.propTypes = {
