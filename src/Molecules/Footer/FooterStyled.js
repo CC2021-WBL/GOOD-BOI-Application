@@ -14,7 +14,8 @@ export const FooterStyled = styled.div`
 
   border-top: 2px solid ${COLORS.grey00};
   margin: 0;
-  background: ${COLORS.white};
+  /* background: ${COLORS.white}; */
+  background: ${({ theme }) => theme.background};
 `;
 
 export const LogoStyled = styled.div`
