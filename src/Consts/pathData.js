@@ -1,3 +1,5 @@
+import RANDOM_CONTESTS from '../Data/Dummy-data/test-data-random-contests';
+
 const pathData = [
   { path: '/login', text: 'Logowanie' },
   { path: '/role', text: 'Wybierz rolę', label: 'Kontynuuj jako' },
@@ -9,10 +11,16 @@ const pathData = [
     label: 'Wybierz konkurs',
   },
   {
-    path: `/contests/a0347677-c3c9-4edc-9d46-fed4a958fdc2/classes`,
+    path: `/contests/${RANDOM_CONTESTS[0].id}/classes`,
     text: 'Lista klas',
-    label: 'XII zawody im. Pana Starosty',
+    label: `${RANDOM_CONTESTS[0].name}`,
   },
+  {
+    path: `/contests/${RANDOM_CONTESTS[1].id}/classes`,
+    text: 'Lista klas',
+    label: `${RANDOM_CONTESTS[1].name}`,
+  },
+
   {
     path: 'role/contest/1/class/1',
     text: 'Lista uczestników',
@@ -28,7 +36,6 @@ const pathData = [
     text: 'Tabela wyników',
     label: 'Ocena zawodnika Woof',
   },
-  { path: '/forgot', text: 'Resetuj hasło' },
   {
     path: '/contests/closed',
     text: 'Lista konkursów',
