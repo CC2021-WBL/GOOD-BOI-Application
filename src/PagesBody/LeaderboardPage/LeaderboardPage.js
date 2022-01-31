@@ -56,7 +56,7 @@ const LeaderboardPage = () => {
       <h1>I am leaderboard page</h1>
       {/* props contestId, props classNumber */}
       <LeaderboardList result={sortedLeaderboardClassResults} />
-      {/* <LeaderboardList result={dogSummaryResult} /> */}
+      <LeaderboardList result={dogSummaryResult} />
       {/* <LeaderboardList contestId={fakeId} classNumber={fakeClass} dogName={fakeDogName}/> */}
       <div>
         <br></br>
