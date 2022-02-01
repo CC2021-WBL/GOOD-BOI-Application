@@ -1,10 +1,19 @@
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 import participants from '../Data/MongoDBMock/participants';
 import propTypes from 'prop-types';
 import { useEffect } from 'react/cjs/react.development';
 
 export const UserDataContext = createContext();
+const UpdateUserContext = createContext();
+
+export function useUserContext() {
+  return useContext(UserDataContext);
+}
+
+export function useUpdateUserContext() {
+  return useContext(UpdateUserContext);
+}
 
 const initialData = {
   userId: participants[0].participantId,
@@ -13,9 +22,20 @@ const initialData = {
   roles: participants[0].portalRoles,
 };
 
-export function DataThemeProvider({ children }) {
+export function UserDataProvider({ children }) {
   //const [state, dispatch] = useReducer(reducer, initialData);
   const [state, setState] = useState(initialData);
+
+  function updateData() {
+    const data = {
+      userId: participants[0].participantId,
+      // userName: participants[0].participantName,
+      userName: 'Kaszotto',
+      userSurname: participants[0].participantSurname,
+      roles: participants[0].portalRoles,
+    };
+    setState(data);
+  }
 
   useEffect(() => {
     // tu pobierane dane z DB?
@@ -26,15 +46,17 @@ export function DataThemeProvider({ children }) {
       roles: participants[0].portalRoles,
     };
     setState(data);
-  }, [state]);
+  }, []);
 
   return (
     <UserDataContext.Provider value={state}>
-      {children}
+      <UpdateUserContext.Provider value={updateData}>
+        {children}
+      </UpdateUserContext.Provider>
     </UserDataContext.Provider>
   );
 }
 
-DataThemeProvider.propTypes = {
+UserDataProvider.propTypes = {
   children: propTypes.node,
 };

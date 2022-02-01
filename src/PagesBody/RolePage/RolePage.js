@@ -1,12 +1,16 @@
+import {
+  useUpdateUserContext,
+  useUserContext,
+} from '../../Context/DataContext';
+
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import { Link } from 'react-router-dom';
 import MainButton from '../../Atoms/MainButton/MainButton';
-import { UserDataContext } from '../../Context/DataContext';
-import { useContext } from 'react';
 
 const RolePage = () => {
-  const userData = useContext(UserDataContext);
+  const userData = useUserContext();
   console.log(userData);
+  const updateContext = useUpdateUserContext();
 
   return (
     <ColumnWrapper paddingLeftRight={1}>
@@ -14,6 +18,7 @@ const RolePage = () => {
       <Link to="/contests" style={{ textDecoration: 'none' }}>
         <MainButton text="Obsługa" primary />
       </Link>
+      <MainButton onClick={updateContext} primary text="Update"></MainButton>
     </ColumnWrapper>
   );
 };
