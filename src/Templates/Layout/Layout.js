@@ -1,16 +1,15 @@
-import propTypes from 'prop-types';
-import { Outlet } from 'react-router-dom';
-
 import Footer from '../../Molecules/Footer/Footer';
 import GhostFooterStyled from '../../Molecules/Footer/GhostFooterStyled';
-import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
 import NavElement from '../../Organisms/NavElement/NavElement';
+import { Outlet } from 'react-router-dom';
+import propTypes from 'prop-types';
 
 const Layout = ({ withLabel, withSettings }) => {
   return (
     <>
       <NavElement text="WannaBe..." />
-      {withLabel && <GreyLabel text="Make me Dynamic Please!" />}
+      {!withLabel && <div style={{ height: '60px' }} />}
+
       <Outlet />
       <GhostFooterStyled />
       {withSettings ? <Footer withSettings /> : <Footer />}
