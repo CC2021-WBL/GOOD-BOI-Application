@@ -4,6 +4,7 @@ import ErrorPageGraphic from '../../src/Assets/ErrorPageGraphic.png';
 import MainButton from '../Atoms/MainButton/MainButton';
 import NotFoundPageWrapperStyled from '../Organisms/NotFoundContent/NotFoundPageWrapperStyled';
 import propTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 export class ErrorBoundary extends Component {
   constructor(props) {
@@ -37,7 +38,11 @@ export class ErrorBoundary extends Component {
                 <p>Wróć do poprzedniej strony i spróbuj ponownie później.</p>
               </div>
             </NotFoundPageWrapperStyled>
-            <MainButton secondary text="Powrót do strony głównej"></MainButton>
+            <MainButton
+              secondary
+              text="wroć do poprzedniej strony"
+              onClick={() => navigate('/userDogs')}
+            />
           </ColumnWrapper>
         </>
       );
