@@ -19,6 +19,7 @@ import LeaderboardPage from './PagesBody/LeaderboardPage/LeaderboardPage';
 import LoginForm from './Organisms/LoginForm/LoginForm';
 import ModalsTest from './PagesBody/ModalsTest';
 import NotFoundPage from './PagesBody/NotFoundPage/NotFoundPage';
+import ParticipantDataPage from './PagesBody/ParticipantDataPage/ParticipantDataPage';
 import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import RolePage from './PagesBody/RolePage/RolePage';
@@ -35,7 +36,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="testErrors" element={<ErrorTestPage />} />
           <Route path="error" element={<ErrorPage />} />
-          <Route path="*" element={<NotFoundPage />}></Route>
+          <Route path="*" element={<NotFoundPage />} />
           {/* //user views */}
           <Route path="forgot" element={<ForgotPassForm />} />
           <Route path="contactForm" element={<ContactFormPage />} />
@@ -64,6 +65,7 @@ function App() {
             element={<DogSummaryPage />}
           />
           <Route path="dogData" element={<DogDataPage />} />
+          <Route path="participantData" element={<ParticipantDataPage />} />
           <Route path="contestDetails" element={<ContestDetailsPage />} />
         </Route>
 
