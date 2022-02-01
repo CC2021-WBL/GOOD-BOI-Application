@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
+import { doggoSex } from '../../Consts/formsDataToChose';
 
 const DogData = ({ id }) => {
   let navigate = useNavigate();
@@ -21,8 +22,8 @@ const DogData = ({ id }) => {
   };
   const handleConfirm = (event) => {
     event.preventDefault();
-    console.log(dog.idOfOwner);
-    navigate(`/participantData/${dog.idOfOwner}`);
+    const idOfOwnerFromContext = '@TODO in the future';
+    navigate(`/participantData/${idOfOwnerFromContext}`);
     //navigate musi przekazać id właściela psa, żeby pokazać nam kolejny ekran z wypełnionymi
     // danymi właściciela
   };
@@ -32,14 +33,12 @@ const DogData = ({ id }) => {
     (prop) => (dogData[DOG_DATA_TEMPLATE[prop]] = dog[prop] || 'brak danych'),
   );
 
-  //Data convert to string
-  dogData['Data urodzenia'] = `${getDataFormatDdMonthYyy(
-    dogData['Data urodzenia'],
-  )}`;
+  const { dateOfBirth, sex } = DOG_DATA_TEMPLATE;
+
+  //Date of birth convert to string
+  dogData[dateOfBirth] = `${getDataFormatDdMonthYyy(dogData[dateOfBirth])}`;
   //Sex convert to string
-  dogData['Płeć'] === 'male'
-    ? (dogData['Płeć'] = 'Pies')
-    : (dogData['Płeć'] = 'Suka');
+  dogData[sex] = doggoSex[dogData[sex]];
 
   return (
     <ColumnWrapper paddingLeftRight={1}>

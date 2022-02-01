@@ -21,6 +21,7 @@ import LeaderboardPage from './PagesBody/LeaderboardPage/LeaderboardPage';
 import LoginForm from './Organisms/LoginForm/LoginForm';
 import ModalsTest from './PagesBody/ModalsTest';
 import NotFoundPage from './PagesBody/NotFoundPage/NotFoundPage';
+import ParticipantDataPage from './PagesBody/ParticipantDataPage/ParticipantDataPage';
 import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import RolePage from './PagesBody/RolePage/RolePage';
@@ -82,6 +83,7 @@ function App() {
                 element={<DogSummaryPage />}
               />
               <Route path="dogData" element={<DogDataPage />} />
+              <Route path="participantData" element={<ParticipantDataPage />} />
               <Route path="contestDetails" element={<ContestDetailsPage />} />
               <Route
                 path="settings"
