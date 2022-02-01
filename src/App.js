@@ -34,7 +34,6 @@ function App() {
   const [theme, themeToggler, mountedComponent] = useDarkMode();
 
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
-  console.log(theme);
   if (!mountedComponent) return <div />;
   return (
     <ThemeProvider theme={themeMode}>
@@ -50,8 +49,6 @@ function App() {
               <Route path="testErrors" element={<ErrorTestPage />} />
               <Route path="error" element={<ErrorPage />} />
               <Route path="*" element={<NotFoundPage />}></Route>
-              {/* //user views */}
-
               <Route path="forgot" element={<ForgotPassForm />} />
               <Route path="contactForm" element={<ContactFormPage />} />
               <Route path="register" element={<RegistrationForm />} />
