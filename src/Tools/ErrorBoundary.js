@@ -32,7 +32,7 @@ export class ErrorBoundary extends Component {
             <NotFoundPageWrapperStyled>
               <img src={ErrorPageGraphic} alt="Doggo in space" />
               <div className="mainContentWrapper">
-                <h1>Coś poszło nie tak...</h1>
+                <h1>Coś poszło nie tak.</h1>
                 {this.state.error.toString()} <br />
                 <p>Wróć do strony głównej i spróbuj ponownie później.</p>
               </div>
