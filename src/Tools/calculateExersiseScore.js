@@ -1,4 +1,4 @@
-import CLASSES from '../Dummy-data/test-data-classes';
+import CLASSES from '../Data/Dummy-data/test-data-classes';
 
 // Thie function calculates the score of each exersise, based on factors given in test-data-classes
 // Input class as string '1', '2', '3', and code as string '0.1', '0.2' etc.

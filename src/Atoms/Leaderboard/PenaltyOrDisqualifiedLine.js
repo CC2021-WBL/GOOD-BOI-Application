@@ -2,6 +2,8 @@ import PenaltyOrDisqualifiedLineStyled from './PenaltyOrDisqualifiedLineStyled';
 import checkIfDisqualified from '../../Tools/checkIfDisqualified';
 import propTypes from 'prop-types';
 
+// singleDogResultsRS.js info o dyskwalifikacji jest w signleDogResults, ale tam brak
+
 const PenaltyOrDisqualifiedLine = ({ result }) => {
   // check if penalties exists
   const penaltiesExist = result.some((element) => {
