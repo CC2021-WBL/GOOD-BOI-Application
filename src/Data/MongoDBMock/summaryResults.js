@@ -5,7 +5,7 @@ const individualSummaryInCurrentCompetiton = [
     obedienceClass: 0,
     dogId: 'VIII-40407',
     dogName: 'Woof',
-    particpantId: 'matylda1234',
+    participantId: 'matylda1234',
     summaryResult: 300,
   },
   {
@@ -14,7 +14,7 @@ const individualSummaryInCurrentCompetiton = [
     obedienceClass: 0,
     dogId: 'VIII-27165',
     dogName: 'Nosek',
-    particpantId: 'bogdan678',
+    participantId: 'bogdan678',
     summaryResult: 300,
   },
   {
@@ -23,7 +23,7 @@ const individualSummaryInCurrentCompetiton = [
     obedienceClass: 0,
     dogId: 'V-11165',
     dogName: 'Ptysio',
-    particpantId: 'zosia9474',
+    participantId: 'zosia9474',
     summaryResult: 270,
   },
   {
@@ -32,7 +32,7 @@ const individualSummaryInCurrentCompetiton = [
     obedienceClass: 1,
     dogId: 'X-37657',
     dogName: 'Ollie',
-    particpantId: 'eustachy123',
+    participantId: 'eustachy123',
     summaryResult: 223,
   },
   {
@@ -41,7 +41,7 @@ const individualSummaryInCurrentCompetiton = [
     obedienceClass: 1,
     dogId: 'VII-27885',
     dogName: 'Kluska',
-    particpantId: 'matylda1234',
+    participantId: 'matylda1234',
     summaryResult: 300,
   },
   {
@@ -50,7 +50,7 @@ const individualSummaryInCurrentCompetiton = [
     obedienceClass: 1,
     dogId: 'VI-15765',
     dogName: 'Norah',
-    particpantId: 'zosia9474',
+    participantId: 'zosia9474',
     summaryResult: 270,
   },
   {
@@ -59,7 +59,7 @@ const individualSummaryInCurrentCompetiton = [
     obedienceClass: 0,
     dogId: 'VIII-40407',
     dogName: 'Woof',
-    particpantId: 'matylda1234',
+    participantId: 'matylda1234',
     summaryResult: 170,
   },
   {
@@ -68,7 +68,7 @@ const individualSummaryInCurrentCompetiton = [
     obedienceClass: 0,
     dogId: 'VIII-27165',
     dogName: 'Nosek',
-    particpantId: 'bogdan678',
+    participantId: 'bogdan678',
     summaryResult: 220,
   },
   {
@@ -77,7 +77,7 @@ const individualSummaryInCurrentCompetiton = [
     obedienceClass: 0,
     dogId: 'V-11165',
     dogName: 'Ptysio',
-    particpantId: 'zosia9474',
+    participantId: 'zosia9474',
     summaryResult: 250,
   },
   {
@@ -86,7 +86,7 @@ const individualSummaryInCurrentCompetiton = [
     obedienceClass: 1,
     dogId: 'X-37657',
     dogName: 'Ollie',
-    particpantId: 'eustachy123',
+    participantId: 'eustachy123',
     summaryResult: 223,
   },
   {
@@ -95,7 +95,7 @@ const individualSummaryInCurrentCompetiton = [
     obedienceClass: 1,
     dogId: 'VII-27885',
     dogName: 'Kluska',
-    particpantId: 'matylda1234',
+    participantId: 'matylda1234',
     summaryResult: 112,
   },
   {
@@ -104,7 +104,7 @@ const individualSummaryInCurrentCompetiton = [
     obedienceClass: 1,
     dogId: 'VI-15765',
     dogName: 'Norah',
-    particpantId: 'zosia9474',
+    participantId: 'zosia9474',
     summaryResult: 294.5,
   },
 
@@ -114,7 +114,7 @@ const individualSummaryInCurrentCompetiton = [
     obedienceClass: 0,
     dogId: 'VIII-40407',
     dogName: 'Woof',
-    particpantId: 'matylda1234',
+    participantId: 'matylda1234',
     summaryResult: 170,
   },
   {
@@ -123,7 +123,7 @@ const individualSummaryInCurrentCompetiton = [
     obedienceClass: 1,
     dogId: 'VIII-27165',
     dogName: 'Nosek',
-    particpantId: 'bogdan678',
+    participantId: 'bogdan678',
     summaryResult: 220,
   },
   {
@@ -132,7 +132,7 @@ const individualSummaryInCurrentCompetiton = [
     obedienceClass: 2,
     dogId: 'V-11165',
     dogName: 'Ptysio',
-    particpantId: 'zosia9474',
+    participantId: 'zosia9474',
     summaryResult: 250,
   },
   {
@@ -141,7 +141,7 @@ const individualSummaryInCurrentCompetiton = [
     obedienceClass: 2,
     dogId: 'X-37657',
     dogName: 'Ollie',
-    particpantId: 'eustachy123',
+    participantId: 'eustachy123',
     summaryResult: 223,
   },
   {
@@ -150,7 +150,7 @@ const individualSummaryInCurrentCompetiton = [
     obedienceClass: 3,
     dogId: 'VIII-40407',
     dogName: 'Kluska',
-    particpantId: 'matylda1234',
+    participantId: 'matylda1234',
     summaryResult: 112,
   },
   {
@@ -159,7 +159,7 @@ const individualSummaryInCurrentCompetiton = [
     obedienceClass: 3,
     dogId: 'VI-15765',
     dogName: 'Norah',
-    particpantId: 'zosia9474',
+    participantId: 'zosia9474',
     summaryResult: 294.5,
   },
 ];
