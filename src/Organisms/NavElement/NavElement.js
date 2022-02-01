@@ -11,7 +11,6 @@ import pathData from '../../Consts/pathData';
 
 const NavElement = () => {
   const navigate = useNavigate();
-  // const { name } = useParams();
   const locationPath = useLocation();
   console.log(locationPath.state);
   const id = useParams();

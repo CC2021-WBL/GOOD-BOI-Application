@@ -38,7 +38,6 @@ function App() {
         <Route element={<Layout />}>
           <Route path="testErrors" element={<ErrorTestPage />} />
           <Route path="*" element={<NotFoundPage />} />
-          {/* //user views */}
           <Route path="forgot" element={<ForgotPassForm />} />
           <Route path="contactForm" element={<ContactFormPage />} />
           <Route path="register" element={<RegistrationForm />} />

@@ -6,8 +6,8 @@ const LogoStyled = styled.div`
   justify-content: flex-end;
 
   .logo {
-    width: 3.625rem;
-    height: 3.3125rem;
+    width: 3rem;
+    height: 2.74137931034rem;
   }
 `;
 

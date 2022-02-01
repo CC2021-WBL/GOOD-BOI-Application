@@ -11,7 +11,7 @@ export const NavElementStyled = styled.div`
   justify-content: space-between;
   padding: 0 1rem 0 0.563rem;
   background-color: ${COLORS.white};
-  border-bottom: 0.03rem solid ${COLORS.grey400};
+
   .navText {
     width: 33%;
     color: ${COLORS.grey800};

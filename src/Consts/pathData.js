@@ -40,7 +40,7 @@ const pathData = [
   { path: '/userDogs', text: 'Twoje psy', label: '' },
   { path: '/userContests', text: 'Konkursy', label: '' },
   { path: '/dogSubmit', text: 'Zgłoś psa', label: '' },
-  { path: '/dogData', text: 'Dane psa', label: '' },
+  { path: '/dogData', text: 'Dane psa', label: 'Woof' },
   { path: '/participantData', text: 'Dane zawodnika', label: '' },
   { path: '/classChoice', text: 'Wybór klasy', label: 'Dostępne klasy' },
   {
