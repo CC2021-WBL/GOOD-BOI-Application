@@ -1,12 +1,15 @@
 const PARTICIPANTS = [
   {
     id: 'ec7baebd-97c7-4ea3-8047-1305dc4bb243',
+    email: 'matylda@op.pl',
     name: 'Matylda',
     surname: 'Borutka',
+    street: 'ul. Pszczelna',
+    numberOfHouse: '27/5',
     city: 'Sfornegacie',
-    street: 'ul.Pszczelna',
-    numberOfHosue: '27/5',
     postalCode: '50-124',
+    country: 'Polska',
+    phoneNumber: 888516449,
     dogs: [],
   },
 
@@ -16,7 +19,7 @@ const PARTICIPANTS = [
     surname: 'Rolnik',
     city: 'Trabki Wielkie',
     street: 'al Dziurawa',
-    numberOfHosue: '1',
+    numberOfHouse: '1',
     postalCode: '33-221',
     dogs: [],
   },
