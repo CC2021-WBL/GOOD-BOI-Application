@@ -20,7 +20,6 @@ describe('TextArea', () => {
     );
   });
 
-  //intentionally not pass
   it('renders textarea to fill with message', () => {
     render(
       <TextArea
@@ -36,7 +35,7 @@ describe('TextArea', () => {
 
     const textarea = screen.getByPlaceholderText('Wpisz wiadomość');
 
-    expect(textarea).not.toBeInTheDocument();
+    expect(textarea).toBeInTheDocument();
   });
 
   it('render component checkbox', () => {
