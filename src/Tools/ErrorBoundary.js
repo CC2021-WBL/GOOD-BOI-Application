@@ -1,6 +1,7 @@
 import ColumnWrapper from '../Templates/ColumnWrapper/ColumnWrapper';
 import { Component } from 'react';
 import ErrorPageGraphic from '../../src/Assets/ErrorPageGraphic.png';
+import { Link } from 'react-router-dom';
 import MainButton from '../Atoms/MainButton/MainButton';
 import NotFoundPageWrapperStyled from '../Organisms/NotFoundContent/NotFoundPageWrapperStyled';
 import propTypes from 'prop-types';
@@ -35,15 +36,17 @@ export class ErrorBoundary extends Component {
               <img src={ErrorPageGraphic} alt="Doggo in space" />
               <div className="mainContentWrapper">
                 <h1>Coś poszło nie tak...</h1>
-                <h4>Error: </h4> {this.state.error.toString()} <br />
+                {this.state.error.toString()} <br />
                 <p>Wróć do poprzedniej strony i spróbuj ponownie później.</p>
               </div>
             </NotFoundPageWrapperStyled>
-            <MainButton
-              secondary
-              text="wroć do poprzedniej strony"
-              // onClick={() => navigate('/')}
-            />
+            <Link to="/">
+              <MainButton
+                secondary
+                text="wroć do poprzedniej strony"
+                // onClick={() => navigate('/')}
+              />
+            </Link>
           </ColumnWrapper>
         </>
       );
