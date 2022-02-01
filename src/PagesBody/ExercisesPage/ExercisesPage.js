@@ -1,9 +1,11 @@
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import ButtonExercisesContainer from '../../Molecules/ButtonsExcercisenContainer/ButtonsExercisesContainer';
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import DOGS from '../../Data/Dummy-data/test-data-dogs';
 import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
 import Modal from '../../Organisms/Modal/Modal';
-import SpecialButtonsContainer from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainer';
+import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
+import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
 import modalData from '../../Consts/modalData';
 import { useState } from 'react';
 
@@ -32,11 +34,11 @@ const ExercisesPage = () => {
   const ourTestDog = DOGS.find((dog) => dog.dogName === ourTestDogName);
   const ourTestContestName = 'XII Zawody im. Pana Starosty';
   const ourTestPerformanceObject = ourTestDog.performances.find(
-    (performance) => performance.contestName == ourTestContestName,
+    (performance) => performance.contestName === ourTestContestName,
   );
 
   return (
-    <>
+    <ColumnWrapper>
       {(isDisqualifyModalOpen || isPenaltyModalOpen) && (
         <Modal
           modalData={
@@ -51,17 +53,27 @@ const ExercisesPage = () => {
       {(isDisqualifyModalOpen || isPenaltyModalOpen) && (
         <Backdrop onClick={closeModalHandler} />
       )}
+      <ColumnWrapper paddingLeftRight={0.25}>
+        <SpecialButtonsContainerStyled>
+          <SpecialButton
+            text="Dyskwalifikacja"
+            theme="red"
+            handler={openDisqualifyModalHandler}
+            left
+          />
+          <SpecialButton
+            text="-10 punktów"
+            theme="yellow"
+            handler={openPenaltyModalHandler}
+            right
+          />
+        </SpecialButtonsContainerStyled>
 
-      <SpecialButtonsContainer
-        openDisqualifyModalHandler={openDisqualifyModalHandler}
-        openPenaltyModalHandler={openPenaltyModalHandler}
-      />
+        <ExerciseCardsContainer performanceObject={ourTestPerformanceObject} />
+      </ColumnWrapper>
 
-      <ExerciseCardsContainer
-        performanceObject={ourTestPerformanceObject}
-      ></ExerciseCardsContainer>
-      <ButtonExercisesContainer></ButtonExercisesContainer>
-    </>
+      <ButtonExercisesContainer />
+    </ColumnWrapper>
   );
 };
 

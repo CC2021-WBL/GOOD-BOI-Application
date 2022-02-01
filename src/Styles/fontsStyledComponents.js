@@ -13,7 +13,7 @@ const FONTS = {
   font-weight: 700;
   font-style: normal;
   line-height: 1.5rem;
-  letter-spacing: 0.009375rem;`,
+  letter-spacing: 0.09375rem;`,
 
   body_bold: `font-size: 1rem;
   font-weight: 700;
@@ -47,13 +47,13 @@ const FONTS = {
   font-weight: 800;
   font-style: normal;
   line-height: 0.75rem;
-  letter-spacing: 0.009375rem;`,
+  letter-spacing: 0.09375rem;`,
 
   label_semibold: `font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   line-height: 0.75rem;
-  letter-spacing: 0.009375rem;`,
+  letter-spacing: 0.09375rem;`,
 
   label_regular: `font-size: 0.75rem;
   font-weight: 400;

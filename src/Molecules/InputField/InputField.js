@@ -1,6 +1,7 @@
 import propTypes from 'prop-types';
-import InputLabel from '../../Atoms/InputLabel/InputLabel';
+
 import InputFieldStyled from './InputFieldStyled';
+import InputLabel from '../../Atoms/InputLabel/InputLabel';
 
 const InputField = ({
   id,
@@ -39,7 +40,7 @@ InputField.propTypes = {
   placeholder: propTypes.string,
   value: propTypes.string,
   onChange: propTypes.func.isRequired,
-  name: propTypes.string.isRequired,
+  name: propTypes.string,
   required: propTypes.bool,
   className: propTypes.string,
 };
