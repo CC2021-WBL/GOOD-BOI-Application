@@ -1,5 +1,8 @@
+import ColumnWrapper from '../Templates/ColumnWrapper/ColumnWrapper';
 import { Component } from 'react';
-import ErrorPage from '../PagesBody/ErrorPage/ErrorPage';
+import ErrorPageGraphic from '../../src/Assets/ErrorPageGraphic.png';
+import MainButton from '../Atoms/MainButton/MainButton';
+import NotFoundPageWrapperStyled from '../Organisms/NotFoundContent/NotFoundPageWrapperStyled';
 import propTypes from 'prop-types';
 
 export class ErrorBoundary extends Component {
@@ -25,9 +28,17 @@ export class ErrorBoundary extends Component {
     if (this.state.hasError) {
       return (
         <>
-          <ErrorPage />
-          <h4>Error: </h4> {this.state.error.toString()} <br />
-          {/* <h4>Error Info: </h4> {this.state.errorInfo.componentStack} */}
+          <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
+            <NotFoundPageWrapperStyled>
+              <img src={ErrorPageGraphic} alt="Doggo in space" />
+              <div className="mainContentWrapper">
+                <h1>Coś poszło nie tak...</h1>
+                <h4>Error: </h4> {this.state.error.toString()} <br />
+                <p>Wróć do poprzedniej strony i spróbuj ponownie później.</p>
+              </div>
+            </NotFoundPageWrapperStyled>
+            <MainButton secondary text="Powrót do strony głównej"></MainButton>
+          </ColumnWrapper>
         </>
       );
     }
