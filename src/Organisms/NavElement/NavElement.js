@@ -12,7 +12,6 @@ import pathData from '../../Consts/pathData';
 const NavElement = () => {
   const navigate = useNavigate();
   const locationPath = useLocation();
-  console.log(locationPath.state);
   const id = useParams();
   const contestId = id.contestId;
   console.log(`tu powinien być id contestu ${contestId}`);
