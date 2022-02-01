@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import AppLogo from '../../Assets/AppLogo.png';
 import { BsChevronLeft } from 'react-icons/bs';
@@ -13,7 +13,10 @@ const NavElement = () => {
   const navigate = useNavigate();
   // const { name } = useParams();
   const locationPath = useLocation();
-  console.log(locationPath);
+  console.log(locationPath.state);
+  const id = useParams();
+  const contestId = id.contestId;
+  console.log(`tu powinien być id contestu ${contestId}`);
   const foundPath = pathData.find((e) => e.path === locationPath.pathname);
 
   return (
@@ -25,14 +28,28 @@ const NavElement = () => {
           <h3 className="back">wróć</h3>
         </LinkWrapperStyled>
 
-        {foundPath.path === locationPath.pathname && (
-          <h1 className="navText">{foundPath.text}</h1>
+        {locationPath.state && (
+          <h3 className="navText">{locationPath.state.text}</h3>
+        )}
+
+        {foundPath && foundPath.path === locationPath.pathname && (
+          <>
+            <h3 className="navText">{foundPath.text}</h3>
+          </>
         )}
         <LogoStyled>
-          <img src={AppLogo} alt="Logo aplikacji" className="logo" />
+          <Link to="/">
+            <img src={AppLogo} alt="Logo aplikacji" className="logo" />
+          </Link>
         </LogoStyled>
       </NavElementStyled>
-      {foundPath.label !== undefined && (
+      {locationPath.state && (
+        <>
+          <div style={{ height: '60px' }} />
+          <GreyLabel text={locationPath.state.label} />
+        </>
+      )}
+      {foundPath && foundPath.label.length !== 0 && (
         <>
           <div style={{ height: '60px' }} />
           <GreyLabel text={foundPath.label} />
