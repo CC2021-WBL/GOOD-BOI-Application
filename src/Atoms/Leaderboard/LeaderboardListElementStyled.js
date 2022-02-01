@@ -14,7 +14,7 @@ const LeaderboardListElementStyled = styled.div`
     props.disqualified ? COLORS.grey100 : 'transparent;'};
   ${FONTS.body_semibold};
 
-  .exersises {
+  .exercises {
     justify-content: flex-start;
     margin: 0 auto 0 0.5rem;
     justify-self: flex-start;

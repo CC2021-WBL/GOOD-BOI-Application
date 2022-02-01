@@ -7,7 +7,7 @@ const Exercise = ({ codeName, obedienceClassName, toggle }) => {
   //We must change codeName (in the future maybe we use ID) to exerciseName of our exercise
   const exerciseName = CLASSES.find(
     (obedienceClass) => obedienceClass.name === obedienceClassName,
-  ).exersises.find((exercise) => exercise.codeName === codeName).name;
+  ).exercises.find((exercise) => exercise.codeName === codeName).name;
 
   return <ExerciseStyled toggle={toggle}>{exerciseName}</ExerciseStyled>;
 };

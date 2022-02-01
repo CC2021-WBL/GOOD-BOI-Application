@@ -1,11 +1,11 @@
-import exercises from '../../Consts/exercises';
+import exercises from '../Consts/exercises';
 
 // TODO: This file is a translator function for the LeaderboardList component.
-// It will translate exersise code "3.1" into exersise description
+// It will translate exercise code "3.1" into execsise description
 
-const translateExersiseCode2string = (clasS, code) => {
+const translateExerciseCode2string = (clasS, code) => {
   let className;
-  const exersiseCode = code;
+  const exerciseCode = code;
   const fakeClass = clasS;
 
   fakeClass === '3' && (className = 'class3');
@@ -13,9 +13,9 @@ const translateExersiseCode2string = (clasS, code) => {
   fakeClass === '1' && (className = 'class1');
   fakeClass === '0' && (className = 'class0');
 
-  if (exercises[className][exersiseCode] !== undefined) {
-    return exercises[className][exersiseCode];
+  if (exercises[className][exerciseCode] !== undefined) {
+    return exercises[className][exerciseCode];
   } else return 'code not recognized';
 };
 
-export default translateExersiseCode2string;
+export default translateExerciseCode2string;

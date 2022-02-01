@@ -5,7 +5,7 @@ const LeaderboardListElement = ({ text, score, index, disqualified }) => {
   return (
     <LeaderboardListElementStyled disqualified={disqualified}>
       <div className="index">{index + 1}.</div>
-      <div className="exersises">{text}</div>
+      <div className="exercises">{text}</div>
       <div className="points">{score}</div>
     </LeaderboardListElementStyled>
   );

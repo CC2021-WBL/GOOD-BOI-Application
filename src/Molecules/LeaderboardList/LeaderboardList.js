@@ -1,11 +1,11 @@
 import DOGS from '../../Data/Dummy-data/test-data-dogsRS';
 import LeaderboardListElement from './../../Atoms/Leaderboard/LeaderboardListElement';
 import LeaderboardListStyled from './LeaderboardListStyled';
-import calculateExersiseScore from '../../Tools/calculateExersiseScore';
+import calculateExerciseScore from '../../Tools/calculateExerciseScore';
 import contestsRS from '../../Data/MongoDBMock/contestsRS';
 import individualSummaryInCurrentCompetiton from '../../Data/MongoDBMock/summaryResults';
 import propTypes from 'prop-types';
-import translateExersiseCode2string from './../../Data/MongoDBMock/translateExersiseCode2string';
+import translateExerciseCode2string from './../../Tools/translateExerciseCode2string';
 
 // TODO: import checkIfDisqualified from '../../Tools/checkIfDisqualified';
 
@@ -34,17 +34,17 @@ const LeaderboardList = ({ contestId, classId, dogName }) => {
     (a, b) => b.score - a.score,
   );
   // ===============================================================
-  // below code is for displaying dogSummary leaderboard exersises
+  // below code is for displaying dogSummary leaderboard exercises
   const fejkDogName = 'Woof';
   const fejkContest = DOGS.find((obJ) => obJ.dogName === fejkDogName);
   const dogPerformances = fejkContest.performances.find(
     (obJ) => obJ.contestId === contestId,
   );
-  const exersisesList = dogPerformances.exercises;
-  const dogSummaryResult = exersisesList.map((elem) => {
+  const exercisesList = dogPerformances.exercises;
+  const dogSummaryResult = exercisesList.map((elem) => {
     return {
-      text: translateExersiseCode2string(classId, elem.codeName),
-      score: calculateExersiseScore(classId, elem.codeName) * elem.result,
+      text: translateExerciseCode2string(classId, elem.codeName),
+      score: calculateExerciseScore(classId, elem.codeName) * elem.result,
     };
   });
   // ===============================================================
