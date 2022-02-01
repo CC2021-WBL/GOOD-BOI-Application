@@ -1,3 +1,10 @@
+import propTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
+import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
+import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
 import {
   ContestCardStyled,
   ContestInsideElementStyled,
@@ -8,13 +15,6 @@ import {
   getHourAndMinutesFromDate,
   getPointOnTimeLine,
 } from '../../Tools/TimeFunctions';
-import { useEffect, useState } from 'react';
-
-import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
-import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
-import propTypes from 'prop-types';
-import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
-import { useNavigate } from 'react-router-dom';
 
 const ContestCard = ({ contestId, contestIndex }) => {
   const initialData = {
@@ -50,7 +50,9 @@ const ContestCard = ({ contestId, contestIndex }) => {
 
   const handleClick = (event) => {
     event.preventDefault();
-    navigate(`./${contestId}/classes`);
+    navigate(`./${contestId}/classes`, {
+      state: { text: 'Lista klas', label: `${contestName}` },
+    });
     //navigate musi przekazać dane o klasach jakie mają się odbyć i nazwach psów w tych klasach?
   };
 

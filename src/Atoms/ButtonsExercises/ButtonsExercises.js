@@ -12,7 +12,9 @@ const ButtonExercises = (props) => {
     if (goBack) {
       navigate(-1);
     } else {
-      navigate('./dogSummary');
+      navigate('./dogSummary', {
+        state: { text: 'Tabela Wyników', label: 'Ocena Zawodnika' },
+      });
     }
   };
   return (

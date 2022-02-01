@@ -1,33 +1,33 @@
 import RANDOM_CONTESTS from '../Data/Dummy-data/test-data-random-contests';
 
 const pathData = [
-  { path: '/login', text: 'Logowanie' },
+  { path: '/login', text: 'Logowanie', label: '' },
   { path: '/role', text: 'Wybierz rolę', label: 'Kontynuuj jako' },
-  { path: '/register', text: 'Rejestracja' },
-  { path: '/forgot', text: 'Resetuj hasło' },
+  { path: '/register', text: 'Rejestracja', label: '' },
+  { path: '/forgot', text: 'Resetuj hasło', label: '' },
   {
     path: '/contests',
     text: 'Lista konkursów',
     label: 'Wybierz konkurs',
   },
-  {
-    path: `/contests/${RANDOM_CONTESTS[0].id}/classes`,
-    text: 'Lista klas',
-    label: `${RANDOM_CONTESTS[0].name}`,
-  },
-  {
-    path: `/contests/${RANDOM_CONTESTS[1].id}/classes`,
-    text: 'Lista klas',
-    label: `${RANDOM_CONTESTS[1].name}`,
-  },
+  // {
+  //   path: `/contests/${RANDOM_CONTESTS[0].id}/classes`,
+  //   text: 'Lista klas',
+  //   label: `${RANDOM_CONTESTS[0].name}`,
+  // },
+  // {
+  //   path: `/contests/${RANDOM_CONTESTS[1].id}/classes`,
+  //   text: 'Lista klas',
+  //   label: `${RANDOM_CONTESTS[1].name}`,
+  // },
 
   {
-    path: 'role/contest/1/class/1',
+    path: `/contests/${RANDOM_CONTESTS[0].id}/classes/Klasa 0`,
     text: 'Lista uczestników',
-    label: 'Klasa 1',
+    label: 'Klasa 0',
   },
   {
-    path: 'role/contest/1/class/1/Woof',
+    path: `/contests/${RANDOM_CONTESTS[0].id}/classes/Klasa 0/Woof`,
     text: 'Punktacja',
     label: 'Ocena zawodnika Woof',
   },
@@ -46,11 +46,11 @@ const pathData = [
     text: 'Wyniki w klasie',
     label: 'Wyniki w klasie 1',
   },
-  { path: '/userDogs', text: 'Twoje psy' },
-  { path: '/userContests', text: 'Konkursy' },
-  { path: '/dogSubmit', text: 'Zgłoś psa' },
-  { path: '/dogData', text: 'Dane psa' },
-  { path: '/participantData', text: 'Dane zawodnika' },
+  { path: '/userDogs', text: 'Twoje psy', label: '' },
+  { path: '/userContests', text: 'Konkursy', label: '' },
+  { path: '/dogSubmit', text: 'Zgłoś psa', label: '' },
+  { path: '/dogData', text: 'Dane psa', label: '' },
+  { path: '/participantData', text: 'Dane zawodnika', label: '' },
   { path: '/classChoice', text: 'Wybór klasy', label: 'Dostępne klasy' },
   {
     path: '/confirmation',
