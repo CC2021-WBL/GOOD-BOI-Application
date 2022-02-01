@@ -72,11 +72,11 @@ const ContestCard = ({ contestId, contestIndex }) => {
         <InfoLabel
           classInfo={{ dogsAmount: doggoAmount }}
           colorMotive={setColorMotive(pointOnTimeLine, doggoAmount)}
-        ></InfoLabel>
+        />
         <InfoLabel
           pointOnTimeLine={pointOnTimeLine}
           colorMotive={setColorMotive(pointOnTimeLine)}
-        ></InfoLabel>
+        />
       </ContestInsideElementStyled>
     </ContestCardStyled>
   );

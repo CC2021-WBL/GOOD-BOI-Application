@@ -12,7 +12,7 @@ const UserNameAndImg = () => {
   return (
     <UserNameAndImgStyled>
       <h3>{`${userObject.name} ${userObject.surname}`}</h3>
-      <div className="bg-box"></div>
+      <div className="bg-box" />
     </UserNameAndImgStyled>
   );
 };
