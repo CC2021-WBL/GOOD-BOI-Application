@@ -9,7 +9,6 @@ import ContestDetailsPage from './PagesBody/ContestDetailsPage/ContestDetailsPag
 import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
 import DogDataPage from './PagesBody/DogDataPage/DogDataPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
-import ErrorPage from './PagesBody/ErrorPage/ErrorPage';
 import ErrorTestPage from './PagesBody/ErrorTestPage/ErrorTestPage';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
@@ -35,7 +34,6 @@ function App() {
         </Route>
         <Route element={<Layout />}>
           <Route path="testErrors" element={<ErrorTestPage />} />
-          <Route path="error" element={<ErrorPage />} />
           <Route path="*" element={<NotFoundPage />} />
           {/* //user views */}
           <Route path="forgot" element={<ForgotPassForm />} />
