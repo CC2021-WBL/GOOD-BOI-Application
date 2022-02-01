@@ -6,8 +6,6 @@ import MainButton from '../Atoms/MainButton/MainButton';
 import NotFoundPageWrapperStyled from '../Organisms/NotFoundContent/NotFoundPageWrapperStyled';
 import propTypes from 'prop-types';
 
-// import { useNavigate } from 'react-router-dom';
-
 export class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +22,6 @@ export class ErrorBoundary extends Component {
       error: error,
       errorInfo: errorInfo,
     });
-    // console.log(error, errorInfo);
   }
 
   render() {
@@ -37,15 +34,11 @@ export class ErrorBoundary extends Component {
               <div className="mainContentWrapper">
                 <h1>Coś poszło nie tak...</h1>
                 {this.state.error.toString()} <br />
-                <p>Wróć do poprzedniej strony i spróbuj ponownie później.</p>
+                <p>Wróć do strony głównej i spróbuj ponownie później.</p>
               </div>
             </NotFoundPageWrapperStyled>
             <Link to="/">
-              <MainButton
-                secondary
-                text="wroć do poprzedniej strony"
-                // onClick={() => navigate('/')}
-              />
+              <MainButton secondary text="wroć do poprzedniej strony" />
             </Link>
           </ColumnWrapper>
         </>
