@@ -4,8 +4,6 @@ import NavElement from '../../Organisms/NavElement/NavElement';
 import { Outlet } from 'react-router-dom';
 import propTypes from 'prop-types';
 
-// import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
-
 const Layout = ({ withLabel, withSettings }) => {
   return (
     <>

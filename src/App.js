@@ -23,9 +23,6 @@ import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import RolePage from './PagesBody/RolePage/RolePage';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
-import propTypes from 'prop-types';
-
-// import ClassSummaryPage from './PagesBody/ClassSummaryPage/ClassSummaryPage';
 
 function App() {
   return (
@@ -75,10 +72,6 @@ function App() {
   );
 }
 
-App.propTypes = {
-  props: propTypes.object,
-  location: propTypes.string,
-};
 export default App;
 // "eslint-config-prettier": "^8.3.0",
 // "eslint-plugin-react-hooks": "^4.3.0",

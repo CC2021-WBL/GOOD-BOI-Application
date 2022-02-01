@@ -1,5 +1,3 @@
-// import GreyLabelPath from './GreyLabelPath';
-
 import GreyLabelStyled from './GreyLabelStyled';
 import PropTypes from 'prop-types';
 
