@@ -3,12 +3,13 @@ const participants = [
     participantId: 'matylda1234',
     email: 'matylda@op.pl',
     password: 'dupabiskupa',
+    phoneNumber: 48445234876,
     participantName: 'Matylda',
     participantSurname: 'Borutka',
     country: 'Polska',
     city: 'Sfornegacie',
     street: 'ul.Pszczelna',
-    numberOfHosue: '27/5',
+    numberOfHouse: '27/5',
     postalCode: '50-124',
     dogs: [
       {
@@ -26,12 +27,13 @@ const participants = [
     participantId: 'bogdan678',
     email: 'bogdan777@wp.pl',
     password: 'rzuckamienia',
+    phoneNumber: 48568432890,
     participantName: 'Bodzio',
     participantSurname: 'Rolnik',
     country: 'Polska',
     city: 'Trabki Wielkie',
     street: 'al Dziurawa',
-    numberOfHosue: '1',
+    numberOfHouse: '1',
     postalCode: '33-221',
     dogs: [
       {
@@ -45,12 +47,13 @@ const participants = [
     participantId: 'eustachy123',
     email: 'eustachy123@wp.pl',
     password: 'mordeczka',
+    phoneNumber: 48348087554,
     participantName: 'Eustachy',
     participantSurname: 'Trompka',
     country: 'Polska',
     city: 'Warszawa',
     street: 'ul.Gnilna',
-    numberOfHosue: '45/65',
+    numberOfHouse: '45/65',
     postalCode: '40-665',
     dogs: [
       {
@@ -64,12 +67,13 @@ const participants = [
     participantId: 'zosia9474',
     email: 'zosia@wp.pl',
     password: 'zosiazosia',
+    phoneNumber: 48609906003,
     participantName: 'Zosia',
     participantSurname: 'Samosia',
     country: 'Polska',
     city: 'Warszawa',
     street: 'ul.Słoneczna',
-    numberOfHosue: '15/1',
+    numberOfHouse: '15/1',
     postalCode: '10-234',
     dogs: [
       {
@@ -99,7 +103,7 @@ export default participants;
   country: 'Polska',
   city: 'Trabki Wielkie',
   street: 'al Dziurawa',
-  numberOfHosue: '1',
+  numberOfHouse: '1',
   postalCode: '33-221',
   dogs: [
     {

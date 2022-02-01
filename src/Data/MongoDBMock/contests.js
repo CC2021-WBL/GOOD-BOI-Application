@@ -15,40 +15,34 @@ const contests = [
     applicationFeeInPLN: 90,
     participants: ['matylda1234', 'bogdan678', 'zosia9474'],
     obedienceClasses: {
-      class0: {
-        isComleted: false,
-        competingPairs: [
-          {
-            dogName: 'Woof',
-            summaryId: '22-03-22Woof',
-          },
-          {
-            dogName: 'Nosek',
-            summaryId: '22-03-22Nosek',
-          },
-          {
-            dogName: 'Ptysio',
-            summaryId: '22-03-22Ptysio',
-          },
-        ],
-      },
-      class1: {
-        isComleted: false,
-        competingPairs: [
-          {
-            dogName: 'Ollie',
-            summaryId: '22-03-22Ollie',
-          },
-          {
-            dogName: 'Kluska',
-            summaryId: '22-03-22Kluska',
-          },
-          {
-            dogName: 'Norah',
-            summaryId: '22-03-22Norah',
-          },
-        ],
-      },
+      0: [
+        {
+          dogName: 'Woof',
+          summaryId: '22-03-22Woof',
+        },
+        {
+          dogName: 'Nosek',
+          summaryId: '22-03-22Nosek',
+        },
+        {
+          dogName: 'Ptysio',
+          summaryId: '22-03-22Ptysio',
+        },
+      ],
+      1: [
+        {
+          dogName: 'Ollie',
+          summaryId: '22-03-22Ollie',
+        },
+        {
+          dogName: 'Kluska',
+          summaryId: '22-03-22Kluska',
+        },
+        {
+          dogName: 'Norah',
+          summaryId: '22-03-22Norah',
+        },
+      ],
     },
   },
 
@@ -67,40 +61,34 @@ const contests = [
     manager: 'Zbyszko Bogdaniec',
     applicationFeeInPLN: 110,
     obedienceClasses: {
-      class0: {
-        isComleted: false,
-        competingPairs: [
-          {
-            dogName: 'Woof',
-            summaryId: '22-05-01Woof',
-          },
-          {
-            dogName: 'Nosek',
-            summaryId: '22-05-01Nosek',
-          },
-          {
-            dogName: 'Ptysio',
-            summaryId: '22-05-01Ptysio',
-          },
-        ],
-      },
-      class1: {
-        isComleted: false,
-        competingPairs: [
-          {
-            dogName: 'Ollie',
-            summaryId: '22-05-01Ollie',
-          },
-          {
-            dogName: 'Kluska',
-            summaryId: '22-05-01Kluska',
-          },
-          {
-            dogName: 'Norah',
-            summaryId: '22-05-01Norah',
-          },
-        ],
-      },
+      0: [
+        {
+          dogName: 'Woof',
+          summaryId: '22-05-01Woof',
+        },
+        {
+          dogName: 'Nosek',
+          summaryId: '22-05-01Nosek',
+        },
+        {
+          dogName: 'Ptysio',
+          summaryId: '22-05-01Ptysio',
+        },
+      ],
+      1: [
+        {
+          dogName: 'Ollie',
+          summaryId: '22-05-01Ollie',
+        },
+        {
+          dogName: 'Kluska',
+          summaryId: '22-05-01Kluska',
+        },
+        {
+          dogName: 'Norah',
+          summaryId: '22-05-01Norah',
+        },
+      ],
     },
   },
   {
@@ -118,50 +106,38 @@ const contests = [
     manager: 'Gerwazy Kapusta',
     applicationFeeInPLN: 70,
     obedienceClasses: {
-      class0: {
-        isComleted: false,
-        competingPairs: [
-          {
-            dogName: 'Woof',
-            summaryId: '21-12-24Woof',
-          },
-        ],
-      },
-      class1: {
-        isComleted: false,
-        competingPairs: [
-          {
-            dogName: 'Nosek',
-            summaryId: '21-12-24Nosek',
-          },
-        ],
-      },
-      class2: {
-        isComleted: false,
-        competingPairs: [
-          {
-            dogName: 'Ptysio',
-            summaryId: '21-12-24Ptysio',
-          },
-          {
-            dogName: 'Ollie',
-            summaryId: '21-12-24Ollie',
-          },
-        ],
-      },
-      class3: {
-        isComleted: false,
-        competingPairs: [
-          {
-            dogName: 'Kluska',
-            summaryId: '21-12-24Kluska',
-          },
-          {
-            dogName: 'Norah',
-            summaryId: '21-12-24Norah',
-          },
-        ],
-      },
+      0: [
+        {
+          dogName: 'Woof',
+          summaryId: '21-12-24Woof',
+        },
+      ],
+      1: [
+        {
+          dogName: 'Nosek',
+          summaryId: '21-12-24Nosek',
+        },
+      ],
+      2: [
+        {
+          dogName: 'Ptysio',
+          summaryId: '21-12-24Ptysio',
+        },
+        {
+          dogName: 'Ollie',
+          summaryId: '21-12-24Ollie',
+        },
+      ],
+      3: [
+        {
+          dogName: 'Kluska',
+          summaryId: '21-12-24Kluska',
+        },
+        {
+          dogName: 'Norah',
+          summaryId: '21-12-24Norah',
+        },
+      ],
     },
   },
 ];
