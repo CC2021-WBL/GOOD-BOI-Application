@@ -39,9 +39,17 @@ const pathData = [
   { path: '/user', text: 'Twój profil', label: '' },
   { path: '/userDogs', text: 'Twoje psy', label: '' },
   { path: '/userContests', text: 'Konkursy', label: '' },
-  { path: '/dogSubmit', text: 'Zgłoś psa', label: '' },
+  {
+    path: '/dogSubmit',
+    text: 'Zgłoś psa',
+    label: 'XV zjazd dobrych chłopaków',
+  },
   { path: '/dogData', text: 'Dane psa', label: 'Woof' },
-  { path: '/participantData', text: 'Dane zawodnika', label: '' },
+  {
+    path: '/participantData',
+    text: 'Dane zawodnika',
+    label: 'Matylda Borutka',
+  },
   { path: '/classChoice', text: 'Wybór klasy', label: 'Dostępne klasy' },
   {
     path: '/confirmation',
@@ -54,7 +62,11 @@ const pathData = [
   { path: '/notFound', text: 'Strona nie istnieje', label: '' },
   { path: '/settings', text: 'Ustawienia', label: '' },
   { path: '/upcoming', text: 'Nadchodzące konkursy', label: '' },
-  { path: '/contestDetails', text: 'Nadchodzące konkursy', label: '' },
+  {
+    path: '/contestDetails',
+    text: 'Konkurs',
+    label: 'XV zjazd dobrych chłopaków',
+  },
 ];
 
 export default pathData;
