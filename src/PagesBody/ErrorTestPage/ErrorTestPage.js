@@ -5,7 +5,7 @@ const ErrorTestPage = () => {
   return (
     <>
       <ErrorBoundary>
-        <div style={{ height: '80px' }}></div>
+        <div style={{ height: '80px' }} />
         <ComponentWithErrors />
       </ErrorBoundary>
     </>
