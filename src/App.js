@@ -31,11 +31,11 @@ import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
 import { useDarkMode } from './Organisms/SettingsApp/useDarkMode';
 
 function App() {
-  const [theme, themeToggler] = useDarkMode();
+  const [theme, themeToggler, mountedComponent] = useDarkMode();
 
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
   console.log(theme);
-
+  if (!mountedComponent) return <div />;
   return (
     <ThemeProvider theme={themeMode}>
       <>
@@ -87,7 +87,9 @@ function App() {
               <Route path="contestDetails" element={<ContestDetailsPage />} />
               <Route
                 path="settings"
-                element={<SettingsPage themeToggler={themeToggler} />}
+                element={
+                  <SettingsPage theme={theme} themeToggler={themeToggler} />
+                }
               />
             </Route>
 

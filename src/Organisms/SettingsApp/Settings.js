@@ -4,14 +4,15 @@ import propTypes from 'prop-types';
 
 // import SettingsPage from '../../PagesBody/SettingsPage/SettingsPage';
 
-const Settings = ({ themeToggler }) => {
+const Settings = ({ theme, themeToggler }) => {
   return (
     <ColumnWrapper paddingLeftRight="1.188">
-      <Theme themeToggler={themeToggler} />
+      <Theme theme={theme} themeToggler={themeToggler} />
     </ColumnWrapper>
   );
 };
 Settings.propTypes = {
   themeToggler: propTypes.func,
+  theme: propTypes.string,
 };
 export default Settings;
