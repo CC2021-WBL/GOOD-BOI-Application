@@ -11,13 +11,20 @@ import translateExerciseCode2string from './../../Tools/translateExerciseCode2st
 
 // This page is a PAST CONTEST LEADERBOARD PAGE http://localhost:3000/contests/contestId/classes/classNumber/leaderboard
 
-const LeaderboardList = ({ contestId, classId, dogName }) => {
+const LeaderboardList = ({
+  performanceObject,
+  contestId,
+  classId,
+  dogName,
+}) => {
   // TODO: let disqualified =
   // checkIfDisqualified({ result }) === true ? 'disqualifiedColor' : '';
   const fakeContest = contestsRS.find((contest) => contest.id === contestId);
   const fakeClassResult = fakeContest.obedienceClasses.find(
     (classObj) => classObj.classNumber === classId,
   );
+  console.log('fakeClassResukt ' + fakeClassResult);
+  console.log(performanceObject);
   let resultsIdArr = fakeClassResult.competingPairs.map(
     (object) => object.summaryId,
   );
@@ -35,7 +42,7 @@ const LeaderboardList = ({ contestId, classId, dogName }) => {
   );
   // ===============================================================
   // below code is for displaying dogSummary leaderboard exercises
-  const fejkDogName = 'Woof';
+  const fejkDogName = dogName;
   const fejkContest = DOGS.find((obJ) => obJ.dogName === fejkDogName);
   const dogPerformances = fejkContest.performances.find(
     (obJ) => obJ.contestId === contestId,
@@ -57,8 +64,10 @@ const LeaderboardList = ({ contestId, classId, dogName }) => {
           return (
             <LeaderboardListElement
               key={index}
-              text={arrElement.text}
-              score={arrElement.score}
+              // text={arrElement.text}
+              text={performanceObject.text}
+              // score={arrElement.score}
+              score={performanceObject.result}
               index={index}
               // disqualified={disqualified}
             />
@@ -89,5 +98,6 @@ LeaderboardList.propTypes = {
   contestId: propTypes.string,
   classId: propTypes.string,
   dogName: propTypes.string,
+  performanceObject: propTypes.object,
 };
 export default LeaderboardList;

@@ -2,17 +2,22 @@ import ButtonExercisesStyled from './ButtonExercisesStyled';
 import { FaChevronLeft } from 'react-icons/fa';
 import propTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const ButtonExercises = (props) => {
   const { endingButton, goBack, text } = props;
   const navigate = useNavigate();
+  let { dogId, classId } = useParams();
 
   const handleClick = () => {
     if (goBack) {
       navigate(-1);
     } else {
       navigate('./dogSummary', {
-        state: { text: 'Tabela Wyników', label: 'Ocena Zawodnika' },
+        state: {
+          text: 'Tabela Wyników',
+          label: `${classId} / Ocena Zawodnika ${dogId}`,
+        },
       });
     }
   };

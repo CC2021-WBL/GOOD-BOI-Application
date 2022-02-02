@@ -7,9 +7,13 @@ import Modal from '../../Organisms/Modal/Modal';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
 import modalData from '../../Consts/modalData';
+import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 
+// import doggos from './../../Data/MongoDBMock/doggos';
+
 const ExercisesPage = () => {
+  let { dogId } = useParams();
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
   const [isPenaltyModalOpen, setIsPenaltyModalOpen] = useState(false);
   const handleDisqualification = () => {
@@ -30,8 +34,10 @@ const ExercisesPage = () => {
     setIsDisqualifyModalOpen(false);
   }
 
-  const ourTestDogName = 'Woof';
+  const ourTestDogName = dogId;
+  console.log(dogId);
   const ourTestDog = DOGS.find((dog) => dog.dogName === ourTestDogName);
+  // const ourTestDog = doggos.find((dog) => dog.dogName === ourTestDogName);
   const ourTestContestName = 'XII Zawody im. Pana Starosty';
   const ourTestPerformanceObject = ourTestDog.performances.find(
     (performance) => performance.contestName === ourTestContestName,

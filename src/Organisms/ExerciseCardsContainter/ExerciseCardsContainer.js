@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import ExerciseCard from '../../Molecules/ExerciseCard/ExerciseCard';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import ExerciseCard from '../../Molecules/ExerciseCard/ExerciseCard';
+import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 const ExerciseCardsContainer = ({ performanceObject }) => {
   const { exercises, obedienceClassName } = performanceObject;
@@ -20,6 +20,10 @@ const ExerciseCardsContainer = ({ performanceObject }) => {
           (exercise) => exercise.codeName === event.target.id,
         ).result = Number(event.target.value);
         console.log(performanceObject);
+        localStorage.setItem(
+          'performanceObject',
+          JSON.stringify(performanceObject),
+        );
         return prevState;
       });
     }

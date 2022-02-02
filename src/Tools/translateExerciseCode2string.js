@@ -8,10 +8,10 @@ const translateExerciseCode2string = (clasS, code) => {
   const exerciseCode = code;
   const fakeClass = clasS;
 
-  fakeClass === '3' && (className = 'class3');
-  fakeClass === '2' && (className = 'class2');
-  fakeClass === '1' && (className = 'class1');
-  fakeClass === '0' && (className = 'class0');
+  fakeClass === 'Klasa 3' && (className = 'class3');
+  fakeClass === 'Klasa 2' && (className = 'class2');
+  fakeClass === 'Klasa 1' && (className = 'class1');
+  fakeClass === 'Klasa 0' && (className = 'class0');
 
   if (exercises[className][exerciseCode] !== undefined) {
     return exercises[className][exerciseCode];

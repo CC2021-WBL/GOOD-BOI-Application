@@ -16,7 +16,7 @@ const contestsRS = [
     participants: ['matylda1234', 'bogdan678', 'zosia9474'],
     obedienceClasses: [
       {
-        classNumber: '0',
+        classNumber: 'Klasa 0',
         isCompleted: false,
         competingPairs: [
           {
@@ -34,7 +34,7 @@ const contestsRS = [
         ],
       },
       {
-        classNumber: '1',
+        classNumber: 'Klasa 1',
         isComleted: false,
         competingPairs: [
           {
@@ -68,8 +68,9 @@ const contestsRS = [
     steward: 'Zygfryd Zaduzy',
     manager: 'Zbyszko Bogdaniec',
     applicationFeeInPLN: 110,
-    obedienceClasses: {
-      class0: {
+    obedienceClasses: [
+      {
+        classNumber: 'Klasa 0',
         isComleted: false,
         competingPairs: [
           {
@@ -86,7 +87,8 @@ const contestsRS = [
           },
         ],
       },
-      class1: {
+      {
+        classNumber: 'Klasa 0',
         isComleted: false,
         competingPairs: [
           {
@@ -103,7 +105,7 @@ const contestsRS = [
           },
         ],
       },
-    },
+    ],
   },
   {
     id: 'c9e7b738-f8e6-4300-9087-332ad5a28b4f',
@@ -119,8 +121,9 @@ const contestsRS = [
     steward: 'Bruno Mars',
     manager: 'Gerwazy Kapusta',
     applicationFeeInPLN: 70,
-    obedienceClasses: {
-      class0: {
+    obedienceClasses: [
+      {
+        classNumber: 'Klasa 0',
         isComleted: false,
         competingPairs: [
           {
@@ -129,7 +132,8 @@ const contestsRS = [
           },
         ],
       },
-      class1: {
+      {
+        classNumber: 'Klasa 1',
         isComleted: false,
         competingPairs: [
           {
@@ -138,7 +142,8 @@ const contestsRS = [
           },
         ],
       },
-      class2: {
+      {
+        classNumber: 'Klasa 1',
         isComleted: false,
         competingPairs: [
           {
@@ -151,7 +156,8 @@ const contestsRS = [
           },
         ],
       },
-      class3: {
+      {
+        classNumber: 'Klasa 3',
         isComleted: false,
         competingPairs: [
           {
@@ -164,8 +170,7 @@ const contestsRS = [
           },
         ],
       },
-    },
+    ],
   },
 ];
-
 export default contestsRS;

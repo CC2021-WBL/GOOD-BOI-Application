@@ -1,5 +1,5 @@
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import LeaderboardList from './../../Molecules/LeaderboardList/LeaderboardList';
+import LeaderboardList_new from './../../Molecules/LeaderboardList/LeaderboardList_new';
 import MainButtonStyled from './../../Atoms/MainButton/MainButton';
 
 // Leaderboardlist eventually will accept two props when rendered on PAST CONTEST LEADERBOARD PAGE
@@ -9,7 +9,7 @@ const LeaderboardPage = () => {
   return (
     <ColumnWrapper paddingLeftRight={1}>
       <h1>I am leaderboard page</h1>
-      <LeaderboardList
+      <LeaderboardList_new
         contestId={'a0347677-c3c9-4edc-9d46-fed4a958fdc2'}
         classId={'0'}
       />

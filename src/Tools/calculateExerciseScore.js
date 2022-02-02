@@ -10,7 +10,6 @@ const calculateExerciseScore = (clasS, code) => {
   clasS === '2' && (className = 'Klasa 2');
   clasS === '1' && (className = 'Klasa 1');
   clasS === '0' && (className = 'Klasa 0');
-
   const objOfSelClass = CLASSES.find((element) => element.name === className);
   const objOfExerciseArr = objOfSelClass.exercises.find(
     (element) => element.codeName === code,

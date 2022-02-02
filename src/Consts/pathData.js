@@ -21,20 +21,11 @@ const pathData = [
     text: 'Punktacja',
     label: 'Ocena zawodnika Woof',
   },
-  {
-    path: 'role/contest/1/class/1/Woof/dogSummary',
-    text: 'Tabela wyników',
-    label: 'Ocena zawodnika Woof',
-  },
+
   {
     path: '/contests/closed',
     text: 'Lista konkursów',
     label: 'Wybierz konkurs',
-  },
-  {
-    path: '/role/contest/1/class/1/classSummary',
-    text: 'Wyniki w klasie',
-    label: 'Wyniki w klasie 1',
   },
   { path: '/user', text: 'Twój profil', label: '' },
   { path: '/userDogs', text: 'Twoje psy', label: '' },
@@ -66,6 +57,11 @@ const pathData = [
     path: '/contestDetails',
     text: 'Konkurs',
     label: 'XV zjazd dobrych chłopaków',
+  },
+  {
+    path: '/contests/:contestId/classes/:classId/leaderboard',
+    text: 'Leaderboard',
+    label: 'wybrany contest',
   },
 ];
 
