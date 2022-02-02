@@ -1,22 +1,14 @@
-import DOGS from '../../Data/Dummy-data/test-data-dogsRS';
 import LeaderboardListElement from './../../Atoms/Leaderboard/LeaderboardListElement';
 import LeaderboardListStyled from './LeaderboardListStyled';
-import calculateExerciseScore from '../../Tools/calculateExerciseScore';
 import contestsRS from '../../Data/MongoDBMock/contestsRS';
 import individualSummaryInCurrentCompetiton from '../../Data/MongoDBMock/summaryResults';
 import propTypes from 'prop-types';
-import translateExerciseCode2string from './../../Tools/translateExerciseCode2string';
 
 // TODO: import checkIfDisqualified from '../../Tools/checkIfDisqualified';
 
 // This page is a PAST CONTEST LEADERBOARD PAGE http://localhost:3000/contests/contestId/classes/classNumber/leaderboard
 
-const LeaderboardList = ({
-  performanceObject,
-  contestId,
-  classId,
-  dogName,
-}) => {
+const LeaderboardList = ({ contestId, classId }) => {
   // TODO: let disqualified =
   // checkIfDisqualified({ result }) === true ? 'disqualifiedColor' : '';
   const fakeContest = contestsRS.find((contest) => contest.id === contestId);
@@ -24,7 +16,6 @@ const LeaderboardList = ({
     (classObj) => classObj.classNumber === classId,
   );
   console.log('fakeClassResukt ' + fakeClassResult);
-  console.log(performanceObject);
   let resultsIdArr = fakeClassResult.competingPairs.map(
     (object) => object.summaryId,
   );
@@ -40,57 +31,23 @@ const LeaderboardList = ({
   const sortedLeaderboardClassResults = finalLeaderboardArr.sort(
     (a, b) => b.score - a.score,
   );
-  // ===============================================================
-  // below code is for displaying dogSummary leaderboard exercises
-  const fejkDogName = dogName;
-  const fejkContest = DOGS.find((obJ) => obJ.dogName === fejkDogName);
-  const dogPerformances = fejkContest.performances.find(
-    (obJ) => obJ.contestId === contestId,
+  return (
+    <LeaderboardListStyled>
+      {sortedLeaderboardClassResults.map((arrElement, index) => {
+        return (
+          <LeaderboardListElement
+            key={index}
+            text={arrElement.text}
+            // text={performanceObject.text}
+            score={arrElement.score}
+            // score={performanceObject.result}
+            index={index}
+            // disqualified={disqualified}
+          />
+        );
+      })}
+    </LeaderboardListStyled>
   );
-  const exercisesList = dogPerformances.exercises;
-  const dogSummaryResult = exercisesList.map((elem) => {
-    return {
-      text: translateExerciseCode2string(classId, elem.codeName),
-      score: calculateExerciseScore(classId, elem.codeName) * elem.result,
-    };
-  });
-  // ===============================================================
-  //================================================================
-  if (dogName === undefined) {
-    return (
-      // list of leaderboard
-      <LeaderboardListStyled>
-        {sortedLeaderboardClassResults.map((arrElement, index) => {
-          return (
-            <LeaderboardListElement
-              key={index}
-              // text={arrElement.text}
-              text={performanceObject.text}
-              // score={arrElement.score}
-              score={performanceObject.result}
-              index={index}
-              // disqualified={disqualified}
-            />
-          );
-        })}
-      </LeaderboardListStyled>
-    );
-  } else
-    return (
-      <LeaderboardListStyled>
-        {dogSummaryResult.map((arrElement, index) => {
-          return (
-            <LeaderboardListElement
-              key={index}
-              text={arrElement.text}
-              score={arrElement.score}
-              index={index}
-              // disqualified={disqualified}
-            />
-          );
-        })}
-      </LeaderboardListStyled>
-    );
 };
 
 LeaderboardList.propTypes = {

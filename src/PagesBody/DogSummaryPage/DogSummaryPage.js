@@ -11,7 +11,7 @@ import { useParams } from 'react-router-dom';
 const sendDataHandler = () => {};
 
 const DogSummaryPage = () => {
-  let { contestId, classId, dogId } = useParams();
+  const { contestId, classId, dogId } = useParams();
   return (
     <ColumnWrapper>
       <LeaderboardList_new
