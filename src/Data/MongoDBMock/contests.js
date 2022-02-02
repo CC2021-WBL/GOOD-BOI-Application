@@ -1,7 +1,7 @@
 const contests = [
   {
     contestId: 'a0347677-c3c9-4edc-9d46-fed4a958fdc2',
-    competitionName: 'XII Zawody im. Pana Starosty',
+    contestName: 'XII Zawody im. Pana Starosty',
     kynologiqueDepartment: 'Gdynia',
     startDate: new Date(2022, 3, 22, 10, 0),
     endDate: new Date(2022, 3, 23),
@@ -49,7 +49,7 @@ const contests = [
   {
     id: '3845029d-e97d-41ed-997f-2299d09ef648',
     kynologiqueDepartment: 'Poznań',
-    competitionName: 'Piętnasty zjazd dobrych chłopaków',
+    contestName: 'Piętnasty zjazd dobrych chłopaków',
     date: new Date(2022, 5, 1),
     endDate: new Date(2022, 5, 2),
     applicationOpenDate: new Date(2022, 2, 15, 20, 0),
@@ -94,7 +94,7 @@ const contests = [
   {
     id: 'c9e7b738-f8e6-4300-9087-332ad5a28b4f',
     kynologiqueDepartment: 'Sopot',
-    competitionName: 'Konkurs grzeczności',
+    contestName: 'Konkurs grzeczności',
     date: new Date(2021, 12, 24, 11, 0),
     endDate: new Date(2021, 12, 24),
     applicationOpenDate: new Date(2021, 10, 7, 20, 0),
