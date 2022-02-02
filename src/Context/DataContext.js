@@ -28,11 +28,10 @@ export function UserDataProvider({ children }) {
 
   function updateData() {
     const data = {
-      userId: participants[0].participantId,
-      // userName: participants[0].participantName,
-      userName: 'Kaszotto',
-      userSurname: participants[0].participantSurname,
-      roles: participants[0].portalRoles,
+      userId: participants[1].participantId,
+      userName: participants[1].participantName,
+      userSurname: participants[1].participantSurname,
+      roles: participants[1].portalRoles,
     };
     setState(data);
   }

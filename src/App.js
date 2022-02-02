@@ -7,6 +7,7 @@ import ClassesPage from './PagesBody/ClassesPage/ClassesPage';
 import ContactFormPage from './PagesBody/ContactFormPage/ContactFormPage';
 import ContestDetailsPage from './PagesBody/ContestDetailsPage/ContestDetailsPage';
 import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
+import ContextTestPage from './PagesBody/ContextTests';
 import DogDataPage from './PagesBody/DogDataPage/DogDataPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
 import ErrorTestPage from './PagesBody/ErrorTestPage/ErrorTestPage';
@@ -120,6 +121,14 @@ function App() {
           <Route path="dogData" element={<DogDataPage />} />
           <Route path="participantData" element={<ParticipantDataPage />} />
           <Route path="contestDetails" element={<ContestDetailsPage />} />
+          <Route
+            path="test"
+            element={
+              <UserDataProvider>
+                <ContextTestPage />
+              </UserDataProvider>
+            }
+          />
         </Route>
 
         <Route path="ModalsTest" element={<ModalsTest />} />
