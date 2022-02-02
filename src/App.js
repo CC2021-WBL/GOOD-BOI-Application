@@ -45,6 +45,7 @@ function App() {
           <Route path="register" element={<RegistrationForm />} />
           <Route path="unRegistered" element={<UnregisteredPage />} />
           <Route path="login" element={<LoginForm />} />
+          <Route path="UserDogPage" element={<UserDogPage />}></Route>
         </Route>
         <Route element={<Layout withLabel />}>
           <Route path="role" element={<RolePage />} />
@@ -66,7 +67,6 @@ function App() {
             path="contests/:contestId/classes/:classId/:dogId/dogSummary"
             element={<DogSummaryPage />}
           />
-          <Route path="UserDogPage" element={<UserDogPage />}></Route>
           <Route path="dogData" element={<DogDataPage />} />
           <Route path="participantData" element={<ParticipantDataPage />} />
           <Route path="contestDetails" element={<ContestDetailsPage />} />
