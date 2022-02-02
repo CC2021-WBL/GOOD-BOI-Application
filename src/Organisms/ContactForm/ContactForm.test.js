@@ -20,7 +20,7 @@ describe('TextArea', () => {
     );
   });
 
-  it('renders textarea to fill with message', () => {
+  it('render textarea to fill with message', () => {
     render(
       <TextArea
         labelText="* Wpisz wiadomość"
