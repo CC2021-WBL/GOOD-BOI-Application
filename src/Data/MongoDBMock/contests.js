@@ -1,7 +1,7 @@
 const contests = [
   {
     contestId: 'a0347677-c3c9-4edc-9d46-fed4a958fdc2',
-    competitionName: 'XII Zawody im. Pana Starosty',
+    contestName: 'XII Zawody im. Pana Starosty',
     kynologiqueDepartment: 'Gdynia',
     startDate: new Date(2022, 3, 22, 10, 0),
     endDate: new Date(2022, 3, 23),
@@ -15,47 +15,41 @@ const contests = [
     applicationFeeInPLN: 90,
     participants: ['matylda1234', 'bogdan678', 'zosia9474'],
     obedienceClasses: {
-      0: {
-        isComleted: false,
-        competingPairs: [
-          {
-            dogName: 'Woof',
-            summaryId: '22-03-22Woof',
-          },
-          {
-            dogName: 'Nosek',
-            summaryId: '22-03-22Nosek',
-          },
-          {
-            dogName: 'Ptysio',
-            summaryId: '22-03-22Ptysio',
-          },
-        ],
-      },
-      1: {
-        isComleted: false,
-        competingPairs: [
-          {
-            dogName: 'Ollie',
-            summaryId: '22-03-22Ollie',
-          },
-          {
-            dogName: 'Kluska',
-            summaryId: '22-03-22Kluska',
-          },
-          {
-            dogName: 'Norah',
-            summaryId: '22-03-22Norah',
-          },
-        ],
-      },
+      0: [
+        {
+          dogName: 'Woof',
+          summaryId: '22-03-22Woof',
+        },
+        {
+          dogName: 'Nosek',
+          summaryId: '22-03-22Nosek',
+        },
+        {
+          dogName: 'Ptysio',
+          summaryId: '22-03-22Ptysio',
+        },
+      ],
+      1: [
+        {
+          dogName: 'Ollie',
+          summaryId: '22-03-22Ollie',
+        },
+        {
+          dogName: 'Kluska',
+          summaryId: '22-03-22Kluska',
+        },
+        {
+          dogName: 'Norah',
+          summaryId: '22-03-22Norah',
+        },
+      ],
     },
   },
 
   {
-    id: '3845029d-e97d-41ed-997f-2299d09ef648',
+    contestId: '3845029d-e97d-41ed-997f-2299d09ef648',
     kynologiqueDepartment: 'Poznań',
-    competitionName: 'Piętnasty zjazd dobrych chłopaków',
+    contestName: 'Piętnasty zjazd dobrych chłopaków',
     date: new Date(2022, 5, 1),
     endDate: new Date(2022, 5, 2),
     applicationOpenDate: new Date(2022, 2, 15, 20, 0),
@@ -67,46 +61,40 @@ const contests = [
     manager: 'Zbyszko Bogdaniec',
     applicationFeeInPLN: 110,
     obedienceClasses: {
-      0: {
-        isComleted: false,
-        competingPairs: [
-          {
-            dogName: 'Woof',
-            summaryId: '22-05-01Woof',
-          },
-          {
-            dogName: 'Nosek',
-            summaryId: '22-05-01Nosek',
-          },
-          {
-            dogName: 'Ptysio',
-            summaryId: '22-05-01Ptysio',
-          },
-        ],
-      },
-      1: {
-        isComleted: false,
-        competingPairs: [
-          {
-            dogName: 'Ollie',
-            summaryId: '22-05-01Ollie',
-          },
-          {
-            dogName: 'Kluska',
-            summaryId: '22-05-01Kluska',
-          },
-          {
-            dogName: 'Norah',
-            summaryId: '22-05-01Norah',
-          },
-        ],
-      },
+      0: [
+        {
+          dogName: 'Woof',
+          summaryId: '22-05-01Woof',
+        },
+        {
+          dogName: 'Nosek',
+          summaryId: '22-05-01Nosek',
+        },
+        {
+          dogName: 'Ptysio',
+          summaryId: '22-05-01Ptysio',
+        },
+      ],
+      1: [
+        {
+          dogName: 'Ollie',
+          summaryId: '22-05-01Ollie',
+        },
+        {
+          dogName: 'Kluska',
+          summaryId: '22-05-01Kluska',
+        },
+        {
+          dogName: 'Norah',
+          summaryId: '22-05-01Norah',
+        },
+      ],
     },
   },
   {
-    id: 'c9e7b738-f8e6-4300-9087-332ad5a28b4f',
+    contestId: 'c9e7b738-f8e6-4300-9087-332ad5a28b4f',
     kynologiqueDepartment: 'Sopot',
-    competitionName: 'Konkurs grzeczności',
+    contestName: 'Konkurs grzeczności',
     date: new Date(2021, 12, 24, 11, 0),
     endDate: new Date(2021, 12, 24),
     applicationOpenDate: new Date(2021, 10, 7, 20, 0),
@@ -118,50 +106,38 @@ const contests = [
     manager: 'Gerwazy Kapusta',
     applicationFeeInPLN: 70,
     obedienceClasses: {
-      0: {
-        isComleted: false,
-        competingPairs: [
-          {
-            dogName: 'Woof',
-            summaryId: '21-12-24Woof',
-          },
-        ],
-      },
-      1: {
-        isComleted: false,
-        competingPairs: [
-          {
-            dogName: 'Nosek',
-            summaryId: '21-12-24Nosek',
-          },
-        ],
-      },
-      2: {
-        isComleted: false,
-        competingPairs: [
-          {
-            dogName: 'Ptysio',
-            summaryId: '21-12-24Ptysio',
-          },
-          {
-            dogName: 'Ollie',
-            summaryId: '21-12-24Ollie',
-          },
-        ],
-      },
-      3: {
-        isComleted: false,
-        competingPairs: [
-          {
-            dogName: 'Kluska',
-            summaryId: '21-12-24Kluska',
-          },
-          {
-            dogName: 'Norah',
-            summaryId: '21-12-24Norah',
-          },
-        ],
-      },
+      0: [
+        {
+          dogName: 'Woof',
+          summaryId: '21-12-24Woof',
+        },
+      ],
+      1: [
+        {
+          dogName: 'Nosek',
+          summaryId: '21-12-24Nosek',
+        },
+      ],
+      2: [
+        {
+          dogName: 'Ptysio',
+          summaryId: '21-12-24Ptysio',
+        },
+        {
+          dogName: 'Ollie',
+          summaryId: '21-12-24Ollie',
+        },
+      ],
+      3: [
+        {
+          dogName: 'Kluska',
+          summaryId: '21-12-24Kluska',
+        },
+        {
+          dogName: 'Norah',
+          summaryId: '21-12-24Norah',
+        },
+      ],
     },
   },
 ];

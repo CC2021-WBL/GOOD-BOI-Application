@@ -17,8 +17,8 @@ const singleDogResults = [
   },
   {
     resultId: 1,
-    contestName: 'Piętnasty zjazd dobrych chłopaków',
-    obedienceClass: 1,
+    contestName: 'XII Zawody im. Pana Starosty',
+    obedienceClass: 0,
     prize: 'dyskwalifikacja',
     specialState: 'dyskwalifikacja',
     exercises: [
@@ -50,7 +50,7 @@ const singleDogResults = [
   },
   {
     resultId: 3,
-    contestName: 'Piętnasty zjazd dobrych chłopaków',
+    contestName: 'XII Zawody im. Pana Starosty',
     obedienceClass: 1,
     prize: 'bardzo dobra',
     exercises: [
@@ -83,7 +83,7 @@ const singleDogResults = [
   {
     resultId: 5,
     contestName: 'XII Zawody im. Pana Starosty',
-    obedienceClass: 0,
+    obedienceClass: 1,
     prize: 'dobra',
     exercises: [
       { codeName: '0.1', result: 6 },
@@ -99,7 +99,7 @@ const singleDogResults = [
   {
     resultId: 6,
     contestName: 'Piętnasty zjazd dobrych chłopaków',
-    obedienceClass: 1,
+    obedienceClass: 0,
     prize: 'doskonała',
     exercises: [
       { codeName: '0.1', result: 9 },
@@ -114,8 +114,8 @@ const singleDogResults = [
   },
   {
     resultId: 7,
-    contestName: 'XII Zawody im. Pana Starosty',
-    obedienceClass: 1,
+    contestName: 'Piętnasty zjazd dobrych chłopaków',
+    obedienceClass: 0,
     prize: 'doskonała',
     exercises: [
       { codeName: '0.1', result: 8 },
