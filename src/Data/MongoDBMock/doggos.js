@@ -11,7 +11,7 @@ const doggos = [
     chipOrTattoo: 616093900044541,
     sex: 'pies',
     owner: 'Jan Kowalski',
-    results: [1, 2],
+    results: ['22-03-22Nosek', '22-05-01Nosek', '21-12-24Nosek'],
   },
 
   {
@@ -26,7 +26,7 @@ const doggos = [
     chipOrTattoo: 752093200095647,
     sex: 'pies',
     owner: 'Matylda Borutka',
-    performances: [2, 3, 4],
+    results: ['22-03-22Woof', '22-05-01Woof', '21-12-24Woof'],
   },
   {
     dogId: 'VII-27885',
@@ -40,7 +40,7 @@ const doggos = [
     chipOrTattoo: 616093911146789,
     sex: 'suka',
     owner: 'Matylda Borutka',
-    performances: [5, 6],
+    results: ['22-03-22Kluska', '22-05-01Kluska', '21-12-24Kluska'],
   },
   {
     dogId: 'X-37657',
@@ -50,11 +50,11 @@ const doggos = [
     registrationNumber: '2234/VI/18',
     breed: 'Polski Owczarek Nizinny',
     dateOfBirth: new Date(2018, 5, 18),
-    colour: 'biało-szar',
+    colour: 'biało-szare',
     chipOrTattoo: 573153911146789,
     sex: 'pies',
     owner: 'Eustachy Trompka',
-    performances: [7],
+    results: ['22-03-22Ollie', '22-05-01Ollie', '21-12-24Ollie'],
   },
   {
     dogId: 'V-11165',
@@ -68,7 +68,7 @@ const doggos = [
     chipOrTattoo: 616093900456789,
     sex: 'pies',
     owner: 'Zosia Samosia',
-    results: [],
+    results: ['22-03-22Ptysio', '22-05-01Ptysio', '21-12-24Ptysio'],
   },
   {
     dogId: 'VI-15765',
@@ -82,7 +82,7 @@ const doggos = [
     chipOrTattoo: 616093900345671,
     sex: 'pies',
     owner: 'Zosia Samosia',
-    results: [],
+    results: ['22-03-22Norah', '22-05-01Norah', '21-12-24Norah'],
   },
 ];
 

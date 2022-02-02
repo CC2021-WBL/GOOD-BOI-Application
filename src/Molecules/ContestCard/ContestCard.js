@@ -46,7 +46,6 @@ const ContestCard = ({ contestId, contestIndex }) => {
 
   const stringDate = getDataFormatDdMonthYyy(startDate);
   const pointOnTimeLine = getPointOnTimeLine(startDate, endDate);
-  console.log(pointOnTimeLine);
 
   const handleClick = (event) => {
     event.preventDefault();
