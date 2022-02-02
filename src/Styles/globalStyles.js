@@ -13,6 +13,6 @@ a{text-decoration:none}
     font-family: 'Mulish', sans-serif;
 }
 body {
-    background: ${({ theme }) => theme.background};
+    background: ${({ theme }) => theme.white};
   
 }`;

@@ -8,10 +8,10 @@ const ThemeWrapperStyled = styled.div`
   height: 4.375rem;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 0.5px solid ${COLORS.grey200};
+  border-bottom: 0.5px solid ${({ theme }) => theme.grey200};
 
   p {
-    color: ${COLORS.grey400};
+    color: ${({ theme }) => theme.grey400};
     ${FONTS.caption};
   }
 
@@ -38,7 +38,7 @@ const ThemeWrapperStyled = styled.div`
       right: 0;
       bottom: 0;
       left: 0;
-      border: 0.5px solid ${COLORS.grey800};
+      border: 0.5px solid ${({ theme }) => theme.grey800};
       border-radius: 24px;
       cursor: pointer;
 
@@ -48,8 +48,8 @@ const ThemeWrapperStyled = styled.div`
         left: 0.125rem;
         width: 1.5rem;
         height: 1.5rem;
-        border: 0.5px solid ${COLORS.grey800};
-        background: ${COLORS.white};
+        border: 0.5px solid ${({ theme }) => theme.grey800};
+        background: ${({ theme }) => theme.white};
         border-radius: 50%;
         content: '';
         transition: transform 0.7s;
@@ -61,7 +61,7 @@ const ThemeWrapperStyled = styled.div`
     }
 
     input:checked + .slider {
-      background: ${COLORS.primary801};
+      background: ${({ theme }) => theme.white};
     }
 
     .dog {

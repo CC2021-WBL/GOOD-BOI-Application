@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const handleBgAndColor = (props) => {
   if (props.primary) {
-    return `color: ${COLORS.white}; background: ${COLORS.primary501};`;
+    return `color: ${props.theme.white}; background: ${props.theme.primary501};`;
   }
   if (props.secondary) {
     return `color: ${COLORS.primary601}; background: ${COLORS.primary201};`;

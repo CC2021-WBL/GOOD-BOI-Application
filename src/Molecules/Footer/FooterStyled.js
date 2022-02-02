@@ -1,4 +1,3 @@
-import COLORS from '../../Styles/varsStyledComponents';
 import styled from 'styled-components';
 
 export const FooterStyled = styled.div`
@@ -12,10 +11,9 @@ export const FooterStyled = styled.div`
   justify-content: space-between;
   padding: 0 1rem;
 
-  border-top: 2px solid ${COLORS.grey00};
+  border-top: 2px solid ${({ theme }) => theme.grey00};
   margin: 0;
-  /* background: ${COLORS.white}; */
-  background: ${({ theme }) => theme.background};
+  background: ${({ theme }) => theme.white};
 `;
 
 export const LogoStyled = styled.div`
@@ -32,4 +30,5 @@ export const Copy = styled.div`
   margin: 0 0 0 10px;
   font-size: 0.75rem;
   text-align: left;
+  color: ${({ theme }) => theme.grey800};
 `;

@@ -1,9 +1,8 @@
-import styled from 'styled-components';
 import FONTS from '../../Styles/fontsStyledComponents';
-import COLORS from '../../Styles/varsStyledComponents';
+import styled from 'styled-components';
 
 export const Div = styled.div`
-  color: black;
+  color: ${({ theme }) => theme.grey800};
   ${FONTS.label_regular}
 `;
 
@@ -17,6 +16,6 @@ export const FooterProfileButtonStyled = styled.button`
   justify-content: center;
   border: none;
   background: transparent;
-  color: ${COLORS.grey400};
+  color: ${({ theme }) => theme.grey400};
   font-size: 1.625rem;
 `;
