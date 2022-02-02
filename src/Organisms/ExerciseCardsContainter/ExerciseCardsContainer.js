@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 const ExerciseCardsContainer = ({ performanceObject }) => {
-  const { exercises, obedienceClassName } = performanceObject;
+  const { exercises, obedienceClass } = performanceObject;
   const [exercisesResults, setExercisesResults] = useState(exercises);
 
   const performanceSaveHandler = (event) => {
@@ -35,7 +35,7 @@ const ExerciseCardsContainer = ({ performanceObject }) => {
         <ExerciseCard
           key={exercise.codeName}
           exerciseInfo={exercise}
-          obedienceClassName={obedienceClassName}
+          obedienceClassName={obedienceClass}
           onChange={performanceSaveHandler}
         />
       ))}

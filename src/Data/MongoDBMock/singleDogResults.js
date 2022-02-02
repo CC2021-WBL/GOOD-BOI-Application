@@ -2,7 +2,7 @@ const singleDogResults = [
   {
     resultId: 0,
     contestName: 'XII Zawody im. Pana Starosty',
-    obedienceClass: 0,
+    obedienceClass: 'Klasa 0',
     prize: 'dobra',
     exercises: [
       { codeName: '0.1', result: 10 },
@@ -18,7 +18,7 @@ const singleDogResults = [
   {
     resultId: 1,
     contestName: 'XII Zawody im. Pana Starosty',
-    obedienceClass: 0,
+    obedienceClass: 'Klasa 0',
     prize: 'dyskwalifikacja',
     specialState: 'dyskwalifikacja',
     exercises: [
@@ -35,7 +35,7 @@ const singleDogResults = [
   {
     resultId: 2,
     contestName: 'XII Zawody im. Pana Starosty',
-    obedienceClass: 0,
+    obedienceClass: 'Klasa 0',
     prize: 'dobra',
     exercises: [
       { codeName: '0.1', result: 10 },
@@ -51,7 +51,7 @@ const singleDogResults = [
   {
     resultId: 3,
     contestName: 'XII Zawody im. Pana Starosty',
-    obedienceClass: 1,
+    obedienceClass: 'Klasa 1',
     prize: 'bardzo dobra',
     exercises: [
       { codeName: '0.1', result: 9 },
@@ -67,7 +67,7 @@ const singleDogResults = [
   {
     resultId: 4,
     contestName: 'Konkurs grzeczności',
-    obedienceClass: 1,
+    obedienceClass: 'Klasa 1',
     prize: 'bardzo dobra',
     exercises: [
       { codeName: '0.1', result: 9 },
@@ -83,7 +83,7 @@ const singleDogResults = [
   {
     resultId: 5,
     contestName: 'XII Zawody im. Pana Starosty',
-    obedienceClass: 1,
+    obedienceClass: 'Klasa 1',
     prize: 'dobra',
     exercises: [
       { codeName: '0.1', result: 6 },
@@ -99,7 +99,7 @@ const singleDogResults = [
   {
     resultId: 6,
     contestName: 'Piętnasty zjazd dobrych chłopaków',
-    obedienceClass: 0,
+    obedienceClass: 'Klasa 0',
     prize: 'doskonała',
     exercises: [
       { codeName: '0.1', result: 9 },
@@ -115,7 +115,7 @@ const singleDogResults = [
   {
     resultId: 7,
     contestName: 'Piętnasty zjazd dobrych chłopaków',
-    obedienceClass: 0,
+    obedienceClass: 'Klasa 0',
     prize: 'doskonała',
     exercises: [
       { codeName: '0.1', result: 8 },
