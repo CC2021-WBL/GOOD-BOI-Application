@@ -26,7 +26,7 @@ const doggos = [
     chipOrTattoo: 752093200095647,
     sex: 'pies',
     owner: 'Matylda Borutka',
-    performances: ['22-03-22Woof', '22-05-01Woof', '21-12-24Woof'],
+    results: ['22-03-22Woof', '22-05-01Woof', '21-12-24Woof'],
   },
   {
     dogId: 'VII-27885',
@@ -40,7 +40,7 @@ const doggos = [
     chipOrTattoo: 616093911146789,
     sex: 'suka',
     owner: 'Matylda Borutka',
-    performances: ['22-03-22Kluska', '22-05-01Kluska', '21-12-24Kluska'],
+    results: ['22-03-22Kluska', '22-05-01Kluska', '21-12-24Kluska'],
   },
   {
     dogId: 'X-37657',
@@ -54,7 +54,7 @@ const doggos = [
     chipOrTattoo: 573153911146789,
     sex: 'pies',
     owner: 'Eustachy Trompka',
-    performances: ['22-03-22Ollie', '22-05-01Ollie', '21-12-24Ollie'],
+    results: ['22-03-22Ollie', '22-05-01Ollie', '21-12-24Ollie'],
   },
   {
     dogId: 'V-11165',

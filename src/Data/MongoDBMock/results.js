@@ -379,6 +379,29 @@ const results = [
     dogId: 'VI-15765',
     dogName: 'Norah',
     participantId: 'zosia9474',
+    summaryResult: null,
+    prize: null,
+    exercises: [
+      { codeName: '3.1', result: null },
+      { codeName: '3.2', result: null },
+      { codeName: '3.3', result: null },
+      { codeName: '3.4', result: null },
+      { codeName: '3.5', result: null },
+      { codeName: '3.6', result: null },
+      { codeName: '3.7', result: null },
+      { codeName: '3.8', result: null },
+      { codeName: '3.9', result: null },
+      { codeName: '3.10', result: null },
+    ],
+  },
+  /*   {
+    competingPairsId: '21-12-24Norah',
+    contestId: 'c9e7b738-f8e6-4300-9087-332ad5a28b4f',
+    contestName: 'Konkurs grzeczności',
+    obedienceClass: 3,
+    dogId: 'VI-15765',
+    dogName: 'Norah',
+    participantId: 'zosia9474',
     summaryResult: 294.5,
     prize: 'doskonała',
     exercises: [
@@ -393,7 +416,7 @@ const results = [
       { codeName: '3.9', result: 10 },
       { codeName: '3.10', result: 8 },
     ],
-  },
+  }, */
 ];
 
 export default results;
