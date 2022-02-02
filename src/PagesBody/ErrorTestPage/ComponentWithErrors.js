@@ -7,7 +7,7 @@ const ComponentWithErrors = () => {
     setCount((preVal) => preVal + 1);
   };
   if (count === 5) {
-    throw new Error('Oh Noooooooo');
+    throw new Error('Error message');
   }
 
   return (

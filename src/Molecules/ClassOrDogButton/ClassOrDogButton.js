@@ -16,10 +16,18 @@ const ClassOrDogButton = ({ classInfo, dogInfo, noInfoLabel }) => {
       return dogName;
     }
   };
-
+  const label = () => {
+    if (word() === name) {
+      return name;
+    } else if (word() === dogName) {
+      return `Ocena Zawodnika ${dogName}`;
+    }
+  };
   const clickHandler = (event) => {
     event.preventDefault();
-    navigate(`./${word()}`);
+    navigate(`./${word()}`, {
+      state: { text: 'Lista uczestników', label: `${label()}` },
+    });
   };
 
   return (
