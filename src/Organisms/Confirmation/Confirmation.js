@@ -1,16 +1,22 @@
-import { useNavigate } from 'react-router-dom';
-import MainButton from '../../Atoms/MainButton/MainButton';
 import ConfirmationStyled from './ConfirmationStyled';
+import MainButton from '../../Atoms/MainButton/MainButton';
+import contests from '../../Data/MongoDBMock/contests';
+import { useNavigate } from 'react-router-dom';
+
+// import propTypes from 'prop-types';
 
 const Confirmation = () => {
   const navigate = useNavigate();
+
+  const name = contests[1].competitionName;
+
   return (
     <ConfirmationStyled>
       <div>
         <p>
           Dziękujemy za zapisanie się na
-          <span> Piętnasty zjazd dobrych chłopaków.</span> Przyjęliśmy Twoje
-          zgłoszenie.
+          <span> {name} </span>
+          Przyjęliśmy Twoje zgłoszenie.
         </p>
         <p>
           Jeśli dostaniesz się na listę uczestników otrzymasz od nas dane do
@@ -33,5 +39,5 @@ const Confirmation = () => {
     </ConfirmationStyled>
   );
 };
-
+// Confirmation.propTypes = { text: propTypes.string };
 export default Confirmation;
