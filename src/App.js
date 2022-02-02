@@ -9,7 +9,6 @@ import ContestDetailsPage from './PagesBody/ContestDetailsPage/ContestDetailsPag
 import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
 import DogDataPage from './PagesBody/DogDataPage/DogDataPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
-import ErrorPage from './PagesBody/ErrorPage/ErrorPage';
 import ErrorTestPage from './PagesBody/ErrorTestPage/ErrorTestPage';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
@@ -19,6 +18,7 @@ import LeaderboardPage from './PagesBody/LeaderboardPage/LeaderboardPage';
 import LoginForm from './Organisms/LoginForm/LoginForm';
 import ModalsTest from './PagesBody/ModalsTest';
 import NotFoundPage from './PagesBody/NotFoundPage/NotFoundPage';
+import ParticipantDataPage from './PagesBody/ParticipantDataPage/ParticipantDataPage';
 import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import RolePage from './PagesBody/RolePage/RolePage';
@@ -34,9 +34,7 @@ function App() {
         </Route>
         <Route element={<Layout />}>
           <Route path="testErrors" element={<ErrorTestPage />} />
-          <Route path="error" element={<ErrorPage />} />
-          <Route path="*" element={<NotFoundPage />}></Route>
-          {/* //user views */}
+          <Route path="*" element={<NotFoundPage />} />
           <Route path="forgot" element={<ForgotPassForm />} />
           <Route path="contactForm" element={<ContactFormPage />} />
           <Route path="register" element={<RegistrationForm />} />
@@ -64,6 +62,7 @@ function App() {
             element={<DogSummaryPage />}
           />
           <Route path="dogData" element={<DogDataPage />} />
+          <Route path="participantData" element={<ParticipantDataPage />} />
           <Route path="contestDetails" element={<ContestDetailsPage />} />
         </Route>
 
