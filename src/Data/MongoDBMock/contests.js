@@ -47,7 +47,7 @@ const contests = [
   },
 
   {
-    id: '3845029d-e97d-41ed-997f-2299d09ef648',
+    contestId: '3845029d-e97d-41ed-997f-2299d09ef648',
     kynologiqueDepartment: 'Poznań',
     contestName: 'Piętnasty zjazd dobrych chłopaków',
     date: new Date(2022, 5, 1),
@@ -92,7 +92,7 @@ const contests = [
     },
   },
   {
-    id: 'c9e7b738-f8e6-4300-9087-332ad5a28b4f',
+    contestId: 'c9e7b738-f8e6-4300-9087-332ad5a28b4f',
     kynologiqueDepartment: 'Sopot',
     contestName: 'Konkurs grzeczności',
     date: new Date(2021, 12, 24, 11, 0),
