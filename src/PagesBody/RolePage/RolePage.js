@@ -18,14 +18,14 @@ const RolePage = () => {
   }
 
   return (
-    <ColumnWrapper paddingLeftRight={1}>
+    <ColumnWrapper paddingLeftRight={1} paddingTop={1.5}>
       {roles.map((role, index) => (
         <Link
           key={index}
           to={ROLES[role].roleButtonLink}
           style={{ textDecoration: 'none' }}
         >
-          <MainButton text={ROLES[role].roleButtonText} primary />
+          <MainButton text={ROLES[role].roleButtonText} ternary />
         </Link>
       ))}
       <MainButton
