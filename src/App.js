@@ -34,7 +34,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="*" element={<NotFoundPage />} />
           <Route path="forgot" element={<ForgotPassForm />} />
-          <Route path="contactForm" element={<ContactFormPage />} />
+          <Route path="contact-form" element={<ContactFormPage />} />
           <Route path="register" element={<RegistrationForm />} />
           <Route path="unRegistered" element={<UnregisteredPage />} />
           <Route path="login" element={<LoginForm />} />
