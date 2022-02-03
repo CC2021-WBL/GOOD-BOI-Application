@@ -11,6 +11,7 @@ const Theme = ({ theme, themeToggler }) => {
         <label className="switch">
           <input
             checked={theme === 'dark'}
+            onChange={(e) => themeToggler(e.target.checked ? 'dark' : 'light')}
             type="checkbox"
             onClick={themeToggler}
           />

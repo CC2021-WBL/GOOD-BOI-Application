@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 
 const Settings = ({ theme, themeToggler }) => {
   return (
-    <ColumnWrapper paddingLeftRight="1.188">
+    <ColumnWrapper paddingLeftRight={1.188}>
       <Theme theme={theme} themeToggler={themeToggler} />
     </ColumnWrapper>
   );
