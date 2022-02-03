@@ -46,11 +46,12 @@ const ContestCard = ({ contestId, contestIndex }) => {
 
   const stringDate = getDataFormatDdMonthYyy(startDate);
   const pointOnTimeLine = getPointOnTimeLine(startDate, endDate);
-  console.log(pointOnTimeLine);
 
   const handleClick = (event) => {
     event.preventDefault();
-    navigate(`./${contestId}/classes`);
+    navigate(`./${contestId}/classes`, {
+      state: { text: 'Lista klas', label: `${contestName}` },
+    });
     //navigate musi przekazać dane o klasach jakie mają się odbyć i nazwach psów w tych klasach?
   };
 

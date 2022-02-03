@@ -6,26 +6,33 @@ import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
 
 const ClassOrDogButton = ({ classInfo, dogInfo }) => {
   const navigate = useNavigate();
-
-  const { name } = classInfo || [];
+  const { obedienceClass } = classInfo || [];
   const { index, dogName } = dogInfo || [];
 
-  const word = () => {
-    if (name) {
-      return name;
+  const urlSection = () => {
+    if (obedienceClass) {
+      return obedienceClass;
     } else if (dogName) {
       return dogName;
     }
   };
-
+  const label = () => {
+    if (urlSection() === obedienceClass) {
+      return obedienceClass;
+    } else if (urlSection() === dogName) {
+      return `Ocena Zawodnika ${dogName}`;
+    }
+  };
   const clickHandler = (event) => {
     event.preventDefault();
-    navigate(`./${word()}`);
+    navigate(`./${urlSection()}`, {
+      state: { text: 'Lista uczestników', label: `${label()}` },
+    });
   };
 
   return (
     <ClassOrDogButtonStyled onClick={clickHandler}>
-      {classInfo && <>{name}</>}
+      {classInfo && <p>Klasa {obedienceClass}</p>}
       {dogInfo && (
         <>
           {index + 1}. {dogName}

@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import DOGS from '../../Data/Dummy-data/test-data-dogs';
 import DOG_DATA_TEMPLATE from '../../Consts/DogDataCONSTS';
 import DataLine from '../../Atoms/DataLine/DataLine';
-import { getDataFormatDdMonthYyy } from '../../Tools/TimeFunctions';
-import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
-import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
+import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
 import { doggoSex } from '../../Consts/formsDataToChose';
+import { getDataFormatDdMonthYyy } from '../../Tools/TimeFunctions';
 
 const DogData = ({ id }) => {
   let navigate = useNavigate();
@@ -16,14 +17,14 @@ const DogData = ({ id }) => {
   const handleEdit = (event) => {
     event.preventDefault();
     console.log(id);
-    navigate(`/addDogForm/${id}`);
+    navigate(`/add-dog-form/${id}`);
     //navigate musi przekazać dane psa (id) do formularza który wypełni sobie inputy value z bazy
     // danych
   };
   const handleConfirm = (event) => {
     event.preventDefault();
     const idOfOwnerFromContext = '@TODO in the future';
-    navigate(`/participantData/${idOfOwnerFromContext}`);
+    navigate(`/participant-data/${idOfOwnerFromContext}`);
     //navigate musi przekazać id właściela psa, żeby pokazać nam kolejny ekran z wypełnionymi
     // danymi właściciela
   };

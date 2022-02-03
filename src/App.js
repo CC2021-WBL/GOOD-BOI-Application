@@ -10,8 +10,6 @@ import ContestDetailsPage from './PagesBody/ContestDetailsPage/ContestDetailsPag
 import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
 import DogDataPage from './PagesBody/DogDataPage/DogDataPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
-import ErrorPage from './PagesBody/ErrorPage/ErrorPage';
-import ErrorTestPage from './PagesBody/ErrorTestPage/ErrorTestPage';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
 import { GlobalStyles } from './Styles/globalStyles';
@@ -21,6 +19,7 @@ import LeaderboardPage from './PagesBody/LeaderboardPage/LeaderboardPage';
 import LoginForm from './Organisms/LoginForm/LoginForm';
 import ModalsTest from './PagesBody/ModalsTest';
 import NotFoundPage from './PagesBody/NotFoundPage/NotFoundPage';
+import { ParticipantContextProvider } from './Context/ParticipantContext';
 import ParticipantDataPage from './PagesBody/ParticipantDataPage/ParticipantDataPage';
 import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
@@ -28,6 +27,7 @@ import RolePage from './PagesBody/RolePage/RolePage';
 import SettingsPage from './PagesBody/SettingsPage/SettingsPage';
 import { ThemeProvider } from 'styled-components';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
+import { UserDataProvider } from './Context/UserDataContext';
 import { useDarkMode } from './Organisms/SettingsApp/useDarkMode';
 
 function App() {
@@ -43,54 +43,128 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route element={<Layout withSettings />}>
-              <Route path="user" element={<ProfilePage />} />
+              <Route
+                path="user"
+                element={
+                  <UserDataProvider>
+                    <ParticipantContextProvider>
+                      <ProfilePage />
+                    </ParticipantContextProvider>
+                  </UserDataProvider>
+                }
+              />
             </Route>
             <Route element={<Layout />}>
-              <Route path="testErrors" element={<ErrorTestPage />} />
-              <Route path="error" element={<ErrorPage />} />
-              <Route path="*" element={<NotFoundPage />}></Route>
-              <Route path="forgot" element={<ForgotPassForm />} />
-              <Route path="contactForm" element={<ContactFormPage />} />
-              <Route path="register" element={<RegistrationForm />} />
-              <Route path="unRegistered" element={<UnregisteredPage />} />
-              <Route path="profile" element={<ProfilePage />} />
-              <Route path="login" element={<LoginForm />} />
-            </Route>
-            <Route element={<Layout withLabel />}>
-              <Route path="role" element={<RolePage />} />
-              <Route path="contests" element={<ContestsPage />} />
-              <Route
-                path="contests/:contestId/classes"
-                element={<ClassesPage />}
-              />
-              <Route
-                path="contests/:contestId/classes/:classId"
-                element={<ClassCompetitorsPage />}
-              />
-              <Route
-                path="contests/:contestId/classes/:classId/leaderboard"
-                element={<LeaderboardPage />}
-              />
-              <Route
-                path="contests/:contestId/classes/:classId/:dogId"
-                element={<ExercisesPage />}
-              />
-              <Route
-                path="contests/:contestId/classes/:classId/:dogId/dogSummary"
-                element={<DogSummaryPage />}
-              />
-              <Route path="dogData" element={<DogDataPage />} />
-              <Route path="participantData" element={<ParticipantDataPage />} />
-              <Route path="contestDetails" element={<ContestDetailsPage />} />
               <Route
                 path="settings"
                 element={
                   <SettingsPage theme={theme} themeToggler={themeToggler} />
                 }
               />
+              <Route path="*" element={<NotFoundPage />} />
+              <Route path="forgot" element={<ForgotPassForm />} />
+              <Route path="contact-form" element={<ContactFormPage />} />
+              <Route path="register" element={<RegistrationForm />} />
+              <Route path="unregistered" element={<UnregisteredPage />} />
+              <Route
+                path="login"
+                element={
+                  <UserDataProvider>
+                    <LoginForm />
+                  </UserDataProvider>
+                }
+              />
+            </Route>
+            <Route element={<Layout withLabel />}>
+              <Route
+                path="role"
+                element={
+                  <UserDataProvider>
+                    <RolePage />
+                  </UserDataProvider>
+                }
+              />
+              <Route
+                path="contests"
+                element={
+                  <UserDataProvider>
+                    <ContestsPage />
+                  </UserDataProvider>
+                }
+              />
+              <Route
+                path="contests/:contestId/classes"
+                element={
+                  <UserDataProvider>
+                    <ClassesPage />
+                  </UserDataProvider>
+                }
+              />
+              <Route
+                path="contests/:contestId/classes/:classId"
+                element={
+                  <UserDataProvider>
+                    <ClassCompetitorsPage />
+                  </UserDataProvider>
+                }
+              />
+              <Route
+                path="contests/:contestId/classes/:classId/leaderboard"
+                element={
+                  <UserDataProvider>
+                    <LeaderboardPage />
+                  </UserDataProvider>
+                }
+              />
+              <Route
+                path="contests/:contestId/classes/:classId/:dogId"
+                element={
+                  <UserDataProvider>
+                    <ExercisesPage />
+                  </UserDataProvider>
+                }
+              />
+              <Route
+                path="contests/:contestId/classes/:classId/:dogId/dog-summary"
+                element={
+                  <UserDataProvider>
+                    <DogSummaryPage />
+                  </UserDataProvider>
+                }
+              />
+              <Route
+                path="dog-data"
+                element={
+                  <UserDataProvider>
+                    <ParticipantContextProvider>
+                      <DogDataPage />
+                    </ParticipantContextProvider>
+                  </UserDataProvider>
+                }
+              />
+              <Route
+                path="participant-data"
+                element={
+                  <UserDataProvider>
+                    <ParticipantContextProvider>
+                      <ParticipantDataPage />
+                    </ParticipantContextProvider>
+                  </UserDataProvider>
+                }
+              />
+              <Route
+                path="contest-details"
+                element={
+                  <UserDataProvider>
+                    <ParticipantContextProvider>
+                      <ContestDetailsPage />
+                    </ParticipantContextProvider>
+                  </UserDataProvider>
+                }
+              />
             </Route>
 
-            <Route path="ModalsTest" element={<ModalsTest />} />
+            <Route path="modals-test" element={<ModalsTest />} />
           </Routes>
         </div>
       </>
@@ -99,6 +173,3 @@ function App() {
 }
 
 export default App;
-// "eslint-config-prettier": "^8.3.0",
-// "eslint-plugin-react-hooks": "^4.3.0",
-// "prettier": "^2.5.1"
