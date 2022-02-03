@@ -27,7 +27,7 @@ const borderHandler = (props) => {
     return `border: 0.5px solid ${COLORS.grey800};`;
   }
 };
-const ButtonLikeLinkStyled = styled(Link)`
+const FakeButtonStyled = styled(Link)`
   display: flex;
   width: 100%;
   height: 3.25rem;
@@ -40,4 +40,4 @@ const ButtonLikeLinkStyled = styled(Link)`
   ${(props) => borderHandler(props)};
 `;
 
-export default ButtonLikeLinkStyled;
+export default FakeButtonStyled;

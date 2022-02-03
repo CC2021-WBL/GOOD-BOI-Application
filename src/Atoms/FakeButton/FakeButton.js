@@ -1,21 +1,21 @@
 import propTypes from 'prop-types';
 
-import ButtonLikeLinkStyled from './ButtonLikeLinkStyled';
+import FakeButtonStyled from './FakeButtonStyled';
 
-const ButtonLikeLink = ({ primary, secondary, ternary, text, to }) => {
+const FakeButton = ({ primary, secondary, ternary, text, to }) => {
   return (
-    <ButtonLikeLinkStyled
+    <FakeButtonStyled
       to={to}
       primary={primary}
       secondary={secondary}
       ternary={ternary}
     >
       {text.toUpperCase()}
-    </ButtonLikeLinkStyled>
+    </FakeButtonStyled>
   );
 };
 
-ButtonLikeLink.propTypes = {
+FakeButton.propTypes = {
   to: propTypes.oneOfType([
     propTypes.string.isRequired,
     propTypes.object.isRequired,
@@ -26,4 +26,4 @@ ButtonLikeLink.propTypes = {
   text: propTypes.string,
 };
 
-export default ButtonLikeLink;
+export default FakeButton;
