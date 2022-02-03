@@ -1,26 +1,21 @@
 import propTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
+import ButtonLikeLink from '../../Atoms/ButtonLikeLink/ButtonLikeLink';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import MainButton from '../../Atoms/MainButton/MainButton';
 import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
 
 const ProfilePage = ({ userId }) => {
   return (
     <ColumnWrapper paddingLeftRight={1}>
       <ProfileCard />
-      <Link to="/user-dogs">
-        <MainButton text="Twoje Psy" ternary />
-      </Link>
-      <Link to={`./${userId}/contests`}>
-        <MainButton text="Twoje Konkursy" ternary />
-      </Link>
-      <Link to="/user-data">
-        <MainButton text="Twoje Dane" ternary />
-      </Link>
-      <Link to="/upcoming">
-        <MainButton text="Nadchodzące Konkursy" secondary />
-      </Link>
+      <ButtonLikeLink to="/user-dogs" text="Twoje Psy" ternary />
+      <ButtonLikeLink
+        to={`./${userId}/contests`}
+        text="Twoje Konkursy"
+        ternary
+      />
+      <ButtonLikeLink to="/user-data" text="Twoje Dane" ternary />
+      <ButtonLikeLink to="/upcoming" text="Nadchodzące Konkursy" secondary />
     </ColumnWrapper>
   );
 };
