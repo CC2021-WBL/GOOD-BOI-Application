@@ -14,10 +14,10 @@ const handleBgAndColor = (props) => {
 const ButtonExercisesStyled = styled.button`
   width: 50%;
   height: 100%;
-  margin: 0.25rem 0 0.25rem 0;
   padding: 10px;
-  ${FONTS.label_semibold};
   border-style: none;
+  margin: 0.25rem 0 0.25rem 0;
+  ${FONTS.label_semibold};
   ${(props) => handleBgAndColor(props)};
 `;
 

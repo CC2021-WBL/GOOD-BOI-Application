@@ -8,11 +8,11 @@ const InputFieldStyled = styled.input`
   padding: 0 0 0 10px;
   border: 0.5px solid ${({ theme }) => theme.grey400};
   margin: 0 0 3px 0;
+  background: ${({ theme }) => theme.white};
   border-radius: 8px;
   color: ${({ theme }) => theme.grey400};
   font-family: Mulish, FontAwesome, sans-serif;
   ${FONTS.body_semibold};
-  background: ${({ theme }) => theme.white};
   &::placeholder {
     color: ${({ theme }) => theme.grey400};
   }

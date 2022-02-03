@@ -10,7 +10,6 @@ export const FooterStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-
   border-top: 2px solid ${({ theme }) => theme.grey00};
   margin: 0;
   background: ${({ theme }) => theme.white};
@@ -28,7 +27,7 @@ export const DevsLogo = styled.div`
 export const Copy = styled.div`
   align-self: center;
   margin: 0 0 0 10px;
+  color: ${({ theme }) => theme.grey800};
   font-size: 0.75rem;
   text-align: left;
-  color: ${({ theme }) => theme.grey800};
 `;

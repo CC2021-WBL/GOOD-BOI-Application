@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 const ContestDetailsMapStyled = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ theme }) => theme.grey200};
   height: 8.5rem;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ theme }) => theme.grey200};
   background-image: url(${mapmock});
 `;
 
