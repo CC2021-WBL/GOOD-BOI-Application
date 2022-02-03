@@ -1,6 +1,5 @@
-import styled from 'styled-components';
 import FONTS from '../../Styles/fontsStyledComponents';
-import COLORS from '../../Styles/varsStyledComponents';
+import styled from 'styled-components';
 
 const ClassOrDogButtonStyled = styled.button`
   box-sizing: border-box;
@@ -11,11 +10,11 @@ const ClassOrDogButtonStyled = styled.button`
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  border: solid 1px ${COLORS.grey800};
+  border: solid 1px ${({ theme }) => theme.grey800};
   margin: 0.5rem 0;
   background: white;
   border-radius: 0.75rem;
-  color: ${COLORS.grey800};
+  color: ${({ theme }) => theme.grey800};
   ${FONTS.h3}
 `;
 

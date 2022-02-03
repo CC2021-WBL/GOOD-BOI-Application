@@ -14,6 +14,9 @@ const UserNameAndImgStyled = styled.div`
     background-size: cover;
     border-radius: 50%;
   }
+  h3 {
+    color: ${({ theme }) => theme.grey800};
+  }
 `;
 
 // other ways to add image, and image as a prop

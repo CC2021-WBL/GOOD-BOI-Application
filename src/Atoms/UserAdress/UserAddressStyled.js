@@ -1,8 +1,7 @@
-import COLORS from '../../Styles/varsStyledComponents';
 import styled from 'styled-components';
 
 const UserAddressStyled = styled.div`
-  border-bottom: 0.5px solid ${COLORS.grey300};
+  border-bottom: 0.5px solid ${({ theme }) => theme.grey300};
   text-align: start;
 
   &:last-child {
@@ -10,7 +9,7 @@ const UserAddressStyled = styled.div`
   }
 
   p {
-    color: ${COLORS.grey400};
+    color: ${({ theme }) => theme.grey400};
   }
 `;
 
