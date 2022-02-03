@@ -19,7 +19,6 @@ const ProfilePage = ({ userId }) => {
       <MainButton
         text="Twoje Konkursy"
         onClick={() => navigate(`./${userId}/contests`)}
-        // onClick={() => navigate('/contests')}
         ternary
       />
       <MainButton
