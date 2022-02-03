@@ -13,7 +13,7 @@ const ButtonExercises = (props) => {
     if (goBack) {
       navigate(-1);
     } else {
-      navigate('./dogSummary', {
+      navigate('./dog-summary', {
         state: {
           text: 'Tabela Wyników',
           label: `${classId} / Ocena Zawodnika ${dogId}`,
