@@ -1,7 +1,7 @@
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
-import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
-import MainButton from '../../Atoms/MainButton/MainButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import MainButton from '../../Atoms/MainButton/MainButton';
+import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
 
 const ClassCompetitorsPage = () => {
   function secondaryBtnHandler() {

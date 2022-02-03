@@ -12,7 +12,7 @@ const UserAddress = () => {
   );
   return (
     <UserAddressStyled>
-      <p>{`${userObject.street} ${userObject.numberOfHosue}`}</p>
+      <p>{`${userObject.street} ${userObject.numberOfHouse}`}</p>
       <p>{`${userObject.postalCode} ${userObject.city}`}</p>
     </UserAddressStyled>
   );
