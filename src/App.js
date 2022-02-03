@@ -36,7 +36,7 @@ function App() {
           <Route path="forgot" element={<ForgotPassForm />} />
           <Route path="contact-form" element={<ContactFormPage />} />
           <Route path="register" element={<RegistrationForm />} />
-          <Route path="unRegistered" element={<UnregisteredPage />} />
+          <Route path="unregistered" element={<UnregisteredPage />} />
           <Route path="login" element={<LoginForm />} />
         </Route>
         <Route element={<Layout withLabel />}>
@@ -56,7 +56,7 @@ function App() {
             element={<ExercisesPage />}
           />
           <Route
-            path="contests/:contestId/classes/:classId/:dogId/dogSummary"
+            path="contests/:contestId/classes/:classId/:dogId/dog-summary"
             element={<DogSummaryPage />}
           />
           <Route path="dogData" element={<DogDataPage />} />
