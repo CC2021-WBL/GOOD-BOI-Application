@@ -1,9 +1,8 @@
-import propTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
-
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
+import propTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 const ProfilePage = ({ userId }) => {
   const navigate = useNavigate();
