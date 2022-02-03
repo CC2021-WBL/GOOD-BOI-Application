@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import FONTS from '../../Styles/fontsStyledComponents';
+import styled from 'styled-components';
 
 const CheckboxAgreeFieldStyled = styled.div`
   display: flex;
@@ -18,6 +18,7 @@ const CheckboxAgreeFieldStyled = styled.div`
   .checkbox-text {
     padding: 10px 0;
     font-size: 1rem;
+    color: ${({ theme }) => theme.grey800};
   }
 `;
 

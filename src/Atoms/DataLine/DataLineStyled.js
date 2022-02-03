@@ -1,6 +1,5 @@
-import styled from 'styled-components';
-import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
+import styled from 'styled-components';
 
 const DataLineStyled = styled.div`
   padding: 1rem 0;
@@ -10,11 +9,11 @@ const DataLineStyled = styled.div`
   line-height: 3rem;
   min-height: 3rem;
   text-align: right;
-  border-bottom: 2px solid ${COLORS.grey200};
+  border-bottom: 2px solid ${({ theme }) => theme.grey200};
   ${FONTS.body_semibold};
 
   div:first-child {
-    color: ${COLORS.grey400};
+    color: ${({ theme }) => theme.grey400};
     text-align: left;
   }
 `;
