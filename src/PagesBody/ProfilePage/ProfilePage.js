@@ -8,14 +8,18 @@ const ProfilePage = ({ userId }) => {
   return (
     <ColumnWrapper paddingLeftRight={1}>
       <ProfileCard />
-      <ButtonLikeLink to="/user-dogs" text="Twoje Psy" ternary />
+      <ButtonLikeLink to="/user-dogs" text="Twoje Psy" ternary="ternary" />
       <ButtonLikeLink
         to={`./${userId}/contests`}
         text="Twoje Konkursy"
-        ternary
+        ternary="ternary"
       />
-      <ButtonLikeLink to="/user-data" text="Twoje Dane" ternary />
-      <ButtonLikeLink to="/upcoming" text="Nadchodzące Konkursy" secondary />
+      <ButtonLikeLink to="/user-data" text="Twoje Dane" ternary="ternary" />
+      <ButtonLikeLink
+        to="/upcoming"
+        text="Nadchodzące Konkursy"
+        secondary="secondary"
+      />
     </ColumnWrapper>
   );
 };

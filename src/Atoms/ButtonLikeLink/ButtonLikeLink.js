@@ -20,9 +20,9 @@ ButtonLikeLink.propTypes = {
     propTypes.string.isRequired,
     propTypes.object.isRequired,
   ]),
-  primary: propTypes.bool,
-  secondary: propTypes.bool,
-  ternary: propTypes.bool,
+  primary: propTypes.any,
+  secondary: propTypes.any,
+  ternary: propTypes.any,
   text: propTypes.string,
 };
 
