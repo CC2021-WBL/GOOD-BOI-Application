@@ -6,9 +6,9 @@ const ButtonLikeLink = ({ primary, secondary, ternary, text, to }) => {
   return (
     <ButtonLikeLinkStyled
       to={to}
-      primary={`${primary}`}
-      secondary={`${secondary}`}
-      ternary={`${ternary}`}
+      primary={primary}
+      secondary={secondary}
+      ternary={ternary}
     >
       {text.toUpperCase()}
     </ButtonLikeLinkStyled>
