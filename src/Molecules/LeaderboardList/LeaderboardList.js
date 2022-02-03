@@ -1,57 +1,81 @@
-import LeaderboardListElement from './../../Atoms/Leaderboard/LeaderboardListElement';
+import LeaderboardListElement from '../../Atoms/Leaderboard/LeaderboardListElement';
 import LeaderboardListStyled from './LeaderboardListStyled';
+import calculateExerciseScore from '../../Tools/calculateExerciseScore';
 import contestsRS from '../../Data/MongoDBMock/contestsRS';
 import individualSummaryInCurrentCompetiton from '../../Data/MongoDBMock/summaryResults';
 import propTypes from 'prop-types';
+import translateExerciseCode2string from '../../Tools/translateExerciseCode2string';
 
-// TODO: import checkIfDisqualified from '../../Tools/checkIfDisqualified';
-
-// This page is a PAST CONTEST LEADERBOARD PAGE http://localhost:3000/contests/contestId/classes/classNumber/leaderboard
-
-const LeaderboardList = ({ contestId, classId }) => {
-  // TODO: let disqualified =
-  // checkIfDisqualified({ result }) === true ? 'disqualifiedColor' : '';
-  const fakeContest = contestsRS.find((contest) => contest.id === contestId);
-  const fakeClassResult = fakeContest.obedienceClasses.find(
-    (classObj) => classObj.classNumber === classId,
-  );
-  console.log('fakeClassResukt ' + fakeClassResult);
-  let resultsIdArr = fakeClassResult.competingPairs.map(
-    (object) => object.summaryId,
-  );
-  const finalLeaderboardArr = resultsIdArr.map((summaryId) => {
-    let fakeDogSummary = individualSummaryInCurrentCompetiton.find(
-      (summary) => summary.competingPairsId === summaryId,
+const LeaderboardList = ({ classId, dogName, contestId }) => {
+  if (dogName) {
+    const retrievedObject = localStorage.getItem('performanceObject');
+    const retrivedPerformanceObject = JSON.parse(retrievedObject);
+    // console.log(retrievedObject);
+    console.log('LeaderboardList dogname: ' + dogName + ' classId: ' + classId);
+    const exercisesList = retrivedPerformanceObject.exercises;
+    const dogSummaryResult = exercisesList.map((elem) => ({
+      text: translateExerciseCode2string(classId, elem.codeName),
+      score: calculateExerciseScore(classId, elem.codeName) * elem.result,
+    }));
+    {
+      return (
+        <LeaderboardListStyled>
+          {dogSummaryResult.map((arrElement, index) => {
+            return (
+              <LeaderboardListElement
+                key={index}
+                text={arrElement.text}
+                score={arrElement.score}
+                index={index}
+                // disqualified={disqualified}
+              />
+            );
+          })}
+        </LeaderboardListStyled>
+      );
+    }
+  } else {
+    // ==============================================================PastContestPage=======
+    const fakeContest = contestsRS.find((contest) => contest.id === contestId);
+    const fakeClassResult = fakeContest.obedienceClasses.find(
+      (classObj) => classObj.classNumber === classId,
     );
-    return {
-      text: fakeDogSummary.dogName,
-      score: fakeDogSummary.summaryResult,
-    };
-  });
-  const sortedLeaderboardClassResults = finalLeaderboardArr.sort(
-    (a, b) => b.score - a.score,
-  );
-  return (
-    <LeaderboardListStyled>
-      {sortedLeaderboardClassResults.map((arrElement, index) => {
-        return (
-          <LeaderboardListElement
-            key={index}
-            text={arrElement.text}
-            // text={performanceObject.text}
-            score={arrElement.score}
-            // score={performanceObject.result}
-            index={index}
-            // disqualified={disqualified}
-          />
-        );
-      })}
-    </LeaderboardListStyled>
-  );
+    let resultsIdArr = fakeClassResult.competingPairs.map(
+      (object) => object.summaryId,
+    );
+    const finalLeaderboardArr = resultsIdArr.map((summaryId) => {
+      let fakeDogSummary = individualSummaryInCurrentCompetiton.find(
+        (summary) => summary.competingPairsId === summaryId,
+      );
+      return {
+        text: fakeDogSummary.dogName,
+        score: fakeDogSummary.summaryResult,
+      };
+    });
+    const sortedLeaderboardClassResults = finalLeaderboardArr.sort(
+      (a, b) => b.score - a.score,
+    );
+    // =============================================================PastContestPage========
+
+    return (
+      <LeaderboardListStyled>
+        {sortedLeaderboardClassResults.map((arrElement, index) => {
+          return (
+            <LeaderboardListElement
+              key={index}
+              text={arrElement.text}
+              score={arrElement.score}
+              index={index}
+              // disqualified={disqualified}
+            />
+          );
+        })}
+      </LeaderboardListStyled>
+    );
+  }
 };
 
 LeaderboardList.propTypes = {
-  // result: propTypes.array.isRequired,
   contestId: propTypes.string,
   classId: propTypes.string,
   dogName: propTypes.string,

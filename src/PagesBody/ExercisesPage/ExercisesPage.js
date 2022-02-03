@@ -10,11 +10,8 @@ import results from '../../Data/MongoDBMock/results';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 
-// import doggos from './../../Data/MongoDBMock/doggos';
-
 const ExercisesPage = () => {
   const { contestId, classId, dogId } = useParams();
-  console.log({ contestId, classId, dogId });
 
   const obedienceClass = classId;
   const dogName = dogId;
@@ -45,52 +42,54 @@ const ExercisesPage = () => {
     setIsDisqualifyModalOpen(false);
   }
 
-  // const ourTestDogName = dogId;
-  // console.log(dogId);
-  // const ourTestDog = DOGS.find((dog) => dog.dogName === ourTestDogName);
-  // const ourTestContestName = 'XII Zawody im. Pana Starosty';
-  // const ourTestPerformanceObject = ourTestDog.performances.find(
-  //   (performance) => performance.contestName === ourTestContestName,
-  // );
-
-  return (
-    <ColumnWrapper>
-      {(isDisqualifyModalOpen || isPenaltyModalOpen) && (
-        <Modal
-          modalData={
-            isDisqualifyModalOpen ? modalData.disqualify : modalData.penalty
-          }
-          onCloseHandler={closeModalHandler}
-          onConfirmHandler={
-            isDisqualifyModalOpen ? handleDisqualification : handlePenalty
-          }
-        />
-      )}
-      {(isDisqualifyModalOpen || isPenaltyModalOpen) && (
-        <Backdrop onClick={closeModalHandler} />
-      )}
-      <ColumnWrapper paddingLeftRight={0.25}>
-        <SpecialButtonsContainerStyled>
-          <SpecialButton
-            text="Dyskwalifikacja"
-            theme="red"
-            handler={openDisqualifyModalHandler}
-            left
+  if (performanceArray) {
+    return (
+      <ColumnWrapper>
+        {(isDisqualifyModalOpen || isPenaltyModalOpen) && (
+          <Modal
+            modalData={
+              isDisqualifyModalOpen ? modalData.disqualify : modalData.penalty
+            }
+            onCloseHandler={closeModalHandler}
+            onConfirmHandler={
+              isDisqualifyModalOpen ? handleDisqualification : handlePenalty
+            }
           />
-          <SpecialButton
-            text="-10 punktów"
-            theme="yellow"
-            handler={openPenaltyModalHandler}
-            right
-          />
-        </SpecialButtonsContainerStyled>
+        )}
+        {(isDisqualifyModalOpen || isPenaltyModalOpen) && (
+          <Backdrop onClick={closeModalHandler} />
+        )}
+        <ColumnWrapper paddingLeftRight={0.25}>
+          <SpecialButtonsContainerStyled>
+            <SpecialButton
+              text="Dyskwalifikacja"
+              theme="red"
+              handler={openDisqualifyModalHandler}
+              left
+            />
+            <SpecialButton
+              text="-10 punktów"
+              theme="yellow"
+              handler={openPenaltyModalHandler}
+              right
+            />
+          </SpecialButtonsContainerStyled>
 
-        <ExerciseCardsContainer performanceObject={performanceArray} />
+          <ExerciseCardsContainer performanceObject={performanceArray} />
+        </ColumnWrapper>
+
+        <ButtonExercisesContainer />
       </ColumnWrapper>
-
-      <ButtonExercisesContainer />
-    </ColumnWrapper>
-  );
+    );
+  } else {
+    return (
+      <>
+        <h2>
+          <br></br>Error! No entry for such dog name / class combination!
+        </h2>
+      </>
+    );
+  }
 };
 
 export default ExercisesPage;

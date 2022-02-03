@@ -1,26 +1,36 @@
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import LeaderboardList_new from './../../Molecules/LeaderboardList/LeaderboardList_new';
+import LeaderboardList from './../../Molecules/LeaderboardList/LeaderboardList';
 import MainButton from './../../Atoms/MainButton/MainButton';
+import SummaryLine from '../../Atoms/Leaderboard/SummaryLine';
 import { useParams } from 'react-router-dom';
 
-// import WYNIK_RANDOMOWEGO_PSA from './../../Data/Dummy-data/RandomDogResult';
-
-// import PenaltyOrDisqualifiedLine from '../../Atoms/Leaderboard/PenaltyOrDisqualifiedLine';
-// import SummaryLine from '../../Atoms/Leaderboard/SummaryLine';
+// TODO: import PenaltyOrDisqualifiedLine from '../../Atoms/Leaderboard/PenaltyOrDisqualifiedLine';
+// TODO: Penalty points will be calculated after entries in the database will be created on ExercisesPage
 
 const sendDataHandler = () => {};
 
 const DogSummaryPage = () => {
   const { contestId, classId, dogId } = useParams();
+  const retrievedObject = localStorage.getItem('performanceObject');
+  const retrivedPerformanceObject = JSON.parse(retrievedObject);
+  console.log(retrivedPerformanceObject);
+  console.log(
+    'dogSummaryPage contest ' +
+      contestId +
+      'classId ' +
+      classId +
+      'dogId ' +
+      dogId,
+  );
   return (
     <ColumnWrapper>
-      <LeaderboardList_new
+      <LeaderboardList
         contestId={contestId}
         classId={classId}
         dogName={dogId}
       />
-      {/* <PenaltyOrDisqualifiedLine result={WYNIK_RANDOMOWEGO_PSA} />
-      <SummaryLine result={WYNIK_RANDOMOWEGO_PSA} /> */}
+      {/* <PenaltyOrDisqualifiedLine result={WYNIK_RANDOMOWEGO_PSA} /> */}
+      <SummaryLine result={retrivedPerformanceObject} classId={classId} />
       <ColumnWrapper paddingLeftRight={1}>
         <MainButton
           text="lista kompletna - wyślij dane"
@@ -33,17 +43,3 @@ const DogSummaryPage = () => {
 };
 
 export default DogSummaryPage;
-
-{
-  /* <Route
-path="contests/:contestId/classes/:classId/leaderboard"
-element={<LeaderboardPage />}
-/>
-<Route
-path="contests/:contestId/classes/:classId/:dogId"
-element={<ExercisesPage />}
-/>
-<Route
-path="contests/:contestId/classes/:classId/:dogId/dogSummary"
-element={<DogSummaryPage />} */
-}

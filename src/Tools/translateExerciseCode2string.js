@@ -5,7 +5,9 @@ import CLASSES from '../Consts/CLASSES';
 
 const translateExerciseCode2string = (className, exerciseCode) => {
   const classObj = CLASSES.find((classObj) => classObj.name === className);
-
+  console.log(
+    'translate className: ' + className + ' exerciseCode: ' + exerciseCode,
+  );
   const exercisesArr = classObj.exercises;
 
   const exerciseName = exercisesArr.find(

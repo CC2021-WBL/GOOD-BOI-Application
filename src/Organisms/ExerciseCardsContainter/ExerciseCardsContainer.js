@@ -19,7 +19,6 @@ const ExerciseCardsContainer = ({ performanceObject }) => {
         prevState.find(
           (exercise) => exercise.codeName === event.target.id,
         ).result = Number(event.target.value);
-        console.log(performanceObject);
         localStorage.setItem(
           'performanceObject',
           JSON.stringify(performanceObject),
