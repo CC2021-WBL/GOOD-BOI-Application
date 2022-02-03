@@ -33,7 +33,7 @@ const FakeButtonStyled = styled(Link)`
   height: 3.25rem;
   align-items: center;
   justify-content: center;
-  margin: 0.5rem 0 0.5rem 0;
+  margin: 0.5rem 0;
   border-radius: 0.75rem;
   ${FONTS.button};
   ${(props) => handleBgAndColor(props)};
