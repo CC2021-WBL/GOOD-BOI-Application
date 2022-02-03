@@ -59,12 +59,12 @@ function App() {
             path="contests/:contestId/classes/:classId/:dogId/dog-summary"
             element={<DogSummaryPage />}
           />
-          <Route path="dogData" element={<DogDataPage />} />
-          <Route path="participantData" element={<ParticipantDataPage />} />
-          <Route path="contestDetails" element={<ContestDetailsPage />} />
+          <Route path="dog-data" element={<DogDataPage />} />
+          <Route path="participant-data" element={<ParticipantDataPage />} />
+          <Route path="contest-details" element={<ContestDetailsPage />} />
         </Route>
 
-        <Route path="ModalsTest" element={<ModalsTest />} />
+        <Route path="modals-test" element={<ModalsTest />} />
       </Routes>
     </div>
   );
