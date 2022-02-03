@@ -1,9 +1,4 @@
 export const lightTheme = {
-  // body: '#FFFFFF',
-  text: '#363537',
-  toggleBorder: '#FFF',
-  background: '#FFFFFF',
-
   primary801: '#093269',
   primary601: '#1264D1',
   primary501: '#2F80ED',
@@ -34,11 +29,6 @@ export const lightTheme = {
   positive100: '#CBF1D9',
 };
 export const darkTheme = {
-  body: '#363537',
-  text: '#FAFAFA',
-  toggleBorder: '#6B8096',
-  background: '#1F2933',
-
   primary801: '#D5E6FB',
   primary601: '#ACCCF8',
   primary501: '#2F80ED',
