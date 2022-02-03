@@ -13,15 +13,7 @@ const DogSummaryPage = () => {
   const { contestId, classId, dogId } = useParams();
   const retrievedObject = localStorage.getItem('performanceObject');
   const retrivedPerformanceObject = JSON.parse(retrievedObject);
-  console.log(retrivedPerformanceObject);
-  console.log(
-    'dogSummaryPage contest ' +
-      contestId +
-      'classId ' +
-      classId +
-      'dogId ' +
-      dogId,
-  );
+
   return (
     <ColumnWrapper>
       <LeaderboardList

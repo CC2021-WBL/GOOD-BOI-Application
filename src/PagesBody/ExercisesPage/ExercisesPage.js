@@ -85,7 +85,7 @@ const ExercisesPage = () => {
     return (
       <>
         <h2>
-          <br></br>Error! No entry for such dog name / class combination!
+          <br></br>Error! Brak danych dla tej kombinacji klasy i psa!
         </h2>
       </>
     );

@@ -1,7 +1,7 @@
 import LeaderboardListElement from '../../Atoms/Leaderboard/LeaderboardListElement';
 import LeaderboardListStyled from './LeaderboardListStyled';
 import calculateExerciseScore from '../../Tools/calculateExerciseScore';
-import contestsRS from '../../Data/MongoDBMock/contestsRS';
+import contests from '../../Data/MongoDBMock/contests';
 import individualSummaryInCurrentCompetiton from '../../Data/MongoDBMock/summaryResults';
 import propTypes from 'prop-types';
 import translateExerciseCode2string from '../../Tools/translateExerciseCode2string';
@@ -10,8 +10,6 @@ const LeaderboardList = ({ classId, dogName, contestId }) => {
   if (dogName) {
     const retrievedObject = localStorage.getItem('performanceObject');
     const retrivedPerformanceObject = JSON.parse(retrievedObject);
-    // console.log(retrievedObject);
-    console.log('LeaderboardList dogname: ' + dogName + ' classId: ' + classId);
     const exercisesList = retrivedPerformanceObject.exercises;
     const dogSummaryResult = exercisesList.map((elem) => ({
       text: translateExerciseCode2string(classId, elem.codeName),
@@ -35,43 +33,54 @@ const LeaderboardList = ({ classId, dogName, contestId }) => {
       );
     }
   } else {
-    // ==============================================================PastContestPage=======
-    const fakeContest = contestsRS.find((contest) => contest.id === contestId);
-    const fakeClassResult = fakeContest.obedienceClasses.find(
-      (classObj) => classObj.classNumber === classId,
-    );
-    let resultsIdArr = fakeClassResult.competingPairs.map(
-      (object) => object.summaryId,
-    );
-    const finalLeaderboardArr = resultsIdArr.map((summaryId) => {
-      let fakeDogSummary = individualSummaryInCurrentCompetiton.find(
-        (summary) => summary.competingPairsId === summaryId,
-      );
-      return {
-        text: fakeDogSummary.dogName,
-        score: fakeDogSummary.summaryResult,
-      };
-    });
-    const sortedLeaderboardClassResults = finalLeaderboardArr.sort(
-      (a, b) => b.score - a.score,
-    );
-    // =============================================================PastContestPage========
+    const contest = contests.find((contest) => contest.contestId === contestId);
 
-    return (
-      <LeaderboardListStyled>
-        {sortedLeaderboardClassResults.map((arrElement, index) => {
-          return (
-            <LeaderboardListElement
-              key={index}
-              text={arrElement.text}
-              score={arrElement.score}
-              index={index}
-              // disqualified={disqualified}
-            />
-          );
-        })}
-      </LeaderboardListStyled>
-    );
+    let className;
+    classId === 'Klasa 0' && (className = '0');
+    classId === 'Klasa 1' && (className = '1');
+    classId === 'Klasa 2' && (className = '2');
+
+    const resultsArr = contest.obedienceClasses[className];
+    if (resultsArr) {
+      let resultsIdArr = resultsArr.map((obj) => obj.summaryId);
+
+      const finalLeaderboardArr = resultsIdArr.map((summaryId) => {
+        let fakeDogSummary = individualSummaryInCurrentCompetiton.find(
+          (summary) => summary.competingPairsId === summaryId,
+        );
+        return {
+          text: fakeDogSummary.dogName,
+          score: fakeDogSummary.summaryResult,
+        };
+      });
+      const sortedLeaderboardClassResults = finalLeaderboardArr.sort(
+        (a, b) => b.score - a.score,
+      );
+
+      return (
+        <LeaderboardListStyled>
+          {sortedLeaderboardClassResults.map((arrElement, index) => {
+            return (
+              <LeaderboardListElement
+                key={index}
+                text={arrElement.text}
+                score={arrElement.score}
+                index={index}
+                // disqualified={disqualified}
+              />
+            );
+          })}
+        </LeaderboardListStyled>
+      );
+    } else {
+      return (
+        <>
+          <h2>
+            <br></br>Error! Brak danych dla tej kombinacji klasy i psa!
+          </h2>
+        </>
+      );
+    }
   }
 };
 
