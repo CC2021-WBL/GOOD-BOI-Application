@@ -28,7 +28,7 @@ import SettingsPage from './PagesBody/SettingsPage/SettingsPage';
 import { ThemeProvider } from 'styled-components';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
 import { UserDataProvider } from './Context/UserDataContext';
-import { useDarkMode } from './Organisms/SettingsApp/useDarkMode';
+import { useDarkMode } from './Hooks/useDarkMode';
 
 function App() {
   const [theme, themeToggler, mountedComponent] = useDarkMode();

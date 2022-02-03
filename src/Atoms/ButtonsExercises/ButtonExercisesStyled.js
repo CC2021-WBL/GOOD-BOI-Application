@@ -16,7 +16,7 @@ const ButtonExercisesStyled = styled.button`
   height: 100%;
   padding: 10px;
   border-style: none;
-  margin: 0.25rem 0 0.25rem 0;
+  margin: 0.25rem 0;
   ${FONTS.label_semibold};
   ${(props) => handleBgAndColor(props)};
 `;

@@ -6,12 +6,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 
-// import { GlobalStyles } from './Styles/globalStyles';
-
 ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>
-      {/* <GlobalStyles /> */}
       <App />
     </React.StrictMode>
   </BrowserRouter>,
