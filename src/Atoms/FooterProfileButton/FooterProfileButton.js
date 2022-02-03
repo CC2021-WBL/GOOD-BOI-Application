@@ -30,8 +30,6 @@ const FooterProfileButton = ({ withSettings }) => {
 };
 
 FooterProfileButton.propTypes = {
-  text: propTypes.string,
-  active: propTypes.string,
   withSettings: propTypes.bool,
 };
 

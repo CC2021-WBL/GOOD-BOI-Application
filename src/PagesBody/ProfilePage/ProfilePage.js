@@ -1,35 +1,24 @@
-import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import MainButton from '../../Atoms/MainButton/MainButton';
-import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
 import propTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import FakeButton from '../../Atoms/FakeButton/FakeButton';
+import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
 
 const ProfilePage = ({ userId }) => {
-  const navigate = useNavigate();
-
   return (
     <ColumnWrapper paddingLeftRight={1}>
       <ProfileCard />
-      <MainButton
-        text="Twoje Psy"
-        onClick={() => navigate('/userDogs')}
-        ternary
-      />
-      <MainButton
+      <FakeButton to="/user-dogs" text="Twoje Psy" ternary="ternary" />
+      <FakeButton
+        to={`./${userId}/contests`}
         text="Twoje Konkursy"
-        onClick={() => navigate(`./${userId}/contests`)}
-        // onClick={() => navigate('/contests')}
-        ternary
+        ternary="ternary"
       />
-      <MainButton
-        text="Twoje Dane"
-        onClick={() => navigate('/userData')}
-        ternary
-      />
-      <MainButton
+      <FakeButton to="/user-data" text="Twoje Dane" ternary="ternary" />
+      <FakeButton
+        to="/upcoming"
         text="Nadchodzące Konkursy"
-        onClick={() => navigate('/upcoming')}
-        secondary
+        secondary="secondary"
       />
     </ColumnWrapper>
   );

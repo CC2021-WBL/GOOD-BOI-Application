@@ -9,7 +9,6 @@ import ContestDetailsPage from './PagesBody/ContestDetailsPage/ContestDetailsPag
 import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
 import DogDataPage from './PagesBody/DogDataPage/DogDataPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
-import ErrorTestPage from './PagesBody/ErrorTestPage/ErrorTestPage';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
 import LandingPage from './PagesBody/LandingPage/LandingPage';
@@ -18,12 +17,12 @@ import LeaderboardPage from './PagesBody/LeaderboardPage/LeaderboardPage';
 import LoginForm from './Organisms/LoginForm/LoginForm';
 import ModalsTest from './PagesBody/ModalsTest';
 import NotFoundPage from './PagesBody/NotFoundPage/NotFoundPage';
-import { ParticipantContextProvider } from './Context/ParticipantContext';
 import ParticipantDataPage from './PagesBody/ParticipantDataPage/ParticipantDataPage';
 import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import RolePage from './PagesBody/RolePage/RolePage';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
+import { ParticipantContextProvider } from './Context/ParticipantContext';
 import { UserDataProvider } from './Context/UserDataContext';
 
 function App() {
@@ -44,12 +43,11 @@ function App() {
           />
         </Route>
         <Route element={<Layout />}>
-          <Route path="testErrors" element={<ErrorTestPage />} />
           <Route path="*" element={<NotFoundPage />} />
           <Route path="forgot" element={<ForgotPassForm />} />
-          <Route path="contactForm" element={<ContactFormPage />} />
+          <Route path="contact-form" element={<ContactFormPage />} />
           <Route path="register" element={<RegistrationForm />} />
-          <Route path="unRegistered" element={<UnregisteredPage />} />
+          <Route path="unregistered" element={<UnregisteredPage />} />
           <Route
             path="login"
             element={
@@ -109,7 +107,7 @@ function App() {
             }
           />
           <Route
-            path="contests/:contestId/classes/:classId/:dogId/dogSummary"
+            path="contests/:contestId/classes/:classId/:dogId/dog-summary"
             element={
               <UserDataProvider>
                 <DogSummaryPage />
@@ -117,7 +115,7 @@ function App() {
             }
           />
           <Route
-            path="dogData"
+            path="dog-data"
             element={
               <UserDataProvider>
                 <ParticipantContextProvider>
@@ -127,7 +125,7 @@ function App() {
             }
           />
           <Route
-            path="participantData"
+            path="participant-data"
             element={
               <UserDataProvider>
                 <ParticipantContextProvider>
@@ -137,7 +135,7 @@ function App() {
             }
           />
           <Route
-            path="contestDetails"
+            path="contest-details"
             element={
               <UserDataProvider>
                 <ParticipantContextProvider>
@@ -148,13 +146,10 @@ function App() {
           />
         </Route>
 
-        <Route path="ModalsTest" element={<ModalsTest />} />
+        <Route path="modals-test" element={<ModalsTest />} />
       </Routes>
     </div>
   );
 }
 
 export default App;
-// "eslint-config-prettier": "^8.3.0",
-// "eslint-plugin-react-hooks": "^4.3.0",
-// "prettier": "^2.5.1"
