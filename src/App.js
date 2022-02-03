@@ -7,7 +7,6 @@ import ClassesPage from './PagesBody/ClassesPage/ClassesPage';
 import ContactFormPage from './PagesBody/ContactFormPage/ContactFormPage';
 import ContestDetailsPage from './PagesBody/ContestDetailsPage/ContestDetailsPage';
 import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
-import ContextTestPage from './PagesBody/ContextTests';
 import DogDataPage from './PagesBody/DogDataPage/DogDataPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
 import ErrorTestPage from './PagesBody/ErrorTestPage/ErrorTestPage';
@@ -19,14 +18,13 @@ import LeaderboardPage from './PagesBody/LeaderboardPage/LeaderboardPage';
 import LoginForm from './Organisms/LoginForm/LoginForm';
 import ModalsTest from './PagesBody/ModalsTest';
 import NotFoundPage from './PagesBody/NotFoundPage/NotFoundPage';
+import { ParticipantContextProvider } from './Context/ParticipantContext';
 import ParticipantDataPage from './PagesBody/ParticipantDataPage/ParticipantDataPage';
 import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import RolePage from './PagesBody/RolePage/RolePage';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
-import { UserDataProvider } from './Context/DataContext';
-
-// import { ParticipantContextProvider } from './Context/ParticipantContext';
+import { UserDataProvider } from './Context/UserDataContext';
 
 function App() {
   return (
@@ -34,7 +32,16 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route element={<Layout withSettings />}>
-          <Route path="user" element={<ProfilePage />} />
+          <Route
+            path="user"
+            element={
+              <UserDataProvider>
+                <ParticipantContextProvider>
+                  <ProfilePage />
+                </ParticipantContextProvider>
+              </UserDataProvider>
+            }
+          />
         </Route>
         <Route element={<Layout />}>
           <Route path="testErrors" element={<ErrorTestPage />} />
@@ -43,7 +50,14 @@ function App() {
           <Route path="contactForm" element={<ContactFormPage />} />
           <Route path="register" element={<RegistrationForm />} />
           <Route path="unRegistered" element={<UnregisteredPage />} />
-          <Route path="login" element={<LoginForm />} />
+          <Route
+            path="login"
+            element={
+              <UserDataProvider>
+                <LoginForm />
+              </UserDataProvider>
+            }
+          />
         </Route>
         <Route element={<Layout withLabel />}>
           <Route
@@ -106,7 +120,19 @@ function App() {
             path="dogData"
             element={
               <UserDataProvider>
-                <DogDataPage />
+                <ParticipantContextProvider>
+                  <DogDataPage />
+                </ParticipantContextProvider>
+              </UserDataProvider>
+            }
+          />
+          <Route
+            path="participantData"
+            element={
+              <UserDataProvider>
+                <ParticipantContextProvider>
+                  <ParticipantDataPage />
+                </ParticipantContextProvider>
               </UserDataProvider>
             }
           />
@@ -114,18 +140,9 @@ function App() {
             path="contestDetails"
             element={
               <UserDataProvider>
-                <ContestDetailsPage />
-              </UserDataProvider>
-            }
-          />
-          <Route path="dogData" element={<DogDataPage />} />
-          <Route path="participantData" element={<ParticipantDataPage />} />
-          <Route path="contestDetails" element={<ContestDetailsPage />} />
-          <Route
-            path="test"
-            element={
-              <UserDataProvider>
-                <ContextTestPage />
+                <ParticipantContextProvider>
+                  <ContestDetailsPage />
+                </ParticipantContextProvider>
               </UserDataProvider>
             }
           />
