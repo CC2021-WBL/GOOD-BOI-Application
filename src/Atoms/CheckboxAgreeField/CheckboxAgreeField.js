@@ -1,5 +1,5 @@
-import propTypes from 'prop-types';
 import CheckboxAgreeFieldStyled from './CheckboxAgreeFieldStyled';
+import propTypes from 'prop-types';
 
 const CheckboxAgreeField = ({ text, className }) => {
   return (

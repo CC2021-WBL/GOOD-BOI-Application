@@ -16,10 +16,12 @@ const NotFoundPageWrapperStyled = styled.div`
     margin: 35px 0 68px;
 
     h2 {
+      color: ${({ theme }) => theme.grey800};
       ${FONTS.h2}
     }
 
     p {
+      color: ${({ theme }) => theme.grey800};
       ${FONTS.caption}
     }
   }
