@@ -1,7 +1,7 @@
-import propTypes from 'prop-types';
+import CLASSES from '../../Consts/CLASSES';
 import ExerciseStyled from './ExerciseStyled';
 import PropTypes from 'prop-types';
-import CLASSES from '../../Consts/classesConst';
+import propTypes from 'prop-types';
 
 const Exercise = ({ codeName, toggle }) => {
   const exerciseName = CLASSES[codeName.charAt(0)].exercises.find(
