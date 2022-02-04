@@ -3,6 +3,7 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { darkTheme, lightTheme } from './Styles/Themes';
 
+import ClassChoicePage from './PagesBody/ClassChoicePage/ClassChoicePage';
 import ClassCompetitorsPage from './PagesBody/ClassCompetitorsPage/ClassCompetitorsPage';
 import ClassesPage from './PagesBody/ClassesPage/ClassesPage';
 import ContactFormPage from './PagesBody/ContactFormPage/ContactFormPage';
@@ -89,6 +90,14 @@ function App() {
                 element={
                   <UserDataProvider>
                     <ContestsPage />
+                  </UserDataProvider>
+                }
+              />
+              <Route
+                path="class-choice"
+                element={
+                  <UserDataProvider>
+                    <ClassChoicePage />
                   </UserDataProvider>
                 }
               />
