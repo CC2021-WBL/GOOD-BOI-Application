@@ -35,8 +35,8 @@ export const darkTheme = {
   primary201: '#103d77',
   primary101: '#093269',
 
-  grey800: '#838383',
-  grey400: '#c5c5c5',
+  grey800: '#cacaca',
+  grey400: '#838383',
   grey300: '#9AA5B1',
   grey200: '#484e55',
   grey100: '#596B7C',
