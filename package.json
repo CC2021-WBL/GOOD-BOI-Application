@@ -7,7 +7,10 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
     "font-awesome": "^4.7.0",
+    "mongoose": "^6.2.0",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -22,7 +25,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint:css": "stylelint ./src/**/*.js"
+    "lint:css": "stylelint ./src/**/*.js",
+    "go": "nodemon src/Server/server.js"
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +52,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "nodemon": "^2.0.15",
     "prettier": "2.5.1",
     "stylelint": "^14.3.0",
     "stylelint-config-idiomatic-order": "^8.1.0",
