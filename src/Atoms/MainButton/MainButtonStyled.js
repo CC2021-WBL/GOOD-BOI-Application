@@ -31,11 +31,11 @@ const MainButtonStyled = styled.button`
   align-items: center;
   justify-content: ${(props) =>
     (props.justify && ` ${props.justify};`) || 'center;'};
+  padding: 0 1rem;
   margin: 0.5rem 0 0.5rem 0;
   border-radius: 0.75rem;
   ${FONTS.button};
   ${(props) => handleBgAndColor(props)};
   ${(props) => borderHandler(props)};
-  padding: 0 1rem;
 `;
 export default MainButtonStyled;
