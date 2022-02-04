@@ -23,6 +23,7 @@ MainButton.propTypes = {
   ternary: propTypes.bool,
   text: propTypes.string.isRequired,
   onClick: propTypes.func,
+  justify: propTypes.string,
 };
 
 export default MainButton;

@@ -36,5 +36,6 @@ const MainButtonStyled = styled.button`
   ${FONTS.button};
   ${(props) => handleBgAndColor(props)};
   ${(props) => borderHandler(props)};
+  padding: 0 1rem;
 `;
 export default MainButtonStyled;
