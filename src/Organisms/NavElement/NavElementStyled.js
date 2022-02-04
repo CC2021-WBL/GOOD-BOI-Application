@@ -1,4 +1,3 @@
-import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
 
@@ -10,11 +9,11 @@ export const NavElementStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem 0 0.563rem;
-  background-color: ${COLORS.white};
+  background: ${({ theme }) => theme.white};
 
   .navText {
     width: 33%;
-    color: ${COLORS.grey800};
+    color: ${({ theme }) => theme.grey800};
     ${FONTS.h3}
   }
 `;

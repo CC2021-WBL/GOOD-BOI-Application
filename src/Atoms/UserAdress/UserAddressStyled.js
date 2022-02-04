@@ -1,17 +1,15 @@
 import styled from 'styled-components';
 
-import COLORS from '../../Styles/varsStyledComponents';
-
 const UserAddressStyled = styled.div`
+  border-bottom: 0.5px solid ${({ theme }) => theme.grey300};
   text-align: start;
-  border-bottom: 0.5px solid ${COLORS.grey300};
 
   &:last-child {
     padding-bottom: 10px;
   }
 
   p {
-    color: ${COLORS.grey400};
+    color: ${({ theme }) => theme.grey400};
   }
 `;
 
