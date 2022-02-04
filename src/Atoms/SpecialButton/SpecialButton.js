@@ -1,12 +1,18 @@
 import SpecialButtonStyled from './SpecialButtonStyled';
 import propTypes from 'prop-types';
 
-const SpecialButton = ({ left, right, text, handler, theme }) => {
+const SpecialButton = ({
+  roundedBorder,
+  /*left, right,*/ text,
+  handler,
+  theme,
+}) => {
   return (
     <SpecialButtonStyled
       onClick={handler}
-      left={left}
-      right={right}
+      // left={left}
+      // right={right}
+      roundedBorder={roundedBorder}
       theme={theme}
     >
       {text}
@@ -15,8 +21,9 @@ const SpecialButton = ({ left, right, text, handler, theme }) => {
 };
 
 SpecialButton.propTypes = {
-  left: propTypes.bool,
-  right: propTypes.bool,
+  // left: propTypes.bool,
+  // right: propTypes.bool,
+  roundedBorder: propTypes.string,
   text: propTypes.string.isRequired,
   handler: propTypes.func,
   theme: propTypes.string,

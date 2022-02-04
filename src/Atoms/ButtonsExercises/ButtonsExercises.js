@@ -1,15 +1,16 @@
-import propTypes from 'prop-types';
+import ButtonExercisesStyled from './ButtonExercisesStyled';
 import { FaChevronLeft } from 'react-icons/fa';
+import propTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
-import ButtonExercisesStyled from './ButtonExercisesStyled';
+//Related to https://github.com/CC2021-WBL/GOOD-BOI-Application/pull/202/files#r798045688, this shuold receive only information about what theme color you want to apply. color={endingButton? "primary":"secondary"}
 
 const ButtonExercises = (props) => {
-  const { endingButton, goBack, text } = props;
+  const { primary, secondary, text } = props;
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if (goBack) {
+    if (secondary) {
       navigate(-1);
     } else {
       navigate('./dog-summary', {
@@ -20,18 +21,18 @@ const ButtonExercises = (props) => {
   return (
     <ButtonExercisesStyled
       onClick={handleClick}
-      endingButton={endingButton}
-      goBack={goBack}
+      primary={primary}
+      secondary={secondary}
     >
-      {goBack && <FaChevronLeft />}
+      {secondary && <FaChevronLeft />}
       {text.toUpperCase()}
     </ButtonExercisesStyled>
   );
 };
 
 ButtonExercises.propTypes = {
-  endingButton: propTypes.bool,
-  goBack: propTypes.bool,
+  primary: propTypes.bool,
+  secondary: propTypes.bool,
   text: propTypes.string.isRequired,
   onClick: propTypes.func,
 };

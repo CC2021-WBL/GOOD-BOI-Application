@@ -59,13 +59,13 @@ const ExercisesPage = () => {
             text="Dyskwalifikacja"
             theme="red"
             handler={openDisqualifyModalHandler}
-            left
+            roundedBorder="left"
           />
           <SpecialButton
             text="-10 punktów"
             theme="yellow"
             handler={openPenaltyModalHandler}
-            right
+            roundedBorder="right"
           />
         </SpecialButtonsContainerStyled>
 
