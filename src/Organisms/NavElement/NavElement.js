@@ -1,12 +1,12 @@
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 
-import AppLogo from '../../Assets/AppLogo.png';
 import { BsChevronLeft } from 'react-icons/bs';
+import GoHomeStyled from '../../Atoms/NavElementStyled/GoHomeStyled';
 import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
 import LinkWrapperStyled from '../../Atoms/NavElementStyled/LinkWrapperStyled';
-import LogoStyled from '../../Atoms/NavElementStyled/LogoStyled';
 import { NavElementStyled } from './NavElementStyled';
 import PropTypes from 'prop-types';
+import home from '../../Assets/home.png';
 import pathData from '../../Consts/pathData';
 
 const NavElement = () => {
@@ -35,11 +35,11 @@ const NavElement = () => {
             <h3 className="navText">{foundPath.text}</h3>
           </>
         )}
-        <LogoStyled>
+        <GoHomeStyled>
           <Link to="/">
-            <img src={AppLogo} alt="Logo aplikacji" className="logo" />
+            <img src={home} alt="Buda psa" className="logo" />
           </Link>
-        </LogoStyled>
+        </GoHomeStyled>
       </NavElementStyled>
       {locationPath.state && (
         <>
