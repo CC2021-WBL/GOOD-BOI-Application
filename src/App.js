@@ -28,7 +28,6 @@ import SettingsPage from './PagesBody/SettingsPage/SettingsPage';
 import { ThemeProvider } from 'styled-components';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
 import { UserDataProvider } from './Context/UserDataContext';
-import UserDogPage from './PagesBody/UserDogsPage/UserDogPage';
 import { useDarkMode } from './Hooks/useDarkMode';
 
 function App() {
@@ -163,7 +162,6 @@ function App() {
                   </UserDataProvider>
                 }
               />
-              <Route path="UserDogPage" element={<UserDogPage />}></Route>
             </Route>
 
             <Route path="modals-test" element={<ModalsTest />} />
