@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const LinkStyled = styled(Link)`
   padding: 0.2rem;
-  border: 1px solid black;
+  border: 1px solid ${({ theme }) => theme.grey800};
   margin: 0.25rem;
   border-radius: 4px;
   color: black;

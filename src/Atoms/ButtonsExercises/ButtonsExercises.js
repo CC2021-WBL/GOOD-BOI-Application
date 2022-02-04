@@ -1,7 +1,8 @@
-import ButtonExercisesStyled from './ButtonExercisesStyled';
-import { FaChevronLeft } from 'react-icons/fa';
 import propTypes from 'prop-types';
+import { FaChevronLeft } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+
+import ButtonExercisesStyled from './ButtonExercisesStyled';
 
 const ButtonExercises = (props) => {
   const { endingButton, goBack, text } = props;
@@ -11,7 +12,7 @@ const ButtonExercises = (props) => {
     if (goBack) {
       navigate(-1);
     } else {
-      navigate('./dogSummary', {
+      navigate('./dog-summary', {
         state: { text: 'Tabela Wyników', label: 'Ocena Zawodnika' },
       });
     }
