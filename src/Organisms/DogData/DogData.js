@@ -2,17 +2,16 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import DOGS from '../../Data/Dummy-data/test-data-dogs';
+import doggos from '../../Data/MongoDBMock/doggos';
 import DOG_DATA_TEMPLATE from '../../Consts/DogDataCONSTS';
 import DataLine from '../../Atoms/DataLine/DataLine';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
-import { doggoSex } from '../../Consts/formsDataToChose';
 import { getDataFormatDdMonthYyy } from '../../Tools/TimeFunctions';
 
 const DogData = ({ id }) => {
   let navigate = useNavigate();
-  const dog = DOGS.find((dog) => (dog.id = id));
+  const dog = doggos.find((dog) => (dog.id = id));
 
   const handleEdit = (event) => {
     event.preventDefault();
@@ -34,12 +33,10 @@ const DogData = ({ id }) => {
     (prop) => (dogData[DOG_DATA_TEMPLATE[prop]] = dog[prop] || 'brak danych'),
   );
 
-  const { dateOfBirth, sex } = DOG_DATA_TEMPLATE;
+  const { dateOfBirth } = DOG_DATA_TEMPLATE;
 
   //Date of birth convert to string
   dogData[dateOfBirth] = `${getDataFormatDdMonthYyy(dogData[dateOfBirth])}`;
-  //Sex convert to string
-  dogData[sex] = doggoSex[dogData[sex]];
 
   return (
     <ColumnWrapper paddingLeftRight={1}>
