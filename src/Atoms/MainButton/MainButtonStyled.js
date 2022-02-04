@@ -29,7 +29,8 @@ const MainButtonStyled = styled.button`
   width: 100%;
   height: 3.25rem;
   align-items: center;
-  justify-content: center;
+  justify-content: ${(props) =>
+    (props.justify && ` ${props.justify};`) || 'center;'};
   margin: 0.5rem 0 0.5rem 0;
   border-radius: 0.75rem;
   ${FONTS.button};
