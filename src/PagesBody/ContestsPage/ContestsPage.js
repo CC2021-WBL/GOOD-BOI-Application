@@ -17,8 +17,8 @@ const ContestsPage = () => {
   }, []);
   return (
     <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
-      {contestsId.map((id, index) => (
-        <ContestCard key={index} competitonId={id} />
+      {contestsId.map((id) => (
+        <ContestCard key={id} contestId={id} />
       ))}
     </ColumnWrapper>
   );

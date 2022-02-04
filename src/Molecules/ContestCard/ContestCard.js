@@ -19,7 +19,7 @@ import propTypes from 'prop-types';
 import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
 import { useNavigate } from 'react-router-dom';
 
-const ContestCard = ({ competitonId }) => {
+const ContestCard = ({ contestId }) => {
   const initialData = {
     contestName: 'info wkrótce',
     startDate: new Date(),
@@ -35,9 +35,7 @@ const ContestCard = ({ competitonId }) => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    const contest = contests.find(
-      ({ contestId }) => contestId === competitonId,
-    );
+    const contest = contests.find((contest) => contest.contestId === contestId);
     const dogsAmount = getAmountOfCompetingDoggos(contest.obedienceClasses);
 
     setContestData({
@@ -46,7 +44,7 @@ const ContestCard = ({ competitonId }) => {
       startDate: contest.startDate,
       endDate: contest.endDate,
       hour: getHourAndMinutesFromDate(contest.startDate),
-      city: contest.place.toUpperCase(),
+      city: contest.address.city.toUpperCase(),
       doggoAmount: dogsAmount,
     });
   }, []);
@@ -89,8 +87,7 @@ const ContestCard = ({ competitonId }) => {
 };
 
 ContestCard.propTypes = {
-  competitonId: propTypes.string.isRequired,
-  contestIndex: propTypes.number,
+  contestId: propTypes.string.isRequired,
 };
 
 export default ContestCard;
