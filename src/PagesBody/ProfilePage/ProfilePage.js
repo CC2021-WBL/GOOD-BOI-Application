@@ -7,13 +7,13 @@ import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
 import { UserDataContext } from '../../Context/UserDataContext';
 
 const ProfilePage = () => {
-  const userId = useContext(UserDataContext);
+  const userData = useContext(UserDataContext);
   return (
     <ColumnWrapper paddingLeftRight={1}>
-      <ProfileCard userId={userId.state.userId} />
+      <ProfileCard userData={userData.state} />
       <FakeButton to="/user-dogs" text="Twoje Psy" ternary="ternary" />
       <FakeButton
-        to={`./${userId.state.userId}/contests`}
+        to={`./${userData.state.userId}/contests`}
         text="Twoje Konkursy"
         ternary="ternary"
       />

@@ -3,13 +3,13 @@ import propTypes from 'prop-types';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import participants from '../../Data/MongoDBMock/participants';
 
-const UserProfileData = ({ userId }) => {
+const UserProfileData = ({ userData }) => {
   const userObject = participants.find(
-    (participant) => participant.participantId === userId,
+    (participant) => participant.participantId === userData.userId,
   );
   return (
     <UserProfileDataStyled>
-      <h3>{`${userObject.participantName} ${userObject.participantSurname}`}</h3>
+      <h3>{`${userData.userName} ${userData.userSurname}`}</h3>
       <p>{`${userObject.adress.street} ${userObject.adress.numberOfHouse}`}</p>
       <p>{`${userObject.adress.postalCode} ${userObject.adress.city}`}</p>
     </UserProfileDataStyled>
@@ -17,7 +17,7 @@ const UserProfileData = ({ userId }) => {
 };
 
 UserProfileData.propTypes = {
-  userId: propTypes.string,
+  userData: propTypes.object,
 };
 
 export default UserProfileData;
