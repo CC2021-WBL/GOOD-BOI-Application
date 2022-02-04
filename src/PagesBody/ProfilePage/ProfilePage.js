@@ -8,13 +8,12 @@ import { UserDataContext } from '../../Context/UserDataContext';
 
 const ProfilePage = () => {
   const userId = useContext(UserDataContext);
-  console.log(userId.state.userId);
   return (
     <ColumnWrapper paddingLeftRight={1}>
       <ProfileCard userId={userId.state.userId} />
       <FakeButton to="/user-dogs" text="Twoje Psy" ternary="ternary" />
       <FakeButton
-        to={`./${userId}/contests`}
+        to={`./${userId.state.userId}/contests`}
         text="Twoje Konkursy"
         ternary="ternary"
       />

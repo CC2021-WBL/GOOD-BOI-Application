@@ -4,11 +4,9 @@ import UserProfileDataStyled from './UserProfileDataStyled';
 import participants from '../../Data/MongoDBMock/participants';
 
 const UserProfileData = ({ userId }) => {
-  console.log(userId);
   const userObject = participants.find(
     (participant) => participant.participantId === userId,
   );
-  console.log(userObject);
   return (
     <UserProfileDataStyled>
       <h3>{`${userObject.participantName} ${userObject.participantSurname}`}</h3>
