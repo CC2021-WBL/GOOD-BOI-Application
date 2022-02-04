@@ -1,4 +1,4 @@
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import GoHomeStyled from '../../Atoms/NavElementStyled/GoHomeStyled';
@@ -12,9 +12,7 @@ import { useState } from 'react';
 
 const NavElement = () => {
   const locationPath = useLocation();
-  const id = useParams();
-  const contestId = id.contestId;
-  console.log(`tu powinien być id contestu ${contestId}`);
+
   const foundPath = pathData.find((e) => e.path === locationPath.pathname);
 
   const [open, setOpen] = useState(false);
