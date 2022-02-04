@@ -1,38 +1,38 @@
-import ClassOrDogButtonStyled from './ClassOrDogButtonStyled';
-import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
+import ClassOrDogButtonStyled from './ClassOrDogButtonStyled';
+import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
+
 const ClassOrDogButton = ({ classInfo, dogInfo }) => {
   const navigate = useNavigate();
-
-  const { name } = classInfo || [];
+  const { obedienceClass } = classInfo || [];
   const { index, dogName } = dogInfo || [];
 
-  const word = () => {
-    if (name) {
-      return name;
+  const urlSection = () => {
+    if (obedienceClass) {
+      return obedienceClass;
     } else if (dogName) {
       return dogName;
     }
   };
   const label = () => {
-    if (word() === name) {
-      return name;
-    } else if (word() === dogName) {
+    if (urlSection() === obedienceClass) {
+      return obedienceClass;
+    } else if (urlSection() === dogName) {
       return `Ocena Zawodnika ${dogName}`;
     }
   };
   const clickHandler = (event) => {
     event.preventDefault();
-    navigate(`./${word()}`, {
+    navigate(`./${urlSection()}`, {
       state: { text: 'Lista uczestników', label: `${label()}` },
     });
   };
 
   return (
     <ClassOrDogButtonStyled onClick={clickHandler}>
-      {classInfo && <>{name}</>}
+      {classInfo && <p>Klasa {obedienceClass}</p>}
       {dogInfo && (
         <>
           {index + 1}. {dogName}

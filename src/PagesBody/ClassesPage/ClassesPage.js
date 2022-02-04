@@ -1,25 +1,28 @@
+import { useParams } from 'react-router-dom';
+
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
-import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
-import MainButton from '../../Atoms/MainButton/MainButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import MainButton from '../../Atoms/MainButton/MainButton';
+import contests from '../../Data/MongoDBMock/contests';
 
 const ClassesPage = () => {
-  function secondaryBtnHandler() {
-    console.log('secondary button clicked');
-  }
+  const { contestId } = useParams();
+  const contestClasses = contests.find(
+    (contest) => contest.contestId === contestId,
+  ).obedienceClasses;
+  function secondaryBtnHandler() {}
 
   return (
     <ColumnWrapper paddingLeftRight={1} paddingTop={0.25}>
-      {RANDOM_CONTESTS[0].obedienceClasses.map((classObject) => {
-        const { obedienceClass, dogs, isCompleted } = classObject;
-        const { id, name } = obedienceClass;
+      {Object.keys(contestClasses).map((obedienceClass, index) => {
+        const isCompleted = false; //TODO
 
         return (
           <ClassOrDogButton
-            key={id}
+            key={index}
             classInfo={{
-              name,
-              dogsAmount: dogs.length,
+              obedienceClass,
+              dogsAmount: contestClasses[obedienceClass].length,
               isCompleted,
             }}
           />
