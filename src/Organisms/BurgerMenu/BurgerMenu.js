@@ -13,12 +13,13 @@ import HeaderMenuStyled from './HeaderMenuStyled';
 import { Link } from 'react-router-dom';
 import MenuStyled from './MenuStyled';
 import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
+import propTypes from 'prop-types';
 
-const BurgerMenu = () => {
+const BurgerMenu = ({ open, setOpen }) => {
   return (
-    <BurgerMenuStyled>
+    <BurgerMenuStyled open={open}>
       <HeaderMenuStyled>
-        <MdOutlineClose className="x" />
+        <MdOutlineClose className="x" onClick={() => setOpen(false)} />
 
         <h3>Menu</h3>
       </HeaderMenuStyled>
@@ -61,5 +62,5 @@ const BurgerMenu = () => {
     </BurgerMenuStyled>
   );
 };
-
+BurgerMenu.propTypes = { open: propTypes.bool, setOpen: propTypes.func };
 export default BurgerMenu;

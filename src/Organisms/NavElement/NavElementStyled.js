@@ -24,6 +24,9 @@ export const NavElementStyled = styled.div`
     .burger-icon {
       color: ${({ theme }) => theme.grey200};
       font-size: 1.25rem;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 `;

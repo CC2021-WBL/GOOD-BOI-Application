@@ -1,11 +1,20 @@
 import styled from 'styled-components';
 
 const BurgerMenuStyled = styled.div`
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
   width: 233px;
+  height: 100vh;
+  background: wheat;
+  transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
+  transition: transform 0.5s linear;
   .footer {
     display: flex;
     width: 233px;
     justify-content: flex-start;
+    background: wheat;
   }
 `;
 

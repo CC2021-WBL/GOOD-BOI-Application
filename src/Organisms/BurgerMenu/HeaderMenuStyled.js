@@ -11,9 +11,13 @@ const HeaderMenuStyled = styled.div`
   padding: 0 90px 0 18px;
   border-bottom: 0.48px solid ${COLORS.grey400};
   color: ${COLORS.grey800};
+
   ${FONTS.h3}
   .x {
     font-size: 24px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
 export default HeaderMenuStyled;
