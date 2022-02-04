@@ -7,14 +7,14 @@ const BurgerMenuStyled = styled.div`
   left: 0;
   width: 233px;
   height: 100vh;
-  background: wheat;
+  background: ${({ theme }) => theme.white};
   transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
   transition: transform 0.5s linear;
   .footer {
     display: flex;
     width: 233px;
     justify-content: flex-start;
-    background: wheat;
+    background: ${({ theme }) => theme.white};
   }
 `;
 

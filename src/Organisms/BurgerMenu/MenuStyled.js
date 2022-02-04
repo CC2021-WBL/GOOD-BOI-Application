@@ -1,26 +1,25 @@
-import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
 
 const MenuStyled = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 25px 13px;
+  padding: 1.5625rem 0.8125rem;
 
   .link {
     display: flex;
     align-items: center;
-    margin: 0 0 24px 0;
-    color: ${COLORS.grey800};
+    margin: 0 0 1.5rem 0;
+    color: ${({ theme }) => theme.grey800};
+
     .icon {
-      margin-right: 20px;
-      color: ${COLORS.grey200};
-      font-size: 23px;
+      margin-right: 1.25rem;
+      color: ${({ theme }) => theme.grey200};
+      font-size: 1.4375rem;
     }
 
     h6 {
       ${FONTS.body_regular};
-      /* font-size: 24px; */
     }
   }
 `;

@@ -24,23 +24,23 @@ const BurgerMenu = ({ open, setOpen }) => {
         <h3>Menu</h3>
       </HeaderMenuStyled>
       <MenuStyled>
-        <Link to="/" className="link">
+        <Link to="user" className="link">
           <FaUserCircle className="icon" />
           <h6>Profil</h6>
         </Link>
-        <Link to="/" className="link">
+        <Link to="role" className="link">
           <FaUserCog className="icon" />
           <h6>Wybierz rolę</h6>
         </Link>
-        <Link to="/" className="link">
+        <Link to="user-dogs" className="link">
           <GiSittingDog className="icon" />
           <h6>Twoje psy</h6>
         </Link>
-        <Link to="/" className="link">
+        <Link to="/contests" className="link">
           <BsTrophyFill className="icon" />
           <h6>Zawody</h6>
         </Link>
-        <Link to="/" className="link">
+        <Link to="settings" className="link">
           <MdSettings className="icon" />
           <h6>Ustawienia</h6>
         </Link>
