@@ -1,16 +1,19 @@
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
-import { BsChevronLeft } from 'react-icons/bs';
 import GoHomeStyled from '../../Atoms/NavElementStyled/GoHomeStyled';
 import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
-import LinkWrapperStyled from '../../Atoms/NavElementStyled/LinkWrapperStyled';
+import { MdMenu } from 'react-icons/md';
 import { NavElementStyled } from './NavElementStyled';
 import PropTypes from 'prop-types';
 import home from '../../Assets/home.png';
 import pathData from '../../Consts/pathData';
 
+// import { BsChevronLeft } from 'react-icons/bs';
+
+// import LinkWrapperStyled from '../../Atoms/NavElementStyled/LinkWrapperStyled';
+
 const NavElement = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const locationPath = useLocation();
   const id = useParams();
   const contestId = id.contestId;
@@ -20,12 +23,14 @@ const NavElement = () => {
   return (
     <>
       <NavElementStyled>
-        <LinkWrapperStyled onClick={() => navigate(-1)}>
+        {/* <LinkWrapperStyled onClick={() => navigate(-1)}>
           <BsChevronLeft className="arrowLeft" />
 
           <h3 className="back">wróć</h3>
-        </LinkWrapperStyled>
-
+        </LinkWrapperStyled> */}
+        <div className="burger-wrapper">
+          <MdMenu className="burger-icon" />
+        </div>
         {locationPath.state && (
           <h3 className="navText">{locationPath.state.text}</h3>
         )}

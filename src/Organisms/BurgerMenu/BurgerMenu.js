@@ -6,15 +6,13 @@ import {
 import { FaUserCircle, FaUserCog } from 'react-icons/fa';
 import { MdOutlineClose, MdSettings } from 'react-icons/md';
 
-import { BsTrophy } from 'react-icons/bs';
+import { BsTrophyFill } from 'react-icons/bs';
 import BurgerMenuStyled from './BurgerMenuStyled';
+import { GiSittingDog } from 'react-icons/gi';
 import HeaderMenuStyled from './HeaderMenuStyled';
 import { Link } from 'react-router-dom';
 import MenuStyled from './MenuStyled';
-import { SiDatadog } from 'react-icons/si';
 import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
-
-// import { icons } from 'react-icons/lib';
 
 const BurgerMenu = () => {
   return (
@@ -34,11 +32,11 @@ const BurgerMenu = () => {
           <h6>Wybierz rolę</h6>
         </Link>
         <Link to="/" className="link">
-          <SiDatadog className="icon" />
+          <GiSittingDog className="icon" />
           <h6>Twoje psy</h6>
         </Link>
         <Link to="/" className="link">
-          <BsTrophy className="icon" />
+          <BsTrophyFill className="icon" />
           <h6>Zawody</h6>
         </Link>
         <Link to="/" className="link">
