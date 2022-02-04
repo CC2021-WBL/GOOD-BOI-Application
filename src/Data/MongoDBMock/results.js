@@ -104,7 +104,7 @@ const results = [
       { codeName: '1.6', result: 10 },
       { codeName: '1.7', result: 8 },
       { codeName: '1.8', result: 10 },
-      { codeName: '1.0', result: 8 },
+      { codeName: '1.9', result: 8 },
     ],
   },
   {
