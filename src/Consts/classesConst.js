@@ -242,7 +242,7 @@ const CLASSES = [
       {
         exerciseName:
           'Siad w grupie przez 2 minuty, przewodnik poza zasięgiem wzroku',
-          codeName: '3.1',
+        codeName: '3.1',
         pointsFactor: 2,
       },
       {
@@ -268,7 +268,7 @@ const CLASSES = [
       {
         exerciseName:
           'Wysyłanie psa kierunkowe, do kwadratu, waruj i przywołanie',
-          codeName: '3.6',
+        codeName: '3.6',
         pointsFactor: 4,
       },
       {
@@ -279,7 +279,7 @@ const CLASSES = [
       {
         exerciseName:
           'Wysyłanie wokół grupy pachołków, zatrzymanie (stój/siad/waruj), aport koziołka i skok przez przeszkodę',
-          codeName: '3.8',
+        codeName: '3.8',
         pointsFactor: 4,
       },
       {
