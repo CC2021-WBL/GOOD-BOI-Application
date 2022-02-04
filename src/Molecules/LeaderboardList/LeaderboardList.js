@@ -35,12 +35,12 @@ const LeaderboardList = ({ classId, dogName, contestId }) => {
   } else {
     const contest = contests.find((contest) => contest.contestId === contestId);
 
-    let className;
-    classId === 'Klasa 0' && (className = '0');
-    classId === 'Klasa 1' && (className = '1');
-    classId === 'Klasa 2' && (className = '2');
+    // let className;
+    // classId === 'Klasa 0' && (className = '0');
+    // classId === 'Klasa 1' && (className = '1');
+    // classId === 'Klasa 2' && (className = '2');
 
-    const resultsArr = contest.obedienceClasses[className];
+    const resultsArr = contest.obedienceClasses[classId];
     if (resultsArr) {
       let resultsIdArr = resultsArr.map((obj) => obj.summaryId);
 
