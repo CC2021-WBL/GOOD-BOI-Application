@@ -5,38 +5,40 @@ import { useNavigate } from 'react-router-dom';
 
 const ClassOrDogButton = ({ classInfo, dogInfo, noInfoLabel }) => {
   const navigate = useNavigate();
+  const { obedienceClass, dogsAmount } = classInfo || [];
+  const { index, dogId, dogName, exercisesCompleted, exercisesAmount } =
+    dogInfo || [];
 
-  const { name } = classInfo || [];
-  const { index, dogName } = dogInfo || [];
+  //CHECK IF CLASS IS COMPLETE
+  // TODO (there must be some good way to check if all exercises for all dogs are completed)
+  const isCompleted = false;
 
-  const word = () => {
-    if (name) {
-      return name;
-    } else if (dogName) {
-      return dogName;
-    }
-  };
-  const label = () => {
-    if (word() === name) {
-      return name;
-    } else if (word() === dogName) {
-      return `Ocena Zawodnika ${dogName}`;
-    }
-  };
   const clickHandler = (event) => {
     event.preventDefault();
-    navigate(`./${word()}`, {
-      state: { text: 'Lista uczestników', label: `${label()}` },
-    });
+    classInfo &&
+      navigate(`./${obedienceClass}`, {
+        state: { text: 'Lista uczestników', label: `Klasa ${obedienceClass}` },
+      });
+    dogInfo &&
+      navigate(`./${dogId}`, {
+        state: { text: 'Wyniki', label: `Oceny zawodnika ${dogName}` },
+      });
   };
 
   return (
     <ClassOrDogButtonStyled onClick={clickHandler}>
-      {classInfo && <>{name}</>}
+      {/*CONDITIONAL FOR CLASSES */}
+      {classInfo && <p>Klasa {obedienceClass}</p>}
+      {classInfo && <InfoLabel classInfo={{ dogsAmount, isCompleted }} />}
+
+      {/*CONDITIONAL FOR DOGS */}
       {dogInfo && (
-        <>
+        <p>
           {index + 1}. {dogName}
-        </>
+        </p>
+      )}
+      {dogInfo && (
+        <InfoLabel dogInfo={{ exercisesCompleted, exercisesAmount }} />
       )}
       {noInfoLabel && <InfoLabel classInfo={classInfo} dogInfo={dogInfo} />}
     </ClassOrDogButtonStyled>
@@ -44,9 +46,18 @@ const ClassOrDogButton = ({ classInfo, dogInfo, noInfoLabel }) => {
 };
 
 ClassOrDogButton.propTypes = {
-  classInfo: PropTypes.object,
-  dogInfo: PropTypes.object,
-  noInfoLabel: PropTypes.bool,
+  classInfo: PropTypes.shape({
+    obedienceClass: PropTypes.string.isRequired,
+    dogsAmount: PropTypes.number.isRequired,
+  }),
+  dogInfo: PropTypes.shape({
+    index: PropTypes.number.isRequired,
+    dogId: PropTypes.string.isRequired,
+    dogName: PropTypes.string.isRequired,
+    exercisesCompleted: PropTypes.number.isRequired,
+    exercisesAmount: PropTypes.number.isRequired,
+    noInfoLabel: PropTypes.bool,
+  }),
 };
 
 export default ClassOrDogButton;

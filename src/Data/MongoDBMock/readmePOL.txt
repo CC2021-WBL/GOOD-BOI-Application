@@ -1,5 +1,5 @@
-Główna operacja wykonywana na naszej bazie danych --> read / get 
-W związku z tym chciałam zoptymalizowac ją pod kątem szybkości odczytu 
+Główna operacja wykonywana na naszej bazie danych --> read / get
+W związku z tym chciałam zoptymalizowac ją pod kątem szybkości odczytu
 (kosztem powielania danych i bardziej skomplikowanego zapisywania danych do bazy)
 
 Założenia śledząc ścieżki aplikacji:
@@ -28,17 +28,16 @@ Założenia śledząc ścieżki aplikacji:
         -po kliknięciu w klasę pobierają się zbiorcze wyniki (1 query)
             z summary results selekcjonowane sa wyniki które mają ID wybranego konkursu + są z klikniętej klasy
     -wejście w Twoje dane (1query)
-        -pobiera z kolekcji participants już wszystkie szczegółowe dane 
+        -pobiera z kolekcji participants już wszystkie szczegółowe dane
     -wejście w Nadchodzące konkursy (1 query)
         -pobiera z kolekcji contests wszystkie konkursy które są jako "nadchodzące"
 
 -ŚCIEŻKA OBSŁUGA
     -wejście w konkursy - 1 query pobiera dane do wyświetlenia w Contest Component + klasy (1 query)
     -po wejściu w klasę pobierają sie na podstawie ID zawodów przekazanych przez props zawodnicy
-    (zawodnicy jako para dogName + summaryId?) + można ich zliczyć
-    -po kliknięciu psa (już pobranego wcześniej) tworzymy nowe dane -> wpisujemy oceny, punkty po przemnożeniu, 
+    (zawodnicy jako para dogName + competingPairsId?) + można ich zliczyć
+    -po kliknięciu psa (już pobranego wcześniej) tworzymy nowe dane -> wpisujemy oceny, punkty po przemnożeniu,
     przeliczamy ostateczną sumę
     -następnie wysyłamy oceny przed przemnożeniem do singleDogResults, a zbiorcze do summaryResults
-    
 
-    
+

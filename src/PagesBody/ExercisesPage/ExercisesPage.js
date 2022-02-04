@@ -1,17 +1,20 @@
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import ButtonExercisesContainer from '../../Molecules/ButtonsExcercisenContainer/ButtonsExercisesContainer';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import DOGS from '../../Data/Dummy-data/test-data-dogs';
 import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
 import Modal from '../../Organisms/Modal/Modal';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
 import modalData from '../../Consts/modalData';
 import { useState } from 'react';
+import contests from '../../Data/MongoDBMock/contests';
+import { useParams } from 'react-router-dom';
+import results from '../../Data/MongoDBMock/results';
 
 const ExercisesPage = () => {
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
   const [isPenaltyModalOpen, setIsPenaltyModalOpen] = useState(false);
+
   const handleDisqualification = () => {
     setIsDisqualifyModalOpen(false);
   };
@@ -30,12 +33,19 @@ const ExercisesPage = () => {
     setIsDisqualifyModalOpen(false);
   }
 
-  const ourTestDogName = 'Woof';
-  const ourTestDog = DOGS.find((dog) => dog.dogName === ourTestDogName);
-  const ourTestContestName = 'XII Zawody im. Pana Starosty';
-  const ourTestPerformanceObject = ourTestDog.performances.find(
-    (performance) => performance.contestName === ourTestContestName,
-  );
+  const { contestId, classId, dogId } = useParams();
+
+  const contestResults = contests.find(
+    (contest) => contest.contestId === contestId,
+  ).obedienceClasses[classId];
+
+  const competingPairsId = contestResults.find(
+    (dog) => dog.dogId === dogId,
+  ).competingPairsId;
+
+  const dogPerformance = results.find(
+    (performance) => performance.competingPairsId === competingPairsId,
+  ).exercises;
 
   return (
     <ColumnWrapper>
@@ -69,7 +79,7 @@ const ExercisesPage = () => {
           />
         </SpecialButtonsContainerStyled>
 
-        <ExerciseCardsContainer performanceObject={ourTestPerformanceObject} />
+        <ExerciseCardsContainer dogPerformance={dogPerformance} />
       </ColumnWrapper>
 
       <ButtonExercisesContainer />

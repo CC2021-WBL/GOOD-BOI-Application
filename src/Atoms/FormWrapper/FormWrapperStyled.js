@@ -1,7 +1,5 @@
-import styled from 'styled-components';
-
-import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
+import styled from 'styled-components';
 
 const FormWrapperStyled = styled.form`
   display: flex;
@@ -19,14 +17,14 @@ const FormWrapperStyled = styled.form`
   .forgot-pass {
     align-self: center;
     padding: 1em 0;
-    color: ${COLORS.primary801};
+    color: ${({ theme }) => theme.primary801};
     ${FONTS.body_bold}
     text-decoration: none;
   }
 
   .forgot-pass-text {
     padding: 0 30px 10px;
-    color: ${COLORS.grey400};
+    color: ${({ theme }) => theme.grey400};
   }
 `;
 

@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import FONTS from '../../Styles/fontsStyledComponents';
-import ExerciseCardStyled from '../../Molecules/ExerciseCard/ExerciseCardStyled';
 import COLORS from '../../Styles/varsStyledComponents';
+import ExerciseCardStyled from '../../Molecules/ExerciseCard/ExerciseCardStyled';
+import FONTS from '../../Styles/fontsStyledComponents';
+import styled from 'styled-components';
 
 const ExerciseStyled = styled(ExerciseCardStyled)`
   width: 50%;
@@ -13,7 +13,7 @@ const ExerciseStyled = styled(ExerciseCardStyled)`
   ${(props) =>
     props.toggle
       ? `background-color: ${COLORS.positive200};`
-      : `background-color:  ${COLORS.grey100}; color: ${COLORS.grey400}`}
+      : `background-color:  ${props.theme.grey100}; color: ${COLORS.grey400}`}
   text-align: left;
 `;
 
