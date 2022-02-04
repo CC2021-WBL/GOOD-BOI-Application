@@ -5,6 +5,7 @@ import MainButton from '../../Atoms/MainButton/MainButton';
 import { useState } from 'react';
 
 // import { useNavigate } from 'react-router-dom';
+// path="class-choice"
 
 const ClassChoicePage = () => {
   const classesArr = CLASSES.map((elem) => elem.name);
@@ -24,6 +25,7 @@ const ClassChoicePage = () => {
             style={{ height: '75px' }}
             text={`Klasa ${obedienceClass}`}
             ternary
+            justify={'left'}
           />
         );
       })}
