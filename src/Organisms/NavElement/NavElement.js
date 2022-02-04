@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 
+import Backdrop from '../../Atoms/Modal/Backdrop';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import GoHomeStyled from '../../Atoms/NavElementStyled/GoHomeStyled';
 import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
@@ -51,6 +52,7 @@ const NavElement = () => {
         </>
       )}
       <BurgerMenu open={open} setOpen={setOpen} />
+      {open && <Backdrop />}
     </>
   );
 };
