@@ -13,7 +13,6 @@ import { useState } from 'react';
 
 const NavElement = () => {
   const locationPath = useLocation();
-
   const foundPath = pathData.find((e) => e.path === locationPath.pathname);
 
   const [open, setOpen] = useState(false);
