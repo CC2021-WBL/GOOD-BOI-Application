@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import MainButton from '../../Atoms/MainButton/MainButton';
@@ -10,20 +9,19 @@ const ClassesPage = () => {
   const contestClasses = contests.find(
     (contest) => contest.contestId === contestId,
   ).obedienceClasses;
+
   function secondaryBtnHandler() {}
 
   return (
     <ColumnWrapper paddingLeftRight={1} paddingTop={0.25}>
       {Object.keys(contestClasses).map((obedienceClass, index) => {
-        const isCompleted = false; //TODO
-
         return (
           <ClassOrDogButton
             key={index}
+            contestId={contestId}
             classInfo={{
               obedienceClass,
               dogsAmount: contestClasses[obedienceClass].length,
-              isCompleted,
             }}
           />
         );
