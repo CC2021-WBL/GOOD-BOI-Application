@@ -19,7 +19,7 @@ const Exercise = ({ codeName, obedienceClassName, toggle }) => {
 
 Exercise.propTypes = {
   codeName: propTypes.string,
-  obedienceClassName: propTypes.string,
+  obedienceClassName: propTypes.number,
   toggle: PropTypes.bool,
 };
 

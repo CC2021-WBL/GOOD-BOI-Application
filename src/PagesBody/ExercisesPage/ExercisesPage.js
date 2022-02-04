@@ -15,11 +15,11 @@ const ExercisesPage = () => {
 
   const obedienceClass = classId;
   const dogName = dogId;
-
   const performanceArray = results
     .filter((performance) => performance.contestId === contestId)
-    .filter((performance) => performance.obedienceClass === obedienceClass)
+    .filter((performance) => performance.obedienceClass == obedienceClass)
     .filter((performance) => performance.dogName === dogName)[0];
+  console.log('performanceArray z local storage');
   console.log(performanceArray);
 
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
