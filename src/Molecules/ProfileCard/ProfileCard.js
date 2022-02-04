@@ -1,14 +1,19 @@
-import ProfileCardStyled from './ProfileCardStyled';
-import UserAddress from '../../Atoms/UserAdress/UserAddress';
-import UserNameAndImg from '../../Atoms/UserNameAndImg/UserNameAndImg';
+import propTypes from 'prop-types';
 
-const ProfileCard = () => {
+import ProfileCardStyled from './ProfileCardStyled';
+import UserProfileData from '../../Atoms/UserProfileData/UserProfileData';
+
+const ProfileCard = ({ userId }) => {
   return (
     <ProfileCardStyled>
-      <UserNameAndImg />
-      <UserAddress />
+      <div className="bg-box" />
+      <UserProfileData userId={userId} />
     </ProfileCardStyled>
   );
+};
+
+ProfileCard.propTypes = {
+  userId: propTypes.string,
 };
 
 export default ProfileCard;

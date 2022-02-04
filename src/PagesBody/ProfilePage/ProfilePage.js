@@ -1,13 +1,17 @@
 import propTypes from 'prop-types';
+import { useContext } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
+import { UserDataContext } from '../../Context/UserDataContext';
 
-const ProfilePage = ({ userId }) => {
+const ProfilePage = () => {
+  const userId = useContext(UserDataContext);
+  console.log(userId.state.userId);
   return (
     <ColumnWrapper paddingLeftRight={1}>
-      <ProfileCard />
+      <ProfileCard userId={userId.state.userId} />
       <FakeButton to="/user-dogs" text="Twoje Psy" ternary="ternary" />
       <FakeButton
         to={`./${userId}/contests`}
