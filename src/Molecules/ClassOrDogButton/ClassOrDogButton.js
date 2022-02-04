@@ -2,30 +2,15 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import ClassOrDogButtonStyled from './ClassOrDogButtonStyled';
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
-import contests from '../../Data/MongoDBMock/contests';
-import results from '../../Data/MongoDBMock/results';
 
-const ClassOrDogButton = ({ classInfo, dogInfo, contestId }) => {
+const ClassOrDogButton = ({ classInfo, dogInfo }) => {
   const navigate = useNavigate();
   const { obedienceClass, dogsAmount } = classInfo || [];
   const { index, dogId, dogName, exercisesCompleted, exercisesAmount } =
     dogInfo || [];
 
   //CHECK IF CLASS IS COMPLETE
-  // TODO (there must be better way to check if all exercises for all dogs are completed)
-  obedienceClass &&
-    console.log(
-      contests
-        .find((contest) => contest.contestId === contestId)
-        .obedienceClasses[obedienceClass].map((dog) => dog.competingPairsId)
-        .map(
-          (performance) =>
-            results.find((result) => (result.competingPairsId = performance))
-              .exercises,
-        )
-        .map((array) => array.map((exercise) => exercise.result))
-        .includes(null),
-    );
+  // TODO (there must be some good way to check if all exercises for all dogs are completed)
   const isCompleted = false;
 
   const clickHandler = (event) => {
@@ -71,7 +56,6 @@ ClassOrDogButton.propTypes = {
     exercisesCompleted: PropTypes.number.isRequired,
     exercisesAmount: PropTypes.number.isRequired,
   }),
-  contestId: PropTypes.string,
 };
 
 export default ClassOrDogButton;
