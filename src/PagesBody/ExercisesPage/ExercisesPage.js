@@ -1,5 +1,4 @@
 import Backdrop from '../../Atoms/Modal/Backdrop';
-import ButtonExercisesContainer from '../../Molecules/ButtonsExcercisenContainer/ButtonsExercisesContainer';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
 import Modal from '../../Organisms/Modal/Modal';
@@ -10,6 +9,8 @@ import modalData from '../../Consts/modalData';
 import results from '../../Data/MongoDBMock/results';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
+
+// import ButtonExercisesContainer from '../../Molecules/ButtonsExcercisenContainer/ButtonsExercisesContainer';
 
 const ExercisesPage = () => {
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
@@ -82,7 +83,7 @@ const ExercisesPage = () => {
         <ExerciseCardsContainer dogPerformance={dogPerformance} />
       </ColumnWrapper>
 
-      <ButtonExercisesContainer />
+      {/* <ButtonExercisesContainer /> Moved to ExerciseCardsContainer*/}
     </ColumnWrapper>
   );
 };

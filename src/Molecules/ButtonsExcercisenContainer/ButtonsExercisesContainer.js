@@ -1,11 +1,16 @@
 import ButtonExercises from '../../Atoms/ButtonsExercises/ButtonsExercises';
 import ButtonExercisesContainerStyled from './ButtonExercisesContainerStyled';
 
-const ButtonExercisesContainer = () => {
+// eslint-disable-next-line react/prop-types
+const ButtonExercisesContainer = ({ dogPerformance }) => {
   return (
     <ButtonExercisesContainerStyled>
       <ButtonExercises goBack text={'Zapisz i wróć do listy'} />
-      <ButtonExercises endingButton text={'Zakończ ocenianie'} />
+      <ButtonExercises
+        dogPerformance={dogPerformance}
+        endingButton
+        text={'Zakończ ocenianie'}
+      />
     </ButtonExercisesContainerStyled>
   );
 };

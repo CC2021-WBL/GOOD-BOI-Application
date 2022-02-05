@@ -1,3 +1,4 @@
+import ButtonExercisesContainer from '../../Molecules/ButtonsExcercisenContainer/ButtonsExercisesContainer';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ExerciseCard from '../../Molecules/ExerciseCard/ExerciseCard';
 import PropTypes from 'prop-types';
@@ -23,17 +24,22 @@ const ExerciseCardsContainer = ({ dogPerformance }) => {
       });
     }
   };
+  console.log('exercisesResults');
+  console.log(exercisesResults);
 
   return (
-    <ColumnWrapper>
-      {exercisesResults.map((exercise) => (
-        <ExerciseCard
-          key={exercise.codeName}
-          exerciseInfo={exercise}
-          onChange={performanceSaveHandler}
-        />
-      ))}
-    </ColumnWrapper>
+    <>
+      <ColumnWrapper>
+        {exercisesResults.map((exercise) => (
+          <ExerciseCard
+            key={exercise.codeName}
+            exerciseInfo={exercise}
+            onChange={performanceSaveHandler}
+          />
+        ))}
+      </ColumnWrapper>
+      <ButtonExercisesContainer dogPerformance={exercisesResults} />
+    </>
   );
 };
 

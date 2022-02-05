@@ -5,11 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 const ButtonExercises = (props) => {
-  const { endingButton, goBack, text } = props;
+  // eslint-disable-next-line react/prop-types
+  const { endingButton, goBack, text, dogPerformance } = props;
   const navigate = useNavigate();
   let { dogId, classId } = useParams();
 
   const handleClick = () => {
+    console.log('dogPerformance');
+    console.log(dogPerformance);
     if (goBack) {
       navigate(-1);
     } else {
@@ -17,6 +20,7 @@ const ButtonExercises = (props) => {
         state: {
           text: 'Tabela Wyników',
           label: `${classId} / Ocena Zawodnika ${dogId}`,
+          dogPerformance: { dogPerformance },
         },
       });
     }

@@ -7,13 +7,13 @@ import propTypes from 'prop-types';
 const PenaltyOrDisqualifiedLine = ({ result }) => {
   // check if penalties exists
   const penaltiesExist = result.some((element) => {
-    return element.penalty;
+    return element.penaltyPoints;
   });
 
   // if exists, create new arr with penalties only
   const penaltyArr = result.map((penalty) => {
-    if (penalty.penalty) {
-      return penalty.penalty;
+    if (penalty.penaltyPoints) {
+      return penalty.penaltyPoints;
     } else return 0;
   });
 

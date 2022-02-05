@@ -1,16 +1,20 @@
 import LeaderboardListElement from '../../Atoms/Leaderboard/LeaderboardListElement';
 import LeaderboardListStyled from './LeaderboardListStyled';
 import calculateExerciseScore from '../../Tools/calculateExerciseScore';
+import checkIfDisqualified from './../../Tools/checkIfDisqualified';
 import contests from '../../Data/MongoDBMock/contests';
 import individualSummaryInCurrentCompetiton from '../../Data/MongoDBMock/summaryResults';
 import propTypes from 'prop-types';
 import translateExerciseCode2string from '../../Tools/translateExerciseCode2string';
+import { useLocation } from 'react-router-dom';
 
 const LeaderboardList = ({ classId, dogName, contestId }) => {
+  const locationPath = useLocation();
+  let disqualified;
+  checkIfDisqualified ? (disqualified = 'disqualified') : '';
+  // if dogName is defined, then render dog-summary leaderboard
   if (dogName) {
-    const retrievedObject = localStorage.getItem('performanceObject');
-    const retrivedPerformanceObject = JSON.parse(retrievedObject);
-    const exercisesList = retrivedPerformanceObject.exercises;
+    const exercisesList = locationPath.state.dogPerformance.dogPerformance;
     const dogSummaryResult = exercisesList.map((elem) => ({
       text: translateExerciseCode2string(classId, elem.codeName),
       score: calculateExerciseScore(classId, elem.codeName) * elem.result,
@@ -25,7 +29,7 @@ const LeaderboardList = ({ classId, dogName, contestId }) => {
                 text={arrElement.text}
                 score={arrElement.score}
                 index={index}
-                // disqualified={disqualified}
+                disqualified={{ disqualified }}
               />
             );
           })}
@@ -35,22 +39,17 @@ const LeaderboardList = ({ classId, dogName, contestId }) => {
   } else {
     const contest = contests.find((contest) => contest.contestId === contestId);
 
-    // let className;
-    // classId === 'Klasa 0' && (className = '0');
-    // classId === 'Klasa 1' && (className = '1');
-    // classId === 'Klasa 2' && (className = '2');
-
     const resultsArr = contest.obedienceClasses[classId];
     if (resultsArr) {
       let resultsIdArr = resultsArr.map((obj) => obj.competingPairsId);
 
       const finalLeaderboardArr = resultsIdArr.map((competingPairsId) => {
-        let fakeDogSummary = individualSummaryInCurrentCompetiton.find(
+        let DogSummary = individualSummaryInCurrentCompetiton.find(
           (summary) => summary.competingPairsId === competingPairsId,
         );
         return {
-          text: fakeDogSummary.dogName,
-          score: fakeDogSummary.summaryResult,
+          text: DogSummary.dogName,
+          score: DogSummary.summaryResult,
         };
       });
       const sortedLeaderboardClassResults = finalLeaderboardArr.sort(
@@ -66,7 +65,7 @@ const LeaderboardList = ({ classId, dogName, contestId }) => {
                 text={arrElement.text}
                 score={arrElement.score}
                 index={index}
-                // disqualified={disqualified}
+                disqualified={{ disqualified }}
               />
             );
           })}
@@ -88,6 +87,6 @@ LeaderboardList.propTypes = {
   contestId: propTypes.string,
   classId: propTypes.string,
   dogName: propTypes.string,
-  performanceObject: propTypes.object,
+  result: propTypes.object,
 };
 export default LeaderboardList;
