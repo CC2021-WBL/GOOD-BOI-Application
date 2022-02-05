@@ -1,18 +1,18 @@
+import propTypes from 'prop-types';
 import { createContext, useReducer } from 'react';
 
 import participantReducer from '../Reducers/participantReducer';
 import participants from '../Data/MongoDBMock/participants';
-import propTypes from 'prop-types';
 
 export const ParticipantContext = createContext();
 
 const initialData = {
   dogs: participants[0].dogs,
-  country: participants[0].adress.country,
-  city: participants[0].adress.city,
-  street: participants[0].adress.street,
-  numberOfHouse: participants[0].adress.numberOfHouse,
-  postalCode: participants[0].adress.postalCode,
+  country: participants[0].address.country,
+  city: participants[0].address.city,
+  street: participants[0].address.street,
+  numberOfHouse: participants[0].address.numberOfHouse,
+  postalCode: participants[0].address.postalCode,
 };
 
 export function ParticipantContextProvider({ children }) {
