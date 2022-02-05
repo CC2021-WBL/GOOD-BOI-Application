@@ -8,6 +8,7 @@ import Modal from '../../Organisms/Modal/Modal';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
 import modalData from '../../Consts/modalData';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 const ExercisesPage = () => {
@@ -24,6 +25,9 @@ const ExercisesPage = () => {
 
   const handleEvaluation = () => {
     setIsEvaluationModalOpen(false);
+    navigate('./dog-summary', {
+      state: { text: 'Tabela Wyników', label: 'Ocena Zawodnika' },
+    });
   };
   const openDisqualifyModalHandler = () => {
     setIsDisqualifyModalOpen(true);
@@ -33,7 +37,7 @@ const ExercisesPage = () => {
   };
 
   const openEvaluationModalHandler = () => {
-    setIsPenaltyModalOpen(true);
+    setIsEvaluationModalOpen(true);
   };
 
   function closeModalHandler() {
@@ -41,6 +45,11 @@ const ExercisesPage = () => {
     setIsDisqualifyModalOpen(false);
     setIsEvaluationModalOpen(false);
   }
+  const navigate = useNavigate();
+
+  const goBackHandler = () => {
+    navigate(-1);
+  };
 
   const ourTestDogName = 'Woof';
   const ourTestDog = DOGS.find((dog) => dog.dogName === ourTestDogName);
@@ -94,7 +103,11 @@ const ExercisesPage = () => {
         <ExerciseCardsContainer performanceObject={ourTestPerformanceObject} />
       </ColumnWrapper>
       <ButtonExercisesContainerStyled>
-        <ButtonExercises secondary text={'Zapisz i wróć do listy'} />
+        <ButtonExercises
+          handler={goBackHandler}
+          secondary
+          text={'Zapisz i wróć do listy'}
+        />
         <ButtonExercises
           handler={openEvaluationModalHandler}
           primary

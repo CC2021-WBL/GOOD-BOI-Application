@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const handleBgAndColor = (props) => {
   if (props.primary) {
-    return `color: ${props.theme.white}; background: ${props.theme.positive400};`;
+    return `color: ${props.theme.white}; background: ${props.theme.primary501};`;
   }
   if (props.secondary) {
     return `color: ${props.theme.primary801}; background: ${props.theme.primary201}; 
