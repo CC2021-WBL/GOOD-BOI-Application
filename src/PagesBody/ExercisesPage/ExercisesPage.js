@@ -13,11 +13,17 @@ import { useState } from 'react';
 const ExercisesPage = () => {
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
   const [isPenaltyModalOpen, setIsPenaltyModalOpen] = useState(false);
+  const [isEvaluationModalOpen, setIsEvaluationModalOpen] = useState(false);
+
   const handleDisqualification = () => {
     setIsDisqualifyModalOpen(false);
   };
   const handlePenalty = () => {
     setIsPenaltyModalOpen(false);
+  };
+
+  const handleEvaluation = () => {
+    setIsEvaluationModalOpen(false);
   };
   const openDisqualifyModalHandler = () => {
     setIsDisqualifyModalOpen(true);
@@ -26,9 +32,14 @@ const ExercisesPage = () => {
     setIsPenaltyModalOpen(true);
   };
 
+  const openEvaluationModalHandler = () => {
+    setIsPenaltyModalOpen;
+  };
+
   function closeModalHandler() {
     setIsPenaltyModalOpen(false);
     setIsDisqualifyModalOpen(false);
+    setIsEvaluationModalOpen(false);
   }
 
   const ourTestDogName = 'Woof';
@@ -73,11 +84,7 @@ const ExercisesPage = () => {
         <ExerciseCardsContainer performanceObject={ourTestPerformanceObject} />
       </ColumnWrapper>
       <ButtonExercisesContainerStyled>
-        <ButtonExercises
-          handler={openPenaltyModalHandler}
-          secondary
-          text={'Zapisz i wróć do listy'}
-        />
+        <ButtonExercises secondary text={'Zapisz i wróć do listy'} />
         <ButtonExercises
           handler={openPenaltyModalHandler}
           primary
