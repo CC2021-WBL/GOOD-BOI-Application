@@ -36,7 +36,7 @@ const UserDogPage = () => {
       <MainButton
         secondary
         text="DODAJ PSA"
-        onClick={() => navigate('/addDogForm')}
+        onClick={() => navigate('/add-dog-form')}
       />
     </ColumnWrapper>
   );
