@@ -3,11 +3,11 @@ import propTypes from 'prop-types';
 import ProfileCardStyled from './ProfileCardStyled';
 import UserProfileData from '../../Atoms/UserProfileData/UserProfileData';
 
-const ProfileCard = ({ userData }) => {
+const ProfileCard = () => {
   return (
     <ProfileCardStyled>
-      <div className="bg-box" />
-      <UserProfileData userData={userData} />
+      <div className="bg-box"></div>
+      <UserProfileData />
     </ProfileCardStyled>
   );
 };

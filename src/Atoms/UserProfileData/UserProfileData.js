@@ -1,15 +1,18 @@
 import propTypes from 'prop-types';
+import { useContext } from 'react';
 
 import UserProfileDataStyled from './UserProfileDataStyled';
 import participants from '../../Data/MongoDBMock/participants';
+import { UserDataContext } from '../../Context/UserDataContext';
 
-const UserProfileData = ({ userData }) => {
-  const { userId, userName, userSurname } = userData;
+const UserProfileData = () => {
+  const { state } = useContext(UserDataContext);
+  const { userId, userName, userSurname } = state;
   const userObject = participants.find(
     (participant) => participant.participantId === userId,
   );
-  const { street, numberOfHouse, city, postalCode } = address;
   const { address } = userObject;
+  const { street, numberOfHouse, city, postalCode } = address;
 
   return (
     <UserProfileDataStyled>
