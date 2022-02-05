@@ -42,11 +42,11 @@ const LeaderboardList = ({ classId, dogName, contestId }) => {
 
     const resultsArr = contest.obedienceClasses[classId];
     if (resultsArr) {
-      let resultsIdArr = resultsArr.map((obj) => obj.summaryId);
+      let resultsIdArr = resultsArr.map((obj) => obj.competingPairsId);
 
-      const finalLeaderboardArr = resultsIdArr.map((summaryId) => {
+      const finalLeaderboardArr = resultsIdArr.map((competingPairsId) => {
         let fakeDogSummary = individualSummaryInCurrentCompetiton.find(
-          (summary) => summary.competingPairsId === summaryId,
+          (summary) => summary.competingPairsId === competingPairsId,
         );
         return {
           text: fakeDogSummary.dogName,
