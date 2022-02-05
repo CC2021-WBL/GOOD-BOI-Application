@@ -3,14 +3,8 @@ import ExerciseStyled from './ExerciseStyled';
 import PropTypes from 'prop-types';
 import propTypes from 'prop-types';
 
-const Exercise = ({ codeName, obedienceClassName, toggle }) => {
-  const classObj = CLASSES.find(
-    (classObj) => classObj.name === obedienceClassName,
-  );
-
-  const exercisesArr = classObj.exercises;
-
-  const exerciseName = exercisesArr.find(
+const Exercise = ({ codeName, toggle }) => {
+  const exerciseName = CLASSES[codeName.charAt(0)].exercises.find(
     (exercise) => exercise.codeName === codeName,
   ).exerciseName;
 
@@ -18,9 +12,8 @@ const Exercise = ({ codeName, obedienceClassName, toggle }) => {
 };
 
 Exercise.propTypes = {
-  codeName: propTypes.string,
-  obedienceClassName: propTypes.number,
-  toggle: PropTypes.bool,
+  codeName: propTypes.string.isRequired,
+  toggle: PropTypes.bool.isRequired,
 };
 
 export default Exercise;
