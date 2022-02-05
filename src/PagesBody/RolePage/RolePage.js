@@ -1,16 +1,18 @@
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ForbiddenEntryPage from '../ForbiddenEntryPage/ForbiddenEntryPage';
-import { Link } from 'react-router-dom';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import { ROLES } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
-import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { getLinkUrl } from '../../Tools/getLinkUrl';
 
 const RolePage = () => {
   const { state, dispatch } = useContext(UserDataContext);
   console.log(state);
-  const { roles, isAuthenticated } = state;
+  const { userId, roles, isAuthenticated } = state;
   const navigate = useNavigate();
 
   if (!isAuthenticated) {
@@ -22,7 +24,7 @@ const RolePage = () => {
       {roles.map((role, index) => (
         <Link
           key={index}
-          to={ROLES[role].roleButtonLink}
+          to={getLinkUrl(userId, role)}
           style={{ textDecoration: 'none' }}
         >
           <MainButton text={ROLES[role].roleButtonText} ternary />

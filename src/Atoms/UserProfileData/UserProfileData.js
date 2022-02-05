@@ -5,6 +5,8 @@ import UserProfileDataStyled from './UserProfileDataStyled';
 import participants from '../../Data/MongoDBMock/participants';
 import { UserDataContext } from '../../Context/UserDataContext';
 
+// import { useLocation } from 'react-router-dom';
+
 const initialData = {
   address: {
     country: 'Polska',
@@ -23,6 +25,24 @@ const UserProfileData = () => {
   if (!isAuthenticated) {
     throw new Error('Your not allowed to be here!');
   }
+
+  // mock for checking authentication and if userId is in database
+
+  // const { pathname } = useLocation();
+
+  // if (!isAuthenticated) {
+  //   try {
+  //     const userId = pathname.split('/').pop();
+
+  //     const userObject = participants.find(
+  //       (participant) => participant.participantId === userId,
+  //     );
+  //     dispatch({ type: 'LOG_IN' });
+  //     setUserObject(userObject);
+  //   } catch (err) {
+  //     throw new Error('Your not allowed to be here!');
+  //   }
+  // }
 
   const { address } = userObject;
   const { street, numberOfHouse, city, postalCode } = address;

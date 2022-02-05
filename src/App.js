@@ -45,7 +45,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route element={<Layout withSettings />}>
               <Route
-                path="user"
+                path="user/:userId"
                 element={
                   <UserDataProvider>
                     <ParticipantContextProvider>
