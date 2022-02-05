@@ -1,5 +1,6 @@
 import Backdrop from '../../Atoms/Modal/Backdrop';
-import ButtonExercisesContainer from '../../Molecules/ButtonsExcercisenContainer/ButtonsExercisesContainer';
+import ButtonExercises from '../../Atoms/ButtonsExercises/ButtonsExercises';
+import ButtonExercisesContainerStyled from '../../Molecules/ButtonsExcercisenContainer/ButtonExercisesContainerStyled';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import DOGS from '../../Data/Dummy-data/test-data-dogs';
 import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
@@ -71,8 +72,18 @@ const ExercisesPage = () => {
 
         <ExerciseCardsContainer performanceObject={ourTestPerformanceObject} />
       </ColumnWrapper>
-
-      <ButtonExercisesContainer />
+      <ButtonExercisesContainerStyled>
+        <ButtonExercises
+          handler={openPenaltyModalHandler}
+          secondary
+          text={'Zapisz i wróć do listy'}
+        />
+        <ButtonExercises
+          handler={openPenaltyModalHandler}
+          primary
+          text={'Zakończ ocenianie'}
+        />
+      </ButtonExercisesContainerStyled>{' '}
     </ColumnWrapper>
   );
 };
