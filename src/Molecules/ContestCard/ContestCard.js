@@ -11,12 +11,12 @@ import {
 import { useEffect, useState } from 'react';
 
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
-import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
+import contests from '../../Data/MongoDBMock/contests';
 import propTypes from 'prop-types';
 import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
 import { useNavigate } from 'react-router-dom';
 
-const ContestCard = ({ contestId, contestIndex }) => {
+const ContestCard = ({ contestId }) => {
   const initialData = {
     contestName: 'info wkrótce',
     startDate: new Date(),
@@ -31,17 +31,20 @@ const ContestCard = ({ contestId, contestIndex }) => {
     contestData;
   let navigate = useNavigate();
 
+  const contest = contests.find((contest) => contest.contestId === contestId);
+
   useEffect(() => {
     setContestData({
       ...contestData,
-      contestName: RANDOM_CONTESTS[contestIndex].name,
-      startDate: RANDOM_CONTESTS[contestIndex].date,
-      endDate: RANDOM_CONTESTS[contestIndex].endDate,
-      hour: getHourAndMinutesFromDate(RANDOM_CONTESTS[contestIndex].date),
-      city: RANDOM_CONTESTS[contestIndex].city.toUpperCase(),
-      doggoAmount: 30,
+      contestName: contest.contestName,
+      startDate: contest.startDate,
+      endDate: contest.endDate,
+      hour: getHourAndMinutesFromDate(contest.startDate),
+      city: contest.address.city.toUpperCase(),
+      doggoAmount: Object.keys(contest.obedienceClasses)
+        .map((key) => contest.obedienceClasses[key].length)
+        .reduce((a, b) => a + b),
     });
-    console.log(contestId);
   }, []);
 
   const stringDate = getDataFormatDdMonthYyy(startDate);
@@ -83,7 +86,6 @@ const ContestCard = ({ contestId, contestIndex }) => {
 
 ContestCard.propTypes = {
   contestId: propTypes.string.isRequired,
-  contestIndex: propTypes.number,
 };
 
 export default ContestCard;
