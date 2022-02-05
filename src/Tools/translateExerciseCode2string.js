@@ -3,6 +3,7 @@ import CLASSES from '../Consts/classesConst';
 // Function  translates exercise code for example "3.1" into exersise description
 
 const translateExerciseCode2string = (className, exerciseCode) => {
+  console.log(className, exerciseCode);
   const classObj = CLASSES.find((classObj) => classObj.name == className);
   const exercisesArr = classObj.exercises;
 
