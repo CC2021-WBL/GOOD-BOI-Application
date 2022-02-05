@@ -4,9 +4,7 @@ import styled from 'styled-components';
 const PenaltyOrDisqualifiedLineStyled = styled.div`
   display: flex;
   height: 3.125rem;
-  color: ${({ theme }) => theme.grey800};
   align-items: center;
-  justify-content: space-between;
   justify-content: ${(props) =>
     props.disqualifiedColor ? 'center;' : 'space-between;'};
   padding: 0 1rem;
@@ -15,6 +13,7 @@ const PenaltyOrDisqualifiedLineStyled = styled.div`
     props.disqualifiedColor
       ? `${props.theme.negative100}`
       : `${props.theme.warning100}`};
+  color: ${({ theme }) => theme.grey800};
   ${FONTS.body_semibold};
 `;
 

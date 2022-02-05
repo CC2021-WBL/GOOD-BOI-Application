@@ -15,7 +15,7 @@ const LeaderboardList = ({ classId, dogName, contestId, result }) => {
   // const locationPath = useLocation();
   // dopisujemy penaltyPoints
   result.penaltyPoints = -10;
-  result.specialState = 'dyskwalifikacja';
+  // result.specialState = 'dyskwalifikacja';
   console.log('dogPerformanceData');
   console.log(result);
   console.log('checkIfDisqualified');

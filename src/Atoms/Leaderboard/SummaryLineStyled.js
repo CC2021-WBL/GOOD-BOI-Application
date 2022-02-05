@@ -4,11 +4,11 @@ import styled from 'styled-components';
 const SummaryLineStyled = styled.div`
   display: flex;
   height: 4.6875rem;
-  color: ${({ theme }) => theme.grey800};
   align-items: center;
   justify-content: center;
-  ${FONTS.body_semibold}
-  background: ${({ theme }) => theme.white}
+  background: ${({ theme }) => theme.white};
+  color: ${({ theme }) => theme.grey800};
+  ${FONTS.body_semibold};
 `;
 
 export default SummaryLineStyled;
