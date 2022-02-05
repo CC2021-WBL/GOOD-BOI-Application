@@ -1,13 +1,15 @@
-import PropTypes from 'prop-types';
 import PointsTextStyled from './PointsTextStyled';
+import PropTypes from 'prop-types';
 
-const PointsText = ({ points }) => {
-  const pointsString = String(points).replace(/\./g, ',');
+const PointsText = ({ exerciseResult }) => {
+  const pointsString =
+    exerciseResult === null ? '-' : String(exerciseResult).replace(/\./g, ',');
+
   return <PointsTextStyled>{pointsString}</PointsTextStyled>;
 };
 
 PointsText.propTypes = {
-  points: PropTypes.number,
+  exerciseResult: PropTypes.number,
 };
 
 export default PointsText;
