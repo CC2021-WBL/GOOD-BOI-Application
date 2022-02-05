@@ -1,4 +1,4 @@
-import CLASSES from '../Consts/CLASSES';
+import CLASSES from '../Consts/classesConst';
 
 // Function  translates exercise code for example "3.1" into exersise description
 
