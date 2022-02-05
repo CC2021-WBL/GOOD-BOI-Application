@@ -20,6 +20,7 @@ const UserDogPage = () => {
   return (
     <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
       {participantDogs.map((dog, index) => {
+        //comment just to make commit possible
         const { dogName, dogId } = dog;
         return (
           <ClassOrDogButton
