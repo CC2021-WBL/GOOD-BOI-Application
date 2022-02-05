@@ -18,7 +18,6 @@ const UserDogPage = () => {
               index,
               dogName,
             }}
-            onClick={console.log('spiesek')}
           />
         );
       })}

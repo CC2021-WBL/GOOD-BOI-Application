@@ -75,6 +75,16 @@ function App() {
                   </UserDataProvider>
                 }
               />
+              <Route
+                path="user-dogs"
+                element={
+                  <UserDataProvider>
+                    <ParticipantContextProvider>
+                      <UserDogPage />
+                    </ParticipantContextProvider>
+                  </UserDataProvider>
+                }
+              />
             </Route>
             <Route element={<Layout withLabel />}>
               <Route
@@ -159,16 +169,6 @@ function App() {
                   <UserDataProvider>
                     <ParticipantContextProvider>
                       <ContestDetailsPage />
-                    </ParticipantContextProvider>
-                  </UserDataProvider>
-                }
-              />
-              <Route
-                path="user-dogs"
-                element={
-                  <UserDataProvider>
-                    <ParticipantContextProvider>
-                      <UserDogPage />
                     </ParticipantContextProvider>
                   </UserDataProvider>
                 }

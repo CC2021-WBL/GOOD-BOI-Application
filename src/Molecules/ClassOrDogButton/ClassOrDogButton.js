@@ -56,8 +56,8 @@ ClassOrDogButton.propTypes = {
     dogName: PropTypes.string.isRequired,
     exercisesCompleted: PropTypes.number.isRequired,
     exercisesAmount: PropTypes.number.isRequired,
-    noInfoLabel: PropTypes.bool,
   }),
+  noInfoLabel: PropTypes.bool.isRequired,
 };
 
 export default ClassOrDogButton;
