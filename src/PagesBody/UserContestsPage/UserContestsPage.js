@@ -1,9 +1,10 @@
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import ContestFilterToggler from '../../Organisms/ContestFilterHarmonica/ContestFilterToggler';
 
 const UserContestPage = () => {
   return (
     <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
-      <h1>User Contest Page</h1>
+      <ContestFilterToggler />
     </ColumnWrapper>
   );
 };

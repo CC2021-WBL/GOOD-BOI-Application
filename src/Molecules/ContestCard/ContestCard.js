@@ -54,7 +54,7 @@ const ContestCard = ({ contestId }) => {
 
   const handleClick = (event) => {
     event.preventDefault();
-    navigate(`./${competitonId}/classes`, {
+    navigate(`./${contestId}/classes`, {
       state: { text: 'Lista klas', label: `${contestName}` },
     });
     //navigate musi przekazać dane o klasach jakie mają się odbyć i nazwach psów w tych klasach?
