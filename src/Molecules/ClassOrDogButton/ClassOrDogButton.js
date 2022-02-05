@@ -37,10 +37,9 @@ const ClassOrDogButton = ({ classInfo, dogInfo, noInfoLabel }) => {
           {index + 1}. {dogName}
         </p>
       )}
-      {dogInfo && (
+      {dogInfo && !noInfoLabel && (
         <InfoLabel dogInfo={{ exercisesCompleted, exercisesAmount }} />
       )}
-      {noInfoLabel && <InfoLabel classInfo={classInfo} dogInfo={dogInfo} />}
     </ClassOrDogButtonStyled>
   );
 };
@@ -54,8 +53,8 @@ ClassOrDogButton.propTypes = {
     index: PropTypes.number.isRequired,
     dogId: PropTypes.string.isRequired,
     dogName: PropTypes.string.isRequired,
-    exercisesCompleted: PropTypes.number.isRequired,
-    exercisesAmount: PropTypes.number.isRequired,
+    exercisesCompleted: PropTypes.number,
+    exercisesAmount: PropTypes.number,
   }),
   noInfoLabel: PropTypes.bool.isRequired,
 };
