@@ -7,7 +7,6 @@ import propTypes from 'prop-types';
 
 const SummaryLine = ({ result, classId }) => {
   const exercisesArr = result;
-  console.log(result);
   const scoresArr = exercisesArr.map((score) => {
     return score.result * calculateExerciseScore(classId, score.codeName);
   });

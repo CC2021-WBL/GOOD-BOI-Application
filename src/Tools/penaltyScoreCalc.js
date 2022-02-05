@@ -1,13 +1,8 @@
 const penaltyScore = ({ result }) => {
-  const penaltyArr = result.map((penalty) => {
-    if (penalty.penalty) {
-      return penalty.penalty;
-    } else return 0;
-  });
-  const score = penaltyArr.reduce((acc, val) => {
-    return acc + val;
-  });
-  return score;
+  if (result.penaltyPoints) return result.penaltyPoints;
+  else {
+    return 0;
+  }
 };
 
 export default penaltyScore;
