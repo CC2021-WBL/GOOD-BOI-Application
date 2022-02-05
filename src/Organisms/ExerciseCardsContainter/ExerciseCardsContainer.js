@@ -3,9 +3,8 @@ import ExerciseCard from '../../Molecules/ExerciseCard/ExerciseCard';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-const ExerciseCardsContainer = ({ performanceObject }) => {
-  const { exercises, obedienceClass } = performanceObject;
-  const [exercisesResults, setExercisesResults] = useState(exercises);
+const ExerciseCardsContainer = ({ dogPerformance }) => {
+  const [exercisesResults, setExercisesResults] = useState(dogPerformance);
 
   const performanceSaveHandler = (event) => {
     if (
@@ -19,10 +18,7 @@ const ExerciseCardsContainer = ({ performanceObject }) => {
         prevState.find(
           (exercise) => exercise.codeName === event.target.id,
         ).result = Number(event.target.value);
-        localStorage.setItem(
-          'performanceObject',
-          JSON.stringify(performanceObject),
-        );
+        console.log(dogPerformance);
         return prevState;
       });
     }
@@ -34,7 +30,6 @@ const ExerciseCardsContainer = ({ performanceObject }) => {
         <ExerciseCard
           key={exercise.codeName}
           exerciseInfo={exercise}
-          obedienceClassName={obedienceClass}
           onChange={performanceSaveHandler}
         />
       ))}
@@ -43,7 +38,7 @@ const ExerciseCardsContainer = ({ performanceObject }) => {
 };
 
 ExerciseCardsContainer.propTypes = {
-  performanceObject: PropTypes.object,
+  dogPerformance: PropTypes.array,
 };
 
 export default ExerciseCardsContainer;
