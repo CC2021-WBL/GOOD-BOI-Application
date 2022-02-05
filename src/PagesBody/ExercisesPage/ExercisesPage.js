@@ -33,7 +33,7 @@ const ExercisesPage = () => {
   };
 
   const openEvaluationModalHandler = () => {
-    setIsPenaltyModalOpen;
+    setIsPenaltyModalOpen(true);
   };
 
   function closeModalHandler() {
@@ -51,20 +51,30 @@ const ExercisesPage = () => {
 
   return (
     <ColumnWrapper>
-      {(isDisqualifyModalOpen || isPenaltyModalOpen) && (
+      {isDisqualifyModalOpen && (
         <Modal
-          modalData={
-            isDisqualifyModalOpen ? modalData.disqualify : modalData.penalty
-          }
+          modalData={modalData.disqualify}
           onCloseHandler={closeModalHandler}
-          onConfirmHandler={
-            isDisqualifyModalOpen ? handleDisqualification : handlePenalty
-          }
+          onConfirmHandler={handleDisqualification}
         />
       )}
-      {(isDisqualifyModalOpen || isPenaltyModalOpen) && (
-        <Backdrop onClick={closeModalHandler} />
+      {isPenaltyModalOpen && (
+        <Modal
+          modalData={modalData.penalty}
+          onCloseHandler={closeModalHandler}
+          onConfirmHandler={handlePenalty}
+        />
       )}
+      {isEvaluationModalOpen && (
+        <Modal
+          modalData={modalData.endEvaluation}
+          onCloseHandler={closeModalHandler}
+          onConfirmHandler={handleEvaluation}
+        />
+      )}
+      {(isDisqualifyModalOpen ||
+        isPenaltyModalOpen ||
+        isEvaluationModalOpen) && <Backdrop onClick={closeModalHandler} />}
       <ColumnWrapper paddingLeftRight={0.25}>
         <SpecialButtonsContainerStyled>
           <SpecialButton
@@ -86,7 +96,7 @@ const ExercisesPage = () => {
       <ButtonExercisesContainerStyled>
         <ButtonExercises secondary text={'Zapisz i wróć do listy'} />
         <ButtonExercises
-          handler={openPenaltyModalHandler}
+          handler={openEvaluationModalHandler}
           primary
           text={'Zakończ ocenianie'}
         />
