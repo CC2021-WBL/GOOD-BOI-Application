@@ -19,7 +19,6 @@ const DogDataPage = () => {
   const [dogId, setDogId] = useState(null);
   const { dogId: dogIdParams } = useParams();
   const { participantData } = useContext(ParticipantContext);
-  console.log(participantData);
 
   /*
   These works three-way:
