@@ -1,19 +1,21 @@
+import PropTypes from 'prop-types';
+import { BsChevronLeft } from 'react-icons/bs';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import AppLogo from '../../Assets/AppLogo.png';
-import { BsChevronLeft } from 'react-icons/bs';
 import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
 import LinkWrapperStyled from '../../Atoms/NavElementStyled/LinkWrapperStyled';
 import LogoStyled from '../../Atoms/NavElementStyled/LogoStyled';
+// import pathData from '../../Consts/pathData';
 import { NavElementStyled } from './NavElementStyled';
-import PropTypes from 'prop-types';
-import pathData from '../../Consts/pathData';
+import { checkPathOrigin } from '../../Tools/checkPathOrigin';
 
 const NavElement = () => {
   const navigate = useNavigate();
   const locationPath = useLocation();
-  const foundPath = pathData.find((e) => e.path === locationPath.pathname);
-
+  // const foundPath = pathData.find((e) => e.path === locationPath.pathname);
+  const data = checkPathOrigin(locationPath.pathname);
+  console.log(data);
   return (
     <>
       <NavElementStyled>
@@ -23,7 +25,11 @@ const NavElement = () => {
           <h3 className="back">wróć</h3>
         </LinkWrapperStyled>
 
-        {locationPath.state && (
+        {/* TEST FUNKCJI GIGANT */}
+
+        <h3 className="navText">{data.text}</h3>
+
+        {/* {locationPath.state && (
           <h3 className="navText">{locationPath.state.text}</h3>
         )}
 
@@ -31,23 +37,23 @@ const NavElement = () => {
           <>
             <h3 className="navText">{foundPath.text}</h3>
           </>
-        )}
+        )} */}
         <LogoStyled>
           <Link to="/">
             <img src={AppLogo} alt="Logo aplikacji" className="logo" />
           </Link>
         </LogoStyled>
       </NavElementStyled>
-      {locationPath.state && (
+      {/* {locationPath.state && (
         <>
           <div style={{ height: '60px' }} />
           <GreyLabel text={locationPath.state.label} />
         </>
-      )}
-      {foundPath && foundPath.label.length !== 0 && (
+      )} */}
+      {data.label && data.label.length !== 0 && (
         <>
           <div style={{ height: '60px' }} />
-          <GreyLabel text={foundPath.label} />
+          <GreyLabel text={data.label} />
         </>
       )}
     </>

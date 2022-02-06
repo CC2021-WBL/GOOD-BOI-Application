@@ -1,11 +1,10 @@
 import propTypes from 'prop-types';
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import UserProfileDataStyled from './UserProfileDataStyled';
 import participants from '../../Data/MongoDBMock/participants';
 import { UserDataContext } from '../../Context/UserDataContext';
-
-// import { useLocation } from 'react-router-dom';
 
 const initialData = {
   address: {
@@ -18,13 +17,10 @@ const initialData = {
 };
 
 const UserProfileData = () => {
+  const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
   const { userId, userName, userSurname, isAuthenticated } = state;
   const [userObject, setUserObject] = useState(initialData);
-
-  if (!isAuthenticated) {
-    throw new Error('Your not allowed to be here!');
-  }
 
   // mock for checking authentication and if userId is in database
 
@@ -50,10 +46,13 @@ const UserProfileData = () => {
   // mock for fetching data from database and checking if response has data
 
   useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/login');
+    }
     const userObject = participants.find(
       (participant) => participant.participantId === userId,
     );
-    if (userObject === undefined) {
+    if (!userObject) {
       throw new Error('Fetch was unsuccessful');
     } else {
       setUserObject(userObject);
