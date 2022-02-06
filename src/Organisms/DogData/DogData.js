@@ -17,7 +17,7 @@ const DogData = ({ id }) => {
 
   useEffect(() => {
     // @TODO fetching data from database in the future here
-    setDogData(doggos.find((dog) => (dog.id = id)));
+    setDogData(doggos.find((dog) => dog.dogId === id));
     setIsPending(false);
   }, []);
 
@@ -32,6 +32,7 @@ const DogData = ({ id }) => {
     dogDataRender['Data urodzenia'] = `${getDataFormatDdMonthYyy(
       dogDataRender['Data urodzenia'],
     )}`;
+    console.log(dogDataRender);
   }
 
   const handleEdit = (event) => {
