@@ -51,8 +51,8 @@ ClassOrDogButton.propTypes = {
   }),
   dogInfo: PropTypes.shape({
     index: PropTypes.number.isRequired,
-    dogId: PropTypes.string.isRequired,
-    dogName: PropTypes.string.isRequired,
+    dogId: PropTypes.string,
+    dogName: PropTypes.string,
     exercisesCompleted: PropTypes.number,
     exercisesAmount: PropTypes.number,
   }),
