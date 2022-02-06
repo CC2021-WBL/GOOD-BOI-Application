@@ -1,5 +1,6 @@
 import SummaryLineStyled from './SummaryLineStyled';
 import calculateExerciseScore from './../../Tools/calculateExerciseScore';
+import checkIfDisqualified from '../../Tools/checkIfDisqualified';
 import penaltyScore from '../../Tools/penaltyScoreCalc';
 import propTypes from 'prop-types';
 
@@ -15,7 +16,7 @@ const SummaryLine = ({ result, classId }) => {
   });
   const totalScore = score + penaltyScore({ result });
 
-  const isDisqualified = exercisesArr.some((element) => element.disqualified);
+  const isDisqualified = checkIfDisqualified({ result });
   function pointsAquired() {
     if (totalScore < 5 && totalScore > 1) {
       return 'punkty.';
