@@ -1,37 +1,29 @@
-/* eslint-disable react/prop-types */
-
 import LeaderboardListElement from '../../Atoms/Leaderboard/LeaderboardListElement';
 import LeaderboardListStyled from './LeaderboardListStyled';
 import calculateExerciseScore from '../../Tools/calculateExerciseScore';
 import checkIfDisqualified from '../../Tools/checkIfDisqualified';
 import contests from '../../Data/MongoDBMock/contests';
+import exerciseCode2string from '../../Tools/exerciseCode2string';
 import individualSummaryInCurrentCompetiton from '../../Data/MongoDBMock/summaryResults';
 import propTypes from 'prop-types';
-import translateExerciseCode2string from '../../Tools/translateExerciseCode2string';
-
-// import { useLocation } from 'react-router-dom';
 
 const LeaderboardList = ({ classId, dogName, contestId, result }) => {
-  // const locationPath = useLocation();
-  // dopisujemy penaltyPoints
-  result.penaltyPoints = -10;
-  // result.specialState = 'dyskwalifikacja';
-  console.log('dogPerformanceData');
-  console.log(result);
-  console.log('checkIfDisqualified');
-  console.log(checkIfDisqualified({ result }));
   // if dogName is defined, then render dog-summary leaderboard
   if (dogName) {
-    const exercisesList = result;
-    const dogSummaryResult = exercisesList.map((elem) => ({
-      text: translateExerciseCode2string(classId, elem.codeName),
+    // for testing purpose: testing disqualified
+    result.penaltyPoints = -20;
+    // result.specialState = 'dyskwalifikacja';
+
+    const dogSummaryResult = result.map((elem) => ({
+      text: exerciseCode2string(classId, elem.codeName),
       score: calculateExerciseScore(classId, elem.codeName) * elem.result,
     }));
     {
       return (
         <LeaderboardListStyled>
           {dogSummaryResult.map((arrElement, index) => {
-            if (checkIfDisqualified === false) {
+            if (!checkIfDisqualified({ result })) {
+              console.log('runing without disqualified');
               return (
                 <LeaderboardListElement
                   key={index}
@@ -56,6 +48,7 @@ const LeaderboardList = ({ classId, dogName, contestId, result }) => {
       );
     }
   } else {
+    // else if dogName is not defined, render Past Contest leaderboard
     const contest = contests.find((contest) => contest.contestId === contestId);
 
     const resultsArr = contest.obedienceClasses[classId];

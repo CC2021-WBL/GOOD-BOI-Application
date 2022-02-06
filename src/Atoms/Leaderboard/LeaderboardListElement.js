@@ -2,7 +2,6 @@ import LeaderboardListElementStyled from './LeaderboardListElementStyled';
 import propTypes from 'prop-types';
 
 const LeaderboardListElement = ({ text, score, index, disqualified }) => {
-  console.log(disqualified);
   if (disqualified) {
     return (
       <LeaderboardListElementStyled disqualified>
