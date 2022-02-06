@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 import {
   ContestCardStyled,
   ContestInsideElementStyled,
@@ -7,57 +5,50 @@ import {
 } from './ContestCardStyled';
 import {
   getDataFormatDdMonthYyy,
-  getHourAndMinutesFromDate,
   getPointOnTimeLine,
 } from '../../Tools/TimeFunctions';
-import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
-import contests from '../../Data/MongoDBMock/contests';
-import { getAmountOfCompetingDoggos } from '../../Tools/DataModifications';
+import { UserDataContext } from '../../Context/UserDataContext';
 import propTypes from 'prop-types';
 import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
-import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 
-const ContestCard = ({ contestId }) => {
-  const initialData = {
-    contestName: 'info wkrótce',
-    startDate: new Date(),
-    endDate: new Date(),
-    hour: '',
-    city: 'info wkrótce',
-    doggoAmount: 0,
-  };
-  const [contestData, setContestData] = useState(initialData);
-
-  const { contestName, startDate, endDate, hour, city, doggoAmount } =
-    contestData;
+const ContestCard = ({ contestData }) => {
+  const { state } = useContext(UserDataContext);
+  const { roles } = state;
   let navigate = useNavigate();
+  const locationPath = useLocation();
 
-  useEffect(() => {
-    const contest = contests.find((contest) => contest.contestId === contestId);
-    const dogsAmount = getAmountOfCompetingDoggos(contest.obedienceClasses);
-
-    setContestData({
-      ...contestData,
-      contestName: contest.contestName,
-      startDate: contest.startDate,
-      endDate: contest.endDate,
-      hour: getHourAndMinutesFromDate(contest.startDate),
-      city: contest.address.city.toUpperCase(),
-      doggoAmount: dogsAmount,
-    });
-  }, []);
+  const {
+    contestId,
+    contestName,
+    startDate,
+    endDate,
+    hour,
+    city,
+    doggoAmount,
+  } = contestData;
 
   const stringDate = getDataFormatDdMonthYyy(startDate);
   const pointOnTimeLine = getPointOnTimeLine(startDate, endDate);
 
   const handleClick = (event) => {
     event.preventDefault();
-    navigate(`./${contestId}/classes`, {
-      state: { text: 'Lista klas', label: `${contestName}` },
-    });
-    //navigate musi przekazać dane o klasach jakie mają się odbyć i nazwach psów w tych klasach?
+    if (
+      roles !== null &&
+      roles.includes('staff') &&
+      locationPath.pathname === '/contests'
+    ) {
+      navigate(`./${contestId}/classes`, {
+        state: { text: 'Lista klas', label: `${contestName}` },
+      });
+    } else {
+      navigate(`/contests/${contestId}`, {
+        state: { text: 'Konkurs', label: `${contestName}` },
+      });
+    }
   };
 
   return (
@@ -87,7 +78,15 @@ const ContestCard = ({ contestId }) => {
 };
 
 ContestCard.propTypes = {
-  contestId: propTypes.string.isRequired,
+  contestData: propTypes.shape({
+    contestId: propTypes.string,
+    contestName: propTypes.string,
+    startDate: propTypes.instanceOf(Date),
+    endDate: propTypes.instanceOf(Date),
+    hour: propTypes.string,
+    city: propTypes.string,
+    doggoAmount: propTypes.number,
+  }),
 };
 
 export default ContestCard;

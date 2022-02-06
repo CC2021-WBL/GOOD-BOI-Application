@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 const ContestFilterTogglerStyled = styled.div`
   display: flex;
-  height: 2.75rem;
+  height: 2.625rem;
   align-items: center;
   justify-content: center;
-  background-color: ${({ theme }) => theme.primary101};
+  background-color: ${({ theme }) => theme.grey100};
   cursor: pointer;
   gap: 0.75rem;
   ${FONTS.label_semibold};
@@ -16,7 +16,7 @@ const ContestFilterTogglerStyled = styled.div`
   }
 
   p {
-    color: ${({ theme }) => theme.grey400};
+    color: ${({ theme }) => theme.grey800};
   }
 `;
 

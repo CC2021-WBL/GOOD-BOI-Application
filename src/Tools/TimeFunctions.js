@@ -1,3 +1,5 @@
+import { TIME } from '../Consts/infoLabelConsts';
+
 export const getDataFormatDdMonthYyy = (date) => {
   return date.toLocaleDateString(undefined, {
     day: 'numeric',
@@ -40,4 +42,24 @@ export const getPointOnTimeLine = (startDate, endDate) => {
     return 'nadchodzący';
   }
   return 'loading...';
+};
+
+export const getSelectedContestsByTime = (timePeriod, contests = []) => {
+  let selectedcontests = [];
+
+  if (timePeriod === TIME.UNKNOWN) {
+    selectedcontests = contests;
+  } else {
+    contests.forEach((contest) => {
+      const contestTimePeriod = getPointOnTimeLine(
+        contest.startDate,
+        contest.endDate,
+      );
+      if (contestTimePeriod === timePeriod) {
+        selectedcontests.push(contest);
+      }
+    });
+  }
+
+  return selectedcontests;
 };

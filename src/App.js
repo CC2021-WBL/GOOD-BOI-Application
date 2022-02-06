@@ -27,7 +27,6 @@ import RolePage from './PagesBody/RolePage/RolePage';
 import SettingsPage from './PagesBody/SettingsPage/SettingsPage';
 import { ThemeProvider } from 'styled-components';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
-import UserContestPage from './PagesBody/UserContestsPage/UserContestsPage';
 import { UserDataProvider } from './Context/UserDataContext';
 import { useDarkMode } from './Hooks/useDarkMode';
 
@@ -75,16 +74,6 @@ function App() {
                   </UserDataProvider>
                 }
               />
-              <Route
-                path="/:userId/contests"
-                element={
-                  <UserDataProvider>
-                    <ParticipantContextProvider>
-                      <UserContestPage />
-                    </ParticipantContextProvider>
-                  </UserDataProvider>
-                }
-              ></Route>
             </Route>
             <Route element={<Layout withLabel />}>
               <Route
@@ -97,6 +86,14 @@ function App() {
               />
               <Route
                 path="contests"
+                element={
+                  <UserDataProvider>
+                    <ContestsPage />
+                  </UserDataProvider>
+                }
+              />
+              <Route
+                path="/:userId/contests"
                 element={
                   <UserDataProvider>
                     <ContestsPage />
@@ -164,7 +161,7 @@ function App() {
                 }
               />
               <Route
-                path="contest-details"
+                path="contests/:contestId"
                 element={
                   <UserDataProvider>
                     <ParticipantContextProvider>

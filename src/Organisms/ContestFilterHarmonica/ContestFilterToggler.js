@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 const ContestFilterToggler = ({ onClick, toggle }) => {
   return (
     <ContestFilterTogglerStyled onClick={onClick}>
-      <p>TERMIN</p>
       {toggle ? <GoTriangleUp /> : <GoTriangleDown />}
+      <p>TERMIN</p>
     </ContestFilterTogglerStyled>
   );
 };
