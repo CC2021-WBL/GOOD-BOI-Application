@@ -5,7 +5,7 @@ const BurgerMenuStyled = styled.div`
   z-index: 10;
   top: 0;
   left: 0;
-  width: 233px;
+  width: 14.5625rem;
   height: 100vh;
   background: ${({ theme }) => theme.white};
   transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
