@@ -9,9 +9,9 @@ import { useState } from 'react';
 
 const ClassChoicePage = () => {
   const classesArr = CLASSES.map((elem) => elem.name);
-  const [selectedClass, setClass] = useState('');
+  const [selectedClass, setSelectedClass] = useState('');
   const clickHandler = (index) => {
-    setClass(index);
+    setSelectedClass(index);
     console.log('setClass to ' + index);
   };
 
@@ -26,6 +26,7 @@ const ClassChoicePage = () => {
             text={`Klasa ${obedienceClass}`}
             ternary
             justify={'left'}
+            className="selected-btn"
           />
         );
       })}

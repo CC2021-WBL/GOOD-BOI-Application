@@ -1,9 +1,10 @@
-import propTypes from 'prop-types';
 import MainButtonStyled from './MainButtonStyled';
+import propTypes from 'prop-types';
 
 // function primary, secondary, ternary
 const MainButton = (props) => {
-  const { primary, secondary, ternary, text } = props;
+  // eslint-disable-next-line react/prop-types
+  const { primary, secondary, ternary, text, className } = props;
 
   return (
     <MainButtonStyled
@@ -11,6 +12,7 @@ const MainButton = (props) => {
       primary={primary}
       secondary={secondary}
       ternary={ternary}
+      className={className}
     >
       {text.toUpperCase()}
     </MainButtonStyled>
