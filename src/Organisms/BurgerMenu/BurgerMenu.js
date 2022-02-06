@@ -5,6 +5,7 @@ import {
 } from '../../Molecules/Footer/FooterStyled';
 import { FaUserCircle, FaUserCog } from 'react-icons/fa';
 import { MdOutlineClose, MdSettings } from 'react-icons/md';
+import { useEffect, useRef } from 'react';
 
 import { BsTrophyFill } from 'react-icons/bs';
 import BurgerMenuStyled from './BurgerMenuStyled';
@@ -15,9 +16,31 @@ import MenuStyled from './MenuStyled';
 import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
 import propTypes from 'prop-types';
 
+let useClickOutside = (handler) => {
+  let domNode = useRef();
+
+  useEffect(() => {
+    let maybeHandler = (event) => {
+      if (!domNode.current.contains(event.target)) {
+        handler();
+      }
+    };
+
+    document.addEventListener('mousedown', maybeHandler);
+
+    return () => {
+      document.removeEventListener('mousedown', maybeHandler);
+    };
+  });
+
+  return domNode;
+};
 const BurgerMenu = ({ open, setOpen }) => {
+  let domNode = useClickOutside(() => {
+    setOpen(false);
+  });
   return (
-    <BurgerMenuStyled open={open}>
+    <BurgerMenuStyled open={open} ref={domNode}>
       <HeaderMenuStyled>
         <MdOutlineClose className="x" onClick={() => setOpen(false)} />
 
