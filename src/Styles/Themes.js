@@ -54,7 +54,7 @@ export const darkTheme = {
   negative100: '#FCCECE',
 
   positive600: '#1A6234',
-  positive400: '#34C369',
+  positive400: '#c77e11',
   positive200: '#97E3B3',
   positive100: '#CBF1D9',
 };

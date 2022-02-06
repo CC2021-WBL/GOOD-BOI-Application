@@ -1,18 +1,17 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-
 import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const handleBgAndColor = (props) => {
   if (props.primary) {
-    return `color: ${COLORS.white}; background: ${COLORS.primary501};`;
+    return `color: ${props.theme.white}; background: ${props.theme.primary501};`;
   }
   if (props.secondary) {
-    return `color: ${COLORS.primary601}; background: ${COLORS.primary201};`;
+    return `color: ${props.theme.primary601}; background: ${props.theme.primary201};`;
   }
   if (props.ternary) {
-    return `color: ${COLORS.grey800}; background: transparent;`;
+    return `color: ${props.theme.grey800}; background: transparent;`;
   }
 };
 
