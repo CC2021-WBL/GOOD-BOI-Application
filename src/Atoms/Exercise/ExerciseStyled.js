@@ -8,11 +8,14 @@ const ExerciseStyled = styled(ExerciseCardStyled)`
   padding: 0.625rem;
   margin: 0;
   border-radius: 0.75rem 0 0 0.75rem;
+  color: ${({ theme }) => theme.grey800};
   ${FONTS.body_semibold};
   ${(props) =>
     props.toggle
       ? `background-color: ${props.theme.positive200};`
-      : `background-color:  ${props.theme.grey100}; color: ${props.theme.grey400}`}
+      : `background-color:  ${props.theme.grey100}; 
+      color: ${props.theme.grey400}
+      `}
   text-align: left;
 `;
 
