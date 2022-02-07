@@ -1,9 +1,11 @@
+import { useContext, useEffect, useState } from 'react';
+
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import { DogContext } from '../../Context/DogContext';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import { UserDataContext } from '../../Context/UserDataContext';
 import participants from '../../Data/MongoDBMock/participants';
-import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const UserDogPage = () => {
@@ -13,14 +15,16 @@ const UserDogPage = () => {
 
   const [isPending, setIsPending] = useState(true);
   const [participantDogs, setParticipantDogs] = useState(null);
+  const { dogState, dogDispatch } = useContext(DogContext);
 
   useEffect(() => {
-    setParticipantDogs(
-      participants.find(
-        (participant) => participant.participantId === state.userId,
-      ).dogs,
-    );
+    const dogs = participants.find(
+      (participant) => participant.participantId === state.userId,
+    ).dogs;
+    setParticipantDogs(dogs);
     setIsPending(false);
+    dogDispatch({ type: 'SET_DATA', payload: { dogs: dogs } });
+    console.log(dogState);
   }, []);
 
   return (
