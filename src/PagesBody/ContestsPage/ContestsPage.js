@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
+
 import {
   getHourAndMinutesFromDate,
   getSelectedContestsByTime,
 } from '../../Tools/TimeFunctions';
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ContestCard from '../../Molecules/ContestCard/ContestCard';
@@ -16,8 +18,9 @@ import { useLocation } from 'react-router-dom';
 const ContestsPage = () => {
   const [contestData, setContestData] = useState([]);
   const [toggle, setToggle] = useState(false);
-  const [selectedContests, setSelectedContests] = useState();
+  const [selectedContests, setSelectedContests] = useState([]);
   const locationPath = useLocation();
+  console.log(locationPath);
 
   // mock for getting data from DB
   useEffect(() => {
@@ -36,21 +39,25 @@ const ContestsPage = () => {
       array.push(contestObject);
     });
     setContestData(array);
-    if (
-      locationPath.state &&
-      locationPath.state.contestsContent === 'results'
-    ) {
+    // checking first time when rendered if there are any selectors from previous component
+    // not working now - ready to use, connection as TODO with Tomek and Profile Page
+    if (locationPath.state && locationPath.state.contestContent === 'results') {
+      console.log(locationPath.state.contestContent);
       setSelectedContests(
         getSelectedContestsByTime(TIME.PRESENT_AND_PAST, contestData),
       );
     } else if (
       locationPath.state &&
-      locationPath.state.contestsContent === 'future'
+      locationPath.state.contestContent === 'future'
     ) {
+      console.log(locationPath.state.contestContent);
       setSelectedContests(getSelectedContestsByTime(TIME.FUTURE, contestData));
     } else {
+      console.log('else');
       setSelectedContests(array);
     }
+    setSelectedContests(array);
+    console.log(selectedContests);
   }, []);
 
   const toggleHandler = () => {

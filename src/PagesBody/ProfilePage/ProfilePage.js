@@ -2,6 +2,7 @@
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
+import { Link } from 'react-router-dom';
 import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
 import propTypes from 'prop-types';
 
@@ -10,10 +11,16 @@ const ProfilePage = ({ userId }) => {
     <ColumnWrapper paddingLeftRight={1}>
       <ProfileCard />
       <FakeButton to="/user-dogs" text="Twoje Psy" ternary="ternary" />
-      <FakeButton to={`/contests`} text="Twoje Konkursy" ternary="ternary" />
+      <FakeButton
+        to={`/contests`}
+        state={{ contestContent: 'results' }}
+        text="Twoje Konkursy"
+        ternary="ternary"
+      />
       <FakeButton to="/user-data" text="Twoje Dane" ternary="ternary" />
       <FakeButton
-        to="/contests"
+        to="contests"
+        state={{ contestContent: 'future' }}
         text="Nadchodzące Konkursy"
         secondary="secondary"
       />

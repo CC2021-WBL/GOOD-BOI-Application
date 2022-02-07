@@ -55,9 +55,10 @@ export const getSelectedContestsByTime = (timePeriod, contests = []) => {
         contest.startDate,
         contest.endDate,
       );
+      console.log(contestTimePeriod);
       if (
-        contestTimePeriod === TIME.PRESENT ||
-        contestTimePeriod === TIME.PAST
+        contestTimePeriod === 'w trakcie' ||
+        contestTimePeriod === 'archiwalny'
       ) {
         selectedcontests.push(contest);
       }
