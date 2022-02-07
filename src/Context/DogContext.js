@@ -5,7 +5,10 @@ import propTypes from 'prop-types';
 
 export const DogContext = createContext();
 
-const initialData = [];
+const initialData = {
+  dogs: [],
+  chosenDog: '',
+};
 
 export function DogContextProvider({ children }) {
   const [state, dispatch] = useReducer(dogReducer, initialData);

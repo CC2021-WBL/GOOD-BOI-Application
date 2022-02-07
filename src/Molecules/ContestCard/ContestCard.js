@@ -55,17 +55,12 @@ const ContestCard = ({ contestId }) => {
   const handleClick = (event) => {
     event.preventDefault();
     dispatch({
-      type: 'SET_CONTEST',
-      payload: {
-        contestId: contestId,
-        contestName: contestName,
-      },
+      type: 'SET_MOCK',
     });
     console.log(state);
     navigate(`./${contestId}/classes`, {
       state: { text: 'Lista klas', label: `${contestName}` },
     });
-    //navigate musi przekazać dane o klasach jakie mają się odbyć i nazwach psów w tych klasach?
   };
 
   return (

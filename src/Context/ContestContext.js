@@ -5,7 +5,10 @@ import propTypes from 'prop-types';
 
 export const ContestContext = createContext();
 
-const initialData = {};
+const initialData = {
+  contestId: '',
+  contestName: '',
+};
 
 export function ContestContextProvider({ children }) {
   const [state, dispatch] = useReducer(contestReducer, initialData);
