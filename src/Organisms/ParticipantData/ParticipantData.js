@@ -1,11 +1,12 @@
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import DataLine from '../../Atoms/DataLine/DataLine';
-import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
-import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
-import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import PARTICIPANTS from '../../Data/Dummy-data/test-data-participants';
 import PARTICIPANT_DATA_TEMPLATE from '../../Consts/ParticipantDataCONSTS';
+import PropTypes from 'prop-types';
+import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
+import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
+import { useNavigate } from 'react-router-dom';
+
 const ParticipantData = ({ id }) => {
   let navigate = useNavigate();
   const participant = PARTICIPANTS.find((participant) => (participant.id = id));
@@ -50,12 +51,12 @@ const ParticipantData = ({ id }) => {
   return (
     <ColumnWrapper paddingLeftRight={1}>
       <SpecialButtonsContainerStyled>
-        <SpecialButton left text="edytuj" handler={handleEdit} theme="blue" />
+        <SpecialButton left text="edytuj" handler={handleEdit} colors="blue" />
         <SpecialButton
           right
           text="potwierdź"
           handler={handleConfirm}
-          theme="green"
+          colors="green"
         />
       </SpecialButtonsContainerStyled>
       <ColumnWrapper>

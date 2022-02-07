@@ -1,14 +1,13 @@
-import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
-
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import DOGS from '../../Data/Dummy-data/test-data-dogs';
 import DOG_DATA_TEMPLATE from '../../Consts/DogDataCONSTS';
 import DataLine from '../../Atoms/DataLine/DataLine';
+import PropTypes from 'prop-types';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
 import { doggoSex } from '../../Consts/formsDataToChose';
 import { getDataFormatDdMonthYyy } from '../../Tools/TimeFunctions';
+import { useNavigate } from 'react-router-dom';
 
 const DogData = ({ id }) => {
   let navigate = useNavigate();
@@ -44,12 +43,12 @@ const DogData = ({ id }) => {
   return (
     <ColumnWrapper paddingLeftRight={1}>
       <SpecialButtonsContainerStyled>
-        <SpecialButton left text="edytuj" handler={handleEdit} theme="blue" />
+        <SpecialButton left text="edytuj" handler={handleEdit} colors="blue" />
         <SpecialButton
           right
           text="potwierdź"
           handler={handleConfirm}
-          theme="green"
+          colors="green"
         />
       </SpecialButtonsContainerStyled>
       <ColumnWrapper>
