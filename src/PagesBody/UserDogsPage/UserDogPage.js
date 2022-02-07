@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom';
 const UserDogPage = () => {
   const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
+  console.log(state);
+
   const [isPending, setIsPending] = useState(true);
   const [participantDogs, setParticipantDogs] = useState(null);
 

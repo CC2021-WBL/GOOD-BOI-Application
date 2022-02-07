@@ -1,14 +1,20 @@
 import DogData from '../../Organisms/DogData/DogData';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { DogContext } from '../../Context/DogContext';
 
 const DogDataPage = () => {
   const { dogId: dogIdParams } = useParams();
   const [isPending, setIsPending] = useState(true);
   const [dogId, setDogId] = useState(null);
+  const { dogState } = useContext(DogContext);
 
   useEffect(() => {
-    dogIdParams && setDogId(dogIdParams);
+    if (dogState.chosenDog.dogId) {
+      setDogId(dogState.chosenDog.dogId);
+    } else if (dogIdParams) {
+      setDogId(dogIdParams);
+    }
     setIsPending(false);
   }, []);
 
