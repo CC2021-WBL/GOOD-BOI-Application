@@ -15,15 +15,25 @@ const handleColorType = (theme) => {
       return `background:${COLORS.white}; color:${COLORS.grey800}; border:1px solid black`;
   }
 };
+
+const handleBorder = (roundedBorder) => {
+  switch (roundedBorder) {
+    case 'left':
+      return `border-radius: 0 0 0 0.75rem`;
+    case 'right':
+      return `border-radius: 0 0 0.75rem 0`;
+  }
+};
 const SpecialButtonStyled = styled.button`
   width: 50%;
   height: 100%;
   border: none;
-  border-radius: ${(props) => props.left && '0 0 0 0.75rem'};
+  /* border-radius: ${(props) => props.left && '0 0 0 0.75rem'};
 
-  border-radius: ${(props) => props.right && '0 0 0.75rem 0'};
+  border-radius: ${(props) => props.right && '0 0 0.75rem 0'}; */
 
   font-weight: bold;
+  ${({ roundedBorder }) => handleBorder(roundedBorder)};
   ${({ theme }) => handleColorType(theme)};
   &:hover {
     filter: brightness(1.1);
