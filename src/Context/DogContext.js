@@ -11,10 +11,9 @@ const initialData = {
 };
 
 export function DogContextProvider({ children }) {
-  const [state, dispatch] = useReducer(dogReducer, initialData);
-
+  const [dogState, dogDispatch] = useReducer(dogReducer, initialData);
   return (
-    <DogContext.Provider value={{ state, dispatch }}>
+    <DogContext.Provider value={{ dogState, dogDispatch }}>
       {children}
     </DogContext.Provider>
   );

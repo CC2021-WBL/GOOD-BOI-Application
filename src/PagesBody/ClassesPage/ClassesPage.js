@@ -11,8 +11,8 @@ const ClassesPage = () => {
   const contestClasses = contests.find(
     (contest) => contest.contestId === contestId,
   ).obedienceClasses;
-  const { state } = useContext(ContestContext);
-  console.log(state);
+  const { contestState } = useContext(ContestContext);
+  console.log(contestState);
 
   function secondaryBtnHandler() {}
 

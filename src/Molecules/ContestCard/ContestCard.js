@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 import {
   ContestCardStyled,
   ContestInsideElementStyled,
@@ -29,7 +27,7 @@ const ContestCard = ({ contestId }) => {
     doggoAmount: 0,
   };
   const [contestData, setContestData] = useState(initialData);
-  const { state, dispatch } = useContext(ContestContext);
+  const { contestDispatch } = useContext(ContestContext);
 
   const { contestName, startDate, endDate, hour, city, doggoAmount } =
     contestData;
@@ -56,7 +54,7 @@ const ContestCard = ({ contestId }) => {
 
   const handleClick = (event) => {
     event.preventDefault();
-    dispatch({
+    contestDispatch({
       type: 'SET_CONTEST',
       payload: {
         contestId: contestId,

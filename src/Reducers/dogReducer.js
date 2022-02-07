@@ -10,9 +10,7 @@ const ACTIONS = {
 const dogReducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.GET_DATA:
-      return {
-        dogs: participants[action.index].dogs,
-      };
+      return { state };
     case ACTIONS.UPDATE_ONE_FIELD:
       return {
         ...state,
@@ -25,6 +23,11 @@ const dogReducer = (state, action) => {
       };
     case ACTIONS.SET_DATA:
       return { ...action.payload };
+    case 'SET_MOCK':
+      return {
+        dogs: participants[0].dogs,
+        chosenDog: participants[0].dogs[1],
+      };
   }
 };
 

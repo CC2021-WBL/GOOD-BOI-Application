@@ -11,10 +11,10 @@ const initialData = {
 };
 
 export function ContestContextProvider({ children }) {
-  const [state, dispatch] = useReducer(contestReducer, initialData);
+  const [contestState, contestDispatch] = useReducer(contestReducer, initialData);
 
   return (
-    <ContestContext.Provider value={{ state, dispatch }}>
+    <ContestContext.Provider value={{ contestState, contestDispatch }}>
       {children}
     </ContestContext.Provider>
   );
