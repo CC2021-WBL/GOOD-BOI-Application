@@ -3,6 +3,7 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { darkTheme, lightTheme } from './Styles/Themes';
 
+import BurgerMenu from './Organisms/BurgerMenu/BurgerMenu';
 import ClassCompetitorsPage from './PagesBody/ClassCompetitorsPage/ClassCompetitorsPage';
 import ClassesPage from './PagesBody/ClassesPage/ClassesPage';
 import ContactFormPage from './PagesBody/ContactFormPage/ContactFormPage';
@@ -176,6 +177,7 @@ function App() {
             </Route>
 
             <Route path="modals-test" element={<ModalsTest />} />
+            <Route path="burger-menu" element={<BurgerMenu />} />
           </Routes>
         </div>
       </>
