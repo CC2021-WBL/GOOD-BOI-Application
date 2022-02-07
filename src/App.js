@@ -3,6 +3,7 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { darkTheme, lightTheme } from './Styles/Themes';
 
+import BurgerMenu from './Organisms/BurgerMenu/BurgerMenu';
 import ClassCompetitorsPage from './PagesBody/ClassCompetitorsPage/ClassCompetitorsPage';
 import ClassesPage from './PagesBody/ClassesPage/ClassesPage';
 import ContactFormPage from './PagesBody/ContactFormPage/ContactFormPage';
@@ -29,6 +30,7 @@ import SettingsPage from './PagesBody/SettingsPage/SettingsPage';
 import { ThemeProvider } from 'styled-components';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
 import { UserDataProvider } from './Context/UserDataContext';
+import UserDogPage from './PagesBody/UserDogsPage/UserDogPage';
 import { useDarkMode } from './Hooks/useDarkMode';
 
 function App() {
@@ -65,6 +67,7 @@ function App() {
                     <Route path="register" element={<RegistrationForm />} />
                     <Route path="unregistered" element={<UnregisteredPage />} />
                     <Route path="login" element={<LoginForm />} />
+                    <Route path="user-dogs" element={<UserDogPage />} />
                   </Route>
                   <Route element={<Layout withLabel />}>
                     <Route path="role" element={<RolePage />} />
@@ -101,6 +104,7 @@ function App() {
                   </Route>
 
                   <Route path="modals-test" element={<ModalsTest />} />
+                  <Route path="burger-menu" element={<BurgerMenu />} />
                 </Routes>
               </div>
             </>
