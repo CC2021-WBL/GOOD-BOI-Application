@@ -1,17 +1,38 @@
+import { useEffect, useState } from 'react';
+
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import DOGS from '../../Data/Dummy-data/test-data-dogs';
 import DOG_DATA_TEMPLATE from '../../Consts/DogDataCONSTS';
 import DataLine from '../../Atoms/DataLine/DataLine';
 import PropTypes from 'prop-types';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
-import { doggoSex } from '../../Consts/formsDataToChose';
+import doggos from '../../Data/MongoDBMock/doggos';
 import { getDataFormatDdMonthYyy } from '../../Tools/TimeFunctions';
 import { useNavigate } from 'react-router-dom';
 
 const DogData = ({ id }) => {
   let navigate = useNavigate();
-  const dog = DOGS.find((dog) => (dog.id = id));
+  const [dogData, setDogData] = useState(null);
+  const [isPending, setIsPending] = useState(true);
+
+  useEffect(() => {
+    // @TODO fetching data from database in the future here
+    setDogData(doggos.find((dog) => dog.dogId === id));
+    setIsPending(false);
+  }, []);
+
+  const dogDataRender = {};
+
+  if (dogData) {
+    Object.keys(DOG_DATA_TEMPLATE).forEach(
+      (property) =>
+        (dogDataRender[DOG_DATA_TEMPLATE[property]] =
+          dogData[property] || 'brak danych'),
+    );
+    dogDataRender['Data urodzenia'] = `${getDataFormatDdMonthYyy(
+      dogDataRender['Data urodzenia'],
+    )}`;
+  }
 
   const handleEdit = (event) => {
     event.preventDefault();
@@ -28,18 +49,6 @@ const DogData = ({ id }) => {
     // danymi właściciela
   };
 
-  const dogData = {};
-  Object.keys(DOG_DATA_TEMPLATE).forEach(
-    (prop) => (dogData[DOG_DATA_TEMPLATE[prop]] = dog[prop] || 'brak danych'),
-  );
-
-  const { dateOfBirth, sex } = DOG_DATA_TEMPLATE;
-
-  //Date of birth convert to string
-  dogData[dateOfBirth] = `${getDataFormatDdMonthYyy(dogData[dateOfBirth])}`;
-  //Sex convert to string
-  dogData[sex] = doggoSex[dogData[sex]];
-
   return (
     <ColumnWrapper paddingLeftRight={1}>
       <SpecialButtonsContainerStyled>
@@ -52,9 +61,11 @@ const DogData = ({ id }) => {
         />
       </SpecialButtonsContainerStyled>
       <ColumnWrapper>
-        {Object.entries(dogData).map((dataLine, index) => (
-          <DataLine key={index} text={dataLine} />
-        ))}
+        {isPending && <p>Loading...</p>}
+        {dogData &&
+          Object.entries(dogDataRender).map((dataLine, index) => (
+            <DataLine key={index} text={dataLine} />
+          ))}
       </ColumnWrapper>
     </ColumnWrapper>
   );

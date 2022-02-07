@@ -1,16 +1,18 @@
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import { DogContext } from '../../Context/DogContext';
+import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import ForbiddenEntryPage from '../ForbiddenEntryPage/ForbiddenEntryPage';
-import { Link } from 'react-router-dom';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import { ROLES } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
+import { createURLForRolePage } from '../../Tools/UrlCreators';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const RolePage = () => {
   const { state, dispatch } = useContext(UserDataContext);
-  console.log(state);
-  const { roles, isAuthenticated } = state;
+  const { dogState, dogDispatch } = useContext(DogContext);
+  const { userId, roles, isAuthenticated } = state;
   const navigate = useNavigate();
 
   if (!isAuthenticated) {
@@ -20,13 +22,12 @@ const RolePage = () => {
   return (
     <ColumnWrapper paddingLeftRight={1} paddingTop={1.5}>
       {roles.map((role, index) => (
-        <Link
+        <FakeButton
           key={index}
-          to={ROLES[role].roleButtonLink}
-          style={{ textDecoration: 'none' }}
-        >
-          <MainButton text={ROLES[role].roleButtonText} ternary />
-        </Link>
+          ternary
+          text={ROLES[role].roleButtonText}
+          to={createURLForRolePage(role, userId)}
+        />
       ))}
       <MainButton
         text="Test - aktualizacja danych"
@@ -38,6 +39,10 @@ const RolePage = () => {
             payload: 'Zenek',
           });
           console.log(state);
+          dogDispatch({
+            type: 'SET_MOCK',
+          });
+          console.log(dogState);
         }}
       />
       <MainButton
