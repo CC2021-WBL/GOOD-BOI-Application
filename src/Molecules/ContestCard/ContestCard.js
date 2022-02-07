@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 import {
   ContestCardStyled,
   ContestInsideElementStyled,
@@ -55,9 +57,12 @@ const ContestCard = ({ contestId }) => {
   const handleClick = (event) => {
     event.preventDefault();
     dispatch({
-      type: 'SET_MOCK',
+      type: 'SET_CONTEST',
+      payload: {
+        contestId: contestId,
+        contestName: contestName,
+      },
     });
-    console.log(state);
     navigate(`./${contestId}/classes`, {
       state: { text: 'Lista klas', label: `${contestName}` },
     });

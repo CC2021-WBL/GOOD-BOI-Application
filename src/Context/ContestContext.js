@@ -1,6 +1,6 @@
 import { createContext, useReducer } from 'react';
 
-import contestReducer from '../Reducers/dogReducer';
+import contestReducer from '../Reducers/contestReducer';
 import propTypes from 'prop-types';
 
 export const ContestContext = createContext();
