@@ -1,4 +1,5 @@
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import { DogContext } from '../../Context/DogContext';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import ForbiddenEntryPage from '../ForbiddenEntryPage/ForbiddenEntryPage';
 import MainButton from '../../Atoms/MainButton/MainButton';
@@ -10,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 const RolePage = () => {
   const { state, dispatch } = useContext(UserDataContext);
-  console.log(state);
+  const { dogState, dogDispatch } = useContext(DogContext);
   const { userId, roles, isAuthenticated } = state;
   const navigate = useNavigate();
 
@@ -38,6 +39,10 @@ const RolePage = () => {
             payload: 'Zenek',
           });
           console.log(state);
+          dogDispatch({
+            type: 'SET_MOCK',
+          });
+          console.log(dogState);
         }}
       />
       <MainButton
