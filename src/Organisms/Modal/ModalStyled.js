@@ -1,6 +1,6 @@
-import styled from 'styled-components';
 import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
+import styled from 'styled-components';
 
 const ModalContainer = styled.div`
   position: fixed;

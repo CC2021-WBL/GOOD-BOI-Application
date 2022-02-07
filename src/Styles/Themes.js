@@ -15,7 +15,7 @@ export const lightTheme = {
 
   warning600: '#775E0D',
   warning400: '#E7B820',
-  warning200: '#F3DB90',
+  warning200: '#ebbb2e',
   warning100: '#F9EDC7',
 
   negative600: '#8D0909',
@@ -30,18 +30,18 @@ export const lightTheme = {
 };
 export const darkTheme = {
   primary801: '#b0d4ff',
-  primary601: '#509cff',
-  primary501: '#3b7dd4',
-  primary201: '#103d77',
-  primary101: '#093269',
+  primary601: '#bfdbff',
+  primary501: '#5ea4ff',
+  primary201: '#132c50',
+  primary101: '#091524',
 
   grey800: '#cacaca',
-  grey400: '#838383',
+  grey400: '#d3d3d3',
   grey300: '#9AA5B1',
   grey200: '#484e55',
-  grey100: '#596B7C',
+  grey100: '#2a2c2e',
   grey00: '#272e36',
-  white: '#181e27',
+  white: '#0f1216',
 
   warning600: '#775E0D',
   warning400: '#E7B820',
@@ -55,6 +55,6 @@ export const darkTheme = {
 
   positive600: '#1A6234',
   positive400: '#c77e11',
-  positive200: '#97E3B3',
-  positive100: '#CBF1D9',
+  positive200: '#13373a',
+  positive100: '#447056',
 };
