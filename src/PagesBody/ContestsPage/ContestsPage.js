@@ -18,6 +18,7 @@ const ContestsPage = () => {
   const [toggle, setToggle] = useState(false);
   const [selectedContests, setSelectedContests] = useState();
   const locationPath = useLocation();
+  console.log(locationPath.state);
 
   // mock for getting data from DB
   useEffect(() => {
@@ -36,7 +37,26 @@ const ContestsPage = () => {
       array.push(contestObject);
     });
     setContestData(array);
-    setSelectedContests(array);
+    console.log('useEffect');
+    if (
+      locationPath.state &&
+      locationPath.state.contestsContent === 'results'
+    ) {
+      console.log('results');
+      setSelectedContests(
+        getSelectedContestsByTime(TIME.PRESENT_AND_PAST, contestData),
+      );
+    } else if (
+      locationPath.state &&
+      locationPath.state.contestsContent === 'future'
+    ) {
+      console.log('future');
+
+      setSelectedContests(getSelectedContestsByTime(TIME.FUTURE, contestData));
+    } else {
+      console.log('else');
+      setSelectedContests(array);
+    }
   }, []);
 
   const toggleHandler = () => {
@@ -44,22 +64,9 @@ const ContestsPage = () => {
   };
 
   // handling different selections
-  const clickPresent = (event) => {
-    event.preventDefault();
-    setSelectedContests(getSelectedContestsByTime(TIME.PRESENT, contestData));
-  };
-  const clickFuture = (event) => {
-    event.preventDefault();
-    setSelectedContests(getSelectedContestsByTime(TIME.FUTURE, contestData));
-  };
-  const clickPast = (event) => {
-    event.preventDefault();
-    setSelectedContests(getSelectedContestsByTime(TIME.PAST, contestData));
-  };
-
-  const clickAll = (event) => {
-    event.preventDefault();
-    setSelectedContests(getSelectedContestsByTime(TIME.UNKNOWN, contestData));
+  const handleFilterClick = (time, event) => {
+    event.preventDefault;
+    setSelectedContests(getSelectedContestsByTime(time, contestData));
   };
 
   if (contestData.length === 0) {
@@ -72,20 +79,12 @@ const ContestsPage = () => {
 
   return (
     <>
-      {locationPath.pathname === '/contests' && (
-        <ContestFilterToggler
-          onClick={toggleHandler}
-          toggle={toggle}
-        ></ContestFilterToggler>
-      )}
-      {locationPath.pathname === '/contests' && toggle && (
-        <FilterLabel
-          clickFuture={clickFuture}
-          clickPast={clickPast}
-          clickPresent={clickPresent}
-          clickAll={clickAll}
-        ></FilterLabel>
-      )}
+      <ContestFilterToggler
+        onClick={toggleHandler}
+        toggle={toggle}
+      ></ContestFilterToggler>
+
+      {toggle && <FilterLabel onClick={handleFilterClick}></FilterLabel>}
 
       <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
         {selectedContests.map((contest) => (

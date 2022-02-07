@@ -1,8 +1,7 @@
-import propTypes from 'prop-types';
-
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
+import propTypes from 'prop-types';
 
 const ProfilePage = ({ userId }) => {
   return (

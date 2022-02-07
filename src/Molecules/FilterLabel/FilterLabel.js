@@ -2,42 +2,40 @@
 
 import FilterLabelStyled from './FilterLabelStyled';
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
+import { TIME } from '../../Consts/infoLabelConsts';
 import { COLORSMOTIVE as c } from '../../Consts/infoLabelConsts';
 import propTypes from 'prop-types';
 import { useRef } from 'react';
 
-const FilterLabel = ({ clickPresent, clickPast, clickFuture, clickAll }) => {
+const FilterLabel = ({ onClick }) => {
   return (
     <FilterLabelStyled>
       <InfoLabel
         pointOnTimeLine="w trakcie"
         colorMotive={c.GREEN}
-        handleClick={clickPresent}
+        handleClick={(event) => onClick(TIME.PRESENT, event)}
       ></InfoLabel>
       <InfoLabel
         pointOnTimeLine="archiwalny"
         colorMotive={c.GREY}
-        handleClick={clickPast}
+        handleClick={(event) => onClick(TIME.PAST, event)}
       ></InfoLabel>
       <InfoLabel
         pointOnTimeLine="nadchodzący"
         colorMotive={c.BLUE}
-        handleClick={clickFuture}
+        handleClick={(event) => onClick(TIME.FUTURE, event)}
       ></InfoLabel>
       <InfoLabel
         pointOnTimeLine="X"
         colorMotive={c.WHITE}
-        handleClick={clickAll}
+        handleClick={(event) => onClick(TIME.UNKNOWN, event)}
       ></InfoLabel>
     </FilterLabelStyled>
   );
 };
 
 FilterLabel.propTypes = {
-  clickFuture: propTypes.func,
-  clickPast: propTypes.func,
-  clickPresent: propTypes.func,
-  clickAll: propTypes.func,
+  onClick: propTypes.func,
 };
 
 export default FilterLabel;

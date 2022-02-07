@@ -49,6 +49,19 @@ export const getSelectedContestsByTime = (timePeriod, contests = []) => {
 
   if (timePeriod === TIME.UNKNOWN) {
     selectedcontests = contests;
+  } else if (timePeriod === TIME.PRESENT_AND_PAST) {
+    contests.forEach((contest) => {
+      const contestTimePeriod = getPointOnTimeLine(
+        contest.startDate,
+        contest.endDate,
+      );
+      if (
+        contestTimePeriod === TIME.PRESENT ||
+        contestTimePeriod === TIME.PAST
+      ) {
+        selectedcontests.push(contest);
+      }
+    });
   } else {
     contests.forEach((contest) => {
       const contestTimePeriod = getPointOnTimeLine(
