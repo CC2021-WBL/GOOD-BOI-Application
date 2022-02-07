@@ -29,6 +29,7 @@ import SettingsPage from './PagesBody/SettingsPage/SettingsPage';
 import { ThemeProvider } from 'styled-components';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
 import { UserDataProvider } from './Context/UserDataContext';
+import UserDogPage from './PagesBody/UserDogsPage/UserDogPage';
 import { useDarkMode } from './Hooks/useDarkMode';
 
 function App() {
@@ -72,6 +73,16 @@ function App() {
                 element={
                   <UserDataProvider>
                     <LoginForm />
+                  </UserDataProvider>
+                }
+              />
+              <Route
+                path="user-dogs"
+                element={
+                  <UserDataProvider>
+                    <ParticipantContextProvider>
+                      <UserDogPage />
+                    </ParticipantContextProvider>
                   </UserDataProvider>
                 }
               />
