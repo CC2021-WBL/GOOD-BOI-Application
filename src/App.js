@@ -7,10 +7,8 @@ import BurgerMenu from './Organisms/BurgerMenu/BurgerMenu';
 import ClassCompetitorsPage from './PagesBody/ClassCompetitorsPage/ClassCompetitorsPage';
 import ClassesPage from './PagesBody/ClassesPage/ClassesPage';
 import ContactFormPage from './PagesBody/ContactFormPage/ContactFormPage';
-import { ContestContextProvider } from './Context/ContestContext';
 import ContestDetailsPage from './PagesBody/ContestDetailsPage/ContestDetailsPage';
 import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
-import { DogContextProvider } from './Context/DogContext';
 import DogDataPage from './PagesBody/DogDataPage/DogDataPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
@@ -32,6 +30,8 @@ import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
 import { UserDataProvider } from './Context/UserDataContext';
 import UserDogPage from './PagesBody/UserDogsPage/UserDogPage';
 import { useDarkMode } from './Hooks/useDarkMode';
+import { DogContextProvider } from './Context/DogContext';
+import { ContestContextProvider } from './Context/ContestContext';
 
 function App() {
   const [theme, themeToggler, mountedComponent] = useDarkMode();
@@ -92,9 +92,9 @@ function App() {
                       path="contests/:contestId/classes/:classId/:dogId/dog-summary"
                       element={<DogSummaryPage />}
                     />
-                    <Route path="dog-data" element={<DogDataPage />} />
+                    <Route path="dog-data/:dogId" element={<DogDataPage />} />
                     <Route
-                      path="participant-data"
+                      path="participant-data/"
                       element={<ParticipantDataPage />}
                     />
                     <Route
