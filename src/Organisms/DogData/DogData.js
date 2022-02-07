@@ -32,7 +32,6 @@ const DogData = ({ id }) => {
     dogDataRender['Data urodzenia'] = `${getDataFormatDdMonthYyy(
       dogDataRender['Data urodzenia'],
     )}`;
-    console.log(dogDataRender);
   }
 
   const handleEdit = (event) => {
