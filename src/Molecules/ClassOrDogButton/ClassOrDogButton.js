@@ -20,6 +20,12 @@ const ClassOrDogButton = ({ classInfo, dogInfo, noInfoLabel }) => {
         state: { text: 'Lista uczestników', label: `Klasa ${obedienceClass}` },
       });
     dogInfo &&
+      noInfoLabel &&
+      navigate(`../dog-data/${dogId}`, {
+        state: { text: 'Dane psa', label: `${dogName}`, dogId: dogId },
+      });
+    dogInfo &&
+      !noInfoLabel &&
       navigate(`./${dogId}`, {
         state: { text: 'Wyniki', label: `Oceny zawodnika ${dogName}` },
       });
@@ -56,7 +62,7 @@ ClassOrDogButton.propTypes = {
     exercisesCompleted: PropTypes.number,
     exercisesAmount: PropTypes.number,
   }),
-  noInfoLabel: PropTypes.bool.isRequired,
+  noInfoLabel: PropTypes.bool,
 };
 
 export default ClassOrDogButton;

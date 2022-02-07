@@ -145,7 +145,7 @@ function App() {
                 }
               />
               <Route
-                path="dog-data"
+                path="dog-data/:dogId"
                 element={
                   <UserDataProvider>
                     <ParticipantContextProvider>
