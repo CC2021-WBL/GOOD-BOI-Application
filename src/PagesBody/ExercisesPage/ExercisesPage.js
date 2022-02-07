@@ -1,34 +1,48 @@
+import { useContext, useEffect, useState } from 'react';
+
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import ButtonExercises from '../../Atoms/ButtonsExercises/ButtonsExercises';
 import ButtonExercisesContainerStyled from '../../Molecules/ButtonsExcercisenContainer/ButtonExercisesContainerStyled';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
 import Modal from '../../Organisms/Modal/Modal';
+import { NewContestContext } from './../../Context/NewContestContext';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
-import contests from '../../Data/MongoDBMock/contests';
 import modalData from '../../Consts/modalData';
-import results from '../../Data/MongoDBMock/results';
 import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+
+// import contests from '../../Data/MongoDBMock/contests';
+
+// import results from '../../Data/MongoDBMock/results';
 
 const ExercisesPage = () => {
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
   const [isPenaltyModalOpen, setIsPenaltyModalOpen] = useState(false);
   const [isEvaluationModalOpen, setIsEvaluationModalOpen] = useState(false);
+  const dogPerformance = useContext(NewContestContext);
+  useEffect(() => {
+    console.log('useEffect dogPerformance changed');
+  }, [dogPerformance, isPenaltyModalOpen, isDisqualifyModalOpen]);
+  console.log('ExercisePagedogPerformance');
+  console.log(dogPerformance.dogPerformance.initialDogPerformance);
 
   const handleDisqualification = () => {
     setIsDisqualifyModalOpen(false);
   };
   const handlePenalty = () => {
     setIsPenaltyModalOpen(false);
+    // tutaj funkcja dodająca karę -10 punktów jeśli kliknięte onConfirmHandler
   };
 
   const handleEvaluation = () => {
     setIsEvaluationModalOpen(false);
     navigate('./dog-summary', {
-      state: { text: 'Tabela Wyników', label: 'Ocena Zawodnika' },
+      state: {
+        text: 'Tabela Wyników',
+        label: 'Ocena Zawodnika',
+        dogPerformance: { dogPerformance }, //
+      },
     });
   };
   const openDisqualifyModalHandler = () => {
@@ -53,19 +67,19 @@ const ExercisesPage = () => {
     navigate(-1);
   };
 
-  const { contestId, classId, dogId } = useParams();
+  // const { contestId, classId, dogId } = useParams();
 
-  const contestResults = contests.find(
-    (contest) => contest.contestId === contestId,
-  ).obedienceClasses[classId];
+  // const contestResults = contests.find(
+  //   (contest) => contest.contestId === contestId,
+  // ).obedienceClasses[classId];
 
-  const competingPairsId = contestResults.find(
-    (dog) => dog.dogId === dogId,
-  ).competingPairsId;
+  // const competingPairsId = contestResults.find(
+  //   (dog) => dog.dogId === dogId,
+  // ).competingPairsId;
 
-  const dogPerformance = results.find(
-    (performance) => performance.competingPairsId === competingPairsId,
-  ).exercises;
+  // const dogPerformance = results.find(
+  //   (performance) => performance.competingPairsId === competingPairsId,
+  // ).exercises;
 
   return (
     <ColumnWrapper>
@@ -122,7 +136,7 @@ const ExercisesPage = () => {
           primary
           text={'Zakończ ocenianie'}
         />
-      </ButtonExercisesContainerStyled>{' '}
+      </ButtonExercisesContainerStyled>
     </ColumnWrapper>
   );
 };

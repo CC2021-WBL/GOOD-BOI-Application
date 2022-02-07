@@ -1,10 +1,22 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import ExerciseCard from '../../Molecules/ExerciseCard/ExerciseCard';
-import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+/* eslint-disable react/prop-types */
 
-const ExerciseCardsContainer = ({ dogPerformance }) => {
-  const [exercisesResults, setExercisesResults] = useState(dogPerformance);
+import { useContext, useEffect, useState } from 'react';
+
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import ExerciseCard from '../../Molecules/ExerciseCard/ExerciseCard';
+import { NewContestContext } from '../../Context/NewContestContext';
+import PropTypes from 'prop-types';
+
+const ExerciseCardsContainer = () => {
+  const dogPerformance = useContext(NewContestContext);
+  const [exercisesResults, setExercisesResults] = useState(
+    dogPerformance.dogPerformance.initialDogPerformance,
+  );
+  useEffect(() => {
+    console.log('useEffect dogPerformance change');
+  }, [exercisesResults]);
+
+  console.log(dogPerformance.dogPerformance.initialDogPerformance);
 
   const performanceSaveHandler = (event) => {
     if (
@@ -15,10 +27,13 @@ const ExerciseCardsContainer = ({ dogPerformance }) => {
       console.log('Choose points from 0 to 10 (with 0.5 step).');
     } else {
       setExercisesResults((prevState) => {
+        console.log(event.target.id);
         prevState.find(
           (exercise) => exercise.codeName === event.target.id,
         ).result = Number(event.target.value);
-        console.log(dogPerformance);
+        console.log(prevState);
+        dogPerformance.dogPerformance.initialDogPerformance = exercisesResults;
+        // ?
         return prevState;
       });
     }
@@ -38,7 +53,7 @@ const ExerciseCardsContainer = ({ dogPerformance }) => {
 };
 
 ExerciseCardsContainer.propTypes = {
-  dogPerformance: PropTypes.array,
+  dogPerformance: PropTypes.any,
 };
 
 export default ExerciseCardsContainer;

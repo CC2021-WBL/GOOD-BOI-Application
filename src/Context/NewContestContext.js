@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
 
-import { createContext, useReducer } from 'react';
+import { createContext, useEffect, useReducer } from 'react';
 
 import { exercisesReducer } from './../Reducers/exercisesReducer';
-import results from '../Data/MongoDBMock/results';
+import { useParams } from 'react-router-dom';
 
 export const NewContestContext = createContext();
+
+// initial data
 
 const initialDogPerformance = [
   { codeName: '0.1', result: 0 },
@@ -18,10 +20,19 @@ const initialDogPerformance = [
   { codeName: '0.8', result: 0 },
 ];
 
-const NewContestContextProvider = (props) => {
+export const NewContestContextProvider = (props) => {
   const [dogPerformance, dispatch] = useReducer(exercisesReducer, {
-    dogPerformance,
+    initialDogPerformance,
   });
+  useEffect(() => {
+    console.log('useEffect dogPerformance changed');
+    localStorage.setItem('dogPerformance', JSON.stringify(dogPerformance));
+  }, [dogPerformance]);
+  const { contestId, classId, dogId } = useParams();
+
+  console.log('NewContestContext');
+  console.log(contestId, classId, dogId);
+  console.log(dogPerformance);
   return (
     <NewContestContext.Provider value={{ dogPerformance, dispatch }}>
       {props.children}
