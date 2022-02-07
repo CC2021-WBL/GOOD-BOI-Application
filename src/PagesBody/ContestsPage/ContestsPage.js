@@ -18,7 +18,6 @@ const ContestsPage = () => {
   const [toggle, setToggle] = useState(false);
   const [selectedContests, setSelectedContests] = useState();
   const locationPath = useLocation();
-  console.log(locationPath.state);
 
   // mock for getting data from DB
   useEffect(() => {
@@ -37,12 +36,10 @@ const ContestsPage = () => {
       array.push(contestObject);
     });
     setContestData(array);
-    console.log('useEffect');
     if (
       locationPath.state &&
       locationPath.state.contestsContent === 'results'
     ) {
-      console.log('results');
       setSelectedContests(
         getSelectedContestsByTime(TIME.PRESENT_AND_PAST, contestData),
       );
@@ -50,11 +47,8 @@ const ContestsPage = () => {
       locationPath.state &&
       locationPath.state.contestsContent === 'future'
     ) {
-      console.log('future');
-
       setSelectedContests(getSelectedContestsByTime(TIME.FUTURE, contestData));
     } else {
-      console.log('else');
       setSelectedContests(array);
     }
   }, []);
