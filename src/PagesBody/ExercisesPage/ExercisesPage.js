@@ -5,11 +5,11 @@ import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/Exer
 import Modal from '../../Organisms/Modal/Modal';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
-import modalData from '../../Consts/modalData';
-import { useState } from 'react';
 import contests from '../../Data/MongoDBMock/contests';
-import { useParams } from 'react-router-dom';
+import modalData from '../../Consts/modalData';
 import results from '../../Data/MongoDBMock/results';
+import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 
 const ExercisesPage = () => {
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
@@ -67,13 +67,13 @@ const ExercisesPage = () => {
         <SpecialButtonsContainerStyled>
           <SpecialButton
             text="Dyskwalifikacja"
-            theme="red"
+            colors="red"
             handler={openDisqualifyModalHandler}
             left
           />
           <SpecialButton
             text="-10 punktów"
-            theme="yellow"
+            colors="yellow"
             handler={openPenaltyModalHandler}
             right
           />
