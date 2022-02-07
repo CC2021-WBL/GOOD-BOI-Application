@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
 import ClassOrDogButtonStyled from './ClassOrDogButtonStyled';
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
+import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
-const ClassOrDogButton = ({ classInfo, dogInfo }) => {
+const ClassOrDogButton = ({ classInfo, dogInfo, noInfoLabel }) => {
   const navigate = useNavigate();
   const { obedienceClass, dogsAmount } = classInfo || [];
   const { index, dogId, dogName, exercisesCompleted, exercisesAmount } =
@@ -37,7 +37,7 @@ const ClassOrDogButton = ({ classInfo, dogInfo }) => {
           {index + 1}. {dogName}
         </p>
       )}
-      {dogInfo && (
+      {dogInfo && !noInfoLabel && (
         <InfoLabel dogInfo={{ exercisesCompleted, exercisesAmount }} />
       )}
     </ClassOrDogButtonStyled>
@@ -51,11 +51,12 @@ ClassOrDogButton.propTypes = {
   }),
   dogInfo: PropTypes.shape({
     index: PropTypes.number.isRequired,
-    dogId: PropTypes.string.isRequired,
-    dogName: PropTypes.string.isRequired,
-    exercisesCompleted: PropTypes.number.isRequired,
-    exercisesAmount: PropTypes.number.isRequired,
+    dogId: PropTypes.string,
+    dogName: PropTypes.string,
+    exercisesCompleted: PropTypes.number,
+    exercisesAmount: PropTypes.number,
   }),
+  noInfoLabel: PropTypes.bool.isRequired,
 };
 
 export default ClassOrDogButton;
