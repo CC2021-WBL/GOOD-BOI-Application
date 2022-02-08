@@ -28,7 +28,11 @@ const BurgerMenu = ({ open, setOpen }) => {
         <h3>Menu</h3>
       </HeaderMenuStyled>
       <MenuStyled>
-        <Link to="user" className="link" onClick={() => setOpen(false)}>
+        <Link
+          to="/user/:userId"
+          className="link"
+          onClick={() => setOpen(false)}
+        >
           <FaUserCircle className="icon" />
           <h6>Profil</h6>
         </Link>
