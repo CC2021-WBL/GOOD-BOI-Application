@@ -8,7 +8,7 @@ const FakeButton = ({ primary, secondary, ternary, text, to }) => {
       to={to}
       primary={primary}
       secondary={secondary}
-      ternary={ternary}
+      ternary={{ ternary }}
     >
       {text.toUpperCase()}
     </FakeButtonStyled>
