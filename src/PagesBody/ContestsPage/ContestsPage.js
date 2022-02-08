@@ -18,6 +18,7 @@ const ContestsPage = () => {
   const [toggle, setToggle] = useState(false);
   const [selectedMode, setSelectedMode] = useState(null);
   const locationPath = useLocation();
+  const [isPending, setIsPending] = useState(true);
 
   // mock for getting data from DB
   useEffect(() => {
@@ -48,12 +49,9 @@ const ContestsPage = () => {
       setSelectedMode(TIME.FUTURE);
     } else {
       setSelectedMode(TIME.UNKNOWN);
+      setIsPending(false);
     }
   }, []);
-
-  useEffect(() => {
-    getSelectedContestsByTime(selectedMode, contestData);
-  }, [selectedMode]);
 
   const toggleHandler = () => {
     setToggle((prevState) => !prevState);
@@ -63,15 +61,8 @@ const ContestsPage = () => {
   const handleFilterClick = (time, event) => {
     event.preventDefault;
     setSelectedMode(time);
+    console.log(contestData);
   };
-
-  if (!contestData) {
-    return (
-      <ColumnWrapper>
-        <h1>Nie ma zawodów</h1>
-      </ColumnWrapper>
-    );
-  }
 
   return (
     <>
@@ -83,9 +74,17 @@ const ContestsPage = () => {
       {toggle && <FilterLabel onClick={handleFilterClick}></FilterLabel>}
 
       <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
-        {getSelectedContestsByTime(selectedMode, contestData).map((contest) => (
-          <ContestCard key={contest.contestId} contestData={contest} />
-        )) || <p>nie ma konkursów</p>}
+        {isPending && <p>Loading...</p>}
+        {contestData &&
+          getSelectedContestsByTime(selectedMode, contestData).map(
+            (contest) => (
+              <ContestCard key={contest.contestId} contestData={contest} />
+            ),
+          )}
+        {contestData &&
+          getSelectedContestsByTime(selectedMode, contestData).length === 0 && (
+            <h3>Nie ma konkursów</h3>
+          )}
       </ColumnWrapper>
     </>
   );
