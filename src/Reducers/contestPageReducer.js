@@ -12,10 +12,10 @@ const contestPageReducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.SET:
       return action.payload,
-      case ACTIONS.SELECT_FUTURE:
-         return {
-            getSelectedContestsByTime()
-         } 
+    case ACTIONS.SELECT_FUTURE:
+      return {
+        getSelectedContestsByTime()
+      }
   }
 };
 
