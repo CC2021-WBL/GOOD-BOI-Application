@@ -17,8 +17,6 @@ const ExerciseCardsContainer = () => {
     console.log('useEffect dogPerformance change');
   }, [exercisesResults]);
 
-  console.log(dogPerformance.dogPerformance.initialDogPerformance);
-
   const performanceSaveHandler = (event) => {
     if (
       event.target.value < 0 ||
