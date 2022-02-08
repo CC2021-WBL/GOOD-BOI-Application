@@ -13,7 +13,8 @@ const UserDogPage = () => {
   const { state } = useContext(UserDataContext);
   const [isPending, setIsPending] = useState(true);
   const [participantDogs, setParticipantDogs] = useState(null);
-  const { dogDispatch } = useContext(DogContext);
+  const { dogState, dogDispatch } = useContext(DogContext);
+  console.log(dogState);
 
   useEffect(() => {
     const dogs = participants.find(
@@ -21,7 +22,7 @@ const UserDogPage = () => {
     ).dogs;
     setParticipantDogs(dogs);
     setIsPending(false);
-    dogDispatch({ type: 'SET_DATA', payload: { dogs: dogs } });
+    dogDispatch({ type: 'SET_DATA', payload: { dogs: dogs, chosenDog: '' } });
   }, []);
 
   return (
