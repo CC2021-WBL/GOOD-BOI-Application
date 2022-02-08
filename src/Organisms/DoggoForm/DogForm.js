@@ -13,7 +13,6 @@ const DogForm = ({ submitForm, initialState }) => {
     validateDogData,
     initialState,
   );
-  console.log(initialState);
 
   return (
     <FormWrapper onSubmit={submitHandler}>

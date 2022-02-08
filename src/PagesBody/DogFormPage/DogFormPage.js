@@ -11,14 +11,10 @@ import { useNavigate } from 'react-router-dom';
 
 const DogFormPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isUpdated, setIsUpdated] = useState(false);
   const { dogState, dogDispatch } = useContext(DogContext);
   const { dogs, chosenDog } = dogState;
-  const [initialStateOfDogForm, setInitialStateOfDogForm] =
-    useState(dogFormInitialState);
+  const [initialStateOfDogForm, setInitialStateOfDogForm] = useState(null);
   const navigate = useNavigate();
-  console.log(dogState);
-  console.log(initialStateOfDogForm);
 
   const changeInitialData = () => {
     let modifiedInitialState = {};
@@ -30,24 +26,15 @@ const DogFormPage = () => {
         });
 
         setInitialStateOfDogForm(modifiedInitialState);
-        console.log('try');
-        console.log(modifiedInitialState);
       }
     } catch (error) {
-      console.log('catch');
       setInitialStateOfDogForm(dogFormInitialState);
     }
   };
 
   useEffect(() => {
-    console.log('useEffect');
     changeInitialData();
-    setIsUpdated(true);
-    return () => {
-      setIsUpdated(false);
-      //setInitialStateOfDogForm(dogFormInitialState);
-    };
-  }, [isUpdated]);
+  }, []);
 
   function submitForm(dogData) {
     console.log(dogData);
@@ -63,7 +50,7 @@ const DogFormPage = () => {
   console.log(initialStateOfDogForm);
   return (
     <ColumnWrapper paddingLeftRight={1}>
-      {!isSubmitted ? (
+      {!isSubmitted && initialStateOfDogForm ? (
         <DogForm submitForm={submitForm} initialState={initialStateOfDogForm} />
       ) : null}
     </ColumnWrapper>

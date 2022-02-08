@@ -4,7 +4,6 @@ const useDogForm = (callback, validateData, initialState) => {
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  console.log(initialState);
 
   const handleInputChange = (event) => {
     const { id, value } = event.target;
