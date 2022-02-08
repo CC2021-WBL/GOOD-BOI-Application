@@ -1,20 +1,18 @@
-import LogoGoodBoi from '../../Atoms/LogoGoodBoi/LogoGoodBoi';
-import MainButton from '../../Atoms/MainButton/MainButton';
-import Footer from '../../Molecules/Footer/Footer';
-import { Link } from 'react-router-dom';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import FakeButton from '../../Atoms/FakeButton/FakeButton';
+import Footer from '../../Molecules/Footer/Footer';
+import LogoGoodBoi from '../../Atoms/LogoGoodBoi/LogoGoodBoi';
 
 const LandingPage = () => {
   return (
     <ColumnWrapper paddingLeftRight={1}>
       <LogoGoodBoi />
-      <Link to="/login" style={{ textDecoration: 'none' }}>
-        <MainButton primary text={'zaloguj się'} />
-      </Link>
-      <Link to="/register" style={{ textDecoration: 'none' }}>
-        <MainButton secondary text={'zarejestruj'} />
-      </Link>
-      <MainButton ternary text={'portal good boi'} />
+      <FakeButton to="/login" primary="primary" text="Zaloguj się" />
+
+      <FakeButton to="/register" secondary="secondary" text="Zarejestruj" />
+
+      <FakeButton to="/in-progress" ternary="ternary" text="portal good boi" />
+
       <Footer />
     </ColumnWrapper>
   );
