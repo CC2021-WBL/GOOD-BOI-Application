@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import ButtonExercises from '../../Atoms/ButtonsExercises/ButtonsExercises';
@@ -8,12 +8,10 @@ import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/Exer
 import Modal from '../../Organisms/Modal/Modal';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
+import contests from '../../Data/MongoDBMock/contests';
 import modalData from '../../Consts/modalData';
+import results from '../../Data/MongoDBMock/results';
 import { useState } from 'react';
-
-// import contests from '../../Data/MongoDBMock/contests';
-
-// import results from '../../Data/MongoDBMock/results';
 
 const ExercisesPage = () => {
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
@@ -31,7 +29,6 @@ const ExercisesPage = () => {
   //     dogPerformance.penaltyPoints = penaltyPoints;
   //   }
   // }, [dogPerformance, isPenaltyModalOpen, isDisqualifyModalOpen]);
-  console.log('ExercisePagedogPerformance');
   // console.log(dogPerformance);
 
   const handleDisqualification = () => {
@@ -76,19 +73,19 @@ const ExercisesPage = () => {
     navigate(-1);
   };
 
-  // const { contestId, classId, dogId } = useParams();
+  const { contestId, classId, dogId } = useParams();
 
-  // const contestResults = contests.find(
-  //   (contest) => contest.contestId === contestId,
-  // ).obedienceClasses[classId];
+  const contestResults = contests.find(
+    (contest) => contest.contestId === contestId,
+  ).obedienceClasses[classId];
 
-  // const competingPairsId = contestResults.find(
-  //   (dog) => dog.dogId === dogId,
-  // ).competingPairsId;
+  const competingPairsId = contestResults.find(
+    (dog) => dog.dogId === dogId,
+  ).competingPairsId;
 
-  // const dogPerformance = results.find(
-  //   (performance) => performance.competingPairsId === competingPairsId,
-  // ).exercises;
+  const dogPerformance = results.find(
+    (performance) => performance.competingPairsId === competingPairsId,
+  ).exercises;
 
   return (
     <ColumnWrapper>
