@@ -29,15 +29,23 @@ const handleColorType = (props) => {
       return getStyles(`${props.theme.white}`, `${props.theme.grey800}`);
   }
 };
+
+const handleBorder = (roundedBorder) => {
+  switch (roundedBorder) {
+    case 'left':
+      return `border-radius: 0 0 0 0.75rem`;
+    case 'right':
+      return `border-radius: 0 0 0.75rem 0`;
+  }
+};
 const SpecialButtonStyled = styled.button`
   width: 50%;
   height: 100%;
   border: none;
-  border-radius: ${(props) => props.left && '0 0 0 0.75rem'};
-  border-radius: ${(props) => props.right && '0 0 0.75rem 0'};
-  cursor: pointer;
   font-weight: bold;
+  ${({ roundedBorder }) => handleBorder(roundedBorder)};
   ${(props) => handleColorType(props)};
+  cursor: pointer;
   &:hover {
     filter: brightness(1.1);
   }

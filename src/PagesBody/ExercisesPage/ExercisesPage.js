@@ -1,5 +1,6 @@
 import Backdrop from '../../Atoms/Modal/Backdrop';
-import ButtonExercisesContainer from '../../Molecules/ButtonsExcercisenContainer/ButtonsExercisesContainer';
+import ButtonExercises from '../../Atoms/ButtonsExercises/ButtonsExercises';
+import ButtonExercisesContainerStyled from '../../Molecules/ButtonsExcercisenContainer/ButtonExercisesContainerStyled';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
 import Modal from '../../Organisms/Modal/Modal';
@@ -8,18 +9,27 @@ import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContain
 import contests from '../../Data/MongoDBMock/contests';
 import modalData from '../../Consts/modalData';
 import results from '../../Data/MongoDBMock/results';
+import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 
 const ExercisesPage = () => {
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
   const [isPenaltyModalOpen, setIsPenaltyModalOpen] = useState(false);
+  const [isEvaluationModalOpen, setIsEvaluationModalOpen] = useState(false);
 
   const handleDisqualification = () => {
     setIsDisqualifyModalOpen(false);
   };
   const handlePenalty = () => {
     setIsPenaltyModalOpen(false);
+  };
+
+  const handleEvaluation = () => {
+    setIsEvaluationModalOpen(false);
+    navigate('./dog-summary', {
+      state: { text: 'Tabela Wyników', label: 'Ocena Zawodnika' },
+    });
   };
   const openDisqualifyModalHandler = () => {
     setIsDisqualifyModalOpen(true);
@@ -28,10 +38,20 @@ const ExercisesPage = () => {
     setIsPenaltyModalOpen(true);
   };
 
+  const openEvaluationModalHandler = () => {
+    setIsEvaluationModalOpen(true);
+  };
+
   function closeModalHandler() {
     setIsPenaltyModalOpen(false);
     setIsDisqualifyModalOpen(false);
+    setIsEvaluationModalOpen(false);
   }
+  const navigate = useNavigate();
+
+  const goBackHandler = () => {
+    navigate(-1);
+  };
 
   const { contestId, classId, dogId } = useParams();
 
@@ -49,40 +69,60 @@ const ExercisesPage = () => {
 
   return (
     <ColumnWrapper>
-      {(isDisqualifyModalOpen || isPenaltyModalOpen) && (
+      {isDisqualifyModalOpen && (
         <Modal
-          modalData={
-            isDisqualifyModalOpen ? modalData.disqualify : modalData.penalty
-          }
+          modalData={modalData.disqualify}
           onCloseHandler={closeModalHandler}
-          onConfirmHandler={
-            isDisqualifyModalOpen ? handleDisqualification : handlePenalty
-          }
+          onConfirmHandler={handleDisqualification}
         />
       )}
-      {(isDisqualifyModalOpen || isPenaltyModalOpen) && (
-        <Backdrop onClick={closeModalHandler} />
+      {isPenaltyModalOpen && (
+        <Modal
+          modalData={modalData.penalty}
+          onCloseHandler={closeModalHandler}
+          onConfirmHandler={handlePenalty}
+        />
       )}
+      {isEvaluationModalOpen && (
+        <Modal
+          modalData={modalData.endEvaluation}
+          onCloseHandler={closeModalHandler}
+          onConfirmHandler={handleEvaluation}
+        />
+      )}
+      {(isDisqualifyModalOpen ||
+        isPenaltyModalOpen ||
+        isEvaluationModalOpen) && <Backdrop onClick={closeModalHandler} />}
       <ColumnWrapper paddingLeftRight={0.25}>
         <SpecialButtonsContainerStyled>
           <SpecialButton
             text="Dyskwalifikacja"
             colors="red"
             handler={openDisqualifyModalHandler}
-            left
+            roundedBorder="left"
           />
           <SpecialButton
             text="-10 punktów"
             colors="yellow"
             handler={openPenaltyModalHandler}
-            right
+            roundedBorder="right"
           />
         </SpecialButtonsContainerStyled>
 
         <ExerciseCardsContainer dogPerformance={dogPerformance} />
       </ColumnWrapper>
-
-      <ButtonExercisesContainer />
+      <ButtonExercisesContainerStyled>
+        <ButtonExercises
+          handler={goBackHandler}
+          secondary
+          text={'Zapisz i wróć do listy'}
+        />
+        <ButtonExercises
+          handler={openEvaluationModalHandler}
+          primary
+          text={'Zakończ ocenianie'}
+        />
+      </ButtonExercisesContainerStyled>{' '}
     </ColumnWrapper>
   );
 };
