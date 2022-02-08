@@ -12,7 +12,6 @@ import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContain
 import contests from '../../Data/MongoDBMock/contests';
 import modalData from '../../Consts/modalData';
 import results from '../../Data/MongoDBMock/results';
-import swal from 'sweetalert';
 
 const ExercisesPage = () => {
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
@@ -26,8 +25,7 @@ const ExercisesPage = () => {
     console.log('useEffect penalty ' + penaltyPoints);
     console.log('useEffect disqualified ' + disqualified);
     if (penaltyPoints < -10) {
-      swal("'Uwaga! Podwójna żółta kartka! Dyskwalifikacja!'");
-      // alert('Uwaga! Podwójna żółta kartka! Dyskwalifikacja!');
+      alert('Uwaga! Podwójna żółta kartka! Dyskwalifikacja!');
       console.log(dogPerformance);
       navigate('./dog-summary', {
         state: {
