@@ -8,12 +8,14 @@ import {
   getHourAndMinutesFromDate,
   getPointOnTimeLine,
 } from '../../Tools/TimeFunctions';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+
+import { ContestContext } from '../../Context/ContestContext';
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
+import contests from '../../Data/MongoDBMock/contests';
 import propTypes from 'prop-types';
 import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
 import { useNavigate } from 'react-router-dom';
-import contests from '../../Data/MongoDBMock/contests';
 
 const ContestCard = ({ contestId }) => {
   const initialData = {
@@ -25,6 +27,7 @@ const ContestCard = ({ contestId }) => {
     doggoAmount: 0,
   };
   const [contestData, setContestData] = useState(initialData);
+  const { contestDispatch } = useContext(ContestContext);
 
   const { contestName, startDate, endDate, hour, city, doggoAmount } =
     contestData;
@@ -51,10 +54,16 @@ const ContestCard = ({ contestId }) => {
 
   const handleClick = (event) => {
     event.preventDefault();
+    contestDispatch({
+      type: 'SET_CONTEST',
+      payload: {
+        contestId: contestId,
+        contestName: contestName,
+      },
+    });
     navigate(`./${contestId}/classes`, {
       state: { text: 'Lista klas', label: `${contestName}` },
     });
-    //navigate musi przekazać dane o klasach jakie mają się odbyć i nazwach psów w tych klasach?
   };
 
   return (

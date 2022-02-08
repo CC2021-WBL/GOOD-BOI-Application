@@ -12,3 +12,9 @@ export const ROLES = {
     roleButtonLink: '/contests',
   },
 };
+
+export const ROLE_NAME = {
+  PARTICIPANT: 'participant',
+  STAFF: 'staff',
+  MANAGER: 'manager',
+};

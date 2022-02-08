@@ -1,6 +1,5 @@
-import propTypes from 'prop-types';
-
 import FakeButtonStyled from './FakeButtonStyled';
+import propTypes from 'prop-types';
 
 const FakeButton = ({ primary, secondary, ternary, text, to }) => {
   return (
@@ -8,7 +7,7 @@ const FakeButton = ({ primary, secondary, ternary, text, to }) => {
       to={to}
       primary={primary}
       secondary={secondary}
-      ternary={ternary}
+      ternary={{ ternary }}
     >
       {text.toUpperCase()}
     </FakeButtonStyled>
