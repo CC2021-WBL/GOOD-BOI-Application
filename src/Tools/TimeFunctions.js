@@ -47,7 +47,9 @@ export const getPointOnTimeLine = (startDate, endDate) => {
 export const getSelectedContestsByTime = (timePeriod, contests = []) => {
   let selectedcontests = [];
 
-  if (timePeriod === TIME.UNKNOWN) {
+  if (contests === null) {
+    return null;
+  } else if (timePeriod === TIME.UNKNOWN) {
     selectedcontests = contests;
   } else if (timePeriod === TIME.PRESENT_AND_PAST) {
     contests.forEach((contest) => {

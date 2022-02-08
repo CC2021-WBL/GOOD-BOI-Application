@@ -5,11 +5,6 @@ const pathData = [
   { path: '/role', text: 'Wybierz rolę', label: 'Kontynuuj jako' },
   { path: '/register', text: 'Rejestracja', label: '' },
   { path: '/forgot', text: 'Resetuj hasło', label: '' },
-  {
-    path: '/contests',
-    text: 'Lista konkursów',
-    label: 'Wybierz konkurs',
-  },
 
   {
     path: `/contests/${RANDOM_CONTESTS[0].id}/classes/Klasa 0`,

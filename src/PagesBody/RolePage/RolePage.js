@@ -21,14 +21,24 @@ const RolePage = () => {
 
   return (
     <ColumnWrapper paddingLeftRight={1} paddingTop={1.5}>
-      {roles.map((role, index) => (
-        <FakeButton
-          key={index}
-          ternary
-          text={ROLES[role].roleButtonText}
-          to={createURLForRolePage(role, userId)}
-        />
-      ))}
+      {roles.map((role, index) =>
+        role === 'staff' ? (
+          <FakeButton
+            key={index}
+            ternary
+            text={ROLES[role].roleButtonText}
+            to={createURLForRolePage(role, userId)}
+            state={{ text: 'Lista konkursów', label: 'Wybierz konkurs' }}
+          />
+        ) : (
+          <FakeButton
+            key={index}
+            ternary
+            text={ROLES[role].roleButtonText}
+            to={createURLForRolePage(role, userId)}
+          />
+        ),
+      )}
       <MainButton
         text="Test - aktualizacja danych"
         secondary

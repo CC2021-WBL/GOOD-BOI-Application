@@ -13,14 +13,22 @@ const ProfilePage = ({ userId }) => {
       <FakeButton to="/user-dogs" text="Twoje Psy" ternary="ternary" />
       <FakeButton
         to={`/contests`}
-        state={{ contestContent: 'results' }}
+        state={{
+          contestContent: 'results',
+          text: 'Twoje konkursy',
+          label: 'Wybierz konkurs',
+        }}
         text="Twoje Konkursy"
         ternary="ternary"
       />
       <FakeButton to="/user-data" text="Twoje Dane" ternary="ternary" />
       <FakeButton
-        to="contests"
-        state={{ contestContent: 'future' }}
+        to={'/contests'}
+        state={{
+          contestContent: 'future',
+          text: 'Nadchodzące konkursy',
+          label: 'Wybierz konkurs',
+        }}
         text="Nadchodzące Konkursy"
         secondary="secondary"
       />
