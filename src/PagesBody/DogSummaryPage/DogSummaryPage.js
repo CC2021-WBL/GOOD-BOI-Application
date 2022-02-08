@@ -11,10 +11,10 @@ import SummaryLine from '../../Atoms/Leaderboard/SummaryLine';
 const sendDataHandler = () => {};
 
 const DogSummaryPage = () => {
+  const { contestId, classId, dogId } = useParams();
   const locationPath = useLocation();
   console.log(locationPath.state);
   const dogPerformanceData = locationPath.state.dogPerformance.dogPerformance;
-  const { contestId, classId, dogId } = useParams();
 
   return (
     <ColumnWrapper>
