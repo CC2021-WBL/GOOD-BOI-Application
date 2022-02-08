@@ -3,10 +3,12 @@ import { useLocation, useParams } from 'react-router-dom';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import LeaderboardList from '../../Molecules/LeaderboardList/LeaderboardList';
 import MainButton from './../../Atoms/MainButton/MainButton';
-import { NewContestContext } from './../../Context/NewContestContext';
 import PenaltyOrDisqualifiedLine from '../../Atoms/Leaderboard/PenaltyOrDisqualifiedLine';
 import SummaryLine from '../../Atoms/Leaderboard/SummaryLine';
-import { useContext } from 'react';
+
+// import { NewContestContext } from './../../Context/NewContestContext';
+
+// import { useContext } from 'react';
 
 // TODO: Penalty points will be calculated after entries in the database will be created on ExercisesPage
 
