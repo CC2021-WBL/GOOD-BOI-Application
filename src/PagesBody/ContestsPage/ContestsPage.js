@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 import {
   getHourAndMinutesFromDate,
   getSelectedContestsByTime,
@@ -14,11 +16,11 @@ import { getAmountOfCompetingDoggos } from '../../Tools/DataModifications';
 import { useLocation } from 'react-router-dom';
 
 const ContestsPage = () => {
-  const [contestData, setContestData] = useState([]);
+  const [contestData, setContestData] = useState(null);
   const [toggle, setToggle] = useState(false);
-  const [selectedContests, setSelectedContests] = useState();
+  const [selectedContests, setSelectedContests] = useState(null);
   const locationPath = useLocation();
-  console.log(locationPath.state);
+  console.log(locationPath);
 
   // mock for getting data from DB
   useEffect(() => {
@@ -37,27 +39,29 @@ const ContestsPage = () => {
       array.push(contestObject);
     });
     setContestData(array);
-    console.log('useEffect');
-    if (
-      locationPath.state &&
-      locationPath.state.contestsContent === 'results'
-    ) {
-      console.log('results');
+    console.log(contestData);
+    // checking first time when rendered if there are any selectors from previous component
+    // not working now - ready to use, connection as TODO with Tomek and Profile Page
+    if (locationPath.state && locationPath.state.contestContent === 'results') {
+      console.log(locationPath.state.contestContent);
       setSelectedContests(
         getSelectedContestsByTime(TIME.PRESENT_AND_PAST, contestData),
       );
     } else if (
       locationPath.state &&
-      locationPath.state.contestsContent === 'future'
+      locationPath.state.contestContent === 'future'
     ) {
-      console.log('future');
-
+      console.log(locationPath.state.contestContent);
       setSelectedContests(getSelectedContestsByTime(TIME.FUTURE, contestData));
     } else {
-      console.log('else');
       setSelectedContests(array);
     }
+    console.log(selectedContests);
   }, []);
+
+  useEffect(() => {
+    getSelectedContestsByTime(contestData);
+  }, [selectedMode]);
 
   const toggleHandler = () => {
     setToggle((prevState) => !prevState);
@@ -69,7 +73,7 @@ const ContestsPage = () => {
     setSelectedContests(getSelectedContestsByTime(time, contestData));
   };
 
-  if (contestData.length === 0) {
+  if (!contestData) {
     return (
       <ColumnWrapper>
         <h1>Nie ma zawodów</h1>
@@ -87,9 +91,10 @@ const ContestsPage = () => {
       {toggle && <FilterLabel onClick={handleFilterClick}></FilterLabel>}
 
       <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
-        {selectedContests.map((contest) => (
-          <ContestCard key={contest.contestId} contestData={contest} />
-        ))}
+        {selectedContests &&
+          selectedContests.map((contest) => (
+            <ContestCard key={contest.contestId} contestData={contest} />
+          ))}
       </ColumnWrapper>
     </>
   );
