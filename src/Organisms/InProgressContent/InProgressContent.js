@@ -1,21 +1,23 @@
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import InProgressContentWrapperStyled from './InProgressContentWrapperStyled';
+import MainButton from '../../Atoms/MainButton/MainButton';
 import inprogress from '../../Assets/inprogress.png';
+import { useNavigate } from 'react-router-dom';
 
 const InProgressContent = () => {
+  const navigate = useNavigate();
   return (
     <ColumnWrapper paddingLeftRight={1}>
       <InProgressContentWrapperStyled>
         <img src={inprogress} alt="in progress" />
         <div>
           <h3>Strona w trakcie przygotowania!</h3>
-          <p>Strona dostępna wkrótce!</p>
         </div>
-        <FakeButton
-          secondary="secondary"
-          text="Powrót do strony głównej"
-          to="/login"
+
+        <MainButton
+          secondary
+          text="Wróć do poprzedniej strony"
+          onClick={() => navigate(-1)}
         />
       </InProgressContentWrapperStyled>
     </ColumnWrapper>

@@ -19,10 +19,6 @@ const InProgressContentWrapperStyled = styled.div`
       color: ${({ theme }) => theme.grey800};
       ${FONTS.h3};
     }
-    p {
-      color: ${({ theme }) => theme.grey800};
-      ${FONTS.caption};
-    }
   }
 `;
 
