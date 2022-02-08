@@ -2,6 +2,12 @@ import styled from 'styled-components';
 import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
 
+const handleBgAndColor = (props) => {
+  console.log(props)
+  console.log(props.theme[props.colors.color])
+  // TODO
+};
+
 const ModalContainer = styled.div`
   position: fixed;
   z-index: 10;
@@ -19,12 +25,17 @@ const ModalContainer = styled.div`
     justify-content: space-between;
     padding: 1.1875rem 1.9375rem;
     border-radius: 0.75rem 0.75rem 0rem 0rem;
+    // TODO: refactor
+    ${(props) => {
+      handleBgAndColor(props)
+      return `
+        color: ${props.theme[props.colors.color]};`
 
+    }}
     ${(props) =>
-      props.theme &&
+      props.theme && props.colors &&
       `
-        color: ${props.theme.color};
-        background: ${props.theme.background};`}
+        background-color: ${props.theme[props.colors.background]};`}
     .title {
       ${FONTS.h3};
     }

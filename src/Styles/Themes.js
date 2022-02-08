@@ -27,6 +27,12 @@ export const lightTheme = {
   positive400: '#34C369',
   positive200: '#97E3B3',
   positive100: '#CBF1D9',
+
+  modalPenaltyBG: 'brown',
+  modalPenaltyC: 'grey',
+
+  modalDesqualifyBG: 'green',
+  modalDesqualifyC: 'black',
 };
 export const darkTheme = {
   primary801: '#D5E6FB',
@@ -57,4 +63,10 @@ export const darkTheme = {
   positive400: '#34C369',
   positive200: '#97E3B3',
   positive100: '#CBF1D9',
+
+  modalPenaltyBG: 'red',
+  modalPenaltyC: 'blue',
+
+  modalDesqualifyBG: 'yellow',
+  modalDesqualifyC: 'purple',
 };
