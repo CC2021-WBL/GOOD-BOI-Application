@@ -36,7 +36,6 @@ const DogData = ({ id }) => {
 
   const handleEdit = (event) => {
     event.preventDefault();
-    console.log(id);
     navigate(`/add-dog-form`);
     //navigate musi przekazać dane psa (id) do formularza który wypełni sobie inputy value z bazy
     // danych

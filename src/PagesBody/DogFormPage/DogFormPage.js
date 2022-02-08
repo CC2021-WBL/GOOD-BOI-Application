@@ -37,7 +37,6 @@ const DogFormPage = () => {
   }, []);
 
   function submitForm(dogData) {
-    console.log(dogData);
     setIsSubmitted(true);
     dogDispatch({
       type: 'UPDATE_ONE_FIELD',
@@ -47,7 +46,6 @@ const DogFormPage = () => {
     navigate(-1);
   }
 
-  console.log(initialStateOfDogForm);
   return (
     <ColumnWrapper paddingLeftRight={1}>
       {!isSubmitted && initialStateOfDogForm ? (

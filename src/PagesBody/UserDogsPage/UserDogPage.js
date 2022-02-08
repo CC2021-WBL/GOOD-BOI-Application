@@ -13,8 +13,7 @@ const UserDogPage = () => {
   const { state } = useContext(UserDataContext);
   const [isPending, setIsPending] = useState(true);
   const [participantDogs, setParticipantDogs] = useState(null);
-  const { dogState, dogDispatch } = useContext(DogContext);
-  console.log(dogState);
+  const { dogDispatch } = useContext(DogContext);
 
   useEffect(() => {
     const dogs = participants.find(
