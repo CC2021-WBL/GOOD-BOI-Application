@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 import { useContext, useEffect, useState } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';

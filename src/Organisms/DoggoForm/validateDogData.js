@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 const validateData = (formData) => {
   const {
     dogName,
