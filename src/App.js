@@ -17,6 +17,7 @@ import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
 import { GlobalStyles } from './Styles/globalStyles';
+import InProgressPage from './PagesBody/InProgressPage/InProgressPage';
 import LandingPage from './PagesBody/LandingPage/LandingPage';
 import Layout from './Templates/Layout/Layout';
 import LeaderboardPage from './PagesBody/LeaderboardPage/LeaderboardPage';
@@ -69,6 +70,7 @@ function App() {
                     <Route path="unregistered" element={<UnregisteredPage />} />
                     <Route path="login" element={<LoginForm />} />
                     <Route path="user-dogs" element={<UserDogPage />} />
+                    <Route path="in-progress" element={<InProgressPage />} />
                   </Route>
                   <Route element={<Layout withLabel />}>
                     <Route path="add-dog-form" element={<DogFormPage />} />
