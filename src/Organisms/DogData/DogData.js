@@ -3,50 +3,44 @@ import { useNavigate } from 'react-router-dom';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import doggos from '../../Data/MongoDBMock/doggos';
-import DOG_DATA_TEMPLATE from '../../Consts/DogDataCONSTS';
+import renderDogData from '../../Tools/renderDogData';
 import DataLine from '../../Atoms/DataLine/DataLine';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
-import { getDataFormatDdMonthYyy } from '../../Tools/TimeFunctions';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { UserDataContext } from '../../Context/UserDataContext';
 
 const DogData = ({ id }) => {
   let navigate = useNavigate();
   const [dogData, setDogData] = useState(null);
   const [isPending, setIsPending] = useState(true);
+  const { state } = useContext(UserDataContext);
 
   useEffect(() => {
-    // @TODO fetching data from database in the future here
     setDogData(doggos.find((dog) => dog.dogId === id));
     setIsPending(false);
   }, []);
 
-  const dogDataRender = {};
-
-  if (dogData) {
-    Object.keys(DOG_DATA_TEMPLATE).forEach(
-      (property) =>
-        (dogDataRender[DOG_DATA_TEMPLATE[property]] =
-          dogData[property] || 'brak danych'),
-    );
-    dogDataRender['Data urodzenia'] = `${getDataFormatDdMonthYyy(
-      dogDataRender['Data urodzenia'],
-    )}`;
-  }
-
   const handleEdit = (event) => {
     event.preventDefault();
-    console.log(id);
-    navigate(`/add-dog-form/${id}`);
-    //navigate musi przekazać dane psa (id) do formularza który wypełni sobie inputy value z bazy
-    // danych
+    navigate(`/add-dog-form/${id}`, {
+      state: {
+        text: 'Formularz',
+        label: `Edytuj dane psa ${dogData.dogName}`,
+        dogId: dogData.dogId,
+      },
+    });
   };
+
   const handleConfirm = (event) => {
     event.preventDefault();
-    const idOfOwnerFromContext = '@TODO in the future';
-    navigate(`/participant-data/${idOfOwnerFromContext}`);
-    //navigate musi przekazać id właściela psa, żeby pokazać nam kolejny ekran z wypełnionymi
-    // danymi właściciela
+    navigate(`/participant-data/${state.userId}`, {
+      state: {
+        text: 'Dane zawodnika',
+        label: `${state.userName} ${state.userSurname}`,
+        participantId: state.userId,
+      },
+    });
   };
 
   return (
@@ -63,7 +57,7 @@ const DogData = ({ id }) => {
       <ColumnWrapper>
         {isPending && <p>Loading...</p>}
         {dogData &&
-          Object.entries(dogDataRender).map((dataLine, index) => (
+          Object.entries(renderDogData(dogData)).map((dataLine, index) => (
             <DataLine key={index} text={dataLine} />
           ))}
       </ColumnWrapper>

@@ -94,7 +94,7 @@ function App() {
                     />
                     <Route path="dog-data/:dogId" element={<DogDataPage />} />
                     <Route
-                      path="participant-data/"
+                      path="participant-data/:participantId"
                       element={<ParticipantDataPage />}
                     />
                     <Route
