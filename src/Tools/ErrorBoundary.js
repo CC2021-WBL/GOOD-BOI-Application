@@ -1,7 +1,10 @@
-import propTypes from 'prop-types';
+import ColumnWrapper from '../Templates/ColumnWrapper/ColumnWrapper';
 import { Component } from 'react';
-
-import ErrorPage from '../PagesBody/ErrorPage/ErrorPage';
+import ErrorPageGraphic from '../../src/Assets/ErrorPageGraphic.png';
+import { Link } from 'react-router-dom';
+import MainButton from '../Atoms/MainButton/MainButton';
+import NotFoundPageWrapperStyled from '../Organisms/NotFoundContent/NotFoundPageWrapperStyled';
+import propTypes from 'prop-types';
 
 export class ErrorBoundary extends Component {
   constructor(props) {
@@ -19,16 +22,25 @@ export class ErrorBoundary extends Component {
       error: error,
       errorInfo: errorInfo,
     });
-    // console.log(error, errorInfo);
   }
 
   render() {
     if (this.state.hasError) {
       return (
         <>
-          <ErrorPage />
-          <h4>Error: </h4> {this.state.error.toString()} <br />
-          <h4>Error Info: </h4> {this.state.errorInfo.componentStack}
+          <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
+            <NotFoundPageWrapperStyled>
+              <img src={ErrorPageGraphic} alt="Doggo in space" />
+              <div className="mainContentWrapper">
+                <h1>Coś poszło nie tak.</h1>
+                {this.state.error.toString()} <br />
+                <p>Wróć do strony głównej i spróbuj ponownie później.</p>
+              </div>
+            </NotFoundPageWrapperStyled>
+            <Link to="/">
+              <MainButton secondary text="wroć do poprzedniej strony" />
+            </Link>
+          </ColumnWrapper>
         </>
       );
     }

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-import notFound from '../../Assets/notFound.png';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import NotFoundPageWrapperStyled from './NotFoundPageWrapperStyled';
+import notFound from '../../Assets/notFound.png';
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const NotFound = () => {
           text="wroć do poprzedniej strony"
           onClick={() => navigate(-1)}
         />
-        <Link to="/contactForm">
+        <Link to="/contact-form">
           <MainButton ternary text="Formularz kontaktowy" />
         </Link>
       </div>
