@@ -9,6 +9,7 @@ import {
 } from '../../Tools/TimeFunctions';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import { ContestContext } from '../../Context/ContestContext';
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
 import { UserDataContext } from '../../Context/UserDataContext';
 import propTypes from 'prop-types';
@@ -16,8 +17,10 @@ import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
 import { useContext } from 'react';
 
 const ContestCard = ({ contestData }) => {
+  const { contestDispatch } = useContext(ContestContext);
   const { state } = useContext(UserDataContext);
   const { roles } = state;
+
   let navigate = useNavigate();
   const locationPath = useLocation();
 
@@ -49,6 +52,13 @@ const ContestCard = ({ contestData }) => {
         state: { text: 'Konkurs', label: `${contestName}` },
       });
     }
+    contestDispatch({
+      type: 'SET_CONTEST',
+      payload: {
+        contestId: contestId,
+        contestName: contestName,
+      },
+    });
   };
 
   return (
