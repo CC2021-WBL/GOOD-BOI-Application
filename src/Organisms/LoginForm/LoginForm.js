@@ -1,16 +1,18 @@
 import 'font-awesome/css/font-awesome.min.css';
 
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
+import { Link } from 'react-router-dom';
 import MainButton from '../../Atoms/MainButton/MainButton';
+import { UserDataContext } from '../../Context/UserDataContext';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { dispatch } = useContext(UserDataContext);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -48,7 +50,13 @@ const LoginForm = () => {
           Zapomniałeś/aś hasła ?
         </Link>
         <Link to="/role" style={{ textDecoration: 'none' }}>
-          <MainButton primary text="Zaloguj się" />
+          <MainButton
+            onClick={() => {
+              dispatch({ type: 'LOG_IN' });
+            }}
+            primary
+            text="Zaloguj się"
+          />
         </Link>
       </FormWrapper>
     </ColumnWrapper>

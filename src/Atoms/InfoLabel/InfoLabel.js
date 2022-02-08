@@ -21,10 +21,10 @@ const InfoLabel = ({ classInfo, dogInfo, pointOnTimeLine, colorMotive }) => {
       {/*CONDITIONAL FOR CLASSES */}
       {classInfo && isCompleted && <>ukończono</>}
       {classInfo && !isCompleted && (
-        <>
+        <p>
           {dogsAmount}
           {dogsAmount === 1 ? ` uczestnik` : ` uczestników`}
-        </>
+        </p>
       )}
 
       {/*CONDITIONAL FOR DOGS */}
@@ -38,8 +38,14 @@ const InfoLabel = ({ classInfo, dogInfo, pointOnTimeLine, colorMotive }) => {
 };
 
 InfoLabel.propTypes = {
-  classInfo: PropTypes.object,
-  dogInfo: PropTypes.object,
+  classInfo: PropTypes.shape({
+    dogsAmount: PropTypes.number,
+    isCompleted: PropTypes.bool,
+  }),
+  dogInfo: PropTypes.shape({
+    exercisesCompleted: PropTypes.number,
+    exercisesAmount: PropTypes.number,
+  }),
   pointOnTimeLine: PropTypes.string,
   colorMotive: PropTypes.string,
 };

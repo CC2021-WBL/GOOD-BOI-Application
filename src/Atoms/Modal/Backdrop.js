@@ -1,7 +1,5 @@
 import BackdropStyled from './BackdropStyled';
 
-function Backdrop() {
-  return <BackdropStyled />;
-}
+const Backdrop = () => <BackdropStyled />;
 
 export default Backdrop;

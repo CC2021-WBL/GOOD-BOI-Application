@@ -24,6 +24,7 @@ const UserAddress = ({ withEdit }) => {
   const submitForm = () => {};
 
   return (
+<<<<<<< HEAD
     <>
       <UserAddressStyled>
         <div className="address-container">
@@ -42,6 +43,12 @@ const UserAddress = ({ withEdit }) => {
         </>
       )}
     </>
+=======
+    <UserAddressStyled>
+      <p>{`${userObject.street} ${userObject.numberOfHouse}`}</p>
+      <p>{`${userObject.postalCode} ${userObject.city}`}</p>
+    </UserAddressStyled>
+>>>>>>> development
   );
 };
 
