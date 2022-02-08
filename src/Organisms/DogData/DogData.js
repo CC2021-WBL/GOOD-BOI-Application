@@ -25,9 +25,9 @@ const DogData = ({ id }) => {
     event.preventDefault();
     navigate(`/add-dog-form/${id}`, {
       state: {
-        text: 'Formularz',
-        label: `Edytuj dane psa ${dogData.dogName}`,
-        dogId: dogData.dogId,
+        text: 'Formularz - edycja',
+        label: `${dogData.dogName}`,
+        dogId: id,
       },
     });
   };

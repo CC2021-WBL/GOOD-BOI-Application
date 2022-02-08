@@ -13,12 +13,19 @@ const ParticipantData = ({ id }) => {
   const [participantData, setParticipantData] = useState(null);
   const [isPending, setIsPending] = useState(true);
 
+  useEffect(() => {
+    setParticipantData(
+      participants.find((participant) => participant.participantId === id),
+    );
+    setIsPending(false);
+  }, []);
+
   const handleEdit = (event) => {
     event.preventDefault();
     navigate(`/profileForm/${id}`, {
       state: {
-        text: 'Formularz',
-        label: `Edytuj dane zawodnika ${participantData.participantName} ${participantData.participantSurname}`,
+        text: 'Formularz - edycja',
+        label: `${participantData.participantName} ${participantData.participantSurname}`,
         participantId: id,
       },
     });
@@ -26,15 +33,8 @@ const ParticipantData = ({ id }) => {
 
   const handleConfirm = (event) => {
     event.preventDefault();
-    navigate(`/classChoice`);
+    navigate(`/class-choice`);
   };
-
-  useEffect(() => {
-    setParticipantData(
-      participants.find((participant) => participant.participantId === id),
-    );
-    setIsPending(false);
-  }, []);
 
   return (
     <ColumnWrapper paddingLeftRight={1}>
