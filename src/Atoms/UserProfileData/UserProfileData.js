@@ -2,25 +2,14 @@ import propTypes from 'prop-types';
 import { useContext, useEffect, useState } from 'react';
 
 import UserProfileDataStyled from './UserProfileDataStyled';
+import createUserInitialData from '../../Tools/createUserInitialData';
 import participants from '../../Data/MongoDBMock/participants';
 import { UserDataContext } from '../../Context/UserDataContext';
-
-// import { useLocation } from 'react-router-dom';
-
-const initialData = {
-  address: {
-    country: 'Polska',
-    city: 'Sfornegacie',
-    street: 'ul.Pszczelna',
-    numberOfHouse: '27/5',
-    postalCode: '50-124',
-  },
-};
 
 const UserProfileData = () => {
   const { state } = useContext(UserDataContext);
   const { userId, userName, userSurname, isAuthenticated } = state;
-  const [userObject, setUserObject] = useState(initialData);
+  const [userObject, setUserObject] = useState(createUserInitialData(userId));
 
   if (!isAuthenticated) {
     throw new Error('Your not allowed to be here!');
@@ -53,7 +42,7 @@ const UserProfileData = () => {
     const userObject = participants.find(
       (participant) => participant.participantId === userId,
     );
-    if (userObject === undefined) {
+    if (!userObject) {
       throw new Error('Fetch was unsuccessful');
     } else {
       setUserObject(userObject);
