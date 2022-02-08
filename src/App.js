@@ -7,13 +7,17 @@ import BurgerMenu from './Organisms/BurgerMenu/BurgerMenu';
 import ClassCompetitorsPage from './PagesBody/ClassCompetitorsPage/ClassCompetitorsPage';
 import ClassesPage from './PagesBody/ClassesPage/ClassesPage';
 import ContactFormPage from './PagesBody/ContactFormPage/ContactFormPage';
+import { ContestContextProvider } from './Context/ContestContext';
 import ContestDetailsPage from './PagesBody/ContestDetailsPage/ContestDetailsPage';
 import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
+import { DogContextProvider } from './Context/DogContext';
 import DogDataPage from './PagesBody/DogDataPage/DogDataPage';
+import DogFormPage from './PagesBody/DogFormPage/DogFormPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
 import { GlobalStyles } from './Styles/globalStyles';
+import InProgressPage from './PagesBody/InProgressPage/InProgressPage';
 import LandingPage from './PagesBody/LandingPage/LandingPage';
 import Layout from './Templates/Layout/Layout';
 import LeaderboardPage from './PagesBody/LeaderboardPage/LeaderboardPage';
@@ -30,8 +34,6 @@ import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
 import { UserDataProvider } from './Context/UserDataContext';
 import UserDogPage from './PagesBody/UserDogsPage/UserDogPage';
 import { useDarkMode } from './Hooks/useDarkMode';
-import { DogContextProvider } from './Context/DogContext';
-import { ContestContextProvider } from './Context/ContestContext';
 
 function App() {
   const [theme, themeToggler, mountedComponent] = useDarkMode();
@@ -68,8 +70,10 @@ function App() {
                     <Route path="unregistered" element={<UnregisteredPage />} />
                     <Route path="login" element={<LoginForm />} />
                     <Route path="user-dogs" element={<UserDogPage />} />
+                    <Route path="in-progress" element={<InProgressPage />} />
                   </Route>
                   <Route element={<Layout withLabel />}>
+                    <Route path="add-dog-form" element={<DogFormPage />} />
                     <Route path="role" element={<RolePage />} />
                     <Route path="contests" element={<ContestsPage />} />
                     <Route
