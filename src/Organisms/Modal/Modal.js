@@ -1,7 +1,8 @@
-import propTypes from 'prop-types';
-import ModalContainer from './ModalStyled';
 import { BsChevronLeft } from 'react-icons/bs';
+import ModalContainer from './ModalStyled';
+import propTypes from 'prop-types';
 
+//modals are baaaad
 const Modal = ({ onCloseHandler, modalData, onConfirmHandler }) => {
   console.log(modalData);
   const { about, back, confirmation, title, theme } = modalData;
