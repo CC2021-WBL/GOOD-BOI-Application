@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import Backdrop from '../../Atoms/Modal/Backdrop';
@@ -11,7 +12,6 @@ import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContain
 import contests from '../../Data/MongoDBMock/contests';
 import modalData from '../../Consts/modalData';
 import results from '../../Data/MongoDBMock/results';
-import { useState } from 'react';
 
 const ExercisesPage = () => {
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
@@ -21,15 +21,14 @@ const ExercisesPage = () => {
 
   const locationPath = useLocation();
   console.log(locationPath);
-  // useEffect(() => {
-  //   console.log('useEffect dogPerformance changed');
-  //   console.log(penaltyPoints);
-  //   if (penaltyPoints === -20) {
-  //     alert('dyskwalifikacja');
-  //     dogPerformance.penaltyPoints = penaltyPoints;
-  //   }
-  // }, [dogPerformance, isPenaltyModalOpen, isDisqualifyModalOpen]);
-  // console.log(dogPerformance);
+  useEffect(() => {
+    console.log('useEffect dogPerformance changed');
+    console.log(penaltyPoints);
+    if (penaltyPoints === -20) {
+      alert('dyskwalifikacja');
+      dogPerformance.penaltyPoints = penaltyPoints;
+    }
+  }, [penaltyPoints]);
 
   const handleDisqualification = () => {
     setIsDisqualifyModalOpen(false);

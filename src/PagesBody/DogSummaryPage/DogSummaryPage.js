@@ -13,11 +13,11 @@ import { useContext } from 'react';
 const sendDataHandler = () => {};
 
 const DogSummaryPage = () => {
-  const dogPerformance = useContext(NewContestContext);
+  // const dogPerformance = useContext(NewContestContext);
   const { contestId, classId, dogId } = useParams();
   const locationPath = useLocation();
   console.log('dogPerformance z contextu');
-  console.log(dogPerformance);
+  // console.log(dogPerformance);
   console.log(locationPath.state);
   // const dogPerformanceData = locationPath.state.dogPerformance.dogPerformance;
 

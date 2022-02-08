@@ -1,18 +1,14 @@
-import { useContext, useEffect } from 'react';
-
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ExerciseCard from '../../Molecules/ExerciseCard/ExerciseCard';
-import { NewContestContext } from '../../Context/NewContestContext';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import { useState } from 'react';
 
 // import ButtonExercisesContainer from '../../Molecules/ButtonsExcercisenContainer/ButtonsExercisesContainer';
 
-const ExerciseCardsContainer = () => {
-  const dogPerformance = useContext(NewContestContext);
-  const [exercisesResults, setExercisesResults] = useState(
-    dogPerformance.dogPerformance.initialDogPerformance,
-  );
+const ExerciseCardsContainer = ({ dogPerformance }) => {
+  const [exercisesResults, setExercisesResults] = useState(dogPerformance);
+
   useEffect(() => {
     console.log('useEffect dogPerformance change');
   }, [exercisesResults]);
@@ -31,8 +27,6 @@ const ExerciseCardsContainer = () => {
           (exercise) => exercise.codeName === event.target.id,
         ).result = Number(event.target.value);
         console.log(prevState);
-        dogPerformance.dogPerformance.initialDogPerformance = exercisesResults;
-        // ?
         return prevState;
       });
     }
