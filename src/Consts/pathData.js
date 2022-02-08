@@ -37,7 +37,7 @@ const pathData = [
     label: 'Wyniki w klasie 1',
   },
   { path: '/user', text: 'Twój profil', label: '' },
-  { path: '/user-dogs', text: 'Twoje psy', label: '' },
+  { path: '/user-dogs', text: 'Twoje psy', label: 'Lista twoich psów' },
   { path: '/user-contests', text: 'Konkursy', label: '' },
   {
     path: '/dog-submit',

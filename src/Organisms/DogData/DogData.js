@@ -47,7 +47,7 @@ const DogData = ({ id }) => {
   };
 
   return (
-    <ColumnWrapper paddingLeftRight={1}>
+    <ColumnWrapper>
       <SpecialButtonsContainerStyled>
         <SpecialButton left text="edytuj" handler={handleEdit} theme="blue" />
         <SpecialButton
@@ -57,7 +57,7 @@ const DogData = ({ id }) => {
           theme="green"
         />
       </SpecialButtonsContainerStyled>
-      <ColumnWrapper>
+      <ColumnWrapper paddingLeftRight={1}>
         {isPending && <p>Loading...</p>}
         {dogData &&
           Object.entries(renderDogData(dogData)).map((dataLine, index) => (

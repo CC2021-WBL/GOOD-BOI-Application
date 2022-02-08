@@ -69,10 +69,10 @@ function App() {
                     <Route path="register" element={<RegistrationForm />} />
                     <Route path="unregistered" element={<UnregisteredPage />} />
                     <Route path="login" element={<LoginForm />} />
-                    <Route path="user-dogs" element={<UserDogPage />} />
                     <Route path="in-progress" element={<InProgressPage />} />
                   </Route>
                   <Route element={<Layout withLabel />}>
+                    <Route path="user-dogs" element={<UserDogPage />} />
                     <Route path="add-dog-form" element={<DogFormPage />} />
                     <Route path="role" element={<RolePage />} />
                     <Route path="contests" element={<ContestsPage />} />

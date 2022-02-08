@@ -37,7 +37,7 @@ const ParticipantData = ({ id }) => {
   };
 
   return (
-    <ColumnWrapper paddingLeftRight={1}>
+    <ColumnWrapper>
       <SpecialButtonsContainerStyled>
         <SpecialButton left text="edytuj" handler={handleEdit} theme="blue" />
         <SpecialButton
@@ -47,7 +47,7 @@ const ParticipantData = ({ id }) => {
           theme="green"
         />
       </SpecialButtonsContainerStyled>
-      <ColumnWrapper>
+      <ColumnWrapper paddingLeftRight={1}>
         {isPending && <p>Loading...</p>}
         {participantData &&
           Object.entries(renderParticipantData(participantData)).map(
