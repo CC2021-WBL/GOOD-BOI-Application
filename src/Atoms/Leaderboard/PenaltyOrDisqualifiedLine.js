@@ -1,42 +1,38 @@
 import PenaltyOrDisqualifiedLineStyled from './PenaltyOrDisqualifiedLineStyled';
-import checkIfDisqualified from '../../Tools/checkIfDisqualified';
 import propTypes from 'prop-types';
+
+// import checkIfDisqualified from '../../Tools/checkIfDisqualified';
 
 const PenaltyOrDisqualifiedLine = ({ result }) => {
   // check if penalties exists
-  // const penaltiesExist = result.some((element) => {
-  //   return element.penaltyPoints;
-  // });
-  const penaltiesExist = () => {
-    if (result.penaltyPoints) return true;
-  };
-  // if exists, create new arr with penalties only
-  // const penaltyArr = result.map((penalty) => {
-  //   if (penalty.penaltyPoints) {
-  //     return penalty.penaltyPoints;
-  //   } else return 0;
-  // });
 
-  // const penaltyScore = penaltyArr.reduce((accu, val) => {
-  //   return accu + val;
-  // });
-  const penaltyScore = result.penaltyPoints;
-
-  if (checkIfDisqualified({ result })) {
+  if (typeof result.specialState === 'string') {
     return (
       <PenaltyOrDisqualifiedLineStyled disqualifiedColor>
         Dyskwalifikacja
       </PenaltyOrDisqualifiedLineStyled>
     );
-  } else if (penaltiesExist && !checkIfDisqualified({ result })) {
-    return (
-      <PenaltyOrDisqualifiedLineStyled>
-        <div>Żółta kartka</div>
-        <div>{penaltyScore}</div>
-      </PenaltyOrDisqualifiedLineStyled>
-    );
-  } else {
-    return null;
+  } else if (typeof result.specialState === 'number') {
+    console.log(result.specialState);
+    switch (result.specialState) {
+      case 0:
+        return null;
+      case -10:
+        return (
+          <PenaltyOrDisqualifiedLineStyled>
+            <div>Żółta kartka</div>
+            <div>{result.specialState}</div>
+          </PenaltyOrDisqualifiedLineStyled>
+        );
+      case -20:
+        return (
+          <PenaltyOrDisqualifiedLineStyled disqualifiedColor>
+            Dyskwalifikacja
+          </PenaltyOrDisqualifiedLineStyled>
+        );
+      default:
+        return null;
+    }
   }
 };
 PenaltyOrDisqualifiedLine.propTypes = {

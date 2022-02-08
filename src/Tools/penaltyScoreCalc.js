@@ -1,5 +1,5 @@
 const penaltyScore = ({ result }) => {
-  if (result.penaltyPoints) return result.penaltyPoints;
+  if (result.specialState) return result.specialState;
   else {
     return 0;
   }

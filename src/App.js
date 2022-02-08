@@ -18,7 +18,6 @@ import Layout from './Templates/Layout/Layout';
 import LeaderboardPage from './PagesBody/LeaderboardPage/LeaderboardPage';
 import LoginForm from './Organisms/LoginForm/LoginForm';
 import ModalsTest from './PagesBody/ModalsTest';
-import { NewContestContextProvider } from './Context/NewContestContext';
 import NotFoundPage from './PagesBody/NotFoundPage/NotFoundPage';
 import { ParticipantContextProvider } from './Context/ParticipantContext';
 import ParticipantDataPage from './PagesBody/ParticipantDataPage/ParticipantDataPage';
@@ -121,9 +120,7 @@ function App() {
                 path="contests/:contestId/classes/:classId/:dogId"
                 element={
                   <UserDataProvider>
-                    <NewContestContextProvider>
-                      <ExercisesPage />
-                    </NewContestContextProvider>
+                    <ExercisesPage />
                   </UserDataProvider>
                 }
               />
@@ -131,9 +128,7 @@ function App() {
                 path="contests/:contestId/classes/:classId/:dogId/dog-summary"
                 element={
                   <UserDataProvider>
-                    <NewContestContextProvider>
-                      <DogSummaryPage />
-                    </NewContestContextProvider>
+                    <DogSummaryPage />
                   </UserDataProvider>
                 }
               />

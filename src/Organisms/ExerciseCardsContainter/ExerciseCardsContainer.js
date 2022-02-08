@@ -1,17 +1,15 @@
+// import ButtonExercisesContainer from '../../Molecules/ButtonsExcercisenContainer/ButtonsExercisesContainer';
+
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ExerciseCard from '../../Molecules/ExerciseCard/ExerciseCard';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-// import ButtonExercisesContainer from '../../Molecules/ButtonsExcercisenContainer/ButtonsExercisesContainer';
-
 const ExerciseCardsContainer = ({ dogPerformance }) => {
   const [exercisesResults, setExercisesResults] = useState(dogPerformance);
 
-  useEffect(() => {
-    console.log('useEffect dogPerformance change');
-  }, [exercisesResults]);
+  useEffect(() => {}, [exercisesResults]);
 
   const performanceSaveHandler = (event) => {
     if (
@@ -31,8 +29,6 @@ const ExerciseCardsContainer = ({ dogPerformance }) => {
       });
     }
   };
-  console.log('exercisesResults');
-  console.log(exercisesResults);
 
   return (
     <>

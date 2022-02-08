@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import ButtonExercises from '../../Atoms/ButtonsExercises/ButtonsExercises';
@@ -12,42 +12,63 @@ import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContain
 import contests from '../../Data/MongoDBMock/contests';
 import modalData from '../../Consts/modalData';
 import results from '../../Data/MongoDBMock/results';
+import swal from 'sweetalert';
 
 const ExercisesPage = () => {
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
   const [isPenaltyModalOpen, setIsPenaltyModalOpen] = useState(false);
   const [isEvaluationModalOpen, setIsEvaluationModalOpen] = useState(false);
-  const [penaltyPoints, setPenaltyPoints] = useState(0);
+  let [penaltyPoints, setPenaltyPoints] = useState(0);
+  const [disqualified, setDisqualified] = useState(false);
 
-  const locationPath = useLocation();
-  console.log(locationPath);
   useEffect(() => {
     console.log('useEffect dogPerformance changed');
-    console.log(penaltyPoints);
-    if (penaltyPoints === -20) {
-      alert('dyskwalifikacja');
-      dogPerformance.penaltyPoints = penaltyPoints;
+    console.log('useEffect penalty ' + penaltyPoints);
+    console.log('useEffect disqualified ' + disqualified);
+    if (penaltyPoints < -10) {
+      swal("'Uwaga! Podwójna żółta kartka! Dyskwalifikacja!'");
+      // alert('Uwaga! Podwójna żółta kartka! Dyskwalifikacja!');
+      console.log(dogPerformance);
+      navigate('./dog-summary', {
+        state: {
+          text: 'Tabela Wyników',
+          label: 'Ocena Zawodnika',
+          dogPerformance: { dogPerformance },
+        },
+      });
     }
-  }, [penaltyPoints]);
+  }, [penaltyPoints, disqualified]);
 
   const handleDisqualification = () => {
     setIsDisqualifyModalOpen(false);
-  };
-  const handlePenalty = () => {
-    setIsPenaltyModalOpen(false);
-    setPenaltyPoints(penaltyPoints - 10);
-    // dogPerformance.penaltyPoints = penaltyPoints;
-    // tutaj funkcja dodająca karę -10 punktów jeśli kliknięte onConfirmHandler
-  };
-  const navigate = useNavigate();
-
-  const handleEvaluation = () => {
-    setIsEvaluationModalOpen(false);
+    setDisqualified(true);
+    dogPerformance.specialState = 'dyskwalifikacja';
+    console.log('disqualified ' + disqualified);
     navigate('./dog-summary', {
       state: {
         text: 'Tabela Wyników',
         label: 'Ocena Zawodnika',
-        perf: 'dupa',
+        dogPerformance: { dogPerformance },
+      },
+    });
+  };
+  const handlePenalty = () => {
+    setIsPenaltyModalOpen(false);
+    setPenaltyPoints(penaltyPoints - 10);
+    dogPerformance.specialState = penaltyPoints - 10;
+    console.log('handlePenalty ' + penaltyPoints);
+  };
+
+  const navigate = useNavigate();
+
+  const handleEvaluation = () => {
+    setIsEvaluationModalOpen(false);
+    dogPerformance.specialState = penaltyPoints;
+    navigate('./dog-summary', {
+      state: {
+        text: 'Tabela Wyników',
+        label: 'Ocena Zawodnika',
+        dogPerformance: { dogPerformance },
       },
     });
   };
@@ -140,6 +161,7 @@ const ExercisesPage = () => {
           handler={openEvaluationModalHandler}
           primary
           text={'Zakończ ocenianie'}
+          dogPerformance={dogPerformance} //////
         />
       </ButtonExercisesContainerStyled>
     </ColumnWrapper>
