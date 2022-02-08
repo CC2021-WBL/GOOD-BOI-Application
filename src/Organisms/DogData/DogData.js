@@ -17,12 +17,10 @@ const DogData = ({ id }) => {
   const [isPending, setIsPending] = useState(true);
   const { state } = useContext(UserDataContext);
   const { dogState } = useContext(DogContext);
-  console.log(dogState.chosenDog);
 
   useEffect(() => {
     setDogData(doggos.find((dog) => dog.dogId === id));
     setIsPending(false);
-    console.log(dogState);
   }, []);
 
   const handleEdit = (event) => {
