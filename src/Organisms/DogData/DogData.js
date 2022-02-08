@@ -1,14 +1,14 @@
-import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import doggos from '../../Data/MongoDBMock/doggos';
 import DOG_DATA_TEMPLATE from '../../Consts/DogDataCONSTS';
 import DataLine from '../../Atoms/DataLine/DataLine';
+import PropTypes from 'prop-types';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
+import doggos from '../../Data/MongoDBMock/doggos';
 import { getDataFormatDdMonthYyy } from '../../Tools/TimeFunctions';
-import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const DogData = ({ id }) => {
   let navigate = useNavigate();
@@ -36,8 +36,7 @@ const DogData = ({ id }) => {
 
   const handleEdit = (event) => {
     event.preventDefault();
-    console.log(id);
-    navigate(`/add-dog-form/${id}`);
+    navigate(`/add-dog-form`);
     //navigate musi przekazać dane psa (id) do formularza który wypełni sobie inputy value z bazy
     // danych
   };

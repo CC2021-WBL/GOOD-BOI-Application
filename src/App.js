@@ -12,6 +12,7 @@ import ContestDetailsPage from './PagesBody/ContestDetailsPage/ContestDetailsPag
 import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
 import { DogContextProvider } from './Context/DogContext';
 import DogDataPage from './PagesBody/DogDataPage/DogDataPage';
+import DogFormPage from './PagesBody/DogFormPage/DogFormPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
@@ -70,6 +71,7 @@ function App() {
                     <Route path="user-dogs" element={<UserDogPage />} />
                   </Route>
                   <Route element={<Layout withLabel />}>
+                    <Route path="add-dog-form" element={<DogFormPage />} />
                     <Route path="role" element={<RolePage />} />
                     <Route path="contests" element={<ContestsPage />} />
                     <Route
