@@ -7,9 +7,12 @@ import BurgerMenu from './Organisms/BurgerMenu/BurgerMenu';
 import ClassCompetitorsPage from './PagesBody/ClassCompetitorsPage/ClassCompetitorsPage';
 import ClassesPage from './PagesBody/ClassesPage/ClassesPage';
 import ContactFormPage from './PagesBody/ContactFormPage/ContactFormPage';
+import { ContestContextProvider } from './Context/ContestContext';
 import ContestDetailsPage from './PagesBody/ContestDetailsPage/ContestDetailsPage';
 import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
+import { DogContextProvider } from './Context/DogContext';
 import DogDataPage from './PagesBody/DogDataPage/DogDataPage';
+import DogFormPage from './PagesBody/DogFormPage/DogFormPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
@@ -30,8 +33,6 @@ import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
 import { UserDataProvider } from './Context/UserDataContext';
 import UserDogPage from './PagesBody/UserDogsPage/UserDogPage';
 import { useDarkMode } from './Hooks/useDarkMode';
-import { DogContextProvider } from './Context/DogContext';
-import { ContestContextProvider } from './Context/ContestContext';
 
 function App() {
   const [theme, themeToggler, mountedComponent] = useDarkMode();
@@ -70,6 +71,7 @@ function App() {
                     <Route path="user-dogs" element={<UserDogPage />} />
                   </Route>
                   <Route element={<Layout withLabel />}>
+                    <Route path="add-dog-form" element={<DogFormPage />} />
                     <Route path="role" element={<RolePage />} />
                     <Route path="contests" element={<ContestsPage />} />
                     <Route
