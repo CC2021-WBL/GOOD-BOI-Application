@@ -1,28 +1,58 @@
-import PropTypes from 'prop-types';
-import { BsChevronLeft } from 'react-icons/bs';
-import { useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-import AppLogo from '../../Assets/AppLogo.png';
-import LogoStyled from '../../Atoms/NavElementStyled/LogoStyled';
-import LinkWrapperStyled from '../../Atoms/NavElementStyled/LinkWrapperStyled';
-
+import Backdrop from '../../Atoms/Modal/Backdrop';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import GoHomeStyled from '../../Atoms/NavElementStyled/GoHomeStyled';
+import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
+import { MdMenu } from 'react-icons/md';
 import { NavElementStyled } from './NavElementStyled';
+import PropTypes from 'prop-types';
+import home from '../../Assets/home.png';
+import pathData from '../../Consts/pathData';
+import { useState } from 'react';
 
-const NavElement = ({ text }) => {
-  const navigate = useNavigate();
+const NavElement = () => {
+  const locationPath = useLocation();
+  const foundPath = pathData.find((e) => e.path === locationPath.pathname);
+
+  const [open, setOpen] = useState(false);
+
   return (
-    <NavElementStyled>
-      <LinkWrapperStyled onClick={() => navigate(-1)}>
-        <BsChevronLeft className="arrowLeft" />
+    <>
+      <NavElementStyled>
+        <div className="burger-wrapper">
+          <MdMenu className="burger-icon" onClick={() => setOpen(true)} />
+        </div>
+        {locationPath.state && (
+          <h3 className="navText">{locationPath.state.text}</h3>
+        )}
 
-        <h3 className="back">wróć</h3>
-      </LinkWrapperStyled>
-
-      <h1 className="navText">{text}</h1>
-      <LogoStyled>
-        <img src={AppLogo} alt="Logo aplikacji" className="logo" />
-      </LogoStyled>
-    </NavElementStyled>
+        {foundPath && foundPath.path === locationPath.pathname && (
+          <>
+            <h3 className="navText">{foundPath.text}</h3>
+          </>
+        )}
+        <GoHomeStyled>
+          <Link to="/">
+            <img src={home} alt="Buda psa" className="logo" />
+          </Link>
+        </GoHomeStyled>
+      </NavElementStyled>
+      {locationPath.state && (
+        <>
+          <div style={{ height: '60px' }} />
+          <GreyLabel text={locationPath.state.label} />
+        </>
+      )}
+      {foundPath && foundPath.label.length !== 0 && (
+        <>
+          <div style={{ height: '60px' }} />
+          <GreyLabel text={foundPath.label} />
+        </>
+      )}
+      <BurgerMenu open={open} setOpen={setOpen} />
+      {open && <Backdrop />}
+    </>
   );
 };
 

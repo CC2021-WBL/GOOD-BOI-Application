@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import ExerciseCard from '../../Molecules/ExerciseCard/ExerciseCard';
-import ExerciseCardsContainerStyled from './ExerciseCardsContainerStyled';
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 
-const ExerciseCardsContainer = ({ performanceObject }) => {
-  const { exercises, obedienceClassName } = performanceObject;
-  const [exercisesResults, setExercisesResults] = useState(exercises);
+const ExerciseCardsContainer = ({ dogPerformance }) => {
+  const [exercisesResults, setExercisesResults] = useState(dogPerformance);
 
   const performanceSaveHandler = (event) => {
     if (
@@ -19,28 +18,27 @@ const ExerciseCardsContainer = ({ performanceObject }) => {
         prevState.find(
           (exercise) => exercise.codeName === event.target.id,
         ).result = Number(event.target.value);
-        console.log(performanceObject);
+        console.log(dogPerformance);
         return prevState;
       });
     }
   };
 
   return (
-    <ExerciseCardsContainerStyled>
+    <ColumnWrapper>
       {exercisesResults.map((exercise) => (
         <ExerciseCard
           key={exercise.codeName}
           exerciseInfo={exercise}
-          obedienceClassName={obedienceClassName}
           onChange={performanceSaveHandler}
         />
       ))}
-    </ExerciseCardsContainerStyled>
+    </ColumnWrapper>
   );
 };
 
 ExerciseCardsContainer.propTypes = {
-  performanceObject: PropTypes.object,
+  dogPerformance: PropTypes.array,
 };
 
 export default ExerciseCardsContainer;

@@ -1,15 +1,18 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import 'font-awesome/css/font-awesome.min.css';
 
-import MainButton from '../../Atoms/MainButton/MainButton';
-import CardWrapper from '../../Atoms/CardWrapper/CardWrapper';
+import { useContext, useState } from 'react';
+
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
+import { Link } from 'react-router-dom';
+import MainButton from '../../Atoms/MainButton/MainButton';
+import { UserDataContext } from '../../Context/UserDataContext';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { dispatch } = useContext(UserDataContext);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -20,7 +23,7 @@ const LoginForm = () => {
   };
 
   return (
-    <CardWrapper>
+    <ColumnWrapper paddingLeftRight={1}>
       <FormWrapper onSubmit={submitHandler}>
         <InputField
           labelText="Email"
@@ -46,9 +49,17 @@ const LoginForm = () => {
         <Link to="/forgot" className="forgot-pass">
           Zapomniałeś/aś hasła ?
         </Link>
-        <MainButton primary text="Zaloguj się" />
+        <Link to="/role" style={{ textDecoration: 'none' }}>
+          <MainButton
+            onClick={() => {
+              dispatch({ type: 'LOG_IN' });
+            }}
+            primary
+            text="Zaloguj się"
+          />
+        </Link>
       </FormWrapper>
-    </CardWrapper>
+    </ColumnWrapper>
   );
 };
 

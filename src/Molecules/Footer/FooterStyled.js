@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import COLORS from '../../Styles/varsStyledComponents';
 
 export const FooterStyled = styled.div`
   position: fixed;
@@ -7,13 +6,13 @@ export const FooterStyled = styled.div`
   bottom: 0;
   left: 0;
   display: flex;
-  height: 77px;
+  height: 4.875rem;
+  align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-
-  border-top: 2px solid ${COLORS.grey00};
+  border-top: 2px solid ${({ theme }) => theme.grey00};
   margin: 0;
-  background: ${COLORS.white};
+  background: ${({ theme }) => theme.white};
 `;
 
 export const LogoStyled = styled.div`
@@ -28,6 +27,7 @@ export const DevsLogo = styled.div`
 export const Copy = styled.div`
   align-self: center;
   margin: 0 0 0 10px;
+  color: ${({ theme }) => theme.grey800};
   font-size: 0.75rem;
   text-align: left;
 `;

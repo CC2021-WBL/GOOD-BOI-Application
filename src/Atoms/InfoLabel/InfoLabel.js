@@ -1,63 +1,30 @@
-import PropTypes from 'prop-types';
 import InfoLabelStyled from './InfoLabelStyled';
+import PropTypes from 'prop-types';
+import { COLORSMOTIVE as c } from '../../Consts/infoLabelConsts';
 
-const InfoLabel = ({ classInfo, dogInfo, dateOfContest = '' }) => {
+const InfoLabel = ({ classInfo, dogInfo, pointOnTimeLine, colorMotive }) => {
   const { dogsAmount, isCompleted } = classInfo || [];
   const { exercisesCompleted, exercisesAmount } = dogInfo || [];
 
   const exercisesComplete =
     exercisesAmount !== undefined && exercisesCompleted === exercisesAmount;
 
-  const todayDate = new Date();
-  let date;
-  let dateTextInfo;
-
-  if (dateOfContest) {
-    date = dateOfContest.toISOString().substring(0, 10);
-  } else {
-    date = '';
-  }
-
-  Date.prototype.addHours = function (h) {
-    this.setTime(this.getTime() + h * 60 * 60 * 1000);
-    return this;
-  };
-  Date.prototype.subtractMinutes = function (min) {
-    this.setTime(this.getTime() - min * 60 * 1000);
-    return this;
-  };
-
-  if (!dateOfContest) {
-    dateTextInfo = '';
-  } else if (dateOfContest < todayDate.subtractMinutes(15)) {
-    dateTextInfo = 'in-past';
-  } else if (
-    todayDate > dateOfContest.subtractMinutes(15) &&
-    todayDate < dateOfContest.addHours(5)
-  ) {
-    dateTextInfo = 'in-progress';
-  } else if (dateOfContest > todayDate) {
-    dateTextInfo = 'in-future';
+  if (isCompleted || exercisesComplete) {
+    colorMotive = c.GREEN;
   }
 
   return (
-    <InfoLabelStyled
-      isClassCompleted={isCompleted}
-      areExercisesCompleted={exercisesComplete}
-      dateTextInfo={dateTextInfo}
-    >
+    <InfoLabelStyled colorMotive={colorMotive}>
       {/*CONDITIONAL FOR DATE */}
-      {dateTextInfo === 'in-past' && <>{date} / archiwalny</>}
-      {dateTextInfo === 'in-progress' && <>{date} / w trakcie</>}
-      {dateTextInfo === 'in-future' && <>{date} / nadchodzący</>}
+      {pointOnTimeLine && !dogsAmount && <>{pointOnTimeLine}</>}
 
       {/*CONDITIONAL FOR CLASSES */}
       {classInfo && isCompleted && <>ukończono</>}
       {classInfo && !isCompleted && (
-        <>
+        <p>
           {dogsAmount}
           {dogsAmount === 1 ? ` uczestnik` : ` uczestników`}
-        </>
+        </p>
       )}
 
       {/*CONDITIONAL FOR DOGS */}
@@ -71,9 +38,16 @@ const InfoLabel = ({ classInfo, dogInfo, dateOfContest = '' }) => {
 };
 
 InfoLabel.propTypes = {
-  classInfo: PropTypes.object,
-  dogInfo: PropTypes.object,
-  dateOfContest: PropTypes.instanceOf(Date),
+  classInfo: PropTypes.shape({
+    dogsAmount: PropTypes.number,
+    isCompleted: PropTypes.bool,
+  }),
+  dogInfo: PropTypes.shape({
+    exercisesCompleted: PropTypes.number,
+    exercisesAmount: PropTypes.number,
+  }),
+  pointOnTimeLine: PropTypes.string,
+  colorMotive: PropTypes.string,
 };
 
 export default InfoLabel;
