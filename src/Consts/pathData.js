@@ -66,6 +66,11 @@ const pathData = [
     text: 'Konkurs',
     label: 'XV zjazd dobrych chłopaków',
   },
+  {
+    path: '/in-progress',
+    text: 'Ups...',
+    label: '',
+  },
 ];
 
 export default pathData;
