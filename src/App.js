@@ -131,7 +131,9 @@ function App() {
                 path="contests/:contestId/classes/:classId/:dogId/dog-summary"
                 element={
                   <UserDataProvider>
-                    <DogSummaryPage />
+                    <NewContestContextProvider>
+                      <DogSummaryPage />
+                    </NewContestContextProvider>
                   </UserDataProvider>
                 }
               />

@@ -40,7 +40,7 @@ const PenaltyOrDisqualifiedLine = ({ result }) => {
   }
 };
 PenaltyOrDisqualifiedLine.propTypes = {
-  result: propTypes.array,
+  result: propTypes.any,
 };
 
 export default PenaltyOrDisqualifiedLine;

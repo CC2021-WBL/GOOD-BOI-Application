@@ -37,7 +37,7 @@ const SummaryLine = ({ result, classId }) => {
 };
 
 SummaryLine.propTypes = {
-  result: propTypes.array,
+  result: propTypes.any,
   classId: propTypes.string,
 };
 

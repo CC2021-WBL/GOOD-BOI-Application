@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import ButtonExercises from '../../Atoms/ButtonsExercises/ButtonsExercises';
@@ -6,11 +6,10 @@ import ButtonExercisesContainerStyled from '../../Molecules/ButtonsExcercisenCon
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
 import Modal from '../../Organisms/Modal/Modal';
-import { NewContestContext } from './../../Context/NewContestContext';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
 import modalData from '../../Consts/modalData';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 // import contests from '../../Data/MongoDBMock/contests';
 
@@ -21,16 +20,19 @@ const ExercisesPage = () => {
   const [isPenaltyModalOpen, setIsPenaltyModalOpen] = useState(false);
   const [isEvaluationModalOpen, setIsEvaluationModalOpen] = useState(false);
   const [penaltyPoints, setPenaltyPoints] = useState(0);
-  const dogPerformance = useContext(NewContestContext);
-  useEffect(() => {
-    console.log('useEffect dogPerformance changed');
-    console.log(penaltyPoints);
-    if (penaltyPoints === -20) {
-      alert('dyskwalifikacja');
-    }
-  }, [dogPerformance, isPenaltyModalOpen, isDisqualifyModalOpen]);
+
+  const locationPath = useLocation();
+  console.log(locationPath);
+  // useEffect(() => {
+  //   console.log('useEffect dogPerformance changed');
+  //   console.log(penaltyPoints);
+  //   if (penaltyPoints === -20) {
+  //     alert('dyskwalifikacja');
+  //     dogPerformance.penaltyPoints = penaltyPoints;
+  //   }
+  // }, [dogPerformance, isPenaltyModalOpen, isDisqualifyModalOpen]);
   console.log('ExercisePagedogPerformance');
-  console.log(dogPerformance.dogPerformance.initialDogPerformance);
+  // console.log(dogPerformance);
 
   const handleDisqualification = () => {
     setIsDisqualifyModalOpen(false);
@@ -38,7 +40,7 @@ const ExercisesPage = () => {
   const handlePenalty = () => {
     setIsPenaltyModalOpen(false);
     setPenaltyPoints(penaltyPoints - 10);
-    dogPerformance.penaltyPoints = penaltyPoints;
+    // dogPerformance.penaltyPoints = penaltyPoints;
     // tutaj funkcja dodająca karę -10 punktów jeśli kliknięte onConfirmHandler
   };
   const navigate = useNavigate();
@@ -49,7 +51,7 @@ const ExercisesPage = () => {
       state: {
         text: 'Tabela Wyników',
         label: 'Ocena Zawodnika',
-        dogPerformance: { dogPerformance },
+        perf: 'dupa',
       },
     });
   };

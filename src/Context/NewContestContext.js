@@ -21,13 +21,15 @@ const initialDogPerformance = [
 ];
 
 export const NewContestContextProvider = (props) => {
-  const [dogPerformance, dispatch] = useReducer(exercisesReducer, {
+  const [dogPerformance, dispatch] = useReducer(
+    exercisesReducer,
     initialDogPerformance,
-  });
+  );
   useEffect(() => {
     console.log('useEffect dogPerformance changed');
     localStorage.setItem('dogPerformance', JSON.stringify(dogPerformance));
   }, [dogPerformance]);
+
   const { contestId, classId, dogId } = useParams();
 
   console.log('NewContestContext');
