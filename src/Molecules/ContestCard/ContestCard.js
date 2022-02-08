@@ -8,15 +8,16 @@ import {
   getHourAndMinutesFromDate,
   getPointOnTimeLine,
 } from '../../Tools/TimeFunctions';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
+import { ContestContext } from '../../Context/ContestContext';
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
-import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
+import contests from '../../Data/MongoDBMock/contests';
 import propTypes from 'prop-types';
 import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
 import { useNavigate } from 'react-router-dom';
 
-const ContestCard = ({ contestId, contestIndex }) => {
+const ContestCard = ({ contestId }) => {
   const initialData = {
     contestName: 'info wkrótce',
     startDate: new Date(),
@@ -26,22 +27,26 @@ const ContestCard = ({ contestId, contestIndex }) => {
     doggoAmount: 0,
   };
   const [contestData, setContestData] = useState(initialData);
+  const { contestDispatch } = useContext(ContestContext);
 
   const { contestName, startDate, endDate, hour, city, doggoAmount } =
     contestData;
   let navigate = useNavigate();
 
+  const contest = contests.find((contest) => contest.contestId === contestId);
+
   useEffect(() => {
     setContestData({
       ...contestData,
-      contestName: RANDOM_CONTESTS[contestIndex].name,
-      startDate: RANDOM_CONTESTS[contestIndex].date,
-      endDate: RANDOM_CONTESTS[contestIndex].endDate,
-      hour: getHourAndMinutesFromDate(RANDOM_CONTESTS[contestIndex].date),
-      city: RANDOM_CONTESTS[contestIndex].city.toUpperCase(),
-      doggoAmount: 30,
+      contestName: contest.contestName,
+      startDate: contest.startDate,
+      endDate: contest.endDate,
+      hour: getHourAndMinutesFromDate(contest.startDate),
+      city: contest.address.city.toUpperCase(),
+      doggoAmount: Object.keys(contest.obedienceClasses)
+        .map((key) => contest.obedienceClasses[key].length)
+        .reduce((a, b) => a + b),
     });
-    console.log(contestId);
   }, []);
 
   const stringDate = getDataFormatDdMonthYyy(startDate);
@@ -49,10 +54,16 @@ const ContestCard = ({ contestId, contestIndex }) => {
 
   const handleClick = (event) => {
     event.preventDefault();
+    contestDispatch({
+      type: 'SET_CONTEST',
+      payload: {
+        contestId: contestId,
+        contestName: contestName,
+      },
+    });
     navigate(`./${contestId}/classes`, {
       state: { text: 'Lista klas', label: `${contestName}` },
     });
-    //navigate musi przekazać dane o klasach jakie mają się odbyć i nazwach psów w tych klasach?
   };
 
   return (
@@ -83,7 +94,6 @@ const ContestCard = ({ contestId, contestIndex }) => {
 
 ContestCard.propTypes = {
   contestId: propTypes.string.isRequired,
-  contestIndex: propTypes.number,
 };
 
 export default ContestCard;

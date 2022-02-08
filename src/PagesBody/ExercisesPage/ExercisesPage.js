@@ -2,13 +2,15 @@ import Backdrop from '../../Atoms/Modal/Backdrop';
 import ButtonExercises from '../../Atoms/ButtonsExercises/ButtonsExercises';
 import ButtonExercisesContainerStyled from '../../Molecules/ButtonsExcercisenContainer/ButtonExercisesContainerStyled';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import DOGS from '../../Data/Dummy-data/test-data-dogs';
 import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
 import Modal from '../../Organisms/Modal/Modal';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
+import contests from '../../Data/MongoDBMock/contests';
 import modalData from '../../Consts/modalData';
+import results from '../../Data/MongoDBMock/results';
 import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 
 const ExercisesPage = () => {
@@ -51,12 +53,19 @@ const ExercisesPage = () => {
     navigate(-1);
   };
 
-  const ourTestDogName = 'Woof';
-  const ourTestDog = DOGS.find((dog) => dog.dogName === ourTestDogName);
-  const ourTestContestName = 'XII Zawody im. Pana Starosty';
-  const ourTestPerformanceObject = ourTestDog.performances.find(
-    (performance) => performance.contestName === ourTestContestName,
-  );
+  const { contestId, classId, dogId } = useParams();
+
+  const contestResults = contests.find(
+    (contest) => contest.contestId === contestId,
+  ).obedienceClasses[classId];
+
+  const competingPairsId = contestResults.find(
+    (dog) => dog.dogId === dogId,
+  ).competingPairsId;
+
+  const dogPerformance = results.find(
+    (performance) => performance.competingPairsId === competingPairsId,
+  ).exercises;
 
   return (
     <ColumnWrapper>
@@ -100,7 +109,7 @@ const ExercisesPage = () => {
           />
         </SpecialButtonsContainerStyled>
 
-        <ExerciseCardsContainer performanceObject={ourTestPerformanceObject} />
+        <ExerciseCardsContainer dogPerformance={dogPerformance} />
       </ColumnWrapper>
       <ButtonExercisesContainerStyled>
         <ButtonExercises
