@@ -1,12 +1,13 @@
+/* eslint-disable react/prop-types */
 import propTypes from 'prop-types';
 import { BsChevronLeft } from 'react-icons/bs';
 
 import ModalContainer from './ModalStyled';
 
-const Modal = ({ onCloseHandler, modalData, onConfirmHandler }) => {
-  const { about, back, confirmation, title, theme } = modalData;
+const Modal = ({ onCloseHandler, modalData, onConfirmHandler, theme }) => {
+  const { about, back, confirmation, title } = modalData;
   return (
-    <ModalContainer theme={theme}>
+    <ModalContainer themeColors={modalData[theme]}>
       <div
         className="confirmationWrapper"
         onClick={onConfirmHandler}

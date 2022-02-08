@@ -7,8 +7,14 @@ const modalData = {
     confirmation: 'CZY JESTEŚ PEWIEN?',
     back: 'odrzuć punkty karne, wróć do oceniania',
     theme: {
-      background: `${COLORS.warning100}`,
-      color: `${COLORS.warning600}`,
+      light: {
+        background: `${COLORS.warning100}`,
+        color: `${COLORS.warning600}`,
+      },
+      dark: {
+        background: `blue`,
+        color: `red`,
+      },
     },
   },
   disqualify: {
@@ -17,8 +23,17 @@ const modalData = {
     confirmation: 'CZY JESTEŚ PEWIEN?',
     back: 'odrzuć dyskwalifikację, wróć do oceniania',
     theme: {
-      background: `${COLORS.negative100}`,
-      color: `${COLORS.negative600}`,
+      // background: `${COLORS.negative100}`,
+      // color: `${COLORS.negative600}`,
+      light: {
+        background: `${COLORS.warning100}`,
+        color: `${COLORS.warning600}`,
+      },
+      dark: {
+        background: `blue`,
+        color: `red`,
+      },
+
     },
   },
   endEvaluation: {
@@ -27,8 +42,17 @@ const modalData = {
     confirmation: 'CZY POTWIERDZASZ?',
     back: 'wróć do formularza oceny',
     theme: {
-      background: `${COLORS.primary101}`,
-      color: `${COLORS.primary601}`,
+      // background: `${COLORS.primary101}`,
+      // color: `${COLORS.primary601}`,
+      light: {
+        background: `${COLORS.warning100}`,
+        color: `${COLORS.warning600}`,
+      },
+      dark: {
+        background: `blue`,
+        color: `red`,
+      },
+
     },
   },
   endContest: {
@@ -37,8 +61,17 @@ const modalData = {
     confirmation: 'CZY POTWIERDZASZ?',
     back: 'wróć do formularza oceny',
     theme: {
-      background: `${COLORS.primary101}`,
-      color: `${COLORS.primary601}`,
+      // background: `${COLORS.primary101}`,
+      // color: `${COLORS.primary601}`,
+      light: {
+        background: `${COLORS.warning100}`,
+        color: `${COLORS.warning600}`,
+      },
+      dark: {
+        background: `blue`,
+        color: `red`,
+      },
+
     },
   },
 
