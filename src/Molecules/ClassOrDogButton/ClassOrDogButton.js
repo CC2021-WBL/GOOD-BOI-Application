@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
 import ClassOrDogButtonStyled from './ClassOrDogButtonStyled';
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
+import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 const ClassOrDogButton = ({ classInfo, dogInfo }) => {
   const navigate = useNavigate();

@@ -1,10 +1,10 @@
+import CLASSES from '../../Consts/classesConst';
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import MainButton from '../../Atoms/MainButton/MainButton';
-import { useParams } from 'react-router-dom';
 import contests from '../../Data/MongoDBMock/contests';
 import results from '../../Data/MongoDBMock/results';
-import CLASSES from '../../Consts/classesConst';
+import { useParams } from 'react-router-dom';
 
 const ClassCompetitorsPage = () => {
   const { contestId, classId } = useParams();

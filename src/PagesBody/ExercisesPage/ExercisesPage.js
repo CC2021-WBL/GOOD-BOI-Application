@@ -20,9 +20,14 @@ const ExercisesPage = () => {
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
   const [isPenaltyModalOpen, setIsPenaltyModalOpen] = useState(false);
   const [isEvaluationModalOpen, setIsEvaluationModalOpen] = useState(false);
+  const [penaltyPoints, setPenaltyPoints] = useState(0);
   const dogPerformance = useContext(NewContestContext);
   useEffect(() => {
     console.log('useEffect dogPerformance changed');
+    console.log(penaltyPoints);
+    if (penaltyPoints === -20) {
+      alert('dyskwalifikacja');
+    }
   }, [dogPerformance, isPenaltyModalOpen, isDisqualifyModalOpen]);
   console.log('ExercisePagedogPerformance');
   console.log(dogPerformance.dogPerformance.initialDogPerformance);
@@ -32,8 +37,11 @@ const ExercisesPage = () => {
   };
   const handlePenalty = () => {
     setIsPenaltyModalOpen(false);
+    setPenaltyPoints(penaltyPoints - 10);
+    dogPerformance.penaltyPoints = penaltyPoints;
     // tutaj funkcja dodająca karę -10 punktów jeśli kliknięte onConfirmHandler
   };
+  const navigate = useNavigate();
 
   const handleEvaluation = () => {
     setIsEvaluationModalOpen(false);
@@ -41,7 +49,7 @@ const ExercisesPage = () => {
       state: {
         text: 'Tabela Wyników',
         label: 'Ocena Zawodnika',
-        dogPerformance: { dogPerformance }, //
+        dogPerformance: { dogPerformance },
       },
     });
   };
@@ -61,7 +69,6 @@ const ExercisesPage = () => {
     setIsDisqualifyModalOpen(false);
     setIsEvaluationModalOpen(false);
   }
-  const navigate = useNavigate();
 
   const goBackHandler = () => {
     navigate(-1);

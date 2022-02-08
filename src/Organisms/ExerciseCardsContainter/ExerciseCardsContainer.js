@@ -1,11 +1,12 @@
-/* eslint-disable react/prop-types */
-
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ExerciseCard from '../../Molecules/ExerciseCard/ExerciseCard';
 import { NewContestContext } from '../../Context/NewContestContext';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
+
+// import ButtonExercisesContainer from '../../Molecules/ButtonsExcercisenContainer/ButtonsExercisesContainer';
 
 const ExerciseCardsContainer = () => {
   const dogPerformance = useContext(NewContestContext);
@@ -38,17 +39,22 @@ const ExerciseCardsContainer = () => {
       });
     }
   };
+  console.log('exercisesResults');
+  console.log(exercisesResults);
 
   return (
-    <ColumnWrapper>
-      {exercisesResults.map((exercise) => (
-        <ExerciseCard
-          key={exercise.codeName}
-          exerciseInfo={exercise}
-          onChange={performanceSaveHandler}
-        />
-      ))}
-    </ColumnWrapper>
+    <>
+      <ColumnWrapper>
+        {exercisesResults.map((exercise) => (
+          <ExerciseCard
+            key={exercise.codeName}
+            exerciseInfo={exercise}
+            onChange={performanceSaveHandler}
+          />
+        ))}
+      </ColumnWrapper>
+      {/* <ButtonExercisesContainer dogPerformance={exercisesResults} /> */}
+    </>
   );
 };
 

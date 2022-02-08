@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import PointsTextStyled from './PointsTextStyled';
+import PropTypes from 'prop-types';
 
 const PointsText = ({ exerciseResult }) => {
   const pointsString =

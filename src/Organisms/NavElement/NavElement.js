@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import AppLogo from '../../Assets/AppLogo.png';
 import { BsChevronLeft } from 'react-icons/bs';
@@ -12,6 +12,9 @@ import pathData from '../../Consts/pathData';
 const NavElement = () => {
   const navigate = useNavigate();
   const locationPath = useLocation();
+  const id = useParams();
+  const contestId = id.contestId;
+  console.log(`tu powinien być id contestu ${contestId}`);
   const foundPath = pathData.find((e) => e.path === locationPath.pathname);
 
   return (

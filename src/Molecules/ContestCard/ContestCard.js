@@ -9,11 +9,12 @@ import {
   getPointOnTimeLine,
 } from '../../Tools/TimeFunctions';
 import { useEffect, useState } from 'react';
+
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
+import contests from '../../Data/MongoDBMock/contests';
 import propTypes from 'prop-types';
 import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
 import { useNavigate } from 'react-router-dom';
-import contests from '../../Data/MongoDBMock/contests';
 
 const ContestCard = ({ contestId }) => {
   const initialData = {

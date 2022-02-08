@@ -1,18 +1,22 @@
 import SummaryLineStyled from './SummaryLineStyled';
+import calculateExerciseScore from './../../Tools/calculateExerciseScore';
+import checkIfDisqualified from '../../Tools/checkIfDisqualified';
 import penaltyScore from '../../Tools/penaltyScoreCalc';
 import propTypes from 'prop-types';
 
-const SummaryLine = ({ result }) => {
-  const scoresArr = result.map((score) => {
-    return score.score;
+// TODO: Penalty points will be calculated after entries in the database will be created on ExercisesPage
+
+const SummaryLine = ({ result, classId }) => {
+  const exercisesArr = result;
+  const scoresArr = exercisesArr.map((score) => {
+    return score.result * calculateExerciseScore(classId, score.codeName);
   });
   const score = scoresArr.reduce((accu, val) => {
     return accu + val;
   });
   const totalScore = score + penaltyScore({ result });
 
-  const isDisqualified = result.some((element) => element.disqualified);
-  // points aquired by a dog in all excersizes/tests at one selected class
+  const isDisqualified = checkIfDisqualified({ result });
   function pointsAquired() {
     if (totalScore < 5 && totalScore > 1) {
       return 'punkty.';
@@ -34,6 +38,7 @@ const SummaryLine = ({ result }) => {
 
 SummaryLine.propTypes = {
   result: propTypes.array,
+  classId: propTypes.string,
 };
 
 export default SummaryLine;

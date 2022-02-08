@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import ColumnWrapperStyled from './ColumnWrapperStyled';
+import PropTypes from 'prop-types';
 
 const ColumnWrapper = ({
   children,

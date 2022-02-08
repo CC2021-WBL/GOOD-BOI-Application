@@ -4,20 +4,23 @@ import propTypes from 'prop-types';
 
 const PenaltyOrDisqualifiedLine = ({ result }) => {
   // check if penalties exists
-  const penaltiesExist = result.some((element) => {
-    return element.penalty;
-  });
-
+  // const penaltiesExist = result.some((element) => {
+  //   return element.penaltyPoints;
+  // });
+  const penaltiesExist = () => {
+    if (result.penaltyPoints) return true;
+  };
   // if exists, create new arr with penalties only
-  const penaltyArr = result.map((penalty) => {
-    if (penalty.penalty) {
-      return penalty.penalty;
-    } else return 0;
-  });
+  // const penaltyArr = result.map((penalty) => {
+  //   if (penalty.penaltyPoints) {
+  //     return penalty.penaltyPoints;
+  //   } else return 0;
+  // });
 
-  const penaltyScore = penaltyArr.reduce((accu, val) => {
-    return accu + val;
-  });
+  // const penaltyScore = penaltyArr.reduce((accu, val) => {
+  //   return accu + val;
+  // });
+  const penaltyScore = result.penaltyPoints;
 
   if (checkIfDisqualified({ result })) {
     return (

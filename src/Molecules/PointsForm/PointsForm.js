@@ -2,14 +2,14 @@ import PropTypes from 'prop-types';
 import PointsInputStyled from './PointsInputStyled';
 import PointsFormStyled from './PoinstFormStyled';
 
-const PointsForm = ({ exerciseResult, codeName, onChange }) => {
+const PointsForm = ({ points, codeName, onChange }) => {
   return (
     <PointsFormStyled>
       <PointsInputStyled
         type="number"
         id={codeName}
         className="points_input"
-        defaultValue={exerciseResult}
+        defaultValue={points}
         min="0"
         step="0.5"
         max="10"
@@ -20,7 +20,7 @@ const PointsForm = ({ exerciseResult, codeName, onChange }) => {
 };
 
 PointsForm.propTypes = {
-  exerciseResult: PropTypes.number,
+  points: PropTypes.number,
   codeName: PropTypes.string,
   onChange: PropTypes.func,
 };
