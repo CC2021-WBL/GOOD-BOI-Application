@@ -6,8 +6,8 @@ const FakeButton = ({ primary, secondary, ternary, text, to, state }) => {
     <FakeButtonStyled
       to={to}
       state={state}
-      primary={primary}
-      secondary={secondary}
+      primary={{ primary }}
+      secondary={{ secondary }}
       ternary={{ ternary }}
     >
       {text.toUpperCase()}

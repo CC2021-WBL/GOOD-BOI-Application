@@ -1,6 +1,13 @@
+import {
+  CONTEST_ACTIONS,
+  DOG_ACTIONS,
+  USER_ACTIONS,
+} from '../../Consts/reducersActions';
 import { useContext, useEffect } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import { ContestContext } from '../../Context/ContestContext';
+import { DogContext } from '../../Context/DogContext';
 import ForbiddenEntryPage from '../ForbiddenEntryPage/ForbiddenEntryPage';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import { ROLES } from '../../Consts/rolesConsts';
@@ -10,11 +17,15 @@ import { useNavigate } from 'react-router-dom';
 
 const RolePage = () => {
   const { state, dispatch } = useContext(UserDataContext);
+  const { dogDispatch } = useContext(DogContext);
+  const { contestDispatch } = useContext(ContestContext);
   const { userId, roles, isAuthenticated } = state;
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch({ type: 'SELECT_ROLE', selectedRole: null });
+    contestDispatch({ type: CONTEST_ACTIONS.CLEAR });
+    dogDispatch({ type: DOG_ACTIONS.CLEAR_CHOSEN_DOG });
+    dispatch({ type: USER_ACTIONS.CLEAR_SELECTED_ROLE });
   }, []);
 
   if (!isAuthenticated) {

@@ -139,10 +139,18 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
     Object.prototype.hasOwnProperty.call(pathPattern, 'classes') &&
     arrayLength === 5
   ) {
-    console.log(pathOrigin);
     return {
       text: 'Lista uczestników',
       label: `Klasa ${pathOrigin[4]}`,
+    };
+  } else if (
+    Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
+    Object.prototype.hasOwnProperty.call(pathPattern, 'classes') &&
+    arrayLength === 6
+  ) {
+    return {
+      text: 'Punktacja',
+      label: `Ocena zawodnika ${dogName}`,
     };
   } else if (
     Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
