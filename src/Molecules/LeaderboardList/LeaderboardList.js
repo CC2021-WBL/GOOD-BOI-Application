@@ -10,10 +10,6 @@ import propTypes from 'prop-types';
 const LeaderboardList = ({ classId, dogName, contestId, result }) => {
   // if dogName is defined, then render dog-summary leaderboard
   if (dogName) {
-    // for testing purpose: testing disqualified
-    // result.penaltyPoints = -10;
-    // result.specialState = 'dyskwalifikacja';
-
     const dogSummaryResult = result.map((elem) => ({
       text: exerciseCode2string(classId, elem.codeName),
       score: calculateExerciseScore(classId, elem.codeName) * elem.result,

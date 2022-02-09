@@ -1,11 +1,7 @@
 import PenaltyOrDisqualifiedLineStyled from './PenaltyOrDisqualifiedLineStyled';
 import propTypes from 'prop-types';
 
-// import checkIfDisqualified from '../../Tools/checkIfDisqualified';
-
 const PenaltyOrDisqualifiedLine = ({ result }) => {
-  // check if penalties exists
-
   if (typeof result.specialState === 'string') {
     return (
       <PenaltyOrDisqualifiedLineStyled disqualifiedColor>

@@ -25,12 +25,8 @@ const ExercisesPage = () => {
   const label = locationPath.state.label;
 
   useEffect(() => {
-    console.log('useEffect dogPerformance changed');
-    console.log('useEffect penalty ' + penaltyPoints);
-    console.log('useEffect disqualified ' + disqualified);
     if (penaltyPoints < -10) {
       alert('Uwaga! Podwójna żółta kartka! Dyskwalifikacja!');
-      console.log(dogPerformance);
       navigate('./dog-summary', {
         state: {
           text: 'Tabela Wyników',
@@ -45,7 +41,6 @@ const ExercisesPage = () => {
     setIsDisqualifyModalOpen(false);
     setDisqualified(true);
     dogPerformance.specialState = 'dyskwalifikacja';
-    console.log('disqualified ' + disqualified);
     navigate('./dog-summary', {
       state: {
         text: 'Tabela Wyników',
@@ -58,7 +53,6 @@ const ExercisesPage = () => {
     setIsPenaltyModalOpen(false);
     setPenaltyPoints(penaltyPoints - 10);
     dogPerformance.specialState = penaltyPoints - 10;
-    console.log('handlePenalty ' + penaltyPoints);
   };
 
   const navigate = useNavigate();

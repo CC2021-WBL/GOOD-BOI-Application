@@ -1,5 +1,3 @@
-// import ButtonExercisesContainer from '../../Molecules/ButtonsExcercisenContainer/ButtonsExercisesContainer';
-
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ExerciseCard from '../../Molecules/ExerciseCard/ExerciseCard';
 import PropTypes from 'prop-types';
@@ -41,7 +39,6 @@ const ExerciseCardsContainer = ({ dogPerformance }) => {
           />
         ))}
       </ColumnWrapper>
-      {/* <ButtonExercisesContainer dogPerformance={exercisesResults} /> */}
     </>
   );
 };
