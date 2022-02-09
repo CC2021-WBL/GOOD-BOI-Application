@@ -1,7 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
 
+import { CONTEST_ACTIONS } from '../../Consts/reducersActions';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ContestCard from '../../Molecules/ContestCard/ContestCard';
+import { ContestContext } from '../../Context/ContestContext';
 import ContestFilterToggler from '../../Organisms/ContestFilterHarmonica/ContestFilterToggler';
 import FilterLabel from '../../Molecules/FilterLabel/FilterLabel';
 import { TIME } from '../../Consts/infoLabelConsts';
@@ -17,6 +19,13 @@ const ContestsPage = () => {
   const locationPath = useLocation();
   const [isPending, setIsPending] = useState(true);
   const { state } = useContext(UserDataContext);
+  const { contestState, contestDispatch } = useContext(ContestContext);
+
+  useEffect(() => {
+    if (contestState.contestId || contestState.contestName) {
+      contestDispatch({ type: CONTEST_ACTIONS.CLEAR });
+    }
+  }, []);
 
   // mock for getting data from DB for current user (with mock result for request api/contests?userId=matylda1234)
   useEffect(() => {
