@@ -5,6 +5,7 @@ const ACTIONS = {
   LOG_OUT: 'LOG_OUT',
   UPDATE_FIELD: 'UPDATE_FIELD',
   CHANGE_USER: 'CHANGE_USER',
+  SELECT_ROLE: 'SELECT_ROLE',
 };
 
 const userReducer = (state, action) => {
@@ -37,6 +38,11 @@ const userReducer = (state, action) => {
         userName: participants[action.index].participantName,
         userSurname: participants[action.index].participantSurname,
         roles: participants[action.index].portalRoles,
+      };
+    case ACTIONS.SELECT_ROLE:
+      return {
+        ...state,
+        selectedRole: action.selectedRole,
       };
   }
 };

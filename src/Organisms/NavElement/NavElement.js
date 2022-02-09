@@ -1,55 +1,65 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { useContext, useState } from 'react';
 
-import AppLogo from '../../Assets/AppLogo.png';
-import { BsChevronLeft } from 'react-icons/bs';
+import Backdrop from '../../Atoms/Modal/Backdrop';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import { ContestContext } from '../../Context/ContestContext';
+import { DogContext } from '../../Context/DogContext';
+import GoHomeStyled from '../../Atoms/NavElementStyled/GoHomeStyled';
 import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
-import LinkWrapperStyled from '../../Atoms/NavElementStyled/LinkWrapperStyled';
-import LogoStyled from '../../Atoms/NavElementStyled/LogoStyled';
+import { MdMenu } from 'react-icons/md';
 import { NavElementStyled } from './NavElementStyled';
 import PropTypes from 'prop-types';
-import pathData from '../../Consts/pathData';
+import { UserDataContext } from '../../Context/UserDataContext';
+import { checkPathOrigin } from '../../Tools/checkPathOrigin';
+import home from '../../Assets/home.png';
 
 const NavElement = () => {
-  const navigate = useNavigate();
   const locationPath = useLocation();
-  const foundPath = pathData.find((e) => e.path === locationPath.pathname);
+  const login = locationPath.pathname === '/login';
+  const register = locationPath.pathname === '/register';
+  const contact = locationPath.pathname === '/contact-form';
+  const forgot = locationPath.pathname === '/forgot';
+  const inProgress = locationPath.pathname === '/in-progress';
+  const [open, setOpen] = useState(false);
+  const { state } = useContext(UserDataContext);
+  const { dogState } = useContext(DogContext);
+  const { contestState } = useContext(ContestContext);
+  const namesFromContext = {
+    userName: state.userName || '',
+    userSurname: state.userSurname || '',
+    dogName: dogState.chosenDog.dogName || '',
+    contestName: contestState.contestName || '',
+  };
 
+  const data = checkPathOrigin(locationPath.pathname, namesFromContext);
   return (
     <>
       <NavElementStyled>
-        <LinkWrapperStyled onClick={() => navigate(-1)}>
-          <BsChevronLeft className="arrowLeft" />
-
-          <h3 className="back">wróć</h3>
-        </LinkWrapperStyled>
-
-        {locationPath.state && (
-          <h3 className="navText">{locationPath.state.text}</h3>
+        {login || register || contact || forgot || inProgress ? (
+          <div className="burger-wrapper" />
+        ) : (
+          <div className="burger-wrapper">
+            <MdMenu className="burger-icon" onClick={() => setOpen(true)} />
+          </div>
         )}
 
-        {foundPath && foundPath.path === locationPath.pathname && (
-          <>
-            <h3 className="navText">{foundPath.text}</h3>
-          </>
-        )}
-        <LogoStyled>
+        <h3 className="navText">{data.text}</h3>
+
+        <GoHomeStyled>
           <Link to="/">
-            <img src={AppLogo} alt="Logo aplikacji" className="logo" />
+            <img src={home} alt="Buda psa" className="logo" />
           </Link>
-        </LogoStyled>
+        </GoHomeStyled>
       </NavElementStyled>
-      {locationPath.state && (
+      {data.label && data.label.length !== 0 && (
         <>
           <div style={{ height: '60px' }} />
-          <GreyLabel text={locationPath.state.label} />
+          <GreyLabel text={data.label} />
         </>
       )}
-      {foundPath && foundPath.label.length !== 0 && (
-        <>
-          <div style={{ height: '60px' }} />
-          <GreyLabel text={foundPath.label} />
-        </>
-      )}
+      <BurgerMenu open={open} setOpen={setOpen} />
+      {open && <Backdrop />}
     </>
   );
 };
