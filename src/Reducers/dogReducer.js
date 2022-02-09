@@ -18,7 +18,7 @@ const dogReducer = (state, action) => {
       return { ...action.payload };
     case DOG_ACTIONS.CLEAR_CHOSEN_DOG:
       return {
-        chosenDog: null,
+        chosenDog: {},
       };
   }
 };

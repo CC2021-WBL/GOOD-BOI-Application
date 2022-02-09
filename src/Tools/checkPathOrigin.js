@@ -147,6 +147,16 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
   } else if (
     Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
     Object.prototype.hasOwnProperty.call(pathPattern, 'classes') &&
+    arrayLength === 6
+  ) {
+    console.log(pathOrigin);
+    return {
+      text: 'Punktacja',
+      label: `Ocena zawodnika ${dogName}`,
+    };
+  } else if (
+    Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
+    Object.prototype.hasOwnProperty.call(pathPattern, 'classes') &&
     arrayLength === 4
   ) {
     return { text: 'Lista klas', label: `${contestName}` };
@@ -154,7 +164,6 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
     Object.prototype.hasOwnProperty.call(pathPattern, 'user') &&
     arrayLength === 3
   ) {
-    console.log(arrayLength);
     return { text: 'Twój profil', label: '' };
   }
 
