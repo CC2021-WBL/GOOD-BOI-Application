@@ -37,6 +37,7 @@ Aplikacja wspomagająca obsługę psich zawodów obedience.
 
 - [Tu będzie link]()
 - [Design](https://www.figma.com/file/hOD9esjIhUdLSRM0Ijc31f/GOOD-BOI-APP?node-id=1657%3A4515)
+- [Wiki](https://github.com/CC2021-WBL/GOOD-BOI-Application/wiki)
 
 ## Proces
 
