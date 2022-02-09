@@ -1,16 +1,13 @@
-import {
-  getHourAndMinutesFromDate,
-  getSelectedContestsByTime,
-} from '../../Tools/TimeFunctions';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ContestCard from '../../Molecules/ContestCard/ContestCard';
 import ContestFilterToggler from '../../Organisms/ContestFilterHarmonica/ContestFilterToggler';
 import FilterLabel from '../../Molecules/FilterLabel/FilterLabel';
 import { TIME } from '../../Consts/infoLabelConsts';
-import contests from '../../Data/MongoDBMock/contests';
-import { getAmountOfCompetingDoggos } from '../../Tools/DataModifications';
+import { UserDataContext } from '../../Context/UserDataContext';
+import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
+import resForContestPage from '../../Data/MongoDBMock/responseFromContestsToContestsPage';
 import { useLocation } from 'react-router-dom';
 
 const ContestsPage = () => {
@@ -19,35 +16,28 @@ const ContestsPage = () => {
   const [selectedMode, setSelectedMode] = useState(null);
   const locationPath = useLocation();
   const [isPending, setIsPending] = useState(true);
+  const { state } = useContext(UserDataContext);
 
-  // mock for getting data from DB
+  // mock for getting data from DB for current user (with mock result for request api/contests?userId=matylda1234)
   useEffect(() => {
-    let array = [];
-    contests.forEach((element) => {
-      const contestObject = {};
-      contestObject.contestId = element.contestId;
-      contestObject.contestName = element.contestName;
-      contestObject.startDate = element.startDate;
-      contestObject.endDate = element.endDate;
-      contestObject.hour = getHourAndMinutesFromDate(element.startDate);
-      contestObject.city = element.address.city.toUpperCase();
-      contestObject.doggoAmount = getAmountOfCompetingDoggos(
-        element.obedienceClasses,
-      );
-      array.push(contestObject);
-    });
-    setContestData(array);
-    // checking first time when rendered if there are any selectors from previous component
-    // not working now - ready to use, connection as TODO with Tomek and Profile Page
     if (locationPath.state && locationPath.state.contestContent === 'results') {
+      console.log('Will be selected by ' + state.userId); //is left intentionally
+      setContestData(
+        resForContestPage.filter((contest) => {
+          return contest.participants.includes(state.userId);
+        }),
+      );
       setSelectedMode(TIME.PRESENT_AND_PAST);
+      setIsPending(false);
     } else if (
       locationPath.state &&
       locationPath.state.contestContent === 'future'
     ) {
-      console.log(locationPath.state.contestContent);
+      setContestData(resForContestPage);
       setSelectedMode(TIME.FUTURE);
+      setIsPending(false);
     } else {
+      setContestData(resForContestPage);
       setSelectedMode(TIME.UNKNOWN);
       setIsPending(false);
     }
@@ -74,7 +64,7 @@ const ContestsPage = () => {
       {toggle && <FilterLabel onClick={handleFilterClick}></FilterLabel>}
 
       <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
-        {isPending && <p>Loading...</p>}
+        {isPending && <h3>Loading...</h3>}
         {contestData &&
           getSelectedContestsByTime(selectedMode, contestData).map(
             (contest) => (

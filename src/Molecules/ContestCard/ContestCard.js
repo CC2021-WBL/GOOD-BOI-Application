@@ -5,9 +5,9 @@ import {
 } from './ContestCardStyled';
 import {
   getDataFormatDdMonthYyy,
+  getHourAndMinutesFromDate,
   getPointOnTimeLine,
 } from '../../Tools/TimeFunctions';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 import { ContestContext } from '../../Context/ContestContext';
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
@@ -15,35 +15,24 @@ import { UserDataContext } from '../../Context/UserDataContext';
 import propTypes from 'prop-types';
 import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ContestCard = ({ contestData }) => {
   const { contestDispatch } = useContext(ContestContext);
   const { state } = useContext(UserDataContext);
-  const { roles } = state;
+  const { selectedRole } = state;
 
   let navigate = useNavigate();
-  const locationPath = useLocation();
 
-  const {
-    contestId,
-    contestName,
-    startDate,
-    endDate,
-    hour,
-    city,
-    doggoAmount,
-  } = contestData;
+  const { contestId, contestName, startDate, endDate, address, dogsAmount } =
+    contestData;
 
   const stringDate = getDataFormatDdMonthYyy(startDate);
   const pointOnTimeLine = getPointOnTimeLine(startDate, endDate);
 
   const handleClick = (event) => {
     event.preventDefault();
-    if (
-      roles !== null &&
-      roles.includes('staff') &&
-      locationPath.pathname === '/contests'
-    ) {
+    if (selectedRole !== null && selectedRole === 'staff') {
       navigate(`./${contestId}/classes`, {
         state: { text: 'Lista klas', label: `${contestName}` },
       });
@@ -69,14 +58,14 @@ const ContestCard = ({ contestData }) => {
       <ContestNameStyled>{contestName}</ContestNameStyled>
       <ContestInsideElementStyled colorMotive={setColorMotive(pointOnTimeLine)}>
         <time dateTime={stringDate}>
-          {stringDate}, {hour}
+          {stringDate}, {getHourAndMinutesFromDate(startDate)}
         </time>
-        <p>{city}</p>
+        <p>{address.city.toUpperCase()}</p>
       </ContestInsideElementStyled>
       <ContestInsideElementStyled colorMotive={setColorMotive(pointOnTimeLine)}>
         <InfoLabel
-          classInfo={{ dogsAmount: doggoAmount }}
-          colorMotive={setColorMotive(pointOnTimeLine, doggoAmount)}
+          classInfo={{ dogsAmount: dogsAmount }}
+          colorMotive={setColorMotive(pointOnTimeLine, dogsAmount)}
         />
         <InfoLabel
           pointOnTimeLine={pointOnTimeLine}
@@ -93,9 +82,8 @@ ContestCard.propTypes = {
     contestName: propTypes.string,
     startDate: propTypes.instanceOf(Date),
     endDate: propTypes.instanceOf(Date),
-    hour: propTypes.string,
-    city: propTypes.string,
-    doggoAmount: propTypes.number,
+    address: propTypes.object,
+    dogsAmount: propTypes.number,
   }),
 };
 

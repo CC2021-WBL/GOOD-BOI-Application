@@ -57,7 +57,6 @@ export const getSelectedContestsByTime = (timePeriod, contests = []) => {
         contest.startDate,
         contest.endDate,
       );
-      console.log(contestTimePeriod);
       if (
         contestTimePeriod === 'w trakcie' ||
         contestTimePeriod === 'archiwalny'
