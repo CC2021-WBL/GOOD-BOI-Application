@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import propTypes from 'prop-types';
 
 import CheckboxAgreeField from '../../Atoms/CheckboxAgreeField/CheckboxAgreeField';
@@ -226,6 +225,9 @@ const RegistrationFormSignup = ({
 
 RegistrationFormSignup.propTypes = {
   submitForm: propTypes.func.isRequired,
+  editData: propTypes.bool,
+  editEmail: propTypes.bool,
+  editPassword: propTypes.bool,
 };
 
 export default RegistrationFormSignup;

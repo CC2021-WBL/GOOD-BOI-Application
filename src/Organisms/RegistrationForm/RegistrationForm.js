@@ -1,10 +1,10 @@
+import propTypes from 'prop-types';
 import { useState } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import RegistrationFormSignup from './RegistrationFormSignup';
 import RegistrationFormSuccess from './RegistrationFormSuccess';
 
-// eslint-disable-next-line react/prop-types
 const RegistrationForm = ({ editData }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -21,6 +21,10 @@ const RegistrationForm = ({ editData }) => {
       )}
     </ColumnWrapper>
   );
+};
+
+RegistrationForm.propTypes = {
+  editData: propTypes.bool,
 };
 
 export default RegistrationForm;
