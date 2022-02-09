@@ -1,4 +1,5 @@
-/* eslint-disable no-unused-vars */
+import propTypes from 'prop-types';
+import { useContext } from 'react';
 
 import {
   CONTEST_ACTIONS,
@@ -11,7 +12,6 @@ import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import { ContestContext } from '../../Context/ContestContext';
 import { DogContext } from '../../Context/DogContext';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
-import { Link } from 'react-router-dom';
 import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
 import { ROLE_NAME } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
@@ -21,6 +21,7 @@ const ProfilePage = () => {
   const { contestState, contestDispatch } = useContext(ContestContext);
   const { dogState, dogDispatch } = useContext(DogContext);
   const { state, dispatch } = useContext(UserDataContext);
+  const { userId } = state;
 
   useEffect(() => {
     if (contestState.contestId || contestState.contestName) {
@@ -51,7 +52,11 @@ const ProfilePage = () => {
         text="Twoje Konkursy"
         ternary="ternary"
       />
-      <FakeButton to="/user-data" text="Twoje Dane" ternary="ternary" />
+      <FakeButton
+        to={`/user/${userId}/user-data`}
+        text="Twoje Dane"
+        ternary="ternary"
+      />
       <FakeButton
         to={'/contests'}
         state={{
