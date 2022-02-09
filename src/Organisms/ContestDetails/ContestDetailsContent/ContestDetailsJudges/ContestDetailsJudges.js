@@ -1,18 +1,32 @@
-import ContestDetailsLine from '../../../../Atoms/ContestDetailsLine/ContestDetailsLine';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-  judgesTextTemplate,
-  toBeAnnounced,
-} from '../../../../Consts/ContestDetailsCONSTS';
+
+import ContestDetailsLine from '../../../../Atoms/ContestDetailsLine/ContestDetailsLine';
+import toBeAnnounced from '../../../../Consts/toBeAnnounced';
 
 const ContestDetailsJudges = ({ judges = [] }) => {
-  judges.length === 0 && judges.push(toBeAnnounced);
+  const [judgesData, setJudgesData] = useState(null);
+
+  useEffect(() => {
+    judges.length === 0
+      ? setJudgesData([toBeAnnounced])
+      : setJudgesData(judges);
+  }, []);
+
   return (
     <>
-      <ContestDetailsLine text={judgesTextTemplate} />
-      {judges.map((judge, index) => (
-        <ContestDetailsLine key={`judge-${index}`} text={judge} judge={true} />
-      ))}
+      {judgesData && (
+        <>
+          <ContestDetailsLine text={[`Skład sędziowski:`]} />
+          {judgesData.map((judge, index) => (
+            <ContestDetailsLine
+              key={`judge-${index}`}
+              text={judge}
+              judge={true}
+            />
+          ))}
+        </>
+      )}
     </>
   );
 };

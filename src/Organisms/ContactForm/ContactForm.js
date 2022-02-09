@@ -1,13 +1,12 @@
-import { useState } from 'react';
-import emailjs from '@emailjs/browser';
-import { useNavigate } from 'react-router-dom';
-
-import TextArea from '../../Atoms/TextArea/TextArea';
-import MainButton from '../../Atoms/MainButton/MainButton';
-import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
-import InputField from '../../Molecules/InputField/InputField';
 import CheckboxAgreeField from '../../Atoms/CheckboxAgreeField/CheckboxAgreeField';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
+import InputField from '../../Molecules/InputField/InputField';
+import MainButton from '../../Atoms/MainButton/MainButton';
+import TextArea from '../../Atoms/TextArea/TextArea';
+import emailjs from '@emailjs/browser';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const emailRgx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
@@ -108,6 +107,7 @@ const ContactForm = () => {
         <CheckboxAgreeField
           text="* Zapoznałem się z regulaminem GOOD BOI i akceptuję jego postanowienia"
           className={errors.message ? 'red-border' : 'none'}
+          data-testid="my-checkbox"
         />
 
         <MainButton primary text="Wyślij wiadomość" />
