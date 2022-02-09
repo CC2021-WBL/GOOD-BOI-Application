@@ -49,12 +49,12 @@ const DogData = ({ id }) => {
   return (
     <ColumnWrapper>
       <SpecialButtonsContainerStyled>
-        <SpecialButton left text="edytuj" handler={handleEdit} theme="blue" />
+        <SpecialButton left text="edytuj" handler={handleEdit} colors="blue" />
         <SpecialButton
           right
           text="potwierdź"
           handler={handleConfirm}
-          theme="green"
+          colors="green"
         />
       </SpecialButtonsContainerStyled>
       <ColumnWrapper paddingLeftRight={1}>

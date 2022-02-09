@@ -12,13 +12,13 @@ export const NavElementStyled = styled.div`
   background: ${({ theme }) => theme.white};
 
   .navText {
-    width: 33%;
+    width: 80%;
     color: ${({ theme }) => theme.grey800};
     ${FONTS.h3}
   }
   .burger-wrapper {
     display: flex;
-    width: 33%;
+    width: 10%;
     text-align: left;
 
     .burger-icon {
