@@ -22,7 +22,7 @@ const ClassChoicePage = () => {
             style={{ height: '75px' }}
             text={`Klasa ${obedienceClass}`}
             ternary
-            justify={'left'}
+            justifyText={'left'}
             className="selected-btn"
           />
         );
