@@ -2,7 +2,13 @@ import InfoLabelStyled from './InfoLabelStyled';
 import PropTypes from 'prop-types';
 import { COLORSMOTIVE as c } from '../../Consts/infoLabelConsts';
 
-const InfoLabel = ({ classInfo, dogInfo, pointOnTimeLine, colorMotive }) => {
+const InfoLabel = ({
+  classInfo,
+  dogInfo,
+  pointOnTimeLine,
+  colorMotive,
+  handleClick,
+}) => {
   const { dogsAmount, isCompleted } = classInfo || [];
   const { exercisesCompleted, exercisesAmount } = dogInfo || [];
 
@@ -14,7 +20,7 @@ const InfoLabel = ({ classInfo, dogInfo, pointOnTimeLine, colorMotive }) => {
   }
 
   return (
-    <InfoLabelStyled colorMotive={colorMotive}>
+    <InfoLabelStyled colorMotive={colorMotive} onClick={handleClick}>
       {/*CONDITIONAL FOR DATE */}
       {pointOnTimeLine && !dogsAmount && <>{pointOnTimeLine}</>}
 
@@ -48,6 +54,7 @@ InfoLabel.propTypes = {
   }),
   pointOnTimeLine: PropTypes.string,
   colorMotive: PropTypes.string,
+  handleClick: PropTypes.func,
 };
 
 export default InfoLabel;

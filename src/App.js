@@ -115,7 +115,7 @@ function App() {
                         element={<ParticipantDataPage />}
                       />
                       <Route
-                        path="contest-details"
+                        path="contests/:contestId"
                         element={<ContestDetailsPage />}
                       />
                     </Route>
