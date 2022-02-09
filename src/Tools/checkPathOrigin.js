@@ -154,7 +154,6 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
     Object.prototype.hasOwnProperty.call(pathPattern, 'user') &&
     arrayLength === 3
   ) {
-    console.log(arrayLength);
     return { text: 'Twój profil', label: '' };
   }
 
