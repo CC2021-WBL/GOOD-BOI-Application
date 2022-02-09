@@ -11,6 +11,7 @@ const initialData = {
   userName: null,
   userSurname: null,
   roles: null,
+  selectedRole: null,
 };
 
 export function UserDataProvider({ children }) {

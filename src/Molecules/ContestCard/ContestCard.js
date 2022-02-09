@@ -8,61 +8,45 @@ import {
   getHourAndMinutesFromDate,
   getPointOnTimeLine,
 } from '../../Tools/TimeFunctions';
-import { useContext, useEffect, useState } from 'react';
 
 import { ContestContext } from '../../Context/ContestContext';
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
-import contests from '../../Data/MongoDBMock/contests';
+import { UserDataContext } from '../../Context/UserDataContext';
 import propTypes from 'prop-types';
 import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const ContestCard = ({ contestId }) => {
-  const initialData = {
-    contestName: 'info wkrótce',
-    startDate: new Date(),
-    endDate: new Date(),
-    hour: '',
-    city: 'info wkrótce',
-    doggoAmount: 0,
-  };
-  const [contestData, setContestData] = useState(initialData);
+const ContestCard = ({ contestData }) => {
   const { contestDispatch } = useContext(ContestContext);
+  const { state } = useContext(UserDataContext);
+  const { selectedRole } = state;
 
-  const { contestName, startDate, endDate, hour, city, doggoAmount } =
-    contestData;
   let navigate = useNavigate();
 
-  const contest = contests.find((contest) => contest.contestId === contestId);
-
-  useEffect(() => {
-    setContestData({
-      ...contestData,
-      contestName: contest.contestName,
-      startDate: contest.startDate,
-      endDate: contest.endDate,
-      hour: getHourAndMinutesFromDate(contest.startDate),
-      city: contest.address.city.toUpperCase(),
-      doggoAmount: Object.keys(contest.obedienceClasses)
-        .map((key) => contest.obedienceClasses[key].length)
-        .reduce((a, b) => a + b),
-    });
-  }, []);
+  const { contestId, contestName, startDate, endDate, address, dogsAmount } =
+    contestData;
 
   const stringDate = getDataFormatDdMonthYyy(startDate);
   const pointOnTimeLine = getPointOnTimeLine(startDate, endDate);
 
   const handleClick = (event) => {
     event.preventDefault();
+    if (selectedRole !== null && selectedRole === 'staff') {
+      navigate(`./${contestId}/classes`, {
+        state: { text: 'Lista klas', label: `${contestName}` },
+      });
+    } else {
+      navigate(`/contests/${contestId}`, {
+        state: { text: 'Konkurs', label: `${contestName}` },
+      });
+    }
     contestDispatch({
       type: 'SET_CONTEST',
       payload: {
         contestId: contestId,
         contestName: contestName,
       },
-    });
-    navigate(`./${contestId}/classes`, {
-      state: { text: 'Lista klas', label: `${contestName}` },
     });
   };
 
@@ -74,14 +58,14 @@ const ContestCard = ({ contestId }) => {
       <ContestNameStyled>{contestName}</ContestNameStyled>
       <ContestInsideElementStyled colorMotive={setColorMotive(pointOnTimeLine)}>
         <time dateTime={stringDate}>
-          {stringDate}, {hour}
+          {stringDate}, {getHourAndMinutesFromDate(startDate)}
         </time>
-        <p>{city}</p>
+        <p>{address.city.toUpperCase()}</p>
       </ContestInsideElementStyled>
       <ContestInsideElementStyled colorMotive={setColorMotive(pointOnTimeLine)}>
         <InfoLabel
-          classInfo={{ dogsAmount: doggoAmount }}
-          colorMotive={setColorMotive(pointOnTimeLine, doggoAmount)}
+          classInfo={{ dogsAmount: dogsAmount }}
+          colorMotive={setColorMotive(pointOnTimeLine, dogsAmount)}
         />
         <InfoLabel
           pointOnTimeLine={pointOnTimeLine}
@@ -93,7 +77,14 @@ const ContestCard = ({ contestId }) => {
 };
 
 ContestCard.propTypes = {
-  contestId: propTypes.string.isRequired,
+  contestData: propTypes.shape({
+    contestId: propTypes.string,
+    contestName: propTypes.string,
+    startDate: propTypes.instanceOf(Date),
+    endDate: propTypes.instanceOf(Date),
+    address: propTypes.object,
+    dogsAmount: propTypes.number,
+  }),
 };
 
 export default ContestCard;

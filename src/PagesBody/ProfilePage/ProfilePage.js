@@ -1,18 +1,34 @@
-import propTypes from 'prop-types';
+/* eslint-disable no-unused-vars */
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
+import { Link } from 'react-router-dom';
 import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
+import propTypes from 'prop-types';
 
 const ProfilePage = () => {
   return (
     <ColumnWrapper paddingLeftRight={1}>
       <ProfileCard />
       <FakeButton to="/user-dogs" text="Twoje Psy" ternary="ternary" />
-      <FakeButton to="./contests" text="Twoje Konkursy" ternary="ternary" />
+      <FakeButton
+        to={`/contests`}
+        state={{
+          contestContent: 'results',
+          text: 'Twoje konkursy',
+          label: 'Wybierz konkurs',
+        }}
+        text="Twoje Konkursy"
+        ternary="ternary"
+      />
       <FakeButton to="/user-data" text="Twoje Dane" ternary="ternary" />
       <FakeButton
-        to="/upcoming"
+        to={'/contests'}
+        state={{
+          contestContent: 'future',
+          text: 'Nadchodzące konkursy',
+          label: 'Wybierz konkurs',
+        }}
         text="Nadchodzące Konkursy"
         secondary="secondary"
       />

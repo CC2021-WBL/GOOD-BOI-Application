@@ -1,4 +1,4 @@
-import { DOG_ACTIONS } from "../Consts/reducersActions";
+import { DOG_ACTIONS } from '../Consts/reducersActions';
 
 const dogReducer = (state, action) => {
   switch (action.type) {
@@ -18,7 +18,7 @@ const dogReducer = (state, action) => {
       return { ...action.payload };
     case DOG_ACTIONS.CLEAR_CHOSEN_DOG:
       return {
-        chosenDog: '',
+        chosenDog: null,
       };
   }
 };

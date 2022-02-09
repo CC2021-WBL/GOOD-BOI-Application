@@ -35,6 +35,12 @@ const userReducer = (state, action) => {
     case USER_ACTIONS.CLEAR_SELECTED_ROLE:
       return {
         ...state,
+        selectedRole: null,
+      };
+    case USER_ACTIONS.SELECT_ROLE:
+      return {
+        ...state,
+        selectedRole: action.selectedRole,
       };
   }
 };

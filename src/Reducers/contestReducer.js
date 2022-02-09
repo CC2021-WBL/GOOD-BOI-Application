@@ -11,8 +11,8 @@ const contestReducer = (state, action) => {
       };
     case CONTEST_ACTIONS.CLEAR:
       return {
-        contestId: '',
-        contestName: '',
+        contestId: null,
+        contestName: null,
       };
 
     default:
