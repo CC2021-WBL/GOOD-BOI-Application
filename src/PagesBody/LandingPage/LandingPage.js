@@ -9,6 +9,7 @@ import Logo2 from '../../Assets/Logo2.png';
 import { MdMenu } from 'react-icons/md';
 import { UserDataContext } from '../../Context/UserDataContext';
 
+//comment
 const LandingPage = () => {
   const { state } = useContext(UserDataContext);
   const { isAuthenticated } = state;
