@@ -148,7 +148,6 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
     Object.prototype.hasOwnProperty.call(pathPattern, 'classes') &&
     arrayLength === 6
   ) {
-    console.log(pathOrigin);
     return {
       text: 'Punktacja',
       label: `Ocena zawodnika ${dogName}`,
