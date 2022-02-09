@@ -1,5 +1,6 @@
 import propTypes from 'prop-types';
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
@@ -9,20 +10,24 @@ import { UserDataContext } from '../../Context/UserDataContext';
 const UserProfileData = () => {
   const { state } = useContext(UserDataContext);
   const { userId, userName, userSurname, isAuthenticated } = state;
-  const [userObject, setUserObject] = useState(createUserInitialData(userId));
+  const navigate = useNavigate();
+  const paramsUserData = useParams();
+
+  let userData = userId;
+  if (!userData) {
+    userData = paramsUserData.userId;
+  }
+  const [userObject, setUserObject] = useState(createUserInitialData(userData));
 
   if (!isAuthenticated) {
-    throw new Error('Your not allowed to be here!');
+    navigate('/login');
   }
 
   // mock for checking authentication and if userId is in database
-
   // const { pathname } = useLocation();
-
   // if (!isAuthenticated) {
   //   try {
   //     const userId = pathname.split('/').pop();
-
   //     const userObject = participants.find(
   //       (participant) => participant.participantId === userId,
   //     );
@@ -33,14 +38,14 @@ const UserProfileData = () => {
   //   }
   // }
 
-  const { address } = userObject;
+  const { address, participantName, participantSurname } = userObject;
   const { street, numberOfHouse, city, postalCode } = address;
 
   // mock for fetching data from database and checking if response has data
 
   useEffect(() => {
     const userObject = participants.find(
-      (participant) => participant.participantId === userId,
+      (participant) => participant.participantId === userData,
     );
     if (!userObject) {
       throw new Error('Fetch was unsuccessful');
@@ -51,7 +56,12 @@ const UserProfileData = () => {
 
   return (
     <UserProfileDataStyled>
-      <h3>{`${userName} ${userSurname}`}</h3>
+      {state && userObject ? (
+        <h3>{`${participantName} ${participantSurname}`}</h3>
+      ) : (
+        <h3>{`${userName} ${userSurname}`}</h3>
+      )}
+
       <p>{`${street} ${numberOfHouse}`}</p>
       <p>{`${postalCode} ${city}`}</p>
     </UserProfileDataStyled>

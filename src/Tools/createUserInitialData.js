@@ -1,10 +1,10 @@
 import participants from '../Data/MongoDBMock/participants';
 
 const createUserInitialData = (userId) => {
-  const setUserData = participants.find(
+  const userData = participants.find(
     (participant) => participant.participantId === userId,
   );
-  return setUserData;
+  return userData;
 };
 
 export default createUserInitialData;
