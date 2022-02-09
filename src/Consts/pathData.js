@@ -5,11 +5,6 @@ const pathData = [
   { path: '/role', text: 'Wybierz rolę', label: 'Kontynuuj jako' },
   { path: '/register', text: 'Rejestracja', label: '' },
   { path: '/forgot', text: 'Resetuj hasło', label: '' },
-  {
-    path: '/contests',
-    text: 'Lista konkursów',
-    label: 'Wybierz konkurs',
-  },
 
   {
     path: `/contests/${RANDOM_CONTESTS[0].id}/classes/Klasa 0`,
@@ -28,7 +23,7 @@ const pathData = [
     label: 'Wybierz konkurs',
   },
   { path: '/user', text: 'Twój profil', label: '' },
-  { path: '/user-dogs', text: 'Twoje psy', label: '' },
+  { path: '/user-dogs', text: 'Twoje psy', label: 'Lista twoich psów' },
   { path: '/user-contests', text: 'Konkursy', label: '' },
   {
     path: '/dog-submit',
@@ -58,9 +53,9 @@ const pathData = [
     label: 'XV zjazd dobrych chłopaków',
   },
   {
-    path: '/contests/:contestId/classes/:classId/leaderboard',
-    text: 'Leaderboard',
-    label: 'wybrany contest',
+    path: '/in-progress',
+    text: 'Ups...',
+    label: '',
   },
 ];
 

@@ -8,9 +8,13 @@ const Points = ({ exerciseInfo, toggle, onChange }) => {
   return (
     <PointsStyled>
       {toggle ? (
-        <PointsText points={result}></PointsText>
+        <PointsText exerciseResult={result}></PointsText>
       ) : (
-        <PointsInput points={result} codeName={codeName} onChange={onChange} />
+        <PointsInput
+          exerciseResult={result}
+          codeName={codeName}
+          onChange={onChange}
+        />
       )}
     </PointsStyled>
   );

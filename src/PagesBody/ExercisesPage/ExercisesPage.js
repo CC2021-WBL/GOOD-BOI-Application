@@ -1,18 +1,19 @@
 import Backdrop from '../../Atoms/Modal/Backdrop';
-import ButtonExercisesContainer from '../../Molecules/ButtonsExcercisenContainer/ButtonsExercisesContainer';
+import ButtonExercises from '../../Atoms/ButtonsExercises/ButtonsExercises';
+import ButtonExercisesContainerStyled from '../../Molecules/ButtonsExcercisenContainer/ButtonExercisesContainerStyled';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
 import Modal from '../../Organisms/Modal/Modal';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
+import contests from '../../Data/MongoDBMock/contests';
 import modalData from '../../Consts/modalData';
 import results from '../../Data/MongoDBMock/results';
+import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 
 const ExercisesPage = () => {
-  const { contestId, classId, dogId } = useParams();
-
   const obedienceClass = classId;
   const dogName = dogId;
   const performanceArray = results
@@ -24,11 +25,20 @@ const ExercisesPage = () => {
 
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
   const [isPenaltyModalOpen, setIsPenaltyModalOpen] = useState(false);
+  const [isEvaluationModalOpen, setIsEvaluationModalOpen] = useState(false);
+
   const handleDisqualification = () => {
     setIsDisqualifyModalOpen(false);
   };
   const handlePenalty = () => {
     setIsPenaltyModalOpen(false);
+  };
+
+  const handleEvaluation = () => {
+    setIsEvaluationModalOpen(false);
+    navigate('./dog-summary', {
+      state: { text: 'Tabela Wyników', label: 'Ocena Zawodnika' },
+    });
   };
   const openDisqualifyModalHandler = () => {
     setIsDisqualifyModalOpen(true);
@@ -37,59 +47,93 @@ const ExercisesPage = () => {
     setIsPenaltyModalOpen(true);
   };
 
+  const openEvaluationModalHandler = () => {
+    setIsEvaluationModalOpen(true);
+  };
+
   function closeModalHandler() {
     setIsPenaltyModalOpen(false);
     setIsDisqualifyModalOpen(false);
+    setIsEvaluationModalOpen(false);
   }
+  const navigate = useNavigate();
 
-  if (performanceArray) {
-    return (
-      <ColumnWrapper>
-        {(isDisqualifyModalOpen || isPenaltyModalOpen) && (
-          <Modal
-            modalData={
-              isDisqualifyModalOpen ? modalData.disqualify : modalData.penalty
-            }
-            onCloseHandler={closeModalHandler}
-            onConfirmHandler={
-              isDisqualifyModalOpen ? handleDisqualification : handlePenalty
-            }
+  const goBackHandler = () => {
+    navigate(-1);
+  };
+
+  const { contestId, classId, dogId } = useParams();
+
+  const contestResults = contests.find(
+    (contest) => contest.contestId === contestId,
+  ).obedienceClasses[classId];
+
+  const competingPairsId = contestResults.find(
+    (dog) => dog.dogId === dogId,
+  ).competingPairsId;
+
+  const dogPerformance = results.find(
+    (performance) => performance.competingPairsId === competingPairsId,
+  ).exercises;
+
+  return (
+    <ColumnWrapper>
+      {isDisqualifyModalOpen && (
+        <Modal
+          modalData={modalData.disqualify}
+          onCloseHandler={closeModalHandler}
+          onConfirmHandler={handleDisqualification}
+        />
+      )}
+      {isPenaltyModalOpen && (
+        <Modal
+          modalData={modalData.penalty}
+          onCloseHandler={closeModalHandler}
+          onConfirmHandler={handlePenalty}
+        />
+      )}
+      {isEvaluationModalOpen && (
+        <Modal
+          modalData={modalData.endEvaluation}
+          onCloseHandler={closeModalHandler}
+          onConfirmHandler={handleEvaluation}
+        />
+      )}
+      {(isDisqualifyModalOpen ||
+        isPenaltyModalOpen ||
+        isEvaluationModalOpen) && <Backdrop onClick={closeModalHandler} />}
+      <ColumnWrapper paddingLeftRight={0.25}>
+        <SpecialButtonsContainerStyled>
+          <SpecialButton
+            text="Dyskwalifikacja"
+            colors="red"
+            handler={openDisqualifyModalHandler}
+            roundedBorder="left"
           />
-        )}
-        {(isDisqualifyModalOpen || isPenaltyModalOpen) && (
-          <Backdrop onClick={closeModalHandler} />
-        )}
-        <ColumnWrapper paddingLeftRight={0.25}>
-          <SpecialButtonsContainerStyled>
-            <SpecialButton
-              text="Dyskwalifikacja"
-              theme="red"
-              handler={openDisqualifyModalHandler}
-              left
-            />
-            <SpecialButton
-              text="-10 punktów"
-              theme="yellow"
-              handler={openPenaltyModalHandler}
-              right
-            />
-          </SpecialButtonsContainerStyled>
+          <SpecialButton
+            text="-10 punktów"
+            colors="yellow"
+            handler={openPenaltyModalHandler}
+            roundedBorder="right"
+          />
+        </SpecialButtonsContainerStyled>
 
-          <ExerciseCardsContainer performanceObject={performanceArray} />
-        </ColumnWrapper>
-
-        <ButtonExercisesContainer />
+        <ExerciseCardsContainer dogPerformance={dogPerformance} />
       </ColumnWrapper>
-    );
-  } else {
-    return (
-      <>
-        <h2>
-          <br></br>Error! Brak danych dla tej kombinacji klasy i psa!
-        </h2>
-      </>
-    );
-  }
+      <ButtonExercisesContainerStyled>
+        <ButtonExercises
+          handler={goBackHandler}
+          secondary
+          text={'Zapisz i wróć do listy'}
+        />
+        <ButtonExercises
+          handler={openEvaluationModalHandler}
+          primary
+          text={'Zakończ ocenianie'}
+        />
+      </ButtonExercisesContainerStyled>{' '}
+    </ColumnWrapper>
+  );
 };
 
 export default ExercisesPage;
