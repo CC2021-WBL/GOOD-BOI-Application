@@ -6,8 +6,8 @@ import propTypes from 'prop-types';
 export const ContestContext = createContext();
 
 const initialData = {
-  contestId: '',
-  contestName: '',
+  contestId: null,
+  contestName: null,
 };
 
 export function ContestContextProvider({ children }) {

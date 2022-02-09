@@ -133,7 +133,7 @@ const ExercisesPage = () => {
         <SpecialButtonsContainerStyled>
           <SpecialButton
             text="Dyskwalifikacja"
-            theme="red"
+            colors="red"
             handler={openDisqualifyModalHandler}
             roundedBorder="left"
           />

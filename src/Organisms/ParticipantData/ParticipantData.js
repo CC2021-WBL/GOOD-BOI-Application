@@ -1,12 +1,13 @@
+import { useEffect, useState } from 'react';
+
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import DataLine from '../../Atoms/DataLine/DataLine';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
-import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
+import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
 import participants from '../../Data/MongoDBMock/participants';
 import renderParticipantData from '../../Tools/renderParticipantData';
-import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ParticipantData = ({ id }) => {
   let navigate = useNavigate();
@@ -39,12 +40,12 @@ const ParticipantData = ({ id }) => {
   return (
     <ColumnWrapper>
       <SpecialButtonsContainerStyled>
-        <SpecialButton left text="edytuj" handler={handleEdit} theme="blue" />
+        <SpecialButton left text="edytuj" handler={handleEdit} colors="blue" />
         <SpecialButton
           right
           text="potwierdź"
           handler={handleConfirm}
-          theme="green"
+          colors="green"
         />
       </SpecialButtonsContainerStyled>
       <ColumnWrapper paddingLeftRight={1}>
