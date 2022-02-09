@@ -1,10 +1,11 @@
-import ColumnWrapper from '../Templates/ColumnWrapper/ColumnWrapper';
+import propTypes from 'prop-types';
 import { Component } from 'react';
-import ErrorPageGraphic from '../../src/Assets/ErrorPageGraphic.png';
 import { Link } from 'react-router-dom';
+
+import ColumnWrapper from '../Templates/ColumnWrapper/ColumnWrapper';
+import ErrorPageGraphic from '../../src/Assets/ErrorPageGraphic.png';
 import MainButton from '../Atoms/MainButton/MainButton';
 import NotFoundPageWrapperStyled from '../Organisms/NotFoundContent/NotFoundPageWrapperStyled';
-import propTypes from 'prop-types';
 
 export class ErrorBoundary extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ export class ErrorBoundary extends Component {
               <img src={ErrorPageGraphic} alt="Doggo in space" />
               <div className="mainContentWrapper">
                 <h1>Coś poszło nie tak.</h1>
-                {this.state.error.toString()} <br />
+                <br />
                 <p>Wróć do strony głównej i spróbuj ponownie później.</p>
               </div>
             </NotFoundPageWrapperStyled>
