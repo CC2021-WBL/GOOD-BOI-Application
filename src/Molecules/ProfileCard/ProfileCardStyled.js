@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 const ProfileCardStyled = styled.div`
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  /* ${(props) => props.withEdit} */
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid #9aa5b1;

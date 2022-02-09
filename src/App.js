@@ -28,7 +28,7 @@ import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import RolePage from './PagesBody/RolePage/RolePage';
 import SettingsPage from './PagesBody/SettingsPage/SettingsPage';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
-// import UserDataPage from './PagesBody/UserDataPage/UserDataPage';
+import UserDataPage from './PagesBody/UserDataPage/UserDataPage';
 import UserDogPage from './PagesBody/UserDogsPage/UserDogPage';
 import { ContestContextProvider } from './Context/ContestContext';
 import { DogContextProvider } from './Context/DogContext';
@@ -66,6 +66,7 @@ function App() {
                           />
                         }
                       />
+                      <Route path="user-data" element={<UserDataPage />} />
                       <Route path="*" element={<NotFoundPage />} />
                       <Route path="forgot" element={<ForgotPassForm />} />
                       <Route
