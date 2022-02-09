@@ -8,6 +8,7 @@ import { UserDataContext } from '../../Context/UserDataContext';
 import participants from '../../Data/MongoDBMock/participants';
 
 const UserDogPage = () => {
+  const { state } = useContext(UserDataContext);
   const [isPending, setIsPending] = useState(true);
   const [participantDogs, setParticipantDogs] = useState(null);
   const { dogDispatch } = useContext(DogContext);
