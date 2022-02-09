@@ -7,7 +7,7 @@ export const DogContext = createContext();
 
 const initialData = {
   dogs: [],
-  chosenDog: '',
+  chosenDog: null,
 };
 
 export function DogContextProvider({ children }) {

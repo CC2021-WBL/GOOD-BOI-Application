@@ -1,4 +1,5 @@
-export const checkPathOrigin = (url) => {
+export const checkPathOrigin = (url, namesFromContext = {}) => {
+  {userName, userSurname, dogName, contestName} = namesFromContext
   const pathOrigin = url.split('/');
   const pathPattern = {};
   let endData = '';
@@ -57,7 +58,10 @@ export const checkPathOrigin = (url) => {
         data = { text: 'Portal Good Boy', label: '' };
         break;
       case 'dog-summary':
-        data = { text: 'Tabela wyników', label: 'Ocena zwodnika nazwa psa' };
+        data = {
+          text: 'Tabela wyników',
+          label: `Ocena zwodnika ${namesFromContext.userName} ${namesFromContext.userSurname}`,
+        };
         break;
       case 'dog-submit':
         data = { text: 'Zgłoś Psa', label: 'Nazwa zawodów' };
@@ -108,7 +112,11 @@ export const checkPathOrigin = (url) => {
     Object.prototype.hasOwnProperty.call(pathPattern, 'classes') &&
     arrayLength === 5
   ) {
-    return { text: 'Lista uczestników', label: 'Klasa nrklasy' };
+    console.log(pathOrigin);
+    return {
+      text: 'Lista uczestników',
+      label: `Klasa ${pathOrigin[4]}`,
+    };
   } else if (
     Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
     Object.prototype.hasOwnProperty.call(pathPattern, 'classes') &&
