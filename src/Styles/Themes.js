@@ -55,7 +55,7 @@ export const darkTheme = {
 
   grey800: '#cacaca',
   grey400: '#d3d3d3',
-  grey300: '#9AA5B1',
+  grey300: '#b8bcc0',
   grey200: '#484e55',
   grey100: '#2a2c2e',
   grey00: '#272e36',
@@ -64,15 +64,33 @@ export const darkTheme = {
   warning600: '#775E0D',
   warning400: '#E7B820',
   warning200: '#F3DB90',
-  warning100: '#F9EDC7',
+  warning100: '#d4a91b',
 
   negative600: '#8D0909',
-  negative400: '#e02b2b',
-  negative200: '#F99C9C',
-  negative100: '#FCCECE',
+  negative400: '#f58484',
+  negative200: '#a04949',
+  negative100: '#962c2c',
 
-  positive600: '#1A6234',
-  positive400: '#c77e11',
+  positive600: '#52c07a',
+  positive400: '#2ab841',
   positive200: '#13373a',
-  positive100: '#447056',
+  positive100: '#234e4c',
+
+  modalPenaltyBG: '#dfc15e',
+  modalPenaltyC: '#252522',
+
+  modalDisqualifyBG: '#da6060',
+  modalDisqualifyC: '#252522',
+
+  modalEndEvaluationBG: '#5d8ece',
+  modalEndEvaluationC: '#252522',
+
+  modalEndContestBG: '#5d8ece',
+  modalEndContestC: '#093269',
+
+  modalGoodRegistrationBG: '#52bd7d',
+  modalGoodRegistrationC: '#252522',
+
+  modalBadRegistrationBG: '#da6060',
+  modalBadRegistrationC: '#252522',
 };

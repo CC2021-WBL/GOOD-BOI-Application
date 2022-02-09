@@ -1,4 +1,3 @@
-import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
 
