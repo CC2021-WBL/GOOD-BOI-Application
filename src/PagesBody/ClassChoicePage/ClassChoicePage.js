@@ -17,6 +17,14 @@ const ClassChoicePage = () => {
     console.log('setClass to ' + index);
   };
 
+  const linkTo = () => {
+    if (selectedClass) {
+      return `../contests/${contestId}/classes/${selectedClass}/leaderboard`;
+    } else {
+      return '';
+    }
+  };
+
   return (
     <ColumnWrapper paddingLeftRight={1} paddingTop={0.25}>
       {Object.keys(classesArr).map((obedienceClass, index) => {
@@ -32,19 +40,7 @@ const ClassChoicePage = () => {
           />
         );
       })}
-
-      {/* <FakeButton
-        text={'Wyślij formularz'}
-        secondary="secondary"
-        to={`./${selectedClass}/confirmation-summary`}
-      /> */}
-
-      {/* contests/:contestId/classes/:classId/leaderboard */}
-      <FakeButton
-        text={'Pokaż wyniki'}
-        secondary="secondary"
-        to={`../contests/${contestId}/classes/${selectedClass}/leaderboard`}
-      />
+      <FakeButton text={'Pokaż wyniki'} secondary="secondary" to={linkTo()} />
     </ColumnWrapper>
   );
 };
