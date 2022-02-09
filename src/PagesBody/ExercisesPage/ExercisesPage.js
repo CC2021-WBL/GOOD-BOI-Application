@@ -97,13 +97,13 @@ const ExercisesPage = () => {
         <SpecialButtonsContainerStyled>
           <SpecialButton
             text="Dyskwalifikacja"
-            theme="red"
+            colors="red"
             handler={openDisqualifyModalHandler}
             roundedBorder="left"
           />
           <SpecialButton
             text="-10 punktów"
-            theme="yellow"
+            colors="yellow"
             handler={openPenaltyModalHandler}
             roundedBorder="right"
           />

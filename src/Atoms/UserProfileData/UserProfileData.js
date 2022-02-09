@@ -9,9 +9,9 @@ import participants from '../../Data/MongoDBMock/participants';
 import { UserDataContext } from '../../Context/UserDataContext';
 
 const UserProfileData = ({ withEdit }) => {
+  const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
   const { userId, userName, userSurname, isAuthenticated } = state;
-  const navigate = useNavigate();
   const paramsUserData = useParams();
 
   let userData = userId;
@@ -19,10 +19,6 @@ const UserProfileData = ({ withEdit }) => {
     userData = paramsUserData.userId;
   }
   const [userObject, setUserObject] = useState(createUserInitialData(userData));
-
-  if (!isAuthenticated) {
-    navigate('/login');
-  }
 
   // mock for checking authentication and if userId is in database
   // const { pathname } = useLocation();
@@ -45,6 +41,9 @@ const UserProfileData = ({ withEdit }) => {
   // mock for fetching data from database and checking if response has data
 
   useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/login');
+    }
     const userObject = participants.find(
       (participant) => participant.participantId === userData,
     );
