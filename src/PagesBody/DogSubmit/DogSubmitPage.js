@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import { ContestContext } from '../../Context/ContestContext';
 import { DogContext } from '../../Context/DogContext';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import { UserDataContext } from '../../Context/UserDataContext';
@@ -10,7 +11,9 @@ import { useNavigate } from 'react-router-dom';
 
 const DogSubmitPage = () => {
   const navigate = useNavigate();
+  const { contestState } = useContext(ContestContext);
   const { state } = useContext(UserDataContext);
+  console.log(contestState);
   const [isPending, setIsPending] = useState(true);
   const [participantDogs, setParticipantDogs] = useState(null);
   const { dogDispatch } = useContext(DogContext);
