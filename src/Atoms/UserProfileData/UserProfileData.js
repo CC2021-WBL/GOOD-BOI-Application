@@ -1,35 +1,33 @@
-import propTypes from 'prop-types';
 import { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import UserProfileDataStyled from './UserProfileDataStyled';
-import participants from '../../Data/MongoDBMock/participants';
 import { UserDataContext } from '../../Context/UserDataContext';
-
-const initialData = {
-  address: {
-    country: 'Polska',
-    city: 'Sfornegacie',
-    street: 'ul.Pszczelna',
-    numberOfHouse: '27/5',
-    postalCode: '50-124',
-  },
-};
+import UserProfileDataStyled from './UserProfileDataStyled';
+import createUserInitialData from '../../Tools/createUserInitialData';
+import participants from '../../Data/MongoDBMock/participants';
+import propTypes from 'prop-types';
 
 const UserProfileData = () => {
   const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
   const { userId, userName, userSurname, isAuthenticated } = state;
-  const [userObject, setUserObject] = useState(initialData);
+  const paramsUserData = useParams();
+
+  let userData = userId;
+  if (!userData) {
+    userData = paramsUserData.userId;
+  }
+  const [userObject, setUserObject] = useState(createUserInitialData(userData));
+
+  if (!isAuthenticated) {
+    navigate('/login');
+  }
 
   // mock for checking authentication and if userId is in database
-
   // const { pathname } = useLocation();
-
   // if (!isAuthenticated) {
   //   try {
   //     const userId = pathname.split('/').pop();
-
   //     const userObject = participants.find(
   //       (participant) => participant.participantId === userId,
   //     );
@@ -40,7 +38,7 @@ const UserProfileData = () => {
   //   }
   // }
 
-  const { address } = userObject;
+  const { address, participantName, participantSurname } = userObject;
   const { street, numberOfHouse, city, postalCode } = address;
 
   // mock for fetching data from database and checking if response has data
@@ -50,10 +48,10 @@ const UserProfileData = () => {
       navigate('/login');
     }
     const userObject = participants.find(
-      (participant) => participant.participantId === userId,
+      (participant) => participant.participantId === userData,
     );
     if (!userObject) {
-      throw new Error('Fetch was unsuccessful');
+      navigate('/login');
     } else {
       setUserObject(userObject);
     }
@@ -61,7 +59,12 @@ const UserProfileData = () => {
 
   return (
     <UserProfileDataStyled>
-      <h3>{`${userName} ${userSurname}`}</h3>
+      {state && userObject ? (
+        <h3>{`${participantName} ${participantSurname}`}</h3>
+      ) : (
+        <h3>{`${userName} ${userSurname}`}</h3>
+      )}
+
       <p>{`${street} ${numberOfHouse}`}</p>
       <p>{`${postalCode} ${city}`}</p>
     </UserProfileDataStyled>

@@ -2,10 +2,10 @@ import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
 
 const ClassOrDogButtonStyled = styled.button`
-  box-sizing: border-box;
   display: flex;
   width: 100%;
   height: 4.375rem;
+  box-sizing: border-box;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
