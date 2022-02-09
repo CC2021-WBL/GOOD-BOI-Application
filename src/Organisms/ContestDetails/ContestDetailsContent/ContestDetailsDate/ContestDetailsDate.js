@@ -1,19 +1,23 @@
-import ContestDetailsLine from '../../../../Atoms/ContestDetailsLine/ContestDetailsLine';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-  getDataFormatDdMonthYyy,
-  getHourMinutesFormat,
-} from '../../../../Tools/TimeFunctions';
-import { dateAndHourTextTemplate } from '../../../../Consts/ContestDetailsCONSTS';
+
+import ContestDetailsLine from '../../../../Atoms/ContestDetailsLine/ContestDetailsLine';
+import renderDateAndHourText from '../../../../Tools/contestDetails/renderDateAndHourText';
 
 const ContestDetailsDate = ({ date }) => {
-  const dateAndHourText = dateAndHourTextTemplate;
-  date && (dateAndHourText[0] = `${getDataFormatDdMonthYyy(date)}`);
-  date &&
-    getHourMinutesFormat(date) !== '00:00' &&
-    (dateAndHourText[1] = `${getHourMinutesFormat(date)}`);
+  const [startDate, setStartDate] = useState(null);
 
-  return <ContestDetailsLine text={dateAndHourText} />;
+  useEffect(() => {
+    date instanceof Date ? setStartDate(date) : setStartDate('no-date');
+  }, []);
+
+  return (
+    <>
+      {startDate && (
+        <ContestDetailsLine text={renderDateAndHourText(startDate)} />
+      )}
+    </>
+  );
 };
 
 ContestDetailsDate.propTypes = {

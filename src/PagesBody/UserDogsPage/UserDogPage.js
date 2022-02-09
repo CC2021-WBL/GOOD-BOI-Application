@@ -3,13 +3,11 @@ import { useContext, useEffect, useState } from 'react';
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import { DogContext } from '../../Context/DogContext';
-import MainButton from '../../Atoms/MainButton/MainButton';
+import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import { UserDataContext } from '../../Context/UserDataContext';
 import participants from '../../Data/MongoDBMock/participants';
-import { useNavigate } from 'react-router-dom';
 
 const UserDogPage = () => {
-  const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
   const [isPending, setIsPending] = useState(true);
   const [participantDogs, setParticipantDogs] = useState(null);
@@ -42,11 +40,8 @@ const UserDogPage = () => {
             />
           );
         })}
-      <MainButton
-        secondary
-        text="DODAJ PSA"
-        onClick={() => navigate('/add-dog-form')}
-      />
+
+      <FakeButton secondary text="DODAJ NOWEGO PSA" to="/add-dog-form" />
     </ColumnWrapper>
   );
 };

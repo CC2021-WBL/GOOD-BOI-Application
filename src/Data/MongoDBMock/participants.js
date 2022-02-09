@@ -2,7 +2,7 @@ const participants = [
   {
     participantId: 'matylda1234',
     email: 'matylda@op.pl',
-    password: 'dupabiskupa',
+    password: '**********',
     phoneNumber: 48445234876,
     participantName: 'Matylda',
     participantSurname: 'Borutka',
