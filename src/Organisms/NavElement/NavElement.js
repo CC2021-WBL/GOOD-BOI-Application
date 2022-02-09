@@ -14,15 +14,23 @@ import { useState } from 'react';
 const NavElement = () => {
   const locationPath = useLocation();
   const foundPath = pathData.find((e) => e.path === locationPath.pathname);
-
+  const login = locationPath.pathname === '/login';
+  const register = locationPath.pathname === '/register';
+  const contact = locationPath.pathname === '/contact-form';
+  const forgot = locationPath.pathname === '/forgot';
+  const inProgress = locationPath.pathname === '/in-progress';
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <NavElementStyled>
-        <div className="burger-wrapper">
-          <MdMenu className="burger-icon" onClick={() => setOpen(true)} />
-        </div>
+        {login || register || contact || forgot || inProgress ? (
+          <div className="burger-wrapper" />
+        ) : (
+          <div className="burger-wrapper">
+            <MdMenu className="burger-icon" onClick={() => setOpen(true)} />
+          </div>
+        )}
         {locationPath.state && (
           <h3 className="navText">{locationPath.state.text}</h3>
         )}
