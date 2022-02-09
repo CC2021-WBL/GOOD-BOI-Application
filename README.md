@@ -49,6 +49,13 @@ Aplikacja wspomagająca obsługę psich zawodów obedience.
 - Vercel
 - Mobile first
 
+- By nasz kod był lepszej jakości, bardziej uporządkowany i czytelniejszy, używaliśmy eslint, prettier, stylelint
+- Wiadomość z formularza kontaktowego pojawiła się na mailu dzięki użyciu emailJS
+- Testy przechodziliśmy dzięki użyciu RTL oraz Jest
+- Ikonki wstawiliśmy dzięki Font Awesome oraz React Icons
+- Pomocne okazały się również wtyczki do VSC- sort-imports oraz 'px to rem'
+- Kontrola nad propsami- propTypes
+
 ### Pomysły na przyszłość
 
 - Widoki na większe ekrany
