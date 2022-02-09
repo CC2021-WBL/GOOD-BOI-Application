@@ -139,7 +139,6 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
     Object.prototype.hasOwnProperty.call(pathPattern, 'classes') &&
     arrayLength === 5
   ) {
-    console.log(pathOrigin);
     return {
       text: 'Lista uczestników',
       label: `Klasa ${pathOrigin[4]}`,

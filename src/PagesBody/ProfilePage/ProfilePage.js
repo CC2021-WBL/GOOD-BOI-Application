@@ -1,6 +1,3 @@
-import propTypes from 'prop-types';
-import { useContext } from 'react';
-
 import {
   CONTEST_ACTIONS,
   DOG_ACTIONS,
