@@ -4,51 +4,40 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
-import PARTICIPANTS from '../../Data/Dummy-data/test-data-participants';
-import PARTICIPANT_DATA_TEMPLATE from '../../Consts/ParticipantDataCONSTS';
+import participants from '../../Data/MongoDBMock/participants';
+import renderParticipantData from '../../Tools/renderParticipantData';
+import { useEffect, useState } from 'react';
+
 const ParticipantData = ({ id }) => {
   let navigate = useNavigate();
-  const participant = PARTICIPANTS.find((participant) => (participant.id = id));
+  const [participantData, setParticipantData] = useState(null);
+  const [isPending, setIsPending] = useState(true);
+
+  useEffect(() => {
+    setParticipantData(
+      participants.find((participant) => participant.participantId === id),
+    );
+    setIsPending(false);
+  }, []);
 
   const handleEdit = (event) => {
     event.preventDefault();
-    console.log(id);
-    navigate(`/profileForm/${id}`);
-    //navigate musi przekazać dane participanta(id) do formularza który wypełni sobie inputy
-    //value z bazy danych
+    navigate(`/profileForm/${id}`, {
+      state: {
+        text: 'Formularz - edycja',
+        label: `${participantData.participantName} ${participantData.participantSurname}`,
+        participantId: id,
+      },
+    });
   };
 
   const handleConfirm = (event) => {
     event.preventDefault();
-    navigate(`/classChoice`);
+    navigate(`/class-choice`);
   };
 
-  const participantData = {};
-  Object.keys(PARTICIPANT_DATA_TEMPLATE).forEach(
-    (property) =>
-      (participantData[PARTICIPANT_DATA_TEMPLATE[property]] =
-        participant[property] || 'brak danych'),
-  );
-
-  const { address, street, numberOfHouse, city, postalCode } =
-    PARTICIPANT_DATA_TEMPLATE;
-
-  // Add street and number of house in one property 'Adres'
-  participantData[
-    address
-  ] = `${participantData[street]} ${participantData[numberOfHouse]}`;
-
-  // Add postal code and city in one property 'City'
-  participantData[
-    city
-  ] = `${participantData[postalCode]} ${participantData[city]}`;
-
-  delete participantData[street];
-  delete participantData[numberOfHouse];
-  delete participantData[postalCode];
-
   return (
-    <ColumnWrapper paddingLeftRight={1}>
+    <ColumnWrapper>
       <SpecialButtonsContainerStyled>
         <SpecialButton left text="edytuj" handler={handleEdit} theme="blue" />
         <SpecialButton
@@ -58,10 +47,12 @@ const ParticipantData = ({ id }) => {
           theme="green"
         />
       </SpecialButtonsContainerStyled>
-      <ColumnWrapper>
-        {Object.entries(participantData).map((dataLine, index) => (
-          <DataLine key={index} text={dataLine} />
-        ))}
+      <ColumnWrapper paddingLeftRight={1}>
+        {isPending && <p>Loading...</p>}
+        {participantData &&
+          Object.entries(renderParticipantData(participantData)).map(
+            (dataLine, index) => <DataLine key={index} text={dataLine} />,
+          )}
       </ColumnWrapper>
     </ColumnWrapper>
   );
