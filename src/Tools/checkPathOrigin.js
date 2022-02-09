@@ -3,7 +3,6 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
   const pathOrigin = url.split('/');
   const pathPattern = {};
   let endData = '';
-  console.log(pathOrigin);
   for (let index = 0; index < pathOrigin.length; index++) {
     const string = pathOrigin[index];
 
@@ -99,6 +98,9 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
       case 'class-choice':
         data = { text: 'Wybór klasy', label: 'Dostępne klasy' };
         break;
+      case 'dog-summary':
+        data = { text: 'Punktacja', label: `Ocena zawodnika ${dogName}` };
+        break;
       case 'confirmation-summary':
         data = {
           text: 'Twoje zgłoszenie',
@@ -144,15 +146,6 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
     arrayLength === 4
   ) {
     return { text: 'Lista klas', label: `${contestName}` };
-  } else if (
-    Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
-    Object.prototype.hasOwnProperty.call(pathPattern, 'classes') &&
-    arrayLength === 6
-  ) {
-    return {
-      text: 'Punktacja',
-      label: `Ocena zawodnika ${dogName}`,
-    };
   } else if (
     Object.prototype.hasOwnProperty.call(pathPattern, 'user') &&
     arrayLength === 3

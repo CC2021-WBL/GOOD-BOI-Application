@@ -33,7 +33,6 @@ const NavElement = () => {
   };
 
   const data = checkPathOrigin(locationPath.pathname, namesFromContext);
-  console.log(data);
   return (
     <>
       <NavElementStyled>
