@@ -12,14 +12,19 @@ import { GiSittingDog } from 'react-icons/gi';
 import HeaderMenuStyled from './HeaderMenuStyled';
 import { Link } from 'react-router-dom';
 import MenuStyled from './MenuStyled';
+import { UserDataContext } from '../../Context/UserDataContext';
 import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
 import propTypes from 'prop-types';
 import useClickOutside from '../../Hooks/useClickOutside';
+import { useContext } from 'react';
 
 const BurgerMenu = ({ open, setOpen }) => {
+  const { state } = useContext(UserDataContext);
+  const { userId } = state;
   let domNode = useClickOutside(() => {
     setOpen(false);
   });
+
   return (
     <BurgerMenuStyled open={open} ref={domNode}>
       <HeaderMenuStyled>
@@ -29,7 +34,7 @@ const BurgerMenu = ({ open, setOpen }) => {
       </HeaderMenuStyled>
       <MenuStyled>
         <Link
-          to="/user/:userId"
+          to={`/user/${userId}`}
           className="link"
           onClick={() => setOpen(false)}
         >
