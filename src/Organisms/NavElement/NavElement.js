@@ -1,17 +1,20 @@
+import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
+import { MdMenu } from 'react-icons/md';
+import { useContext, useState } from 'react';
 
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import GoHomeStyled from '../../Atoms/NavElementStyled/GoHomeStyled';
 import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
-import { MdMenu } from 'react-icons/md';
-import { NavElementStyled } from './NavElementStyled';
-import PropTypes from 'prop-types';
 import home from '../../Assets/home.png';
 import pathData from '../../Consts/pathData';
-import { useState } from 'react';
+import { NavElementStyled } from './NavElementStyled';
+import { UserDataContext } from '../../Context/UserDataContext';
 
 const NavElement = () => {
+  const { state } = useContext(UserDataContext);
+  const { userId } = state;
   const locationPath = useLocation();
   const foundPath = pathData.find((e) => e.path === locationPath.pathname);
 
@@ -33,7 +36,7 @@ const NavElement = () => {
           </>
         )}
         <GoHomeStyled>
-          <Link to="/">
+          <Link to={`/user/${userId}`}>
             <img src={home} alt="Buda psa" className="logo" />
           </Link>
         </GoHomeStyled>
