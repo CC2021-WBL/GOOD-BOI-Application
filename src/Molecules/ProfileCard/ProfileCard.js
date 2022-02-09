@@ -5,10 +5,16 @@ import UserProfileData from '../../Atoms/UserProfileData/UserProfileData';
 
 const ProfileCard = ({ withEdit }) => {
   return (
-    <ProfileCardStyled>
-      <div className="bg-box"></div>
-      <UserProfileData withEdit={withEdit} />
-    </ProfileCardStyled>
+    <>
+      {withEdit ? (
+        <UserProfileData withEdit={withEdit} />
+      ) : (
+        <ProfileCardStyled>
+          <div className="bg-box"></div>
+          <UserProfileData withEdit={withEdit} />
+        </ProfileCardStyled>
+      )}
+    </>
   );
 };
 

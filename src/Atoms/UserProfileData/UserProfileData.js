@@ -65,7 +65,7 @@ const UserProfileData = ({ withEdit }) => {
 
   return (
     <>
-      <UserProfileDataStyled>
+      <UserProfileDataStyled withEdit={withEdit}>
         {state && userObject ? (
           <h3>{`${participantName} ${participantSurname}`}</h3>
         ) : (
@@ -80,11 +80,7 @@ const UserProfileData = ({ withEdit }) => {
           </button>
         )}
       </UserProfileDataStyled>
-      {toggle && (
-        <>
-          <RegistrationFormSignup submitForm={submitForm} editData />
-        </>
-      )}
+      {toggle && <RegistrationFormSignup submitForm={submitForm} editData />}
     </>
   );
 };

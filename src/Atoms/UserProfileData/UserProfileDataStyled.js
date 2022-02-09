@@ -5,7 +5,7 @@ const UserProfileDataStyled = styled.div`
   flex-direction: column;
   text-align: left;
   padding: 0.625rem 0;
-  margin: 0 2.5rem 0 0;
+  margin-right: ${(props) => (props.withEdit ? '0' : '40px')};
 
   h3 {
     color: ${({ theme }) => theme.grey800};
@@ -16,6 +16,17 @@ const UserProfileDataStyled = styled.div`
 
   p {
     color: ${({ theme }) => theme.grey400};
+  }
+
+  .edit-btn {
+    cursor: pointer;
+    border: none;
+    background-color: ${({ theme }) => theme.white};
+    align-self: flex-end;
+
+    p {
+      color: ${({ theme }) => theme.grey400};
+    }
   }
 `;
 

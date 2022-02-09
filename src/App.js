@@ -66,7 +66,10 @@ function App() {
                           />
                         }
                       />
-                      <Route path="user-data" element={<UserDataPage />} />
+                      <Route
+                        path="user/:userId/user-data"
+                        element={<UserDataPage />}
+                      />
                       <Route path="*" element={<NotFoundPage />} />
                       <Route path="forgot" element={<ForgotPassForm />} />
                       <Route
