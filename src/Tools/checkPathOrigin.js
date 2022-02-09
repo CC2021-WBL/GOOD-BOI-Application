@@ -1,6 +1,7 @@
 export const checkPathOrigin = (url, namesFromContext = {}) => {
   const { userName, userSurname, dogName, contestName } = namesFromContext;
   const pathOrigin = url.split('/');
+  console.log(pathOrigin);
   const pathPattern = {};
   let endData = '';
   for (let index = 0; index < pathOrigin.length; index++) {
@@ -130,6 +131,11 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
     arrayLength === 2
   ) {
     return { text: 'Lista konkursów', label: 'Wybierz konkurs' };
+  } else if (
+    Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
+    arrayLength === 3
+  ) {
+    return { text: 'Konkurs', label: `${contestName}` };
   } else if (
     Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
     Object.prototype.hasOwnProperty.call(pathPattern, 'classes') &&
