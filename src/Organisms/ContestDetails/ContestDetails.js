@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-
-import contests from '../../Data/MongoDBMock/contests';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ContestDetailsContent from './ContestDetailsContent/ContestDetailsContent';
 import ContestDetailsMap from './ContestDetailsMap/ContestDetailsMap';
 import ContestDetailsToggler from './ContestDetailsToggler/ContestDetailsToggler';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
+import PropTypes from 'prop-types';
+import contests from '../../Data/MongoDBMock/contests';
 
 const ContestDetails = ({ contestId }) => {
   const [isPending, setIsPending] = useState(true);
@@ -40,7 +39,7 @@ const ContestDetails = ({ contestId }) => {
             <FakeButton
               secondary=" secondary"
               text="ZGŁOŚ SWÓJ UDZIAŁ"
-              to="/dog-submit"
+              to="/user-dogs"
             />
           </div>
         </>
