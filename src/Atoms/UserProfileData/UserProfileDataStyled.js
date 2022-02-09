@@ -25,7 +25,8 @@ const UserProfileDataStyled = styled.div`
   .edit-btn {
     cursor: pointer;
     border: none;
-    background-color: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.grey800};
+    background: ${({ theme }) => theme.white};
     align-self: flex-end;
     margin: 0 0 0.625rem;
 

@@ -15,7 +15,8 @@ const UserFieldStyled = styled.div`
   .edit-btn {
     cursor: pointer;
     border: none;
-    background-color: white;
+    color: ${({ theme }) => theme.grey800};
+    background: ${({ theme }) => theme.white};
   }
 `;
 
