@@ -4,10 +4,7 @@ import { useState } from 'react';
 import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
 import UserFieldStyled from './UserFieldStyled';
 
-const UserField = ({ data, email, password, text }) => {
-  const userEmail = 'emailusera@gmail.com';
-  const userPassword = '***********';
-
+const UserField = ({ email, password, text, userEmail, userPassword }) => {
   const [toggle, setToggle] = useState(false);
 
   const toggleHandler = () => {
@@ -30,9 +27,6 @@ const UserField = ({ data, email, password, text }) => {
       {toggle && password && (
         <RegistrationFormSignup submitForm={submitForm} editPassword />
       )}
-      {toggle && data && (
-        <RegistrationFormSignup submitForm={submitForm} editData />
-      )}
     </>
   );
 };
@@ -43,6 +37,8 @@ UserField.propTypes = {
   text: propTypes.string,
   data: propTypes.string,
   password: propTypes.bool,
+  userEmail: propTypes.string,
+  userPassword: propTypes.string,
 };
 
 export default UserField;
