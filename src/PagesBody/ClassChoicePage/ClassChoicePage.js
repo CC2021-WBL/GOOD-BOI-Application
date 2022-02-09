@@ -1,10 +1,15 @@
+import { useContext, useState } from 'react';
+
 import CLASSES from '../../Consts/classesConst';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import { ContestContext } from '../../Context/ContestContext';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import MainButton from '../../Atoms/MainButton/MainButton';
-import { useState } from 'react';
 
 const ClassChoicePage = () => {
+  const { contestState } = useContext(ContestContext);
+  const { contestId } = contestState;
+  console.log(contestState);
   const classesArr = CLASSES.map((elem) => elem.name);
   const [selectedClass, setSelectedClass] = useState('');
   const clickHandler = (index) => {
@@ -28,10 +33,17 @@ const ClassChoicePage = () => {
         );
       })}
 
-      <FakeButton
-        text={`wybrałeś klasę ${selectedClass}`}
+      {/* <FakeButton
+        text={'Wyślij formularz'}
         secondary="secondary"
         to={`./${selectedClass}/confirmation-summary`}
+      /> */}
+
+      {/* contests/:contestId/classes/:classId/leaderboard */}
+      <FakeButton
+        text={'Pokaż wyniki'}
+        secondary="secondary"
+        to={`../contests/${contestId}/classes/${selectedClass}/leaderboard`}
       />
     </ColumnWrapper>
   );
