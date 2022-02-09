@@ -1,12 +1,14 @@
-/* eslint-disable no-unused-vars */
+import propTypes from 'prop-types';
+import { useContext } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
-import { Link } from 'react-router-dom';
 import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
-import propTypes from 'prop-types';
+import { UserDataContext } from '../../Context/UserDataContext';
 
 const ProfilePage = () => {
+  const { state } = useContext(UserDataContext);
+  const { userId } = state;
   return (
     <ColumnWrapper paddingLeftRight={1}>
       <ProfileCard />
@@ -21,7 +23,11 @@ const ProfilePage = () => {
         text="Twoje Konkursy"
         ternary="ternary"
       />
-      <FakeButton to="/user-data" text="Twoje Dane" ternary="ternary" />
+      <FakeButton
+        to={`/user/${userId}/user-data`}
+        text="Twoje Dane"
+        ternary="ternary"
+      />
       <FakeButton
         to={'/contests'}
         state={{

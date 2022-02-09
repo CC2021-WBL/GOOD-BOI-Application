@@ -1,5 +1,7 @@
+import UserData from '../../Organisms/UserData/UserData';
+
 const UserDataPage = () => {
-  return <div>Im a User Data Page</div>;
+  return <UserData />;
 };
 
 export default UserDataPage;
