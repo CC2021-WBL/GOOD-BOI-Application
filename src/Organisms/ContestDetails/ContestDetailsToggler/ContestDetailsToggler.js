@@ -1,5 +1,6 @@
-import ContestDetailsTogglerStyled from './ContestDetailsTogglerStyled';
 import { GoTriangleDown, GoTriangleUp } from 'react-icons/go';
+
+import ContestDetailsTogglerStyled from './ContestDetailsTogglerStyled';
 import PropTypes from 'prop-types';
 
 const ContestDetailsToggler = ({ onClick, toggle }) => {

@@ -12,10 +12,12 @@ const ContestCardStyled = styled.div`
   padding: 1.25rem 1.25rem 1.375rem 1.25rem;
   border: solid 3px
     ${(props) =>
-      props.colorMotive === c.GREEN ? COLORS.positive400 : COLORS.grey200};
+      props.colorMotive === c.GREEN ? COLORS.positive400 : props.theme.grey200};
   margin: 0.5rem auto 0.5rem;
   background-color: ${(props) =>
-    props.colorMotive === c.GREEN ? COLORS.positive100 : COLORS.white};
+    props.colorMotive === c.GREEN
+      ? props.theme.positive100
+      : props.theme.white};
   border-radius: 0.75rem;
 `;
 
@@ -26,12 +28,12 @@ const ContestInsideElementStyled = styled.div`
   padding: 10px;
   border-top: 1px solid ${COLORS.grey200};
   color: ${(props) =>
-    props.colorMotive === c.GREEN ? COLORS.positive600 : COLORS.grey400};
+    props.colorMotive === c.GREEN ? COLORS.positive600 : props.theme.grey400};
   ${FONTS.label_extrabold};
 `;
 
 const ContestNameStyled = styled.h3`
-  color: ${COLORS.grey800};
+  color: ${({ theme }) => theme.grey800};
   ${FONTS.h3};
 `;
 

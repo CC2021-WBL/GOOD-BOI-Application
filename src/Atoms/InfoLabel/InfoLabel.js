@@ -2,7 +2,13 @@ import InfoLabelStyled from './InfoLabelStyled';
 import PropTypes from 'prop-types';
 import { COLORSMOTIVE as c } from '../../Consts/infoLabelConsts';
 
-const InfoLabel = ({ classInfo, dogInfo, pointOnTimeLine, colorMotive }) => {
+const InfoLabel = ({
+  classInfo,
+  dogInfo,
+  pointOnTimeLine,
+  colorMotive,
+  handleClick,
+}) => {
   const { dogsAmount, isCompleted } = classInfo || [];
   const { exercisesCompleted, exercisesAmount } = dogInfo || [];
 
@@ -14,17 +20,17 @@ const InfoLabel = ({ classInfo, dogInfo, pointOnTimeLine, colorMotive }) => {
   }
 
   return (
-    <InfoLabelStyled colorMotive={colorMotive}>
+    <InfoLabelStyled colorMotive={colorMotive} onClick={handleClick}>
       {/*CONDITIONAL FOR DATE */}
       {pointOnTimeLine && !dogsAmount && <>{pointOnTimeLine}</>}
 
       {/*CONDITIONAL FOR CLASSES */}
       {classInfo && isCompleted && <>ukończono</>}
       {classInfo && !isCompleted && (
-        <>
+        <p>
           {dogsAmount}
           {dogsAmount === 1 ? ` uczestnik` : ` uczestników`}
-        </>
+        </p>
       )}
 
       {/*CONDITIONAL FOR DOGS */}
@@ -38,10 +44,17 @@ const InfoLabel = ({ classInfo, dogInfo, pointOnTimeLine, colorMotive }) => {
 };
 
 InfoLabel.propTypes = {
-  classInfo: PropTypes.object,
-  dogInfo: PropTypes.object,
+  classInfo: PropTypes.shape({
+    dogsAmount: PropTypes.number,
+    isCompleted: PropTypes.bool,
+  }),
+  dogInfo: PropTypes.shape({
+    exercisesCompleted: PropTypes.number,
+    exercisesAmount: PropTypes.number,
+  }),
   pointOnTimeLine: PropTypes.string,
   colorMotive: PropTypes.string,
+  handleClick: PropTypes.func,
 };
 
 export default InfoLabel;

@@ -5,6 +5,7 @@ const PointsTextStyled = styled.div`
   height: 100%;
   align-items: center;
   justify-content: center;
+  color: ${({ theme }) => theme.grey800};
 `;
 
 export default PointsTextStyled;

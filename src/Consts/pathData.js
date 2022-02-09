@@ -5,11 +5,6 @@ const pathData = [
   { path: '/role', text: 'Wybierz rolę', label: 'Kontynuuj jako' },
   { path: '/register', text: 'Rejestracja', label: '' },
   { path: '/forgot', text: 'Resetuj hasło', label: '' },
-  {
-    path: '/contests',
-    text: 'Lista konkursów',
-    label: 'Wybierz konkurs',
-  },
 
   {
     path: `/contests/${RANDOM_CONTESTS[0].id}/classes/Klasa 0`,
@@ -37,35 +32,39 @@ const pathData = [
     label: 'Wyniki w klasie 1',
   },
   { path: '/user', text: 'Twój profil', label: '' },
-  { path: '/userDogs', text: 'Twoje psy', label: '' },
-  { path: '/userContests', text: 'Konkursy', label: '' },
+  { path: '/user-dogs', text: 'Twoje psy', label: 'Lista twoich psów' },
+  { path: '/user-contests', text: 'Konkursy', label: '' },
   {
-    path: '/dogSubmit',
+    path: '/dog-submit',
     text: 'Zgłoś psa',
     label: 'XV zjazd dobrych chłopaków',
   },
-  { path: '/dogData', text: 'Dane psa', label: 'Woof' },
+  { path: '/dog-data', text: 'Dane psa', label: 'Woof' },
   {
-    path: '/participantData',
+    path: '/participant-data',
     text: 'Dane zawodnika',
     label: 'Matylda Borutka',
   },
-  { path: '/classChoice', text: 'Wybór klasy', label: 'Dostępne klasy' },
+  { path: '/class-choice', text: 'Wybór klasy', label: 'Dostępne klasy' },
   {
     path: '/confirmation',
     text: 'Potwierdzenie zgłoszenia',
     label: 'Status zgłoszenia',
   },
-  { path: '/addDogForm', text: 'Formularz', label: 'Dodaj psa' },
-  { path: '/contactForm', text: 'Formularz kontaktowy', label: '' },
-  { path: '/ErrorPage', text: 'Ups...', label: '' },
-  { path: '/notFound', text: 'Strona nie istnieje', label: '' },
+  { path: '/add-dog-form', text: 'Formularz', label: 'Dodaj psa' },
+  { path: '/contact-form', text: 'Formularz kontaktowy', label: '' },
+  { path: '/not-found', text: 'Strona nie istnieje', label: '' },
   { path: '/settings', text: 'Ustawienia', label: '' },
   { path: '/upcoming', text: 'Nadchodzące konkursy', label: '' },
   {
-    path: '/contestDetails',
+    path: '/contest-details',
     text: 'Konkurs',
     label: 'XV zjazd dobrych chłopaków',
+  },
+  {
+    path: '/in-progress',
+    text: 'Ups...',
+    label: '',
   },
 ];
 

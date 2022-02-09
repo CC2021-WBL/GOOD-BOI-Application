@@ -8,51 +8,46 @@ import {
   getHourAndMinutesFromDate,
   getPointOnTimeLine,
 } from '../../Tools/TimeFunctions';
-import { useEffect, useState } from 'react';
 
+import { ContestContext } from '../../Context/ContestContext';
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
-import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
+import { UserDataContext } from '../../Context/UserDataContext';
 import propTypes from 'prop-types';
 import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const ContestCard = ({ contestId, contestIndex }) => {
-  const initialData = {
-    contestName: 'info wkrótce',
-    startDate: new Date(),
-    endDate: new Date(),
-    hour: '',
-    city: 'info wkrótce',
-    doggoAmount: 0,
-  };
-  const [contestData, setContestData] = useState(initialData);
+const ContestCard = ({ contestData }) => {
+  const { contestDispatch } = useContext(ContestContext);
+  const { state } = useContext(UserDataContext);
+  const { selectedRole } = state;
 
-  const { contestName, startDate, endDate, hour, city, doggoAmount } =
-    contestData;
   let navigate = useNavigate();
 
-  useEffect(() => {
-    setContestData({
-      ...contestData,
-      contestName: RANDOM_CONTESTS[contestIndex].name,
-      startDate: RANDOM_CONTESTS[contestIndex].date,
-      endDate: RANDOM_CONTESTS[contestIndex].endDate,
-      hour: getHourAndMinutesFromDate(RANDOM_CONTESTS[contestIndex].date),
-      city: RANDOM_CONTESTS[contestIndex].city.toUpperCase(),
-      doggoAmount: 30,
-    });
-    console.log(contestId);
-  }, []);
+  const { contestId, contestName, startDate, endDate, address, dogsAmount } =
+    contestData;
 
   const stringDate = getDataFormatDdMonthYyy(startDate);
   const pointOnTimeLine = getPointOnTimeLine(startDate, endDate);
 
   const handleClick = (event) => {
     event.preventDefault();
-    navigate(`./${contestId}/classes`, {
-      state: { text: 'Lista klas', label: `${contestName}` },
+    if (selectedRole !== null && selectedRole === 'staff') {
+      navigate(`./${contestId}/classes`, {
+        state: { text: 'Lista klas', label: `${contestName}` },
+      });
+    } else {
+      navigate(`/contests/${contestId}`, {
+        state: { text: 'Konkurs', label: `${contestName}` },
+      });
+    }
+    contestDispatch({
+      type: 'SET_CONTEST',
+      payload: {
+        contestId: contestId,
+        contestName: contestName,
+      },
     });
-    //navigate musi przekazać dane o klasach jakie mają się odbyć i nazwach psów w tych klasach?
   };
 
   return (
@@ -63,14 +58,14 @@ const ContestCard = ({ contestId, contestIndex }) => {
       <ContestNameStyled>{contestName}</ContestNameStyled>
       <ContestInsideElementStyled colorMotive={setColorMotive(pointOnTimeLine)}>
         <time dateTime={stringDate}>
-          {stringDate}, {hour}
+          {stringDate}, {getHourAndMinutesFromDate(startDate)}
         </time>
-        <p>{city}</p>
+        <p>{address.city.toUpperCase()}</p>
       </ContestInsideElementStyled>
       <ContestInsideElementStyled colorMotive={setColorMotive(pointOnTimeLine)}>
         <InfoLabel
-          classInfo={{ dogsAmount: doggoAmount }}
-          colorMotive={setColorMotive(pointOnTimeLine, doggoAmount)}
+          classInfo={{ dogsAmount: dogsAmount }}
+          colorMotive={setColorMotive(pointOnTimeLine, dogsAmount)}
         />
         <InfoLabel
           pointOnTimeLine={pointOnTimeLine}
@@ -82,8 +77,14 @@ const ContestCard = ({ contestId, contestIndex }) => {
 };
 
 ContestCard.propTypes = {
-  contestId: propTypes.string.isRequired,
-  contestIndex: propTypes.number,
+  contestData: propTypes.shape({
+    contestId: propTypes.string,
+    contestName: propTypes.string,
+    startDate: propTypes.instanceOf(Date),
+    endDate: propTypes.instanceOf(Date),
+    address: propTypes.object,
+    dogsAmount: propTypes.number,
+  }),
 };
 
 export default ContestCard;
