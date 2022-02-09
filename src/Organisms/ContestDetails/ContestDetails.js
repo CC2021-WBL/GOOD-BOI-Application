@@ -1,17 +1,24 @@
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import contests from '../../Data/MongoDBMock/contests';
+
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import ContestDetailsContent from './ContestDetailsContent/ContestDetailsContent';
 import ContestDetailsMap from './ContestDetailsMap/ContestDetailsMap';
 import ContestDetailsToggler from './ContestDetailsToggler/ContestDetailsToggler';
 import MainButton from '../../Atoms/MainButton/MainButton';
-import { useState } from 'react';
-import ContestDetailsContent from './ContestDetailsContent/ContestDetailsContent';
-import PropTypes from 'prop-types';
-import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
-import { Link } from 'react-router-dom';
-import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 
 const ContestDetails = ({ contestId }) => {
-  const contestInfo = RANDOM_CONTESTS.find(
-    (contest) => contest.id === contestId,
-  );
+  const [isPending, setIsPending] = useState(true);
+  const [contestData, setContestData] = useState(null);
+
+  useEffect(() => {
+    setContestData(contests.find((contest) => contest.contestId === contestId));
+    setIsPending(false);
+  }, []);
+
   const [toggle, setToggle] = useState(false);
 
   const toggleHandler = () => {
@@ -20,18 +27,23 @@ const ContestDetails = ({ contestId }) => {
 
   return (
     <ColumnWrapper>
-      <ContestDetailsMap />
-      <ContestDetailsToggler onClick={toggleHandler} toggle={toggle} />
-      {toggle && <ContestDetailsContent contestInfo={contestInfo} />}
-      <div
-        style={{
-          margin: '1rem',
-        }}
-      >
-        <Link to="/confirmation" style={{ textDecoration: 'none' }}>
-          <MainButton secondary text={'ZGŁOŚ SWÓJ UDZIAŁ'} />
-        </Link>
-      </div>
+      {isPending && <p>Loading...</p>}
+      {contestData && (
+        <>
+          <ContestDetailsMap />
+          <ContestDetailsToggler onClick={toggleHandler} toggle={toggle} />
+          {toggle && <ContestDetailsContent contestData={contestData} />}
+          <div
+            style={{
+              margin: '1rem',
+            }}
+          >
+            <Link to="/confirmation" style={{ textDecoration: 'none' }}>
+              <MainButton secondary text={'ZGŁOŚ SWÓJ UDZIAŁ'} />
+            </Link>
+          </div>
+        </>
+      )}
     </ColumnWrapper>
   );
 };
