@@ -59,22 +59,22 @@ export const darkTheme = {
   grey200: '#484e55',
   grey100: '#2a2c2e',
   grey00: '#272e36',
-  white: '#0f1216',
+  white: '#191e24',
 
   warning600: '#775E0D',
   warning400: '#E7B820',
   warning200: '#F3DB90',
-  warning100: '#d4a91b',
+  warning100: '#e7cf7f',
 
   negative600: '#8D0909',
-  negative400: '#f58484',
+  negative400: '#f8a6a6',
   negative200: '#a04949',
-  negative100: '#962c2c',
+  negative100: '#ac4a4a',
 
   positive600: '#52c07a',
   positive400: '#2ab841',
-  positive200: '#13373a',
-  positive100: '#234e4c',
+  positive200: '#19554b',
+  positive100: '#234e45',
 
   modalPenaltyBG: '#dfc15e',
   modalPenaltyC: '#252522',
@@ -82,11 +82,11 @@ export const darkTheme = {
   modalDisqualifyBG: '#da6060',
   modalDisqualifyC: '#252522',
 
-  modalEndEvaluationBG: '#5d8ece',
+  modalEndEvaluationBG: '#5ea4ff',
   modalEndEvaluationC: '#252522',
 
-  modalEndContestBG: '#5d8ece',
-  modalEndContestC: '#093269',
+  modalEndContestBG: '#5ea4ff',
+  modalEndContestC: '#252522',
 
   modalGoodRegistrationBG: '#52bd7d',
   modalGoodRegistrationC: '#252522',

@@ -2,6 +2,7 @@ import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
 
 const LeaderboardListElementStyled = styled.div`
+  color: ${({ theme }) => theme.grey800};
   display: flex;
   width: 100%;
   min-height: 3.125rem;
