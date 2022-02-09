@@ -1,20 +1,27 @@
-import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import { ContestContext } from '../../Context/ContestContext';
+import { DogContext } from '../../Context/DogContext';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import ForbiddenEntryPage from '../ForbiddenEntryPage/ForbiddenEntryPage';
 import MainButton from '../../Atoms/MainButton/MainButton';
-import { DogContext } from '../../Context/DogContext';
 import { ROLES } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { createURLForRolePage } from '../../Tools/UrlCreators';
+import { useNavigate } from 'react-router-dom';
 
 const RolePage = () => {
   const { state, dispatch } = useContext(UserDataContext);
   const { dogState, dogDispatch } = useContext(DogContext);
+  const { contestDispatch } = useContext(ContestContext);
   const { userId, roles, isAuthenticated } = state;
   const navigate = useNavigate();
+
+  useEffect(() => {
+    contestDispatch({ type: 'CLEAR' });
+    dogDispatch({ type: 'CLEAR_CHOSEN_DOG' });
+  }, []);
 
   if (!isAuthenticated) {
     return <ForbiddenEntryPage />;
