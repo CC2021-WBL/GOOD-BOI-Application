@@ -8,7 +8,7 @@ import { UserDataContext } from '../../Context/UserDataContext';
 import participants from '../../Data/MongoDBMock/participants';
 import { useNavigate } from 'react-router-dom';
 
-const UserDogPage = () => {
+const DogSubmitPage = () => {
   const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
   const [isPending, setIsPending] = useState(true);
@@ -51,4 +51,4 @@ const UserDogPage = () => {
   );
 };
 
-export default UserDogPage;
+export default DogSubmitPage;
