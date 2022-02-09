@@ -6,7 +6,7 @@ const participants = [
     phoneNumber: 48445234876,
     participantName: 'Matylda',
     participantSurname: 'Borutka',
-    adress: {
+    address: {
       country: 'Polska',
       city: 'Sfornegacie',
       street: 'ul.Pszczelna',
@@ -32,7 +32,7 @@ const participants = [
     phoneNumber: 48568432890,
     participantName: 'Bodzio',
     participantSurname: 'Rolnik',
-    adress: {
+    address: {
       country: 'Polska',
       city: 'Trabki Wielkie',
       street: 'al Dziurawa',
@@ -54,7 +54,7 @@ const participants = [
     phoneNumber: 48348087554,
     participantName: 'Eustachy',
     participantSurname: 'Trompka',
-    adress: {
+    address: {
       country: 'Polska',
       city: 'Warszawa',
       street: 'ul.Gnilna',
@@ -76,7 +76,7 @@ const participants = [
     phoneNumber: 48609906003,
     participantName: 'Zosia',
     participantSurname: 'Samosia',
-    adress: {
+    address: {
       country: 'Polska',
       city: 'Warszawa',
       street: 'ul.Słoneczna',
