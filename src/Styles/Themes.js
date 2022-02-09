@@ -27,6 +27,24 @@ export const lightTheme = {
   positive400: '#34C369',
   positive200: '#97E3B3',
   positive100: '#CBF1D9',
+
+  modalPenaltyBG: '#F9EDC7',
+  modalPenaltyC: '#775E0D',
+
+  modalDisqualifyBG: '#FCCECE',
+  modalDisqualifyC: '#8D0909',
+
+  modalEndEvaluationBG: '#ACCCF8',
+  modalEndEvaluationC: '#093269',
+
+  modalEndContestBG: '#ACCCF8',
+  modalEndContestC: '#093269',
+
+  modalGoodRegistrationBG: '#CBF1D9',
+  modalGoodRegistrationC: '#1A6234',
+
+  modalBadRegistrationBG: '#FCCECE',
+  modalBadRegistrationC: '#8D0909',
 };
 export const darkTheme = {
   primary801: '#b0d4ff',

@@ -22,9 +22,9 @@ const ModalContainer = styled.div`
 
     ${(props) =>
       props.theme &&
-      `
-        color: ${props.theme.color};
-        background: ${props.theme.background};`}
+      props.colors &&
+      `color: ${props.theme[props.colors.color]};
+        background-color: ${props.theme[props.colors.background]};`}
     .title {
       ${FONTS.h3};
     }
@@ -40,7 +40,7 @@ const ModalContainer = styled.div`
     height: 7.1875rem;
     align-items: center;
     border: none;
-    background: #fff8f8;
+    background: ${({ theme }) => theme.grey00};
     border-radius: 0rem 0rem 0.75rem 0.75rem;
 
     .modalBack {
@@ -50,13 +50,13 @@ const ModalContainer = styled.div`
       margin: 0 1.5625rem;
 
       .arrow {
-        color: ${COLORS.grey400};
+        color: ${({ theme }) => theme.grey400};
         font-size: 1.875rem;
       }
 
       .back {
         margin: 0 0 0 0.9375rem;
-        color: ${COLORS.grey400};
+        color: ${({ theme }) => theme.grey400};
         ${FONTS.caption};
         text-align: left;
       }
