@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import contests from '../../Data/MongoDBMock/contests';
@@ -8,7 +7,7 @@ import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ContestDetailsContent from './ContestDetailsContent/ContestDetailsContent';
 import ContestDetailsMap from './ContestDetailsMap/ContestDetailsMap';
 import ContestDetailsToggler from './ContestDetailsToggler/ContestDetailsToggler';
-import MainButton from '../../Atoms/MainButton/MainButton';
+import FakeButton from '../../Atoms/FakeButton/FakeButton';
 
 const ContestDetails = ({ contestId }) => {
   const [isPending, setIsPending] = useState(true);
@@ -38,9 +37,11 @@ const ContestDetails = ({ contestId }) => {
               margin: '1rem',
             }}
           >
-            <Link to="/confirmation" style={{ textDecoration: 'none' }}>
-              <MainButton secondary text={'ZGŁOŚ SWÓJ UDZIAŁ'} />
-            </Link>
+            <FakeButton
+              secondary=" secondary"
+              text="ZGŁOŚ SWÓJ UDZIAŁ"
+              to="/dog-submit"
+            />
           </div>
         </>
       )}
