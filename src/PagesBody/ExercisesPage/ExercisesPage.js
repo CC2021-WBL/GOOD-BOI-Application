@@ -140,7 +140,7 @@ const ExercisesPage = () => {
             roundedBorder="left"
           />
           <SpecialButton
-            text="-10 punktów"
+            text={`${penaltyPoints} punktów karnych`}
             theme="yellow"
             handler={openPenaltyModalHandler}
             roundedBorder="right"
