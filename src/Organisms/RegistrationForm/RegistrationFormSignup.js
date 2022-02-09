@@ -18,8 +18,6 @@ const RegistrationFormSignup = ({
     validateData,
   );
 
-  // conditions
-
   if (editData) {
     return (
       <FormWrapper onSubmit={submitHandler}>
