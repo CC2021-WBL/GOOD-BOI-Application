@@ -17,12 +17,14 @@ const NavElement = () => {
   const login = locationPath.pathname === '/login';
   const register = locationPath.pathname === '/register';
   const contact = locationPath.pathname === '/contact-form';
+  const forgot = locationPath.pathname === '/forgot';
+  const inProgress = locationPath.pathname === '/in-progress';
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <NavElementStyled>
-        {login || register || contact ? (
+        {login || register || contact || forgot || inProgress ? (
           <div className="burger-wrapper" />
         ) : (
           <div className="burger-wrapper">
