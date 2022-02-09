@@ -2,16 +2,12 @@ import { useContext, useEffect, useState } from 'react';
 
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import { ContestContext } from '../../Context/ContestContext';
 import { DogContext } from '../../Context/DogContext';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import { UserDataContext } from '../../Context/UserDataContext';
 import participants from '../../Data/MongoDBMock/participants';
 
 const UserDogPage = () => {
-  const { contestState } = useContext(ContestContext);
-  const { state } = useContext(UserDataContext);
-  console.log(contestState);
   const [isPending, setIsPending] = useState(true);
   const [participantDogs, setParticipantDogs] = useState(null);
   const { dogDispatch } = useContext(DogContext);
