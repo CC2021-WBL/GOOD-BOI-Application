@@ -21,7 +21,7 @@ const UserDogPage = () => {
     ).dogs;
     setParticipantDogs(dogs);
     setIsPending(false);
-    dogDispatch({ type: 'SET_DATA', payload: { dogs: dogs } });
+    dogDispatch({ type: 'SET_DATA', payload: { dogs: dogs, chosenDog: '' } });
   }, []);
 
   return (

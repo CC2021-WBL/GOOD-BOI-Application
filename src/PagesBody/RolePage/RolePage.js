@@ -1,13 +1,14 @@
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import { DogContext } from '../../Context/DogContext';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import ForbiddenEntryPage from '../ForbiddenEntryPage/ForbiddenEntryPage';
 import MainButton from '../../Atoms/MainButton/MainButton';
+import { DogContext } from '../../Context/DogContext';
 import { ROLES } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { createURLForRolePage } from '../../Tools/UrlCreators';
-import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const RolePage = () => {
   const { state, dispatch } = useContext(UserDataContext);
