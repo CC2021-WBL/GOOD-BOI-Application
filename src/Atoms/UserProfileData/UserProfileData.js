@@ -1,16 +1,16 @@
-import propTypes from 'prop-types';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { UserDataContext } from '../../Context/UserDataContext';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
 import participants from '../../Data/MongoDBMock/participants';
-import { UserDataContext } from '../../Context/UserDataContext';
+import propTypes from 'prop-types';
 
 const UserProfileData = () => {
+  const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
   const { userId, userName, userSurname, isAuthenticated } = state;
-  const navigate = useNavigate();
   const paramsUserData = useParams();
 
   let userData = userId;
@@ -18,10 +18,6 @@ const UserProfileData = () => {
     userData = paramsUserData.userId;
   }
   const [userObject, setUserObject] = useState(createUserInitialData(userData));
-
-  if (!isAuthenticated) {
-    navigate('/login');
-  }
 
   // mock for checking authentication and if userId is in database
   // const { pathname } = useLocation();
@@ -44,6 +40,9 @@ const UserProfileData = () => {
   // mock for fetching data from database and checking if response has data
 
   useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/login');
+    }
     const userObject = participants.find(
       (participant) => participant.participantId === userData,
     );
