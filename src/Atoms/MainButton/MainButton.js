@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 
 // function primary, secondary, ternary
 const MainButton = (props) => {
-  const { primary, secondary, ternary, text, className } = props;
+  const { primary, secondary, ternary, text, className, justifyText } = props;
 
   return (
     <MainButtonStyled
@@ -12,6 +12,7 @@ const MainButton = (props) => {
       secondary={secondary}
       ternary={ternary}
       className={className}
+      justifyText={justifyText}
     >
       {text.toUpperCase()}
     </MainButtonStyled>
@@ -24,7 +25,7 @@ MainButton.propTypes = {
   ternary: propTypes.bool,
   text: propTypes.string.isRequired,
   onClick: propTypes.func,
-  justify: propTypes.string,
+  justifyText: propTypes.string,
   className: propTypes.string,
 };
 

@@ -30,7 +30,7 @@ const MainButtonStyled = styled.button`
   height: 3.25rem;
   align-items: center;
   justify-content: ${(props) =>
-    (props.justify && ` ${props.justify};`) || 'center;'};
+    (props.justifyText && ` ${props.justifyText};`) || 'center;'};
   padding: 0 1rem;
   margin: 0.5rem 0 0.5rem 0;
   border-radius: 0.75rem;
