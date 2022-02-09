@@ -25,6 +25,7 @@ const LandingPage = () => {
               color: 'grey',
               display: 'flex',
               marginTop: '10px',
+              cursor: 'pointer',
             }}
           />
         </div>
