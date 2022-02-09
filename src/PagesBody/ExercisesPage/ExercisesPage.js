@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import ButtonExercises from '../../Atoms/ButtonsExercises/ButtonsExercises';
@@ -20,6 +20,10 @@ const ExercisesPage = () => {
   let [penaltyPoints, setPenaltyPoints] = useState(0);
   const [disqualified, setDisqualified] = useState(false);
 
+  const locationPath = useLocation();
+
+  const label = locationPath.state.label;
+
   useEffect(() => {
     console.log('useEffect dogPerformance changed');
     console.log('useEffect penalty ' + penaltyPoints);
@@ -30,7 +34,7 @@ const ExercisesPage = () => {
       navigate('./dog-summary', {
         state: {
           text: 'Tabela Wyników',
-          label: 'Ocena Zawodnika',
+          label: `${label}`,
           dogPerformance: { dogPerformance },
         },
       });
@@ -45,7 +49,7 @@ const ExercisesPage = () => {
     navigate('./dog-summary', {
       state: {
         text: 'Tabela Wyników',
-        label: 'Ocena Zawodnika',
+        label: `${label}`,
         dogPerformance: { dogPerformance },
       },
     });
@@ -65,7 +69,7 @@ const ExercisesPage = () => {
     navigate('./dog-summary', {
       state: {
         text: 'Tabela Wyników',
-        label: 'Ocena Zawodnika',
+        label: `${label}`,
         dogPerformance: { dogPerformance },
       },
     });

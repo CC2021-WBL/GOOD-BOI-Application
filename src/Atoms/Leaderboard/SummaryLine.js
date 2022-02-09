@@ -4,8 +4,6 @@ import checkIfDisqualified from '../../Tools/checkIfDisqualified';
 import penaltyScore from '../../Tools/penaltyScoreCalc';
 import propTypes from 'prop-types';
 
-// TODO: Penalty points will be calculated after entries in the database will be created on ExercisesPage
-
 const SummaryLine = ({ result, classId }) => {
   const exercisesArr = result;
   const scoresArr = exercisesArr.map((score) => {
