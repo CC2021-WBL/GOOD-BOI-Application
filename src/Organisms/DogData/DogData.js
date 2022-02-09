@@ -10,6 +10,7 @@ import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContain
 import { useContext, useEffect, useState } from 'react';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { DogContext } from '../../Context/DogContext';
+import { ContestContext } from '../../Context/ContestContext';
 
 const DogData = ({ id }) => {
   let navigate = useNavigate();
@@ -17,6 +18,7 @@ const DogData = ({ id }) => {
   const [isPending, setIsPending] = useState(true);
   const { state } = useContext(UserDataContext);
   const { dogState } = useContext(DogContext);
+  const { contestState } = useContext(ContestContext);
 
   useEffect(() => {
     setDogData(doggos.find((dog) => dog.dogId === id));
@@ -35,7 +37,8 @@ const DogData = ({ id }) => {
 
   const handleConfirm = (event) => {
     event.preventDefault();
-    !dogState.chosenDog &&
+    dogState.chosenDog &&
+      contestState.contestId &&
       navigate(`/participant-data/${state.userId}`, {
         state: {
           text: 'Dane zawodnika',
@@ -43,7 +46,7 @@ const DogData = ({ id }) => {
           participantId: state.userId,
         },
       });
-    dogState.chosenDog && navigate(`/user-dogs`);
+    dogState.chosenDog && !contestState.contestId && navigate(`/user-dogs`);
   };
 
   return (
