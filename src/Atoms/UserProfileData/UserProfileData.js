@@ -19,10 +19,6 @@ const UserProfileData = () => {
   }
   const [userObject, setUserObject] = useState(createUserInitialData(userData));
 
-  if (!isAuthenticated) {
-    navigate('/login');
-  }
-
   // mock for checking authentication and if userId is in database
   // const { pathname } = useLocation();
   // if (!isAuthenticated) {
