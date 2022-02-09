@@ -1,43 +1,37 @@
-import ContestDetailsLine from '../../../../Atoms/ContestDetailsLine/ContestDetailsLine';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { getDataFormatDdMmhYyy } from '../../../../Tools/TimeFunctions';
-import { applicationInfoTextTemplate } from '../../../../Consts/ContestDetailsCONSTS';
 
-const ContestDetailsApplicationInfo = ({ applicationInfo }) => {
-  const { applicationOpenDate, applicationClosedDate, applicationFeeInPLN } =
-    applicationInfo;
+import applicationInfoRender from '../../../../Tools/contestDetails/applicationInfoRender';
+import ContestDetailsLine from '../../../../Atoms/ContestDetailsLine/ContestDetailsLine';
 
-  const applicationInfoText = applicationInfoTextTemplate;
+const ContestDetailsApplicationInfo = ({ applicationData }) => {
+  const [applicationInfo, setApplicationInfo] = useState(null);
 
-  applicationOpenDate &&
-    (applicationInfoText[0][1] = `${getDataFormatDdMmhYyy(
-      applicationOpenDate,
-    )}`);
-  applicationClosedDate &&
-    (applicationInfoText[1][1] = `${getDataFormatDdMmhYyy(
-      applicationClosedDate,
-    )}`);
-  applicationFeeInPLN &&
-    (applicationInfoText[2][1] = `${applicationFeeInPLN.toFixed(2)} PLN`);
+  useEffect(() => {
+    setApplicationInfo(applicationData);
+  }, []);
 
   return (
     <>
-      {applicationInfoText.map((applicationInfoLine, index) => (
-        <ContestDetailsLine
-          key={`application-${index}`}
-          text={applicationInfoLine}
-          highlight={true}
-        />
-      ))}
+      {applicationInfo &&
+        applicationInfoRender(applicationInfo).map(
+          (applicationInfoLine, index) => (
+            <ContestDetailsLine
+              key={`application-info-${index}`}
+              text={applicationInfoLine}
+              highlight={true}
+            />
+          ),
+        )}
     </>
   );
 };
 
 ContestDetailsApplicationInfo.propTypes = {
-  applicationInfo: PropTypes.shape({
+  applicationData: PropTypes.shape({
     applicationOpenDate: PropTypes.instanceOf(Date),
     applicationClosedDate: PropTypes.instanceOf(Date),
-    applicationFeeInPLN: PropTypes.number,
+    feePLN: PropTypes.number,
   }),
 };
 

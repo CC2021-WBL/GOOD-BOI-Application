@@ -1,13 +1,14 @@
+import propTypes from 'prop-types';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { UserDataContext } from '../../Context/UserDataContext';
+import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
 import participants from '../../Data/MongoDBMock/participants';
-import propTypes from 'prop-types';
+import { UserDataContext } from '../../Context/UserDataContext';
 
-const UserProfileData = () => {
+const UserProfileData = ({ withEdit }) => {
   const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
   const { userId, userName, userSurname, isAuthenticated } = state;
@@ -53,17 +54,33 @@ const UserProfileData = () => {
     }
   }, []);
 
-  return (
-    <UserProfileDataStyled>
-      {state && userObject ? (
-        <h3>{`${participantName} ${participantSurname}`}</h3>
-      ) : (
-        <h3>{`${userName} ${userSurname}`}</h3>
-      )}
+  const [toggle, setToggle] = useState(false);
 
-      <p>{`${street} ${numberOfHouse}`}</p>
-      <p>{`${postalCode} ${city}`}</p>
-    </UserProfileDataStyled>
+  const toggleHandler = () => {
+    setToggle((prevState) => !prevState);
+  };
+
+  const submitForm = () => {};
+
+  return (
+    <>
+      <UserProfileDataStyled withEdit={withEdit}>
+        {state && userObject ? (
+          <h3>{`${participantName} ${participantSurname}`}</h3>
+        ) : (
+          <h3>{`${userName} ${userSurname}`}</h3>
+        )}
+
+        <p>{`${street} ${numberOfHouse}`}</p>
+        <p>{`${postalCode} ${city}`}</p>
+        {withEdit && (
+          <button className="edit-btn" onClick={toggleHandler} toggle="true">
+            edytuj dane
+          </button>
+        )}
+      </UserProfileDataStyled>
+      {toggle && <RegistrationFormSignup submitForm={submitForm} editData />}
+    </>
   );
 };
 
@@ -75,6 +92,7 @@ UserProfileData.propTypes = {
     userSurname: propTypes.string,
     roles: propTypes.arrayOf(propTypes.string),
   }),
+  withEdit: propTypes.bool,
 };
 
 export default UserProfileData;

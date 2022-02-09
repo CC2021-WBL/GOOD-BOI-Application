@@ -1,30 +1,29 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
 
 const handleBgAndColor = (props) => {
   if (props.primary) {
-    return `color: ${COLORS.white}; background: ${COLORS.primary501};`;
+    return `color: ${props.theme.white}; background: ${props.theme.primary501};`;
   }
   if (props.secondary) {
-    return `color: ${COLORS.primary601}; background: ${COLORS.primary201};`;
+    return `color: ${props.theme.primary601}; background: ${props.theme.primary201};`;
   }
   if (props.ternary) {
-    return `color: ${COLORS.grey800}; background: transparent;`;
+    return `color: ${props.theme.grey800}; background: ${props.theme.white};`;
   }
 };
 
 const borderHandler = (props) => {
   if (props.primary) {
-    return `border: 0.5px solid ${COLORS.grey800};`;
+    return `border: 0.5px solid ${props.theme.grey800}`;
   }
   if (props.secondary) {
-    return `border: 0.5px solid ${COLORS.primary601};`;
+    return `border: 0.5px solid ${props.theme.primary601};`;
   }
   if (props.ternary) {
-    return `border: 0.5px solid ${COLORS.grey800};`;
+    return `border: 0.5px solid ${props.theme.grey800}`;
   }
 };
 const FakeButtonStyled = styled(Link)`
