@@ -47,7 +47,6 @@ describe('TextArea', () => {
         data-testid="my-checkbox"
       />,
     );
-    //test comment
     const checkbox = screen.getByTestId('my-checkbox');
     expect(checkbox).toBeInTheDocument();
     expect(checkbox).not.toBeChecked();
