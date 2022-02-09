@@ -6,16 +6,12 @@ import MainButton from './../../Atoms/MainButton/MainButton';
 import PenaltyOrDisqualifiedLine from '../../Atoms/Leaderboard/PenaltyOrDisqualifiedLine';
 import SummaryLine from '../../Atoms/Leaderboard/SummaryLine';
 
-// TODO: Penalty points will be calculated after entries in the database will be created on ExercisesPage
-
 const sendDataHandler = () => {};
 
 const DogSummaryPage = () => {
-  // const dogPerformance = useContext(NewContestContext);
   const { contestId, classId, dogId } = useParams();
   const locationPath = useLocation();
   console.log('dogPerformance z locationPath.state');
-  // console.log(dogPerformance);
   console.log(locationPath.state.dogPerformance);
   const dogPerformance = locationPath.state.dogPerformance.dogPerformance;
 

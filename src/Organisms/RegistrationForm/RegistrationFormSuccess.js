@@ -1,9 +1,8 @@
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import Modal from '../Modal/Modal';
 import modalData from '../../Consts/modalData';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const RegistrationFormSuccess = () => {
   const navigate = useNavigate();

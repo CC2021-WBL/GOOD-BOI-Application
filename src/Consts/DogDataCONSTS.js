@@ -3,7 +3,7 @@ const DOG_DATA_TEMPLATE = {
   kennelName: 'Przydomek',
   breed: 'Pełna rasa psa/suki',
   sex: 'Płeć',
-  colour: 'Maść',
+  color: 'Maść',
   dateOfBirth: 'Data urodzenia',
   pkr: 'Numer PKR',
   registrationNumber: 'Numer rejestracji oddziałowej',

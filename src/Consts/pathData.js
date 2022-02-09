@@ -58,9 +58,9 @@ const pathData = [
     label: 'XV zjazd dobrych chłopaków',
   },
   {
-    path: '/contests/:contestId/classes/:classId/leaderboard',
-    text: 'Leaderboard',
-    label: 'wybrany contest',
+    path: '/in-progress',
+    text: 'Ups...',
+    label: '',
   },
 ];
 

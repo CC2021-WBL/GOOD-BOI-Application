@@ -1,13 +1,16 @@
 import ClassOrDogButtonStyled from './ClassOrDogButtonStyled';
+import { DogContext } from '../../Context/DogContext';
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const ClassOrDogButton = ({ classInfo, dogInfo }) => {
+const ClassOrDogButton = ({ classInfo, dogInfo, noInfoLabel }) => {
   const navigate = useNavigate();
   const { obedienceClass, dogsAmount } = classInfo || [];
   const { index, dogId, dogName, exercisesCompleted, exercisesAmount } =
     dogInfo || [];
+  const { dogDispatch } = useContext(DogContext);
 
   //CHECK IF CLASS IS COMPLETE
   // TODO (there must be some good way to check if all exercises for all dogs are completed)
@@ -20,6 +23,19 @@ const ClassOrDogButton = ({ classInfo, dogInfo }) => {
         state: { text: 'Lista uczestników', label: `Klasa ${obedienceClass}` },
       });
     dogInfo &&
+      noInfoLabel &&
+      navigate(`../dog-data/${dogId}`, {
+        state: { text: 'Dane psa', label: `${dogName}`, dogId: dogId },
+      });
+    dogInfo &&
+      noInfoLabel &&
+      dogDispatch({
+        type: 'UPDATE_ONE_FIELD',
+        fieldName: 'chosenDog',
+        payload: { dogId: dogId, dogName: dogName },
+      });
+    dogInfo &&
+      !noInfoLabel &&
       navigate(`./${dogId}`, {
         state: { text: 'Wyniki', label: `Oceny zawodnika ${dogName}` },
       });
@@ -37,7 +53,7 @@ const ClassOrDogButton = ({ classInfo, dogInfo }) => {
           {index + 1}. {dogName}
         </p>
       )}
-      {dogInfo && (
+      {dogInfo && !noInfoLabel && (
         <InfoLabel dogInfo={{ exercisesCompleted, exercisesAmount }} />
       )}
     </ClassOrDogButtonStyled>
@@ -51,11 +67,12 @@ ClassOrDogButton.propTypes = {
   }),
   dogInfo: PropTypes.shape({
     index: PropTypes.number.isRequired,
-    dogId: PropTypes.string.isRequired,
-    dogName: PropTypes.string.isRequired,
-    exercisesCompleted: PropTypes.number.isRequired,
-    exercisesAmount: PropTypes.number.isRequired,
+    dogId: PropTypes.string,
+    dogName: PropTypes.string,
+    exercisesCompleted: PropTypes.number,
+    exercisesAmount: PropTypes.number,
   }),
+  noInfoLabel: PropTypes.bool,
 };
 
 export default ClassOrDogButton;

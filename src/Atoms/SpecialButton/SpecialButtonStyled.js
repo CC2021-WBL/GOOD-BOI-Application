@@ -28,10 +28,6 @@ const SpecialButtonStyled = styled.button`
   width: 50%;
   height: 100%;
   border: none;
-  /* border-radius: ${(props) => props.left && '0 0 0 0.75rem'};
-
-  border-radius: ${(props) => props.right && '0 0 0.75rem 0'}; */
-
   font-weight: bold;
   ${({ roundedBorder }) => handleBorder(roundedBorder)};
   ${({ theme }) => handleColorType(theme)};

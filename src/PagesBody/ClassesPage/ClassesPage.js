@@ -1,7 +1,9 @@
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import { ContestContext } from '../../Context/ContestContext';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import contests from '../../Data/MongoDBMock/contests';
+import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
 const ClassesPage = () => {
@@ -9,6 +11,8 @@ const ClassesPage = () => {
   const contestClasses = contests.find(
     (contest) => contest.contestId === contestId,
   ).obedienceClasses;
+  const { contestState } = useContext(ContestContext);
+  console.log(contestState);
 
   function secondaryBtnHandler() {}
 
