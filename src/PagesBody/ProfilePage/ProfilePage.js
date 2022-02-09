@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
 import propTypes from 'prop-types';
 
-const ProfilePage = ({ userId }) => {
+const ProfilePage = () => {
   return (
     <ColumnWrapper paddingLeftRight={1}>
       <ProfileCard />
