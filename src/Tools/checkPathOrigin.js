@@ -124,12 +124,16 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
   }
 
   const arrayLength = pathOrigin.length;
-  console.log(arrayLength);
   if (
     Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
     arrayLength === 2
   ) {
     return { text: 'Lista konkursów', label: 'Wybierz konkurs' };
+  } else if (
+    Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
+    arrayLength === 3
+  ) {
+    return { text: 'Konkurs', label: `${contestName}` };
   } else if (
     Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
     Object.prototype.hasOwnProperty.call(pathPattern, 'classes') &&
