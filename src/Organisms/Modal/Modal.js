@@ -2,11 +2,10 @@ import { BsChevronLeft } from 'react-icons/bs';
 import ModalContainer from './ModalStyled';
 import propTypes from 'prop-types';
 
-//modals are baaaad
 const Modal = ({ onCloseHandler, modalData, onConfirmHandler }) => {
-  const { about, back, confirmation, title, theme } = modalData;
+  const { about, back, confirmation, title, colors } = modalData;
   return (
-    <ModalContainer theme={theme}>
+    <ModalContainer colors={colors}>
       <div
         className="confirmationWrapper"
         onClick={onConfirmHandler}
