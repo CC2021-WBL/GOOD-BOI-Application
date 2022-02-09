@@ -48,7 +48,7 @@ const UserProfileData = () => {
       (participant) => participant.participantId === userData,
     );
     if (!userObject) {
-      throw new Error('Fetch was unsuccessful');
+      navigate('/login');
     } else {
       setUserObject(userObject);
     }
