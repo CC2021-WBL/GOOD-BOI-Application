@@ -1,5 +1,5 @@
 export const checkPathOrigin = (url, namesFromContext = {}) => {
-  {userName, userSurname, dogName, contestName} = namesFromContext
+  const { userName, userSurname, dogName, contestName } = namesFromContext;
   const pathOrigin = url.split('/');
   const pathPattern = {};
   let endData = '';
@@ -48,6 +48,9 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
       case 'user-data':
         data = { text: 'Dane Konta', label: '' };
         break;
+      case 'user-dogs':
+        data = { text: 'Twoje Psy', label: 'Lista Twoich psów' };
+        break;
       case 'settings':
         data = { text: 'Ustawienia', label: '' };
         break;
@@ -57,32 +60,50 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
       case 'unregistered':
         data = { text: 'Portal Good Boy', label: '' };
         break;
-      case 'dog-summary':
+      case 'in-progress':
+        data = { text: 'Robi się', label: '' };
+        break;
+      case 'contest':
+        data = { text: 'Konkurs', label: `${contestName}` };
+        break;
+      case 'summary':
         data = {
-          text: 'Tabela wyników',
-          label: `Ocena zwodnika ${namesFromContext.userName} ${namesFromContext.userSurname}`,
+          text: 'Wyniki w klasie',
+          label: `Klasa ${pathOrigin[5]}`,
+        };
+        break;
+      case 'closed':
+        data = {
+          text: 'Lista konkursów',
+          label: `Zakończone`,
         };
         break;
       case 'dog-submit':
-        data = { text: 'Zgłoś Psa', label: 'Nazwa zawodów' };
+        data = { text: 'Zgłoś Psa', label: `${contestName}` };
         break;
       case 'dog-data':
-        data = { text: 'Dane Psa', label: 'Nazwa psa' };
+        data = { text: 'Dane Psa', label: `${dogName}` };
         break;
       case 'participant-data':
-        data = { text: 'Dane zawodnika', label: 'Imie i nazwisko zawodnika' };
+        data = {
+          text: 'Dane zawodnika',
+          label: `${userName} ${userSurname}`,
+        };
         break;
       case 'confirmation':
         data = { text: 'Potwierdzenie', label: 'Status zgłoszenia' };
         break;
-      case 'dog-form':
+      case 'add-dog-form':
         data = { text: 'Formularz', label: 'Dodaj Psa' };
         break;
       case 'class-choice':
         data = { text: 'Wybór klasy', label: 'Dostępne klasy' };
         break;
       case 'confirmation-summary':
-        data = { text: 'Twoje zgłoszenie', label: 'Nazwa zawodów' };
+        data = {
+          text: 'Twoje zgłoszenie',
+          label: `${contestName}`,
+        };
         break;
       default:
         if (Object.prototype.hasOwnProperty.call(pathPattern, 'ids')) {
@@ -122,13 +143,16 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
     Object.prototype.hasOwnProperty.call(pathPattern, 'classes') &&
     arrayLength === 4
   ) {
-    return { text: 'Lista klas', label: 'Nazwa zawodów' };
+    return { text: 'Lista klas', label: `${contestName}` };
   } else if (
     Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
     Object.prototype.hasOwnProperty.call(pathPattern, 'classes') &&
     arrayLength === 6
   ) {
-    return { text: 'Punktacja', label: 'Ocena zawodnika nazwa Psa' };
+    return {
+      text: 'Punktacja',
+      label: `Ocena zawodnika ${dogName}`,
+    };
   } else if (
     Object.prototype.hasOwnProperty.call(pathPattern, 'user') &&
     arrayLength === 3
@@ -137,5 +161,5 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
     return { text: 'Twój profil', label: '' };
   }
 
-  return 'Loading';
+  return 'Strona nie istnieje';
 };
