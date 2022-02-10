@@ -18,7 +18,6 @@ const ClassChoicePage = () => {
   ).obedienceClasses;
 
   const clickHandler = (index) => {
-    console.log(index);
     setSelectedClass(index);
   };
 

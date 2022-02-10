@@ -7,6 +7,7 @@ import BurgerMenu from './Organisms/BurgerMenu/BurgerMenu';
 import ClassChoicePage from './PagesBody/ClassChoicePage/ClassChoicePage';
 import ClassCompetitorsPage from './PagesBody/ClassCompetitorsPage/ClassCompetitorsPage';
 import ClassesPage from './PagesBody/ClassesPage/ClassesPage';
+import ConfirmationPage from './PagesBody/ConfirmationPage/ConfirmationPage';
 import ContactFormPage from './PagesBody/ContactFormPage/ContactFormPage';
 import { ContestContextProvider } from './Context/ContestContext';
 import ContestDetailsPage from './PagesBody/ContestDetailsPage/ContestDetailsPage';
@@ -86,7 +87,10 @@ function App() {
                     </Route>
                     <Route element={<Layout withLabel />}>
                       <Route path="user-dogs" element={<UserDogPage />} />
-
+                      <Route
+                        path="confirmation"
+                        element={<ConfirmationPage />}
+                      />
                       <Route path="add-dog-form" element={<DogFormPage />} />
                       <Route path="role" element={<RolePage />} />
                       <Route path="contests" element={<ContestsPage />} />
