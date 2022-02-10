@@ -24,7 +24,7 @@ const NotFound = () => {
         />
 
         <FakeButton
-          ternary="ternary"
+          colors="ternary"
           text="Formularz kontaktowy"
           to="/contact-form"
         />

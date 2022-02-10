@@ -1,11 +1,10 @@
-import { useContext } from 'react';
-
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import Footer from '../../Molecules/Footer/Footer';
 import ImgWrapperStyled from './ImgWrapperStyled';
 import Logo2 from '../../Assets/Logo2.png';
 import { UserDataContext } from '../../Context/UserDataContext';
+import { useContext } from 'react';
 
 const LandingPage = () => {
   const { state } = useContext(UserDataContext);
@@ -16,18 +15,14 @@ const LandingPage = () => {
         <img src={Logo2} alt="App logo" />
       </ImgWrapperStyled>
       {isAuthenticated ? (
-        <FakeButton
-          to="/in-progress"
-          ternary="ternary"
-          text="portal good boi"
-        />
+        <FakeButton to="/in-progress" colors="ternary" text="portal good boi" />
       ) : (
         <>
-          <FakeButton to="/login" primary="primary" text="Zaloguj się" />
-          <FakeButton to="/register" secondary="secondary" text="Zarejestruj" />
+          <FakeButton to="/login" colors="primary" text="Zaloguj się" />
+          <FakeButton to="/register" colors="secondary" text="Zarejestruj" />
           <FakeButton
             to="/in-progress"
-            ternary="ternary"
+            colors="ternary"
             text="portal good boi"
           />
         </>
