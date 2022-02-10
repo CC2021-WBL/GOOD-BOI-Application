@@ -1,19 +1,21 @@
+import CLASSES from '../../Consts/classesConst';
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import MainButton from '../../Atoms/MainButton/MainButton';
-import { useParams } from 'react-router-dom';
 import contests from '../../Data/MongoDBMock/contests';
 import results from '../../Data/MongoDBMock/results';
-import CLASSES from '../../Consts/classesConst';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const ClassCompetitorsPage = () => {
   const { contestId, classId } = useParams();
+  const navigate = useNavigate();
   const dogList = contests.find((contest) => contest.contestId === contestId)
     .obedienceClasses[classId];
   const exercisesAmount = CLASSES[classId].exercises.length;
 
   function secondaryBtnHandler() {
-    console.log('secondary button clicked'); // TODO
+    navigate;
   }
 
   return (
@@ -45,7 +47,7 @@ const ClassCompetitorsPage = () => {
       <MainButton
         onClick={secondaryBtnHandler}
         secondary
-        text="ZAKOŃCZ KONKURS"
+        text="ZAKOŃCZ KLASĘ"
       />
     </ColumnWrapper>
   );

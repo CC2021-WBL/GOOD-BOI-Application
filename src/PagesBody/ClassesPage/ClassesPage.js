@@ -1,16 +1,24 @@
+import { useNavigate, useParams } from 'react-router-dom';
+
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import contests from '../../Data/MongoDBMock/contests';
-import { useParams } from 'react-router-dom';
 
 const ClassesPage = () => {
   const { contestId } = useParams();
+  const navigate = useNavigate();
   const contestClasses = contests.find(
     (contest) => contest.contestId === contestId,
   ).obedienceClasses;
 
-  function secondaryBtnHandler() {}
+  function secondaryBtnHandler() {
+    navigate('/contests');
+  }
+
+  function handleOnClickParticipants() {
+    navigate(`/contests/${contestId}/classes`);
+  }
 
   return (
     <ColumnWrapper paddingLeftRight={1} paddingTop={0.25}>
@@ -29,7 +37,7 @@ const ClassesPage = () => {
       <MainButton
         onClick={secondaryBtnHandler}
         secondary
-        text="ZAKOŃCZ KLASĘ"
+        text="ZAKOŃCZ KONKURS"
       />
     </ColumnWrapper>
   );
