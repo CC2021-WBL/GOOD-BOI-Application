@@ -22,6 +22,7 @@ const DogFormPage = () => {
         Object.keys(dogFormInitialState).forEach((key) => {
           modifiedInitialState[key] = dogFromDB[key];
         });
+        console.log(modifiedInitialState);
 
         setInitialStateOfDogForm(modifiedInitialState);
       }
@@ -36,11 +37,14 @@ const DogFormPage = () => {
 
   function submitForm(dogData) {
     setIsSubmitted(true);
-    dogDispatch({
-      type: 'UPDATE_ONE_FIELD',
-      fieldName: 'dogs',
-      payload: dogs.push({ dogId: dogData.dogId, dogName: dogData.dogName }),
-    });
+    if (!dogs.find((dog) => dog.dogId === dogData.dogId)) {
+      dogDispatch({
+        type: 'UPDATE_ONE_FIELD',
+        fieldName: 'dogs',
+        payload: dogs.push({ dogId: dogData.dogId, dogName: dogData.dogName }),
+      });
+    }
+
     navigate(-1);
   }
 

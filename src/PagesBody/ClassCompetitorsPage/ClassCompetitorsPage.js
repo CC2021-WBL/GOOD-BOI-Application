@@ -14,7 +14,7 @@ const ClassCompetitorsPage = () => {
     .obedienceClasses[classId];
   const exercisesAmount = CLASSES[classId].exercises.length;
 
-  function secondaryBtnHandler() {
+  function onClassFinishClick() {
     navigate;
   }
 
@@ -44,11 +44,7 @@ const ClassCompetitorsPage = () => {
           />
         );
       })}
-      <MainButton
-        onClick={secondaryBtnHandler}
-        secondary
-        text="ZAKOŃCZ KLASĘ"
-      />
+      <MainButton onClick={onClassFinishClick} secondary text="ZAKOŃCZ KLASĘ" />
     </ColumnWrapper>
   );
 };

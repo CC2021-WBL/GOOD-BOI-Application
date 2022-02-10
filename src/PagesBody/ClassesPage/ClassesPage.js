@@ -12,14 +12,9 @@ const ClassesPage = () => {
     (contest) => contest.contestId === contestId,
   ).obedienceClasses;
 
-  function secondaryBtnHandler() {
+  function onClickFinish() {
     navigate('/contests');
   }
-
-  function handleOnClickParticipants() {
-    navigate(`/contests/${contestId}/classes`);
-  }
-
   return (
     <ColumnWrapper paddingLeftRight={1} paddingTop={0.25}>
       {Object.keys(contestClasses).map((obedienceClass, index) => {
@@ -34,11 +29,7 @@ const ClassesPage = () => {
           />
         );
       })}
-      <MainButton
-        onClick={secondaryBtnHandler}
-        secondary
-        text="ZAKOŃCZ KONKURS"
-      />
+      <MainButton onClick={onClickFinish} secondary text="ZAKOŃCZ KONKURS" />
     </ColumnWrapper>
   );
 };
