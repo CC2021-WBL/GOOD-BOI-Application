@@ -137,8 +137,8 @@ const ExercisesPage = () => {
             roundedBorder="left"
           />
           <SpecialButton
-            text={`${penaltyPoints} punktów karnych`}
-            theme="yellow"
+            text={`Żółta kartka`}
+            colors="yellow"
             handler={openPenaltyModalHandler}
             roundedBorder="right"
           />

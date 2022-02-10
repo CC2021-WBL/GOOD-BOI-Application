@@ -13,7 +13,7 @@ const LeaderboardListElement = ({ text, score, index, disqualified }) => {
 
 LeaderboardListElement.propTypes = {
   text: propTypes.string.isRequired,
-  score: propTypes.number.isRequired,
+  score: propTypes.any,
   index: propTypes.number,
   disqualified: propTypes.string,
 };
