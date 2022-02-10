@@ -24,7 +24,6 @@ import LandingPage from './PagesBody/LandingPage/LandingPage';
 import Layout from './Templates/Layout/Layout';
 import LeaderboardPage from './PagesBody/LeaderboardPage/LeaderboardPage';
 import LoginForm from './Organisms/LoginForm/LoginForm';
-import ModalsTest from './PagesBody/ModalsTest';
 import NotFoundPage from './PagesBody/NotFoundPage/NotFoundPage';
 import ParticipantDataPage from './PagesBody/ParticipantDataPage/ParticipantDataPage';
 import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
@@ -125,8 +124,6 @@ function App() {
                         element={<ContestDetailsPage />}
                       />
                     </Route>
-
-                    <Route path="modals-test" element={<ModalsTest />} />
                     <Route path="burger-menu" element={<BurgerMenu />} />
                   </Routes>
                 </div>
