@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 import ColumnWrapper from '../Templates/ColumnWrapper/ColumnWrapper';
 import ErrorPageGraphic from '../../src/Assets/ErrorPageGraphic.png';
-import MainButton from '../Atoms/MainButton/MainButton';
 import NotFoundPageWrapperStyled from '../Organisms/NotFoundContent/NotFoundPageWrapperStyled';
 
 export class ErrorBoundary extends Component {
@@ -38,8 +37,16 @@ export class ErrorBoundary extends Component {
                 <p>Wróć do strony głównej i spróbuj ponownie później.</p>
               </div>
             </NotFoundPageWrapperStyled>
-            <Link to="/">
-              <MainButton secondary text="wroć do poprzedniej strony" />
+            <Link
+              to="/"
+              style={{
+                background: 'red',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+              onClick={() => window.location.reload(false)}
+            >
+              Blabalabal
             </Link>
           </ColumnWrapper>
         </>
