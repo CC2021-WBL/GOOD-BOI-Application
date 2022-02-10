@@ -1,6 +1,5 @@
-import styled from 'styled-components';
-
 import FONTS from '../../Styles/fontsStyledComponents';
+import styled from 'styled-components';
 
 export const Div = styled.div`
   color: ${({ theme }) => theme.grey800};
@@ -21,13 +20,13 @@ export const FooterProfileButtonStyled = styled.button`
   font-size: 1.625rem;
 
   .bg-box {
-    cursor: pointer;
+    position: relative;
     width: 2.5rem;
     height: 2.5rem;
+    border: 1px solid #c4c4c4;
     background-image: url(${require(`../../Assets/profileDogFace.jpg`)});
     background-size: cover;
     border-radius: 50%;
-    border: 1px solid #c4c4c4;
-    position: relative;
+    cursor: pointer;
   }
 `;
