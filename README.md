@@ -7,7 +7,9 @@
 
 # Good Boi App
 
-### Aplikacja wspomagająca obsługę psich zawodów obedience. 
+### Rewolucyjna aplikacja, zmieniająca oblicze świata polskiego obedience.
+Zainspirowana potrzebami i oparta na konsultacjach społecznych aplikacja całościowo rozwiązująca kwestię cyfryzacji tej dyscypliny sportowej, umożliwiająca integrację potrzeb organizatorów, sędziów i zawodników.
+Nie wiesz co to obedience? https://johndog.pl/blog/zyciezpsem/obi-ogole-znaczy/
 
 ## Zawartość
 
@@ -25,12 +27,12 @@
 
 ### Funkcjonalności
 
-- Dodawanie punktów podczas zawodów
-- Rejestracja na zawody
-- Dodawanie psów
+- Uzupełnianie kart ocen w aplikacji mobilnej
+- Rejestracja dla zawodników i możliwość dodawania posiadanych psów
+- Zgłoszenia na zawody bez konieczności żmudnego wpisywania tych samych danych - wystarczy kilka kliknięć
 - Profil użytkownika
-- Archiwum zawodów
-- Dark mode
+- Dostęp do wyników zawodów archiwalnych z całej Polski
+- Light & Dark mode
 
 
 
@@ -46,11 +48,11 @@
 
 - React
 - Styled Components
-- Atomic Design
-- Figma
 - Vercel
-- Mobile first
+- Figma
 - React Router
+- Mobile first
+- Atomic Design
 - By nasz kod był lepszej jakości, bardziej uporządkowany i czytelniejszy, używaliśmy eslint, prettier, stylelint
 - Wiadomość z formularza kontaktowego pojawi się na mailu dzięki emailJS
 - Testowaliśmy aplikację przy użyciu RTL oraz Jest
@@ -60,9 +62,9 @@
 
 ### W przyszłości
 
-- Widoki na większe ekrany
-- Wersja dla niezalogowanego użytkownika
-- Drukowanie raportów
+- Wersja desktopowa
+- Portal Good Boi oferujący szeroką gamę funkcjonalności dla fanów obedience
+- Drukowanie raportów i protokołów
 - Galeria zdjęć z zawodów
 - Anglojęzyczna wersja językowa
 
