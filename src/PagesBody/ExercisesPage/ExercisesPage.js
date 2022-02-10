@@ -1,7 +1,11 @@
+import { useContext, useEffect, useState } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import ButtonExercises from '../../Atoms/ButtonsExercises/ButtonsExercises';
 import ButtonExercisesContainerStyled from '../../Molecules/ButtonsExcercisenContainer/ButtonExercisesContainerStyled';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import { DogContext } from '../../Context/DogContext';
 import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
 import Modal from '../../Organisms/Modal/Modal';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
@@ -9,26 +13,57 @@ import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContain
 import contests from '../../Data/MongoDBMock/contests';
 import modalData from '../../Consts/modalData';
 import results from '../../Data/MongoDBMock/results';
-import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-import { useState } from 'react';
 
 const ExercisesPage = () => {
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
   const [isPenaltyModalOpen, setIsPenaltyModalOpen] = useState(false);
   const [isEvaluationModalOpen, setIsEvaluationModalOpen] = useState(false);
+  let [penaltyPoints, setPenaltyPoints] = useState(0);
+  const [disqualified, setDisqualified] = useState(false);
+  const { dogState } = useContext(DogContext);
+  console.log(dogState);
+
+  const locationPath = useLocation();
+
+  const label = locationPath.state.label;
+
+  useEffect(() => {
+    if (penaltyPoints < -10) {
+      navigate('./dog-summary', {
+        state: {
+          dogPerformance: { dogPerformance },
+        },
+      });
+    }
+  }, [penaltyPoints, disqualified]);
 
   const handleDisqualification = () => {
     setIsDisqualifyModalOpen(false);
+    setDisqualified(true);
+    dogPerformance.specialState = 'dyskwalifikacja';
+    navigate('./dog-summary', {
+      state: {
+        dogPerformance: { dogPerformance },
+      },
+    });
   };
   const handlePenalty = () => {
     setIsPenaltyModalOpen(false);
+    setPenaltyPoints(penaltyPoints - 10);
+    dogPerformance.specialState = penaltyPoints - 10;
   };
+
+  const navigate = useNavigate();
 
   const handleEvaluation = () => {
     setIsEvaluationModalOpen(false);
+    dogPerformance.specialState = penaltyPoints;
     navigate('./dog-summary', {
-      state: { text: 'Tabela Wyników', label: 'Ocena Zawodnika' },
+      state: {
+        text: 'Tabela Wyników',
+        label: `${label}`,
+        dogPerformance: { dogPerformance },
+      },
     });
   };
   const openDisqualifyModalHandler = () => {
@@ -47,7 +82,6 @@ const ExercisesPage = () => {
     setIsDisqualifyModalOpen(false);
     setIsEvaluationModalOpen(false);
   }
-  const navigate = useNavigate();
 
   const goBackHandler = () => {
     navigate(-1);
@@ -102,7 +136,7 @@ const ExercisesPage = () => {
             roundedBorder="left"
           />
           <SpecialButton
-            text="-10 punktów"
+            text={`Żółta kartka`}
             colors="yellow"
             handler={openPenaltyModalHandler}
             roundedBorder="right"
@@ -121,8 +155,9 @@ const ExercisesPage = () => {
           handler={openEvaluationModalHandler}
           primary
           text={'Zakończ ocenianie'}
+          dogPerformance={dogPerformance} //////
         />
-      </ButtonExercisesContainerStyled>{' '}
+      </ButtonExercisesContainerStyled>
     </ColumnWrapper>
   );
 };

@@ -42,10 +42,10 @@ const SpecialButtonStyled = styled.button`
   width: 50%;
   height: 100%;
   border: none;
+  cursor: pointer;
   font-weight: bold;
   ${({ roundedBorder }) => handleBorder(roundedBorder)};
   ${(props) => handleColorType(props)};
-  cursor: pointer;
   &:hover {
     filter: brightness(1.1);
   }

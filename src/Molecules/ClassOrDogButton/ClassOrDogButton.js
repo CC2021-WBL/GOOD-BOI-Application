@@ -1,9 +1,10 @@
 import ClassOrDogButtonStyled from './ClassOrDogButtonStyled';
+import { DOG_ACTIONS } from '../../Consts/reducersActions';
+import { DogContext } from '../../Context/DogContext';
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { DogContext } from '../../Context/DogContext';
+import { useNavigate } from 'react-router-dom';
 
 const ClassOrDogButton = ({ classInfo, dogInfo, noInfoLabel }) => {
   const navigate = useNavigate();
@@ -38,6 +39,13 @@ const ClassOrDogButton = ({ classInfo, dogInfo, noInfoLabel }) => {
       !noInfoLabel &&
       navigate(`./${dogId}`, {
         state: { text: 'Wyniki', label: `Oceny zawodnika ${dogName}` },
+      });
+    dogInfo &&
+      !noInfoLabel &&
+      dogDispatch({
+        type: DOG_ACTIONS.UPDATE_ONE_FIELD,
+        fieldName: 'chosenDog',
+        payload: { dogId: dogId, dogName: dogName },
       });
   };
 

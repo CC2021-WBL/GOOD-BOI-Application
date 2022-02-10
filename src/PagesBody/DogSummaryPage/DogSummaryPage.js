@@ -1,18 +1,28 @@
-import LeaderboardList from './../../Molecules/LeaderboardList/LeaderboardList';
+import { useLocation, useParams } from 'react-router-dom';
+
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import LeaderboardList from '../../Molecules/LeaderboardList/LeaderboardList';
 import MainButton from './../../Atoms/MainButton/MainButton';
 import PenaltyOrDisqualifiedLine from '../../Atoms/Leaderboard/PenaltyOrDisqualifiedLine';
 import SummaryLine from '../../Atoms/Leaderboard/SummaryLine';
-import WYNIK_RANDOMOWEGO_PSA from './../../Data/Dummy-data/RandomDogResult';
-import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 
 const sendDataHandler = () => {};
 
 const DogSummaryPage = () => {
+  const { contestId, classId, dogId } = useParams();
+  const locationPath = useLocation();
+  const dogPerformance = locationPath.state.dogPerformance.dogPerformance;
+
   return (
     <ColumnWrapper>
-      <LeaderboardList result={WYNIK_RANDOMOWEGO_PSA} />
-      <PenaltyOrDisqualifiedLine result={WYNIK_RANDOMOWEGO_PSA} />
-      <SummaryLine result={WYNIK_RANDOMOWEGO_PSA} />
+      <LeaderboardList
+        contestId={contestId}
+        classId={classId}
+        dogName={dogId}
+        result={dogPerformance}
+      />
+      <PenaltyOrDisqualifiedLine result={dogPerformance} />
+      <SummaryLine result={dogPerformance} classId={classId} />
       <ColumnWrapper paddingLeftRight={1}>
         <MainButton
           text="lista kompletna - wyślij dane"

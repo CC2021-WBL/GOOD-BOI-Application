@@ -38,8 +38,8 @@ const MainButtonStyled = styled.button`
   ${(props) => handleBgAndColor(props)};
   ${(props) => borderHandler(props)};
   &.selected-btn:focus {
-    background: ${({ theme }) => theme.positive100};
     border: 3px solid #34c369;
+    background: ${({ theme }) => theme.positive100};
     color: ${({ theme }) => theme.grey800};
   }
 `;

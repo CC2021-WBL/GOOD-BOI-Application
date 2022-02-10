@@ -1,6 +1,6 @@
 const CLASSES = [
   {
-    name: 'Klasa 0',
+    name: 0,
     pointsToGain: 140,
     exercises: [
       {
@@ -73,7 +73,7 @@ const CLASSES = [
     ],
   },
   {
-    name: 'Klasa 1',
+    name: 1,
     pointsToGain: 320,
     exercises: [
       {
@@ -151,7 +151,7 @@ const CLASSES = [
     ],
   },
   {
-    name: 'Klasa 2',
+    name: 2,
     pointsToGain: 320,
     exercises: [
       {
@@ -236,7 +236,7 @@ const CLASSES = [
     ],
   },
   {
-    name: 'Klasa 3',
+    name: 3,
     pointsToGain: 320,
     exercises: [
       {
