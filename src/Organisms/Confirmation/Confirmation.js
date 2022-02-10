@@ -13,8 +13,8 @@ const Confirmation = () => {
       <div>
         <p>
           Dziękujemy za zapisanie się na
-          <span> {contestState.contestName}</span>
-          Przyjęliśmy Twoje zgłoszenie.
+          <span> {contestState.contestName}</span>. Przyjęliśmy Twoje
+          zgłoszenie.
         </p>
         <p>
           Jeśli dostaniesz się na listę uczestników otrzymasz od nas dane do
