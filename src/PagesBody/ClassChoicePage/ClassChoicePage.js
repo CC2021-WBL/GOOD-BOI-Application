@@ -5,21 +5,30 @@ import { ContestContext } from '../../Context/ContestContext';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import contests from './../../Data/MongoDBMock/contests';
+import { useLocation } from 'react-router-dom';
 
 const ClassChoicePage = () => {
   const { contestState } = useContext(ContestContext);
+  const [selectedClass, setSelectedClass] = useState('');
+  const location = useLocation();
+
   const { contestId } = contestState;
   const classesArr = contests.find(
     (contest) => contest.contestId === contestId,
   ).obedienceClasses;
-  const [selectedClass, setSelectedClass] = useState('');
+
   const clickHandler = (index) => {
+    console.log(index);
     setSelectedClass(index);
   };
 
   const linkTo = () => {
     if (selectedClass !== undefined) {
-      return `../contests/${contestId}/classes/${selectedClass}/leaderboard`;
+      if (!location.state) {
+        return `../contests/${contestId}/classes/${selectedClass}/leaderboard`;
+      } else if (location.state.application) {
+        return `/confirmation`;
+      }
     } else {
       return '';
     }
@@ -30,7 +39,7 @@ const ClassChoicePage = () => {
       {Object.keys(classesArr).map((obedienceClass, index) => {
         return (
           <MainButton
-            onClick={() => clickHandler(index)}
+            onClick={() => clickHandler(obedienceClass)}
             key={index}
             style={{ height: '75px' }}
             text={`Klasa ${obedienceClass}`}
@@ -40,7 +49,16 @@ const ClassChoicePage = () => {
           />
         );
       })}
-      <FakeButton text={'Pokaż wyniki'} secondary="secondary" to={linkTo()} />
+      {location.state && (
+        <FakeButton
+          text={'WYŚLIJ FORMULARZ'}
+          colors="secondary"
+          to={linkTo()}
+        />
+      )}
+      {!location.state && (
+        <FakeButton text={'Pokaż wyniki'} colors="secondary" to={linkTo()} />
+      )}
     </ColumnWrapper>
   );
 };
