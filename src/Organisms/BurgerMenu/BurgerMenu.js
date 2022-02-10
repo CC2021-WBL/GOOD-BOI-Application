@@ -8,6 +8,8 @@ import { MdOutlineClose, MdSettings } from 'react-icons/md';
 
 import { BsTrophyFill } from 'react-icons/bs';
 import BurgerMenuStyled from './BurgerMenuStyled';
+import { CONTEST_ACTIONS } from '../../Consts/reducersActions';
+import { ContestContext } from '../../Context/ContestContext';
 import { GiSittingDog } from 'react-icons/gi';
 import HeaderMenuStyled from './HeaderMenuStyled';
 import { Link } from 'react-router-dom';
@@ -20,6 +22,7 @@ import { useContext } from 'react';
 
 const BurgerMenu = ({ open, setOpen }) => {
   const { state } = useContext(UserDataContext);
+  const { contestState, contestDispatch } = useContext(ContestContext);
   const { userId } = state;
   let domNode = useClickOutside(() => {
     setOpen(false);
@@ -45,7 +48,16 @@ const BurgerMenu = ({ open, setOpen }) => {
           <FaUserCog className="icon" />
           <h6>Wybierz rolę</h6>
         </Link>
-        <Link to="user-dogs" className="link" onClick={() => setOpen(false)}>
+        <Link
+          to="user-dogs"
+          className="link"
+          onClick={() => {
+            setOpen(false);
+            if (contestState.contestId || contestState.contestName) {
+              contestDispatch({ type: CONTEST_ACTIONS.CLEAR });
+            }
+          }}
+        >
           <GiSittingDog className="icon" />
           <h6>Twoje psy</h6>
         </Link>

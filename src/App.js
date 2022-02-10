@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { darkTheme, lightTheme } from './Styles/Themes';
 
 import BurgerMenu from './Organisms/BurgerMenu/BurgerMenu';
+import ClassChoicePage from './PagesBody/ClassChoicePage/ClassChoicePage';
 import ClassCompetitorsPage from './PagesBody/ClassCompetitorsPage/ClassCompetitorsPage';
 import ClassesPage from './PagesBody/ClassesPage/ClassesPage';
 import ContactFormPage from './PagesBody/ContactFormPage/ContactFormPage';
@@ -23,7 +24,6 @@ import LandingPage from './PagesBody/LandingPage/LandingPage';
 import Layout from './Templates/Layout/Layout';
 import LeaderboardPage from './PagesBody/LeaderboardPage/LeaderboardPage';
 import LoginForm from './Organisms/LoginForm/LoginForm';
-import ModalsTest from './PagesBody/ModalsTest';
 import NotFoundPage from './PagesBody/NotFoundPage/NotFoundPage';
 import ParticipantDataPage from './PagesBody/ParticipantDataPage/ParticipantDataPage';
 import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
@@ -91,6 +91,10 @@ function App() {
                       <Route path="role" element={<RolePage />} />
                       <Route path="contests" element={<ContestsPage />} />
                       <Route
+                        path="class-choice"
+                        element={<ClassChoicePage />}
+                      />
+                      <Route
                         path="contests/:contestId/classes"
                         element={<ClassesPage />}
                       />
@@ -120,8 +124,6 @@ function App() {
                         element={<ContestDetailsPage />}
                       />
                     </Route>
-
-                    <Route path="modals-test" element={<ModalsTest />} />
                     <Route path="burger-menu" element={<BurgerMenu />} />
                   </Routes>
                 </div>
