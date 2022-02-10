@@ -135,7 +135,7 @@ const DogForm = ({ submitForm, initialState }) => {
         className={errors.owner ? 'red-border' : 'none'}
       />
       {errors.owner && <p>{errors.owner}</p>}
-      <MainButton primary text="Zarejestruj psa" />
+      <MainButton primary text="Zatwierdź dane" />
     </FormWrapper>
   );
 };

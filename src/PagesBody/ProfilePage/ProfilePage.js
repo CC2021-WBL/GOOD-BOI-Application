@@ -43,8 +43,6 @@ const ProfilePage = () => {
         to={`/contests`}
         state={{
           contestContent: 'results',
-          text: 'Twoje konkursy',
-          label: 'Wybierz konkurs',
         }}
         text="Twoje Konkursy"
         colors="ternary"
@@ -58,8 +56,6 @@ const ProfilePage = () => {
         to={'/contests'}
         state={{
           contestContent: 'future',
-          text: 'Nadchodzące konkursy',
-          label: 'Wybierz konkurs',
         }}
         text="Nadchodzące Konkursy"
         colors="secondary"
