@@ -87,7 +87,10 @@ function App() {
                     </Route>
                     <Route element={<Layout withLabel />}>
                       <Route path="user-dogs" element={<UserDogPage />} />
-
+                      <Route
+                        path="confirmation"
+                        element={<ConfirmationPage />}
+                      />
                       <Route path="add-dog-form" element={<DogFormPage />} />
                       <Route path="role" element={<RolePage />} />
                       <Route path="contests" element={<ContestsPage />} />
@@ -126,7 +129,6 @@ function App() {
                       />
                     </Route>
                     <Route path="burger-menu" element={<BurgerMenu />} />
-                    <Route path="confirmation" element={<ConfirmationPage />} />
                   </Routes>
                 </div>
               </>
