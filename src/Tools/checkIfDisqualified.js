@@ -1,7 +1,7 @@
-/* eslint-disable no-unused-vars */
 const checkIfDisqualified = ({ result }) => {
-  const isDisqualified = result.some((element) => element.disqualified);
-  return isDisqualified;
+  if (result.specialState === 'dyskwalifikacja' || result.specialState < -10)
+    return true;
+  else return false;
 };
 
 export default checkIfDisqualified;
