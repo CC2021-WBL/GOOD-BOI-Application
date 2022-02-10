@@ -34,7 +34,9 @@ const ParticipantData = ({ id }) => {
 
   const handleConfirm = (event) => {
     event.preventDefault();
-    navigate(`/class-choice`);
+    navigate(`/class-choice`, {
+      state: { application: true },
+    });
   };
 
   return (
