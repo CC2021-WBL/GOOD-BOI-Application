@@ -8,9 +8,9 @@ const ForbiddenWrapperStyled = styled.div`
   }
 
   h1 {
-    ${FONTS.h2};
-    color: ${({ theme }) => theme.grey800};
     margin: 0 0 3.125rem 0;
+    color: ${({ theme }) => theme.grey800};
+    ${FONTS.h2};
   }
 `;
 
