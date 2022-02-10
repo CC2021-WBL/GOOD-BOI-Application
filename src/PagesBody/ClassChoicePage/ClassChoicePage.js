@@ -18,7 +18,7 @@ const ClassChoicePage = () => {
   };
 
   const linkTo = () => {
-    if (selectedClass) {
+    if (selectedClass !== undefined) {
       return `../contests/${contestId}/classes/${selectedClass}/leaderboard`;
     } else {
       return '';
