@@ -15,7 +15,7 @@ LeaderboardListElement.propTypes = {
   text: propTypes.string.isRequired,
   score: propTypes.any,
   index: propTypes.number,
-  disqualified: propTypes.string,
+  disqualified: propTypes.bool,
 };
 
 export default LeaderboardListElement;
