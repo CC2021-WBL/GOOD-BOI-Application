@@ -12,7 +12,7 @@
 ## Zawartość
 
 - [Przegląd](#przegląd)
-  - [Wyzwanie](#wyzwanie)
+  - [Funkcjonalności](#funkcjonalności)
   - [Linki](#linki)
 - [Proces tworzenia](#proces)
   - [Zbudowane z](#zbudowane-z-użyciem)
@@ -23,13 +23,14 @@
 
 ## Przegląd
 
-### Wyzwanie
+### Funkcjonalności
 
 - Dodawanie punktów podczas zawodów
 - Rejestracja na zawody
 - Dodawanie psów
 - Profil użytkownika
 - Archiwum zawodów
+- Dark mode
 
 
 
