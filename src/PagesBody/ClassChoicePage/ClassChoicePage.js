@@ -14,7 +14,6 @@ const ClassChoicePage = () => {
   const [selectedClass, setSelectedClass] = useState('');
   const clickHandler = (index) => {
     setSelectedClass(index);
-    console.log('setClass to ' + index);
   };
 
   const linkTo = () => {
