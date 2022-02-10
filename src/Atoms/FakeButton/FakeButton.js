@@ -1,5 +1,6 @@
-import FakeButtonStyled from './FakeButtonStyled';
 import propTypes from 'prop-types';
+
+import FakeButtonStyled from './FakeButtonStyled';
 
 const FakeButton = ({ primary, secondary, ternary, text, to, state }) => {
   return (

@@ -32,14 +32,12 @@ const ContestCard = ({ contestData }) => {
 
   const handleClick = (event) => {
     event.preventDefault();
-    if (selectedRole !== null && selectedRole === 'staff') {
-      navigate(`./${contestId}/classes`, {
-        state: { text: 'Lista klas', label: `${contestName}` },
-      });
+    if (pointOnTimeLine === 'archiwalny') {
+      navigate(`../class-choice`);
+    } else if (selectedRole !== null && selectedRole === 'staff') {
+      navigate(`./${contestId}/classes`);
     } else {
-      navigate(`/contests/${contestId}`, {
-        state: { text: 'Konkurs', label: `${contestName}` },
-      });
+      navigate(`/contests/${contestId}`);
     }
     contestDispatch({
       type: 'SET_CONTEST',

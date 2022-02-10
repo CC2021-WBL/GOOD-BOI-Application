@@ -32,6 +32,7 @@ import RolePage from './PagesBody/RolePage/RolePage';
 import SettingsPage from './PagesBody/SettingsPage/SettingsPage';
 import { ThemeProvider } from 'styled-components';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
+import UserDataPage from './PagesBody/UserDataPage/UserDataPage';
 import { UserDataProvider } from './Context/UserDataContext';
 import UserDogPage from './PagesBody/UserDogsPage/UserDogPage';
 import { useDarkMode } from './Hooks/useDarkMode';
@@ -65,6 +66,10 @@ function App() {
                           />
                         }
                       />
+                      <Route
+                        path="user/:userId/user-data"
+                        element={<UserDataPage />}
+                      />
                       <Route path="*" element={<NotFoundPage />} />
                       <Route path="forgot" element={<ForgotPassForm />} />
                       <Route
@@ -81,6 +86,7 @@ function App() {
                     </Route>
                     <Route element={<Layout withLabel />}>
                       <Route path="user-dogs" element={<UserDogPage />} />
+
                       <Route path="add-dog-form" element={<DogFormPage />} />
                       <Route path="role" element={<RolePage />} />
                       <Route path="contests" element={<ContestsPage />} />

@@ -124,7 +124,6 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
   }
 
   const arrayLength = pathOrigin.length;
-  console.log(arrayLength);
   if (
     Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
     arrayLength === 2
@@ -132,13 +131,26 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
     return { text: 'Lista konkursów', label: 'Wybierz konkurs' };
   } else if (
     Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
+    arrayLength === 3
+  ) {
+    return { text: 'Konkurs', label: `${contestName}` };
+  } else if (
+    Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
     Object.prototype.hasOwnProperty.call(pathPattern, 'classes') &&
     arrayLength === 5
   ) {
-    console.log(pathOrigin);
     return {
       text: 'Lista uczestników',
       label: `Klasa ${pathOrigin[4]}`,
+    };
+  } else if (
+    Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
+    Object.prototype.hasOwnProperty.call(pathPattern, 'classes') &&
+    arrayLength === 6
+  ) {
+    return {
+      text: 'Punktacja',
+      label: `Ocena zawodnika ${dogName}`,
     };
   } else if (
     Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
@@ -150,7 +162,6 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
     Object.prototype.hasOwnProperty.call(pathPattern, 'user') &&
     arrayLength === 3
   ) {
-    console.log(arrayLength);
     return { text: 'Twój profil', label: '' };
   }
 
