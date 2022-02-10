@@ -49,7 +49,7 @@ Aplikacja wspomagająca obsługę psich zawodów obedience.
 - Figma
 - Vercel
 - Mobile first
-
+- React Router
 - By nasz kod był lepszej jakości, bardziej uporządkowany i czytelniejszy, używaliśmy eslint, prettier, stylelint
 - Wiadomość z formularza kontaktowego pojawiła się na mailu dzięki użyciu emailJS
 - Testy przechodziliśmy dzięki użyciu RTL oraz Jest
