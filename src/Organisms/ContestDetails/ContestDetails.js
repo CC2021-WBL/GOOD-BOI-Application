@@ -37,7 +37,7 @@ const ContestDetails = ({ contestId }) => {
             }}
           >
             <FakeButton
-              secondary=" secondary"
+              colors=" secondary"
               text="ZGŁOŚ SWÓJ UDZIAŁ"
               to="/user-dogs"
             />

@@ -1,5 +1,4 @@
 import propTypes from 'prop-types';
-import { FaUserCircle } from 'react-icons/fa';
 import { MdSettings } from 'react-icons/md';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -25,8 +24,7 @@ const FooterProfileButton = ({ withSettings }) => {
         </>
       ) : (
         <>
-          <FaUserCircle />
-          <Div> Twój profil </Div>
+          <div className="bg-box"></div>
         </>
       )}
     </FooterProfileButtonStyled>

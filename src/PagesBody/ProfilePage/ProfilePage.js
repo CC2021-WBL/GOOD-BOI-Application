@@ -38,7 +38,7 @@ const ProfilePage = () => {
   return (
     <ColumnWrapper paddingLeftRight={1}>
       <ProfileCard />
-      <FakeButton to="/user-dogs" text="Twoje Psy" ternary="ternary" />
+      <FakeButton to="/user-dogs" text="Twoje Psy" colors="ternary" />
       <FakeButton
         to={`/contests`}
         state={{
@@ -47,12 +47,12 @@ const ProfilePage = () => {
           label: 'Wybierz konkurs',
         }}
         text="Twoje Konkursy"
-        ternary="ternary"
+        colors="ternary"
       />
       <FakeButton
         to={`/user/${userId}/user-data`}
         text="Twoje Dane"
-        ternary="ternary"
+        colors="ternary"
       />
       <FakeButton
         to={'/contests'}
@@ -62,7 +62,7 @@ const ProfilePage = () => {
           label: 'Wybierz konkurs',
         }}
         text="Nadchodzące Konkursy"
-        secondary="secondary"
+        colors="secondary"
       />
     </ColumnWrapper>
   );
