@@ -34,18 +34,14 @@ const LandingPage = () => {
         <img src={Logo2} alt="App logo" />
       </ImgWrapperStyled>
       {isAuthenticated ? (
-        <FakeButton
-          to="/in-progress"
-          ternary="ternary"
-          text="portal good boi"
-        />
+        <FakeButton to="/in-progress" colors="ternary" text="portal good boi" />
       ) : (
         <>
-          <FakeButton to="/login" primary="primary" text="Zaloguj się" />
-          <FakeButton to="/register" secondary="secondary" text="Zarejestruj" />
+          <FakeButton to="/login" colors="primary" text="Zaloguj się" />
+          <FakeButton to="/register" colors="secondary" text="Zarejestruj" />
           <FakeButton
             to="/in-progress"
-            ternary="ternary"
+            colors="ternary"
             text="portal good boi"
           />
         </>
