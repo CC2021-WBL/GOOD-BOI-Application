@@ -9,7 +9,6 @@ const PenaltyOrDisqualifiedLine = ({ result }) => {
       </PenaltyOrDisqualifiedLineStyled>
     );
   } else if (typeof result.specialState === 'number') {
-    console.log(result.specialState);
     switch (result.specialState) {
       case 0:
         return null;

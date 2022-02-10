@@ -11,8 +11,6 @@ const sendDataHandler = () => {};
 const DogSummaryPage = () => {
   const { contestId, classId, dogId } = useParams();
   const locationPath = useLocation();
-  console.log('dogPerformance z locationPath.state');
-  console.log(locationPath.state.dogPerformance);
   const dogPerformance = locationPath.state.dogPerformance.dogPerformance;
 
   return (

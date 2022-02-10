@@ -19,7 +19,6 @@ const LeaderboardList = ({ classId, dogName, contestId, result }) => {
         <LeaderboardListStyled>
           {dogSummaryResult.map((arrElement, index) => {
             if (!checkIfDisqualified({ result })) {
-              console.log('runing without disqualified');
               return (
                 <LeaderboardListElement
                   key={index}
@@ -29,7 +28,6 @@ const LeaderboardList = ({ classId, dogName, contestId, result }) => {
                 />
               );
             } else {
-              console.log('runing with disqualified');
               return (
                 <LeaderboardListElement
                   key={index}

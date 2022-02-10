@@ -14,8 +14,6 @@ const SummaryLine = ({ result, classId }) => {
   });
   const totalScore = score + penaltyScore({ result });
   result.summaryResult = totalScore;
-  const finalDogPerformance = result;
-  console.log(finalDogPerformance);
   const isDisqualified = checkIfDisqualified({ result });
   function pointsAquired() {
     if (totalScore < 5 && totalScore > 1) {
