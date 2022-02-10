@@ -1,13 +1,8 @@
-import {
-  CONTEST_ACTIONS,
-  DOG_ACTIONS,
-  USER_ACTIONS,
-} from '../../Consts/reducersActions';
+import { DOG_ACTIONS, USER_ACTIONS } from '../../Consts/reducersActions';
 import { useContext, useEffect, useState } from 'react';
 
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import { ContestContext } from '../../Context/ContestContext';
 import { DogContext } from '../../Context/DogContext';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import { ROLE_NAME } from '../../Consts/rolesConsts';
@@ -19,7 +14,6 @@ const UserDogPage = () => {
   const [isPending, setIsPending] = useState(true);
   const [participantDogs, setParticipantDogs] = useState(null);
   const { dogDispatch } = useContext(DogContext);
-  const { contestState, contestDispatch } = useContext(ContestContext);
 
   useEffect(() => {
     const dogs = participants.find(
@@ -36,9 +30,6 @@ const UserDogPage = () => {
         type: USER_ACTIONS.SELECT_ROLE,
         selectedRole: ROLE_NAME.PARTICIPANT,
       });
-    if (contestState.contestId || contestState.contestName) {
-      contestDispatch({ type: CONTEST_ACTIONS.CLEAR });
-    }
   }, []);
 
   return (
