@@ -1,4 +1,3 @@
-import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
 
@@ -9,12 +8,25 @@ export const NavElementStyled = styled.div`
   height: 3.75rem;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1rem 0 0.563rem;
-  background-color: ${COLORS.white};
+  padding: 0 1.125rem;
+  background: ${({ theme }) => theme.white};
 
   .navText {
-    width: 33%;
-    color: ${COLORS.grey800};
+    width: 80%;
+    color: ${({ theme }) => theme.grey800};
     ${FONTS.h3}
+  }
+  .burger-wrapper {
+    display: flex;
+    width: 10%;
+    text-align: left;
+
+    .burger-icon {
+      color: ${({ theme }) => theme.grey200};
+      font-size: 1.25rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 `;

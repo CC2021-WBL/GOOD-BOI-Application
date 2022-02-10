@@ -2,15 +2,17 @@ const participants = [
   {
     participantId: 'matylda1234',
     email: 'matylda@op.pl',
-    password: 'dupabiskupa',
+    password: '**********',
     phoneNumber: 48445234876,
     participantName: 'Matylda',
     participantSurname: 'Borutka',
-    country: 'Polska',
-    city: 'Sfornegacie',
-    street: 'ul.Pszczelna',
-    numberOfHouse: '27/5',
-    postalCode: '50-124',
+    address: {
+      country: 'Polska',
+      city: 'Sfornegacie',
+      street: 'ul.Pszczelna',
+      numberOfHouse: '27/5',
+      postalCode: '50-124',
+    },
     dogs: [
       {
         dogId: 'VIII-40407',
@@ -30,11 +32,13 @@ const participants = [
     phoneNumber: 48568432890,
     participantName: 'Bodzio',
     participantSurname: 'Rolnik',
-    country: 'Polska',
-    city: 'Trabki Wielkie',
-    street: 'al Dziurawa',
-    numberOfHouse: '1',
-    postalCode: '33-221',
+    address: {
+      country: 'Polska',
+      city: 'Trabki Wielkie',
+      street: 'al Dziurawa',
+      numberOfHouse: '1',
+      postalCode: '33-221',
+    },
     dogs: [
       {
         dogId: 'VIII-27165',
@@ -50,11 +54,13 @@ const participants = [
     phoneNumber: 48348087554,
     participantName: 'Eustachy',
     participantSurname: 'Trompka',
-    country: 'Polska',
-    city: 'Warszawa',
-    street: 'ul.Gnilna',
-    numberOfHouse: '45/65',
-    postalCode: '40-665',
+    address: {
+      country: 'Polska',
+      city: 'Warszawa',
+      street: 'ul.Gnilna',
+      numberOfHouse: '45/65',
+      postalCode: '40-665',
+    },
     dogs: [
       {
         dogId: 'X-37657',
@@ -70,11 +76,13 @@ const participants = [
     phoneNumber: 48609906003,
     participantName: 'Zosia',
     participantSurname: 'Samosia',
-    country: 'Polska',
-    city: 'Warszawa',
-    street: 'ul.Słoneczna',
-    numberOfHouse: '15/1',
-    postalCode: '10-234',
+    address: {
+      country: 'Polska',
+      city: 'Warszawa',
+      street: 'ul.Słoneczna',
+      numberOfHouse: '15/1',
+      postalCode: '10-234',
+    },
     dogs: [
       {
         dogId: 'V-11165',

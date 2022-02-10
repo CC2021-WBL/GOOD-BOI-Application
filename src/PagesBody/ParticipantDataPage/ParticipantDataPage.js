@@ -1,8 +1,29 @@
 import ParticipantData from '../../Organisms/ParticipantData/ParticipantData';
-const randomParticipantID = 'ec7baebd-97c7-4ea3-8047-1305dc4bb243';
+import { useContext, useEffect, useState } from 'react';
+import { UserDataContext } from '../../Context/UserDataContext';
+import { useParams } from 'react-router-dom';
 
 const ParticipantDataPage = () => {
-  return <ParticipantData id={randomParticipantID} />;
+  const { participantId: participantIdParams } = useParams();
+  const [isPending, setIsPending] = useState(true);
+  const [participantId, setParticipantId] = useState(null);
+  const { state } = useContext(UserDataContext);
+
+  useEffect(() => {
+    if (state.userId) {
+      setParticipantId(state.userId);
+    } else if (participantIdParams) {
+      setParticipantId(participantIdParams);
+    }
+    setIsPending(false);
+  }, []);
+
+  return (
+    <>
+      {isPending && <p>Loading...</p>}
+      {participantId && <ParticipantData id={participantId} />}
+    </>
+  );
 };
 
 export default ParticipantDataPage;

@@ -1,21 +1,42 @@
+import CLASSES from '../../Consts/classesConst';
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
-import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
-import MainButton from '../../Atoms/MainButton/MainButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import MainButton from '../../Atoms/MainButton/MainButton';
+import contests from '../../Data/MongoDBMock/contests';
+import results from '../../Data/MongoDBMock/results';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const ClassCompetitorsPage = () => {
-  function secondaryBtnHandler() {
-    console.log('secondary button clicked');
+  const { contestId, classId } = useParams();
+  const navigate = useNavigate();
+  const dogList = contests.find((contest) => contest.contestId === contestId)
+    .obedienceClasses[classId];
+  const exercisesAmount = CLASSES[classId].exercises.length;
+
+  function onClassFinishClick() {
+    navigate;
   }
+
   return (
     <ColumnWrapper paddingLeftRight={1} paddingTop={0.25}>
-      {RANDOM_CONTESTS[0].obedienceClasses[0].dogs.map((dog, index) => {
-        const { id, dogName, exercisesCompleted, exercisesAmount } = dog;
+      {dogList.map((dog, index) => {
+        const { dogId, dogName, competingPairsId } = dog;
+
+        const dogPerformance = results.find(
+          (result) => result.competingPairsId === competingPairsId,
+        );
+
+        const exercisesCompleted = dogPerformance.exercises.filter(
+          (exercise) => exercise.result != null,
+        ).length;
+
         return (
           <ClassOrDogButton
-            key={id}
+            key={dogId}
             dogInfo={{
               index,
+              dogId,
               dogName,
               exercisesCompleted,
               exercisesAmount,
@@ -23,11 +44,7 @@ const ClassCompetitorsPage = () => {
           />
         );
       })}
-      <MainButton
-        onClick={secondaryBtnHandler}
-        secondary
-        text="ZAKOŃCZ KONKURS"
-      />
+      <MainButton onClick={onClassFinishClick} secondary text="ZAKOŃCZ KLASĘ" />
     </ColumnWrapper>
   );
 };

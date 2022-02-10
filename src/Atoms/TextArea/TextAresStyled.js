@@ -1,7 +1,6 @@
-import styled from 'styled-components';
-
 import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
+import styled from 'styled-components';
 
 const TextAreaStyled = styled.textarea`
   display: flex;
@@ -9,17 +8,21 @@ const TextAreaStyled = styled.textarea`
   height: 4.375rem;
   align-items: center;
   padding: 0 0 0 0.625rem;
+  border: 0.5px solid ${({ theme }) => theme.grey400};
   margin: 0 0 0.3125rem 0;
+  background: ${({ theme }) => theme.white};
   border-radius: 0.5rem;
+  color: ${({ theme }) => theme.grey800};
   resize: vertical;
 
   &::placeholder {
-    ${FONTS.body_semibold}
+    color: ${({ theme }) => theme.grey800};
+    ${FONTS.body_semibold};
   }
 
   &:focus {
     border: 0.5px solid transparent;
-    outline: 3px solid ${COLORS.primary201};
+    outline: 3px solid ${({ theme }) => theme.primary201};
   }
 
   &.red-border {

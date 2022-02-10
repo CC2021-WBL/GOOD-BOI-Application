@@ -1,35 +1,35 @@
+import { useNavigate, useParams } from 'react-router-dom';
+
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
-import RANDOM_CONTESTS from '../../Data/Dummy-data/test-data-random-contests';
-import MainButton from '../../Atoms/MainButton/MainButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import MainButton from '../../Atoms/MainButton/MainButton';
+import contests from '../../Data/MongoDBMock/contests';
 
 const ClassesPage = () => {
-  function secondaryBtnHandler() {
-    console.log('secondary button clicked');
-  }
+  const { contestId } = useParams();
+  const navigate = useNavigate();
+  const contestClasses = contests.find(
+    (contest) => contest.contestId === contestId,
+  ).obedienceClasses;
 
+  function onClickFinish() {
+    navigate('/contests');
+  }
   return (
     <ColumnWrapper paddingLeftRight={1} paddingTop={0.25}>
-      {RANDOM_CONTESTS[0].obedienceClasses.map((classObject) => {
-        const { obedienceClass, dogs, isCompleted } = classObject;
-        const { id, name } = obedienceClass;
-
+      {Object.keys(contestClasses).map((obedienceClass, index) => {
         return (
           <ClassOrDogButton
-            key={id}
+            key={index}
+            contestId={contestId}
             classInfo={{
-              name,
-              dogsAmount: dogs.length,
-              isCompleted,
+              obedienceClass,
+              dogsAmount: contestClasses[obedienceClass].length,
             }}
           />
         );
       })}
-      <MainButton
-        onClick={secondaryBtnHandler}
-        secondary
-        text="ZAKOŃCZ KLASĘ"
-      />
+      <MainButton onClick={onClickFinish} secondary text="ZAKOŃCZ KONKURS" />
     </ColumnWrapper>
   );
 };

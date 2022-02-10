@@ -1,16 +1,19 @@
-import ColumnWrapper from '../Templates/ColumnWrapper/ColumnWrapper';
-import { Component } from 'react';
-import ErrorPageGraphic from '../../src/Assets/ErrorPageGraphic.png';
-import { Link } from 'react-router-dom';
-import MainButton from '../Atoms/MainButton/MainButton';
-import NotFoundPageWrapperStyled from '../Organisms/NotFoundContent/NotFoundPageWrapperStyled';
 import propTypes from 'prop-types';
+import { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+
+import ErrorPageGraphic from '../../src/Assets/ErrorPageGraphic.png';
+import NotFoundPageWrapperStyled from '../Organisms/NotFoundContent/NotFoundPageWrapperStyled';
 
 export class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false, error: '', errorInfo: '' };
   }
+
+  refresh = () => {
+    window.location.reload();
+  };
 
   static getDerivedStateFromError(error) {
     console.log(error);
@@ -28,19 +31,33 @@ export class ErrorBoundary extends Component {
     if (this.state.hasError) {
       return (
         <>
-          <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
-            <NotFoundPageWrapperStyled>
-              <img src={ErrorPageGraphic} alt="Doggo in space" />
-              <div className="mainContentWrapper">
-                <h1>Coś poszło nie tak.</h1>
-                {this.state.error.toString()} <br />
-                <p>Wróć do strony głównej i spróbuj ponownie później.</p>
-              </div>
-            </NotFoundPageWrapperStyled>
-            <Link to="/">
-              <MainButton secondary text="wroć do poprzedniej strony" />
-            </Link>
-          </ColumnWrapper>
+          <NotFoundPageWrapperStyled style={{ textAlign: 'center' }}>
+            <img src={ErrorPageGraphic} alt="Doggo in space" />
+            <div className="mainContentWrapper">
+              <h1>Coś poszło nie tak.</h1>
+              <br />
+              <p>Wróć do strony głównej i spróbuj ponownie później.</p>
+            </div>
+            <NavLink
+              style={{
+                margin: '1rem',
+                width: '100%',
+                height: '3.25rem',
+                borderRadius: '10px',
+                textDecoration: 'none',
+                color: 'grey',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                border: '1px solid grey',
+                fontSize: '0.9375rem',
+              }}
+              onClick={this.refresh}
+              to="/"
+            >
+              Odśwież stronę!
+            </NavLink>
+          </NotFoundPageWrapperStyled>
         </>
       );
     }

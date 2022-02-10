@@ -1,9 +1,9 @@
 import styled from 'styled-components';
+
 import FONTS from '../../Styles/fontsStyledComponents';
-import COLORS from '../../Styles/varsStyledComponents';
 
 export const Div = styled.div`
-  color: black;
+  color: ${({ theme }) => theme.grey800};
   ${FONTS.label_regular}
 `;
 
@@ -17,6 +17,17 @@ export const FooterProfileButtonStyled = styled.button`
   justify-content: center;
   border: none;
   background: transparent;
-  color: ${COLORS.grey400};
+  color: ${({ theme }) => theme.grey400};
   font-size: 1.625rem;
+
+  .bg-box {
+    cursor: pointer;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-image: url(${require(`../../Assets/profileDogFace.jpg`)});
+    background-size: cover;
+    border-radius: 50%;
+    border: 1px solid #c4c4c4;
+    position: relative;
+  }
 `;

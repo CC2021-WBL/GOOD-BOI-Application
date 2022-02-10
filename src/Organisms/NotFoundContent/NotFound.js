@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-
-import notFound from '../../Assets/notFound.png';
+import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import NotFoundPageWrapperStyled from './NotFoundPageWrapperStyled';
+import notFound from '../../Assets/notFound.png';
+import { useNavigate } from 'react-router-dom';
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -20,12 +19,15 @@ const NotFound = () => {
       <div className="buttons-wrapper">
         <MainButton
           secondary
-          text="wroć do poprzedniej strony"
+          text="Wróć do poprzedniej strony"
           onClick={() => navigate(-1)}
         />
-        <Link to="/contactForm">
-          <MainButton ternary text="Formularz kontaktowy" />
-        </Link>
+
+        <FakeButton
+          colors="ternary"
+          text="Formularz kontaktowy"
+          to="/contact-form"
+        />
       </div>
     </NotFoundPageWrapperStyled>
   );
