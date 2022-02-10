@@ -8,7 +8,6 @@ const ParticipantDataPage = () => {
   const [isPending, setIsPending] = useState(true);
   const [participantId, setParticipantId] = useState(null);
   const { state } = useContext(UserDataContext);
-
   useEffect(() => {
     if (state.userId) {
       setParticipantId(state.userId);
@@ -17,7 +16,6 @@ const ParticipantDataPage = () => {
     }
     setIsPending(false);
   }, []);
-
   return (
     <>
       {isPending && <p>Loading...</p>}
