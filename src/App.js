@@ -36,6 +36,7 @@ import UserDataPage from './PagesBody/UserDataPage/UserDataPage';
 import { UserDataProvider } from './Context/UserDataContext';
 import UserDogPage from './PagesBody/UserDogsPage/UserDogPage';
 import { useDarkMode } from './Hooks/useDarkMode';
+import ClassChoicePage from './PagesBody/ClassChoicePage/ClassChoicePage';
 
 function App() {
   const [theme, themeToggler, mountedComponent] = useDarkMode();
@@ -93,6 +94,10 @@ function App() {
                       <Route
                         path="contests/:contestId/classes"
                         element={<ClassesPage />}
+                      />
+                      <Route
+                        path="class-choice"
+                        element={<ClassChoicePage />}
                       />
                       <Route
                         path="contests/:contestId/classes/:classId"
