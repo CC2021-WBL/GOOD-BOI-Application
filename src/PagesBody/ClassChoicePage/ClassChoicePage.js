@@ -1,16 +1,17 @@
 import { useContext, useState } from 'react';
 
-import CLASSES from '../../Consts/classesConst';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import { ContestContext } from '../../Context/ContestContext';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import MainButton from '../../Atoms/MainButton/MainButton';
+import contests from './../../Data/MongoDBMock/contests';
 
 const ClassChoicePage = () => {
   const { contestState } = useContext(ContestContext);
   const { contestId } = contestState;
-  console.log(contestState);
-  const classesArr = CLASSES.map((elem) => elem.name);
+  const classesArr = contests.find(
+    (contest) => contest.contestId === contestId,
+  ).obedienceClasses;
   const [selectedClass, setSelectedClass] = useState('');
   const clickHandler = (index) => {
     setSelectedClass(index);
