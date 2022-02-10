@@ -1,6 +1,6 @@
 import propTypes from 'prop-types';
 import { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
 import UserProfileDataStyled from './UserProfileDataStyled';
@@ -12,13 +12,13 @@ const UserProfileData = ({ withEdit }) => {
   const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
   const { userId, userName, userSurname, isAuthenticated } = state;
-  // const paramsUserData = useParams();
+  const paramsUserData = useParams();
 
-  // let userData = userId;
-  // if (!userData) {
-  //   userData = paramsUserData.userId;
-  // }
-  const [userObject, setUserObject] = useState(createUserInitialData(userName));
+  let userData = userId;
+  if (!userData) {
+    userData = paramsUserData.userId;
+  }
+  const [userObject, setUserObject] = useState(createUserInitialData(userData));
 
   // mock for checking authentication and if userId is in database
   // const { pathname } = useLocation();
@@ -45,7 +45,7 @@ const UserProfileData = ({ withEdit }) => {
       navigate('/login');
     }
     const userObject = participants.find(
-      (participant) => participant.participantId === userId,
+      (participant) => participant.participantId === userData,
     );
     if (!userObject) {
       navigate('/login');
