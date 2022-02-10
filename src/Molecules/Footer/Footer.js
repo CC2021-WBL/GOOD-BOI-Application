@@ -1,10 +1,14 @@
 import propTypes from 'prop-types';
+import { useContext } from 'react';
 
 import FooterProfileButton from '../../Atoms/FooterProfileButton/FooterProfileButton';
 import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
 import { Copy, DevsLogo, FooterStyled, LogoStyled } from './FooterStyled';
+import { UserDataContext } from '../../Context/UserDataContext';
 
 const Footer = ({ withSettings }) => {
+  const { state } = useContext(UserDataContext);
+  const { isAuthenticated } = state;
   return (
     <FooterStyled>
       <a href="https://github.com/CC2021-WBL" target="_blank" rel="noreferrer">
@@ -27,7 +31,7 @@ const Footer = ({ withSettings }) => {
       {withSettings ? (
         <FooterProfileButton withSettings />
       ) : (
-        <FooterProfileButton />
+        isAuthenticated && <FooterProfileButton />
       )}
     </FooterStyled>
   );
