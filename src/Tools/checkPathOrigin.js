@@ -101,6 +101,12 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
       case 'dog-summary':
         data = { text: 'Punktacja', label: `Ocena zawodnika ${dogName}` };
         break;
+      case 'leaderboard':
+        data = {
+          text: 'Tabela wyników',
+          label: `Wyniki w klasie ${pathOrigin[4]}`,
+        };
+        break;
       case 'confirmation-summary':
         data = {
           text: 'Twoje zgłoszenie',

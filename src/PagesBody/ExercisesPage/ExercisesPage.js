@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import ButtonExercises from '../../Atoms/ButtonsExercises/ButtonsExercises';
 import ButtonExercisesContainerStyled from '../../Molecules/ButtonsExcercisenContainer/ButtonExercisesContainerStyled';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import { DogContext } from '../../Context/DogContext';
 import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
 import Modal from '../../Organisms/Modal/Modal';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
@@ -19,6 +20,8 @@ const ExercisesPage = () => {
   const [isEvaluationModalOpen, setIsEvaluationModalOpen] = useState(false);
   let [penaltyPoints, setPenaltyPoints] = useState(0);
   const [disqualified, setDisqualified] = useState(false);
+  const { dogState } = useContext(DogContext);
+  console.log(dogState);
 
   const locationPath = useLocation();
 
@@ -28,8 +31,6 @@ const ExercisesPage = () => {
     if (penaltyPoints < -10) {
       navigate('./dog-summary', {
         state: {
-          text: 'Tabela Wyników',
-          label: `${label}`,
           dogPerformance: { dogPerformance },
         },
       });
@@ -42,8 +43,6 @@ const ExercisesPage = () => {
     dogPerformance.specialState = 'dyskwalifikacja';
     navigate('./dog-summary', {
       state: {
-        text: 'Tabela Wyników',
-        label: `${label}`,
         dogPerformance: { dogPerformance },
       },
     });
