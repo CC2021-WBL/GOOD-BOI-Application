@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+// import COLORS from '../../Styles/varsStyledComponents';
+
 import FONTS from '../../Styles/fontsStyledComponents';
-import COLORS from '../../Styles/varsStyledComponents';
+import styled from 'styled-components';
 
 const EditAcceptStyled = styled.button`
   display: flex;
@@ -11,12 +12,13 @@ const EditAcceptStyled = styled.button`
   border: 0;
   margin: 0;
   border-radius: 0 0.75rem 0.75rem 0;
+  color: ${({ theme }) => theme.grey800};
   cursor: pointer;
   ${FONTS.label_regular};
   ${(props) =>
     props.toggle
-      ? `background-color: ${COLORS.positive100};`
-      : `background-color:  ${COLORS.positive200}`}
+      ? `background-color: ${props.theme.positive100};`
+      : `background-color:  ${props.theme.positive200}`}
 `;
 
 export default EditAcceptStyled;
