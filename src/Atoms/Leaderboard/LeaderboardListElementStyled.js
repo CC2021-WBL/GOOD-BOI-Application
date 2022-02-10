@@ -1,8 +1,8 @@
-import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
 
 const LeaderboardListElementStyled = styled.div`
+  color: ${({ theme }) => theme.grey800};
   display: flex;
   width: 100%;
   min-height: 3.125rem;
@@ -11,7 +11,7 @@ const LeaderboardListElementStyled = styled.div`
   justify-content: space-between;
   border-bottom: 1px solid #9aa5b1;
   background: ${(props) =>
-    props.disqualified ? COLORS.grey100 : 'transparent;'};
+    props.disqualified ? props.theme.grey100 : 'transparent;'};
   ${FONTS.body_semibold};
 
   .excersises {

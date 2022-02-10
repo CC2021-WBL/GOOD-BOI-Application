@@ -15,19 +15,19 @@ const InfoLabelStyled = styled.label`
   ${FONTS.caption}
   ${(props) =>
     props.colorMotive === c.GREEN
-      ? `background: ${COLORS.positive100}; color: ${COLORS.positive600};  border: solid 1px  ${COLORS.positive600};`
+      ? `background: ${props.theme.positive100}; color: ${props.theme.positive600};  border: solid 1px  ${props.theme.positive600};`
       : ``};
   ${(props) =>
     props.colorMotive === c.BLUE
-      ? `background: ${COLORS.primary101}; color: ${COLORS.primary801};  border: solid 1px  ${COLORS.primary801};`
+      ? `background: ${props.theme.primary101}; color: ${props.theme.primary801};  border: solid 1px  ${props.theme.primary801};`
       : ``};
   ${(props) =>
     props.colorMotive === c.GREY
-      ? `background: ${COLORS.grey100}; color: ${COLORS.grey800};  border: solid 1px  ${COLORS.grey800};`
+      ? `background: ${props.theme.grey100}; color: ${props.theme.grey800};  border: solid 1px  ${props.theme.grey800};`
       : ``};
   ${(props) =>
     props.colorMotive === c.WHITE
-      ? `background: ${COLORS.white}; color: ${COLORS.grey800};  border: solid 1px  ${COLORS.grey800};`
+      ? `background: ${props.theme.white}; color: ${props.theme.grey800};  border: solid 1px  ${props.theme.grey800};`
       : ``};
 `;
 

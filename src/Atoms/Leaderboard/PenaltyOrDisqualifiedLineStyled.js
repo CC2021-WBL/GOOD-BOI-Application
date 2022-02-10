@@ -1,4 +1,3 @@
-import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
 
@@ -12,7 +11,7 @@ const PenaltyOrDisqualifiedLineStyled = styled.div`
   padding: 0 1rem;
   border-bottom: 1px solid #9aa5b1;
   background: ${(props) =>
-    props.disqualifiedColor ? COLORS.negative100 : COLORS.warning100};
+    props.disqualifiedColor ? props.theme.negative100 : props.theme.warning100};
   ${FONTS.body_semibold};
 `;
 

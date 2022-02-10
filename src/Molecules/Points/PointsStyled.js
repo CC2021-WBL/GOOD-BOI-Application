@@ -1,4 +1,5 @@
-import COLORS from '../../Styles/varsStyledComponents';
+// import COLORS from '../../Styles/varsStyledComponents';
+
 import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
 
@@ -7,7 +8,7 @@ const PointsTextStyled = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0;
-  background-color: ${COLORS.positive200};
+  background-color: ${({ theme }) => theme.positive200};
   color: ${({ theme }) => theme.grey800};
   ${FONTS.h1};
 `;
