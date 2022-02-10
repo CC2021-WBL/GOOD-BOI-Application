@@ -38,7 +38,7 @@ Nie wiesz co to obedience? https://johndog.pl/blog/zyciezpsem/obi-ogole-znaczy/
 
 ### Linki
 
-- [Tu będzie link]()
+- [Demo](https://good-boi-application-lime.vercel.app/)
 - [Design](https://www.figma.com/file/hOD9esjIhUdLSRM0Ijc31f/GOOD-BOI-APP?node-id=1657%3A4515)
 - [Wiki](https://github.com/CC2021-WBL/GOOD-BOI-Application/wiki)
 
