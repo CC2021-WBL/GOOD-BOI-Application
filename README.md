@@ -79,13 +79,12 @@ Aplikacja wspomagająca obsługę psich zawodów obedience.
 Specjalne podziękowania dla naszej mentorki [Weronika Boszko Lucena](https://github.com/vieraboschkova)
 
 ### Screeny
-![image](https://user-images.githubusercontent.com/56206231/153212606-8e64ae23-0fa3-45e4-a7d9-00eeb90dbc41.png)
-![image](https://user-images.githubusercontent.com/56206231/153212873-10762f7e-29f0-4344-b23b-b74d2bd1dc80.png)
-![image](https://user-images.githubusercontent.com/56206231/153211865-9af9f3f4-7c75-435a-a342-0391c4ec6f23.png) 
-![image](https://user-images.githubusercontent.com/56206231/153212187-d63f4b6c-2426-4a25-92e2-0124625f4bff.png)
-![image](https://user-images.githubusercontent.com/56206231/153212348-68a59d6d-8ca2-4ec6-a50a-8fc6aad6ccf3.png)
-![image](https://user-images.githubusercontent.com/56206231/153213129-5feec480-5df8-4376-8279-e20e479ea5b6.png)
-
+![Android Small - 1](https://user-images.githubusercontent.com/56206231/153416062-cb61f9d8-7a6e-4d58-a3cf-cb8f90e2c87a.png)
+![Android Small - 2](https://user-images.githubusercontent.com/56206231/153416232-81c9572f-5db0-46e7-b753-42d43b1a366e.png)
+![Android Small - 3](https://user-images.githubusercontent.com/56206231/153416254-d6f6088f-7d26-402b-9c49-df2325f50148.png)
+![Android Small - 4](https://user-images.githubusercontent.com/56206231/153416296-e6ca69c7-1117-4eb4-9694-59e83bc1cbba.png)
+![Android Small - 5](https://user-images.githubusercontent.com/56206231/153416312-babefb6e-1f63-446c-8781-e9e93bf6a340.png)
+![Android Small - 6](https://user-images.githubusercontent.com/56206231/153416329-2471d5e7-fdd7-4325-b5ad-1afaaf6fb51e.png)
 
 
 
