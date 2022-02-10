@@ -2,12 +2,12 @@
 ![logo-devs-on-the-waves-stroke](https://user-images.githubusercontent.com/19845958/148255475-9f24bd68-7020-42e8-a0d7-c2ed885848e5.png)
 
 
-# CodersCamp 2021 - Fullstack Projekt, Front-end
+# CodersCamp 2021 - Fullstack Project, Front-end
 **CodersCamp (https://www.coderscamp.edu.pl/) - Największy otwarty kurs programowania webowego** 
 
-## Good Boi App
+# Good Boi App
 
-Aplikacja wspomagająca obsługę psich zawodów obedience. 
+### Aplikacja wspomagająca obsługę psich zawodów obedience. 
 
 ## Zawartość
 
@@ -16,7 +16,7 @@ Aplikacja wspomagająca obsługę psich zawodów obedience.
   - [Linki](#linki)
 - [Proces tworzenia](#proces)
   - [Zbudowane z](#zbudowane-z-użyciem)
-  - [Pomysły na przyszłość](#pomysły-na-przyszłość)
+  - [W przyszłości](#w-przyszłości)
 - [Autorzy](#autorzy)
 - [Podziękowania](#podziękowania)
 -  [Screeny](#screeny)
@@ -51,13 +51,13 @@ Aplikacja wspomagająca obsługę psich zawodów obedience.
 - Mobile first
 - React Router
 - By nasz kod był lepszej jakości, bardziej uporządkowany i czytelniejszy, używaliśmy eslint, prettier, stylelint
-- Wiadomość z formularza kontaktowego pojawiła się na mailu dzięki użyciu emailJS
-- Testy przechodziliśmy dzięki użyciu RTL oraz Jest
+- Wiadomość z formularza kontaktowego pojawi się na mailu dzięki emailJS
+- Testowaliśmy aplikację przy użyciu RTL oraz Jest
 - Ikonki wstawiliśmy dzięki Font Awesome oraz React Icons
 - Pomocne okazały się również wtyczki do VSC- sort-imports oraz 'px to rem'
 - Kontrola nad propsami- propTypes
 
-### Pomysły na przyszłość
+### W przyszłości
 
 - Widoki na większe ekrany
 - Wersja dla niezalogowanego użytkownika
@@ -75,8 +75,7 @@ Aplikacja wspomagająca obsługę psich zawodów obedience.
  - [Robert Soldynski](https://github.com/RobertS-ki) 
 
 ## Podziękowania
-
-Specjalne podziękowania dla naszej mentorki [Weronika Boszko Lucena](https://github.com/vieraboschkova)
+Chcieliśmy serdecznie podziękować naszej mentorce [Weronika Boszko Lucena](https://github.com/vieraboschkova) za cierpliwość i wsparcie ♥
 
 ### Screeny
 ![Android Small - 1](https://user-images.githubusercontent.com/56206231/153416062-cb61f9d8-7a6e-4d58-a3cf-cb8f90e2c87a.png)
@@ -84,7 +83,7 @@ Specjalne podziękowania dla naszej mentorki [Weronika Boszko Lucena](https://gi
 ![Android Small - 3](https://user-images.githubusercontent.com/56206231/153416254-d6f6088f-7d26-402b-9c49-df2325f50148.png)
 ![Android Small - 4](https://user-images.githubusercontent.com/56206231/153416296-e6ca69c7-1117-4eb4-9694-59e83bc1cbba.png)
 ![Android Small - 5](https://user-images.githubusercontent.com/56206231/153416312-babefb6e-1f63-446c-8781-e9e93bf6a340.png)
-![Android Small - 6](https://user-images.githubusercontent.com/56206231/153416329-2471d5e7-fdd7-4325-b5ad-1afaaf6fb51e.png)
+
 
 
 
