@@ -26,7 +26,6 @@ const ExercisesPage = () => {
 
   useEffect(() => {
     if (penaltyPoints < -10) {
-      alert('Uwaga! Podwójna żółta kartka! Dyskwalifikacja!');
       navigate('./dog-summary', {
         state: {
           text: 'Tabela Wyników',

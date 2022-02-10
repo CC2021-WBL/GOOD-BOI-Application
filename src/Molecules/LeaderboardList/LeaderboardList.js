@@ -4,8 +4,8 @@ import calculateExerciseScore from '../../Tools/calculateExerciseScore';
 import checkIfDisqualified from '../../Tools/checkIfDisqualified';
 import contests from '../../Data/MongoDBMock/contests';
 import exerciseCode2string from '../../Tools/exerciseCode2string';
-import individualSummaryInCurrentCompetiton from '../../Data/MongoDBMock/summaryResults';
 import propTypes from 'prop-types';
+import results from '../../Data/MongoDBMock/results';
 
 const LeaderboardList = ({ classId, dogName, contestId, result }) => {
   // if dogName is defined, then render dog-summary leaderboard
@@ -51,7 +51,7 @@ const LeaderboardList = ({ classId, dogName, contestId, result }) => {
       let resultsIdArr = resultsArr.map((obj) => obj.competingPairsId);
 
       const finalLeaderboardArr = resultsIdArr.map((competingPairsId) => {
-        let DogSummary = individualSummaryInCurrentCompetiton.find(
+        let DogSummary = results.find(
           (summary) => summary.competingPairsId === competingPairsId,
         );
         return {
