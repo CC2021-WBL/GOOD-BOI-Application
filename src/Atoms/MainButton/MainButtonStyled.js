@@ -29,11 +29,18 @@ const MainButtonStyled = styled.button`
   width: 100%;
   height: 3.25rem;
   align-items: center;
-  justify-content: center;
+  justify-content: ${(props) =>
+    (props.justifyText && ` ${props.justifyText};`) || 'center;'};
+  padding: 0 1rem;
   margin: 0.5rem 0 0.5rem 0;
   border-radius: 0.75rem;
   ${FONTS.button};
   ${(props) => handleBgAndColor(props)};
   ${(props) => borderHandler(props)};
+  &.selected-btn:focus {
+    border: 3px solid #34c369;
+    background: ${({ theme }) => theme.positive100};
+    color: ${({ theme }) => theme.grey800};
+  }
 `;
 export default MainButtonStyled;

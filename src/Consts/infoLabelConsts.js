@@ -3,6 +3,7 @@ export const TIME = {
   PRESENT: 'w trakcie',
   FUTURE: 'nadchodzący',
   UNKNOWN: 'loading...',
+  PRESENT_AND_PAST: 'present and past',
 };
 
 export const COLORSMOTIVE = {

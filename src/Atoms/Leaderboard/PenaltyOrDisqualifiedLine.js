@@ -1,43 +1,37 @@
 import PenaltyOrDisqualifiedLineStyled from './PenaltyOrDisqualifiedLineStyled';
-import checkIfDisqualified from '../../Tools/checkIfDisqualified';
 import propTypes from 'prop-types';
 
 const PenaltyOrDisqualifiedLine = ({ result }) => {
-  // check if penalties exists
-  const penaltiesExist = result.some((element) => {
-    return element.penalty;
-  });
-
-  // if exists, create new arr with penalties only
-  const penaltyArr = result.map((penalty) => {
-    if (penalty.penalty) {
-      return penalty.penalty;
-    } else return 0;
-  });
-
-  const penaltyScore = penaltyArr.reduce((accu, val) => {
-    return accu + val;
-  });
-
-  if (checkIfDisqualified({ result })) {
+  if (typeof result.specialState === 'string') {
     return (
       <PenaltyOrDisqualifiedLineStyled disqualifiedColor>
         Dyskwalifikacja
       </PenaltyOrDisqualifiedLineStyled>
     );
-  } else if (penaltiesExist && !checkIfDisqualified({ result })) {
-    return (
-      <PenaltyOrDisqualifiedLineStyled>
-        <div>Żółta kartka</div>
-        <div>{penaltyScore}</div>
-      </PenaltyOrDisqualifiedLineStyled>
-    );
-  } else {
-    return null;
+  } else if (typeof result.specialState === 'number') {
+    switch (result.specialState) {
+      case 0:
+        return null;
+      case -10:
+        return (
+          <PenaltyOrDisqualifiedLineStyled>
+            <div>Żółta kartka</div>
+            <div>{result.specialState}</div>
+          </PenaltyOrDisqualifiedLineStyled>
+        );
+      case -20:
+        return (
+          <PenaltyOrDisqualifiedLineStyled disqualifiedColor>
+            Dyskwalifikacja
+          </PenaltyOrDisqualifiedLineStyled>
+        );
+      default:
+        return null;
+    }
   }
 };
 PenaltyOrDisqualifiedLine.propTypes = {
-  result: propTypes.array,
+  result: propTypes.any,
 };
 
 export default PenaltyOrDisqualifiedLine;

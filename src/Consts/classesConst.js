@@ -1,6 +1,6 @@
 const CLASSES = [
   {
-    name: 'Klasa 0',
+    name: 0,
     pointsToGain: 140,
     exercises: [
       {
@@ -73,7 +73,7 @@ const CLASSES = [
     ],
   },
   {
-    name: 'Klasa 1',
+    name: 1,
     pointsToGain: 320,
     exercises: [
       {
@@ -151,7 +151,7 @@ const CLASSES = [
     ],
   },
   {
-    name: 'Klasa 2',
+    name: 2,
     pointsToGain: 320,
     exercises: [
       {
@@ -236,13 +236,13 @@ const CLASSES = [
     ],
   },
   {
-    name: 'Klasa 3',
+    name: 3,
     pointsToGain: 320,
     exercises: [
       {
         exerciseName:
           'Siad w grupie przez 2 minuty, przewodnik poza zasięgiem wzroku',
-          codeName: '3.1',
+        codeName: '3.1',
         pointsFactor: 2,
       },
       {
@@ -268,7 +268,7 @@ const CLASSES = [
       {
         exerciseName:
           'Wysyłanie psa kierunkowe, do kwadratu, waruj i przywołanie',
-          codeName: '3.6',
+        codeName: '3.6',
         pointsFactor: 4,
       },
       {
@@ -279,7 +279,7 @@ const CLASSES = [
       {
         exerciseName:
           'Wysyłanie wokół grupy pachołków, zatrzymanie (stój/siad/waruj), aport koziołka i skok przez przeszkodę',
-          codeName: '3.8',
+        codeName: '3.8',
         pointsFactor: 4,
       },
       {
