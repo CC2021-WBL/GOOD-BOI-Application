@@ -1,14 +1,23 @@
 import FakeButtonStyled from './FakeButtonStyled';
 import propTypes from 'prop-types';
 
-const FakeButton = ({ primary, secondary, ternary, text, to, state }) => {
+const FakeButton = ({
+  // primary,
+  // secondary,
+  // ternary,
+  text,
+  to,
+  state,
+  colors,
+}) => {
   return (
     <FakeButtonStyled
       to={to}
       state={state}
-      primary={{ primary }}
-      secondary={{ secondary }}
-      ternary={{ ternary }}
+      // primary={primary}
+      // secondary={secondary}
+      // ternary={{ ternary }}
+      colors={colors}
     >
       {text.toUpperCase()}
     </FakeButtonStyled>
@@ -20,11 +29,12 @@ FakeButton.propTypes = {
     propTypes.string.isRequired,
     propTypes.object.isRequired,
   ]),
-  primary: propTypes.any,
-  secondary: propTypes.any,
-  ternary: propTypes.any,
+  // primary: propTypes.any,
+  // secondary: propTypes.any,
+  // ternary: propTypes.any,
   text: propTypes.string,
   state: propTypes.object,
+  colors: propTypes.string,
 };
 
 export default FakeButton;

@@ -60,7 +60,11 @@ const UserDogPage = () => {
           );
         })}
 
-      <FakeButton secondary text="DODAJ NOWEGO PSA" to="/add-dog-form" />
+      <FakeButton
+        colors="secondary"
+        text="DODAJ NOWEGO PSA"
+        to="/add-dog-form"
+      />
     </ColumnWrapper>
   );
 };
