@@ -49,7 +49,7 @@ const Footer = ({ withSettings }) => {
             </DevsLogo>
             <Copy>
               Copyright <br />
-              #Devs on the Waves {height.height}
+              #Devs on the Waves
             </Copy>
           </LogoStyled>
         </a>
