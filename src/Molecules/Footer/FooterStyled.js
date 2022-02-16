@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
 export const FooterStyled = styled.div`
-  /* position: fixed; */
-  position: relative;
+  position: fixed;
   right: 0;
   /* bottom: 0; */
   top: calc(100vh - 78px);
   left: 0;
   display: flex;
-  height: 4.875rem;
+  height: 78px;
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
