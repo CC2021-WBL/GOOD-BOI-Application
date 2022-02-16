@@ -3,8 +3,7 @@ import styled from 'styled-components';
 export const FooterStyled = styled.div`
   position: fixed;
   right: 0;
-  /* bottom: 0; */
-  top: calc(100vh - 2 * 78px);
+  bottom: 0;
   left: 0;
   display: flex;
   height: 78px;

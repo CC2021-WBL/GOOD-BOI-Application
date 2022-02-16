@@ -15,7 +15,7 @@ const ExerciseStyled = styled(ExerciseCardStyled)`
       ? `background-color: ${props.theme.positive200};`
       : `background-color:  ${props.theme.grey100}; 
       color: ${props.theme.grey400}
-      `}
+      `};
   text-align: left;
 `;
 
