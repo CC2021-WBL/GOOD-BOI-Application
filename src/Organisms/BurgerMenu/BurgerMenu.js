@@ -6,6 +6,7 @@ import {
 import { FaUserCircle, FaUserCog } from 'react-icons/fa';
 import { MdOutlineClose, MdSettings } from 'react-icons/md';
 
+import { BiLogOut } from 'react-icons/bi';
 import { BsTrophyFill } from 'react-icons/bs';
 import BurgerMenuStyled from './BurgerMenuStyled';
 import { CONTEST_ACTIONS } from '../../Consts/reducersActions';
@@ -21,7 +22,7 @@ import useClickOutside from '../../Hooks/useClickOutside';
 import { useContext } from 'react';
 
 const BurgerMenu = ({ open, setOpen }) => {
-  const { state } = useContext(UserDataContext);
+  const { state, dispatch } = useContext(UserDataContext);
   const { contestState, contestDispatch } = useContext(ContestContext);
   const { userId } = state;
   let domNode = useClickOutside(() => {
@@ -68,6 +69,16 @@ const BurgerMenu = ({ open, setOpen }) => {
         <Link to="settings" className="link" onClick={() => setOpen(false)}>
           <MdSettings className="icon" />
           <h6>Ustawienia</h6>
+        </Link>
+        <Link
+          to="/"
+          className="link"
+          onClick={() => {
+            dispatch({ type: 'LOG_OUT', index: 1 });
+          }}
+        >
+          <BiLogOut className="icon" />
+          <h6 className="log-out">Wyloguj się</h6>
         </Link>
       </MenuStyled>
       <FooterStyled className="footer">

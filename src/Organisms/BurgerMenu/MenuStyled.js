@@ -20,6 +20,10 @@ const MenuStyled = styled.div`
 
     h6 {
       ${FONTS.body_regular};
+
+      &.log-out {
+        font-weight: 800;
+      }
     }
   }
 `;
