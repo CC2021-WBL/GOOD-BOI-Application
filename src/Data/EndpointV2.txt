@@ -1,0 +1,63 @@
+#register
+    POST api/users/register
+
+#login
+    POST api/users/login
+
+#logout
+    GET api/users/logout
+
+#update some data of current user 
+    PATCH api/users/:userId
+
+#update all data of current user
+    PUT api/users/:userId
+
+#delete current user
+    DELETE api/users/:userId
+
+#get current user data
+    GET api/users/:userId
+
+#get current user roles, name and surname 
+    GET api/users/:userId/roles
+
+#get current user address
+    GET api/users/:userId/address
+
+#get all dogs of current user
+    GET api/users/:userId/user-dogs
+
+-----------
+
+#create data for new dog of current user
+    POST api/dogs/register
+
+#update data for current dog
+    PUT api/dogs/:dogId
+
+#delete current dog from DB
+    DELETE api/dogs/:dogId
+
+#get data for current dog
+    GET api/dogs/:dogId
+
+-------------------
+
+#create new contest
+    POST api/contests
+
+#update info about contest
+    PATCH api/contests/:contestId
+
+#delete contest from DB
+    DELETE api/contests/:contestId
+
+#get all contests
+    GET api/contests
+
+#get details about current contest
+    GET api/contests/:contestId
+
+#get contest where is current participant/user
+    GET api/contests/:userId

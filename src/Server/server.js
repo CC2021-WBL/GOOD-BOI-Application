@@ -34,4 +34,4 @@ app.get('/', (req, res) => {
   res.send('Homepage');
 });
 
-app.listen(PORT, () => console.log('server is running'));
+app.listen(PORT, () => console.log('Server is running'));

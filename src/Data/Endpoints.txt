@@ -1,0 +1,94 @@
+#REGISTER
+    POST api/register 
+        -access: public
+
+#LOGIN
+    POST api/login 
+        -access: public
+
+#LOGOUT
+    GET api/logout
+        -access: public
+
+#DELETE USER
+    DELETE api/user/:userId
+        -access: admin + current user?????
+
+
+api/forgot 
+    POST 
+
+api/role 
+    GET roles, name and surname FOR CURRENT USERID
+    -participants
+
+
+--------------------------------------------- ZAWODY - OBSŁUGA --------------------------------------------
+
+api/contests
+    -GET ALL / GET SELECTED BY TIME (present/past/future/past&present) / GET SELECTED BY PARTICIPANT ID
+    -contests
+    
+
+api/contests/:contestId/classess 
+    GET FOR CURRENT CONTEST
+    -contests
+
+api/contests/:contestId/classes/:classId 
+    GET FOR CURRENT CLASS
+    -contests
+
+api/contests/:contestId/classes/:classId/:dogId 
+    GET individual results FOR CURRENT DOGID & CONTESTID
+    -results
+
+api/contests/:contestId/classes/:classId/:dogId 
+    POST / UPDATE individual results  BY CURRENT DOGID & CONTESTID
+    -results
+
+api/contests/:contestId/classes/:classId/:dogId/dod-summary
+    GET individual results BY CURRENT DOGID & CONTESTID
+    POST summary result BY CURRENT DOGID & CONTESTID
+    -results
+
+------------------------------------------------------ ZAWODY - ZAWODNIK --------------------------------
+
+#GET CLASSES in current competition
+    GET/api/class-choice
+
+#GET leaderbord with results in class
+    GET api/contests/:contestId/classes/:classId/leaderboard
+
+#GET details about current contests
+    GET api/contests/:contestId
+
+------------------------------------------------- ZAWODNIK -----------------------------------------------------------
+
+api/user/:userId
+    GET adress FOR CURRENT USERID
+    -participants
+
+#GET adress, email and password for current user
+    GET api/user/:userId/user-data
+
+#GET all data about current user
+    GET api.participant-data/:userId
+
+#GET dogs names FOR CURRENT USERID
+    GET api/user-dogs
+    -access: current user, staff, admin
+
+#GET DATA FOR CURRENT DOG
+    GET api/dog-data/:dogId
+    -access: current user, staff, admin
+
+#POST DATA FOR NEW DOG CURRENT USER
+    POST api/add-dog-form
+    -access: user
+
+#GET DATA FOR CURRENT DOG IN form
+    GET api/add-dog-form
+
+#UPDATE DATA FOR CURRENT DOG 
+    PUT api/add-dog-form
+
