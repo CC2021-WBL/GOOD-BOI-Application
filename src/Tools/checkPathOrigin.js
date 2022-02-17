@@ -62,9 +62,6 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
       case 'in-progress':
         data = { text: 'Robi się', label: '' };
         break;
-      case 'contest':
-        data = { text: 'Konkurs', label: `${contestName}` };
-        break;
       case 'summary':
         data = {
           text: 'Wyniki w klasie',
@@ -73,21 +70,36 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
         break;
       case 'closed':
         data = {
-          text: 'Lista konkursów',
+          text: 'Lista zawodów',
           label: `Zakończone`,
         };
         break;
       case 'dog-submit':
-        data = { text: 'Zgłoś Psa', label: `${contestName}` };
+        if (!contestName) {
+          data = { text: 'Zgłoś Psa', label: `Wybierz psa` };
+        } else {
+          data = { text: 'Zgłoś Psa', label: `${contestName}` };
+        }
         break;
       case 'dog-data':
-        data = { text: 'Dane Psa', label: `${dogName}` };
+        if (!dogName) {
+          data = { text: 'Dane Psa', label: `Sprawdź dane psa` };
+        } else {
+          data = { text: 'Dane Psa', label: `${dogName}` };
+        }
         break;
       case 'participant-data':
-        data = {
-          text: 'Dane zawodnika',
-          label: `${userName} ${userSurname}`,
-        };
+        if (!userName) {
+          data = {
+            text: 'Dane zawodnika',
+            label: 'Sprawdź swoje dane',
+          };
+        } else {
+          data = {
+            text: 'Dane zawodnika',
+            label: `${userName} ${userSurname}`,
+          };
+        }
         break;
       case 'confirmation':
         data = { text: 'Potwierdzenie', label: 'Status zgłoszenia' };
@@ -99,7 +111,7 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
         data = { text: 'Wybór klasy', label: 'Dostępne klasy' };
         break;
       case 'dog-summary':
-        data = { text: 'Punktacja', label: `Ocena zawodnika ${dogName}` };
+        data = { text: 'Podsumowanie', label: `Ocena zawodnika ${dogName}` };
         break;
       case 'leaderboard':
         data = {
@@ -108,10 +120,18 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
         };
         break;
       case 'confirmation-summary':
-        data = {
-          text: 'Twoje zgłoszenie',
-          label: `${contestName}`,
-        };
+        if (!contestName) {
+          data = {
+            text: 'Twoje zgłoszenie',
+            label: `Podsumowanie`,
+          };
+        } else {
+          data = {
+            text: 'Twoje zgłoszenie',
+            label: `${contestName}`,
+          };
+        }
+
         break;
       default:
         if (Object.prototype.hasOwnProperty.call(pathPattern, 'ids')) {
@@ -134,12 +154,16 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
     Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
     arrayLength === 2
   ) {
-    return { text: 'Lista konkursów', label: 'Wybierz konkurs' };
+    return { text: 'Lista zawodów', label: 'Wybierz konkurs' };
   } else if (
     Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
     arrayLength === 3
   ) {
-    return { text: 'Konkurs', label: `${contestName}` };
+    if (!contestName) {
+      return { text: 'Zawody', label: 'Szczegóły wydarzenia' };
+    } else {
+      return { text: 'Zawody', label: `${contestName}` };
+    }
   } else if (
     Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
     Object.prototype.hasOwnProperty.call(pathPattern, 'classes') &&
@@ -163,7 +187,11 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
     Object.prototype.hasOwnProperty.call(pathPattern, 'classes') &&
     arrayLength === 4
   ) {
-    return { text: 'Lista klas', label: `${contestName}` };
+    if (!contestName) {
+      return { text: 'Lista klas', label: 'Wybierz klasę do oceny' };
+    } else {
+      return { text: 'Lista klas', label: ` ${contestName}` };
+    }
   } else if (
     Object.prototype.hasOwnProperty.call(pathPattern, 'user') &&
     arrayLength === 3
