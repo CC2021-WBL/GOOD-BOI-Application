@@ -60,11 +60,10 @@ const ForgotPassForm = () => {
       {isPassReminderModalOpen && (
         <Modal
           modalData={modalData.passReminder}
-          onCloseHandler={closeModalHandler}
+          onCloseHandler={handleReminder}
           onConfirmHandler={handleReminder}
         />
       )}
-      {}
       {isPassReminderModalOpen && <Backdrop onClick={closeModalHandler} />}
 
       <ColumnWrapper paddingLeftRight={1}>

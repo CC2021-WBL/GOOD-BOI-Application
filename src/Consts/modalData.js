@@ -63,9 +63,9 @@ const modalData = {
   },
   passReminder: {
     title: 'Przypomnienie wysłane',
-    about: 'Sprawdź podany email',
-    confirmation: 'KLIKNIJ ABY POWRÓCIĆ DO STRONY LOGOWANIA',
-    back: 'Przypomnij raz jeszcze ',
+    about: 'Sprawdź folder spam w swojej skrzynce pocztowej',
+    confirmation: '',
+    back: ' WRÓĆ DO STRONY LOGOWANIA',
     colors: {
       background: `modalGoodRegistrationBG`,
       color: `modalGoodRegistrationC`,
