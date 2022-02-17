@@ -18,6 +18,7 @@ const ForgotPassForm = () => {
 
   const [errors, setErrors] = useState({ email: '' });
 
+  // TODO: db check if email is saved
   const validateForm = () => {
     let isFormValid = true;
     if (!emailRgx.test(email)) {
