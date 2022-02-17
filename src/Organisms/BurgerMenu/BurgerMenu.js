@@ -74,6 +74,7 @@ const BurgerMenu = ({ open, setOpen }) => {
           to="/"
           className="link"
           onClick={() => {
+            setOpen(false);
             dispatch({ type: 'LOG_OUT', index: 1 });
           }}
         >
