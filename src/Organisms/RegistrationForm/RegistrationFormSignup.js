@@ -12,10 +12,13 @@ const RegistrationFormSignup = ({
   editData,
   editEmail,
   editPassword,
+  // eslint-disable-next-line react/prop-types
+  initialState,
 }) => {
   const { handleInputChange, submitHandler, formData, errors } = useForm(
     submitForm,
     validateData,
+    initialState,
   );
 
   if (editData) {
@@ -27,7 +30,7 @@ const RegistrationFormSignup = ({
           type="text"
           placeholder="&#xF007; Imię"
           id="firstname"
-          value={formData.firstname}
+          value={formData.participantName}
           onChange={handleInputChange}
           className={errors.firstname ? 'red-border' : 'none'}
         />
@@ -38,7 +41,7 @@ const RegistrationFormSignup = ({
           type="text"
           placeholder="&#xF007; Nazwisko"
           id="surname"
-          value={formData.surname}
+          value={formData.participantSurname}
           onChange={handleInputChange}
           className={errors.surname ? 'red-border' : 'none'}
         />
@@ -49,7 +52,7 @@ const RegistrationFormSignup = ({
           type="text"
           placeholder="&#xf015; Ulica i nr domu"
           id="street"
-          value={formData.street}
+          value={formData.address.street}
           onChange={handleInputChange}
           className={errors.street ? 'red-border' : 'none'}
         />
@@ -60,7 +63,7 @@ const RegistrationFormSignup = ({
           type="text"
           placeholder="&#xf015; Kod Pocztowy"
           id="zipcode"
-          value={formData.zipcode}
+          value={formData.address.postalCode}
           onChange={handleInputChange}
           className={errors.zipcode ? 'red-border' : 'none'}
         />
@@ -71,7 +74,7 @@ const RegistrationFormSignup = ({
           type="text"
           placeholder="&#xf015; Miasto"
           id="city"
-          value={formData.city}
+          value={formData.address.city}
           onChange={handleInputChange}
           className={errors.city ? 'red-border' : 'none'}
         />

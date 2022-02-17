@@ -1,21 +1,20 @@
 import { useEffect, useState } from 'react';
 
-const useForm = (callback, validateData) => {
-  const initialState = {
-    firstname: '',
-    surname: '',
-    email: '',
-    password: '',
-    repeatpass: '',
-    street: '',
-    zipcode: '',
-    city: '',
-  };
+const useForm = (callback, validateData, initialState) => {
+  // const initialState = {
+  //   firstname: '',
+  //   surname: '',
+  //   email: '',
+  //   password: '',
+  //   repeatpass: '',
+  //   street: '',
+  //   zipcode: '',
+  //   city: '',
+  // };
 
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const handleInputChange = (event) => {
     const { id, value } = event.target;
     setFormData({

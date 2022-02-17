@@ -8,7 +8,8 @@ import createUserInitialData from '../../Tools/createUserInitialData';
 import participants from '../../Data/MongoDBMock/participants';
 import { UserDataContext } from '../../Context/UserDataContext';
 
-const UserProfileData = ({ withEdit }) => {
+// eslint-disable-next-line react/prop-types
+const UserProfileData = ({ withEdit, initialState }) => {
   const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
   const { userId, userName, userSurname, isAuthenticated } = state;
@@ -79,7 +80,13 @@ const UserProfileData = ({ withEdit }) => {
           </button>
         )}
       </UserProfileDataStyled>
-      {toggle && <RegistrationFormSignup submitForm={submitForm} editData />}
+      {toggle && (
+        <RegistrationFormSignup
+          submitForm={submitForm}
+          editData
+          initialState={initialState}
+        />
+      )}
     </>
   );
 };

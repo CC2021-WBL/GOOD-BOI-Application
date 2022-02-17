@@ -4,7 +4,15 @@ import { useState } from 'react';
 import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
 import UserFieldStyled from './UserFieldStyled';
 
-const UserField = ({ email, password, text, userEmail, userPassword }) => {
+const UserField = ({
+  email,
+  password,
+  text,
+  userEmail,
+  userPassword,
+  // eslint-disable-next-line react/prop-types
+  initialState,
+}) => {
   const [toggle, setToggle] = useState(false);
 
   const toggleHandler = () => {
@@ -22,10 +30,18 @@ const UserField = ({ email, password, text, userEmail, userPassword }) => {
         </button>
       </UserFieldStyled>
       {toggle && email && (
-        <RegistrationFormSignup submitForm={submitForm} editEmail />
+        <RegistrationFormSignup
+          submitForm={submitForm}
+          editEmail
+          initialState={initialState}
+        />
       )}
       {toggle && password && (
-        <RegistrationFormSignup submitForm={submitForm} editPassword />
+        <RegistrationFormSignup
+          submitForm={submitForm}
+          editPassword
+          initialState={initialState}
+        />
       )}
     </>
   );

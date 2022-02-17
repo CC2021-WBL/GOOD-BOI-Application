@@ -23,12 +23,18 @@ const UserData = () => {
   return (
     <>
       <ColumnWrapper paddingLeftRight={1}>
-        <ProfileCard withEdit />
-        <UserField text="zmień email" email userEmail={userObject.email} />
+        <ProfileCard withEdit initialState={userObject} />
+        <UserField
+          text="zmień email"
+          email
+          userEmail={userObject.email}
+          initialState={userObject}
+        />
         <UserField
           text="zmień hasło"
           password
           userPassword={userObject.password}
+          initialState={userObject}
         />
       </ColumnWrapper>
     </>
