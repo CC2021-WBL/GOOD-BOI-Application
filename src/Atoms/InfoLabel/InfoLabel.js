@@ -1,3 +1,7 @@
+/* eslint-disable no-unused-vars */
+
+import { useEffect, useRef, useState } from 'react';
+
 import InfoLabelStyled from './InfoLabelStyled';
 import PropTypes from 'prop-types';
 import { COLORSMOTIVE as c } from '../../Consts/infoLabelConsts';

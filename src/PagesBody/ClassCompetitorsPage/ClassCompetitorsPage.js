@@ -7,6 +7,8 @@ import results from '../../Data/MongoDBMock/results';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
+const complentessSet = new Set();
+
 const ClassCompetitorsPage = () => {
   const { contestId, classId } = useParams();
   const navigate = useNavigate();
@@ -15,7 +17,10 @@ const ClassCompetitorsPage = () => {
   const exercisesAmount = CLASSES[classId].exercises.length;
 
   function onClassFinishClick() {
-    navigate;
+    const isClassCompleted = complentessSet.has(false) ? false : true;
+    navigate(`/contests/${contestId}/classes`, {
+      state: { [classId]: isClassCompleted },
+    });
   }
 
   return (
@@ -30,6 +35,12 @@ const ClassCompetitorsPage = () => {
         const exercisesCompleted = dogPerformance.exercises.filter(
           (exercise) => exercise.result != null,
         ).length;
+
+        if (exercisesCompleted === exercisesAmount) {
+          complentessSet.add('true');
+        } else {
+          complentessSet.add('false');
+        }
 
         return (
           <ClassOrDogButton
