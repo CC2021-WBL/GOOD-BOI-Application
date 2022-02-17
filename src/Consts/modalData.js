@@ -61,6 +61,16 @@ const modalData = {
       color: `modalBadRegistrationC`,
     },
   },
+  passReminder: {
+    title: 'Przypomnienie wysłane',
+    about: 'Sprawdź podany email',
+    confirmation: 'KLIKNIJ ABY POWRÓCIĆ DO STRONY LOGOWANIA',
+    back: 'Przypomnij raz jeszcze ',
+    colors: {
+      background: `modalGoodRegistrationBG`,
+      color: `modalGoodRegistrationC`,
+    },
+  },
 };
 
 export default modalData;
