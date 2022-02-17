@@ -71,7 +71,7 @@ const ForgotPassForm = () => {
         <FormWrapper onSubmit={handleSubmit}>
           <p className="forgot-pass">Zapomniałeś hasła ?</p>
           <div className="forgot-pass-text">
-            Wpisz email na który mamy wysłać nowe hasło
+            Podaj email na który mamy wysłać przypomnienie
           </div>
           <InputField
             labelText="Email"
@@ -87,7 +87,7 @@ const ForgotPassForm = () => {
           {errors && <p>{errors.email}</p>}
           <MainButton
             primary
-            text="Resetuj Hasło"
+            text="Przypomnij Hasło"
             onClick={openPassReminderModal}
           />
         </FormWrapper>
