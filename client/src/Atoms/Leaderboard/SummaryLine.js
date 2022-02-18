@@ -1,5 +1,5 @@
 import SummaryLineStyled from './SummaryLineStyled';
-import calculateExerciseScore from './../../Tools/calculateExerciseScore';
+import calculateExerciseScore from '../../Tools/calculateExerciseScore';
 import checkIfDisqualified from '../../Tools/checkIfDisqualified';
 import penaltyScore from '../../Tools/penaltyScoreCalc';
 import propTypes from 'prop-types';

@@ -2,7 +2,7 @@ import propTypes from 'prop-types';
 import { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import ErrorPageGraphic from '../../src/Assets/ErrorPageGraphic.png';
+import ErrorPageGraphic from '../Assets/ErrorPageGraphic.png';
 import NotFoundPageWrapperStyled from '../Organisms/NotFoundContent/NotFoundPageWrapperStyled';
 
 export class ErrorBoundary extends Component {

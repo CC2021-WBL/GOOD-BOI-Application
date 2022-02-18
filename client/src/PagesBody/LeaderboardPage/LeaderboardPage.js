@@ -1,6 +1,6 @@
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import LeaderboardList from './../../Molecules/LeaderboardList/LeaderboardList';
-import MainButtonStyled from './../../Atoms/MainButton/MainButton';
+import LeaderboardList from '../../Molecules/LeaderboardList/LeaderboardList';
+import MainButtonStyled from '../../Atoms/MainButton/MainButton';
 import { useParams } from 'react-router-dom';
 
 const LeaderboardPage = () => {

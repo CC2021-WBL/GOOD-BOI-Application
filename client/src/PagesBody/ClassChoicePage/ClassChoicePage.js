@@ -4,7 +4,7 @@ import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import { ContestContext } from '../../Context/ContestContext';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import MainButton from '../../Atoms/MainButton/MainButton';
-import contests from './../../Data/MongoDBMock/contests';
+import contests from '../../Data/MongoDBMock/contests';
 import { useLocation } from 'react-router-dom';
 
 const ClassChoicePage = () => {

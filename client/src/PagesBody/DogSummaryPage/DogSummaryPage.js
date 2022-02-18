@@ -2,7 +2,7 @@ import { useLocation, useParams } from 'react-router-dom';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import LeaderboardList from '../../Molecules/LeaderboardList/LeaderboardList';
-import MainButton from './../../Atoms/MainButton/MainButton';
+import MainButton from '../../Atoms/MainButton/MainButton';
 import PenaltyOrDisqualifiedLine from '../../Atoms/Leaderboard/PenaltyOrDisqualifiedLine';
 import SummaryLine from '../../Atoms/Leaderboard/SummaryLine';
 
