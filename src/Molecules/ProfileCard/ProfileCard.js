@@ -3,7 +3,6 @@ import propTypes from 'prop-types';
 import ProfileCardStyled from './ProfileCardStyled';
 import UserProfileData from '../../Atoms/UserProfileData/UserProfileData';
 
-// eslint-disable-next-line react/prop-types
 const ProfileCard = ({ withEdit, initialState }) => {
   return (
     <>
@@ -22,6 +21,7 @@ const ProfileCard = ({ withEdit, initialState }) => {
 ProfileCard.propTypes = {
   userData: propTypes.object,
   withEdit: propTypes.bool,
+  initialState: propTypes.object,
 };
 
 export default ProfileCard;
