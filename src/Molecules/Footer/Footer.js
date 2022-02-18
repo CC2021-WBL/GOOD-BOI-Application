@@ -30,7 +30,7 @@ const Footer = ({ withSettings }) => {
   const height = useWindowHeight();
 
   // windows.innerHeight changes when virtual keyboard popping up, when so - hide the footer
-  if (Math.abs(initHeight - height.height) <= 10) {
+  if (Math.abs(initHeight - height.height) <= 100) {
     return (
       <FooterStyled>
         <a
