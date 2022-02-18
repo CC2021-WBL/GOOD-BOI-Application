@@ -10,7 +10,7 @@
     }
   ],
 
-  "rewrites": [
+  "routes": [
     {
       "source": "/(.*)",
       "destination": "/server/server.js"
