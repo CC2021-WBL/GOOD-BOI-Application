@@ -7,10 +7,11 @@ import UserFieldStyled from './UserFieldStyled';
 const UserField = ({
   email,
   password,
+  phoneNumber,
   text,
   userEmail,
   userPassword,
-  // eslint-disable-next-line react/prop-types
+  userPhoneNumber,
   initialState,
 }) => {
   const [toggle, setToggle] = useState(false);
@@ -25,6 +26,7 @@ const UserField = ({
       <UserFieldStyled>
         {email && <p>{userEmail}</p>}
         {password && <p>{userPassword}</p>}
+        {phoneNumber && <p>{userPhoneNumber}</p>}
         <button className="edit-btn" onClick={toggleHandler} toggle="true">
           {text}
         </button>
@@ -43,6 +45,13 @@ const UserField = ({
           initialState={initialState}
         />
       )}
+      {toggle && phoneNumber && (
+        <RegistrationFormSignup
+          submitForm={submitForm}
+          editPhoneNumber
+          initialState={initialState}
+        />
+      )}
     </>
   );
 };
@@ -53,8 +62,11 @@ UserField.propTypes = {
   text: propTypes.string,
   data: propTypes.string,
   password: propTypes.bool,
+  phoneNumber: propTypes.bool,
   userEmail: propTypes.string,
   userPassword: propTypes.string,
+  userPhoneNumber: propTypes.number,
+  initialState: propTypes.object,
 };
 
 export default UserField;

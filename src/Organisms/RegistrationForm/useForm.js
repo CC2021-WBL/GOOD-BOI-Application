@@ -1,16 +1,24 @@
 import { useEffect, useState } from 'react';
 
 const useForm = (callback, validateData, initialState) => {
-  // const initialState = {
-  //   firstname: '',
-  //   surname: '',
-  //   email: '',
-  //   password: '',
-  //   repeatpass: '',
-  //   street: '',
-  //   zipcode: '',
-  //   city: '',
-  // };
+  const initialStateMock = {
+    participantName: '',
+    participantSurname: '',
+    email: '',
+    password: '',
+    repeatpass: '',
+    phoneNumber: '',
+    address: {
+      country: '',
+      city: '',
+      street: '',
+      numberOfHouse: '',
+      postalCode: '',
+    },
+  };
+  if (!initialState) {
+    initialState = initialStateMock;
+  }
 
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState({});

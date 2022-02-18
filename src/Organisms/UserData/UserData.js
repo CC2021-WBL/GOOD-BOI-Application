@@ -36,6 +36,12 @@ const UserData = () => {
           userPassword={userObject.password}
           initialState={userObject}
         />
+        <UserField
+          text="zmień numer telefonu"
+          phoneNumber
+          userPhoneNumber={userObject.phoneNumber}
+          initialState={userObject}
+        />
       </ColumnWrapper>
     </>
   );
