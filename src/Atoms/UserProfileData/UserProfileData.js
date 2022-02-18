@@ -8,7 +8,6 @@ import createUserInitialData from '../../Tools/createUserInitialData';
 import participants from '../../Data/MongoDBMock/participants';
 import { UserDataContext } from '../../Context/UserDataContext';
 
-// eslint-disable-next-line react/prop-types
 const UserProfileData = ({ withEdit, initialState }) => {
   const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
@@ -100,6 +99,7 @@ UserProfileData.propTypes = {
     roles: propTypes.arrayOf(propTypes.string),
   }),
   withEdit: propTypes.bool,
+  initialState: propTypes.object,
 };
 
 export default UserProfileData;
