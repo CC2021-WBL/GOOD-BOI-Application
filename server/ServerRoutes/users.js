@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Participant = require('../ServerModel/Participant');
+const Participant = require("../ServerModel/Participant");
 
 //Submit data of user
-router.post('/register', async (req, res) => {
+router.post("/register", async (req, res) => {
   const participant = new Participant({
     email: req.body.email,
     password: req.body.password,
@@ -22,12 +22,12 @@ router.post('/register', async (req, res) => {
 });
 
 //Login user
-router.post('/login', (req, res) => {
-  res.send('login');
+router.post("/login", (req, res) => {
+  res.send("login");
 });
 
 //Update some data of current user
-router.patch('/:userId', async (req, res) => {
+router.patch("/:userId", async (req, res) => {
   try {
     const user = await Participant.findById(req.params.userId);
     user.phoneNumber = req.body.phoneNumber;
@@ -38,7 +38,7 @@ router.patch('/:userId', async (req, res) => {
 });
 
 //Get current user data
-router.get('/:userId', async (req, res) => {
+router.get("/:userId", async (req, res) => {
   try {
     const user = await Participant.findById(req.params.userId);
     console.log(user);
@@ -48,9 +48,9 @@ router.get('/:userId', async (req, res) => {
   }
 });
 
-router.get('/test/test', async (req, res) => {
+router.get("/test/test", async (req, res) => {
   try {
-    const user = await Participant.findByName('Matylda');
+    const user = await Participant.findByName("Matylda");
     res.send(user);
   } catch (error) {
     console.log(error);
