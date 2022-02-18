@@ -61,6 +61,16 @@ const modalData = {
       color: `modalBadRegistrationC`,
     },
   },
+  passReminder: {
+    title: 'Przypomnienie wysłane',
+    about: 'Sprawdź folder spam w swojej skrzynce pocztowej',
+    confirmation: '',
+    back: ' WRÓĆ DO STRONY LOGOWANIA',
+    colors: {
+      background: `modalGoodRegistrationBG`,
+      color: `modalGoodRegistrationC`,
+    },
+  },
 };
 
 export default modalData;
