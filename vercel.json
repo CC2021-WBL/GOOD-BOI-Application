@@ -6,10 +6,10 @@
     }
   ],
 
-  "rewrites": [
+  "routes": [
     {
       "source": "/(.*)",
-      "destination": "/"
+      "destination": "./server/server.js"
     }
   ]
 }

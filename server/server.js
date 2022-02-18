@@ -14,7 +14,6 @@ const PORT = process.env.PORT || 27020;
 //Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "../client/build")))
 app.use(helmet());
 app.use(cookieParser());
 
@@ -66,6 +65,7 @@ app.get('/api/test', (req, res) => {
 
 //Inject ReactApp into
 app.get("/", (req, res) => {
+  app.use(express.static(path.join(__dirname, "../client/build")));
   res.sendFile(
     path.join(__dirname, "../client/build/index.html")),
     function (err) {
