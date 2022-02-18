@@ -1,0 +1,22 @@
+{
+  "name": "good-boi-app-full",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm start\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CC2021-WBL/GOOD-BOI-Application.git"
+  },
+  "author": "devsOnTheWaves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CC2021-WBL/GOOD-BOI-Application/issues"
+  },
+  "homepage": "https://github.com/CC2021-WBL/GOOD-BOI-Application#readme",
+  "dependencies": {
+    "concurrently": "^7.0.0"
+  }
+}
