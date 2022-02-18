@@ -1,5 +1,5 @@
 const express = require('express');
-const Contest = require('../ServerModel/Contest');
+const Contest = require('../Model/Contest');
 
 const router = express.Router();
 

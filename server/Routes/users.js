@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Participant = require("../ServerModel/Participant");
+const Participant = require("../Model/Participant");
 
 //Submit data of user
 router.post("/register", async (req, res) => {

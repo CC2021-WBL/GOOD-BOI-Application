@@ -5,7 +5,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "./client/public",
+      "src": "./client/build",
       "use": "@vercel/static"
     }
   ],
@@ -13,7 +13,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/server/server.js"
+      "destination": "/"
     }
   ]
 }

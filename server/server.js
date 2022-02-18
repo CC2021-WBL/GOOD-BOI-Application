@@ -14,15 +14,14 @@ const PORT = process.env.PORT || 27020;
 //Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "../client/public")))
-// app.use(helmet());
-// app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "../client/build")))
+app.use(helmet());
+app.use(cookieParser());
 
 // Import routes
-const contestsRoute = require('./ServerRoutes/contests');
-const userRoute = require('./ServerRoutes/users');
-const dogsRoute = require('./ServerRoutes/dogs');
-
+const contestsRoute = require('./Routes/contests');
+const userRoute = require('./Routes/users');
+const dogsRoute = require('./Routes/dogs');
 
 //Connect to DB
 dotenv.config();
@@ -35,7 +34,6 @@ try {
 } catch (error) {
   console.error(error);
 }
-
 
 //Route Middleware
 app.use('/api/users', userRoute);
@@ -57,18 +55,25 @@ const swaggerOptions = {
       }
     ],
   },
-  apis: ["./ServerRoutes/*.js"]
+  apis: ["./Routes/*.js"]
 }
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerOptions)))
 
-
-//Routes
-// app.get('/', (req, res) => {
-//   res.send('Homepage');
-// });
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/public", "index.html"));
+//Test route
+app.get('/api/test', (req, res) => {
+  res.send('test');
 });
 
+//Inject ReactApp into
+app.get("/", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "../client/build/index.html")),
+    function (err) {
+      if (err) {
+        res.status(500).send(err)
+      }
+    }
+});
+
+//This text will console.log after every save of server.js
 app.listen(PORT, () => console.log(`The server is running on the port ${PORT}`));

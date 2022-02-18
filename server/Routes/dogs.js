@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const Dog = require("../ServerModel/Dog");
-const Participant = require("../ServerModel/Participant");
+const Dog = require("../Model/Dog");
+const Participant = require("../Model/Participant");
 
 // Submit data from dog-form
 router.post("/register/:userId", async (req, res) => {
