@@ -54,6 +54,27 @@ router.patch("/:dogId", async (req, res) => {
   }
 });
 
+//Update all data of current dog
+router.put("/:dogId", async (req, res) => {
+  try {
+    const newData = Object.keys(req.body);
+    if (newData.length === 0) {
+      res.status(204).json({ message: "no data to update" });
+    }
+    const dog = await Dog.findById(req.params.dogId);
+    if (!dog) {
+      res.status(404).json({ message: "no dog with current ID in DB" });
+    }
+    newData.forEach((element) => {
+      dog[element] = req.body[element];
+    });
+    await dog.save();
+    res.status(201).send(dog);
+  } catch (error) {
+    res.json({ message: error });
+  }
+});
+
 // Get data of current dog
 router.get("/:dogId", async (req, res) => {
   try {
@@ -72,9 +93,12 @@ router.get("/:dogId", async (req, res) => {
 router.delete("/:dogId", async (req, res) => {
   try {
     const removedDog = await Dog.deleteOne({ _id: req.params.dogId });
+    if (!removedDog) {
+      res.status(404).json({ message: "no data with this ID" });
+    }
     res.send(removedDog);
   } catch (error) {
-    res.json({ message: error });
+    res.status(502).res.json({ message: error });
   }
 });
 
