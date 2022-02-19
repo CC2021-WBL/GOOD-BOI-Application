@@ -40,20 +40,26 @@ router.patch("/:userId", async (req, res) => {
     await user.save();
     res.status(201).send(user);
   } catch (error) {
-    res.status(500).res.send(error.message);
+    res.status(500).send(error.message);
   }
 });
 
 //Get current user data
 router.get("/:userId", async (req, res) => {
   try {
+    /* let user = {};
+    if ((req.query.select = "roles")) {
+      user = await Participant.findRolesByUserId(req.params.userId);
+    } else {
+      user = await Participant.findById(req.params.userId);
+    } */
     const user = await Participant.findById(req.params.userId);
     if (!user) {
       res.status(204).json({ message: "not found user with that ID" });
     }
     res.status(200).send(user);
   } catch (error) {
-    res.status(404).res.send(error.message);
+    res.status(404).send(error.message);
   }
 });
 
@@ -67,7 +73,7 @@ router.get("/address/:userId", async (req, res) => {
     }
     res.status(200).send(user);
   } catch (error) {
-    res.status(404).res.send(error.message);
+    res.status(404).send(error.message);
   }
 });
 
