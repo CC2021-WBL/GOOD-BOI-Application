@@ -10,7 +10,7 @@ router.post("/register", async (req, res) => {
     phoneNumber: req.body.phoneNumber,
     participantName: req.body.participantName,
     participantSurname: req.body.participantSurname,
-    address: req.body.adress,
+    address: req.body.address,
   });
   try {
     const savedUser = await participant.save();
@@ -21,7 +21,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-//Login user
+// TODO: Login user
 router.post("/login", (req, res) => {
   res.send("login");
 });
@@ -29,11 +29,18 @@ router.post("/login", (req, res) => {
 //Update some data of current user
 router.patch("/:userId", async (req, res) => {
   try {
+    const propsToUpdate = Object.keys(req.body);
+    if (propsToUpdate.length === 0) {
+      res.status(204).json({ message: "no data to update" });
+    }
     const user = await Participant.findById(req.params.userId);
-    user.phoneNumber = req.body.phoneNumber;
+    propsToUpdate.forEach((element) => {
+      user[element] = req.body[element];
+    });
     await user.save();
+    res.status(201).send(user);
   } catch (error) {
-    res.send(error.message);
+    res.status(500).res.send(error.message);
   }
 });
 
@@ -41,21 +48,26 @@ router.patch("/:userId", async (req, res) => {
 router.get("/:userId", async (req, res) => {
   try {
     const user = await Participant.findById(req.params.userId);
-    console.log(user);
+    if (!user) {
+      res.status(204).json({ message: "not found user with that ID" });
+    }
     res.status(200).send(user);
   } catch (error) {
-    res.send(error.message);
+    res.status(404).res.send(error.message);
   }
 });
 
-router.get("/test/test", async (req, res) => {
+router.get("/address/:userId", async (req, res) => {
   try {
-    const user = await Participant.findByName("Matylda");
-    res.send(user);
+    const user = await Participant.findById(req.params.userId).select(
+      "address"
+    );
+    if (!user) {
+      res.status(204).json({ message: "not found user or his address" });
+    }
+    res.status(200).send(user);
   } catch (error) {
-    console.log(error);
-
-    res.send(error.message);
+    res.status(404).res.send(error.message);
   }
 });
 

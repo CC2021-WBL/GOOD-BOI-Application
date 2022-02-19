@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const ParticipantDogSchema = new mongoose.Schema({
   dogId: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: 'Dog',
+    ref: "Dog",
     required: true,
   },
   dogName: {
@@ -44,7 +44,7 @@ const ParticipantSchema = new mongoose.Schema({
     required: true,
     minlength: 2,
   },
-  adress: {
+  address: {
     country: String,
     city: String,
     street: String,
@@ -56,8 +56,8 @@ const ParticipantSchema = new mongoose.Schema({
   },
   portalRoles: {
     type: [String],
-    default: ['participant'],
-    enum: ['staff', 'participant', 'manager', 'admin'],
+    default: ["participant"],
+    enum: ["staff", "participant", "manager", "admin"],
   },
 });
 
@@ -66,7 +66,7 @@ ParticipantSchema.methods.sayHi = function () {
 };
 
 ParticipantSchema.statics.findByName = function (participantName) {
-  return this.find({participantName: new RegExp(participantName, 'i')});
+  return this.find({ participantName: new RegExp(participantName, "i") });
 };
 
-module.exports = mongoose.model('Participant', ParticipantSchema);
+module.exports = mongoose.model("Participant", ParticipantSchema);
