@@ -1,29 +1,30 @@
 import { Copy, DevsLogo, FooterStyled, LogoStyled } from './FooterStyled';
-import { useContext, useEffect, useState } from 'react';
 
 import FooterProfileButton from '../../Atoms/FooterProfileButton/FooterProfileButton';
 import { UserDataContext } from '../../Context/UserDataContext';
 import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
 import propTypes from 'prop-types';
+import { useContext } from 'react';
+import useWindowHeight from '../../Tools/useWindowHeight';
 
 const initHeight = window.innerHeight;
 
-function useWindowHeight() {
-  const [windowHeight, setWindowHeight] = useState({
-    height: window.innerHeight,
-  });
-  useEffect(() => {
-    function handleResize() {
-      setWindowHeight({
-        height: window.innerHeight,
-      });
-    }
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-  return windowHeight;
-}
+// function useWindowHeight() {
+//   const [windowHeight, setWindowHeight] = useState({
+//     height: window.innerHeight,
+//   });
+//   useEffect(() => {
+//     function handleResize() {
+//       setWindowHeight({
+//         height: window.innerHeight,
+//       });
+//     }
+//     window.addEventListener('resize', handleResize);
+//     handleResize();
+//     return () => window.removeEventListener('resize', handleResize);
+//   }, []);
+//   return windowHeight;
+// }
 const Footer = ({ withSettings }) => {
   const { state } = useContext(UserDataContext);
   const { isAuthenticated } = state;
