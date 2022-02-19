@@ -25,22 +25,30 @@ router.post("/register/:userId", async (req, res) => {
       dogId: savedDog._id.valueOf(),
       dogName: savedDog.dogName,
     };
+    console.log(dogObject);
     user.dogs.push(dogObject);
-    await user.save();
+    console.log(user.dogs);
+    // await user.save();
     res.status(201).json(savedDog);
   } catch (error) {
+    console.log(error);
     res.status(400).json({ message: error });
   }
 });
 
-//Update current dog- mock option, updates just current value, not overwrites whole document / patch lub put
+//Update some props of current dog
 router.patch("/:dogId", async (req, res) => {
   try {
-    const updatedDog = await Dog.updateOne(
-      { _id: req.params.dogId },
-      { $set: { dogName: req.body.title } }
-    );
-    res.json(updatedDog);
+    const propsToUpdate = Object.keys(req.body);
+    if (propsToUpdate.length === 0) {
+      res.status(204).json({ message: "no data to update" });
+    }
+    const dog = await Dog.findById(req.params.dogId);
+    propsToUpdate.forEach((element) => {
+      dog[element] = req.body[element];
+    });
+    await dog.save();
+    res.status(201).send(dog);
   } catch (error) {
     res.json({ message: error });
   }
@@ -50,18 +58,21 @@ router.patch("/:dogId", async (req, res) => {
 router.get("/:dogId", async (req, res) => {
   try {
     const dogData = await Dog.findById(req.params.dogId);
-    res.send(dogData);
+    if (!dogData) {
+      res.status(204).end();
+    }
+    res.status(200).send(dogData);
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: error });
   }
 });
 
-//Delete current dog - mock option
+//Delete current dog
 router.delete("/:dogId", async (req, res) => {
   try {
-    const removedDog = await Dog.remove({ _id: req.params.dogId });
-    res.json(removedDog);
+    const removedDog = await Dog.deleteOne({ _id: req.params.dogId });
+    res.send(removedDog);
   } catch (error) {
     res.json({ message: error });
   }
