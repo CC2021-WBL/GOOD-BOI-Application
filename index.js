@@ -74,5 +74,5 @@ app.get("*", (req, res) => {
     }
 });
 
-//This text will console.log after every save of server.js
+//This text will console.log after every save of index.js
 app.listen(PORT, () => console.log(`The server is running on the port ${PORT}`));
