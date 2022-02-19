@@ -25,10 +25,25 @@ const useForm = (callback, validateData, initialState) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const handleInputChange = (event) => {
     const { id, value } = event.target;
-    setFormData({
-      ...formData,
-      [id]: value,
-    });
+
+    setFormData(
+      ['street', 'postalCode', 'city', 'country', 'numberOfHouse'].includes(id)
+        ? {
+            ...formData,
+            address: {
+              ...formData.address,
+              [id]: value,
+            },
+          }
+        : {
+            ...formData,
+            [id]: value,
+            address: {
+              ...formData.address,
+              [id]: value,
+            },
+          },
+    );
   };
 
   const submitHandler = (event) => {
