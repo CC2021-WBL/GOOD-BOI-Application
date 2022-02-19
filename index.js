@@ -18,9 +18,9 @@ app.use(helmet());
 app.use(cookieParser());
 
 // Import routes
-const contestsRoute = require('./Routes/contests');
-const userRoute = require('./Routes/users');
-const dogsRoute = require('./Routes/dogs');
+const contestsRoute = require('./server/Routes/contests');
+const userRoute = require('./server/Routes/users');
+const dogsRoute = require('./server/Routes/dogs');
 
 //Connect to DB
 dotenv.config();
@@ -63,8 +63,8 @@ app.get('/api/test', (req, res) => {
   res.send('test');
 });
 
-app.use(express.static(path.join(__dirname, "client", "build")));
 //Inject ReactApp into
+app.use(express.static(path.join(__dirname, "client", "build")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html")),
     function (err) {
