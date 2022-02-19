@@ -63,9 +63,9 @@ app.get('/api/test', (req, res) => {
   res.send('test');
 });
 
+app.use(express.static(path.join(__dirname, "../client/build")));
 //Inject ReactApp into
 app.get("/", (req, res) => {
-  app.use(express.static(path.join(__dirname, "../client/build")));
   res.sendFile(
     path.join(__dirname, "../client/build/index.html")),
     function (err) {
