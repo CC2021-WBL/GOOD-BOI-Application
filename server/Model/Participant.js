@@ -1,15 +1,18 @@
 const mongoose = require("mongoose");
 
-const ParticipantDogSchema = new mongoose.Schema({
-  dogId: {
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: "Dog",
-    required: true,
+const ParticipantDogSchema = new mongoose.Schema(
+  {
+    dogId: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "Dog",
+      required: true,
+    },
+    dogName: {
+      type: String,
+    },
   },
-  dogName: {
-    type: String,
-  },
-});
+  { _id: false }
+);
 
 const ParticipantSchema = new mongoose.Schema({
   email: {

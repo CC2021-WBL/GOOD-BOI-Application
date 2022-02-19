@@ -21,14 +21,16 @@ router.post("/register/:userId", async (req, res) => {
   try {
     const savedDog = await dog.save();
     const user = await Participant.findById(req.params.userId);
+    const doggoId = savedDog._id.valueOf();
+    console.log(doggoId);
     const dogObject = {
-      dogId: savedDog._id.valueOf(),
+      dogId: doggoId,
       dogName: savedDog.dogName,
     };
-    console.log(dogObject);
+
     user.dogs.push(dogObject);
     console.log(user.dogs);
-    // await user.save();
+    await user.save();
     res.status(201).json(savedDog);
   } catch (error) {
     console.log(error);
