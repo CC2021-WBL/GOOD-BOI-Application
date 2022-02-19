@@ -63,11 +63,10 @@ app.get('/api/test', (req, res) => {
   res.send('test');
 });
 
-app.use(express.static(path.join(__dirname, "../client/build")));
+app.use(express.static(path.join(__dirname, "client", "build")));
 //Inject ReactApp into
-app.get("/", (req, res) => {
-  res.sendFile(
-    path.join(__dirname, "../client/build/index.html")),
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html")),
     function (err) {
       if (err) {
         res.status(500).send(err)
