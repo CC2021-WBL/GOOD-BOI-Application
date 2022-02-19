@@ -9,22 +9,6 @@ import useWindowHeight from '../../Tools/useWindowHeight';
 
 const initHeight = window.innerHeight;
 
-// function useWindowHeight() {
-//   const [windowHeight, setWindowHeight] = useState({
-//     height: window.innerHeight,
-//   });
-//   useEffect(() => {
-//     function handleResize() {
-//       setWindowHeight({
-//         height: window.innerHeight,
-//       });
-//     }
-//     window.addEventListener('resize', handleResize);
-//     handleResize();
-//     return () => window.removeEventListener('resize', handleResize);
-//   }, []);
-//   return windowHeight;
-// }
 const Footer = ({ withSettings }) => {
   const { state } = useContext(UserDataContext);
   const { isAuthenticated } = state;
