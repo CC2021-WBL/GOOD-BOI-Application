@@ -18,9 +18,9 @@ app.use(helmet());
 app.use(cookieParser());
 
 // Import routes
-const contestsRoute = require('./Routes/contests');
-const userRoute = require('./Routes/users');
-const dogsRoute = require('./Routes/dogs');
+const contestsRoute = require('./server/Routes/contests');
+const userRoute = require('./server/Routes/users');
+const dogsRoute = require('./server/Routes/dogs');
 
 //Connect to DB
 dotenv.config();
@@ -64,10 +64,9 @@ app.get('/api/test', (req, res) => {
 });
 
 //Inject ReactApp into
-app.get("/", (req, res) => {
-  app.use(express.static(path.join(__dirname, "../client/build")));
-  res.sendFile(
-    path.join(__dirname, "../client/build/index.html")),
+app.use(express.static(path.join(__dirname, "client", "build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html")),
     function (err) {
       if (err) {
         res.status(500).send(err)
@@ -75,5 +74,5 @@ app.get("/", (req, res) => {
     }
 });
 
-//This text will console.log after every save of server.js
+//This text will console.log after every save of index.js
 app.listen(PORT, () => console.log(`The server is running on the port ${PORT}`));
