@@ -68,8 +68,11 @@ ParticipantSchema.methods.sayHi = function () {
   console.log(`Hi, my name is ${this.participantName}`);
 };
 
-ParticipantSchema.statics.findRolesByUserId = function (participantId) {
-  return this.findById(participantId).select("roles");
+ParticipantSchema.statics.findSomethingByUserId = function (
+  participantId,
+  dataToFind
+) {
+  return this.findById(participantId).select(dataToFind);
 };
 
 module.exports = mongoose.model("Participant", ParticipantSchema);
