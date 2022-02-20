@@ -72,4 +72,15 @@ router.get("/results/:dogId", async (req, res) => {
   res.send("get all results for current dog");
 });
 
+
+//z dogs psy które pod participant zawierają userId
+
+// router.get("user/:userId", async (req, res)=>{
+//   try {
+//       const dogs = await Dog.findById(req.params.userId).select("dogs");
+//       res.status(200).send(dogs);
+//     } catch (error) {
+//       res.send(error.message);
+//     }
+// })
 module.exports = router;
