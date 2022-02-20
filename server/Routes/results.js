@@ -13,7 +13,7 @@ router.get("/:competingPairsId", async (req, res) => {
   res.status(500).send("data for results page");
 });
 
-// update result - mock - works only with DB id in req params, only dogName
+// update result - mock - works only with DB id in req params, only dogName.
 router.patch("/:competingPairsId", async (req, res) => {
   try {
     const updatedResults = await Result.updateOne(
