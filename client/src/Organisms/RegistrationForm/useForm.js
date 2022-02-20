@@ -38,10 +38,6 @@ const useForm = (callback, validateData, initialState) => {
         : {
             ...formData,
             [id]: value,
-            address: {
-              ...formData.address,
-              [id]: value,
-            },
           },
     );
   };
