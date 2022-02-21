@@ -11,13 +11,17 @@ router.get("/:competingPairsId", async (req, res) => {
     res.json({ message: error });
   }
   res.status(500).send("data for results page");
+  aa;
 });
 
-// update result - mock - works only with DB id in req params, only dogName
+// POST -
+
+// update result - mock - only dogName
+// co powinienem dostawać ? jakie klucze powininny być do zmiany ? itd
 router.patch("/:competingPairsId", async (req, res) => {
   try {
     const updatedResults = await Result.updateOne(
-      { _id: req.params.competingPairsId },
+      { competingPairsId: req.params.competingPairsId },
       { $set: { dogName: req.body.dogName } }
     );
     res.json(updatedResults);

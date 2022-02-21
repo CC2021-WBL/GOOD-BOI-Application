@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const resultSchema = new mongoose.Schema({
   contestId: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: 'Contest',
+    ref: "Contest",
     required: true,
   },
   contestName: {
@@ -16,7 +16,7 @@ const resultSchema = new mongoose.Schema({
   },
   dogId: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: 'Dog',
+    ref: "Dog",
     required: true,
   },
   dogName: {
@@ -25,21 +25,25 @@ const resultSchema = new mongoose.Schema({
   },
   participantId: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: 'Participant',
+    ref: "Participant",
     required: true,
   },
   summaryResult: {
     type: Number,
+    default: null,
   },
   prize: {
     type: String,
+    default: null,
   },
   specialState: {
     type: String,
+    default: null,
   },
   exercises: {
     type: [mongoose.SchemaTypes.Mixed],
+    default: [],
   },
 });
 
-module.exports = mongoose.model('Result', resultSchema);
+module.exports = mongoose.model("Result", resultSchema);
