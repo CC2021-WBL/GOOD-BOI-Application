@@ -11,9 +11,11 @@ async function registerParticipant(req, res) {
   });
   try {
     const savedUser = await participant.save();
-    res.status(201).send(savedUser);
+    if (!savedUser) {
+      res.status(400).end();
+    }
+    return savedUser;
   } catch (error) {
-    console.log(error.message);
     res.status(400).send(error.message);
   }
 }
@@ -32,7 +34,7 @@ async function getUserData(req, res) {
     if (!data) {
       res.status(204).json({ message: "not found user with that ID" });
     }
-    res.status(200).send(data);
+    return data;
   } catch (error) {
     res.status(404).send(error.message);
   }
@@ -48,8 +50,11 @@ async function updateUserData(req, res) {
     propsToUpdate.forEach((element) => {
       user[element] = req.body[element];
     });
-    await user.save();
-    res.status(201).send(user);
+    const updatedUser = await user.save();
+    if (!updatedUser) {
+      res.send(400).end();
+    }
+    return updatedUser;
   } catch (error) {
     res.status(500).send(error.message);
   }
