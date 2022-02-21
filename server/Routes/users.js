@@ -59,4 +59,14 @@ router.get("/test/test", async (req, res) => {
   }
 });
 
+router.get('/dogs/:userId', async (req,res)=>{
+  try{
+    const dogs=await Participant.findById(req.params.userId).select("dogs");
+    if(dogs){
+  res.status(200).send(dogs);} else {res.status(404).json({ message: 'no dogs for current user' });}
+} catch (error) {
+  res.status(500).json({ message: error });
+      }
+});
+
 module.exports = router;
