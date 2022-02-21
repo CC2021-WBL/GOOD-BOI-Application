@@ -32,7 +32,7 @@ const resultSchema = new mongoose.Schema({
     type: Number,
     default: null,
   },
-  prize: {
+  evaluation: {
     type: String,
     default: null,
   },
