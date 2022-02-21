@@ -16,41 +16,50 @@ const contests = [
     },
     judges: ['Zuzzana Zezowa'],
     steward: 'Zygfryd Zaduzy',
-    manager: 'Zbyszko Bogdaniec',
+    manager: 'zbyszkobogdaniec55555', // id managera
     feePLN: 110,
+    numberOfApplications: 6,
     participants: ['matylda1234', 'bogdan678', 'zosia9474', 'eustachy123'],
     obedienceClasses: {
       0: [
+        { isFinished: true },
         {
           dogId: 'VIII-40407',
           dogName: 'Woof',
+          particpantId: 'matylda1234',
           competingPairsId: '22-05-01Woof',
         },
         {
           dogId: 'VIII-27165',
           dogName: 'Nosek',
+          particpantId: 'bogdan678',
           competingPairsId: '22-05-01Nosek',
         },
         {
           dogId: 'V-11165',
           dogName: 'Ptysio',
+          particpantId: 'zosia9474',
           competingPairsId: '22-05-01Ptysio',
         },
       ],
       1: [
+        { isFinished: true },
         {
           dogId: 'X-37657',
           dogName: 'Ollie',
+          particpantId: 'eustachy123',
           competingPairsId: '22-05-01Ollie',
         },
         {
           dogId: 'VII-27885',
           dogName: 'Kluska',
+          particpantId: 'matylda1234',
           competingPairsId: '22-05-01Kluska',
         },
         {
           dogId: 'VI-15765',
           dogName: 'Norah',
+          particpantId: 'zosia9474',
           competingPairsId: '22-05-01Norah',
         },
       ],
@@ -73,45 +82,56 @@ const contests = [
     },
     judges: ['Aniela Loczek'],
     steward: 'Bruno Mars',
-    manager: 'Gerwazy Kapusta',
+    manager: 'gerwazykapusta33333', // id managera
     feePLN: 70,
+    numberOfApplications: 6,
     participants: ['matylda1234', 'bogdan678', 'zosia9474', 'eustachy123'],
     obedienceClasses: {
       0: [
+        { isFinished: true },
         {
           dogId: 'VIII-40407',
           dogName: 'Woof',
+          particpantId: 'matylda1234',
           competingPairsId: '21-12-24Woof',
         },
       ],
       1: [
+        { isFinished: true },
         {
           dogId: 'VIII-27165',
           dogName: 'Nosek',
+          particpantId: 'bogdan678',
           competingPairsId: '21-12-24Nosek',
         },
       ],
       2: [
+        { isFinished: true },
         {
           dogId: 'V-11165',
           dogName: 'Ptysio',
+          particpantId: 'zosia9474',
           competingPairsId: '21-12-24Ptysio',
         },
         {
           dogId: 'X-37657',
           dogName: 'Ollie',
+          particpantId: 'eustachy123',
           competingPairsId: '21-12-24Ollie',
         },
       ],
       3: [
+        { isFinished: true },
         {
           dogId: 'VII-27885',
           dogName: 'Kluska',
+          particpantId: 'matylda1234',
           competingPairsId: '21-12-24Kluska',
         },
         {
           dogId: 'VI-15765',
           dogName: 'Norah',
+          particpantId: 'zosia9474',
           competingPairsId: '21-12-24Norah',
         },
       ],
@@ -134,41 +154,50 @@ const contests = [
     },
     judges: ['Alberto Makkaroni'],
     steward: 'Wiesio Kapusta',
-    manager: 'Jagienka Krzywobroda',
+    manager: 'jagienkakrzywobroda333333', // id managera
     feePLN: 90,
+    numberOfApplications: 6,
     participants: ['matylda1234', 'bogdan678', 'zosia9474', 'eustachy123'],
     obedienceClasses: {
       0: [
+        { isFinished: true },
         {
           dogId: 'VIII-40407',
           dogName: 'Woof',
+          particpantId: 'matylda1234',
           competingPairsId: '22-03-22Woof',
         },
         {
           dogId: 'VIII-27165',
           dogName: 'Nosek',
+          particpantId: 'bogdan678',
           competingPairsId: '22-03-22Nosek',
         },
         {
           dogId: 'V-11165',
           dogName: 'Ptysio',
+          particpantId: 'zosia9474',
           competingPairsId: '22-03-22Ptysio',
         },
       ],
       1: [
+        { isFinished: true },
         {
           dogId: 'X-37657',
           dogName: 'Ollie',
+          particpantId: 'eustachy123',
           competingPairsId: '22-03-22Ollie',
         },
         {
           dogId: 'VII-27885',
           dogName: 'Kluska',
+          particpantId: 'matylda1234',
           competingPairsId: '22-03-22Kluska',
         },
         {
           dogId: 'VI-15765',
           dogName: 'Norah',
+          particpantId: 'zosia9474',
           competingPairsId: '22-03-22Norah',
         },
       ],
@@ -191,41 +220,50 @@ const contests = [
     },
     judges: ['Wanda Jurajska'],
     steward: 'Amelia Wielkomiejska',
-    manager: 'Renata Żołądek',
+    manager: 'renatażołądek2222', // id organizatora
     feePLN: 150,
+    numberOfApplications: 6,
     participants: ['matylda1234', 'bogdan678', 'zosia9474', 'eustachy123'],
     obedienceClasses: {
       2: [
+        { isFinished: false },
         {
           dogId: 'VIII-40407',
           dogName: 'Woof',
+          particpantId: 'matylda1234',
           competingPairsId: '22-02-10Woof',
         },
         {
           dogId: 'VIII-27165',
           dogName: 'Nosek',
+          particpantId: 'bogdan678',
           competingPairsId: '22-02-10Nosek',
         },
       ],
       3: [
+        { isFinished: false },
         {
           dogId: 'V-11165',
           dogName: 'Ptysio',
+          particpantId: 'zosia9474',
           competingPairsId: '22-02-10Ptysio',
         },
         {
           dogId: 'X-37657',
           dogName: 'Ollie',
+          particpantId: 'eustachy123',
           competingPairsId: '22-02-10Ollie',
         },
         {
           dogId: 'VII-27885',
           dogName: 'Kluska',
+          particpantId: 'matylda1234',
           competingPairsId: '22-02-10Kluska',
         },
         {
           dogId: 'VI-15765',
           dogName: 'Norah',
+          particpantId: 'zosia9474',
           competingPairsId: '22-02-10Norah',
         },
       ],
