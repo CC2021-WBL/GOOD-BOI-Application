@@ -59,8 +59,9 @@ async function updateAllDogData(req, res) {
     const updatedDog = await dog.save();
     if (!updatedDog) {
       res.status(500).json({ message: "saving error" });
+    } else {
+      return updatedDog;
     }
-    return updatedDog;
   } catch (error) {
     res.send(error.message);
   }
@@ -71,8 +72,9 @@ async function getDogData(req, res) {
     const dogData = await Dog.findById(req.params.dogId);
     if (!dogData) {
       res.status(204).end();
+    } else {
+      return dogData;
     }
-    return dogData;
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: error });
@@ -84,8 +86,9 @@ async function deleteDog(req, res) {
     const removedDog = await Dog.deleteOne({ _id: req.params.dogId });
     if (!removedDog) {
       res.status(404).json({ message: "no data with this ID" });
+    } else {
+      return removedDog;
     }
-    return removedDog;
   } catch (error) {
     res.status(502).res.json({ message: error });
   }

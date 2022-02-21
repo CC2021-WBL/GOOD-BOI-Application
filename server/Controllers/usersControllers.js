@@ -13,8 +13,9 @@ async function registerParticipant(req, res) {
     const savedUser = await participant.save();
     if (!savedUser) {
       res.status(400).end();
+    } else {
+      return savedUser;
     }
-    return savedUser;
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -33,8 +34,9 @@ async function getUserData(req, res) {
     }
     if (!data) {
       res.status(204).json({ message: "not found user with that ID" });
+    } else {
+      return data;
     }
-    return data;
   } catch (error) {
     res.status(404).send(error.message);
   }
@@ -53,8 +55,9 @@ async function updateUserData(req, res) {
     const updatedUser = await user.save();
     if (!updatedUser) {
       res.send(400).end();
+    } else {
+      return updatedUser;
     }
-    return updatedUser;
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -71,8 +74,9 @@ async function updateDogsArray(req, res, newDog) {
     const updatedUser = await user.save();
     if (!updatedUser) {
       res.send(500).end();
+    } else {
+      return updatedUser;
     }
-    return updatedUser;
   } catch (error) {
     res.send(500).send(error.message);
   }
