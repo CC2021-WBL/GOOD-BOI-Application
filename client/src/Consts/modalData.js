@@ -11,7 +11,7 @@ const modalData = {
   },
   disqualify: {
     title: 'POTWIERDŹ DYSKWALIFIKACJĘ',
-    about: 'Kliknięcie spowoduje usunięcie zawodnika z konkursu. ',
+    about: 'Kliknięcie spowoduje usunięcie zawodnika z zawodów. ',
     confirmation: 'CZY JESTEŚ PEWIEN?',
     back: 'odrzuć dyskwalifikację, wróć do oceniania',
     colors: {
@@ -30,7 +30,7 @@ const modalData = {
     },
   },
   endContest: {
-    title: 'ZAKOŃCZ KONKURS',
+    title: 'ZAKOŃCZ ZAWODY',
     about: 'Kliknięcie spowoduje zamkniecie wszystkich formularzy zawodników',
     confirmation: 'CZY POTWIERDZASZ?',
     back: 'wróć do formularza oceny',
