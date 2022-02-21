@@ -60,8 +60,27 @@ async function updateUserData(req, res) {
   }
 }
 
+async function updateDogsArray(req, res, newDog) {
+  try {
+    const user = await Participant.findById(req.params.userId);
+    const dogObject = {
+      dogId: newDog._id.valueOf(),
+      dogName: newDog.dogName,
+    };
+    user.dogs.push(dogObject);
+    const updatedUser = await user.save();
+    if (!updatedUser) {
+      res.send(500).end();
+    }
+    return updatedUser;
+  } catch (error) {
+    res.send(500).send(error.message);
+  }
+}
+
 module.exports = {
   registerParticipant,
   getUserData,
   updateUserData,
+  updateDogsArray,
 };

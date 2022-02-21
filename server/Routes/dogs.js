@@ -1,39 +1,22 @@
 const router = require("express").Router();
+const {
+  registerDog,
+  updateSomeDogProps,
+  updateAllDogData,
+  getDogData,
+  deleteDog,
+} = require("../Controllers/dogsControllers");
+const { updateDogsArray } = require("../Controllers/usersControllers");
 const Dog = require("../Model/Dog");
 const Participant = require("../Model/Participant");
 
 // Submit data from dog-form
 router.post("/register/:userId", async (req, res) => {
-  const dog = new Dog({
-    dogName: req.body.dogName,
-    kennelName: req.body.kennelName,
-    pkr: req.body.pkr,
-    registrationNumber: req.body.registrationNumber,
-    breed: req.body.breed,
-    dateOfBirth: req.body.dateOfBirth,
-    color: req.body.color,
-    chipOrTattoo: req.body.chipOrTattoo,
-    sex: req.body.sex,
-    owner: req.body.owner,
-    participants: req.params.userId,
-    results: req.body.results,
-  });
   try {
-    const savedDog = await dog.save();
-    const user = await Participant.findById(req.params.userId);
-    const doggoId = savedDog._id.valueOf();
-    console.log(doggoId);
-    const dogObject = {
-      dogId: doggoId,
-      dogName: savedDog.dogName,
-    };
-
-    user.dogs.push(dogObject);
-    console.log(user.dogs);
-    await user.save();
+    const savedDog = await registerDog(req, res);
+    const updatedUSer = await updateDogsArray(req, res, savedDog);
     res.status(201).json(savedDog);
   } catch (error) {
-    console.log(error);
     res.status(400).json({ message: error });
   }
 });
@@ -41,36 +24,18 @@ router.post("/register/:userId", async (req, res) => {
 //Update some props of current dog
 router.patch("/:dogId", async (req, res) => {
   try {
-    const propsToUpdate = Object.keys(req.body);
-    if (propsToUpdate.length === 0) {
-      res.status(204).json({ message: "no data to update" });
-    }
-    const dog = await Dog.findById(req.params.dogId);
-    propsToUpdate.forEach((element) => {
-      dog[element] = req.body[element];
-    });
-    await dog.save();
+    const dog = await updateSomeDogProps(req, res);
     res.status(201).send(dog);
   } catch (error) {
-    res.json({ message: error });
+    console.log(error);
+    res.send(error.message);
   }
 });
 
 //Update all data of current dog
 router.put("/:dogId", async (req, res) => {
   try {
-    const newData = Object.keys(req.body);
-    if (newData.length === 0) {
-      res.status(204).json({ message: "no data to update" });
-    }
-    const dog = await Dog.findById(req.params.dogId);
-    if (!dog) {
-      res.status(404).json({ message: "no dog with current ID in DB" });
-    }
-    newData.forEach((element) => {
-      dog[element] = req.body[element];
-    });
-    await dog.save();
+    const dog = await updateAllDogData(req, res);
     res.status(201).send(dog);
   } catch (error) {
     res.json({ message: error });
@@ -80,10 +45,7 @@ router.put("/:dogId", async (req, res) => {
 // Get data of current dog
 router.get("/:dogId", async (req, res) => {
   try {
-    const dogData = await Dog.findById(req.params.dogId);
-    if (!dogData) {
-      res.status(204).end();
-    }
+    const dogData = await getDogData(req, res);
     res.status(200).send(dogData);
   } catch (error) {
     console.log(error);
@@ -94,17 +56,14 @@ router.get("/:dogId", async (req, res) => {
 //Delete current dog
 router.delete("/:dogId", async (req, res) => {
   try {
-    const removedDog = await Dog.deleteOne({ _id: req.params.dogId });
-    if (!removedDog) {
-      res.status(404).json({ message: "no data with this ID" });
-    }
-    res.send(removedDog);
+    const removedDog = await deleteDog(req, res);
+    res.status(200).send(removedDog);
   } catch (error) {
     res.status(502).res.json({ message: error });
   }
 });
 
-//Get results for current dog
+// TODO:Get results for current dog
 router.get("/results/:dogId", async (req, res) => {
   res.send("get all results for current dog");
 });
