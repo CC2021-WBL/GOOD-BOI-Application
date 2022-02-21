@@ -14,10 +14,14 @@ router.get("/:competingPairsId", async (req, res) => {
   aa;
 });
 
+<<<<<<< HEAD
 // POST -
 
 // update result - mock - only dogName
 // co powinienem dostawać ? jakie klucze powininny być do zmiany ? itd
+=======
+// update result - mock - works only with DB id in req params, only dogName.
+>>>>>>> 0a2147c51a203caecbc9e12c0424e7b3dbbf9bab
 router.patch("/:competingPairsId", async (req, res) => {
   try {
     const updatedResults = await Result.updateOne(
