@@ -44,7 +44,7 @@ const ProfilePage = () => {
         state={{
           contestContent: 'results',
         }}
-        text="Twoje Konkursy"
+        text="Twoje Zawody"
         colors="ternary"
       />
       <FakeButton
@@ -57,7 +57,7 @@ const ProfilePage = () => {
         state={{
           contestContent: 'future',
         }}
-        text="Nadchodzące Konkursy"
+        text="Nadchodzące Zawody"
         colors="secondary"
       />
     </ColumnWrapper>

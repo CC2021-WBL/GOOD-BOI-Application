@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const ContestDetailsToggler = ({ onClick, toggle }) => {
   return (
     <ContestDetailsTogglerStyled onClick={onClick}>
-      <p>SZCZEGÓŁY KONKURSU</p>
+      <p>SZCZEGÓŁY ZAWODÓW</p>
       {toggle ? <GoTriangleUp /> : <GoTriangleDown />}
     </ContestDetailsTogglerStyled>
   );
