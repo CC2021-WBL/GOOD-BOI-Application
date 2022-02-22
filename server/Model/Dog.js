@@ -49,8 +49,7 @@ const DogSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  participants: [{type: mongoose.SchemaTypes.ObjectId, ref: 'Participant'}],
-  results: [{type: mongoose.SchemaTypes.ObjectId, ref: 'Result'}],
+  results: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Result' }],
 });
 
 module.exports = mongoose.model('Dog', DogSchema);
