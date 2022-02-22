@@ -1,7 +1,4 @@
 const express = require('express');
-const Contest = require('../Model/Contest');
-const { registerDog } = require('../Controllers/dogsControllers');
-const { updateDogsArray } = require('../Controllers/usersControllers');
 const { registerContest } = require('../Controllers/contestControllers');
 
 const router = express.Router();
@@ -21,9 +18,9 @@ const router = express.Router();
  *           type: string
  *           description: The name of the contest
  *           example: 'Piętnasty zjazd dobrych chłopaków'
- *         kynologiqueDepartment:
+ *         kennelClubDepartment:
  *           type: string
- *           description: The city of kynologiqueDepartment
+ *           description: The city of kennelClubDepartment
  *           example: 'Warszawa'
  *         startDate:
  *           type: string

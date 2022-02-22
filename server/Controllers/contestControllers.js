@@ -1,7 +1,5 @@
 const Contest = require('../Model/Contest');
 
-// api/contests/:userId
-
 async function registerContest(req, res) {
   const contest = new Contest({
     contestName: req.body.contestName,
