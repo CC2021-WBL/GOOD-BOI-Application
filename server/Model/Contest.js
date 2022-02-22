@@ -18,29 +18,46 @@ const insideClassSchema = new mongoose.Schema({
   },
 });
 
-const classObjectSchema = new mongoose.Schema({
-  isFinished: {
-    type: Boolean,
-    default: false,
-  },
-  participants: {
-    type: [insideClassSchema],
-    default: [],
-  },
-});
-
-const contestClassSchema = new mongoose.Schema({
+const obedienceClassesSchema = new mongoose.Schema({
   0: {
-    type: classObjectSchema,
+    isFinished: {
+      type: Boolean,
+      default: false,
+    },
+    participants: {
+      type: [insideClassSchema],
+      default: [],
+    },
   },
   1: {
-    type: classObjectSchema,
+    isFinished: {
+      type: Boolean,
+      default: false,
+    },
+    participants: {
+      type: [insideClassSchema],
+      default: [],
+    },
   },
   2: {
-    type: classObjectSchema,
+    isFinished: {
+      type: Boolean,
+      default: false,
+    },
+    participants: {
+      type: [insideClassSchema],
+      default: [],
+    },
   },
   3: {
-    type: classObjectSchema,
+    isFinished: {
+      type: Boolean,
+      default: false,
+    },
+    participants: {
+      type: [insideClassSchema],
+      default: [],
+    },
   },
 });
 
@@ -51,7 +68,7 @@ const contestSchema = new mongoose.Schema({
     minlength: 5,
     maxlength: 100,
   },
-  kynologiqueDepartment: {
+  kennelClubDepartment: {
     type: String,
     required: true,
     minlength: 4,
@@ -71,14 +88,19 @@ const contestSchema = new mongoose.Schema({
   applicationClosedDate: {
     type: Date,
   },
-  place: {
-    type: String,
-  },
-  detailAddress: {
-    type: String,
+  address: {
+    country: {
+      type: String,
+      default: "Polska",
+    },
+    city: String,
+    street: String,
+    numberOfHouse: String,
+    postalCode: String,
   },
   judges: {
     type: [String],
+    default: [],
   },
   steward: {
     type: String,
@@ -86,6 +108,7 @@ const contestSchema = new mongoose.Schema({
   manager: {
     type: mongoose.SchemaTypes.ObjectId,
     ref: "Participant",
+    required: true,
   },
   feePLN: {
     type: Number,
@@ -95,7 +118,7 @@ const contestSchema = new mongoose.Schema({
     default: 0,
   },
   obedienceClasses: {
-    type: contestClassSchema,
+    type: obedienceClassesSchema,
     required: true,
   },
 });
