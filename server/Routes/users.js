@@ -1,27 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const Participant = require('../Model/Participant');
+const userDbFunc = require('../Controllers/usersControllers');
 
 //Submit data of user
 router.post('/register', async (req, res) => {
-  const participant = new Participant({
-    email: req.body.email,
-    password: req.body.password,
-    phoneNumber: req.body.phoneNumber,
-    participantName: req.body.participantName,
-    participantSurname: req.body.participantSurname,
-    address: req.body.adress,
-  });
   try {
-    const savedUser = await participant.save();
+    const savedUser = await userDbFunc.registerParticipant(req, res);
     res.status(201).send(savedUser);
   } catch (error) {
-    console.log(error.message);
     res.status(400).send(error.message);
   }
 });
 
-//Login user
+// TODO: Login user
 router.post('/login', (req, res) => {
   res.send('login');
 });
@@ -29,33 +21,20 @@ router.post('/login', (req, res) => {
 //Update some data of current user
 router.patch('/:userId', async (req, res) => {
   try {
-    const user = await Participant.findById(req.params.userId);
-    user.phoneNumber = req.body.phoneNumber;
-    await user.save();
+    const updatedUser = await userDbFunc.updateUserData(req, res);
+    res.status(200).send(updatedUser);
   } catch (error) {
-    res.send(error.message);
+    res.status(500).json({ message: error.message });
   }
 });
 
 //Get current user data
 router.get('/:userId', async (req, res) => {
   try {
-    const user = await Participant.findById(req.params.userId);
-    console.log(user);
-    res.status(200).send(user);
+    const userData = await userDbFunc.getUserData(req, res);
+    res.status(200).send(userData);
   } catch (error) {
-    res.send(error.message);
-  }
-});
-
-router.get('/test/test', async (req, res) => {
-  try {
-    const user = await Participant.findByName('Matylda');
-    res.send(user);
-  } catch (error) {
-    console.log(error);
-
-    res.send(error.message);
+    res.status(500).send(error.message);
   }
 });
 

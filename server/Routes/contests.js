@@ -1,5 +1,5 @@
-const express = require('express');
-const Contest = require('../Model/Contest');
+const express = require("express");
+const Contest = require("../Model/Contest");
 
 const router = express.Router();
 
@@ -48,19 +48,27 @@ const router = express.Router();
  */
 
 // Get all contests
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const contests = await Contest.find();
     res.json(contests);
   } catch (error) {
     res.json({ message: error });
   }
-  res.status(500).send('data for contests page');
+  res.status(500).send("data for contests page");
 });
 
 //Get current contest
-router.get('/:contestId', (req, res) => {
-  res.send('data for current contest');
+router.get("/:contestId", async (req, res) => {
+  try {
+    const contest = await Contest.findById();
+    if (!contest) {
+      res.status(404).end();
+    }
+    res.status(200).send(contest);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 });
 
 module.exports = router;
