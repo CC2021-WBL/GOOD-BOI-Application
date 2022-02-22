@@ -1,15 +1,16 @@
-const express = require("express");
+/* eslint-disable no-unused-vars */
+const express = require('express');
 const app = express();
-const dotenv = require("dotenv");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const helmet = require("helmet");
-const cookieParser = require("cookie-parser");
-const swaggerUI = require("swagger-ui-express");
-const swaggerJsDoc = require("swagger-jsdoc");
-const path = require("path");
-const passport = require("passport");
-const crypto = require("crypto");
+const passport = require('passport');
+const crypto = require('crypto');
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const helmet = require('helmet');
+const cookieParser = require('cookie-parser');
+const swaggerUI = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc');
+const path = require('path');
 
 const PORT = process.env.PORT || 27020;
 
@@ -20,14 +21,14 @@ app.use(helmet());
 app.use(cookieParser());
 
 // Passport Authentication
-require("./server/Config/passport");
+require('./server/Config/passport');
 app.use(passport.initialize());
 // app.use(passport.session());
 
 // Import routes
-const contestsRoute = require("./server/Routes/contests");
-const userRoute = require("./server/Routes/users");
-const dogsRoute = require("./server/Routes/dogs");
+const contestsRoute = require('./server/Routes/contests');
+const userRoute = require('./server/Routes/users');
+const dogsRoute = require('./server/Routes/dogs');
 
 //Connect to DB
 dotenv.config();
@@ -42,18 +43,18 @@ try {
 }
 
 //Route Middleware
-app.use("/api/users", userRoute);
-app.use("/api/contests", contestsRoute);
-app.use("/api/dogs", dogsRoute);
+app.use('/api/users', userRoute);
+app.use('/api/contests', contestsRoute);
+app.use('/api/dogs', dogsRoute);
 
 //Swagger
 const swaggerOptions = {
   definition: {
-    openapi: "3.0.0",
+    openapi: '3.0.0',
     info: {
-      title: "Good Boi API",
-      version: "1.0.0",
-      description: "Good Boi API",
+      title: 'Good Boi API',
+      version: '1.0.0',
+      description: 'Good Boi API',
     },
     servers: [
       {
@@ -61,23 +62,23 @@ const swaggerOptions = {
       },
     ],
   },
-  apis: ["./Routes/*.js"],
+  apis: ['./Routes/*.js'],
 };
 app.use(
-  "/api-docs",
+  '/api-docs',
   swaggerUI.serve,
-  swaggerUI.setup(swaggerJsDoc(swaggerOptions))
+  swaggerUI.setup(swaggerJsDoc(swaggerOptions)),
 );
 
 //Test route
-app.get("/api/test", (req, res) => {
-  res.send("test");
+app.get('/api/test', (req, res) => {
+  res.send('test');
 });
 
 //Inject ReactApp into
-app.use(express.static(path.join(__dirname, "client", "build")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html")),
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html')),
     function (err) {
       if (err) {
         res.status(500).send(err);
@@ -87,5 +88,5 @@ app.get("*", (req, res) => {
 
 //This text will console.log after every save of index.js
 app.listen(PORT, () =>
-  console.log(`The server is running on the port ${PORT}`)
+  console.log(`The server is running on the port ${PORT}`),
 );
