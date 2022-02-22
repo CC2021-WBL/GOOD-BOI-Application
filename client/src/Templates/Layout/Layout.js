@@ -6,7 +6,7 @@ import propTypes from 'prop-types';
 import useWindowHeight from '../../Tools/useWindowHeight';
 
 const initHeight = window.innerHeight;
-
+// 150 pixels of change in the window.height triggers the footer and ghost footer to hide
 const Layout = ({ withLabel, withSettings }) => {
   const height = useWindowHeight();
   return (
