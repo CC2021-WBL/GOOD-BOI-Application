@@ -8,7 +8,7 @@ import createUserInitialData from '../../Tools/createUserInitialData';
 import participants from '../../Data/MongoDBMock/participants';
 import { UserDataContext } from '../../Context/UserDataContext';
 
-const UserProfileData = ({ withEdit }) => {
+const UserProfileData = ({ withEdit, initialState }) => {
   const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
   const { userId, userName, userSurname, isAuthenticated } = state;
@@ -79,7 +79,13 @@ const UserProfileData = ({ withEdit }) => {
           </button>
         )}
       </UserProfileDataStyled>
-      {toggle && <RegistrationFormSignup submitForm={submitForm} editData />}
+      {toggle && (
+        <RegistrationFormSignup
+          submitForm={submitForm}
+          editData
+          initialState={initialState}
+        />
+      )}
     </>
   );
 };
@@ -93,6 +99,7 @@ UserProfileData.propTypes = {
     roles: propTypes.arrayOf(propTypes.string),
   }),
   withEdit: propTypes.bool,
+  initialState: propTypes.object,
 };
 
 export default UserProfileData;

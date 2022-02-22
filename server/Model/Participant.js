@@ -66,7 +66,7 @@ ParticipantSchema.methods.sayHi = function () {
 };
 
 ParticipantSchema.statics.findByName = function (participantName) {
-  return this.find({participantName: new RegExp(participantName, 'i')});
+  return this.find({ participantName: new RegExp(participantName, 'i') });
 };
 
 module.exports = mongoose.model('Participant', ParticipantSchema);

@@ -6,6 +6,7 @@ const participants = [
     phoneNumber: 48445234876,
     participantName: 'Matylda',
     participantSurname: 'Borutka',
+
     address: {
       country: 'Polska',
       city: 'Sfornegacie',

@@ -38,7 +38,7 @@ InputField.propTypes = {
   id: propTypes.string.isRequired,
   type: propTypes.string.isRequired,
   placeholder: propTypes.string,
-  value: propTypes.string,
+  value: propTypes.oneOfType([propTypes.string, propTypes.number]),
   onChange: propTypes.func.isRequired,
   name: propTypes.string,
   required: propTypes.bool,

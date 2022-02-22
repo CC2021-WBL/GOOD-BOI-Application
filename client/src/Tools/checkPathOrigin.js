@@ -154,7 +154,7 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
     Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
     arrayLength === 2
   ) {
-    return { text: 'Lista zawodów', label: 'Wybierz konkurs' };
+    return { text: 'Lista zawodów', label: 'Wybierz zawody' };
   } else if (
     Object.prototype.hasOwnProperty.call(pathPattern, 'contests') &&
     arrayLength === 3
