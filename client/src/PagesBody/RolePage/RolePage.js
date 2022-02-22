@@ -36,7 +36,7 @@ const RolePage = () => {
     event.preventDefault();
     if (role === 'staff') {
       navigate(createURLForRolePage(role, userId), {
-        state: { text: 'Lista konkursów', label: 'Wybierz konkurs' },
+        state: { text: 'Lista zawodów', label: 'Wybierz zawody' },
       });
     } else {
       navigate(createURLForRolePage(role, userId));
