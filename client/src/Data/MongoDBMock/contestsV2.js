@@ -22,7 +22,7 @@ const contests = [
     obedienceClasses: {
       0: {
         isFinished: true,
-        particpants: [
+        participants: [
           {
             dogId: 'VIII-40407',
             dogName: 'Woof',
@@ -45,7 +45,7 @@ const contests = [
       },
       1: {
         isFinished: true,
-        particpants: [
+        participants: [
           {
             dogId: 'X-37657',
             dogName: 'Ollie',
@@ -91,7 +91,7 @@ const contests = [
     obedienceClasses: {
       0: {
         isFinished: true,
-        particpants: [
+        participants: [
           {
             dogId: 'VIII-40407',
             dogName: 'Woof',
@@ -102,7 +102,7 @@ const contests = [
       },
       1: {
         isFinished: true,
-        particpants: [
+        participants: [
           {
             dogId: 'VIII-27165',
             dogName: 'Nosek',
@@ -113,7 +113,7 @@ const contests = [
       },
       2: {
         isFinished: true,
-        particpants: [
+        participants: [
           {
             dogId: 'V-11165',
             dogName: 'Ptysio',
@@ -130,7 +130,7 @@ const contests = [
       },
       3: {
         isFinished: true,
-        particpants: [
+        participants: [
           {
             dogId: 'VII-27885',
             dogName: 'Kluska',
@@ -170,7 +170,7 @@ const contests = [
     obedienceClasses: {
       0: {
         isFinished: true,
-        particpants: [
+        participants: [
           {
             dogId: 'VIII-40407',
             dogName: 'Woof',
@@ -193,7 +193,7 @@ const contests = [
       },
       1: {
         isFinished: true,
-        particpants: [
+        participants: [
           {
             dogId: 'X-37657',
             dogName: 'Ollie',
@@ -239,7 +239,7 @@ const contests = [
     obedienceClasses: {
       2: {
         isFinished: true,
-        particpants: [
+        participants: [
           {
             dogId: 'VIII-40407',
             dogName: 'Woof',
@@ -256,7 +256,7 @@ const contests = [
       },
       3: {
         isFinished: true,
-        particpants: [
+        participants: [
           {
             dogId: 'V-11165',
             dogName: 'Ptysio',

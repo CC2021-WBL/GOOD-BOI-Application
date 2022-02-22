@@ -11,7 +11,6 @@ const doggos = [
     chipOrTattoo: 616093900044541,
     sex: 'pies',
     owner: 'Jan Kowalski',
-    participants: ['bogdan678'],
     results: ['22-03-22Nosek', '22-05-01Nosek', '21-12-24Nosek'],
   },
 
@@ -27,7 +26,6 @@ const doggos = [
     chipOrTattoo: 752093200095647,
     sex: 'pies',
     owner: 'Matylda Borutka',
-    participants: ['matylda1234'],
     results: ['22-03-22Woof', '22-05-01Woof', '21-12-24Woof'],
   },
   {
@@ -42,7 +40,6 @@ const doggos = [
     chipOrTattoo: 616093911146789,
     sex: 'suka',
     owner: 'Matylda Borutka',
-    participants: ['matylda1234'],
     results: ['22-03-22Kluska', '22-05-01Kluska', '21-12-24Kluska'],
   },
   {
@@ -57,7 +54,6 @@ const doggos = [
     chipOrTattoo: 573153911146789,
     sex: 'pies',
     owner: 'Eustachy Trompka',
-    participants: ['eustachy123'],
     results: ['22-03-22Ollie', '22-05-01Ollie', '21-12-24Ollie'],
   },
   {
@@ -72,7 +68,6 @@ const doggos = [
     chipOrTattoo: 616093900456789,
     sex: 'pies',
     owner: 'Zosia Samosia',
-    participants: ['zosia9474'],
     results: ['22-03-22Ptysio', '22-05-01Ptysio', '21-12-24Ptysio'],
   },
   {
@@ -87,7 +82,6 @@ const doggos = [
     chipOrTattoo: 616093900345671,
     sex: 'pies',
     owner: 'Zosia Samosia',
-    participants: ['zosia9474'],
     results: ['22-03-22Norah', '22-05-01Norah', '21-12-24Norah'],
   },
 ];

@@ -1,20 +1,20 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const insideClassSchema = new mongoose.Schema({
   dogId: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: "Dog",
+    ref: 'Dog',
   },
   dogName: {
     type: String,
   },
   participantId: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: "Participant",
+    ref: 'Participant',
   },
   resultsId: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: "Result",
+    ref: 'Result',
   },
 });
 
@@ -91,7 +91,7 @@ const contestSchema = new mongoose.Schema({
   address: {
     country: {
       type: String,
-      default: "Polska",
+      default: 'Polska',
     },
     city: String,
     street: String,
@@ -107,7 +107,7 @@ const contestSchema = new mongoose.Schema({
   },
   manager: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: "Participant",
+    ref: 'Participant',
     required: true,
   },
   feePLN: {
@@ -123,4 +123,4 @@ const contestSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Contest", contestSchema);
+module.exports = mongoose.model('Contest', contestSchema);

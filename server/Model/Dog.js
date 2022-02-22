@@ -49,7 +49,6 @@ const DogSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  participants: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Participant' }],
   results: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Result' }],
 });
 
