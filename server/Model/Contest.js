@@ -113,9 +113,13 @@ const contestSchema = new mongoose.Schema({
   feePLN: {
     type: Number,
   },
-  numberOfApplications: {
+  amountOfApplications: {
     type: Number,
     default: 0,
+  },
+  maxAmountOfApplications: {
+    type: Number,
+    required: true,
   },
   obedienceClasses: {
     type: obedienceClassesSchema,
