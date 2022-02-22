@@ -1,9 +1,9 @@
-const router = require("express").Router();
-const Dog = require("../Model/Dog");
-const Participant = require("../Model/Participant");
+const router = require('express').Router();
+const Dog = require('../Model/Dog');
+const Participant = require('../Model/Participant');
 
 // Submit data from dog-form
-router.post("/register/:userId", async (req, res) => {
+router.post('/register/:userId', async (req, res) => {
   const dog = new Dog({
     dogName: req.body.dogName,
     kennelName: req.body.kennelName,
@@ -34,11 +34,11 @@ router.post("/register/:userId", async (req, res) => {
 });
 
 //Update current dog- mock option, updates just current value, not overwrites whole document / patch lub put
-router.patch("/:dogId", async (req, res) => {
+router.patch('/:dogId', async (req, res) => {
   try {
     const updatedDog = await Dog.updateOne(
       { _id: req.params.dogId },
-      { $set: { dogName: req.body.title } }
+      { $set: { dogName: req.body.title } },
     );
     res.json(updatedDog);
   } catch (error) {
@@ -47,7 +47,7 @@ router.patch("/:dogId", async (req, res) => {
 });
 
 // Get data of current dog
-router.get("/:dogId", async (req, res) => {
+router.get('/:dogId', async (req, res) => {
   try {
     const dogData = await Dog.findById(req.params.dogId);
     res.send(dogData);
@@ -58,7 +58,7 @@ router.get("/:dogId", async (req, res) => {
 });
 
 //Delete current dog - mock option
-router.delete("/:dogId", async (req, res) => {
+router.delete('/:dogId', async (req, res) => {
   try {
     const removedDog = await Dog.remove({ _id: req.params.dogId });
     res.json(removedDog);
@@ -68,8 +68,8 @@ router.delete("/:dogId", async (req, res) => {
 });
 
 //Get results for current dog
-router.get("/results/:dogId", async (req, res) => {
-  res.send("get all results for current dog");
+router.get('/results/:dogId', async (req, res) => {
+  res.send('get all results for current dog');
 });
 
 module.exports = router;

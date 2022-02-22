@@ -58,7 +58,7 @@ const ContestsPage = () => {
 
   // handling different selections
   const handleFilterClick = (time, event) => {
-    event.preventDefault;
+    event.preventDefault();
     setSelectedMode(time);
     console.log(contestData);
   };
