@@ -1,17 +1,17 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const ParticipantDogSchema = new mongoose.Schema(
   {
     dogId: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: "Dog",
+      ref: 'Dog',
       required: true,
     },
     dogName: {
       type: String,
     },
   },
-  { _id: false }
+  { _id: false },
 );
 
 const ParticipantSchema = new mongoose.Schema({
@@ -59,8 +59,8 @@ const ParticipantSchema = new mongoose.Schema({
   },
   portalRoles: {
     type: [String],
-    default: ["participant"],
-    enum: ["staff", "participant", "manager", "admin"],
+    default: ['participant'],
+    enum: ['staff', 'participant', 'manager', 'admin'],
   },
 });
 
@@ -70,9 +70,9 @@ ParticipantSchema.methods.sayHi = function () {
 
 ParticipantSchema.statics.findSomethingByUserId = function (
   participantId,
-  dataToFind
+  dataToFind,
 ) {
   return this.findById(participantId).select(dataToFind);
 };
 
-module.exports = mongoose.model("Participant", ParticipantSchema);
+module.exports = mongoose.model('Participant', ParticipantSchema);

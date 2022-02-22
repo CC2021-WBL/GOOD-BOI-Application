@@ -1,10 +1,10 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const Participant = require("../Model/Participant");
-const userDbFunc = require("../Controllers/usersControllers");
+const Participant = require('../Model/Participant');
+const userDbFunc = require('../Controllers/usersControllers');
 
 //Submit data of user
-router.post("/register", async (req, res) => {
+router.post('/register', async (req, res) => {
   try {
     const savedUser = await userDbFunc.registerParticipant(req, res);
     res.status(201).send(savedUser);
@@ -14,12 +14,12 @@ router.post("/register", async (req, res) => {
 });
 
 // TODO: Login user
-router.post("/login", (req, res) => {
-  res.send("login");
+router.post('/login', (req, res) => {
+  res.send('login');
 });
 
 //Update some data of current user
-router.patch("/:userId", async (req, res) => {
+router.patch('/:userId', async (req, res) => {
   try {
     const updatedUser = await userDbFunc.updateUserData(req, res);
     res.status(200).send(updatedUser);
@@ -29,7 +29,7 @@ router.patch("/:userId", async (req, res) => {
 });
 
 //Get current user data
-router.get("/:userId", async (req, res) => {
+router.get('/:userId', async (req, res) => {
   try {
     const userData = await userDbFunc.getUserData(req, res);
     res.status(200).send(userData);
@@ -38,14 +38,17 @@ router.get("/:userId", async (req, res) => {
   }
 });
 
-router.get('/dogs/:userId', async (req,res)=>{
-  try{
-    const dogs=await Participant.findById(req.params.userId).select("dogs");
-    if(dogs){
-  res.status(200).send(dogs);} else {res.status(404).json({ message: 'no dogs for current user' });}
-} catch (error) {
-  res.status(500).json({ message: error });
-      }
+router.get('/dogs/:userId', async (req, res) => {
+  try {
+    const dogs = await Participant.findById(req.params.userId).select('dogs');
+    if (dogs) {
+      res.status(200).send(dogs);
+    } else {
+      res.status(404).json({ message: 'no dogs for current user' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
 });
 
 module.exports = router;

@@ -13,7 +13,7 @@ export const createURLForRolePage = (role, userId) => {
       url = '/contests';
       break;
     default:
-      '/pagenotfound';
+      url = '/pagenotfound';
   }
 
   return url;

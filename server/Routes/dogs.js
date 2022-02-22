@@ -1,20 +1,18 @@
-const router = require("express").Router();
+const router = require('express').Router();
 const {
   registerDog,
   updateSomeDogProps,
   updateAllDogData,
   getDogData,
   deleteDog,
-} = require("../Controllers/dogsControllers");
-const { updateDogsArray } = require("../Controllers/usersControllers");
-const Dog = require("../Model/Dog");
-const Participant = require("../Model/Participant");
+} = require('../Controllers/dogsControllers');
+const { updateDogsArray } = require('../Controllers/usersControllers');
 
 // Submit data from dog-form
-router.post("/register/:userId", async (req, res) => {
+router.post('/register/:userId', async (req, res) => {
   try {
     const savedDog = await registerDog(req, res);
-    const updatedUSer = await updateDogsArray(req, res, savedDog);
+    await updateDogsArray(req, res, savedDog);
     res.status(201).json(savedDog);
   } catch (error) {
     res.status(400).json({ message: error });
@@ -22,7 +20,7 @@ router.post("/register/:userId", async (req, res) => {
 });
 
 //Update some props of current dog
-router.patch("/:dogId", async (req, res) => {
+router.patch('/:dogId', async (req, res) => {
   try {
     const dog = await updateSomeDogProps(req, res);
     res.status(201).send(dog);
@@ -33,7 +31,7 @@ router.patch("/:dogId", async (req, res) => {
 });
 
 //Update all data of current dog
-router.put("/:dogId", async (req, res) => {
+router.put('/:dogId', async (req, res) => {
   try {
     const dog = await updateAllDogData(req, res);
     res.status(201).send(dog);
@@ -43,7 +41,7 @@ router.put("/:dogId", async (req, res) => {
 });
 
 // Get data of current dog
-router.get("/:dogId", async (req, res) => {
+router.get('/:dogId', async (req, res) => {
   try {
     const dogData = await getDogData(req, res);
     res.status(200).send(dogData);
@@ -53,8 +51,8 @@ router.get("/:dogId", async (req, res) => {
   }
 });
 
-//Delete current dog
-router.delete("/:dogId", async (req, res) => {
+//Delete current dog - mock option
+router.delete('/:dogId', async (req, res) => {
   try {
     const removedDog = await deleteDog(req, res);
     res.status(200).send(removedDog);
@@ -63,9 +61,9 @@ router.delete("/:dogId", async (req, res) => {
   }
 });
 
-// TODO:Get results for current dog
-router.get("/results/:dogId", async (req, res) => {
-  res.send("get all results for current dog");
+//Get results for current dog
+router.get('/results/:dogId', async (req, res) => {
+  res.send('get all results for current dog');
 });
 
 module.exports = router;
