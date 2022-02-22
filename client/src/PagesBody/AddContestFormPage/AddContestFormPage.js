@@ -234,20 +234,20 @@ const AddContestFormPage = () => {
               <div key={index}>
                 <InputLabel
                   labelText={`Sędzia ${judge}`}
-                  htmlFor="judge"
+                  htmlFor={`judge${judge}`}
                 ></InputLabel>
                 <Input
-                  id="judge"
+                  id={judge}
                   type="text"
                   placeholder={`Sędzia ${judge}`}
-                  {...register('judge', {
+                  {...register(`judge${judge}`, {
                     required: 'Wpisz imię i nazwisko sędziego',
                     maxLength: 100,
                   })}
                 />
-                {errors.judge && (
+                {errors[`judge${judge}`] && (
                   <p>
-                    {errors.judge.message} {judge}
+                    {errors[`judge${judge}`].message} {judge}
                   </p>
                 )}
               </div>
