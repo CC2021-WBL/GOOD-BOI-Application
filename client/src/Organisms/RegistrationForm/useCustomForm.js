@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
-const useForm = (callback, validateData) => {
+// renamed file
+const useCustomForm = (callback, validateData) => {
   const initialState = {
     firstname: '',
     surname: '',
@@ -66,4 +67,4 @@ const useForm = (callback, validateData) => {
   return { handleInputChange, formData, submitHandler, errors };
 };
 
-export default useForm;
+export default useCustomForm;

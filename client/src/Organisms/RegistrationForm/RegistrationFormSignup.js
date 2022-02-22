@@ -1,10 +1,9 @@
-import propTypes from 'prop-types';
-
 import CheckboxAgreeField from '../../Atoms/CheckboxAgreeField/CheckboxAgreeField';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 import MainButton from '../../Atoms/MainButton/MainButton';
-import useForm from './useForm.js';
+import propTypes from 'prop-types';
+import useCustomForm from './useCustomForm.js';
 import validateData from './validateData';
 
 const RegistrationFormSignup = ({
@@ -13,7 +12,8 @@ const RegistrationFormSignup = ({
   editEmail,
   editPassword,
 }) => {
-  const { handleInputChange, submitHandler, formData, errors } = useForm(
+  // useForm name is reserved for react-hook-form
+  const { handleInputChange, submitHandler, formData, errors } = useCustomForm(
     submitForm,
     validateData,
   );
