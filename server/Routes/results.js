@@ -75,9 +75,8 @@ const Result = require('../Model/Result');
 // get current, individual result
 router.get('/:resultsId', async (req, res) => {
   try {
-    const results = await Result.find();
-    res.json(results);
-    return;
+    const results = await Result.findById(req.params.resultsId);
+    return res.json(results);
   } catch (error) {
     res.json({ message: error });
   }
