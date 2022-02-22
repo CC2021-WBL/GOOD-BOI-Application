@@ -12,10 +12,13 @@ const RegistrationFormSignup = ({
   editData,
   editEmail,
   editPassword,
+  initialState,
+  editPhoneNumber,
 }) => {
   const { handleInputChange, submitHandler, formData, errors } = useForm(
     submitForm,
     validateData,
+    initialState,
   );
 
   if (editData) {
@@ -23,59 +26,82 @@ const RegistrationFormSignup = ({
       <FormWrapper onSubmit={submitHandler}>
         <InputField
           labelText="Imię"
-          htmlFor="firstname"
+          htmlFor="participantName"
           type="text"
           placeholder="&#xF007; Imię"
-          id="firstname"
-          value={formData.firstname}
+          id="participantName"
+          value={formData.participantName}
           onChange={handleInputChange}
-          className={errors.firstname ? 'red-border' : 'none'}
+          className={errors.participantName ? 'red-border' : 'none'}
         />
-        {errors.firstname && <p>{errors.firstname}</p>}
+        {errors.participantName && <p>{errors.participantName}</p>}
         <InputField
           labelText="Nazwisko"
-          htmlFor="surname"
+          htmlFor="participantSurname"
           type="text"
           placeholder="&#xF007; Nazwisko"
-          id="surname"
-          value={formData.surname}
+          id="participantSurname"
+          value={formData.participantSurname}
           onChange={handleInputChange}
-          className={errors.surname ? 'red-border' : 'none'}
+          className={errors.participantSurname ? 'red-border' : 'none'}
         />
-        {errors.surname && <p>{errors.surname}</p>}
+        {errors.participantSurname && <p>{errors.participantSurname}</p>}
         <InputField
-          labelText="Ulica i nr domu"
+          labelText="Ulica"
           htmlFor="street"
           type="text"
-          placeholder="&#xf015; Ulica i nr domu"
+          placeholder="&#xf015; Ulica"
           id="street"
-          value={formData.street}
+          value={formData.address.street}
           onChange={handleInputChange}
           className={errors.street ? 'red-border' : 'none'}
         />
         {errors.street && <p>{errors.street}</p>}
         <InputField
+          labelText="Numer Domu"
+          htmlFor="numberOfHouse"
+          type="text"
+          placeholder="&#xf015; Numer Domu"
+          id="numberOfHouse"
+          value={formData.address.numberOfHouse}
+          onChange={handleInputChange}
+          className={errors.numberOfHouse ? 'red-border' : 'none'}
+        />
+        {errors.numberOfHouse && <p>{errors.numberOfHouse}</p>}
+        <InputField
           labelText="Kod Pocztowy"
-          htmlFor="zipcode"
+          htmlFor="postalCode"
           type="text"
           placeholder="&#xf015; Kod Pocztowy"
-          id="zipcode"
-          value={formData.zipcode}
+          id="postalCode"
+          value={formData.address.postalCode}
           onChange={handleInputChange}
-          className={errors.zipcode ? 'red-border' : 'none'}
+          className={errors.postalCode ? 'red-border' : 'none'}
         />
-        {errors.zipcode && <p>{errors.zipcode}</p>}
+        {errors.postalCode && <p>{errors.postalCode}</p>}
         <InputField
           labelText="Miasto"
           htmlFor="city"
           type="text"
           placeholder="&#xf015; Miasto"
           id="city"
-          value={formData.city}
+          value={formData.address.city}
           onChange={handleInputChange}
           className={errors.city ? 'red-border' : 'none'}
         />
         {errors.city && <p>{errors.city}</p>}
+        <InputField
+          labelText="Kraj"
+          htmlFor="country"
+          type="text"
+          placeholder="&#xf015; Kraj"
+          id="country"
+          value={formData.address.country}
+          onChange={handleInputChange}
+          className={errors.country ? 'red-border' : 'none'}
+        />
+        {errors.country && <p>{errors.country}</p>}
+
         <MainButton primary text="Zapisz zmiany" />
       </FormWrapper>
     );
@@ -94,6 +120,23 @@ const RegistrationFormSignup = ({
         />
         {errors.email && <p>{errors.email}</p>}
         <MainButton primary text="Zapisz Nowy Email" />
+      </FormWrapper>
+    );
+  } else if (editPhoneNumber) {
+    return (
+      <FormWrapper onSubmit={submitHandler}>
+        <InputField
+          labelText="Numer Telefonu"
+          htmlFor="phoneNumber"
+          type="text"
+          placeholder="&#xf095; Numer Telefonu"
+          id="phoneNumber"
+          value={formData.phoneNumber}
+          onChange={handleInputChange}
+          className={errors.phoneNumber ? 'red-border' : 'none'}
+        />
+        {errors.phoneNumber && <p>{errors.phoneNumber}</p>}
+        <MainButton primary text="Zapisz nowy numer telefonu" />
       </FormWrapper>
     );
   } else if (editPassword) {
@@ -162,31 +205,31 @@ const RegistrationFormSignup = ({
       {errors.repeatpass && <p>{errors.repeatpass}</p>}
       <InputField
         labelText="Imię"
-        htmlFor="firstname"
+        htmlFor="participantName"
         type="text"
         placeholder="&#xF007; Imię"
-        id="firstname"
-        value={formData.firstname}
+        id="participantName"
+        value={formData.participantName}
         onChange={handleInputChange}
-        className={errors.firstname ? 'red-border' : 'none'}
+        className={errors.participantName ? 'red-border' : 'none'}
       />
-      {errors.firstname && <p>{errors.firstname}</p>}
+      {errors.participantName && <p>{errors.participantName}</p>}
       <InputField
         labelText="Nazwisko"
-        htmlFor="surname"
+        htmlFor="participantSurname"
         type="text"
         placeholder="&#xF007; Nazwisko"
-        id="surname"
-        value={formData.surname}
+        id="participantSurname"
+        value={formData.participantSurname}
         onChange={handleInputChange}
-        className={errors.surname ? 'red-border' : 'none'}
+        className={errors.participantSurname ? 'red-border' : 'none'}
       />
-      {errors.surname && <p>{errors.surname}</p>}
+      {errors.participantSurname && <p>{errors.participantSurname}</p>}
       <InputField
-        labelText="Ulica i nr domu"
+        labelText="Ulica"
         htmlFor="street"
         type="text"
-        placeholder="&#xf015; Ulica i nr domu"
+        placeholder="&#xf015; Ulica"
         id="street"
         value={formData.street}
         onChange={handleInputChange}
@@ -194,16 +237,27 @@ const RegistrationFormSignup = ({
       />
       {errors.street && <p>{errors.street}</p>}
       <InputField
+        labelText="Numer Domu"
+        htmlFor="numberOfHouse"
+        type="text"
+        placeholder="&#xf015; Numer Domu"
+        id="numberOfHouse"
+        value={formData.numberOfHouse}
+        onChange={handleInputChange}
+        className={errors.numberOfHouse ? 'red-border' : 'none'}
+      />
+      {errors.numberOfHouse && <p>{errors.numberOfHouse}</p>}
+      <InputField
         labelText="Kod Pocztowy"
-        htmlFor="zipcode"
+        htmlFor="postalCode"
         type="text"
         placeholder="&#xf015; Kod Pocztowy"
-        id="zipcode"
-        value={formData.zipcode}
+        id="postalCode"
+        value={formData.postalCode}
         onChange={handleInputChange}
-        className={errors.zipcode ? 'red-border' : 'none'}
+        className={errors.postalCode ? 'red-border' : 'none'}
       />
-      {errors.zipcode && <p>{errors.zipcode}</p>}
+      {errors.postalCode && <p>{errors.postalCode}</p>}
       <InputField
         labelText="Miasto"
         htmlFor="city"
@@ -215,6 +269,28 @@ const RegistrationFormSignup = ({
         className={errors.city ? 'red-border' : 'none'}
       />
       {errors.city && <p>{errors.city}</p>}
+      <InputField
+        labelText="Kraj"
+        htmlFor="country"
+        type="text"
+        placeholder="&#xf015; Kraj"
+        id="country"
+        value={formData.country}
+        onChange={handleInputChange}
+        className={errors.country ? 'red-border' : 'none'}
+      />
+      {errors.country && <p>{errors.country}</p>}
+      <InputField
+        labelText="Numer Telefonu"
+        htmlFor="phoneNumber"
+        type="text"
+        placeholder="&#xf095; Numer Telefonu"
+        id="phoneNumber"
+        value={formData.phoneNumber}
+        onChange={handleInputChange}
+        className={errors.phoneNumber ? 'red-border' : 'none'}
+      />
+      {errors.phoneNumber && <p>{errors.phoneNumber}</p>}
       <CheckboxAgreeField text="Zapoznałem się z regulaminem GOOD BOI i akceptuję jego postanowienia" />
       <MainButton primary text="Zarejestruj się" />
     </FormWrapper>
@@ -226,6 +302,8 @@ RegistrationFormSignup.propTypes = {
   editData: propTypes.bool,
   editEmail: propTypes.bool,
   editPassword: propTypes.bool,
+  editPhoneNumber: propTypes.bool,
+  initialState: propTypes.object,
 };
 
 export default RegistrationFormSignup;
