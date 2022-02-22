@@ -1,15 +1,18 @@
 const mongoose = require('mongoose');
 
-const ParticipantDogSchema = new mongoose.Schema({
-  dogId: {
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: 'Dog',
-    required: true,
+const ParticipantDogSchema = new mongoose.Schema(
+  {
+    dogId: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Dog',
+      required: true,
+    },
+    dogName: {
+      type: String,
+    },
   },
-  dogName: {
-    type: String,
-  },
-});
+  { _id: false },
+);
 
 const ParticipantSchema = new mongoose.Schema({
   email: {
@@ -44,7 +47,7 @@ const ParticipantSchema = new mongoose.Schema({
     required: true,
     minlength: 2,
   },
-  adress: {
+  address: {
     country: String,
     city: String,
     street: String,
@@ -65,8 +68,11 @@ ParticipantSchema.methods.sayHi = function () {
   console.log(`Hi, my name is ${this.participantName}`);
 };
 
-ParticipantSchema.statics.findByName = function (participantName) {
-  return this.find({ participantName: new RegExp(participantName, 'i') });
+ParticipantSchema.statics.findSomethingByUserId = function (
+  participantId,
+  dataToFind,
+) {
+  return this.findById(participantId).select(dataToFind);
 };
 
 module.exports = mongoose.model('Participant', ParticipantSchema);
