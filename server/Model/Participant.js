@@ -26,11 +26,11 @@ const ParticipantSchema = new mongoose.Schema({
       message: (props) => `${props.value} should contain the @ symbol`,
     }, */
   },
-  password: {
+  hash: {
     type: String,
-    required: true,
-    minlength: 3,
-    maxlength: 255,
+  },
+  salt: {
+    type: String,
   },
   phoneNumber: {
     type: Number,
@@ -56,6 +56,7 @@ const ParticipantSchema = new mongoose.Schema({
   },
   dogs: {
     type: [ParticipantDogSchema],
+    default: [],
   },
   portalRoles: {
     type: [String],

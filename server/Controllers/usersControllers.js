@@ -1,9 +1,15 @@
 const Participant = require("../Model/Participant");
+const { generatePassword } = require("../Tools/passwordTools");
 
 async function registerParticipant(req, res) {
+  const saltHash = generatePassword(req.body.password);
+  const salt = saltHash.salt;
+  const hash = saltHash.hash;
+
   const participant = new Participant({
     email: req.body.email,
-    password: req.body.password,
+    hash: hash,
+    salt: salt,
     phoneNumber: req.body.phoneNumber,
     participantName: req.body.participantName,
     participantSurname: req.body.participantSurname,

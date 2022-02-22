@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Participant = require("../Model/Participant");
 const userDbFunc = require("../Controllers/usersControllers");
+const passport = require("passport");
+const passwordTools = require("../Tools/passwordTools");
 
 //Submit data of user
 router.post("/register", async (req, res) => {
@@ -14,8 +16,21 @@ router.post("/register", async (req, res) => {
 });
 
 // TODO: Login user
-router.post("/login", (req, res) => {
-  res.send("login");
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    failureMessage: false,
+    successMessage: true,
+  }),
+  (req, res) => {
+    res.status(200).send(true);
+  }
+);
+
+//Logout
+router.get("/logout", (req, res) => {
+  req.logout();
+  //res.redirect('/');
 });
 
 //Update some data of current user
@@ -38,14 +53,17 @@ router.get("/:userId", async (req, res) => {
   }
 });
 
-router.get('/dogs/:userId', async (req,res)=>{
-  try{
-    const dogs=await Participant.findById(req.params.userId).select("dogs");
-    if(dogs){
-  res.status(200).send(dogs);} else {res.status(404).json({ message: 'no dogs for current user' });}
-} catch (error) {
-  res.status(500).json({ message: error });
-      }
+router.get("/dogs/:userId", async (req, res) => {
+  try {
+    const dogs = await Participant.findById(req.params.userId).select("dogs");
+    if (dogs) {
+      res.status(200).send(dogs);
+    } else {
+      res.status(404).json({ message: "no dogs for current user" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
 });
 
 module.exports = router;
