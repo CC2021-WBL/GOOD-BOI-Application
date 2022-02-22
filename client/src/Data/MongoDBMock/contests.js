@@ -2,7 +2,7 @@ const contests = [
   {
     contestId: '3845029d-e97d-41ed-997f-2299d09ef648',
     contestName: 'Piętnasty zjazd dobrych chłopaków',
-    kynologiqueDepartment: 'Poznań',
+    kennelClubDepartment: 'Poznań',
     startDate: new Date(2022, 5, 1, 8, 30),
     endDate: new Date(2022, 5, 2, 17, 0),
     applicationOpenDate: new Date(2022, 2, 15, 20, 0),
@@ -22,44 +22,42 @@ const contests = [
     participants: ['matylda1234', 'bogdan678', 'zosia9474', 'eustachy123'],
     obedienceClasses: {
       0: [
-        { isFinished: true },
         {
           dogId: 'VIII-40407',
           dogName: 'Woof',
-          particpantId: 'matylda1234',
+          participantId: 'matylda1234',
           competingPairsId: '22-05-01Woof',
         },
         {
           dogId: 'VIII-27165',
           dogName: 'Nosek',
-          particpantId: 'bogdan678',
+          participantId: 'bogdan678',
           competingPairsId: '22-05-01Nosek',
         },
         {
           dogId: 'V-11165',
           dogName: 'Ptysio',
-          particpantId: 'zosia9474',
+          participantId: 'zosia9474',
           competingPairsId: '22-05-01Ptysio',
         },
       ],
       1: [
-        { isFinished: true },
         {
           dogId: 'X-37657',
           dogName: 'Ollie',
-          particpantId: 'eustachy123',
+          participantId: 'eustachy123',
           competingPairsId: '22-05-01Ollie',
         },
         {
           dogId: 'VII-27885',
           dogName: 'Kluska',
-          particpantId: 'matylda1234',
+          participantId: 'matylda1234',
           competingPairsId: '22-05-01Kluska',
         },
         {
           dogId: 'VI-15765',
           dogName: 'Norah',
-          particpantId: 'zosia9474',
+          participantId: 'zosia9474',
           competingPairsId: '22-05-01Norah',
         },
       ],
@@ -68,7 +66,7 @@ const contests = [
   {
     contestId: 'c9e7b738-f8e6-4300-9087-332ad5a28b4f',
     contestName: 'Konkurs grzeczności',
-    kynologiqueDepartment: 'Sopot',
+    kennelClubDepartment: 'Sopot',
     startDate: new Date(2021, 12, 24, 11, 0),
     endDate: new Date(2021, 12, 24, 18, 30),
     applicationOpenDate: new Date(2021, 10, 7, 20, 0),
@@ -88,50 +86,46 @@ const contests = [
     participants: ['matylda1234', 'bogdan678', 'zosia9474', 'eustachy123'],
     obedienceClasses: {
       0: [
-        { isFinished: true },
         {
           dogId: 'VIII-40407',
           dogName: 'Woof',
-          particpantId: 'matylda1234',
+          participantId: 'matylda1234',
           competingPairsId: '21-12-24Woof',
         },
       ],
       1: [
-        { isFinished: true },
         {
           dogId: 'VIII-27165',
           dogName: 'Nosek',
-          particpantId: 'bogdan678',
+          participantId: 'bogdan678',
           competingPairsId: '21-12-24Nosek',
         },
       ],
       2: [
-        { isFinished: true },
         {
           dogId: 'V-11165',
           dogName: 'Ptysio',
-          particpantId: 'zosia9474',
+          participantId: 'zosia9474',
           competingPairsId: '21-12-24Ptysio',
         },
         {
           dogId: 'X-37657',
           dogName: 'Ollie',
-          particpantId: 'eustachy123',
+          participantId: 'eustachy123',
           competingPairsId: '21-12-24Ollie',
         },
       ],
       3: [
-        { isFinished: true },
         {
           dogId: 'VII-27885',
           dogName: 'Kluska',
-          particpantId: 'matylda1234',
+          participantId: 'matylda1234',
           competingPairsId: '21-12-24Kluska',
         },
         {
           dogId: 'VI-15765',
           dogName: 'Norah',
-          particpantId: 'zosia9474',
+          participantId: 'zosia9474',
           competingPairsId: '21-12-24Norah',
         },
       ],
@@ -140,7 +134,7 @@ const contests = [
   {
     contestId: 'a0347677-c3c9-4edc-9d46-fed4a958fdc2',
     contestName: 'XII Zawody im. Pana Starosty',
-    kynologiqueDepartment: 'Gdynia',
+    kennelClubDepartment: 'Gdynia',
     startDate: new Date(2022, 3, 22, 9, 0),
     endDate: new Date(2022, 3, 23, 19, 0),
     applicationOpenDate: new Date(2022, 1, 10, 10, 0),
@@ -160,44 +154,42 @@ const contests = [
     participants: ['matylda1234', 'bogdan678', 'zosia9474', 'eustachy123'],
     obedienceClasses: {
       0: [
-        { isFinished: true },
         {
           dogId: 'VIII-40407',
           dogName: 'Woof',
-          particpantId: 'matylda1234',
+          participantId: 'matylda1234',
           competingPairsId: '22-03-22Woof',
         },
         {
           dogId: 'VIII-27165',
           dogName: 'Nosek',
-          particpantId: 'bogdan678',
+          participantId: 'bogdan678',
           competingPairsId: '22-03-22Nosek',
         },
         {
           dogId: 'V-11165',
           dogName: 'Ptysio',
-          particpantId: 'zosia9474',
+          participantId: 'zosia9474',
           competingPairsId: '22-03-22Ptysio',
         },
       ],
       1: [
-        { isFinished: true },
         {
           dogId: 'X-37657',
           dogName: 'Ollie',
-          particpantId: 'eustachy123',
+          participantId: 'eustachy123',
           competingPairsId: '22-03-22Ollie',
         },
         {
           dogId: 'VII-27885',
           dogName: 'Kluska',
-          particpantId: 'matylda1234',
+          participantId: 'matylda1234',
           competingPairsId: '22-03-22Kluska',
         },
         {
           dogId: 'VI-15765',
           dogName: 'Norah',
-          particpantId: 'zosia9474',
+          participantId: 'zosia9474',
           competingPairsId: '22-03-22Norah',
         },
       ],
@@ -206,7 +198,7 @@ const contests = [
   {
     contestId: 'dft6702f-fr56-12sr-35b5-fed4a958fdc2',
     contestName: 'Mistrzostwa Podlasia w posłuszeństwie',
-    kynologiqueDepartment: 'Białystok',
+    kennelClubDepartment: 'Białystok',
     startDate: new Date(2022, 1, 10, 10, 0),
     endDate: new Date(2022, 1, 10, 23, 0),
     applicationOpenDate: new Date(2021, 12, 10, 10, 0),
@@ -226,44 +218,42 @@ const contests = [
     participants: ['matylda1234', 'bogdan678', 'zosia9474', 'eustachy123'],
     obedienceClasses: {
       2: [
-        { isFinished: false },
         {
           dogId: 'VIII-40407',
           dogName: 'Woof',
-          particpantId: 'matylda1234',
+          participantId: 'matylda1234',
           competingPairsId: '22-02-10Woof',
         },
         {
           dogId: 'VIII-27165',
           dogName: 'Nosek',
-          particpantId: 'bogdan678',
+          participantId: 'bogdan678',
           competingPairsId: '22-02-10Nosek',
         },
       ],
       3: [
-        { isFinished: false },
         {
           dogId: 'V-11165',
           dogName: 'Ptysio',
-          particpantId: 'zosia9474',
+          participantId: 'zosia9474',
           competingPairsId: '22-02-10Ptysio',
         },
         {
           dogId: 'X-37657',
           dogName: 'Ollie',
-          particpantId: 'eustachy123',
+          participantId: 'eustachy123',
           competingPairsId: '22-02-10Ollie',
         },
         {
           dogId: 'VII-27885',
           dogName: 'Kluska',
-          particpantId: 'matylda1234',
+          participantId: 'matylda1234',
           competingPairsId: '22-02-10Kluska',
         },
         {
           dogId: 'VI-15765',
           dogName: 'Norah',
-          particpantId: 'zosia9474',
+          participantId: 'zosia9474',
           competingPairsId: '22-02-10Norah',
         },
       ],

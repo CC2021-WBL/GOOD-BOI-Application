@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 
 const insideClassSchema = new mongoose.Schema({
-  inFinished: {
-    type: Boolean,
-    default: false,
-  },
   dogId: {
     type: mongoose.SchemaTypes.ObjectId,
     ref: "Dog",
@@ -22,11 +18,30 @@ const insideClassSchema = new mongoose.Schema({
   },
 });
 
+const classObjectSchema = new mongoose.Schema({
+  isFinished: {
+    type: Boolean,
+    default: false,
+  },
+  participants: {
+    type: [insideClassSchema],
+    default: [],
+  },
+});
+
 const contestClassSchema = new mongoose.Schema({
-  0: [insideClassSchema],
-  1: [insideClassSchema],
-  2: [insideClassSchema],
-  3: [insideClassSchema],
+  0: {
+    type: classObjectSchema,
+  },
+  1: {
+    type: classObjectSchema,
+  },
+  2: {
+    type: classObjectSchema,
+  },
+  3: {
+    type: classObjectSchema,
+  },
 });
 
 const contestSchema = new mongoose.Schema({
