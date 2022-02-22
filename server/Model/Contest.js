@@ -8,7 +8,7 @@ const insideClassSchema = new mongoose.Schema({
   dogName: {
     type: String,
   },
-  participantID: {
+  participantId: {
     type: mongoose.SchemaTypes.ObjectId,
     ref: "Participant",
   },
