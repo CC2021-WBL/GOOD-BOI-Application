@@ -53,7 +53,7 @@ router.get('/', async (req, res) => {
     const contests = await Contest.find();
     res.json(contests);
   } catch (error) {
-    res.json({message: error});
+    res.json({ message: error });
   }
   res.status(500).send('data for contests page');
 });
@@ -64,4 +64,3 @@ router.get('/:contestId', (req, res) => {
 });
 
 module.exports = router;
-
