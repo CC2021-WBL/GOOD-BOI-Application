@@ -45,10 +45,6 @@
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^2.0.2",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
-    "prettier": "2.5.1",
     "stylelint": "^14.3.0",
     "stylelint-config-idiomatic-order": "^8.1.0",
     "stylelint-config-recommended": "^6.0.0",
