@@ -73,7 +73,7 @@ const Result = require('../Model/Result');
  *
  */
 // get current, individual result
-router.get('/:competingPairsId', async (req, res) => {
+router.get('/:resultsId', async (req, res) => {
   try {
     const results = await Result.find();
     res.json(results);
@@ -82,7 +82,6 @@ router.get('/:competingPairsId', async (req, res) => {
     res.json({ message: error });
   }
   res.status(500).send('data for results page');
-  aa;
 });
 
 // POST - create results for current competing part // waiting for IDs to get to Schema otherwise wont work
@@ -106,10 +105,10 @@ router.post('/', async (req, res) => {
 
 // update result - mock - only dogName
 // co powinienem dostawać ? jakie klucze powininny być do zmiany ? itd
-router.patch('/:competingPairsId', async (req, res) => {
+router.patch('/:resultsId', async (req, res) => {
   try {
     const updatedResults = await Result.updateOne(
-      { competingPairsId: req.params.competingPairsId },
+      { resultsId: req.params.resultsId },
       { $set: { dogName: req.body.dogName } },
     );
     res.json(updatedResults);
@@ -119,5 +118,19 @@ router.patch('/:competingPairsId', async (req, res) => {
 });
 
 // TODO: get leaderboard with summary results from current class in current contest
+
+router.get('/general/:contestId/:classId', async (req, res) => {
+  try {
+    const results = await Result.find({
+      contestId: req.params.contestId,
+    })
+      .where({ obedienceClass: 0 })
+      .select('summaryResult');
+
+    res.json(results);
+  } catch (error) {
+    res.json({ message: error });
+  }
+});
 
 module.exports = router;
