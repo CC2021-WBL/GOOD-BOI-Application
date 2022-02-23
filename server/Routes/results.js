@@ -76,11 +76,11 @@ const Result = require('../Model/Result');
 router.get('/:resultsId', async (req, res) => {
   try {
     const results = await Result.findById(req.params.resultsId);
-    return res.json(results);
+    res.send(results);
   } catch (error) {
     res.json({ message: error });
+    res.status(500).send('data for results page');
   }
-  res.status(500).send('data for results page');
 });
 
 // POST - create results for current competing part // waiting for IDs to get to Schema otherwise wont work
