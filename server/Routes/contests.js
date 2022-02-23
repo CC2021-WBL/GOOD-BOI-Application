@@ -1,6 +1,6 @@
 const express = require('express');
 const { registerContest } = require('../Controllers/contestControllers');
-
+const Contest = require('../Model/Contest');
 const router = express.Router();
 
 /**
@@ -70,6 +70,24 @@ const router = express.Router();
 //     res.status(500).send(error.message);
 //   }
 // });
+
+// #get classes for current contest -
+//     GET api/contests/classes/:contestId
+
+router.get('/classes/:contestId', async (req, res) => {
+  try {
+    const contest = await Contest.findById(req.params.contestId).select(
+      'obedienceClasses',
+    );
+    if (contest) {
+      res.status(200).send(contest);
+    } else {
+      res.status(404).json({ message: 'no class for current contest' });
+    }
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
 
 router.post('/register/:userId', async (req, res) => {
   try {
