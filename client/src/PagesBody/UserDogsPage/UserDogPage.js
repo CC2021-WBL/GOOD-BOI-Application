@@ -14,23 +14,33 @@ const UserDogPage = () => {
   const [isPending, setIsPending] = useState(true);
   const [participantDogs, setParticipantDogs] = useState(null);
   const { dogDispatch } = useContext(DogContext);
-
+  const [dogs, setDogs] = useState([])
   useEffect(() => {
-    const dogs = participants.find(
-      (participant) => participant.participantId === state.userId,
-    ).dogs;
-    setParticipantDogs(dogs);
-    setIsPending(false);
-    dogDispatch({
-      type: DOG_ACTIONS.SET_DATA,
-      payload: { dogs: dogs, chosenDog: '' },
-    });
-    if (state.selectedRole !== ROLE_NAME.PARTICIPANT)
-      dispatch({
-        type: USER_ACTIONS.SELECT_ROLE,
-        selectedRole: ROLE_NAME.PARTICIPANT,
-      });
+    const getDogs = async () => {
+      const res = await fetch('/api/dogs')
+      console.log(res)
+      const doggos = await res.json()
+      setParticipantDogs(doggos)
+    }
+    getDogs()
+    // const dogs = participants.find(
+    //   (participant) => participant.participantId === state.userId,
+    // ).dogs;
+    // setParticipantDogs(dogs);
+    // setIsPending(false);
+    // dogDispatch({
+    //   type: DOG_ACTIONS.SET_DATA,
+    //   payload: { dogs: dogs, chosenDog: '' },
+    // });
+    // if (state.selectedRole !== ROLE_NAME.PARTICIPANT)
+    //   dispatch({
+    //     type: USER_ACTIONS.SELECT_ROLE,
+    //     selectedRole: ROLE_NAME.PARTICIPANT,
+    //   });
   }, []);
+  useEffect(()=>{
+    console.log(dogs)
+  },[dogs])
 
   return (
     <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>

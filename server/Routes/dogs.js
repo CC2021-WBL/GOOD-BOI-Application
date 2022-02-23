@@ -7,6 +7,7 @@ const {
   deleteDog,
 } = require('../Controllers/dogsControllers');
 const { updateDogsArray } = require('../Controllers/usersControllers');
+const Dog = require("../Model/Dog");
 
 // Submit data from dog-form
 router.post('/register/:userId', async (req, res) => {
@@ -64,6 +65,19 @@ router.delete('/:dogId', async (req, res) => {
 //Get results for current dog
 router.get('/results/:dogId', async (req, res) => {
   res.send('get all results for current dog');
+});
+
+// Get data of current dog
+router.get('/', async (req, res) => {
+  console.log('dogos?')
+  try {
+    const dogData = await Dog.find();
+    console.log(dogData)
+    res.status(200).send(dogData);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error });
+  }
 });
 
 module.exports = router;
