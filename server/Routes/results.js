@@ -107,7 +107,7 @@ router.post('/', async (req, res) => {
 router.patch('/:resultsId', async (req, res) => {
   try {
     const updatedResults = await Result.updateOne(
-      { resultsId: req.params.resultsId },
+      { _id: req.params.resultsId },
       { $set: { dogName: req.body.dogName } },
     );
     res.json(updatedResults);
