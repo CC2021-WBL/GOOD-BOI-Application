@@ -1,5 +1,5 @@
-const Participant = require("../Model/Participant");
-const { generatePassword } = require("../Tools/passwordTools");
+const Participant = require('../Model/Participant');
+const { generatePassword } = require('../Tools/passwordTools');
 
 async function registerParticipant(req, res) {
   const saltHash = generatePassword(req.body.password);
@@ -33,13 +33,13 @@ async function getUserData(req, res) {
     if (req.query.select) {
       data = await Participant.findSomethingByUserId(
         req.params.userId,
-        req.query.select
+        req.query.select,
       );
     } else {
       data = await Participant.findById(req.params.userId);
     }
     if (!data) {
-      res.status(204).json({ message: "not found user with that ID" });
+      res.status(204).json({ message: 'not found user with that ID' });
     } else {
       return data;
     }
@@ -52,7 +52,7 @@ async function updateUserData(req, res) {
   try {
     const propsToUpdate = Object.keys(req.body);
     if (propsToUpdate.length === 0) {
-      res.status(204).json({ message: "no data to update" });
+      res.status(204).json({ message: 'no data to update' });
     }
     const user = await Participant.findById(req.params.userId);
     propsToUpdate.forEach((element) => {

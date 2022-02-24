@@ -10,7 +10,13 @@ const passwordTools = require('../Tools/passwordTools');
 router.post('/register', async (req, res) => {
   try {
     const savedUser = await userDbFunc.registerParticipant(req, res);
-    res.status(201).send(savedUser);
+    const jwt = passwordTools.issueJWT(savedUser);
+    res.status(201).json({
+      success: true,
+      user: savedUser,
+      token: jwt.token,
+      expiresIn: jwt.expires,
+    });
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -24,6 +30,8 @@ router.post(
     successMessage: true,
   }),
   (req, res) => {
+    console.log(req.isAuthenticated());
+    console.log(req.user);
     res.status(200).send(true);
   },
 );

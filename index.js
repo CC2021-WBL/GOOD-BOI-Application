@@ -17,13 +17,14 @@ const PORT = process.env.PORT || 27020;
 //Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(cookieParser());
 
 // Passport Authentication
-require('./server/Config/passport');
+//require('./server/Config/passport')
+require('./server/Config/passport')(passport);
 app.use(passport.initialize());
-// app.use(passport.session());
 
 // Import routes
 const contestsRoute = require('./server/Routes/contests');
