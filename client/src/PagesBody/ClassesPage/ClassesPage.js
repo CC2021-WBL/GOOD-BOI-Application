@@ -29,7 +29,7 @@ const ClassesPage = () => {
           />
         );
       })}
-      <MainButton onClick={onClickFinish} secondary text="ZAKOŃCZ KONKURS" />
+      <MainButton onClick={onClickFinish} secondary text="ZAKOŃCZ ZAWODY" />
     </ColumnWrapper>
   );
 };

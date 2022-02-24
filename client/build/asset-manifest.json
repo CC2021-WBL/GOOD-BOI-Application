@@ -1,7 +1,11 @@
 {
   "files": {
     "main.css": "/static/css/main.bbc90554.css",
+<<<<<<< HEAD
     "main.js": "/static/js/main.43911d43.js",
+=======
+    "main.js": "/static/js/main.285a5fab.js",
+>>>>>>> development
     "static/js/787.2a707307.chunk.js": "/static/js/787.2a707307.chunk.js",
     "static/media/profileDogFace.jpg": "/static/media/profileDogFace.8c0496d4eb9e6f1d411a.jpg",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
@@ -13,11 +17,19 @@
     "static/media/logoDevsOnTheWaves.svg": "/static/media/logoDevsOnTheWaves.cf27d25e4bacdf07f9b313a628f6a5f0.svg",
     "index.html": "/index.html",
     "main.bbc90554.css.map": "/static/css/main.bbc90554.css.map",
+<<<<<<< HEAD
     "main.43911d43.js.map": "/static/js/main.43911d43.js.map",
+=======
+    "main.285a5fab.js.map": "/static/js/main.285a5fab.js.map",
+>>>>>>> development
     "787.2a707307.chunk.js.map": "/static/js/787.2a707307.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bbc90554.css",
+<<<<<<< HEAD
     "static/js/main.43911d43.js"
+=======
+    "static/js/main.285a5fab.js"
+>>>>>>> development
   ]
 }

@@ -1,11 +1,12 @@
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
 import CLASSES from '../../Consts/classesConst';
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import contests from '../../Data/MongoDBMock/contests';
 import results from '../../Data/MongoDBMock/results';
-import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
 
 const ClassCompetitorsPage = () => {
   const { contestId, classId } = useParams();
@@ -15,7 +16,7 @@ const ClassCompetitorsPage = () => {
   const exercisesAmount = CLASSES[classId].exercises.length;
 
   function onClassFinishClick() {
-    navigate;
+    navigate();
   }
 
   return (

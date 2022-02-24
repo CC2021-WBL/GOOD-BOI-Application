@@ -1,28 +1,45 @@
 import { useEffect, useState } from 'react';
 
-// renamed file
-const useCustomForm = (callback, validateData) => {
-  const initialState = {
-    firstname: '',
-    surname: '',
+const useCustomForm = (callback, validateData, initialState) => {
+  const initialStateMock = {
+    participantName: '',
+    participantSurname: '',
     email: '',
     password: '',
     repeatpass: '',
-    street: '',
-    zipcode: '',
-    city: '',
+    phoneNumber: '',
+    address: {
+      country: '',
+      city: '',
+      street: '',
+      numberOfHouse: '',
+      postalCode: '',
+    },
   };
+  if (!initialState) {
+    initialState = initialStateMock;
+  }
 
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const handleInputChange = (event) => {
     const { id, value } = event.target;
-    setFormData({
-      ...formData,
-      [id]: value,
-    });
+
+    setFormData(
+      ['street', 'postalCode', 'city', 'country', 'numberOfHouse'].includes(id)
+        ? {
+            ...formData,
+            address: {
+              ...formData.address,
+              [id]: value,
+            },
+          }
+        : {
+            ...formData,
+            [id]: value,
+          },
+    );
   };
 
   const submitHandler = (event) => {

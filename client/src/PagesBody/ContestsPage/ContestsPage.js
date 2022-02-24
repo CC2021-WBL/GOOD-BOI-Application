@@ -58,7 +58,7 @@ const ContestsPage = () => {
 
   // handling different selections
   const handleFilterClick = (time, event) => {
-    event.preventDefault;
+    event.preventDefault();
     setSelectedMode(time);
     console.log(contestData);
   };
@@ -82,7 +82,7 @@ const ContestsPage = () => {
           )}
         {contestData &&
           getSelectedContestsByTime(selectedMode, contestData).length === 0 && (
-            <h3>Nie ma konkursów</h3>
+            <h3>Nie ma zawodów</h3>
           )}
       </ColumnWrapper>
     </>
