@@ -77,7 +77,8 @@ const {
  *                 $ref: '#/components/schemas/Result'
  *
  */
-// get current, individual result
+
+// get - current, individual result
 router.get('/:resultsId', async (req, res) => {
   try {
     const results = await Result.findById(req.params.resultsId);
@@ -88,8 +89,7 @@ router.get('/:resultsId', async (req, res) => {
   }
 });
 
-// POST - create results for current competing part // waiting for IDs to get to Schema otherwise wont work
-// to test chenge schema types in Results to string instead of mongoose.SchemaTypes.ObjectIds
+// post - create results for current competing part
 router.post('/', async (req, res) => {
   try {
     const result = await registerResults(req, res);
@@ -99,8 +99,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// update result - mock - only dogName
-// co powinienem dostawać ? jakie klucze powininny być do zmiany ? itd
+// update some results
 router.patch('/:resultsId', async (req, res) => {
   try {
     const result = await updateSomeResults(req, res);
@@ -111,8 +110,7 @@ router.patch('/:resultsId', async (req, res) => {
   }
 });
 
-// TODO: get leaderboard with summary results from current class in current contest
-
+//get - leaderboard with summary results from current class in current contest
 router.get('/general/:contestId/:classId', async (req, res) => {
   try {
     const summResultsAndName = await getResultSummaryAndName(req, res);
