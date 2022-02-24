@@ -34,4 +34,22 @@ async function updateSomeResults(req, res) {
   }
 }
 
-module.exports = { updateSomeResults, registerResults };
+async function getResultSummaryAndName(req, res) {
+  try {
+    const results = await Result.find({
+      contestId: req.params.contestId,
+    })
+      .where({ obedienceClass: 0 })
+      .select(['dogName', 'summaryResult']);
+
+    res.json(results);
+  } catch (error) {
+    res.json({ message: error });
+  }
+}
+
+module.exports = {
+  updateSomeResults,
+  registerResults,
+  getResultSummaryAndName,
+};

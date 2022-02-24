@@ -3,6 +3,7 @@ const Result = require('../Model/Result');
 const {
   updateSomeResults,
   registerResults,
+  getResultSummaryAndName,
 } = require('../Controllers/resultsControllers');
 /**
  * @swagger
@@ -114,15 +115,11 @@ router.patch('/:resultsId', async (req, res) => {
 
 router.get('/general/:contestId/:classId', async (req, res) => {
   try {
-    const results = await Result.find({
-      contestId: req.params.contestId,
-    })
-      .where({ obedienceClass: 0 })
-      .select(['dogName', 'summaryResult']);
-
-    res.json(results);
+    const summResultsAndName = await getResultSummaryAndName(req, res);
+    res.status(200).send(summResultsAndName);
   } catch (error) {
-    res.json({ message: error });
+    console.log(error);
+    res.status(500).json({ message: error });
   }
 });
 
