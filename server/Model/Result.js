@@ -44,6 +44,15 @@ const resultSchema = new mongoose.Schema({
     type: [mongoose.SchemaTypes.Mixed],
     default: [],
   },
+  createdAt: {
+    type: Date,
+    immutable: true,
+    default: () => Date.now(),
+  },
+  updatedAt: {
+    type: Date,
+    default: () => Date.now(),
+  },
 });
 
 module.exports = mongoose.model('Result', resultSchema);
