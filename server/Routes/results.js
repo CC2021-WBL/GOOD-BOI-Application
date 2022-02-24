@@ -80,7 +80,7 @@ const {
 router.get('/:resultsId', async (req, res) => {
   try {
     const results = await Result.findById(req.params.resultsId);
-    res.send(results);
+    res.status(200).send(results);
   } catch (error) {
     res.json({ message: error });
     res.status(500).send('data for results page');
