@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Result = require('../Model/Result');
+const { updateSomeResults } = require('../Controllers/resultsControllers');
 /**
  * @swagger
  * components:
@@ -106,13 +107,11 @@ router.post('/', async (req, res) => {
 // co powinienem dostawać ? jakie klucze powininny być do zmiany ? itd
 router.patch('/:resultsId', async (req, res) => {
   try {
-    const updatedResults = await Result.updateOne(
-      { _id: req.params.resultsId },
-      { $set: { dogName: req.body.dogName } },
-    );
-    res.json(updatedResults);
+    const result = await updateSomeResults(req, res);
+    res.status(201).send(result);
   } catch (error) {
-    res.json({ message: error });
+    console.log(error);
+    res.send(error.message);
   }
 });
 
