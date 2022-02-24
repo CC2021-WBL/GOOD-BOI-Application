@@ -124,7 +124,7 @@ router.get('/general/:contestId/:classId', async (req, res) => {
       contestId: req.params.contestId,
     })
       .where({ obedienceClass: 0 })
-      .select('summaryResult');
+      .select('summaryResult', 'dogName');
 
     res.json(results);
   } catch (error) {
