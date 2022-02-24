@@ -56,7 +56,7 @@ const swaggerOptions = {
       },
     ],
   },
-  apis: ['./Routes/*.js'],
+  apis: ['./server/Routes/*.js'],
 };
 app.use(
   '/api-docs',
