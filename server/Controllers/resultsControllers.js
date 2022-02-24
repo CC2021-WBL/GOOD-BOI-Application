@@ -1,5 +1,22 @@
 const Result = require('../Model/Result');
 
+async function registerResults(req, res) {
+  const result = new Result({
+    contestId: req.body.contestId,
+    contestName: req.body.contestName,
+    obedienceClass: req.body.obedienceClass,
+    dogId: req.body.dogId,
+    dogName: req.body.dogName,
+    participantId: req.body.participantId,
+  });
+  try {
+    const savedResult = await result.save();
+    return savedResult;
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
+}
+
 async function updateSomeResults(req, res) {
   try {
     const resultsToUpdate = Object.keys(req.body);
@@ -17,4 +34,4 @@ async function updateSomeResults(req, res) {
   }
 }
 
-module.exports = { updateSomeResults };
+module.exports = { updateSomeResults, registerResults };

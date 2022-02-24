@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const Result = require('../Model/Result');
-const { updateSomeResults } = require('../Controllers/resultsControllers');
+const {
+  updateSomeResults,
+  registerResults,
+} = require('../Controllers/resultsControllers');
 /**
  * @swagger
  * components:
@@ -87,17 +90,9 @@ router.get('/:resultsId', async (req, res) => {
 // POST - create results for current competing part // waiting for IDs to get to Schema otherwise wont work
 // to test chenge schema types in Results to string instead of mongoose.SchemaTypes.ObjectIds
 router.post('/', async (req, res) => {
-  const result = new Result({
-    contestId: req.body.contestId,
-    contestName: req.body.contestName,
-    obedienceClass: req.body.obedienceClass,
-    dogId: req.body.dogId,
-    dogName: req.body.dogName,
-    participantId: req.body.participantId,
-  });
   try {
-    const savedResult = await result.save();
-    res.status(201).json(savedResult);
+    const result = await registerResults(req, res);
+    res.status(201).json(result);
   } catch (error) {
     res.status(400).json({ message: error });
   }
