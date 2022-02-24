@@ -25,7 +25,9 @@ const AddContestFormPage = () => {
     judgeArr.push(i);
   }
 
-  const handleChange = () => {};
+  const handleChange = () => {
+    console.log('checkbox clicked');
+  };
 
   return (
     <>
