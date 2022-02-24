@@ -6,6 +6,7 @@ import ContestCard from '../../Molecules/ContestCard/ContestCard';
 import { ContestContext } from '../../Context/ContestContext';
 import ContestFilterToggler from '../../Organisms/ContestFilterHarmonica/ContestFilterToggler';
 import FilterLabel from '../../Molecules/FilterLabel/FilterLabel';
+import { ROLE_NAME } from '../../Consts/rolesConsts';
 import { TIME } from '../../Consts/infoLabelConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
@@ -30,19 +31,38 @@ const ContestsPage = () => {
   // mock for getting data from DB for current user (with mock result for request api/contests?userId=matylda1234)
   useEffect(() => {
     if (locationPath.state && locationPath.state.contestContent === 'results') {
-      console.log('Will be selected by ' + state.userId); //is left intentionally
-      setContestData(
-        resForContestPage.filter((contest) => {
-          return contest.participants.includes(state.userId);
-        }),
-      );
+      if (state.selectedRole === ROLE_NAME.MANAGER) {
+        setContestData(
+          resForContestPage.filter((contest) => {
+            return contest.manager.includes(state.userId);
+          }),
+        );
+      } else if (state.selectedRole === ROLE_NAME.PARTICIPANT) {
+        setContestData(
+          resForContestPage.filter((contest) => {
+            return contest.participants.includes(state.userId);
+          }),
+        );
+      }
       setSelectedMode(TIME.PRESENT_AND_PAST);
       setIsPending(false);
     } else if (
       locationPath.state &&
       locationPath.state.contestContent === 'future'
     ) {
-      setContestData(resForContestPage);
+      if (state.selectedRole === ROLE_NAME.MANAGER) {
+        setContestData(
+          resForContestPage.filter((contest) => {
+            return contest.manager.includes(state.userId);
+          }),
+        );
+      } else if (state.selectedRole === ROLE_NAME.PARTICIPANT) {
+        setContestData(
+          resForContestPage.filter((contest) => {
+            return contest.participants.includes(state.userId);
+          }),
+        );
+      }
       setSelectedMode(TIME.FUTURE);
       setIsPending(false);
     } else {

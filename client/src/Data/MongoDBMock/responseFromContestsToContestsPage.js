@@ -5,6 +5,8 @@ const resForContestPage = [
     kynologiqueDepartment: 'Poznań',
     startDate: new Date(2022, 5, 1, 8, 30),
     endDate: new Date(2022, 5, 2, 17, 0),
+    manager: 'zbyszkobogdaniec55555', // id managera
+
     address: {
       country: 'Polska',
       city: 'Poznań',
