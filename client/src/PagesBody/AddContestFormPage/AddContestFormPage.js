@@ -5,6 +5,7 @@ import InputField from './../../Molecules/InputField/InputField';
 import InputLabel from './../../Atoms/InputLabel/InputLabel';
 import MainButton from './../../Atoms/MainButton/MainButton';
 import SelectFieldStyled from '../../Atoms/SelectField/SelectFieldStyled';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 
@@ -20,13 +21,28 @@ const AddContestFormPage = () => {
   const [data, setData] = useState('');
   console.log(data);
 
+  const [oneChecked, setOneChecked] = useState('');
+
+  useEffect(() => {
+    console.log('useEffect');
+    console.log('useEffect oneChecked: ' + oneChecked);
+  }, [oneChecked]);
+
   const judgeArr = [];
   for (let i = 1; i <= watch('judges'); i++) {
     judgeArr.push(i);
   }
 
-  const handleChange = () => {
-    console.log('checkbox clicked');
+  const handleChange = (e) => {
+    const checked = e.target.checked;
+    setOneChecked(checked);
+    const name = e.target.name;
+    const value = e.target.value;
+    console.log('checked ' + checked);
+    console.log('name ' + name);
+    console.log('value ' + value);
+    console.log('checked:' + checked);
+    console.log('state: ' + oneChecked);
   };
 
   return (
@@ -324,6 +340,7 @@ const AddContestFormPage = () => {
                 <label htmlFor="klasa3">Klasa 3</label>
               </div>
             </CheckBoxFormWrapperStyled>
+            <p>{oneChecked}</p>
           </div>
           <MainButton primary text="zarejestruj nowe zawody" />
         </FormWrapper>
