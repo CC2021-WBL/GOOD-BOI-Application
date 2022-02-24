@@ -125,6 +125,15 @@ const contestSchema = new mongoose.Schema({
     type: obedienceClassesSchema,
     required: true,
   },
+  createdAt: {
+    type: Date,
+    immutable: true,
+    default: () => Date.now(),
+  },
+  updatedAt: {
+    type: Date,
+    default: () => Date.now(),
+  },
 });
 
 module.exports = mongoose.model('Contest', contestSchema);
