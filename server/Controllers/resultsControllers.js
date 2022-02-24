@@ -17,4 +17,4 @@ async function updateSomeResults(req, res) {
   }
 }
 
-module.exports = updateSomeResults;
+module.export = updateSomeResults;
