@@ -24,27 +24,39 @@ const InputField = React.forwardRef(
     ref,
   ) => {
     return (
-      <>
-        <InputLabel htmlFor={htmlFor} labelText={labelText} />
-        <InputFieldStyled
-          id={id}
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          name={name}
-          required={required}
-          className={className}
-          Ref={register}
-          errors={errors}
-          onBlur={onBlur}
-          ref={ref}
-          defaultValue={defaultValue}
-        />
-      </>
+      <div>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'flex-start',
+            alignSelf: 'flex-start',
+          }}
+        >
+          <>
+            <InputLabel htmlFor={htmlFor} labelText={labelText} />
+            <InputFieldStyled
+              id={id}
+              type={type}
+              placeholder={placeholder}
+              value={value}
+              onChange={onChange}
+              name={name}
+              required={required}
+              className={className}
+              Ref={register}
+              errors={errors}
+              onBlur={onBlur}
+              ref={ref}
+              defaultValue={defaultValue}
+            />
+          </>
+        </div>
+      </div>
     );
   },
 );
+
 InputField.displayName = 'InputField';
 
 InputField.propTypes = {
@@ -59,10 +71,10 @@ InputField.propTypes = {
   required: propTypes.bool,
   className: propTypes.string,
   register: propTypes.any,
-  errors: propTypes.any,
-  onBlur: propTypes.any,
-  execute: propTypes.any,
+  errors: propTypes.string,
+  onBlur: propTypes.func,
   defaultValue: propTypes.any,
+  style: propTypes.string,
 };
 
 export default InputField;

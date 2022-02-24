@@ -1,61 +1,12 @@
-import COLORS from '../../Styles/varsStyledComponents';
+import CheckBoxFormWrapperStyled from './CheckBoxFormWrapperStyled';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import FONTS from '../../Styles/fontsStyledComponents';
 import FormWrapper from './../../Atoms/FormWrapper/FormWrapper';
 import InputField from './../../Molecules/InputField/InputField';
 import InputLabel from './../../Atoms/InputLabel/InputLabel';
 import MainButton from './../../Atoms/MainButton/MainButton';
-import styled from 'styled-components';
+import SelectFieldStyled from '../../Atoms/SelectField/SelectFieldStyled';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-
-const Input = styled.input`
-  width: 100%;
-  height: 3rem;
-  padding: 0 0 0 10px;
-  border: 0.5px solid ${({ theme }) => theme.grey400};
-  margin: 0 0 3px 0;
-  background: ${({ theme }) => theme.white};
-  border-radius: 8px;
-  color: ${({ theme }) => theme.grey400};
-  font-family: Mulish, FontAwesome, sans-serif;
-  ${FONTS.body_semibold};
-  &::placeholder {
-    color: ${({ theme }) => theme.grey400};
-  }
-  &:focus {
-    border: 0.5px solid transparent;
-    outline: 3px solid ${({ theme }) => theme.primary201};
-  }
-  &.red-border {
-    border: 0.5px solid transparent;
-    outline: 1.5px solid ${COLORS.negative400};
-  }
-`;
-
-const Select = styled.select`
-  width: 100%;
-  height: 3rem;
-  padding: 0 0 0 10px;
-  border: 0.5px solid ${({ theme }) => theme.grey400};
-  margin: 0 0 3px 0;
-  background: ${({ theme }) => theme.white};
-  border-radius: 8px;
-  color: ${({ theme }) => theme.grey400};
-  font-family: Mulish, FontAwesome, sans-serif;
-  ${FONTS.body_semibold};
-  &::placeholder {
-    color: ${({ theme }) => theme.grey400};
-  }
-  &:focus {
-    border: 0.5px solid transparent;
-    outline: 3px solid ${({ theme }) => theme.primary201};
-  }
-  &.red-border {
-    border: 0.5px solid transparent;
-    outline: 1.5px solid ${COLORS.negative400};
-  }
-`;
 
 const AddContestFormPage = () => {
   const {
@@ -64,7 +15,7 @@ const AddContestFormPage = () => {
     watch,
     formState: { errors },
   } = useForm({
-    /*  mode: 'onBlur'  */
+    mode: 'onBlur',
   });
   const [data, setData] = useState('');
   console.log(data);
@@ -73,6 +24,8 @@ const AddContestFormPage = () => {
   for (let i = 1; i <= watch('judges'); i++) {
     judgeArr.push(i);
   }
+
+  const handleChange = () => {};
 
   return (
     <>
@@ -85,7 +38,7 @@ const AddContestFormPage = () => {
             htmlFor="name"
             id="name"
             type="text"
-            placeholder="&#xF007; Nazwa zawodów"
+            placeholder="&#xf069; Nazwa zawodów"
             {...register('name', {
               required: 'Wpisz prawidłową nazwę konkursu',
               minLength: {
@@ -100,7 +53,7 @@ const AddContestFormPage = () => {
             htmlFor="department"
             id="department"
             type="text"
-            placeholder="&#xF007; Oddział ZKwP"
+            placeholder="&#xf069; Oddział ZKwP"
             {...register('department', {
               required: 'Wpisz oddział ZKwP',
               minLength: {
@@ -159,11 +112,11 @@ const AddContestFormPage = () => {
           />
           {errors.closingDate && <p>{errors.closingDate.message}</p>}
           <InputField
-            labelText="Adres zawodów -kraj"
+            labelText="Adres zawodów - kraj"
             htmlFor="country"
             id="country"
             type="text"
-            placeholder="&#xF007; Adres zawodów - kraj"
+            placeholder="&#xf015; Adres zawodów - kraj"
             {...register('country', {
               required: 'Wpisz kraj w którym odbywają się zawody',
               min: 5,
@@ -176,7 +129,7 @@ const AddContestFormPage = () => {
             htmlFor="city"
             id="city"
             type="text"
-            placeholder="&#xF007; Adres zawodów - miasto"
+            placeholder="&#xf015; Adres zawodów - miasto"
             {...register('city', {
               required: 'Wpisz miasto, w którym odbywają się zawody',
               min: 5,
@@ -188,7 +141,7 @@ const AddContestFormPage = () => {
             htmlFor="number"
             id="number"
             type="number"
-            placeholder="&#xF007; Adres zawodów - numer obiektu"
+            placeholder="&#xf015; Adres zawodów - numer obiektu"
             {...register('number', {
               required: 'Podaj numer obiektu (1 - 2000)',
               max: 2000,
@@ -206,7 +159,7 @@ const AddContestFormPage = () => {
             id="code"
             type="text"
             pattern="^\d{2}-\d{3}$"
-            placeholder="&#xF007; Adres zawodów - kod pocztowy"
+            placeholder="&#xf015;; Adres zawodów - kod pocztowy"
             {...register('code', {
               required: 'Podaj kod pocztowy w formacie XX-XXX',
             })}
@@ -216,7 +169,7 @@ const AddContestFormPage = () => {
             labelText="Wybierz ilość sędziów"
             htmlFor="judges"
           ></InputLabel>
-          <Select
+          <SelectFieldStyled
             id="judges"
             defaultValue="Wybierz ilość sędziów"
             placeholder="&#xF007; Wybierz ilość sędziów"
@@ -228,16 +181,22 @@ const AddContestFormPage = () => {
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
-          </Select>
+          </SelectFieldStyled>
           {judgeArr.map((judge, index) => {
             return (
-              <div key={index}>
-                <InputLabel
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  padding: '0 1rem',
+                }}
+                key={index}
+              >
+                <InputField
+                  key={index}
                   labelText={`Sędzia ${judge}`}
                   htmlFor={`judge${judge}`}
-                ></InputLabel>
-                <Input
-                  id={judge}
+                  id={`judge${judge}`}
                   type="text"
                   placeholder={`Sędzia ${judge}`}
                   {...register(`judge${judge}`, {
@@ -266,14 +225,12 @@ const AddContestFormPage = () => {
             })}
           />
           {errors.komisarz && <p>{errors.komisarz.message}</p>}
-          <InputLabel
+          <InputField
             labelText="Opłata startowa [PLN]"
             htmlFor="opłata"
-          ></InputLabel>
-          <Input
             id="oplata"
             type="number"
-            placeholder="&#xF007; Opłata startowa [PLN]"
+            placeholder="&#xf0d6; Opłata startowa [PLN]"
             {...register('oplata', {
               required: 'Podaj opłatę startową w PLN',
               max: 1000,
@@ -299,6 +256,73 @@ const AddContestFormPage = () => {
           />
           {errors.liczba && <p>{errors.liczba.message}</p>}
           {errors.liczba && <p>Podaj liczbę z zakresu 1-100 </p>}
+          <InputLabel labelText="Wybierz planowane klasy" htmlFor="checkboxy" />
+
+          <div
+            className="checkboxes"
+            style={{
+              border: '1px solid #7B8794',
+              display: 'flex',
+              flexDirection: 'column',
+              borderRadius: '12px',
+              margin: '0 0 1rem 0',
+            }}
+          >
+            <CheckBoxFormWrapperStyled>
+              <div className="checkBoxItem">
+                <input
+                  name="checkbox0"
+                  id="class0"
+                  labelText="Klasa 0"
+                  type="checkbox"
+                  htmlFor="checkbox0"
+                  value="Klasa 0"
+                  {...register('checkbox0')}
+                  onChange={handleChange}
+                />
+                <label htmlFor="klasa0">Klasa 0</label>
+              </div>
+              <div className="checkBoxItem">
+                <input
+                  name="checkbox1"
+                  id="class1"
+                  labelText="Klasa 1"
+                  type="checkbox"
+                  htmlFor="checkbox1"
+                  value="Klasa 1"
+                  {...register('checkbox1')}
+                  onChange={handleChange}
+                />
+                <label htmlFor="klasa1">Klasa 1</label>
+              </div>
+              <div className="checkBoxItem">
+                <input
+                  name="checkbox2"
+                  id="class2"
+                  labelText="Klasa 2"
+                  type="checkbox"
+                  htmlFor="checkbox2"
+                  value="Klasa 2"
+                  {...register('checkbox2')}
+                  onChange={handleChange}
+                />
+                <label htmlFor="klasa2">Klasa 2</label>
+              </div>
+              <div className="checkBoxItem">
+                <input
+                  name="checkbox3"
+                  id="class3"
+                  labelText="Klasa 3"
+                  type="checkbox"
+                  htmlFor="checkbox3"
+                  value="Klasa 3"
+                  {...register('checkbox3')}
+                  onChange={handleChange}
+                />
+                <label htmlFor="klasa3">Klasa 3</label>
+              </div>
+            </CheckBoxFormWrapperStyled>
+          </div>
           <MainButton primary text="zarejestruj nowe zawody" />
         </FormWrapper>
       </ColumnWrapper>

@@ -1,8 +1,8 @@
-import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
 
-const InputFieldStyled = styled.input`
+const SelectFieldStyled = styled.select`
+  width: 100%;
   height: 3rem;
   padding: 0 0 0 10px;
   border: 0.5px solid ${({ theme }) => theme.grey400};
@@ -15,16 +15,10 @@ const InputFieldStyled = styled.input`
   &::placeholder {
     color: ${({ theme }) => theme.grey400};
   }
-
   &:focus {
     border: 0.5px solid transparent;
     outline: 3px solid ${({ theme }) => theme.primary201};
   }
-
-  &.red-border {
-    border: 0.5px solid transparent;
-    outline: 1.5px solid ${COLORS.negative400};
-  }
 `;
 
-export default InputFieldStyled;
+export default SelectFieldStyled;
