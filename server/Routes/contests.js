@@ -32,7 +32,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /contests:
+ * /api/contests:
  *   get:
  *     summary: Returns the list of contests
  *     responses:
@@ -45,6 +45,22 @@ const router = express.Router();
  *               items:
  *                 $ref: '#/components/schemas/Contest'
  *
+ */
+
+/**
+ * @swagger
+ * /api/contests/classes/62168638c3c82b9c0fbfd291:
+ *  get:
+ *    summary: Returns the list of classes in current contest
+ *    responses:
+ *      200:
+ *        description: The list of all classes in current contest
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                $ref: '#/components/schemas/Contest'
  */
 
 // Get all contests
@@ -72,15 +88,13 @@ const router = express.Router();
 // });
 
 // #get classes for current contest -
-//     GET api/contests/classes/:contestId
-
 router.get('/classes/:contestId', async (req, res) => {
   try {
-    const contest = await Contest.findById(req.params.contestId).select(
+    const classes = await Contest.findById(req.params.contestId).select(
       'obedienceClasses',
     );
-    if (contest) {
-      res.status(200).send(contest);
+    if (classes) {
+      res.status(200).send(classes);
     } else {
       res.status(404).json({ message: 'no class for current contest' });
     }
