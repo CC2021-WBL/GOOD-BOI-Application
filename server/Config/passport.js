@@ -8,23 +8,6 @@ const pathToKey = path.join(__dirname, '..', 'Tools', 'id_rsa_pub.pem');
 
 const PUB_KEY = fs.readFileSync(pathToKey, 'utf8');
 
-// const passportJWTOptions = {
-//   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(), // jesli jwt w cookie --> trzeba cookie extractor
-//   secretOrKey: PUB_KEY,
-//   issuer: 'issuer here',
-//   audience: 'audience here',
-//   algorithms: ['RS256'],
-//   ignoreExpiration: false,
-//   passReqToCallback: false,
-//   jsonWebTokenOptions: {
-//     complete: false,
-//     clockTolerance: '',
-//     maxAge: '2d',
-//     clockTimestamp: '100',
-//     nonce: 'string here for OpenID',
-//   },
-// };
-
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(), // jesli jwt w cookie --> trzeba cookie extractor
   secretOrKey: PUB_KEY,

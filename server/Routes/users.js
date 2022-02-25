@@ -6,6 +6,7 @@ const userDbFunc = require('../Controllers/usersControllers');
 const passport = require('passport');
 const passwordTools = require('../Tools/passwordTools');
 const { loginAuthentication } = require('../Tools/loginAuth');
+const auth = passport.authenticate('jwt', { session: false });
 
 //Submit data of user
 router.post('/register', async (req, res) => {
@@ -36,21 +37,17 @@ router.get('/logout', (req, res) => {
 });
 
 //Update some data of current user
-router.patch(
-  '/:userId',
-  passport.authenticate('jwt', { session: false }),
-  async (req, res) => {
-    try {
-      const updatedUser = await userDbFunc.updateUserData(req, res);
-      res.status(200).send(updatedUser);
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  },
-);
+router.patch('/:userId', auth, async (req, res) => {
+  try {
+    const updatedUser = await userDbFunc.updateUserData(req, res);
+    res.status(200).send(updatedUser);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 //Get current user data
-router.get('/:userId', async (req, res) => {
+router.get('/:userId', auth, async (req, res) => {
   try {
     const userData = await userDbFunc.getUserData(req, res);
     res.status(200).send(userData);
