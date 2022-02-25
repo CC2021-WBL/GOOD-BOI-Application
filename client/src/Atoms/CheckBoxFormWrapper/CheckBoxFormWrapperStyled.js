@@ -1,4 +1,4 @@
-import FONTS from './../../Styles/fontsStyledComponents';
+import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
 
 const CheckBoxFormWrapperStyled = styled.div`
