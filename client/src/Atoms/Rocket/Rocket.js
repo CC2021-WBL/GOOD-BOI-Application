@@ -1,12 +1,14 @@
 import RocketStyled from './RocketStyled';
-import inprogress from '../../Assets/inprogress.png';
+import rocket from '../../Assets/rocket.png';
 
-// import rocket from '../../Assets/rocket.png';
+// import inprogress from '../../Assets/inprogress.png';
+
+
 
 const Rocket = () => {
   return (
     <RocketStyled>
-      <img src={inprogress} alt="rocket" />
+      <img src={rocket} alt="rocket" />
     </RocketStyled>
   );
 };
