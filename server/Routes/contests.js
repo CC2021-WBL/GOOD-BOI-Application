@@ -1,6 +1,6 @@
 const express = require('express');
 const { registerContest } = require('../Controllers/contestControllers');
-
+const Contest = require('../Model/Contest');
 const router = express.Router();
 
 /**
@@ -77,6 +77,17 @@ router.post('/register/:userId', async (req, res) => {
     res.status(201).json(savedContest);
   } catch (error) {
     res.status(400).json({ message: error });
+  }
+});
+
+router.delete('/:contestId', async (req, res) => {
+  try {
+    const removedContest = await Contest.deleteOne({
+      _id: req.params.contestId,
+    });
+    res.status(200).send(removedContest);
+  } catch (error) {
+    res.status(500).send(error.message);
   }
 });
 

@@ -1,4 +1,4 @@
-const Dog = require("../Model/Dog");
+const Dog = require('../Model/Dog');
 
 async function registerDog(req, res) {
   const dog = new Dog({
@@ -18,7 +18,7 @@ async function registerDog(req, res) {
   try {
     const savedDog = await dog.save();
     if (!savedDog) {
-      res.status(400).json({ message: "inappropriate data" });
+      res.status(400).json({ message: 'inappropriate data' });
     }
     return savedDog;
   } catch (error) {
@@ -30,7 +30,7 @@ async function updateSomeDogProps(req, res) {
   try {
     const propsToUpdate = Object.keys(req.body);
     if (propsToUpdate.length === 0) {
-      res.status(204).json({ message: "no data to update" });
+      res.status(204).json({ message: 'no data to update' });
     }
     const dog = await Dog.findById(req.params.dogId);
     propsToUpdate.forEach((element) => {
@@ -47,18 +47,18 @@ async function updateAllDogData(req, res) {
   try {
     const newData = Object.keys(req.body);
     if (newData.length === 0) {
-      res.status(204).json({ message: "no data to update" });
+      res.status(204).json({ message: 'no data to update' });
     }
     const dog = await Dog.findById(req.params.dogId);
     if (!dog) {
-      res.status(404).json({ message: "no dog with current ID in DB" });
+      res.status(404).json({ message: 'no dog with current ID in DB' });
     }
     newData.forEach((element) => {
       dog[element] = req.body[element];
     });
     const updatedDog = await dog.save();
     if (!updatedDog) {
-      res.status(500).json({ message: "saving error" });
+      res.status(500).json({ message: 'saving error' });
     } else {
       return updatedDog;
     }
@@ -85,7 +85,7 @@ async function deleteDog(req, res) {
   try {
     const removedDog = await Dog.deleteOne({ _id: req.params.dogId });
     if (!removedDog) {
-      res.status(404).json({ message: "no data with this ID" });
+      res.status(404).json({ message: 'no data with this ID' });
     } else {
       return removedDog;
     }

@@ -30,15 +30,28 @@ const resultSchema = new mongoose.Schema({
   },
   summaryResult: {
     type: Number,
+    default: null,
   },
-  prize: {
+  evaluation: {
     type: String,
+    default: null,
   },
   specialState: {
     type: String,
+    default: null,
   },
   exercises: {
     type: [mongoose.SchemaTypes.Mixed],
+    default: [],
+  },
+  createdAt: {
+    type: Date,
+    immutable: true,
+    default: () => Date.now(),
+  },
+  updatedAt: {
+    type: Date,
+    default: () => Date.now(),
   },
 });
 
