@@ -57,7 +57,6 @@ function App() {
                     <Route path="/" element={<LandingPage />} />
                     <Route element={<Layout withSettings />}>
                       <Route path="user/:userId" element={<ProfilePage />} />
-                      
                     </Route>
                     <Route element={<Layout />}>
                       <Route path="manager" element={<ManagerPage />} />
