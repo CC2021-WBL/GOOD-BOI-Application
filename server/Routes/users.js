@@ -5,6 +5,7 @@ const Participant = require('../Model/Participant');
 const userDbFunc = require('../Controllers/usersControllers');
 const passport = require('passport');
 const passwordTools = require('../Tools/passwordTools');
+const { loginAuthentication } = require('../Tools/loginAuth');
 
 //Submit data of user
 router.post('/register', async (req, res) => {
@@ -23,18 +24,9 @@ router.post('/register', async (req, res) => {
 });
 
 // TODO: Login user
-router.post(
-  '/login',
-  passport.authenticate('local', {
-    failureMessage: false,
-    successMessage: true,
-  }),
-  (req, res) => {
-    console.log(req.isAuthenticated());
-    console.log(req.user);
-    res.status(200).send(true);
-  },
-);
+router.post('/login', async (req, res) => {
+  await loginAuthentication(req, res);
+});
 
 //Logout
 router.get('/logout', (req, res) => {
@@ -44,14 +36,18 @@ router.get('/logout', (req, res) => {
 });
 
 //Update some data of current user
-router.patch('/:userId', async (req, res) => {
-  try {
-    const updatedUser = await userDbFunc.updateUserData(req, res);
-    res.status(200).send(updatedUser);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
+router.patch(
+  '/:userId',
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
+    try {
+      const updatedUser = await userDbFunc.updateUserData(req, res);
+      res.status(200).send(updatedUser);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  },
+);
 
 //Get current user data
 router.get('/:userId', async (req, res) => {

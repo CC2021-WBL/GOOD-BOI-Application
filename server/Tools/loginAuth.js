@@ -1,7 +1,7 @@
 const Participant = require('../Model/Participant');
 const { validatePassword, issueJWT } = require('./passwordTools');
 
-module.exports.loginAuthentication = async (req, res, next) => {
+module.exports.loginAuthentication = async (req, res) => {
   try {
     const user = await Participant.findOne({ email: req.body.email });
 
@@ -12,12 +12,15 @@ module.exports.loginAuthentication = async (req, res, next) => {
     const isValid = validatePassword(req.body.password, user.hash, user.salt);
 
     if (isValid) {
-      const tokenObject = issueJWT(user);
+      const jwt = issueJWT(user);
       res.status(200).json({
         success: true,
-        token: tokenObject.token,
-        expiresIn: tokenObject.expires,
+        user: user,
+        token: jwt.token,
+        expiresIn: jwt.expires,
       });
+    } else {
+      res.status(401).json({ success: false, message: 'wrong password' });
     }
   } catch (error) {
     //next(error);

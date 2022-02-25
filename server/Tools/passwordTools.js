@@ -33,6 +33,7 @@ function issueJWT(user) {
     sub: _id,
     roles: user.participantRoles,
     iat: Date.now(),
+    exp: Date.now() + 24 * 60 * 60 * 1000,
   };
 
   const signedToken = jsonwebtoken.sign(payload, PRIV_KEY, {
