@@ -50,6 +50,15 @@ const DogSchema = mongoose.Schema({
     required: true,
   },
   results: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Result' }],
+  createdAt: {
+    type: Date,
+    immutable: true,
+    default: () => Date.now(),
+  },
+  updatedAt: {
+    type: Date,
+    default: () => Date.now(),
+  },
 });
 
 module.exports = mongoose.model('Dog', DogSchema);
