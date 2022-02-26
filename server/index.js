@@ -18,10 +18,10 @@ app.use(helmet());
 app.use(cookieParser());
 
 // Import routes
-const contestsRoute = require('./server/Routes/contests');
-const userRoute = require('./server/Routes/users');
-const dogsRoute = require('./server/Routes/dogs');
-const resultsRoute = require('./server/Routes/results');
+const contestsRoute = require('./Routes/contests');
+const userRoute = require('./Routes/users');
+const dogsRoute = require('./Routes/dogs');
+const resultsRoute = require('./Routes/results');
 
 //Connect to DB
 dotenv.config();
