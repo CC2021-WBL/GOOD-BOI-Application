@@ -49,7 +49,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/contests/classes/62168638c3c82b9c0fbfd291:
+ * /api/contests/classes/6219286509b1d60f7893e4a7:
  *  get:
  *    summary: Returns the list of classes in current contest
  *    responses:
