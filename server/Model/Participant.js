@@ -63,6 +63,15 @@ const ParticipantSchema = new mongoose.Schema({
     default: ['participant'],
     enum: ['staff', 'participant', 'manager', 'admin'],
   },
+  createdAt: {
+    type: Date,
+    immutable: true,
+    default: () => Date.now(),
+  },
+  updatedAt: {
+    type: Date,
+    default: () => Date.now(),
+  },
 });
 
 ParticipantSchema.methods.sayHi = function () {

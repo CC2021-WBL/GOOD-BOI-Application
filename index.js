@@ -29,6 +29,7 @@ app.use(passport.initialize());
 const contestsRoute = require('./server/Routes/contests');
 const userRoute = require('./server/Routes/users');
 const dogsRoute = require('./server/Routes/dogs');
+const resultsRoute = require('./server/Routes/results');
 
 //Connect to DB
 dotenv.config();
@@ -46,6 +47,7 @@ try {
 app.use('/api/users', userRoute);
 app.use('/api/contests', contestsRoute);
 app.use('/api/dogs', dogsRoute);
+app.use('/api/results', resultsRoute);
 
 //Swagger
 const swaggerOptions = {
@@ -62,7 +64,7 @@ const swaggerOptions = {
       },
     ],
   },
-  apis: ['./Routes/*.js'],
+  apis: ['./server/Routes/*.js'],
 };
 app.use(
   '/api-docs',
