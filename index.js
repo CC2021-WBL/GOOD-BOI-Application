@@ -22,7 +22,6 @@ app.use(helmet());
 app.use(cookieParser());
 
 // Passport Authentication
-//require('./server/Config/passport')
 require('./server/Config/passport')(passport);
 app.use(passport.initialize());
 

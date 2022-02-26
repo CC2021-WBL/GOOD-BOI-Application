@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const jsonwebtoken = require('jsonwebtoken');
-const fs = require('fs');
-const PRIV_KEY = fs.readFileSync(__dirname + '/id_rsa_priv.pem', 'utf8');
+require('dotenv').config();
+const PRIV_KEY = process.env.PRIV_KEY;
 
 function generateHash(password, salt) {
   const hash = crypto
@@ -27,7 +27,6 @@ function validatePassword(password, hash, salt) {
 
 function issueJWT(user) {
   const _id = user._id;
-  const expiresIn = '2d';
 
   const payload = {
     sub: _id,
@@ -37,13 +36,11 @@ function issueJWT(user) {
   };
 
   const signedToken = jsonwebtoken.sign(payload, PRIV_KEY, {
-    expiresIn: expiresIn,
     algorithm: 'RS256',
   });
 
   return {
     token: 'Bearer ' + signedToken,
-    expires: expiresIn,
   };
 }
 

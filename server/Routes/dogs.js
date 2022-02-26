@@ -7,9 +7,17 @@ const {
   deleteDog,
 } = require('../Controllers/dogsControllers');
 const { updateDogsArray } = require('../Controllers/usersControllers');
+const {
+  justUserAndAdmin,
+  justDogOwnerStaffOrAdmin,
+  dogOwnerAllRolesOrPublic,
+} = require('../Middleware/authMiddleware');
+const passport = require('passport');
+const auth = passport.authenticate('jwt', { session: false });
+router.use(auth);
 
 // Submit data from dog-form
-router.post('/register/:userId', async (req, res) => {
+router.post('/register/:userId', justUserAndAdmin, async (req, res) => {
   try {
     const savedDog = await registerDog(req, res);
     await updateDogsArray(req, res, savedDog);
@@ -20,7 +28,7 @@ router.post('/register/:userId', async (req, res) => {
 });
 
 //Update some props of current dog
-router.patch('/:dogId', async (req, res) => {
+router.patch('/:dogId', justDogOwnerStaffOrAdmin, async (req, res) => {
   try {
     const dog = await updateSomeDogProps(req, res);
     res.status(201).send(dog);
@@ -31,7 +39,7 @@ router.patch('/:dogId', async (req, res) => {
 });
 
 //Update all data of current dog
-router.put('/:dogId', async (req, res) => {
+router.put('/:dogId', justDogOwnerStaffOrAdmin, async (req, res) => {
   try {
     const dog = await updateAllDogData(req, res);
     res.status(201).send(dog);
@@ -41,7 +49,7 @@ router.put('/:dogId', async (req, res) => {
 });
 
 // Get data of current dog
-router.get('/:dogId', async (req, res) => {
+router.get('/:dogId', dogOwnerAllRolesOrPublic, async (req, res) => {
   try {
     const dogData = await getDogData(req, res);
     res.status(200).send(dogData);
@@ -52,7 +60,7 @@ router.get('/:dogId', async (req, res) => {
 });
 
 //Delete current dog - mock option
-router.delete('/:dogId', async (req, res) => {
+router.delete('/:dogId', justUserAndAdmin, async (req, res) => {
   try {
     const removedDog = await deleteDog(req, res);
     res.status(200).send(removedDog);
@@ -62,7 +70,7 @@ router.delete('/:dogId', async (req, res) => {
 });
 
 //Get results for current dog
-router.get('/results/:dogId', async (req, res) => {
+router.get('/results/:dogId', justDogOwnerStaffOrAdmin, async (req, res) => {
   res.send('get all results for current dog');
 });
 

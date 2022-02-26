@@ -6,7 +6,11 @@ const userDbFunc = require('../Controllers/usersControllers');
 const passport = require('passport');
 const passwordTools = require('../Tools/passwordTools');
 const { loginAuthentication } = require('../Tools/loginAuth');
-const auth = passport.authenticate('jwt', { session: false });
+const {
+  justUserAndAdmin,
+  justUserStaffOrAdmin,
+  auth,
+} = require('../Middleware/authMiddleware');
 
 //Submit data of user
 router.post('/register', async (req, res) => {
@@ -17,14 +21,13 @@ router.post('/register', async (req, res) => {
       success: true,
       user: savedUser,
       token: jwt.token,
-      expiresIn: jwt.expires,
     });
   } catch (error) {
     res.status(400).send(error.message);
   }
 });
 
-// TODO: Login user
+// Login user
 router.post('/login', async (req, res) => {
   await loginAuthentication(req, res);
 });
@@ -36,8 +39,11 @@ router.get('/logout', (req, res) => {
   //res.redirect('/');
 });
 
+// Middleware to check JWT
+router.use(auth);
+
 //Update some data of current user
-router.patch('/:userId', auth, async (req, res) => {
+router.patch('/:userId', justUserAndAdmin, async (req, res) => {
   try {
     const updatedUser = await userDbFunc.updateUserData(req, res);
     res.status(200).send(updatedUser);
@@ -47,7 +53,7 @@ router.patch('/:userId', auth, async (req, res) => {
 });
 
 //Get current user data
-router.get('/:userId', auth, async (req, res) => {
+router.get('/:userId', async (req, res) => {
   try {
     const userData = await userDbFunc.getUserData(req, res);
     res.status(200).send(userData);
@@ -56,7 +62,8 @@ router.get('/:userId', auth, async (req, res) => {
   }
 });
 
-router.get('/dogs/:userId', async (req, res) => {
+//Get dogs from current user
+router.get('/dogs/:userId', justUserStaffOrAdmin, async (req, res) => {
   try {
     const dogs = await Participant.findById(req.params.userId).select('dogs');
     if (dogs) {

@@ -30,7 +30,12 @@ async function registerParticipant(req, res) {
 async function getUserData(req, res) {
   try {
     let data;
-    if (req.query.select) {
+    if (req.access && req.access === 'public') {
+      data = await Participant.findById(req.params.userId).select([
+        'participantName',
+        'participantSurname',
+      ]);
+    } else if (req.query.select) {
       data = await Participant.findSomethingByUserId(
         req.params.userId,
         req.query.select,
