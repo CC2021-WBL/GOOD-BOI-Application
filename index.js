@@ -9,7 +9,7 @@ const swaggerUI = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
 const path = require('path');
 
-const PORT = process.env.PORT || 27021;
+const PORT = process.env.PORT || 5000;
 
 //Middleware
 app.use(cors());
