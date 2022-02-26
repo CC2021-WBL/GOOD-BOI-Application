@@ -11,6 +11,7 @@ const initHeight = window.innerHeight;
 
 const Footer = ({ withSettings }) => {
   const { state } = useContext(UserDataContext);
+  // eslint-disable-next-line
   const { isAuthenticated } = state;
   const height = useWindowHeight();
 

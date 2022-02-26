@@ -18,7 +18,7 @@ const SummaryLine = ({ result, classId }) => {
   function pointsAquired() {
     if (totalScore < 5 && totalScore > 1) {
       return 'punkty.';
-    } else if (totalScore == 1) {
+    } else if (totalScore === 1) {
       return 'punkt.';
     } else return 'punktów.';
   }

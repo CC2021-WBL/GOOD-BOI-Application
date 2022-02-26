@@ -7,6 +7,7 @@ const getStyles = (bgColor, color) => {
   return `background:${bgColor}; color:${color}`;
 };
 const handleColorType = (props) => {
+  // eslint-disable-next-line
   switch (props.colors) {
     case 'primary':
       return getStyles(`${props.theme.primary501}`, `${props.theme.white}`);
@@ -25,6 +26,7 @@ const getBorders = (borders) => {
 };
 
 const handleBorders = (props) => {
+  // eslint-disable-next-line
   switch (props.colors) {
     case 'primary':
       return getBorders(`${props.theme.grey800}`);

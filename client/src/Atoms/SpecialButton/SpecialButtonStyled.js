@@ -31,6 +31,7 @@ const handleColorType = (props) => {
 };
 
 const handleBorder = (roundedBorder) => {
+  // eslint-disable-next-line
   switch (roundedBorder) {
     case 'left':
       return `border-radius: 0 0 0 0.75rem`;
