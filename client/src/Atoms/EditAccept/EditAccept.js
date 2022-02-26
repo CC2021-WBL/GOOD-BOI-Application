@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
+import { BiCheckCircle } from 'react-icons/bi';
 import EditAcceptStyled from './EditAcceptStyled';
 import { FaRegEdit } from 'react-icons/fa';
-import { BiCheckCircle } from 'react-icons/bi';
+import PropTypes from 'prop-types';
 
 const EditAccept = ({ onClick, toggle }) => {
   return (

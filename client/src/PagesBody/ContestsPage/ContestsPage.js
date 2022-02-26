@@ -110,3 +110,4 @@ const ContestsPage = () => {
 };
 
 export default ContestsPage;
+//make commit possible again
