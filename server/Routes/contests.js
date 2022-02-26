@@ -112,4 +112,15 @@ router.post('/register/:userId', async (req, res) => {
   }
 });
 
+router.delete('/:contestId', async (req, res) => {
+  try {
+    const removedContest = await Contest.deleteOne({
+      _id: req.params.contestId,
+    });
+    res.status(200).send(removedContest);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
 module.exports = router;

@@ -21,6 +21,7 @@ app.use(cookieParser());
 const contestsRoute = require('./server/Routes/contests');
 const userRoute = require('./server/Routes/users');
 const dogsRoute = require('./server/Routes/dogs');
+const resultsRoute = require('./server/Routes/results');
 
 //Connect to DB
 dotenv.config();
@@ -38,6 +39,7 @@ try {
 app.use('/api/users', userRoute);
 app.use('/api/contests', contestsRoute);
 app.use('/api/dogs', dogsRoute);
+app.use('/api/results', resultsRoute);
 
 //Swagger
 const swaggerOptions = {
