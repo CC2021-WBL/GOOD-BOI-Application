@@ -5,9 +5,7 @@ import NavDesktop from './NavDesktop';
 const InProgressPage = () => {
   return (
     <>
-      <NavDesktop />
       <InProgressContent />
-      <FooterDesktop />
     </>
   );
 };

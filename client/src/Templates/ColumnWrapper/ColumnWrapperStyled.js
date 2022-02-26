@@ -3,6 +3,8 @@ import styled from 'styled-components';
 const ColumnWrapperStyled = styled.div`
   display: flex;
   width: 100%;
+  max-width: 540px;
+  margin: auto;
   flex-direction: column;
   padding: ${(props) =>
     props.paddingLeftRight &&

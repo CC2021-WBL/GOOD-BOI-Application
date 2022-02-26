@@ -1,37 +1,79 @@
-import LogoGoodBoiSvg from './../../Atoms/LogoGoodBoi/LogoGoodBoi';
+import { ReactComponent as AppLogoSVG } from '../../Assets/AppLogoSVG.svg';
+import ButtonsWrapperStyled from './ButtonsWrapperStyled';
 import MainButton from './../../Atoms/MainButton/MainButton';
+import NavDesktopWrapperStyled from './NavDesktopWrapperStyled';
+import { NavLink } from 'react-router-dom';
+import NavMenuSelectField from './NavMenuSelectField';
+import { UserDataContext } from './../../Context/UserDataContext';
+import { useContext } from 'react';
 
 const NavDesktop = () => {
+  const { state, dispatch } = useContext(UserDataContext);
+  const { userId, roles, isAuthenticated } = state;
+  if (!isAuthenticated) {
+    return (
+      <NavDesktopWrapperStyled>
+        <AppLogoSVG />
+        <NavLink
+          exact
+          to="/login"
+          style={({ isActive }) => ({
+            color: isActive ? 'black' : 'grey',
+            fontWeight: isActive ? 'bold' : 'normal',
+          })}
+        >
+          STRONA GŁÓWNA
+        </NavLink>
+        <NavLink
+          to="/register"
+          style={({ isActive }) => ({
+            color: isActive ? 'black' : 'grey',
+            fontWeight: isActive ? 'bold' : 'normal',
+          })}
+        >
+          AKTUALNE KONKURSY
+        </NavLink>
+        <NavLink
+          to="/in-progress"
+          style={({ isActive }) => ({
+            color: isActive ? 'black' : 'grey',
+            fontWeight: isActive ? 'bold' : 'normal',
+          })}
+        >
+          WEŹ UDZIAŁ W ZAWODACH
+        </NavLink>
+        <ButtonsWrapperStyled>
+          <MainButton ternary text="zarejestruj" />
+          <MainButton primary text="zaloguj" />
+        </ButtonsWrapperStyled>
+      </NavDesktopWrapperStyled>
+    );
+  }
   return (
-    <>
+    <NavDesktopWrapperStyled>
       <div
         style={{
           display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-around',
-          height: '109px',
-          alignContent: 'center',
+          position: 'absolute',
           alignItems: 'center',
-          background: '#F5F7FA',
+          gap: '2rem',
+          left: '2rem',
         }}
       >
-        <div
-          style={{
-            height: '75%',
-            // width: '100%',
-          }}
-        >
-          <LogoGoodBoiSvg width="100%" height="100%" />
-        </div>
-        <div>STRONA GŁÓWNA</div>
-        <div>AKTUALNE KONKURSY</div>
-        <div>WEŹ UDZIAŁ W ZAWODACH</div>
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
-          <MainButton ternary text="text" />
-          <MainButton primary text="text" />
-        </div>
+        <AppLogoSVG />
+        GOOD BOI APP
       </div>
-    </>
+      <div
+        style={{
+          display: 'flex',
+          gap: '2rem',
+          position: 'absolute',
+          right: '1rem',
+        }}
+      >
+        <NavMenuSelectField />
+      </div>
+    </NavDesktopWrapperStyled>
   );
 };
 
