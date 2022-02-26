@@ -41,7 +41,10 @@ const AddContestForm = () => {
     <>
       <ColumnWrapper paddingLeftRight={1}>
         <FormWrapper
-          onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}
+          onSubmit={handleSubmit((data) => {
+            data.obedienceClasses = chosenClasses;
+            setData(JSON.stringify(data));
+          })}
         >
           <InputField
             labelText="Nazwa zawodów"
