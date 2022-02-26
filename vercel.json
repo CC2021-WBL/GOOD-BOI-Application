@@ -8,11 +8,7 @@
     }
   ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/"
-    },
-    { "src": "/api/.*", "dest": "/api/server.js" },
+    { "src": ".*", "dest": "index.js" },
     { "src": "^/static/(.*)", "dest": "/static/$1" },
     { "src": ".*", "dest": "/index.html" }
   ]
