@@ -9,7 +9,7 @@ const swaggerUI = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
 const path = require('path');
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 27020;
 
 //Middleware
 app.use(cors());
@@ -70,17 +70,15 @@ app.get('/api/test', (req, res) => {
 });
 
 //Inject ReactApp into
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client', 'build')));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html')),
-      function (err) {
-        if (err) {
-          res.status(500).send(err);
-        }
-      };
-  });
-}
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html')),
+    function (err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    };
+});
 //This text will console.log after every save of index.js
 app.listen(PORT, () =>
   console.log(`The server is running on the port ${PORT}`),
