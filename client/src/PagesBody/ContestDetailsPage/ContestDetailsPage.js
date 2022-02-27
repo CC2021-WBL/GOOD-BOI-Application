@@ -1,7 +1,8 @@
-import { useParams } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
+
 import { ContestContext } from '../../Context/ContestContext';
 import ContestDetails from '../../Organisms/ContestDetails/ContestDetails';
+import { useParams } from 'react-router-dom';
 
 const ContestDetailsPage = () => {
   const { contestId: contestIdParams } = useParams();
