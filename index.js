@@ -71,15 +71,15 @@ app.get('/api/test', (req, res) => {
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client', 'build')));
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html')),
+    res.sendFile(path.join(__dirname, 'client', 'index.html')),
       function (err) {
         if (err) {
           res.status(500).send(err);
         }
       };
-});
+  });
 }
-console.log(process.env.NODE_ENV)
+console.log(process.env.NODE_ENV);
 //This text will console.log after every save of index.js
 app.listen(PORT, () =>
   console.log(`The server is running on the port ${PORT}`),
