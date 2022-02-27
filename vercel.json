@@ -11,9 +11,7 @@
       "use": "@vercel/node"
     }
   ],
-  "routes": [
-    { "src": "/api/.*", "dest": "index.js" },
-    { "src": "^/static/(.*)", "dest": "/static/$1" },
-    { "src": "/", "dest": "/client/index.html" }
+  "rewrites": [
+    { "source": "/", "destination": "/client/index.html" }
   ]
 }
