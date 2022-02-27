@@ -4,7 +4,7 @@ const ButtonsWrapperStyled = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 325px;
+  min-width: 350px;
   gap: 1rem;
 `;
 

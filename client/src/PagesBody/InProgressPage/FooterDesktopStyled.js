@@ -7,9 +7,9 @@ const FooterDesktopStyled = styled.div`
   height: 14.9375rem;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  padding: 2rem;
-  margin: auto;
+  justify-content: center;
+  /* padding: 2rem; */
+  /* margin: auto; */
   background: ${({ theme }) => theme.grey00};
   text-align: right;
   h3 {

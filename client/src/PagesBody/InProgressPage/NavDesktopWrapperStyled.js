@@ -5,6 +5,8 @@ const NavDesktopWrapperStyled = styled.div`
   flex-direction: row;
   justify-content: space-around;
   height: 109px;
+  margin: auto;
+
   align-content: center;
   align-items: center;
   background: ${({ theme }) => theme.grey00};
