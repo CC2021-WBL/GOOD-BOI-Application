@@ -6,18 +6,18 @@ import ContestDetailsMap from './ContestDetailsMap/ContestDetailsMap';
 import ContestDetailsToggler from './ContestDetailsToggler/ContestDetailsToggler';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import PropTypes from 'prop-types';
-import { ROLES } from '../../Consts/rolesConsts';
-import { UserDataContext } from '../../Context/UserDataContext';
 import contests from '../../Data/MongoDBMock/contests';
 
-const UserData = () => {
-  const { state } = useContext(UserDataContext);
-  const { role } = state;
-};
+// import { UserDataContext } from '../../Context/UserDataContext';
 
 const ContestDetails = ({ contestId }) => {
   const [isPending, setIsPending] = useState(true);
   const [contestData, setContestData] = useState(null);
+  // const { state } = useContext(UserDataContext);
+  // console.log(state);
+  // const { selectedRole } = state;
+  // console.log(selectedRole);
+  const selectedRole = 'participant';
 
   useEffect(() => {
     setContestData(contests.find((contest) => contest.contestId === contestId));
@@ -43,23 +43,25 @@ const ContestDetails = ({ contestId }) => {
               margin: '1rem',
             }}
           >
-            {
-              <>
+            <>
+              {selectedRole === 'participant' && (
                 <FakeButton
                   colors="secondary"
                   text="ZGŁOŚ SWÓJ UDZIAŁ"
                   to="/user-dogs"
                 />
+              )}{' '}
+              {selectedRole === 'manager' && (
                 <>
                   <FakeButton
                     colors="secondary"
                     text="Edytuj dane"
-                    // to="/user-dogs"
+                    to="/user-dogs"
                   />
                   <FakeButton
                     colors="secondary"
                     text="Odwołaj i usuń zawody"
-                    // to="/user-dogs"
+                    to="/user-dogs"
                   />
                   <FakeButton
                     colors="secondary"
@@ -67,8 +69,8 @@ const ContestDetails = ({ contestId }) => {
                     to="/contests"
                   />
                 </>
-              </>
-            }
+              )}
+            </>
           </div>
         </>
       )}
