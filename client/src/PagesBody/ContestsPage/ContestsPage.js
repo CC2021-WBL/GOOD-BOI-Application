@@ -72,7 +72,12 @@ const ContestsPage = () => {
 
       {toggle && <FilterLabel onClick={handleFilterClick}></FilterLabel>}
 
-      <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
+      <ColumnWrapper
+        paddingLeftRight={1}
+        paddingTop={0.5}
+        desktop="grid-area: 2 / 4 / 8 / 13"
+        mobile="grid-area: 1 / 1 / 2 / 2"
+      >
         {isPending && <h3>Loading...</h3>}
         {contestData &&
           getSelectedContestsByTime(selectedMode, contestData).map(

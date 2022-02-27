@@ -6,7 +6,11 @@ import { useParams } from 'react-router-dom';
 const LeaderboardPage = () => {
   const { contestId, classId } = useParams();
   return (
-    <ColumnWrapper paddingLeftRight={1}>
+    <ColumnWrapper
+      paddingLeftRight={1}
+      desktop="grid-area: 2 / 4 / 8 / 10"
+      mobile="grid-area: 1 / 1 / 2 / 2"
+    >
       <LeaderboardList contestId={contestId} classId={classId} />
       <div>
         <br></br>

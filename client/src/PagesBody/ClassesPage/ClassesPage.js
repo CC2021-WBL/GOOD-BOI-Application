@@ -15,8 +15,14 @@ const ClassesPage = () => {
   function onClickFinish() {
     navigate('/contests');
   }
+
   return (
-    <ColumnWrapper paddingLeftRight={1} paddingTop={0.25}>
+    <ColumnWrapper
+      paddingLeftRight={1}
+      paddingTop={0.25}
+      desktop="grid-area: 2 / 4 / 8 / 10"
+      mobile="grid-area: 1 / 1 / 2 / 2"
+    >
       {Object.keys(contestClasses).map((obedienceClass, index) => {
         return (
           <ClassOrDogButton

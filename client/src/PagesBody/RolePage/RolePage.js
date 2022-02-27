@@ -48,7 +48,12 @@ const RolePage = () => {
   };
 
   return (
-    <ColumnWrapper paddingLeftRight={1} paddingTop={1.5}>
+    <ColumnWrapper
+      paddingLeftRight={1}
+      paddingTop={1.5}
+      desktop="grid-area: 2 / 4 / 8 / 10"
+      mobile="grid-area: 1 / 1 / 2 / 2"
+    >
       {roles.map((role, index) =>
         role === 'staff' ? (
           <MainButton

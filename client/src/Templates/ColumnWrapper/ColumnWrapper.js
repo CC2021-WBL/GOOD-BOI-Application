@@ -6,12 +6,16 @@ const ColumnWrapper = ({
   paddingLeftRight = 0,
   paddingTop = 0,
   paddingBottom = 0,
+  mobile,
+  desktop,
 }) => {
   return (
     <ColumnWrapperStyled
       paddingLeftRight={paddingLeftRight}
       paddingTop={paddingTop}
       paddingBottom={paddingBottom}
+      mobile={mobile}
+      desktop={desktop}
     >
       {children}
     </ColumnWrapperStyled>
@@ -26,6 +30,8 @@ ColumnWrapper.propTypes = {
   paddingLeftRight: PropTypes.number,
   paddingTop: PropTypes.number,
   paddingBottom: PropTypes.number,
+  mobile: PropTypes.string,
+  desktop: PropTypes.string,
 };
 
 export default ColumnWrapper;

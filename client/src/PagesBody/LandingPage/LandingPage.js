@@ -14,7 +14,11 @@ const LandingPage = () => {
   const { isAuthenticated } = state;
   const [open, setOpen] = useState(false);
   return (
-    <ColumnWrapper paddingLeftRight={1}>
+    <ColumnWrapper
+      paddingLeftRight={1}
+      desktop="grid-area: 2 / 4 / 8 / 10"
+      mobile="grid-area: 1 / 1 / 2 / 2"
+    >
       {isAuthenticated ? (
         <div className="burger-wrapper">
           <MdMenu

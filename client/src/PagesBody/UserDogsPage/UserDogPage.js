@@ -33,7 +33,12 @@ const UserDogPage = () => {
   }, []);
 
   return (
-    <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
+    <ColumnWrapper
+      paddingLeftRight={1}
+      paddingTop={0.5}
+      desktop="grid-area: 2 / 4 / 8 / 10"
+      mobile="grid-area: 1 / 1 / 2 / 2"
+    >
       {isPending && <p>Loading...</p>}
       {participantDogs &&
         participantDogs.map((dog, index) => {

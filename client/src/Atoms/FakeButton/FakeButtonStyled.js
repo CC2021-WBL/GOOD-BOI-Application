@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import FONTS from '../../Styles/fontsStyledComponents';
+import { device } from '../../Tools/device';
 
 const getStyles = (bgColor, color) => {
   return `background:${bgColor}; color:${color}`;
@@ -36,17 +37,19 @@ const handleBorders = (props) => {
 };
 
 const FakeButtonStyled = styled(Link)`
-  display: flex;
-  width: 100%;
-  height: 3.25rem;
-  align-items: center;
-  justify-content: center;
-  margin: 0.5rem 0;
-  border-radius: 0.75rem;
-  ${FONTS.button};
-  ${(props) => handleColorType(props)};
 
-  ${(props) => handleBorders(props)}
+    display: flex;
+    width: 100%;
+    height: 3.25rem;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem 0;
+    border-radius: 0.75rem;
+    ${FONTS.button};
+    ${(props) => handleColorType(props)};
+
+    ${(props) => handleBorders(props)};
+  }
 `;
 
 export default FakeButtonStyled;

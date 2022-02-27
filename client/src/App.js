@@ -37,6 +37,7 @@ import UserDataPage from './PagesBody/UserDataPage/UserDataPage';
 import { UserDataProvider } from './Context/UserDataContext';
 import UserDogPage from './PagesBody/UserDogsPage/UserDogPage';
 import { useDarkMode } from './Hooks/useDarkMode';
+import AppStyled from './Tools/AppStyled';
 
 function App() {
   const [theme, themeToggler, mountedComponent] = useDarkMode();
@@ -51,7 +52,7 @@ function App() {
             <ThemeProvider theme={themeMode}>
               <>
                 <GlobalStyles />
-                <div className="App">
+                <AppStyled>
                   <Routes>
                     <Route path="/" element={<LandingPage />} />
                     <Route element={<Layout withSettings />}>
@@ -130,7 +131,7 @@ function App() {
                     </Route>
                     <Route path="burger-menu" element={<BurgerMenu />} />
                   </Routes>
-                </div>
+                </AppStyled>
               </>
             </ThemeProvider>
           </ContestContextProvider>

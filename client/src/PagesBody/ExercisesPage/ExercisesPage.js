@@ -102,7 +102,10 @@ const ExercisesPage = () => {
   ).exercises;
 
   return (
-    <ColumnWrapper>
+    <ColumnWrapper
+      desktop="grid-area: 2 / 4 / 8 / 10"
+      mobile="grid-area: 1 / 1 / 2 / 2"
+    >
       {isDisqualifyModalOpen && (
         <Modal
           modalData={modalData.disqualify}
@@ -127,7 +130,11 @@ const ExercisesPage = () => {
       {(isDisqualifyModalOpen ||
         isPenaltyModalOpen ||
         isEvaluationModalOpen) && <Backdrop onClick={closeModalHandler} />}
-      <ColumnWrapper paddingLeftRight={0.25}>
+      <ColumnWrapper
+        paddingLeftRight={0.25}
+        desktop="grid-area: 2 / 4 / 8 / 10"
+        mobile="grid-area: 1 / 1 / 2 / 2"
+      >
         <SpecialButtonsContainerStyled>
           <SpecialButton
             text="Dyskwalifikacja"
