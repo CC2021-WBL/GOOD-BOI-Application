@@ -12,16 +12,9 @@
     }
   ],
   "routes": [
-    { "src": "/api(.*)", "dest": "index.js" },
     {
-      "src": "^(.*)$",
-      "headers": { "cache-control": "s-maxage=0" },
-      "dest": "client/index.html"
-    },
-    {
-      "src": "/static/(.*)",
-      "headers": { "cache-control": "s-maxage=31536000,immutable" },
-      "dest": "client/static/$1"
+      "src": "/(.*)",
+      "dest": "/"
     }
   ]
 }

@@ -68,17 +68,15 @@ app.get('/api/test', (req, res) => {
 });
 
 //Inject ReactApp into
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client')));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'index.html')),
-      function (err) {
-        if (err) {
-          res.status(500).send(err);
-        }
-      };
-  });
-}
+app.use(express.static(path.join(__dirname, 'client')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'index.html')),
+    function (err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    };
+});
 console.log(process.env.NODE_ENV);
 //This text will console.log after every save of index.js
 app.listen(PORT, () =>
