@@ -8,7 +8,7 @@
     "start": "concurrently \"npm run dev\" \"cd client && npm start\"",
     "npmi": "concurrently \"npm i\" \"cd client && npm i\"",
     "kill": "concurrently \"npx kill-port 27020\n\" \"npx kill-port 3000\"",
-    "vercel-build": "node api/index.js"
+    "vercel-build": "node index.js"
   },
   "repository": {
     "type": "git",
