@@ -2,7 +2,7 @@
   "name": "good-boi-app-server",
   "version": "1.0.0",
   "description": "",
-  "main": "server/index.js",
+  "main": "index.js",
   "scripts": {
     "dev": "nodemon api/index.js",
     "start": "concurrently \"npm run dev\" \"cd client && npm start\"",
