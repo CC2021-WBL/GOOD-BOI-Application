@@ -7,7 +7,6 @@ import Footer from '../../Molecules/Footer/Footer';
 import ImgWrapperStyled from './ImgWrapperStyled';
 import Logo2 from '../../Assets/Logo2.png';
 import { MdMenu } from 'react-icons/md';
-import Rocket from '../../Atoms/Rocket/Rocket';
 import RocketWithPlanets from '../../Molecules/RocketWithPlanets/RocketWithPlanets';
 import { UserDataContext } from '../../Context/UserDataContext';
 

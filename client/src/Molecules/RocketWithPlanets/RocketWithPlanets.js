@@ -4,7 +4,7 @@ import RocketWithPlanetsStyled from './RocketWithPlanetsStyled';
 const RocketWithPlanets = () => {
   return (
     <RocketWithPlanetsStyled>
-      <Rocket></Rocket>
+      <Rocket />
     </RocketWithPlanetsStyled>
   );
 };
