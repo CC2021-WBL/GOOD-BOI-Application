@@ -14,5 +14,17 @@ const NavMenuSelectFieldStyled = styled.div`
     background-image: url(${require(`../../Assets/profileDogFace.jpg`)});
     background-size: cover;
   }
+  .button {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 0.5rem 0 0;
+  }
+  .button:hover {
+    background: #eee;
+    border-radius: 25px;
+    cursor: pointer;
+  }
 `;
 export default NavMenuSelectFieldStyled;

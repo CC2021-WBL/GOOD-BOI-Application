@@ -2,6 +2,7 @@ import 'font-awesome/css/font-awesome.min.css';
 
 import { useContext, useState } from 'react';
 
+import BackgroundDiv from './../../PagesBody/InProgressPage/BackgroundDiv';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
@@ -23,43 +24,47 @@ const LoginForm = () => {
   };
 
   return (
-    <ColumnWrapper paddingLeftRight={1}>
-      <FormWrapper onSubmit={submitHandler}>
-        <InputField
-          labelText="Email"
-          htmlFor="email"
-          type="email"
-          placeholder="&#xf0e0; Email"
-          id="email"
-          required
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-
-        <InputField
-          labelText="Password"
-          htmlFor="password"
-          type="password"
-          id="password"
-          placeholder="&#xf023; Hasło"
-          required
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-        <Link to="/forgot" className="forgot-pass">
-          Zapomniałeś/aś hasła ?
-        </Link>
-        <Link to="/role" style={{ textDecoration: 'none' }}>
-          <MainButton
-            onClick={() => {
-              dispatch({ type: 'LOG_IN' });
-            }}
-            primary
-            text="Zaloguj się"
+    <>
+      <ColumnWrapper paddingLeftRight={1}>
+        {window.innerWidth > 700 && <BackgroundDiv></BackgroundDiv>}
+        <FormWrapper onSubmit={submitHandler}>
+          <InputField
+            labelText="Email"
+            htmlFor="email"
+            type="email"
+            placeholder="&#xf0e0; Email"
+            id="email"
+            required
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
           />
-        </Link>
-      </FormWrapper>
-    </ColumnWrapper>
+
+          <InputField
+            labelText="Password"
+            htmlFor="password"
+            type="password"
+            id="password"
+            placeholder="&#xf023; Hasło"
+            required
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+          <Link to="/forgot" className="forgot-pass">
+            Zapomniałeś/aś hasła ?
+          </Link>
+          <Link to="/role" style={{ textDecoration: 'none' }}>
+            <MainButton
+              onClick={() => {
+                dispatch({ type: 'LOG_IN' });
+              }}
+              primary
+              text="Zaloguj się"
+            />
+          </Link>
+        </FormWrapper>
+      </ColumnWrapper>
+      {window.innerWidth > 700 && <div style={{ height: '235px' }}></div>}
+    </>
   );
 };
 

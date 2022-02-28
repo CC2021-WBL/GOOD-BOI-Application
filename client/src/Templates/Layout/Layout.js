@@ -15,7 +15,9 @@ const Layout = ({ withLabel, withSettings }) => {
     <>
       {window.innerWidth < 700 ? <NavElement /> : ''}
       {window.innerWidth > 700 ? <NavDesktop /> : ''}
-      {!withLabel && <div style={{ height: '60px' }} />}
+      {!withLabel && window.innerWidth < 700 && (
+        <div style={{ height: '60px' }} />
+      )}
       <Outlet />
       {window.innerWidth > 700 ? (
         <FooterDesktop />

@@ -4,7 +4,6 @@ import { Route, Routes } from 'react-router-dom';
 import { darkTheme, lightTheme } from './Styles/Themes';
 
 import BurgerMenu from './Organisms/BurgerMenu/BurgerMenu';
-import { CSSTransition } from 'react-transition-group';
 import ClassChoicePage from './PagesBody/ClassChoicePage/ClassChoicePage';
 import ClassCompetitorsPage from './PagesBody/ClassCompetitorsPage/ClassCompetitorsPage';
 import ClassesPage from './PagesBody/ClassesPage/ClassesPage';

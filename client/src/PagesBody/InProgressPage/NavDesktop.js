@@ -1,14 +1,16 @@
+import { NavLink, useLocation } from 'react-router-dom';
+
 import { ReactComponent as AppLogoSVG } from '../../Assets/AppLogoSVG.svg';
 import ButtonsWrapperStyled from './ButtonsWrapperStyled';
-import MainButton from './../../Atoms/MainButton/MainButton';
+import FakeButton from './../../Atoms/FakeButton/FakeButton';
 import NavDesktopInnerStyled from './NavDesktopInnerStyled';
 import NavDesktopWrapperStyled from './NavDesktopWrapperStyled';
-import { NavLink } from 'react-router-dom';
-import NavMenuSelectField from './NavMenuSelectField';
+import NavMenuButton from './NavMenuButton';
 import { UserDataContext } from './../../Context/UserDataContext';
 import { useContext } from 'react';
 
 const NavDesktop = () => {
+  const location = useLocation();
   const { state, dispatch } = useContext(UserDataContext);
   const { userId, roles, isAuthenticated } = state;
   if (!isAuthenticated) {
@@ -44,9 +46,14 @@ const NavDesktop = () => {
           >
             WEŹ UDZIAŁ W ZAWODACH
           </NavLink>
+
           <ButtonsWrapperStyled>
-            <MainButton ternary text="zarejestruj" />
-            <MainButton primary text="zaloguj" />
+            {location.pathname !== '/register' && (
+              <FakeButton to="/register" colors="ternary" text="Zarejestruj" />
+            )}
+            {location.pathname !== '/login' && (
+              <FakeButton to="/login" colors="primary" text="Zaloguj się" />
+            )}
           </ButtonsWrapperStyled>
         </NavDesktopInnerStyled>
       </NavDesktopWrapperStyled>
@@ -75,7 +82,7 @@ const NavDesktop = () => {
             right: '10rem',
           }}
         >
-          <NavMenuSelectField />
+          <NavMenuButton />
         </div>
       </NavDesktopInnerStyled>
     </NavDesktopWrapperStyled>

@@ -85,6 +85,7 @@ const ContestsPage = () => {
             <h3>Nie ma zawodów</h3>
           )}
       </ColumnWrapper>
+      {window.innerWidth > 700 && <div style={{ height: '235px' }}></div>}
     </>
   );
 };

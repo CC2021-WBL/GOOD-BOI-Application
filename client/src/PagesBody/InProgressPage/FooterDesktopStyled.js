@@ -6,6 +6,8 @@ const FooterDesktopStyled = styled.div`
   width: 100%;
   height: 14.9375rem;
   flex-direction: row;
+  /* position: fixed; */
+  bottom: 0;
   align-items: center;
   justify-content: center;
   /* padding: 2rem; */
