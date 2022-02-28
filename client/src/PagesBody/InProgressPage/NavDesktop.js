@@ -15,12 +15,7 @@ const NavDesktop = () => {
   const location = useLocation();
   const { state, dispatch } = useContext(UserDataContext);
   const { userId, roles, isAuthenticated } = state;
-  const [menuOpen, setMenuOpen] = useState(true);
-  const toggleHandler = () => {
-    console.log(menuOpen);
-    setMenuOpen(!menuOpen);
-    return menuOpen;
-  };
+
   if (!isAuthenticated) {
     return (
       <NavDesktopWrapperStyled>
