@@ -5,21 +5,28 @@ import ButtonsWrapperStyled from './ButtonsWrapperStyled';
 import FakeButton from './../../Atoms/FakeButton/FakeButton';
 import NavDesktopInnerStyled from './NavDesktopInnerStyled';
 import NavDesktopWrapperStyled from './NavDesktopWrapperStyled';
-import NavMenuButton from './NavMenuButton';
+import NavAccordion from './NavAccordion';
 import { UserDataContext } from './../../Context/UserDataContext';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import GoodBoiLogo from './GoodBoiLogo';
+import NavAccordionStyled from './NavAccordionStyled';
 
 const NavDesktop = () => {
   const location = useLocation();
   const { state, dispatch } = useContext(UserDataContext);
   const { userId, roles, isAuthenticated } = state;
+  const [menuOpen, setMenuOpen] = useState(true);
+  const toggleHandler = () => {
+    console.log(menuOpen);
+    setMenuOpen(!menuOpen);
+    return menuOpen;
+  };
   if (!isAuthenticated) {
     return (
       <NavDesktopWrapperStyled>
         <NavDesktopInnerStyled>
           <AppLogoSVG />
           <NavLink
-            exact
             to="/login"
             style={({ isActive }) => ({
               color: isActive ? 'black' : 'grey',
@@ -59,31 +66,14 @@ const NavDesktop = () => {
       </NavDesktopWrapperStyled>
     );
   }
+  // when not logged in:
   return (
     <NavDesktopWrapperStyled>
       <NavDesktopInnerStyled>
-        <div
-          style={{
-            display: 'flex',
-            position: 'absolute',
-            alignItems: 'center',
-            gap: '2rem',
-            left: '5rem',
-          }}
-        >
-          <AppLogoSVG />
-          GOOD BOI APP
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            gap: '2rem',
-            position: 'absolute',
-            right: '10rem',
-          }}
-        >
-          <NavMenuButton />
-        </div>
+        <GoodBoiLogo />
+        <NavAccordionStyled>
+          <NavAccordion />
+        </NavAccordionStyled>
       </NavDesktopInnerStyled>
     </NavDesktopWrapperStyled>
   );

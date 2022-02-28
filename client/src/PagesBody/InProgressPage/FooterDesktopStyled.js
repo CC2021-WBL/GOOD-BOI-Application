@@ -1,17 +1,13 @@
 import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
 
-const FooterDesktopStyled = styled.div`
+const FooterDesktopStyled = styled.footer`
   display: flex;
   width: 100%;
-  height: 14.9375rem;
+  height: 239px;
   flex-direction: row;
-  /* position: fixed; */
-  bottom: 0;
   align-items: center;
   justify-content: center;
-  /* padding: 2rem; */
-  /* margin: auto; */
   background: ${({ theme }) => theme.grey00};
   text-align: right;
   h3 {
