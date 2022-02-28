@@ -17,6 +17,7 @@ function checkUser(req) {
 }
 
 module.exports.auth = (req, res, next) => {
+  console.log('auth');
   passport.authenticate('jwt', { session: false }, function (err, user, info) {
     if (err) {
       console.log(info);
@@ -25,6 +26,7 @@ module.exports.auth = (req, res, next) => {
       req.access = 'public';
       return next();
     } else {
+      console.log(req.user);
       return next();
     }
   })(req, res, next);
@@ -34,7 +36,7 @@ module.exports.justUserAndAdmin = (req, res, next) => {
   if (checkUser) {
     next();
   } else {
-    this.isAdmin(req, res, next);
+    this.isAdminStrict(req, res, next);
   }
 };
 
@@ -55,21 +57,21 @@ module.exports.isAdminOrPublic = (req, res, next) => {
   }
 };
 
-module.exports.isManager = (req, res, next) => {
+module.exports.isManagerOrAdmin = (req, res, next) => {
   if (req.user.portalRoles.includes(ROLE_NAME.MANAGER)) {
     next();
   } else {
-    res.status(401).json({ success: false, message: 'unauthorized' });
+    this.isAdminStrict(req, res, next);
   }
 };
 
 module.exports.justUserStaffOrAdmin = (req, res, next) => {
-  if (checkUser) {
+  if (checkUser(req)) {
     next();
   } else if (req.user.portalRoles.includes(ROLE_NAME.STAFF)) {
     next();
   } else {
-    this.isAdmin(req, res, next);
+    this.isAdminStrict(req, res, next);
   }
 };
 

@@ -24,7 +24,7 @@ const participants = [
         dogName: 'Kluska',
       },
     ],
-    portalRoles: ['participant', 'staff'],
+    portalRoles: ['participant', 'staff', 'manager'],
   },
   {
     participantId: 'bogdan678',

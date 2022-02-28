@@ -5,6 +5,11 @@ const {
   registerResults,
   getResultSummaryAndName,
 } = require('../Controllers/resultsControllers');
+const {
+  auth,
+  isManagerOrAdmin,
+  justUserStaffOrAdmin,
+} = require('../Middleware/authMiddleware');
 /**
  * @swagger
  * components:
@@ -78,16 +83,33 @@ const {
  *
  */
 
-// get - current, individual result
-router.get('/:resultsId', async (req, res) => {
+//get - leaderboard with summary results from current class in current contest
+router.get('/general/:contestId/:classId', async (req, res) => {
   try {
-    const results = await Result.findById(req.params.resultsId);
-    res.status(200).send(results);
+    const summResultsAndName = await getResultSummaryAndName(req, res);
+    res.status(200).send(summResultsAndName);
   } catch (error) {
-    res.json({ message: error });
-    res.status(500).send('data for results page');
+    console.log(error);
+    res.status(500).json({ message: error });
   }
 });
+
+router.use(auth);
+
+// get - current, individual result
+router.get(
+  '/individal/:resultsId/:userId',
+  justUserStaffOrAdmin,
+  async (req, res) => {
+    try {
+      const results = await Result.findById(req.params.resultsId);
+      res.status(200).send(results);
+    } catch (error) {
+      res.json({ message: error });
+      res.status(500).send('data for results page');
+    }
+  },
+);
 
 // post - create results for current competing part
 router.post('/', async (req, res) => {
@@ -100,24 +122,13 @@ router.post('/', async (req, res) => {
 });
 
 // update some results
-router.patch('/:resultsId', async (req, res) => {
+router.patch('/:resultsId', isManagerOrAdmin, async (req, res) => {
   try {
     const result = await updateSomeResults(req, res);
     res.status(201).send(result);
   } catch (error) {
     console.log(error);
     res.send(error.message);
-  }
-});
-
-//get - leaderboard with summary results from current class in current contest
-router.get('/general/:contestId/:classId', async (req, res) => {
-  try {
-    const summResultsAndName = await getResultSummaryAndName(req, res);
-    res.status(200).send(summResultsAndName);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: error });
   }
 });
 

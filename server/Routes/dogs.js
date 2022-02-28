@@ -11,9 +11,10 @@ const {
   justUserAndAdmin,
   justDogOwnerStaffOrAdmin,
   dogOwnerAllRolesOrPublic,
+  auth,
 } = require('../Middleware/authMiddleware');
-const passport = require('passport');
-const auth = passport.authenticate('jwt', { session: false });
+
+// Middleware to check JWT
 router.use(auth);
 
 // Submit data from dog-form
