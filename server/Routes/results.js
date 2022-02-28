@@ -7,8 +7,10 @@ const {
 } = require('../Controllers/resultsControllers');
 const {
   auth,
-  isManagerOrAdmin,
   justUserStaffOrAdmin,
+  blockIfPublic,
+  justStaffManagerOrAdmin,
+  justUserAndAdmin,
 } = require('../Middleware/authMiddleware');
 /**
  * @swagger
@@ -98,12 +100,17 @@ router.use(auth);
 
 // get - current, individual result
 router.get(
-  '/individal/:resultsId/:userId',
+  '/individual/:resultsId/:userId',
+  blockIfPublic,
   justUserStaffOrAdmin,
   async (req, res) => {
     try {
       const results = await Result.findById(req.params.resultsId);
-      res.status(200).send(results);
+      if (results.participantId === req.user._id.valueOf()) {
+        res.status(200).send(results);
+      } else {
+        res.status(401).json({ success: false, message: 'unauthorized' });
+      }
     } catch (error) {
       res.json({ message: error });
       res.status(500).send('data for results page');
@@ -112,24 +119,34 @@ router.get(
 );
 
 // post - create results for current competing part
-router.post('/', async (req, res) => {
-  try {
-    const result = await registerResults(req, res);
-    res.status(201).json(result);
-  } catch (error) {
-    res.status(400).json({ message: error });
-  }
-});
+router.post(
+  '/register/:userId',
+  blockIfPublic,
+  justUserAndAdmin,
+  async (req, res) => {
+    try {
+      const result = await registerResults(req, res);
+      res.status(201).json(result);
+    } catch (error) {
+      res.status(400).json({ message: error });
+    }
+  },
+);
 
 // update some results
-router.patch('/:resultsId', isManagerOrAdmin, async (req, res) => {
-  try {
-    const result = await updateSomeResults(req, res);
-    res.status(201).send(result);
-  } catch (error) {
-    console.log(error);
-    res.send(error.message);
-  }
-});
+router.patch(
+  '/:resultsId',
+  blockIfPublic,
+  justStaffManagerOrAdmin,
+  async (req, res) => {
+    try {
+      const result = await updateSomeResults(req, res);
+      res.status(201).send(result);
+    } catch (error) {
+      console.log(error);
+      res.send(error.message);
+    }
+  },
+);
 
 module.exports = router;

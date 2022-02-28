@@ -10,6 +10,7 @@ const {
   justUserAndAdmin,
   justUserStaffOrAdmin,
   auth,
+  blockIfPublic,
 } = require('../Middleware/authMiddleware');
 
 //Submit data of user
@@ -43,7 +44,7 @@ router.get('/logout', (req, res) => {
 router.use(auth);
 
 //Update some data of current user
-router.patch('/:userId', justUserAndAdmin, async (req, res) => {
+router.patch('/:userId', blockIfPublic, justUserAndAdmin, async (req, res) => {
   try {
     const updatedUser = await userDbFunc.updateUserData(req, res);
     res.status(200).send(updatedUser);
@@ -63,17 +64,22 @@ router.get('/:userId', async (req, res) => {
 });
 
 //Get dogs from current user
-router.get('/dogs/:userId', justUserStaffOrAdmin, async (req, res) => {
-  try {
-    const dogs = await Participant.findById(req.params.userId).select('dogs');
-    if (dogs) {
-      res.status(200).send(dogs);
-    } else {
-      res.status(404).json({ message: 'no dogs for current user' });
+router.get(
+  '/dogs/:userId',
+  blockIfPublic,
+  justUserStaffOrAdmin,
+  async (req, res) => {
+    try {
+      const dogs = await Participant.findById(req.params.userId).select('dogs');
+      if (dogs) {
+        res.status(200).send(dogs);
+      } else {
+        res.status(404).json({ message: 'no dogs for current user' });
+      }
+    } catch (error) {
+      res.status(500).json({ message: error });
     }
-  } catch (error) {
-    res.status(500).json({ message: error });
-  }
-});
+  },
+);
 
 module.exports = router;

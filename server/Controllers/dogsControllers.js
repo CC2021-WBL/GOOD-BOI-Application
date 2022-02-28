@@ -12,8 +12,7 @@ async function registerDog(req, res) {
     chipOrTattoo: req.body.chipOrTattoo,
     sex: req.body.sex,
     owner: req.body.owner,
-    participants: req.params.userId,
-    results: req.body.results,
+    participants: [req.params.userId],
   });
   try {
     const savedDog = await dog.save();

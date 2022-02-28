@@ -30,18 +30,18 @@ async function registerParticipant(req, res) {
 async function getUserData(req, res) {
   try {
     let data;
-    if (req.access && req.access === 'public') {
-      data = await Participant.findById(req.params.userId).select([
-        'participantName',
-        'participantSurname',
-      ]);
+    if (req.user && req.user._id.valueOf() === req.params.userId) {
+      data = await Participant.findById(req.params.userId);
     } else if (req.query.select) {
       data = await Participant.findSomethingByUserId(
         req.params.userId,
         req.query.select,
       );
     } else {
-      data = await Participant.findById(req.params.userId);
+      data = await Participant.findById(req.params.userId).select([
+        'participantName',
+        'participantSurname',
+      ]);
     }
     if (!data) {
       res.status(204).json({ message: 'not found user with that ID' });
