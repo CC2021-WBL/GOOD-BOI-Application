@@ -13,7 +13,7 @@ const LogoutLiWithSVG = () => {
           display: 'flex',
           alignItems: 'center',
         }}
-        to="/logout"
+        to="/login"
       >
         Wyloguj
       </NavLink>

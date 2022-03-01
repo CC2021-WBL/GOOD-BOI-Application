@@ -27,6 +27,7 @@ const SettingsLiStyled = styled.div`
   gap: 1rem;
   height: 3rem;
   padding: 0 0 0 1rem;
+  z-index: 12;
   &:hover {
     background: ${({ theme }) => theme.grey00};
     cursor: pointer;
