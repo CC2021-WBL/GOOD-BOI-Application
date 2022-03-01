@@ -12,6 +12,7 @@ const SettingsLiWithSVG = () => {
           width: '100%',
           display: 'flex',
           alignItems: 'center',
+          color: `inherit`,
         }}
         to="/settings"
       >
@@ -23,11 +24,12 @@ const SettingsLiWithSVG = () => {
 
 const SettingsLiStyled = styled.div`
   display: flex;
+
   align-items: center;
   gap: 1rem;
   height: 3rem;
   padding: 0 0 0 1rem;
-  z-index: 12;
+  color: ${({ theme }) => theme.grey400};
   &:hover {
     background: ${({ theme }) => theme.grey00};
     cursor: pointer;

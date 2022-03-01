@@ -5,10 +5,10 @@ import FooterInnerStyled from './FooterInnerStyled';
 import { LogoStyled } from '../../Molecules/Footer/FooterStyled';
 import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
 
-const FooterDesktop = () => {
+const FooterDesktop = ({ className }) => {
   return (
     <>
-      <FooterDesktopStyled>
+      <FooterDesktopStyled className={className}>
         <FooterInnerStyled>
           <a
             href="https://github.com/CC2021-WBL"

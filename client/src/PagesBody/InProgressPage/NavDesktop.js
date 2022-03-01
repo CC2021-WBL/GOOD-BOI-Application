@@ -20,7 +20,9 @@ const NavDesktop = () => {
     return (
       <NavDesktopWrapperStyled>
         <NavDesktopInnerStyled>
-          <AppLogoSVG />
+          <NavLink to="/">
+            <AppLogoSVG />
+          </NavLink>
           <NavLink
             to="/login"
             style={({ isActive }) => ({

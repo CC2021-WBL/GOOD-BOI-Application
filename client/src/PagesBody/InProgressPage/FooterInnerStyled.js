@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-const FooterInnerStyled = styled.div`
-  /* max-width: 1600px; */
+const FooterInnerStyled = styled.footer`
   min-width: 600px;
   display: flex;
   margin: auto;

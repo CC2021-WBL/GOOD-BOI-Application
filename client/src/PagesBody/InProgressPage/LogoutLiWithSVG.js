@@ -12,6 +12,7 @@ const LogoutLiWithSVG = () => {
           width: '100%',
           display: 'flex',
           alignItems: 'center',
+          color: 'inherit',
         }}
         to="/login"
       >
@@ -23,6 +24,7 @@ const LogoutLiWithSVG = () => {
 
 const LogoutLiStyled = styled.div`
   display: flex;
+  color: ${({ theme }) => theme.grey400};
   align-items: center;
   gap: 1rem;
   height: 3rem;
