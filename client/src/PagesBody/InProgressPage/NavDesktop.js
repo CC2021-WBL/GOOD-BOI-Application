@@ -1,15 +1,15 @@
 import { NavLink, useLocation } from 'react-router-dom';
+import { useContext, useState } from 'react';
 
 import { ReactComponent as AppLogoSVG } from '../../Assets/AppLogoSVG.svg';
 import ButtonsWrapperStyled from './ButtonsWrapperStyled';
 import FakeButton from './../../Atoms/FakeButton/FakeButton';
+import GoodBoiLogo from './GoodBoiLogo';
+import NavAccordion from './NavAccordion';
+import NavAccordionStyled from './NavAccordionStyled';
 import NavDesktopInnerStyled from './NavDesktopInnerStyled';
 import NavDesktopWrapperStyled from './NavDesktopWrapperStyled';
-import NavAccordion from './NavAccordion';
 import { UserDataContext } from './../../Context/UserDataContext';
-import { useContext, useState } from 'react';
-import GoodBoiLogo from './GoodBoiLogo';
-import NavAccordionStyled from './NavAccordionStyled';
 
 const NavDesktop = () => {
   const location = useLocation();
@@ -61,7 +61,7 @@ const NavDesktop = () => {
       </NavDesktopWrapperStyled>
     );
   }
-  // when not logged in:
+  // when logged in:
   return (
     <NavDesktopWrapperStyled>
       <NavDesktopInnerStyled>

@@ -1,11 +1,22 @@
+import { NavLink } from 'react-router-dom';
 import { ReactComponent as SettingsSVG } from '../../Assets/Settings.svg';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+
 const SettingsLiWithSVG = () => {
   return (
     <SettingsLiStyled>
       <SettingsSVG />
-      <a href="/settings">Ustawienia</a>
+      <NavLink
+        style={{
+          height: '100%',
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+        }}
+        to="/settings"
+      >
+        Ustawienia
+      </NavLink>
     </SettingsLiStyled>
   );
 };

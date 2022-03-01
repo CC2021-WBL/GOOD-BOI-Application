@@ -1,10 +1,10 @@
-import SettingsLiWithSVG from './SettingsLiWithSVG';
 import LogoutLiWithSVG from './LogoutLiWithSVG';
+import SettingsLiWithSVG from './SettingsLiWithSVG';
 import styled from 'styled-components';
 
-const CornerMenuList = () => {
+const CornerMenuList = ({ onClick }) => {
   return (
-    <CornerMenuListStyled>
+    <CornerMenuListStyled onClick={onClick}>
       <SettingsLiWithSVG />
       <LogoutLiWithSVG />
     </CornerMenuListStyled>

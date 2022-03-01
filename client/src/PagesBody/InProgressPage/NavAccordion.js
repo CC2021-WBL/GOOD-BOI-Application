@@ -1,11 +1,13 @@
+import { useRef, useState } from 'react';
+
 import CornerMenuList from './CornerMenuList';
 import { FaChevronDown } from 'react-icons/fa';
 import { FaChevronUp } from 'react-icons/fa';
 import ProfilePicture from './ProfilePicture';
 import styled from 'styled-components';
-import { useState } from 'react';
+import useClickOutside from '../../Hooks/useClickOutside';
 
-const AccordionButton = styled.div`
+const AccordionButtonWrapper = styled.div`
   height: 61px;
   display: flex;
   gap: 1rem;
@@ -40,20 +42,23 @@ const CornerMenuWrapper = styled.div`
 const NavAccordion = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleHandler = () => {
-    console.log(menuOpen);
     setMenuOpen(!menuOpen);
-    return menuOpen;
   };
+
+  let domNode = useClickOutside(() => {
+    setMenuOpen(false);
+  });
+
   return (
     <>
-      <AccordionButton onClick={toggleHandler}>
+      <AccordionButtonWrapper ref={domNode} onClick={toggleHandler}>
         <ProfilePicture />
         <div style={{ userSelect: 'none' }}>Witaj, Matylda</div>
         {!menuOpen && <FaChevronDown />}
         {menuOpen && <FaChevronUp />}
-      </AccordionButton>
+      </AccordionButtonWrapper>
       <CornerMenuWrapper className={menuOpen ? 'open' : 'close'}>
-        <CornerMenuList />
+        <CornerMenuList onClick={() => setMenuOpen(false)} />
       </CornerMenuWrapper>
     </>
   );

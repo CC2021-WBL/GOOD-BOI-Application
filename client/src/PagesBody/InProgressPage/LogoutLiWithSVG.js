@@ -1,11 +1,22 @@
-import styled from 'styled-components';
 import { ReactComponent as LogoutSVG } from '../../Assets/Logout.svg';
 import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+
 const LogoutLiWithSVG = () => {
   return (
     <LogoutLiStyled>
       <LogoutSVG />
-      <a href="/logout"> Wyloguj</a>
+      <NavLink
+        style={{
+          height: '100%',
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+        }}
+        to="/logout"
+      >
+        Wyloguj
+      </NavLink>
     </LogoutLiStyled>
   );
 };
