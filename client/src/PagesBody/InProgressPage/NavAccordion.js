@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import ProfilePicture from './ProfilePicture';
+import CornerMenuList from './CornerMenuList';
 import { FaChevronDown } from 'react-icons/fa';
 import { FaChevronUp } from 'react-icons/fa';
-import CornerMenuList from './CornerMenuList';
+import ProfilePicture from './ProfilePicture';
+import styled from 'styled-components';
 import { useState } from 'react';
 
 const AccordionButton = styled.div`
@@ -27,7 +27,14 @@ const CornerMenuWrapper = styled.div`
   bottom: -7.5rem;
   width: 100%;
   background: ${({ theme }) => theme.grey00};
-  transition: 1s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  transform-origin: 0 0;
+  &.close {
+    transform: scale(1, 0);
+  }
+  &.open {
+    transform: scale(1, 1);
+  }
 `;
 
 const NavAccordion = () => {
@@ -45,11 +52,9 @@ const NavAccordion = () => {
         {!menuOpen && <FaChevronDown />}
         {menuOpen && <FaChevronUp />}
       </AccordionButton>
-      {menuOpen && (
-        <CornerMenuWrapper>
-          <CornerMenuList />
-        </CornerMenuWrapper>
-      )}
+      <CornerMenuWrapper className={menuOpen ? 'open' : 'close'}>
+        <CornerMenuList />
+      </CornerMenuWrapper>
     </>
   );
 };
