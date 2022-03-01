@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { device } from '../../Consts/devices';
+
 const ColumnWrapperStyled = styled.div`
   display: flex;
   width: 100%;
@@ -10,6 +12,11 @@ const ColumnWrapperStyled = styled.div`
   padding-top: ${(props) => props.paddingTop && `${props.paddingTop}rem`};
   padding-bottom: ${(props) =>
     props.paddingBottom && `${props.paddingBottom}rem`};
+
+  @media only screen and (${device.tablet}) {
+    grid-area: 3 / 2 / 4 / 3;
+    overflow: scroll;
+  }
 `;
 
 export default ColumnWrapperStyled;

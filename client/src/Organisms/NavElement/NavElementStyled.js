@@ -33,7 +33,7 @@ export const NavElementStyled = styled.div`
   }
 
   @media only screen and (${device.tablet}) {
-    position: static;
-    grid-area: 1 / 1 / 3 / 4;
+    height: 110px;
+    position: fixed;
   }
 `;
