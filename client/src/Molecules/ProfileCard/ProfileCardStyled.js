@@ -20,6 +20,25 @@ const ProfileCardStyled = styled.div`
     background-size: cover;
     border-radius: 50%;
   }
+
+  ${(props) =>
+    props.className === 'user_profile' &&
+    `
+    @media only screen and (min-width: 740px) {
+    flex-direction: column;
+    font-size: 22px;
+    grid-area: 2 / 3 / 6 / 4;
+    border: 1.5px solid grey;
+    border-radius: 15px;
+    margin: auto 0;
+    justify-content: space-between;
+
+    .bg-box {
+      right: 0;
+    }
+      
+  }
+  `}
 `;
 
 export default ProfileCardStyled;

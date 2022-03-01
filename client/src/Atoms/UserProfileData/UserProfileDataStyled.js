@@ -29,6 +29,12 @@ const UserProfileDataStyled = styled.div`
       color: ${({ theme }) => theme.grey400};
     }
   }
+
+  @media (min-width: 740px) {
+    text-align: center;
+    margin-right: 0;
+    padding: 20px;
+  }
 `;
 
 export default UserProfileDataStyled;

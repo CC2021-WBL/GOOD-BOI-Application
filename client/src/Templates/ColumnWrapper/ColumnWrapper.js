@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 import ColumnWrapperStyled from './ColumnWrapperStyled';
 
 const ColumnWrapper = ({
@@ -6,12 +7,18 @@ const ColumnWrapper = ({
   paddingLeftRight = 0,
   paddingTop = 0,
   paddingBottom = 0,
+  mobile,
+  desktop,
+  className,
 }) => {
   return (
     <ColumnWrapperStyled
       paddingLeftRight={paddingLeftRight}
       paddingTop={paddingTop}
       paddingBottom={paddingBottom}
+      mobile={mobile}
+      desktop={desktop}
+      className={className}
     >
       {children}
     </ColumnWrapperStyled>

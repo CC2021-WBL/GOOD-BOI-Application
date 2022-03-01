@@ -7,8 +7,7 @@ const AppStyled = styled.div`
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(8, 12.5%);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    gap: 0px;
     width: 100vw;
     height: 100vh;
   }
@@ -16,9 +15,9 @@ const AppStyled = styled.div`
   @media ${device.mobileL} {
     display: grid;
     grid-template-columns: none;
+    /* grid-template-rows: 60px 40px 1fr; */
     grid-template-rows: none;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    gap: 0px;
     width: 100vw;
     height: 100vh;
   }
