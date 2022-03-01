@@ -1,5 +1,7 @@
-import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
+
+import FONTS from '../../Styles/fontsStyledComponents';
+import { device } from '../../Consts/devices';
 
 export const NavElementStyled = styled.div`
   position: fixed;
@@ -28,5 +30,10 @@ export const NavElementStyled = styled.div`
         cursor: pointer;
       }
     }
+  }
+
+  @media only screen and (${device.tablet}) {
+    position: static;
+    grid-area: 1 / 1 / 3 / 4;
   }
 `;

@@ -18,7 +18,7 @@ import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
 import ErrorBoundary from './Tools/ErrorBoundary';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
-import GridShit from './Styles/GridShit';
+import Grid from './Styles/Grid';
 import InProgressPage from './PagesBody/InProgressPage/InProgressPage';
 import LandingPage from './PagesBody/LandingPage/LandingPage';
 import Layout from './Templates/Layout/Layout';
@@ -55,7 +55,7 @@ function App() {
                 <GlobalStyles />
                 <div className="App">
                   <AppStyles>
-                    <GridShit>
+                    <Grid>
                       <Routes>
                         <Route path="/" element={<LandingPage />} />
                         <Route element={<Layout withSettings />}>
@@ -149,7 +149,7 @@ function App() {
                         </Route>
                         <Route path="burger-menu" element={<BurgerMenu />} />
                       </Routes>
-                    </GridShit>
+                    </Grid>
                   </AppStyles>
                 </div>
               </>

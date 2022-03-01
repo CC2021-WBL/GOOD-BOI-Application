@@ -14,6 +14,4 @@ a{text-decoration:none}
 }
 body {
     background: ${({ theme }) => theme.white};
-    max-width: 1200px;
-    margin: 0 auto;
 }`;

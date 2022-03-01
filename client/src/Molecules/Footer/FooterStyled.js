@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
+import { device } from '../../Consts/devices';
+
 export const FooterStyled = styled.div`
   position: fixed;
   right: 0;
   bottom: 0;
   left: 0;
-  display: flex;
   height: 4.875rem;
   align-items: center;
   justify-content: space-between;
@@ -13,6 +14,13 @@ export const FooterStyled = styled.div`
   border-top: 2px solid ${({ theme }) => theme.grey00};
   margin: 0;
   background: ${({ theme }) => theme.white};
+
+  @media only screen and (${device.tablet}) {
+    position: static;
+    grid-area: 4 / 1 / 5 / 4;
+    background-color: lightyellow;
+    height: 240px;
+  }
 `;
 
 export const LogoStyled = styled.div`
