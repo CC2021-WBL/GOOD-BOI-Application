@@ -57,7 +57,6 @@ const NavElement = () => {
       </GridWrapper>
       {data.label && data.label.length !== 0 && (
         <>
-          {/* <div style={{ height: '60px' }} /> */}
           <GreyLabel text={data.label} />
         </>
       )}

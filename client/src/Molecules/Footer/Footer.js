@@ -18,7 +18,7 @@ const Footer = ({ withSettings }) => {
   // windows.innerHeight changes when virtual keyboard popping up, when so - hide the footer
   if (Math.abs(initHeight - height.height) <= 500) {
     return (
-      <GridWrapper mobile="1 / 1 / 2 / 2" tablet="4 / 1 / 5 / -1">
+      <GridWrapper mobile="4 / 1 / 5 / 2" tablet="4 / 1 / 5 / -1">
         <FooterStyled>
           <a
             href="https://github.com/CC2021-WBL"
