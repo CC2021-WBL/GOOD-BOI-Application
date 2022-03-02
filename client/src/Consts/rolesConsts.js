@@ -11,6 +11,10 @@ export const ROLES = {
     roleButtonText: 'Organizator',
     roleButtonLink: '/contests',
   },
+  admin: {
+    roleButtonText: 'Admin',
+    roleButtonLink: '/contests',
+  },
 };
 
 export const ROLE_NAME = {

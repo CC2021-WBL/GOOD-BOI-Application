@@ -13,9 +13,21 @@ module.exports.loginAuthentication = async (req, res) => {
 
     if (isValid) {
       const jwt = issueJWT(user);
-      res.status(200).json({
+
+      const userToSend = {
+        userId: user._id,
+        userName: user.participantName,
+        userSurname: user.participantSurname,
+        roles: user.portalRoles,
+      };
+
+      const cookieOptions = {
+        maxAge: 24 * 60 * 60 * 1000 * 2,
+      };
+
+      res.cookie('jwt', jwt.token, cookieOptions).status(200).json({
         success: true,
-        user: user,
+        user: userToSend,
         token: jwt.token,
         expiresIn: jwt.expires,
       });

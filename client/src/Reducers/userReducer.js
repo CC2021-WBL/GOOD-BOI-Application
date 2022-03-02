@@ -4,12 +4,13 @@ import participants from '../Data/MongoDBMock/participants';
 const userReducer = (state, action) => {
   switch (action.type) {
     case USER_ACTIONS.LOG_IN:
+      console.log(action);
       return {
         isAuthenticated: true,
-        userId: participants[0].participantId,
-        userName: participants[0].participantName,
-        userSurname: participants[0].participantSurname,
-        roles: participants[0].portalRoles,
+        userId: action.payload.userId,
+        userName: action.payload.userName,
+        userSurname: action.payload.userSurname,
+        roles: action.payload.roles,
       };
     case USER_ACTIONS.LOG_OUT:
       return {
@@ -42,6 +43,8 @@ const userReducer = (state, action) => {
         ...state,
         selectedRole: action.selectedRole,
       };
+    default:
+      return state;
   }
 };
 
