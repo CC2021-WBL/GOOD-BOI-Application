@@ -6,8 +6,8 @@ const ContestsWrapperStyled = styled.div`
   }
   @media (min-width: 1200px) {
     display: flex;
-    justify-content: center;
     width: 100%;
+    justify-content: center;
     gap: 50px;
 
     .mockmap {

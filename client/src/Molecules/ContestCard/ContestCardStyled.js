@@ -31,12 +31,12 @@ const ContestCardStyled = styled.div`
   }
 
   @media (min-width: 1200px) {
-    text-align: left;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding: 0;
+    text-align: left;
 
     .contest-card-wrapper {
       width: 70%;
@@ -45,15 +45,15 @@ const ContestCardStyled = styled.div`
 
     .p {
       display: block;
+      color: ${(props) => props.theme.primary501};
       ${FONTS.body_bold};
       text-transform: uppercase;
-      color: ${(props) => props.theme.primary501};
     }
 
     .doggo {
       display: block;
-      height: 100%;
       width: 25%;
+      height: 100%;
 
       img {
         width: 100%;
@@ -76,8 +76,8 @@ const ContestInsideElementStyled = styled.div`
   ${FONTS.label_extrabold};
 
   @media (min-width: 1200px) {
-    padding: 10px 0;
     width: 80%;
+    padding: 10px 0;
   }
 `;
 

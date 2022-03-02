@@ -13,7 +13,6 @@ const ColumnWrapperStyled = styled.div`
 
   &.contests-column-wrapper {
     @media (min-width: 1200px) {
-      width: 50%;
       display: flex;
       width: 680px;
       margin: 85px 0 0 0;
