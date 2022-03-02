@@ -39,7 +39,7 @@ const NavElement = () => {
       <GridWrapper
         as={'GridWrapper'}
         mobile="1 / 1 / 2 / 2"
-        tablet="1 / 2 / 2 / 3"
+        tablet="1 / 1 / 2 / -1"
       >
         <NavElementStyled>
           {login || register || contact || forgot || inProgress ? (

@@ -34,6 +34,8 @@ export const NavElementStyled = styled.div`
 
   @media only screen and (${device.tablet}) {
     height: 110px;
-    max-width: 1920px;
+    max-width: 1600px;
+    margin: 0 auto;
+    background-color: red;
   }
 `;
