@@ -37,7 +37,7 @@ const NavElement = () => {
   return (
     <>
       <GridWrapper
-        as={'GridWrapper'}
+        as={'navgrid'}
         mobile="1 / 1 / 2 / 2"
         tablet="1 / 1 / 2 / -1"
       >

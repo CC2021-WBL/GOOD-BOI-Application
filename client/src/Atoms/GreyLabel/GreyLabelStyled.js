@@ -4,6 +4,7 @@ import FONTS from '../../Styles/fontsStyledComponents';
 import { device } from '../../Consts/devices';
 
 const GreyLabelStyled = styled.div`
+  grid-area: 2 / 1 / 3 / 2;
   display: flex;
   height: 2.5rem;
   align-items: center;
@@ -16,8 +17,13 @@ const GreyLabelStyled = styled.div`
   }
 
   @media only screen and (${device.tablet}) {
-    grid-area: 2 / 1 / 3 / 4;
     height: 85px;
+    grid-area: 2 / 1 / 3 / -1;
+    background: ${({ theme }) => theme.white};
+    border-bottom: 1px solid ${({ theme }) => theme.grey200};
+    .greyLabelText {
+      padding-right: 400px;
+    }
   }
 `;
 
