@@ -14,7 +14,7 @@ const ColumnWrapperStyled = styled.div`
     props.paddingBottom && `${props.paddingBottom}rem`};
 
   @media only screen and (${device.tablet}) {
-    grid-area: 3 / 2 / 4 / 3;
+    grid-area: 3 / 3 / 4 / 4;
     overflow: scroll;
   }
 `;

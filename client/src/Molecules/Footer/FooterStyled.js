@@ -18,11 +18,13 @@ export const FooterStyled = styled.div`
   background: ${({ theme }) => theme.white};
 
   @media only screen and (${device.tablet}) {
-    background-color: lightyellow;
     height: 120px;
+    max-width: 1600px;
+    margin: 0 auto;
+    background-color: ${({ theme }) => theme.grey200};
   }
+
   @media only screen and (${device.desktop}) {
-    background-color: lightyellow;
     height: 240px;
   }
 `;

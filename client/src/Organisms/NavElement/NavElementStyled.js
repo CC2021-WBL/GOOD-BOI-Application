@@ -4,14 +4,13 @@ import FONTS from '../../Styles/fontsStyledComponents';
 import { device } from '../../Consts/devices';
 
 export const NavElementStyled = styled.div`
-  /* position: fixed; */
   display: flex;
   width: 100%;
   height: 3.75rem;
   align-items: center;
   justify-content: space-between;
   padding: 0 1.125rem;
-  /* background: ${({ theme }) => theme.white}; */
+  background: ${({ theme }) => theme.white};
 
   .navText {
     width: 80%;
@@ -36,6 +35,6 @@ export const NavElementStyled = styled.div`
     height: 110px;
     max-width: 1600px;
     margin: 0 auto;
-    background-color: red;
+    background-color: ${({ theme }) => theme.grey200};
   }
 `;
