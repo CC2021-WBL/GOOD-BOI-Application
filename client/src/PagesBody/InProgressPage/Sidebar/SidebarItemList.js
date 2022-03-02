@@ -1,26 +1,54 @@
+import { BsTrophy, BsTrophyFill } from 'react-icons/bs';
+import { FaDog, FaUserCircle, FaUsersCog } from 'react-icons/fa';
+
+import MenuItem from './MenuItem';
+import { UserDataContext } from '../../../Context/UserDataContext';
 import styled from 'styled-components';
-import { ReactComponent as SettingsSVG } from '../../Assets/Settings.svg';
-import ProfileLiWithSVG from './ProfileLiWithSVG';
+import { useContext } from 'react';
 
-// icons:
-const settingsIcon = (icon) => <SettingsSVG />;
-
-const CornerMenuList = () => {
+const SidebarItemList = () => {
+  const { state } = useContext(UserDataContext);
+  const { userId } = state;
+  const fontsize = '30px';
   return (
-    <CornerMenuListStyled>
-      <ProfileLiWithSVG icon={settingsIcon} />
-      {/* <RoleLiWithSVG />
-      <YourDogsLiWithSVG />
-      <HistoryLiWithSVG />
-      <RegisterLiWithSVG /> */}
-    </CornerMenuListStyled>
+    <SidebarItemListStyled>
+      <MenuItem
+        formolecule="Sidebar"
+        linkTo={`/user/${userId}/user-data`}
+        text="Profil"
+        icon={<FaUserCircle fontSize={fontsize} />}
+      />
+      <MenuItem
+        formolecule="Cornermenu"
+        linkTo="/role"
+        text="Wybierz rolę"
+        icon={<FaUsersCog fontSize={fontsize} />}
+      />
+      <MenuItem
+        formolecule="Sidebar"
+        linkTo="/user-dogs"
+        text="Twoje psy"
+        icon={<FaDog fontSize={fontsize} />}
+      />
+      <MenuItem
+        formolecule="Sidebar"
+        linkTo="/"
+        text="Historia zawodów"
+        icon={<BsTrophy fontSize={fontsize} />}
+      />
+      <MenuItem
+        formolecule="Sidebar"
+        linkTo="/register"
+        text="Zapisz się na zawody"
+        icon={<BsTrophyFill fontSize={fontsize} />}
+      />
+    </SidebarItemListStyled>
   );
 };
-const CornerMenuListStyled = styled.div`
+const SidebarItemListStyled = styled.div`
+  display: block;
+  margin: 1px;
+  padding: 0;
   text-align: left;
-  background: red;
-  height: 200px;
-  width: 200px;
-  display: grid;
 `;
-export default CornerMenuList;
+export default SidebarItemList;
