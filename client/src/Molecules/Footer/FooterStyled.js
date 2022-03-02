@@ -23,6 +23,9 @@ export const FooterStyled = styled.div`
   }
   @media only screen and (${device.desktop}) {
     background-color: lightyellow;
+    position: static;
+    grid-area: 4 / 1 / 5 / 4;
+    width: 100%;
     height: 240px;
   }
 `;
