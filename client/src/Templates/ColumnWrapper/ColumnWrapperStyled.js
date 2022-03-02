@@ -19,7 +19,6 @@ const ColumnWrapperStyled = styled.div`
   }
   @media only screen and (${device.desktop}) {
     grid-area: 3 / 3 / 4 / 4;
-    overflow: scroll;
   }
 `;
 
