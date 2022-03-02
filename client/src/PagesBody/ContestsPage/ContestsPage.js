@@ -70,7 +70,7 @@ const ContestsPage = () => {
       <ContestFilterToggler
         onClick={toggleHandler}
         toggle={toggle}
-      ></ContestFilterToggler>
+      />
 
       {toggle && <FilterLabel onClick={handleFilterClick}></FilterLabel>}
       <ContestsWrapperStyled className="contests">
@@ -90,7 +90,7 @@ const ContestsPage = () => {
             getSelectedContestsByTime(selectedMode, contestData).length ===
               0 && <h3>Nie ma zawodów</h3>}
         </ColumnWrapper>
-        {locationPath.state && locationPath.state.contestContent === 'future' && (
+        {selectedMode === TIME.FUTURE && (
           <div className="mockmap">
             <img src={mockmap} alt="mockmap" />
           </div>

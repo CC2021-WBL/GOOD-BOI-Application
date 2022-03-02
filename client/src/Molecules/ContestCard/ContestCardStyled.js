@@ -72,7 +72,7 @@ const ContestInsideElementStyled = styled.div`
   padding: 10px;
   border-top: 1px solid ${COLORS.grey200};
   color: ${(props) =>
-    props.colorMotive === c.GREEN ? COLORS.positive600 : props.theme.grey400};
+    props.colorMotive === c.GREEN ? props.theme.positive600 : props.theme.grey400};
   ${FONTS.label_extrabold};
 
   @media (min-width: 1200px) {

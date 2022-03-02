@@ -37,6 +37,8 @@ const ContestCard = ({ contestData }) => {
       navigate(`../class-choice`);
     } else if (selectedRole !== null && selectedRole === 'staff') {
       navigate(`./${contestId}/classes`);
+    } else if (pointOnTimeLine === 'w trakcie') {
+      navigate(`../class-choice`);
     } else {
       navigate(`/contests/${contestId}`);
     }
