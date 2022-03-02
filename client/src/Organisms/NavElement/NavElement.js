@@ -7,6 +7,7 @@ import Backdrop from '../../Atoms/Modal/Backdrop';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import GoHomeStyled from '../../Atoms/NavElementStyled/GoHomeStyled';
 import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
+import GridWrapper from '../../Styles/GridWrapper';
 import home from '../../Assets/home.png';
 import { ContestContext } from '../../Context/ContestContext';
 import { DogContext } from '../../Context/DogContext';
@@ -35,26 +36,32 @@ const NavElement = () => {
   const data = checkPathOrigin(locationPath.pathname, namesFromContext);
   return (
     <>
-      <NavElementStyled>
-        {login || register || contact || forgot || inProgress ? (
-          <div className="burger-wrapper" />
-        ) : (
-          <div className="burger-wrapper">
-            <MdMenu className="burger-icon" onClick={() => setOpen(true)} />
-          </div>
-        )}
+      <GridWrapper
+        as={'GridWrapper'}
+        mobile="1 / 1 / 2 / 2"
+        tablet="1 / 2 / 2 / 3"
+      >
+        <NavElementStyled>
+          {login || register || contact || forgot || inProgress ? (
+            <div className="burger-wrapper" />
+          ) : (
+            <div className="burger-wrapper">
+              <MdMenu className="burger-icon" onClick={() => setOpen(true)} />
+            </div>
+          )}
 
-        <h3 className="navText">{data.text}</h3>
+          <h3 className="navText">{data.text}</h3>
 
-        <GoHomeStyled>
-          <Link to="/">
-            <img src={home} alt="Buda psa" className="logo" />
-          </Link>
-        </GoHomeStyled>
-      </NavElementStyled>
+          <GoHomeStyled>
+            <Link to="/">
+              <img src={home} alt="Buda psa" className="logo" />
+            </Link>
+          </GoHomeStyled>
+        </NavElementStyled>
+      </GridWrapper>
       {data.label && data.label.length !== 0 && (
         <>
-          <div style={{ height: '60px' }} />
+          {/* <div style={{ height: '60px' }} /> */}
           <GreyLabel text={data.label} />
         </>
       )}
