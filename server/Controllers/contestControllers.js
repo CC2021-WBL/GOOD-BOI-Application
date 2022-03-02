@@ -1,4 +1,5 @@
 const Contest = require('../Model/Contest');
+const { createClassesObjectArray } = require('../Tools/ModelTools');
 
 async function registerContest(req, res) {
   const contest = new Contest({
@@ -14,7 +15,7 @@ async function registerContest(req, res) {
     manager: req.params.userId,
     feePLN: req.body.feePLN,
     maxAmountOfApplications: req.body.maxAmountOfApplications,
-    obedienceClasses: req.body.obedienceClasses,
+    obedienceClasses: createClassesObjectArray(req.body.obedienceClasses),
   });
   try {
     const savedContest = await contest.save();

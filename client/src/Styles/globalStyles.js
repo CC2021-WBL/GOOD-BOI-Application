@@ -14,5 +14,4 @@ a{text-decoration:none}
 }
 body {
     background: ${({ theme }) => theme.white};
-  
 }`;

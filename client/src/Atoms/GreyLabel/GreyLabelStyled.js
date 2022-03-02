@@ -1,5 +1,7 @@
-import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
+
+import FONTS from '../../Styles/fontsStyledComponents';
+import { device } from '../../Consts/devices';
 
 const GreyLabelStyled = styled.div`
   display: flex;
@@ -11,6 +13,11 @@ const GreyLabelStyled = styled.div`
   .greyLabelText {
     color: ${({ theme }) => theme.grey800};
     ${FONTS.body_semibold};
+  }
+
+  @media only screen and (${device.tablet}) {
+    grid-area: 2 / 1 / 3 / 4;
+    height: 85px;
   }
 `;
 
