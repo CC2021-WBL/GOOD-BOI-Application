@@ -2,7 +2,7 @@ import 'font-awesome/css/font-awesome.min.css';
 
 import { useContext, useState } from 'react';
 
-import BackgroundDiv from './../../PagesBody/InProgressPage/BackgroundDiv';
+import BackgroundStyled from './../../PagesBody/InProgressPage/BackgroundStyled';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
@@ -25,8 +25,8 @@ const LoginForm = () => {
 
   return (
     <>
+      {window.innerWidth >= 800 && <BackgroundStyled></BackgroundStyled>}
       <ColumnWrapper paddingLeftRight={1}>
-        {window.innerWidth > 700 && <BackgroundDiv></BackgroundDiv>}
         <FormWrapper onSubmit={submitHandler}>
           <InputField
             labelText="Email"

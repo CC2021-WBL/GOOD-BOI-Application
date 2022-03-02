@@ -10,6 +10,7 @@ import NavAccordionStyled from './NavAccordionStyled';
 import NavDesktopInnerStyled from './NavDesktopInnerStyled';
 import NavDesktopWrapperStyled from './NavDesktopWrapperStyled';
 import { UserDataContext } from './../../Context/UserDataContext';
+import NavLinkStyled from './NavLinkStyled';
 
 const NavDesktop = () => {
   const location = useLocation();
@@ -20,37 +21,12 @@ const NavDesktop = () => {
     return (
       <NavDesktopWrapperStyled>
         <NavDesktopInnerStyled>
-          <NavLink to="/">
+          <NavLinkStyled to="/">
             <AppLogoSVG />
-          </NavLink>
-          <NavLink
-            to="/login"
-            style={({ isActive }) => ({
-              color: isActive ? 'black' : 'grey',
-              fontWeight: isActive ? 'bold' : 'normal',
-            })}
-          >
-            STRONA GŁÓWNA
-          </NavLink>
-          <NavLink
-            to="/contests"
-            style={({ isActive }) => ({
-              color: isActive ? 'black' : 'grey',
-              fontWeight: isActive ? 'bold' : 'normal',
-            })}
-          >
-            AKTUALNE KONKURSY
-          </NavLink>
-          <NavLink
-            to="/register"
-            style={({ isActive }) => ({
-              color: isActive ? 'black' : 'grey',
-              fontWeight: isActive ? 'bold' : 'normal',
-            })}
-          >
-            WEŹ UDZIAŁ W ZAWODACH
-          </NavLink>
-
+          </NavLinkStyled>
+          <NavLinkStyled to="/login">STRONA GŁÓWNA</NavLinkStyled>
+          <NavLinkStyled to="/contests">AKTUALNE KONKURSY</NavLinkStyled>
+          <NavLinkStyled to="/register">WEŹ UDZIAŁ W ZAWODACH</NavLinkStyled>
           <ButtonsWrapperStyled>
             {location.pathname !== '/register' && (
               <FakeButton to="/register" colors="ternary" text="Zarejestruj" />
@@ -68,9 +44,9 @@ const NavDesktop = () => {
     <NavDesktopWrapperStyled>
       <NavDesktopInnerStyled>
         <GoodBoiLogo />
-        <NavAccordionStyled>
-          <NavAccordion />
-        </NavAccordionStyled>
+        {/* <NavAccordionStyled> */}
+        <NavAccordion />
+        {/* </NavAccordionStyled> */}
       </NavDesktopInnerStyled>
     </NavDesktopWrapperStyled>
   );

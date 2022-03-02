@@ -1,4 +1,4 @@
-import BackgroundDiv from '../../PagesBody/InProgressPage/BackgroundDiv';
+import BackgroundStyled from '../../PagesBody/InProgressPage/BackgroundStyled';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import RegistrationFormSignup from './RegistrationFormSignup';
 import RegistrationFormSuccess from './RegistrationFormSuccess';
@@ -14,7 +14,8 @@ const RegistrationForm = ({ editData }) => {
 
   return (
     <>
-      {window.innerWidth > 700 && <BackgroundDiv></BackgroundDiv>}
+      {/* {window.innerWidth >= 800 && <BackgroundStyled></BackgroundStyled>} */}
+      <BackgroundStyled></BackgroundStyled>
       <ColumnWrapper paddingLeftRight={1}>
         {!isSubmitted ? (
           <RegistrationFormSignup submitForm={submitForm} editData={editData} />

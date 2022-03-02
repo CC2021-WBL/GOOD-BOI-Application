@@ -6,6 +6,7 @@ import { FaChevronUp } from 'react-icons/fa';
 import ProfilePicture from './ProfilePicture';
 import styled from 'styled-components';
 import useClickOutside from '../../Hooks/useClickOutside';
+import NavAccordionStyled from './NavAccordionStyled';
 
 const AccordionButtonWrapper = styled.div`
   height: 61px;
@@ -50,7 +51,7 @@ const NavAccordion = () => {
   });
 
   return (
-    <>
+    <NavAccordionStyled>
       <AccordionButtonWrapper ref={domNode} onClick={toggleHandler}>
         <ProfilePicture />
         <div style={{ userSelect: 'none' }}>Witaj, Matylda</div>
@@ -60,7 +61,7 @@ const NavAccordion = () => {
       <CornerMenuWrapper className={menuOpen ? 'open' : 'close'}>
         <CornerMenuList onClick={() => setMenuOpen(false)} />
       </CornerMenuWrapper>
-    </>
+    </NavAccordionStyled>
   );
 };
 

@@ -7,6 +7,7 @@ import { Outlet } from 'react-router-dom';
 import propTypes from 'prop-types';
 import useWindowHeight from '../../Tools/useWindowHeight';
 import { useEffect, useState } from 'react';
+import Sidebar from './../../PagesBody/InProgressPage/Sidebar/Sidebar';
 
 const initHeight = window.innerHeight;
 // 150 pixels of change in the window.height triggers the footer and ghost footer to hide
@@ -26,20 +27,21 @@ const Layout = ({ withLabel, withSettings }) => {
   console.log(app.getBoundingClientRect().height);
   return (
     <>
-      {window.innerWidth < 700 ? <NavElement /> : ''}
-      {window.innerWidth > 700 ? <NavDesktop /> : ''}
-      {!withLabel && window.innerWidth < 700 && (
+      <Sidebar />
+      {window.innerWidth <= 800 ? <NavElement /> : ''}
+      {window.innerWidth >= 800 ? <NavDesktop /> : ''}
+      {!withLabel && window.innerWidth <= 800 && (
         <div style={{ height: '60px' }} />
       )}
       <Outlet />
-      {window.innerWidth > 700 ? (
+      {window.innerWidth >= 800 ? (
         <FooterDesktop className={moveFooter ? 'fixed' : 'relative'} />
       ) : Math.abs(initHeight - height.height) <= 150 ? (
         <GhostFooterStyled />
       ) : (
         ``
       )}
-      {window.innerWidth > 700 ? (
+      {window.innerWidth >= 800 ? (
         ''
       ) : withSettings ? (
         <Footer withSettings />
