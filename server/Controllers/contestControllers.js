@@ -28,6 +28,29 @@ async function registerContest(req, res) {
   }
 }
 
+async function updateContest(req, res) {
+  try {
+    const propsToUpdate = Object.keys(req.body);
+    if (propsToUpdate.length === 0) {
+      res.status(204).json({ message: 'no data to update' });
+    }
+    const contest = await Contest.findById(req.params.contestId);
+    propsToUpdate.forEach((element) => {
+      if (element === 'obedienceClasses') {
+        contest[element] = createClassesObjectArray(req.body[element]);
+      } else {
+        contest[element] = req.body[element];
+      }
+    });
+    contest.updateAt = new Date();
+    await contest.save();
+    return contest;
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+}
+
 module.exports = {
   registerContest,
+  updateContest,
 };
