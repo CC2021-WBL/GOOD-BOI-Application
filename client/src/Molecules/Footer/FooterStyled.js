@@ -9,7 +9,6 @@ export const FooterStyled = styled.div`
   bottom: 0;
   left: 0;
   height: 4.875rem;
-  max-width: 1920px;
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
@@ -26,6 +25,7 @@ export const FooterStyled = styled.div`
 
   @media only screen and (${device.desktop}) {
     height: 240px;
+    max-width: 1600px;
   }
 `;
 

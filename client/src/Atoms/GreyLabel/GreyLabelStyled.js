@@ -22,7 +22,6 @@ const GreyLabelStyled = styled.div`
     background: ${({ theme }) => theme.white};
     border-bottom: 1px solid ${({ theme }) => theme.grey200};
     .greyLabelText {
-      padding-right: 400px;
     }
   }
 `;
