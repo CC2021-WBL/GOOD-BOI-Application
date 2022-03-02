@@ -13,11 +13,11 @@ const ColumnWrapperStyled = styled.div`
   padding-bottom: ${(props) =>
     props.paddingBottom && `${props.paddingBottom}rem`};
 
-  @media only screen and (${device.tablet}) {
+  @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
     overflow: scroll;
   }
-  @media only screen and (${device.desktop}) {
+  @media only screen and (min-width: 1600px) {
     grid-area: 3 / 3 / 4 / 4;
   }
 `;
