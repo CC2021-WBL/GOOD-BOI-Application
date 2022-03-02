@@ -12,6 +12,7 @@ import {
 import { ContestContext } from '../../Context/ContestContext';
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
 import { UserDataContext } from '../../Context/UserDataContext';
+import dog_1 from '../../Assets/Dogs/dog_1.png';
 import propTypes from 'prop-types';
 import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
 import { useContext } from 'react';
@@ -49,28 +50,45 @@ const ContestCard = ({ contestData }) => {
   };
 
   return (
-    <ContestCardStyled
-      colorMotive={setColorMotive(pointOnTimeLine)}
-      onClick={handleClick}
-    >
-      <ContestNameStyled>{contestName}</ContestNameStyled>
-      <ContestInsideElementStyled colorMotive={setColorMotive(pointOnTimeLine)}>
-        <time dateTime={stringDate}>
-          {stringDate}, {getHourAndMinutesFromDate(startDate)}
-        </time>
-        <p>{address.city.toUpperCase()}</p>
-      </ContestInsideElementStyled>
-      <ContestInsideElementStyled colorMotive={setColorMotive(pointOnTimeLine)}>
-        <InfoLabel
-          classInfo={{ dogsAmount: dogsAmount }}
-          colorMotive={setColorMotive(pointOnTimeLine, dogsAmount)}
-        />
-        <InfoLabel
-          pointOnTimeLine={pointOnTimeLine}
-          colorMotive={setColorMotive(pointOnTimeLine)}
-        />
-      </ContestInsideElementStyled>
-    </ContestCardStyled>
+    <>
+      <ContestCardStyled
+        colorMotive={setColorMotive(pointOnTimeLine)}
+        onClick={handleClick}
+      >
+        <div className="contest-card-wrapper">
+          <ContestNameStyled>{contestName}</ContestNameStyled>
+          <ContestInsideElementStyled
+            colorMotive={setColorMotive(pointOnTimeLine)}
+          >
+            <time dateTime={stringDate}>
+              {stringDate}, {getHourAndMinutesFromDate(startDate)}
+            </time>
+            <p>{address.city.toUpperCase()}</p>
+          </ContestInsideElementStyled>
+
+          <ContestInsideElementStyled
+            colorMotive={setColorMotive(pointOnTimeLine)}
+          >
+            <InfoLabel
+              classInfo={{ dogsAmount: dogsAmount }}
+              colorMotive={setColorMotive(pointOnTimeLine, dogsAmount)}
+            />
+            <InfoLabel
+              pointOnTimeLine={pointOnTimeLine}
+              colorMotive={setColorMotive(pointOnTimeLine)}
+            />
+          </ContestInsideElementStyled>
+          {pointOnTimeLine === 'archiwalny' && (
+            <p className="p">zobacz wyniki</p>
+          )}
+          {pointOnTimeLine === 'nadchodzący' && <p className="p">zapisz się</p>}
+        </div>
+
+        <div className="doggo">
+          <img src={dog_1} alt="Cute doggo" />
+        </div>
+      </ContestCardStyled>
+    </>
   );
 };
 

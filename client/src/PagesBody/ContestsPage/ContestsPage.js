@@ -5,10 +5,12 @@ import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ContestCard from '../../Molecules/ContestCard/ContestCard';
 import { ContestContext } from '../../Context/ContestContext';
 import ContestFilterToggler from '../../Organisms/ContestFilterHarmonica/ContestFilterToggler';
+import ContestsWrapperStyled from './ContestsWrapperStyled';
 import FilterLabel from '../../Molecules/FilterLabel/FilterLabel';
 import { TIME } from '../../Consts/infoLabelConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
+import mockmap from '../../Assets/mockmap.png';
 import resForContestPage from '../../Data/MongoDBMock/responseFromContestsToContestsPage';
 import { useLocation } from 'react-router-dom';
 
@@ -71,20 +73,29 @@ const ContestsPage = () => {
       ></ContestFilterToggler>
 
       {toggle && <FilterLabel onClick={handleFilterClick}></FilterLabel>}
-
-      <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
-        {isPending && <h3>Loading...</h3>}
-        {contestData &&
-          getSelectedContestsByTime(selectedMode, contestData).map(
-            (contest) => (
-              <ContestCard key={contest.contestId} contestData={contest} />
-            ),
-          )}
-        {contestData &&
-          getSelectedContestsByTime(selectedMode, contestData).length === 0 && (
-            <h3>Nie ma zawodów</h3>
-          )}
-      </ColumnWrapper>
+      <ContestsWrapperStyled className="contests">
+        <ColumnWrapper
+          paddingLeftRight={1}
+          paddingTop={0.5}
+          className="contests-column-wrapper"
+        >
+          {isPending && <h3>Loading...</h3>}
+          {contestData &&
+            getSelectedContestsByTime(selectedMode, contestData).map(
+              (contest) => (
+                <ContestCard key={contest.contestId} contestData={contest} />
+              ),
+            )}
+          {contestData &&
+            getSelectedContestsByTime(selectedMode, contestData).length ===
+              0 && <h3>Nie ma zawodów</h3>}
+        </ColumnWrapper>
+        {locationPath.state && locationPath.state.contestContent === 'future' && (
+          <div className="mockmap">
+            <img src={mockmap} alt="mockmap" />
+          </div>
+        )}
+      </ContestsWrapperStyled>
     </>
   );
 };

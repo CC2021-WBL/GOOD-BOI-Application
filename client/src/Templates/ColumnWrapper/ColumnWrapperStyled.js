@@ -10,6 +10,15 @@ const ColumnWrapperStyled = styled.div`
   padding-top: ${(props) => props.paddingTop && `${props.paddingTop}rem`};
   padding-bottom: ${(props) =>
     props.paddingBottom && `${props.paddingBottom}rem`};
+
+  &.contests-column-wrapper {
+    @media (min-width: 1200px) {
+      width: 50%;
+      display: flex;
+      width: 680px;
+      margin: 85px 0 0 0;
+    }
+  }
 `;
 
 export default ColumnWrapperStyled;
