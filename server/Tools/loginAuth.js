@@ -23,9 +23,12 @@ module.exports.loginAuthentication = async (req, res) => {
 
       const cookieOptions = {
         maxAge: 24 * 60 * 60 * 1000 * 2,
+        secure: true,
+        httpOnly: true,
       };
 
-      res.cookie('jwt', jwt.token, cookieOptions).status(200).json({
+      res.cookie('jwt', jwt.token, cookieOptions);
+      res.status(200).json({
         success: true,
         user: userToSend,
         token: jwt.token,

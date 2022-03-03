@@ -1,12 +1,12 @@
-import propTypes from 'prop-types';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
+import { UserDataContext } from '../../Context/UserDataContext';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
 import participants from '../../Data/MongoDBMock/participants';
-import { UserDataContext } from '../../Context/UserDataContext';
+import propTypes from 'prop-types';
 
 const UserProfileData = ({ withEdit, initialState }) => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const UserProfileData = ({ withEdit, initialState }) => {
   if (!userData) {
     userData = paramsUserData.userId;
   }
-  const [userObject, setUserObject] = useState(createUserInitialData(userData));
+  const [userObject, setUserObject] = useState(createUserInitialData());
 
   // mock for checking authentication and if userId is in database
   // const { pathname } = useLocation();
@@ -38,19 +38,29 @@ const UserProfileData = ({ withEdit, initialState }) => {
   const { address, participantName, participantSurname } = userObject;
   const { street, numberOfHouse, city, postalCode } = address;
 
-  // mock for fetching data from database and checking if response has data
-
   useEffect(() => {
     if (!isAuthenticated) {
       navigate('/login');
-    }
-    const userObject = participants.find(
-      (participant) => participant.participantId === userData,
-    );
-    if (!userObject) {
-      navigate('/login');
     } else {
-      setUserObject(userObject);
+      console.log(userData);
+
+      const requestOptions = {
+        method: 'GET',
+        redirect: 'follow',
+        credentials: 'include',
+      };
+
+      fetch(`http://localhost:27020/api/users/${userData}`, requestOptions)
+        .then((response) => response.text())
+        .then((result) => {
+          if (!result) {
+            navigate('/login');
+          } else {
+            console.log(result);
+            setUserObject(result);
+          }
+        })
+        .catch((error) => console.log('error', error));
     }
   }, []);
 
