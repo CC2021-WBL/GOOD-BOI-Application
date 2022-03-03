@@ -6,7 +6,6 @@ const RocketStyled = styled.div`
 
   &:hover {
     transform: translate(-5%, -30%);
-    transition: transform 0.3s ease-in;
   }
 `;
 export default RocketStyled;
