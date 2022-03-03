@@ -4,6 +4,7 @@ import BurgerMenu from '../../Organisms/BurgerMenu/BurgerMenu';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import Footer from '../../Molecules/Footer/Footer';
+import GridWrapper from '../../Styles/GridWrapper';
 import ImgWrapperStyled from './ImgWrapperStyled';
 import Logo2 from '../../Assets/Logo2.png';
 import { MdMenu } from 'react-icons/md';
@@ -15,7 +16,7 @@ const LandingPage = () => {
   const { isAuthenticated } = state;
   const [open, setOpen] = useState(false);
   return (
-    <ColumnWrapper paddingLeftRight={1}>
+    <>
       {isAuthenticated ? (
         <div className="burger-wrapper">
           <MdMenu
@@ -48,10 +49,42 @@ const LandingPage = () => {
           <RocketWithPlanets />
         </>
       )}
+      <GridWrapper
+        mobile="3 / 1 / 4 / 2"
+        tablet="2 / 2 / 4 / 3"
+        desktop="3 / 3"
+      >
+        <ColumnWrapper paddingLeftRight={1} paddingBottom={1}>
+          <ImgWrapperStyled>
+            <img src={Logo2} alt="App logo" />
+          </ImgWrapperStyled>
+          {isAuthenticated ? (
+            <FakeButton
+              to="/in-progress"
+              colors="ternary"
+              text="portal good boi"
+            />
+          ) : (
+            <>
+              <FakeButton to="/login" colors="primary" text="Zaloguj się" />
+              <FakeButton
+                to="/register"
+                colors="secondary"
+                text="Zarejestruj"
+              />
+              <FakeButton
+                to="/in-progress"
+                colors="ternary"
+                text="portal good boi"
+              />
+            </>
+          )}
 
-      <BurgerMenu open={open} setOpen={setOpen} />
+          <BurgerMenu open={open} setOpen={setOpen} />
+        </ColumnWrapper>
+      </GridWrapper>
       <Footer />
-    </ColumnWrapper>
+    </>
   );
 };
 

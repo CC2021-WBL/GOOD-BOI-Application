@@ -15,6 +15,17 @@ const BurgerMenuStyled = styled.div`
     justify-content: flex-start;
     background: ${({ theme }) => theme.white};
   }
+
+  @media only screen and (min-width: 800px) {
+    grid-area: 3 / 1 / 4 / 2;
+    position: unset;
+    transform: none;
+    height: 100%;
+    transition: none;
+  }
+  @media only screen and (min-width: 1600px) {
+    grid-area: 3 / 2 / 4 / 3;
+  }
 `;
 
 export default BurgerMenuStyled;
