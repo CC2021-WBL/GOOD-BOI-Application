@@ -13,6 +13,7 @@ import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
 import mockmap from '../../Assets/mockmap.png';
 import resForContestPage from '../../Data/MongoDBMock/responseFromContestsToContestsPage';
 import { useLocation } from 'react-router-dom';
+import GridWrapper from '../../Styles/GridWrapper';
 
 const ContestsPage = () => {
   const [contestData, setContestData] = useState(null);
@@ -66,7 +67,8 @@ const ContestsPage = () => {
   };
 
   return (
-    <>
+    <GridWrapper  mobile="2/3">
+      <div style={{gridColumn: 3}}>
       <ContestFilterToggler
         onClick={toggleHandler}
         toggle={toggle}
@@ -96,7 +98,8 @@ const ContestsPage = () => {
           </div>
         )}
       </ContestsWrapperStyled>
-    </>
+      </div>
+    </GridWrapper>
   );
 };
 
