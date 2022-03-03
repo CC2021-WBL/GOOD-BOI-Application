@@ -16,11 +16,12 @@ const contests = [
     },
     judges: ['Zuzzana Zezowa'],
     steward: 'Zygfryd Zaduzy',
-    manager: 'zbyszkobogdaniec55555', // id managera
+    manager: 'zbyszkobogdaniec55555', //id managera
     feePLN: 110,
     numberOfApplications: 6,
-    obedienceClasses: {
-      0: {
+    obedienceClasses: [
+      {
+        classNumber: 0,
         isFinished: true,
         participants: [
           {
@@ -43,7 +44,8 @@ const contests = [
           },
         ],
       },
-      1: {
+      {
+        classNumber: 1,
         isFinished: true,
         participants: [
           {
@@ -66,7 +68,7 @@ const contests = [
           },
         ],
       },
-    },
+    ],
   },
   {
     contestId: 'c9e7b738-f8e6-4300-9087-332ad5a28b4f',
@@ -88,8 +90,9 @@ const contests = [
     manager: 'gerwazykapusta33333', // id managera
     feePLN: 70,
     numberOfApplications: 6,
-    obedienceClasses: {
-      0: {
+    obedienceClasses: [
+      {
+        classNumber: 0,
         isFinished: true,
         participants: [
           {
@@ -100,7 +103,8 @@ const contests = [
           },
         ],
       },
-      1: {
+      {
+        classNumber: 1,
         isFinished: true,
         participants: [
           {
@@ -111,7 +115,8 @@ const contests = [
           },
         ],
       },
-      2: {
+      {
+        classNumber: 2,
         isFinished: true,
         participants: [
           {
@@ -128,7 +133,8 @@ const contests = [
           },
         ],
       },
-      3: {
+      {
+        classNumber: 3,
         isFinished: true,
         participants: [
           {
@@ -145,7 +151,7 @@ const contests = [
           },
         ],
       },
-    },
+    ],
   },
   {
     contestId: 'a0347677-c3c9-4edc-9d46-fed4a958fdc2',
@@ -167,8 +173,9 @@ const contests = [
     manager: 'jagienkakrzywobroda333333', // id managera
     feePLN: 90,
     numberOfApplications: 6,
-    obedienceClasses: {
-      0: {
+    obedienceClasses: [
+      {
+        classNumber: 0,
         isFinished: true,
         participants: [
           {
@@ -191,7 +198,8 @@ const contests = [
           },
         ],
       },
-      1: {
+      {
+        classNumber: 1,
         isFinished: true,
         participants: [
           {
@@ -214,7 +222,7 @@ const contests = [
           },
         ],
       },
-    },
+    ],
   },
   {
     contestId: 'dft6702f-fr56-12sr-35b5-fed4a958fdc2',
@@ -236,8 +244,9 @@ const contests = [
     manager: 'renatażołądek2222', // id organizatora
     feePLN: 150,
     numberOfApplications: 6,
-    obedienceClasses: {
-      2: {
+    obedienceClasses: [
+      {
+        classNumber: 2,
         isFinished: true,
         participants: [
           {
@@ -254,7 +263,8 @@ const contests = [
           },
         ],
       },
-      3: {
+      {
+        classNumber: 3,
         isFinished: true,
         participants: [
           {
@@ -283,7 +293,7 @@ const contests = [
           },
         ],
       },
-    },
+    ],
   },
 ];
 
