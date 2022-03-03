@@ -36,7 +36,7 @@ const NavElement = () => {
   const data = checkPathOrigin(locationPath.pathname, namesFromContext);
   return (
     <>
-      <GridWrapper mobile="1 / 1 / 2 / 2" tablet="1 / 1 / 2 / -1">
+      <GridWrapper mobile="1 / 1 / 2 / 2" tablet="1 / 1 / 2 / -1" navFoot>
         <NavElementStyled>
           {login || register || contact || forgot || inProgress ? (
             <div className="burger-wrapper" />

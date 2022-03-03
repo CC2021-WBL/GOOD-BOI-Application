@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { device } from '../../Consts/devices';
-
 const ColumnWrapperStyled = styled.div`
   display: flex;
   width: 100%;
