@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import FONTS from '../../Styles/fontsStyledComponents';
-import { device } from '../../Consts/devices';
 
 const GreyLabelStyled = styled.div`
   grid-area: 2 / 1 / 3 / -1;
