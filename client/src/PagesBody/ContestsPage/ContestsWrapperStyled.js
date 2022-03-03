@@ -1,14 +1,20 @@
 import styled from 'styled-components';
+import { device } from '../../Consts/devices';
 
 const ContestsWrapperStyled = styled.div`
+  grid-column: 2;
   .mockmap {
     display: none;
   }
+  @media ${device.tablet} {
+    grid-column: 3;
+  }
+
   @media (min-width: 1200px) {
-    display: flex;
+    /* display: flex;
     width: 100%;
     justify-content: center;
-    gap: 50px;
+    gap: 50px; */
 
     .mockmap {
       display: block;

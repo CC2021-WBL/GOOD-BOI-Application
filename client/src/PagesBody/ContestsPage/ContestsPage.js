@@ -68,14 +68,15 @@ const ContestsPage = () => {
 
   return (
     <GridWrapper  mobile="2/3">
-      <div style={{gridColumn: 3}}>
+      {/* <div style={{gridColumn: 3}}> */}
+      <ContestsWrapperStyled className="contests">
+
       <ContestFilterToggler
         onClick={toggleHandler}
         toggle={toggle}
       />
 
       {toggle && <FilterLabel onClick={handleFilterClick}></FilterLabel>}
-      <ContestsWrapperStyled className="contests">
         <ColumnWrapper
           paddingLeftRight={1}
           paddingTop={0.5}
@@ -98,7 +99,7 @@ const ContestsPage = () => {
           </div>
         )}
       </ContestsWrapperStyled>
-      </div>
+      {/* </div> */}
     </GridWrapper>
   );
 };
