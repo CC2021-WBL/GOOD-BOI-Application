@@ -67,10 +67,7 @@ const ContestsPage = () => {
 
   return (
     <>
-      <ContestFilterToggler
-        onClick={toggleHandler}
-        toggle={toggle}
-      />
+      <ContestFilterToggler onClick={toggleHandler} toggle={toggle} />
 
       {toggle && <FilterLabel onClick={handleFilterClick}></FilterLabel>}
       <ContestsWrapperStyled className="contests">
@@ -90,11 +87,10 @@ const ContestsPage = () => {
             getSelectedContestsByTime(selectedMode, contestData).length ===
               0 && <h3>Nie ma zawodów</h3>}
         </ColumnWrapper>
-        {selectedMode === TIME.FUTURE && (
-          <div className="mockmap">
-            <img src={mockmap} alt="mockmap" />
-          </div>
-        )}
+
+        <div className="mockmap">
+          <img src={mockmap} alt="mockmap" />
+        </div>
       </ContestsWrapperStyled>
     </>
   );
