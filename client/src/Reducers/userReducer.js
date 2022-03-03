@@ -1,10 +1,8 @@
 import { USER_ACTIONS } from '../Consts/reducersActions';
-import participants from '../Data/MongoDBMock/participants';
 
 const userReducer = (state, action) => {
   switch (action.type) {
     case USER_ACTIONS.LOG_IN:
-      console.log(action);
       return {
         isAuthenticated: true,
         userId: action.payload.userId,
@@ -24,14 +22,6 @@ const userReducer = (state, action) => {
       return {
         ...state,
         [action.fieldName]: action.payload,
-      };
-    case USER_ACTIONS.CHANGE_USER:
-      return {
-        isAuthenticated: true,
-        userId: participants[action.index].participantId,
-        userName: participants[action.index].participantName,
-        userSurname: participants[action.index].participantSurname,
-        roles: participants[action.index].portalRoles,
       };
     case USER_ACTIONS.CLEAR_SELECTED_ROLE:
       return {

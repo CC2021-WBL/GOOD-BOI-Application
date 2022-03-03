@@ -27,7 +27,6 @@ const UserDogPage = () => {
     )
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         setParticipantDogs(result.dogs);
         setIsPending(false);
         dogDispatch({

@@ -80,10 +80,9 @@ module.exports.justStaffManagerOrAdmin = (req, res, next) => {
 
 module.exports.dogOwnerAllRolesOrPublic = (req, res, next) => {
   if (!req.user) {
-    (req.access = 'public'), next();
-  } else if (isDogOwner(req.user, req.params.dogId)) {
+    req.access = 'public';
     next();
-  } else if (isStaff(req)) {
+  } else if (isDogOwner(req.user, req.params.dogId) || isStaff(req)) {
     next();
   } else {
     this.isAdminOrPublic(req, res, next);
@@ -91,9 +90,7 @@ module.exports.dogOwnerAllRolesOrPublic = (req, res, next) => {
 };
 
 module.exports.justDogOwnerStaffOrAdmin = (req, res, next) => {
-  if (isDogOwner(req.user, req.params.dogId)) {
-    next();
-  } else if (req.user.portalRoles.includes(ROLE_NAME.STAFF)) {
+  if (isDogOwner(req.user, req.params.dogId) || isStaff(req)) {
     next();
   } else {
     this.isAdminStrict(req, res, next);

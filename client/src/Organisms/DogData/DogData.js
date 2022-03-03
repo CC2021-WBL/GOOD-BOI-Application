@@ -1,16 +1,15 @@
-import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import doggos from '../../Data/MongoDBMock/doggos';
-import renderDogData from '../../Tools/renderDogData';
+import { ContestContext } from '../../Context/ContestContext';
 import DataLine from '../../Atoms/DataLine/DataLine';
+import { DogContext } from '../../Context/DogContext';
+import PropTypes from 'prop-types';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
-import { useContext, useEffect, useState } from 'react';
 import { UserDataContext } from '../../Context/UserDataContext';
-import { DogContext } from '../../Context/DogContext';
-import { ContestContext } from '../../Context/ContestContext';
+import renderDogData from '../../Tools/renderDogData';
+import { useNavigate } from 'react-router-dom';
 
 const DogData = ({ id }) => {
   let navigate = useNavigate();
@@ -21,8 +20,19 @@ const DogData = ({ id }) => {
   const { contestState } = useContext(ContestContext);
 
   useEffect(() => {
-    setDogData(doggos.find((dog) => dog.dogId === id));
-    setIsPending(false);
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow',
+      credentials: 'include',
+    };
+
+    fetch(`http://localhost:27020/api/dogs/${id}`, requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        setDogData(result);
+        setIsPending(false);
+      })
+      .catch((error) => console.log('error', error));
   }, []);
 
   const handleEdit = (event) => {
