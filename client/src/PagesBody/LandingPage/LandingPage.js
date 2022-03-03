@@ -8,13 +8,15 @@ import ImgWrapperStyled from './ImgWrapperStyled';
 import Logo2 from '../../Assets/Logo2.png';
 import { MdMenu } from 'react-icons/md';
 import { UserDataContext } from '../../Context/UserDataContext';
+import GridWrapper from '../../Styles/GridWrapper';
 
 const LandingPage = () => {
   const { state } = useContext(UserDataContext);
   const { isAuthenticated } = state;
   const [open, setOpen] = useState(false);
   return (
-    <ColumnWrapper paddingLeftRight={1}>
+    <>
+    {/* <ColumnWrapper paddingLeftRight={1}> */}
       {isAuthenticated ? (
         <div className="burger-wrapper">
           <MdMenu
@@ -30,26 +32,32 @@ const LandingPage = () => {
           />
         </div>
       ) : null}
-      <ImgWrapperStyled>
-        <img src={Logo2} alt="App logo" />
-      </ImgWrapperStyled>
-      {isAuthenticated ? (
-        <FakeButton to="/in-progress" colors="ternary" text="portal good boi" />
-      ) : (
-        <>
-          <FakeButton to="/login" colors="primary" text="Zaloguj się" />
-          <FakeButton to="/register" colors="secondary" text="Zarejestruj" />
-          <FakeButton
-            to="/in-progress"
-            colors="ternary"
-            text="portal good boi"
-          />
-        </>
-      )}
+      <GridWrapper  mobile="2/3" tablet="2/3">
+        {/* TODO: add responsive grid column placement */}
+            <div style={{gridColumn: 3}}>
+        <ImgWrapperStyled>
+          <img src={Logo2} alt="App logo" />
+        </ImgWrapperStyled>
+        {isAuthenticated ? (
+          <FakeButton to="/in-progress" colors="ternary" text="portal good boi" />
+        ) : (
+          <>
+            <FakeButton to="/login" colors="primary" text="Zaloguj się" />
+            <FakeButton to="/register" colors="secondary" text="Zarejestruj" />
+            <FakeButton
+              to="/in-progress"
+              colors="ternary"
+              text="portal good boi"
+            />
+            </>
+        )}
+        </div>
+      </GridWrapper>
 
-      <BurgerMenu open={open} setOpen={setOpen} />
-      <Footer />
-    </ColumnWrapper>
+      {/* <BurgerMenu open={open} setOpen={setOpen} /> */}
+        <Footer />
+    {/* // </ColumnWrapper> */}
+    </>
   );
 };
 

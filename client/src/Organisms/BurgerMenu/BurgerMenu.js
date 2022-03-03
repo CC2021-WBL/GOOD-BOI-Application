@@ -36,6 +36,7 @@ const BurgerMenu = ({ open, setOpen }) => {
 
         <h3>Menu</h3>
       </HeaderMenuStyled>
+      {/* TODO: create a component to reuse later from menu styled */}
       <MenuStyled>
         <Link
           to={`/user/${userId}`}

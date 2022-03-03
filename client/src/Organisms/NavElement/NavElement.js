@@ -7,6 +7,7 @@ import Backdrop from '../../Atoms/Modal/Backdrop';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import GoHomeStyled from '../../Atoms/NavElementStyled/GoHomeStyled';
 import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
+import GridWrapper from '../../Styles/GridWrapper';
 import home from '../../Assets/home.png';
 import { ContestContext } from '../../Context/ContestContext';
 import { DogContext } from '../../Context/DogContext';
@@ -35,29 +36,29 @@ const NavElement = () => {
   const data = checkPathOrigin(locationPath.pathname, namesFromContext);
   return (
     <>
-      <NavElementStyled>
-        {login || register || contact || forgot || inProgress ? (
-          <div className="burger-wrapper" />
-        ) : (
-          <div className="burger-wrapper">
-            <MdMenu className="burger-icon" onClick={() => setOpen(true)} />
-          </div>
-        )}
+      <GridWrapper>
+        <NavElementStyled style={{gridRow: 1}}>
+          {/* TODO: add responsive breakpoint and hide on tablet + */}
+          {login || register || contact || forgot || inProgress ? (
+            <div className="burger-wrapper mobile_only" />
+          ) : (
+            <div className="burger-wrapper mobile_only">
+              <MdMenu className="burger-icon" onClick={() => setOpen(true)} />
+            </div>
+          )}
+  {/* TODO: align to left on tablet + */}
+          <h3 className="navText">{data.text}</h3>
 
-        <h3 className="navText">{data.text}</h3>
-
-        <GoHomeStyled>
-          <Link to="/">
-            <img src={home} alt="Buda psa" className="logo" />
-          </Link>
-        </GoHomeStyled>
-      </NavElementStyled>
+          <GoHomeStyled>
+            <Link to="/">
+              <img src={home} alt="Buda psa" className="logo" />
+            </Link>
+          </GoHomeStyled>
+        </NavElementStyled>
       {data.label && data.label.length !== 0 && (
-        <>
-          <div style={{ height: '60px' }} />
-          <GreyLabel text={data.label} />
-        </>
+          <GreyLabel text={data.label} style={{gridColumn: 2,gridRow: 1}}/>
       )}
+      </GridWrapper>
       <BurgerMenu open={open} setOpen={setOpen} />
       {open && <Backdrop />}
     </>

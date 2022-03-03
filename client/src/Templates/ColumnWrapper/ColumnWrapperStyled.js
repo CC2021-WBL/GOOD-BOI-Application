@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { device } from '../../Consts/devices';
+
 const ColumnWrapperStyled = styled.div`
   display: flex;
   width: 100%;
@@ -11,12 +13,12 @@ const ColumnWrapperStyled = styled.div`
   padding-bottom: ${(props) =>
     props.paddingBottom && `${props.paddingBottom}rem`};
 
-  &.contests-column-wrapper {
-    @media (min-width: 1200px) {
-      display: flex;
-      width: 680px;
-      margin: 85px 0 0 0;
-    }
+  @media only screen and (${device.tablet}) {
+    grid-area: 3 / 2 / 4 / 3;
+    overflow: scroll;
+  }
+  @media only screen and (${device.desktop}) {
+    grid-area: 3 / 3 / 4 / 4;
   }
 `;
 

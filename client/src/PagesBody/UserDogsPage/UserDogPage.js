@@ -8,6 +8,10 @@ import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import { ROLE_NAME } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import participants from '../../Data/MongoDBMock/participants';
+import GridWrapper from '../../Styles/GridWrapper';
+import BurgerMenu from '../../Organisms/BurgerMenu/BurgerMenu';
+import MenuStyled from '../../Organisms/BurgerMenu/MenuStyled';
+import { Link } from 'react-router-dom';
 
 const UserDogPage = () => {
   const { state, dispatch } = useContext(UserDataContext);
@@ -33,7 +37,24 @@ const UserDogPage = () => {
   }, []);
 
   return (
-    <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
+    // TODO: add color props to choose for whole row
+    <GridWrapper>
+    {/* <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}> */}
+    {/* TODO: create wrapper with responsive columns */}
+    {/* <MenuStyled open={true} style={{gridColumn: 2}}/> */}
+    {/* TODO: get menu styled from nav components */}
+{/* TODO: display only on tablet + */}
+<div style={{display:'flex', flexDirection:'column', gridColumn: 2}}>
+<Link to="/">Home </Link>
+<Link to="/">Home </Link>
+
+<Link to="/">Home </Link>
+
+<Link to="/">Home </Link>
+
+</div>
+
+    <div style={{gridColumn: 3}}>
       {isPending && <p>Loading...</p>}
       {participantDogs &&
         participantDogs.map((dog, index) => {
@@ -56,7 +77,9 @@ const UserDogPage = () => {
         text="DODAJ NOWEGO PSA"
         to="/add-dog-form"
       />
-    </ColumnWrapper>
+    {/* </ColumnWrapper> */}
+    </div>
+    </GridWrapper>
   );
 };
 

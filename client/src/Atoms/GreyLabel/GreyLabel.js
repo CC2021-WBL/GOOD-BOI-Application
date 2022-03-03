@@ -1,5 +1,6 @@
-import GreyLabelStyled from './GreyLabelStyled';
 import PropTypes from 'prop-types';
+
+import GreyLabelStyled from './GreyLabelStyled';
 
 const GreyLabel = ({ text }) => {
   return (
