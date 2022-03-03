@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
-import { device } from '../../Consts/devices';
-
 export const FooterStyled = styled.div`
   display: flex;
-  /* position: fixed; */
+  position: fixed;
   right: 0;
   bottom: 0;
   left: 0;
@@ -17,6 +15,8 @@ export const FooterStyled = styled.div`
   background: ${({ theme }) => theme.white};
 
   @media only screen and (min-width: 800px) {
+    border: none;
+    position: unset;
     height: 120px;
     max-width: 1600px;
     margin: 0 auto;
