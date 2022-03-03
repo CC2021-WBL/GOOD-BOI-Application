@@ -39,7 +39,7 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
         data = { text: 'Wybierz rolę', label: 'Kontynuuj jako' };
         break;
       case 'register':
-        data = { text: 'Rejestracja', label: '' };
+        data = { text: 'Rejestracja', label: 'Zarejestruj się' };
         break;
       case 'forgot':
         data = { text: 'Resetuj hasło', label: '' };
