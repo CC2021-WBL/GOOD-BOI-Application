@@ -38,7 +38,7 @@ const handleBorders = (props) => {
 const FakeButtonStyled = styled(Link)`
   display: flex;
   width: 100%;
-  flex: 1 0 3.25rem;
+  height: 3.25rem;
   align-items: center;
   justify-content: center;
   margin: 0.5rem 0;
