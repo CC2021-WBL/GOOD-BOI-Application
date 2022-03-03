@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
 import Footer from '../../Molecules/Footer/Footer';
-import FooterDesktop from '../../PagesBody/InProgressPage/FooterDesktop';
+import FooterDesktop from '../../PagesBody/InProgressPage/FooterDesktop/FooterDesktop';
 import GhostFooterStyled from '../../Molecules/Footer/GhostFooterStyled';
-import NavDesktop from '../../PagesBody/InProgressPage/NavDesktop';
+import NavDesktop from '../../PagesBody/InProgressPage/NavDesktop/NavDesktop';
 import NavElement from '../../Organisms/NavElement/NavElement';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './../../PagesBody/InProgressPage/Sidebar/Sidebar';
@@ -16,16 +16,10 @@ const Layout = ({ withLabel, withSettings }) => {
   const [moveFooter, setMoveFooter] = useState('');
   useEffect(() => {
     setMoveFooter(app.clientHeight < window.innerHeight);
-    console.log('useEffect ' + moveFooter);
-    console.log('window ' + window.document.body.offsetHeight);
   }, [moveFooter]);
 
   const height = useWindowHeight();
   const app = document.querySelector('#root');
-  console.log(app.clientHeight);
-  console.log(window.innerHeight);
-  console.log(moveFooter);
-  console.log(app.getBoundingClientRect().height);
   return (
     <>
       <Sidebar />

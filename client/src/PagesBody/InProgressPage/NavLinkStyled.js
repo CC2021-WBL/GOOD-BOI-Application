@@ -5,9 +5,9 @@ const bgHandler = (props) => {
   if (props.formolecule === 'Sidebar')
     return `background: ${props.theme.primary101}`;
   if (props.formolecule === 'Cornermenu')
-    return `background: ${props.theme.primary101}`;
+    return `background: ${props.theme.primary201}`;
   if (props.formolecule === 'Navbar')
-    return `background: ${props.theme.primary101}`;
+    return `background: ${props.theme.primary501}`;
 };
 
 const NavLinkStyled = styled(NavLink)`

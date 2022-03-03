@@ -1,14 +1,14 @@
 import { useRef, useState } from 'react';
 
-import CornerMenuList from './CornerMenuList';
 import { FaChevronDown } from 'react-icons/fa';
 import { FaChevronUp } from 'react-icons/fa';
-import NavAccordionStyled from './NavAccordionStyled';
-import ProfilePicture from './ProfilePicture';
+import NavCornerMenu from './NavCornerMenu';
+import NavMenuStyled from './NavMenuStyled';
+import ProfilePicture from '../ProfilePicture';
 import styled from 'styled-components';
-import useClickOutside from '../../Hooks/useClickOutside';
+import useClickOutside from '../../../Hooks/useClickOutside';
 
-const AccordionButtonWrapper = styled.div`
+const NavButtonWrapper = styled.div`
   height: 61px;
   display: flex;
   gap: 1rem;
@@ -17,13 +17,12 @@ const AccordionButtonWrapper = styled.div`
   padding: 0 2rem;
   background: ${({ theme }) => theme.grey00};
   &:hover {
-    /* border-radius: 25px; */
     filter: brightness(0.9);
     cursor: pointer;
   }
 `;
 
-const CornerMenuWrapper = styled.div`
+const NavCornerMenuWrapper = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -40,7 +39,7 @@ const CornerMenuWrapper = styled.div`
   }
 `;
 
-const NavAccordion = () => {
+const NavMenu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleHandler = () => {
     setMenuOpen(!menuOpen);
@@ -51,18 +50,18 @@ const NavAccordion = () => {
   });
 
   return (
-    <NavAccordionStyled>
-      <AccordionButtonWrapper ref={domNode} onClick={toggleHandler}>
+    <NavMenuStyled>
+      <NavButtonWrapper ref={domNode} onClick={toggleHandler}>
         <ProfilePicture />
         <div style={{ userSelect: 'none' }}>Witaj, Matylda</div>
         {!menuOpen && <FaChevronDown />}
         {menuOpen && <FaChevronUp />}
-      </AccordionButtonWrapper>
-      <CornerMenuWrapper className={menuOpen ? 'open' : 'close'}>
-        <CornerMenuList onClick={() => setMenuOpen(false)} />
-      </CornerMenuWrapper>
-    </NavAccordionStyled>
+      </NavButtonWrapper>
+      <NavCornerMenuWrapper className={menuOpen ? 'open' : 'close'}>
+        <NavCornerMenu onClick={() => setMenuOpen(false)} />
+      </NavCornerMenuWrapper>
+    </NavMenuStyled>
   );
 };
 
-export default NavAccordion;
+export default NavMenu;

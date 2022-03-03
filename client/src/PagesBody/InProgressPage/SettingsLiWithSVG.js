@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import NavLinkStyled from './NavLinkStyled';
 import { ReactComponent as SettingsSVG } from '../../Assets/Settings.svg';
 import styled from 'styled-components';

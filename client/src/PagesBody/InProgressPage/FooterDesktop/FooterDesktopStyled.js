@@ -1,4 +1,4 @@
-import FONTS from '../../Styles/fontsStyledComponents';
+import FONTS from '../../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
 
 const FooterDesktopStyled = styled.footer`
@@ -23,13 +23,13 @@ const FooterDesktopStyled = styled.footer`
     color: ${({ theme }) => theme.grey800};
     ${FONTS.body_semibold};
   }
-  &.fixed {
+  /* &.fixed {
     margin-top: auto;
     position: fixed;
   }
   &.relative {
     position: relative;
-  }
+  } */
 `;
 
 export default FooterDesktopStyled;

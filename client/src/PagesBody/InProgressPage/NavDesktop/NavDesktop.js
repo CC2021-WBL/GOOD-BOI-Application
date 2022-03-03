@@ -1,22 +1,20 @@
-import { useContext, useState } from 'react';
-
-import { ReactComponent as AppLogoSVG } from '../../Assets/AppLogoSVG.svg';
-import ButtonsWrapperStyled from './ButtonsWrapperStyled';
-import FakeButton from './../../Atoms/FakeButton/FakeButton';
-import GoodBoiLogo from './GoodBoiLogo';
-import NavAccordion from './NavAccordion';
+import { ReactComponent as AppLogoSVG } from '../../../Assets/AppLogoSVG.svg';
+import ButtonsWrapperStyled from '../ButtonsWrapperStyled';
+import FakeButton from './../../../Atoms/FakeButton/FakeButton';
+import GoodBoiLogo from './../GoodBoiLogo';
 import NavDesktopInnerStyled from './NavDesktopInnerStyled';
 import NavDesktopWrapperStyled from './NavDesktopWrapperStyled';
-import NavLinkStyled from './NavLinkStyled';
-import { UserDataContext } from './../../Context/UserDataContext';
+import NavLinkStyled from './../NavLinkStyled';
+import NavMenu from './NavMenu';
+import { UserDataContext } from './../../../Context/UserDataContext';
+import { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 
-// import NavAccordionStyled from './NavAccordionStyled';
-
+// TODO: Merge with NavElement
 const NavDesktop = () => {
   const location = useLocation();
-  const { state, dispatch } = useContext(UserDataContext);
-  const { userId, roles, isAuthenticated } = state;
+  const { state } = useContext(UserDataContext);
+  const { isAuthenticated } = state;
 
   if (!isAuthenticated) {
     return (
@@ -46,9 +44,7 @@ const NavDesktop = () => {
       <NavDesktopWrapperStyled>
         <NavDesktopInnerStyled>
           <GoodBoiLogo />
-          {/* <NavAccordionStyled> */}
-          <NavAccordion />
-          {/* </NavAccordionStyled> */}
+          <NavMenu />
         </NavDesktopInnerStyled>
       </NavDesktopWrapperStyled>
     );

@@ -1,15 +1,17 @@
-import { Copy } from '../../Molecules/Footer/FooterStyled';
-import { DevsLogo } from '../../Molecules/Footer/FooterStyled';
+import { Copy } from '../../../Molecules/Footer/FooterStyled';
+import { DevsLogo } from '../../../Molecules/Footer/FooterStyled';
+import FooterDesktopInnerStyled from './FooterDesktopInnerStyled';
 import FooterDesktopStyled from './FooterDesktopStyled';
-import FooterInnerStyled from './FooterInnerStyled';
-import { LogoStyled } from '../../Molecules/Footer/FooterStyled';
-import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
+import { LogoStyled } from '../../../Molecules/Footer/FooterStyled';
+import logoDevsOnTheWaves from '../../../Assets/logoDevsOnTheWaves.svg';
+
+// TODO: Merge with Desktop component
 
 const FooterDesktop = ({ className }) => {
   return (
     <>
       <FooterDesktopStyled className={className}>
-        <FooterInnerStyled>
+        <FooterDesktopInnerStyled>
           <a
             href="https://github.com/CC2021-WBL"
             target="_blank"
@@ -78,7 +80,7 @@ const FooterDesktop = ({ className }) => {
               <p>Polityka prywatności</p>
             </a>
           </div>
-        </FooterInnerStyled>
+        </FooterDesktopInnerStyled>
       </FooterDesktopStyled>
     </>
   );
