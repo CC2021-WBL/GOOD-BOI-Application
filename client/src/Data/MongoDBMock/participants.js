@@ -99,30 +99,3 @@ const participants = [
 ];
 
 export default participants;
-
-// .insertOne - dodaje 1 obiekt do kolekcji, przyjmuje obiekt
-// .insertMany - dodaje wiele obiektów do kolekcji, przyjmuje tablicę obiektów
-
-/* db.participans.insertOne({
-  participantId: 'playernhdnjhyvsjnlko32',
-  email: 'bogdan777@wp.pl',
-  password: 'rzuckamienia',
-  participantName: 'Bodzio',
-  participantSurname: 'Rolnik',
-  country: 'Polska',
-  city: 'Trabki Wielkie',
-  street: 'al Dziurawa',
-  numberOfHouse: '1',
-  postalCode: '33-221',
-  dogs: [
-    {
-      dogId: '46576882',
-      dogName: 'Nosek',
-    },
-  ],
-  portalRoles: ['participant'],
-}); */
-
-// db.participants.find() - wyświetli wszystkie obiekty kolekcji
-// db.particpants.find({participantId: "53e823248984"}) - wyświetli wszystkie dane zawodnika pod tym ID
-// db.participants.find({participantId: "53e823248984"}, {dogs: 1})

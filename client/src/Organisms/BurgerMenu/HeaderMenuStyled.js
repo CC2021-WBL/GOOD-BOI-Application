@@ -1,5 +1,6 @@
-import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
+
+import FONTS from '../../Styles/fontsStyledComponents';
 
 const HeaderMenuStyled = styled.div`
   display: flex;

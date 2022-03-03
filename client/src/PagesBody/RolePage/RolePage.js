@@ -3,6 +3,7 @@ import {
   DOG_ACTIONS,
   USER_ACTIONS,
 } from '../../Consts/reducersActions';
+import { ROLES, ROLE_NAME } from '../../Consts/rolesConsts';
 import { useContext, useEffect } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
@@ -10,7 +11,6 @@ import { ContestContext } from '../../Context/ContestContext';
 import { DogContext } from '../../Context/DogContext';
 import ForbiddenEntryPage from '../ForbiddenEntryPage/ForbiddenEntryPage';
 import MainButton from '../../Atoms/MainButton/MainButton';
-import { ROLES } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { createURLForRolePage } from '../../Tools/UrlCreators';
 import { useNavigate } from 'react-router-dom';
@@ -34,10 +34,12 @@ const RolePage = () => {
 
   const handleStaffRoleClick = (event, role) => {
     event.preventDefault();
-    if (role === 'staff') {
+    if (role === ROLE_NAME.STAFF) {
       navigate(createURLForRolePage(role, userId), {
         state: { text: 'Lista zawodów', label: 'Wybierz zawody' },
       });
+    } else if (role === ROLE_NAME.MANAGER) {
+      navigate('/manager');
     } else {
       navigate(createURLForRolePage(role, userId));
     }
