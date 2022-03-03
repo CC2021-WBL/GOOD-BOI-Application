@@ -32,7 +32,7 @@ const SidebarItemList = () => {
       />
       <MenuItem
         formolecule="Sidebar"
-        linkTo="/"
+        linkTo="/contests"
         text="Historia zawodów"
         icon={<BsTrophy fontSize={fontsize} />}
       />

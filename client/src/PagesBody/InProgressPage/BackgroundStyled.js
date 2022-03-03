@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { device } from '../../Consts/devices';
+import styled from 'styled-components';
 
 const BackgroundStyled = styled.div`
   position: absolute;
@@ -20,11 +20,9 @@ const BackgroundStyled = styled.div`
   @media only screen and (${device.tablet}) {
     display: grid;
     grid-area: 3 / 2 / 4 / 3;
-    overflow: scroll;
   }
   @media only screen and (${device.desktop}) {
     grid-area: 3 / 2 / 4 / 3;
-    overflow: scroll;
   }
 `;
 
