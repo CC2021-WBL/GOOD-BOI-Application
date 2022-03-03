@@ -1,21 +1,12 @@
 const Participant = require('../Model/Participant');
 const fs = require('fs');
 const path = require('path');
-// const { cookieExtractor } = require('../Tools/cookieExtractor');
+const { cookieExtractor } = require('../Tools/cookieExtractor');
 const JwtStrategy = require('passport-jwt').Strategy;
 
 const pathToKey = path.join(__dirname, '..', 'Tools', 'id_rsa_pub.pem');
 
 const PUB_KEY = fs.readFileSync(pathToKey, 'utf8');
-
-const cookieExtractor = function (req) {
-  let token = null;
-  if (req && req.cookies) {
-    token = req.cookies['jwt'];
-  }
-  console.log(token);
-  return token;
-};
 
 const jwtOptions = {
   jwtFromRequest: cookieExtractor,

@@ -1,13 +1,11 @@
-/* eslint-disable no-unused-vars */
 const express = require('express');
 const router = express.Router();
 const Participant = require('../Model/Participant');
 const userDbFunc = require('../Controllers/usersControllers');
-const passport = require('passport');
 const passwordTools = require('../Tools/passwordTools');
 const { loginAuthentication } = require('../Tools/loginAuth');
 const {
-  justUserAndAdmin,
+  isUserOrAdmin,
   justUserStaffOrAdmin,
   auth,
   blockIfPublic,
@@ -35,16 +33,22 @@ router.post('/login', async (req, res) => {
 
 //Logout
 router.get('/logout', (req, res) => {
-  req.logout();
-  res.end();
-  //res.redirect('/');
+  const cookieOptions = {
+    maxAge: 1000,
+    secure: true,
+    httpOnly: true,
+  };
+  res
+    .status(205)
+    .cookie('jwt', 'delete', cookieOptions)
+    .json({ message: 'logout' });
 });
 
 // Middleware to check JWT
 router.use(auth);
 
 //Update some data of current user
-router.patch('/:userId', blockIfPublic, justUserAndAdmin, async (req, res) => {
+router.patch('/:userId', blockIfPublic, isUserOrAdmin, async (req, res) => {
   try {
     const updatedUser = await userDbFunc.updateUserData(req, res);
     res.status(200).send(updatedUser);

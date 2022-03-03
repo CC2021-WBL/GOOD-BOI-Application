@@ -47,6 +47,23 @@ const RolePage = () => {
     });
   };
 
+  const handleLogoutClick = (event) => {
+    event.preventDefault();
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow',
+      credentials: 'include',
+    };
+
+    fetch('http://localhost:27020/api/users/logout', requestOptions)
+      .then((response) => response.text())
+      .then((result) => {
+        dispatch({ type: 'LOG_OUT', index: 1 });
+        navigate('/');
+      })
+      .catch((error) => alert(error));
+  };
+
   return (
     <ColumnWrapper paddingLeftRight={1} paddingTop={1.5}>
       {roles.map((role, index) =>
@@ -73,9 +90,8 @@ const RolePage = () => {
       <MainButton
         text="Wyloguj się"
         secondary
-        onClick={() => {
-          dispatch({ type: 'LOG_OUT', index: 1 });
-          navigate('/');
+        onClick={(event) => {
+          handleLogoutClick(event);
         }}
       />
     </ColumnWrapper>

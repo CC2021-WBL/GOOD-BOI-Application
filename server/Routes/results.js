@@ -10,7 +10,7 @@ const {
   justUserStaffOrAdmin,
   blockIfPublic,
   justStaffManagerOrAdmin,
-  justUserAndAdmin,
+  isUserOrAdmin,
 } = require('../Middleware/authMiddleware');
 /**
  * @swagger
@@ -122,7 +122,7 @@ router.get(
 router.post(
   '/register/:userId',
   blockIfPublic,
-  justUserAndAdmin,
+  isUserOrAdmin,
   async (req, res) => {
     try {
       const result = await registerResults(req, res);

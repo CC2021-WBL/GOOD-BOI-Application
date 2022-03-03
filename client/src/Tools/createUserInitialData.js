@@ -1,7 +1,15 @@
-const createUserInitialData = () => {
+const createUserInitialData = (state = {}) => {
+  let participantName = '';
+  let participantSurname = '';
+
+  if (state) {
+    participantName = state.userName;
+    participantSurname = state.userSurname;
+  }
+
   const userData = {
-    participantName: '',
-    participantSurname: '',
+    participantName: participantName,
+    participantSurname: participantSurname,
     address: {
       country: '',
       city: '',

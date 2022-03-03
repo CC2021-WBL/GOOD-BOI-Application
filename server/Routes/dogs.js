@@ -8,7 +8,7 @@ const {
 } = require('../Controllers/dogsControllers');
 const { updateDogsArray } = require('../Controllers/usersControllers');
 const {
-  justUserAndAdmin,
+  isUserOrAdmin,
   justDogOwnerStaffOrAdmin,
   dogOwnerAllRolesOrPublic,
   auth,
@@ -23,7 +23,7 @@ router.use(auth);
 router.post(
   '/register/:userId',
   blockIfPublic,
-  justUserAndAdmin,
+  isUserOrAdmin,
   async (req, res) => {
     try {
       const savedDog = await registerDog(req, res);

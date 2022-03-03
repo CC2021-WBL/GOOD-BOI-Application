@@ -5,7 +5,6 @@ import RegistrationFormSignup from '../../Organisms/RegistrationForm/Registratio
 import { UserDataContext } from '../../Context/UserDataContext';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
-import participants from '../../Data/MongoDBMock/participants';
 import propTypes from 'prop-types';
 
 const UserProfileData = ({ withEdit, initialState }) => {
@@ -18,7 +17,7 @@ const UserProfileData = ({ withEdit, initialState }) => {
   if (!userData) {
     userData = paramsUserData.userId;
   }
-  const [userObject, setUserObject] = useState(createUserInitialData());
+  const [userObject, setUserObject] = useState(createUserInitialData(state));
 
   // mock for checking authentication and if userId is in database
   // const { pathname } = useLocation();
@@ -42,8 +41,6 @@ const UserProfileData = ({ withEdit, initialState }) => {
     if (!isAuthenticated) {
       navigate('/login');
     } else {
-      console.log(userData);
-
       const requestOptions = {
         method: 'GET',
         redirect: 'follow',
@@ -51,12 +48,11 @@ const UserProfileData = ({ withEdit, initialState }) => {
       };
 
       fetch(`http://localhost:27020/api/users/${userData}`, requestOptions)
-        .then((response) => response.text())
+        .then((response) => response.json())
         .then((result) => {
           if (!result) {
             navigate('/login');
           } else {
-            console.log(result);
             setUserObject(result);
           }
         })

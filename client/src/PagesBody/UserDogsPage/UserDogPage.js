@@ -7,7 +7,6 @@ import { DogContext } from '../../Context/DogContext';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import { ROLE_NAME } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
-import participants from '../../Data/MongoDBMock/participants';
 
 const UserDogPage = () => {
   const { state, dispatch } = useContext(UserDataContext);
@@ -16,20 +15,32 @@ const UserDogPage = () => {
   const { dogDispatch } = useContext(DogContext);
 
   useEffect(() => {
-    const dogs = participants.find(
-      (participant) => participant.participantId === state.userId,
-    ).dogs;
-    setParticipantDogs(dogs);
-    setIsPending(false);
-    dogDispatch({
-      type: DOG_ACTIONS.SET_DATA,
-      payload: { dogs: dogs, chosenDog: '' },
-    });
-    if (state.selectedRole !== ROLE_NAME.PARTICIPANT)
-      dispatch({
-        type: USER_ACTIONS.SELECT_ROLE,
-        selectedRole: ROLE_NAME.PARTICIPANT,
-      });
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow',
+      credentials: 'include',
+    };
+
+    fetch(
+      `http://localhost:27020/api/users/dogs/${state.userId}`,
+      requestOptions,
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+        setParticipantDogs(result.dogs);
+        setIsPending(false);
+        dogDispatch({
+          type: DOG_ACTIONS.SET_DATA,
+          payload: { dogs: result.dogs, chosenDog: '' },
+        });
+        if (state.selectedRole !== ROLE_NAME.PARTICIPANT)
+          dispatch({
+            type: USER_ACTIONS.SELECT_ROLE,
+            selectedRole: ROLE_NAME.PARTICIPANT,
+          });
+      })
+      .catch((error) => alert(error));
   }, []);
 
   return (
