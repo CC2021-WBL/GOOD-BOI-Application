@@ -4,7 +4,7 @@ import { device } from '../Consts/devices';
 
 const GridWrapper = styled.div`
   display: grid;
-  grid-template-columns: 16px 1fr 16px;
+  grid-template-columns: 16px 0 1fr 0 16px;
   ${(props) => props.mobile && `grid-row:${props.mobile}`};
 
   @media ${device.tablet} {

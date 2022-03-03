@@ -11,7 +11,7 @@ export const NavElementStyled = styled.div`
   justify-content: space-between;
   /* padding: 0 1.125rem; */
   background: ${({ theme }) => theme.white};
-  grid-column: 2;
+  grid-column: 3;
   .navText {
     width: 80%;
     color: ${({ theme }) => theme.grey800};

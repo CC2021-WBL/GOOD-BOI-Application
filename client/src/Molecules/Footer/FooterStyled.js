@@ -5,7 +5,7 @@ import { device } from '../../Consts/devices';
 export const FooterStyled = styled.div`
   display: flex;
   /* position: fixed; */
-  grid-column: 2;
+  grid-column: 3;
   width: 100%;
   /* right: 0;
   bottom: 0;
@@ -18,7 +18,7 @@ export const FooterStyled = styled.div`
   /* margin: 0 auto; */
   background: ${({ theme }) => theme.white};
   @media only screen and ${device.tablet} {
-    grid-column: 3;
+    /* grid-column: 3; */
 
     padding: 0;
     height: 120px;

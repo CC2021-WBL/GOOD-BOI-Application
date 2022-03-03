@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { device } from '../../Consts/devices';
 
 const ContestsWrapperStyled = styled.div`
-  grid-column: 2;
+  grid-column: 3;
   .mockmap {
     display: none;
   }
-  @media ${device.tablet} {
+  /* @media ${device.tablet} {
     grid-column: 3;
-  }
+  } */
 
   @media (min-width: 1200px) {
     /* display: flex;
