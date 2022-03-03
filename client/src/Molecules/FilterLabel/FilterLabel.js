@@ -7,8 +7,8 @@ import propTypes from 'prop-types';
 const FilterLabel = ({ onClick }) => {
   return (
     <FilterLabelStyled>
-      <div className="wrapper">
-        <div className="innerWrapper">
+      {/* <div className="wrapper">
+        <div className="innerWrapper"> */}
           <InfoLabel
             pointOnTimeLine="w trakcie"
             colorMotive={c.GREEN}
@@ -29,8 +29,8 @@ const FilterLabel = ({ onClick }) => {
             colorMotive={c.WHITE}
             handleClick={(event) => onClick(TIME.UNKNOWN, event)}
           />
-        </div>
-      </div>
+        {/* </div>
+      </div> */}
     </FilterLabelStyled>
   );
 };
