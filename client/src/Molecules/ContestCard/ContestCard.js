@@ -13,6 +13,17 @@ import { ContestContext } from '../../Context/ContestContext';
 import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
 import { UserDataContext } from '../../Context/UserDataContext';
 import dog_1 from '../../Assets/Dogs/dog_1.png';
+import dog_10 from '../../Assets/Dogs/dog_10.png';
+import dog_11 from '../../Assets/Dogs/dog_11.png';
+import dog_12 from '../../Assets/Dogs/dog_12.png';
+import dog_2 from '../../Assets/Dogs/dog_2.png';
+import dog_3 from '../../Assets/Dogs/dog_3.png';
+import dog_4 from '../../Assets/Dogs/dog_4.png';
+import dog_5 from '../../Assets/Dogs/dog_5.png';
+import dog_6 from '../../Assets/Dogs/dog_6.png';
+import dog_7 from '../../Assets/Dogs/dog_7.png';
+import dog_8 from '../../Assets/Dogs/dog_8.png';
+import dog_9 from '../../Assets/Dogs/dog_9.png';
 import propTypes from 'prop-types';
 import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
 import { useContext } from 'react';
@@ -50,7 +61,21 @@ const ContestCard = ({ contestData }) => {
       },
     });
   };
-
+  const imgs = [
+    dog_1,
+    dog_2,
+    dog_3,
+    dog_4,
+    dog_5,
+    dog_6,
+    dog_7,
+    dog_8,
+    dog_9,
+    dog_10,
+    dog_11,
+    dog_12,
+  ];
+  let i = Math.floor(Math.random() * imgs.length);
   return (
     <>
       <ContestCardStyled
@@ -87,7 +112,7 @@ const ContestCard = ({ contestData }) => {
         </div>
 
         <div className="doggo">
-          <img src={dog_1} alt="Cute doggo" />
+          <img src={imgs[i]} alt="Cute doggo" />
         </div>
       </ContestCardStyled>
     </>
