@@ -16,7 +16,7 @@ const contests = [
     },
     judges: ['Zuzzana Zezowa'],
     steward: 'Zygfryd Zaduzy',
-    manager: 'zbyszkobogdaniec55555', // id managera
+    manager: 'zbyszkobogdaniec55555', //id managera
     feePLN: 110,
     numberOfApplications: 6,
     obedienceClasses: [
