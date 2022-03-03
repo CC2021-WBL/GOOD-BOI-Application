@@ -1,4 +1,3 @@
-import { NavLink, useLocation } from 'react-router-dom';
 import { useContext, useState } from 'react';
 
 import { ReactComponent as AppLogoSVG } from '../../Assets/AppLogoSVG.svg';
@@ -6,11 +5,13 @@ import ButtonsWrapperStyled from './ButtonsWrapperStyled';
 import FakeButton from './../../Atoms/FakeButton/FakeButton';
 import GoodBoiLogo from './GoodBoiLogo';
 import NavAccordion from './NavAccordion';
-import NavAccordionStyled from './NavAccordionStyled';
 import NavDesktopInnerStyled from './NavDesktopInnerStyled';
 import NavDesktopWrapperStyled from './NavDesktopWrapperStyled';
-import { UserDataContext } from './../../Context/UserDataContext';
 import NavLinkStyled from './NavLinkStyled';
+import { UserDataContext } from './../../Context/UserDataContext';
+import { useLocation } from 'react-router-dom';
+
+// import NavAccordionStyled from './NavAccordionStyled';
 
 const NavDesktop = () => {
   const location = useLocation();
@@ -40,16 +41,17 @@ const NavDesktop = () => {
     );
   }
   // when logged in:
-  return (
-    <NavDesktopWrapperStyled>
-      <NavDesktopInnerStyled>
-        <GoodBoiLogo />
-        {/* <NavAccordionStyled> */}
-        <NavAccordion />
-        {/* </NavAccordionStyled> */}
-      </NavDesktopInnerStyled>
-    </NavDesktopWrapperStyled>
-  );
+  else
+    return (
+      <NavDesktopWrapperStyled>
+        <NavDesktopInnerStyled>
+          <GoodBoiLogo />
+          {/* <NavAccordionStyled> */}
+          <NavAccordion />
+          {/* </NavAccordionStyled> */}
+        </NavDesktopInnerStyled>
+      </NavDesktopWrapperStyled>
+    );
 };
 
 export default NavDesktop;

@@ -6,6 +6,8 @@ const bgHandler = (props) => {
     return `background: ${props.theme.primary101}`;
   if (props.formolecule === 'Cornermenu')
     return `background: ${props.theme.primary101}`;
+  if (props.formolecule === 'Navbar')
+    return `background: ${props.theme.primary101}`;
 };
 
 const NavLinkStyled = styled(NavLink)`
@@ -13,15 +15,14 @@ const NavLinkStyled = styled(NavLink)`
   width: 100%;
   display: flex;
   align-items: center;
-  margin-left: -3.1rem;
-  padding: 0 0 0 3.2rem;
-  z-index: -1;
+  padding: 0 0 0 0.5rem;
+  gap: 1rem; // gap between nav icons and text
   &:not(.active) {
     color: ${({ theme }) => theme.grey400};
   }
   &.active {
     font-weight: bold;
-    color: ${({ theme }) => theme.primary801};
+    color: ${({ theme }) => theme.primary601};
     ${(props) => bgHandler(props)};
   }
 `;

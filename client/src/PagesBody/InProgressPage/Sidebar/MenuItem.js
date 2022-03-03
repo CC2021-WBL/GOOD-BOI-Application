@@ -7,8 +7,8 @@ const MenuItem = (props) => {
 
   return (
     <MenuItemWrapper>
-      {icon}
       <NavLinkStyled to={linkTo} formolecule={formolecule}>
+        {icon}
         {text}
       </NavLinkStyled>
     </MenuItemWrapper>
@@ -22,7 +22,7 @@ const MenuItemWrapper = styled.div`
   justify-items: space-between;
   gap: 1rem;
   height: 3rem;
-  padding: 0 0 0 0.5rem;
+  padding: 0 0 0 0rem;
   color: ${({ theme }) => theme.grey400};
   &:hover {
     background: ${({ theme }) => theme.grey00};
