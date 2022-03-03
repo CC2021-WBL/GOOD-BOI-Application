@@ -22,6 +22,7 @@ const NavElement = () => {
   const contact = locationPath.pathname === '/contact-form';
   const forgot = locationPath.pathname === '/forgot';
   const inProgress = locationPath.pathname === '/in-progress';
+  const landing = locationPath.pathname === '/';
   const [open, setOpen] = useState(false);
   const { state } = useContext(UserDataContext);
   const { dogState } = useContext(DogContext);
@@ -38,7 +39,7 @@ const NavElement = () => {
     <>
       <GridWrapper mobile="1 / 1 / 2 / 2" tablet="1 / 1 / 2 / -1" navFoot>
         <NavElementStyled>
-          {login || register || contact || forgot || inProgress ? (
+          {login || register || contact || forgot || inProgress || landing ? (
             <div className="burger-wrapper" />
           ) : (
             <div className="burger-wrapper">

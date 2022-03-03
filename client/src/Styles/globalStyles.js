@@ -12,6 +12,12 @@ a{text-decoration:none}
     margin: 0;
     font-family: 'Mulish', sans-serif;
 }
+.mobile_only {
+    @media only screen and (min-width: 800px) {
+        display: none !important;
+    }
+}
+
 body {
     background: ${({ theme }) => theme.white};
 }`;
