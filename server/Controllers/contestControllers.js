@@ -35,6 +35,7 @@ async function updateContest(req, res) {
       res.status(204).json({ message: 'no data to update' });
     }
     const contest = await Contest.findById(req.params.contestId);
+    contest.updatedAt = new Date();
     propsToUpdate.forEach((element) => {
       if (element === 'obedienceClasses') {
         contest[element] = createClassesObjectArray(req.body[element]);
@@ -42,7 +43,21 @@ async function updateContest(req, res) {
         contest[element] = req.body[element];
       }
     });
-    contest.updateAt = new Date();
+    await contest.save();
+    return contest;
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+}
+
+async function finishClass(req, res) {
+  try {
+    const { contestId, classNumber } = req.params;
+    const contest = await Contest.findById(contestId);
+    contest.obedienceClasses.find(
+      (e) => e.classNumber == classNumber,
+    ).isFinished = true;
+    contest.updatedAt = new Date();
     await contest.save();
     return contest;
   } catch (error) {
@@ -53,4 +68,5 @@ async function updateContest(req, res) {
 module.exports = {
   registerContest,
   updateContest,
+  finishClass,
 };

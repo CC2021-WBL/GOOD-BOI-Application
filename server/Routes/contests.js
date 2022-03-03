@@ -2,6 +2,7 @@ const express = require('express');
 const {
   registerContest,
   updateContest,
+  finishClass,
 } = require('../Controllers/contestControllers');
 const Contest = require('../Model/Contest');
 const router = express.Router();
@@ -58,6 +59,16 @@ router.get('/classes/:contestId', async (req, res) => {
 router.patch('/:contestId', async (req, res) => {
   try {
     const contest = await updateContest(req, res);
+    res.status(201).send(contest);
+  } catch (error) {
+    console.log(error);
+    res.send(error.message);
+  }
+});
+
+router.patch('/:contestId/:classNumber', async (req, res) => {
+  try {
+    const contest = await finishClass(req, res);
     res.status(201).send(contest);
   } catch (error) {
     console.log(error);
