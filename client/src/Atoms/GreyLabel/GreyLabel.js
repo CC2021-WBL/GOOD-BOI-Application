@@ -1,10 +1,11 @@
-import GreyLabelStyled from './GreyLabelStyled';
 import PropTypes from 'prop-types';
+
+import GreyLabelStyled from './GreyLabelStyled';
 
 const GreyLabel = ({ text }) => {
   return (
     <GreyLabelStyled>
-      <p className="greyLabelText">{text}</p>
+      <div className="greyLabelText">{text}</div>
     </GreyLabelStyled>
   );
 };

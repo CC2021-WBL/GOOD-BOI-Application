@@ -1,8 +1,9 @@
-import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
 
+import FONTS from '../../Styles/fontsStyledComponents';
+import { device } from '../../Consts/devices';
+
 export const NavElementStyled = styled.div`
-  position: fixed;
   display: flex;
   width: 100%;
   height: 3.75rem;
@@ -28,5 +29,12 @@ export const NavElementStyled = styled.div`
         cursor: pointer;
       }
     }
+  }
+
+  @media only screen and (min-width: 800px) {
+    height: 110px;
+    max-width: 1600px;
+    margin: 0 auto;
+    background-color: ${({ theme }) => theme.grey200};
   }
 `;
