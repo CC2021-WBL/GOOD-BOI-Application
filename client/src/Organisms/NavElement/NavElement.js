@@ -36,16 +36,17 @@ const NavElement = () => {
   const data = checkPathOrigin(locationPath.pathname, namesFromContext);
   return (
     <>
-      <GridWrapper mobile="1 / 1 / 2 / 2" tablet="1 / 1 / 2 / -1">
-        <NavElementStyled>
+      <GridWrapper>
+        <NavElementStyled style={{gridRow: 1}}>
+          {/* TODO: add responsive breakpoint and hide on tablet + */}
           {login || register || contact || forgot || inProgress ? (
-            <div className="burger-wrapper" />
+            <div className="burger-wrapper mobile_only" />
           ) : (
-            <div className="burger-wrapper">
+            <div className="burger-wrapper mobile_only">
               <MdMenu className="burger-icon" onClick={() => setOpen(true)} />
             </div>
           )}
-
+  {/* TODO: align to left on tablet + */}
           <h3 className="navText">{data.text}</h3>
 
           <GoHomeStyled>
@@ -54,12 +55,10 @@ const NavElement = () => {
             </Link>
           </GoHomeStyled>
         </NavElementStyled>
-      </GridWrapper>
       {data.label && data.label.length !== 0 && (
-        <>
-          <GreyLabel text={data.label} />
-        </>
+          <GreyLabel text={data.label} style={{gridColumn: 2,gridRow: 1}}/>
       )}
+      </GridWrapper>
       <BurgerMenu open={open} setOpen={setOpen} />
       {open && <Backdrop />}
     </>

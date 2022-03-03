@@ -9,9 +9,9 @@ export const NavElementStyled = styled.div`
   height: 3.75rem;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1.125rem;
+  /* padding: 0 1.125rem; */
   background: ${({ theme }) => theme.white};
-
+  grid-column: 2;
   .navText {
     width: 80%;
     color: ${({ theme }) => theme.grey800};
@@ -31,10 +31,11 @@ export const NavElementStyled = styled.div`
     }
   }
 
-  @media only screen and (${device.tablet}) {
-    height: 110px;
+  @media only screen and ${device.tablet} {
+    grid-column: 2/span 3;
+    /* height: 110px;
     max-width: 1600px;
     margin: 0 auto;
-    background-color: ${({ theme }) => theme.grey200};
+    background-color: ${({ theme }) => theme.grey200}; */
   }
 `;
