@@ -1,13 +1,24 @@
 import { ReactComponent as LogoutSVG } from '../../Assets/Logout.svg';
-import { NavLink } from 'react-router-dom';
 import NavLinkStyled from './NavLinkStyled';
+import { UserDataContext } from '../../Context/UserDataContext';
 import styled from 'styled-components';
+import { useContext } from 'react';
 
 const LogoutLiWithSVG = () => {
+  const { state, dispatch } = useContext(UserDataContext);
+  const { userId } = state;
+
   return (
     <LogoutLiStyled>
       <LogoutSVG />
-      <NavLinkStyled to="/">Wyloguj</NavLinkStyled>
+      <NavLinkStyled
+        to="/"
+        onClick={() => {
+          dispatch({ type: 'LOG_OUT', index: 1 });
+        }}
+      >
+        Wyloguj
+      </NavLinkStyled>
     </LogoutLiStyled>
   );
 };

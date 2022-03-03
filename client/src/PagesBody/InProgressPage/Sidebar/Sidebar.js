@@ -23,20 +23,16 @@ const SidebarStyled = styled.div`
   @media only screen and (${device.tablet}) {
     display: grid;
     grid-area: 3 / 1 / 4 / 2;
-    overflow: scroll;
     border: 1px solid ${({ theme }) => theme.grey200}; // ?
     width: calc(100%-1rem);
     height: calc(100%-1rem);
-    margin: 0.5rem;
   }
   @media only screen and (${device.desktop}) {
     display: grid;
     grid-area: 3 / 1 / 4 / 2;
-    overflow: scroll;
     border: 2px solid ${({ theme }) => theme.grey200}; // ?
     width: calc(100%-1rem);
     height: calc(100%-1rem);
-    margin: 0.5rem;
   }
 `;
 

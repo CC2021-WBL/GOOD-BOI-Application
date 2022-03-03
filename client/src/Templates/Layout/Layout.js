@@ -1,13 +1,14 @@
+import { useEffect, useState } from 'react';
+
 import Footer from '../../Molecules/Footer/Footer';
 import FooterDesktop from '../../PagesBody/InProgressPage/FooterDesktop';
 import GhostFooterStyled from '../../Molecules/Footer/GhostFooterStyled';
 import NavDesktop from '../../PagesBody/InProgressPage/NavDesktop';
 import NavElement from '../../Organisms/NavElement/NavElement';
 import { Outlet } from 'react-router-dom';
+import Sidebar from './../../PagesBody/InProgressPage/Sidebar/Sidebar';
 import propTypes from 'prop-types';
 import useWindowHeight from '../../Tools/useWindowHeight';
-import { useEffect, useState } from 'react';
-import Sidebar from './../../PagesBody/InProgressPage/Sidebar/Sidebar';
 
 const initHeight = window.innerHeight;
 // 150 pixels of change in the window.height triggers the footer and ghost footer to hide
@@ -28,7 +29,8 @@ const Layout = ({ withLabel, withSettings }) => {
   return (
     <>
       <Sidebar />
-      {window.innerWidth <= 800 ? <NavElement /> : ''}
+      {/* {window.innerWidth <= 800 ? <NavElement /> : ''} */}
+      <NavElement />
       {window.innerWidth >= 800 ? <NavDesktop /> : ''}
       {!withLabel && window.innerWidth <= 800 && (
         <div style={{ height: '60px' }} />

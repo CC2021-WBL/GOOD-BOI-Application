@@ -3,10 +3,10 @@ import { useRef, useState } from 'react';
 import CornerMenuList from './CornerMenuList';
 import { FaChevronDown } from 'react-icons/fa';
 import { FaChevronUp } from 'react-icons/fa';
+import NavAccordionStyled from './NavAccordionStyled';
 import ProfilePicture from './ProfilePicture';
 import styled from 'styled-components';
 import useClickOutside from '../../Hooks/useClickOutside';
-import NavAccordionStyled from './NavAccordionStyled';
 
 const AccordionButtonWrapper = styled.div`
   height: 61px;
@@ -17,7 +17,7 @@ const AccordionButtonWrapper = styled.div`
   padding: 0 2rem;
   background: ${({ theme }) => theme.grey00};
   &:hover {
-    border-radius: 25px;
+    /* border-radius: 25px; */
     filter: brightness(0.9);
     cursor: pointer;
   }
