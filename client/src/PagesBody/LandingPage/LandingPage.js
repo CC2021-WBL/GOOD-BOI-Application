@@ -32,23 +32,6 @@ const LandingPage = () => {
           />
         </div>
       ) : null}
-      <ImgWrapperStyled>
-        <img src={Logo2} alt="App logo" />
-      </ImgWrapperStyled>
-      {isAuthenticated ? (
-        <FakeButton to="/in-progress" colors="ternary" text="portal good boi" />
-      ) : (
-        <>
-          <FakeButton to="/login" colors="primary" text="Zaloguj się" />
-          <FakeButton to="/register" colors="secondary" text="Zarejestruj" />
-          <FakeButton
-            to="/in-progress"
-            colors="ternary"
-            text="portal good boi"
-          />
-          <RocketWithPlanets />
-        </>
-      )}
       <GridWrapper
         mobile="3 / 1 / 4 / 2"
         tablet="2 / 2 / 4 / 3"
@@ -82,6 +65,7 @@ const LandingPage = () => {
 
           <BurgerMenu open={open} setOpen={setOpen} />
         </ColumnWrapper>
+        <RocketWithPlanets />
       </GridWrapper>
       <Footer />
     </>
