@@ -10,11 +10,10 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     const contests = await Contest.find();
-    res.json(contests);
     if (!contests) {
       res.status(404).end();
     }
-    res.status(200).send(contests);
+    return res.json(contests);
   } catch (error) {
     res.status(500).send(error.message);
   }

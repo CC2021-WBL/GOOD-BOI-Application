@@ -54,9 +54,10 @@ async function finishClass(req, res) {
   try {
     const { contestId, classNumber } = req.params;
     const contest = await Contest.findById(contestId);
-    contest.obedienceClasses.find(
-      (e) => e.classNumber == classNumber,
-    ).isFinished = true;
+    const obedienceClass = contest.obedienceClasses.find(
+      (obedienceClass) => obedienceClass.classNumber == classNumber,
+    );
+    obedienceClass.isFinished = !obedienceClass.isFinished;
     contest.updatedAt = new Date();
     await contest.save();
     return contest;
