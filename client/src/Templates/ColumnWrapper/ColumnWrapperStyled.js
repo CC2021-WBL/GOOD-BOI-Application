@@ -15,7 +15,7 @@ const ColumnWrapperStyled = styled.div`
 
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
-    overflow: scroll;
+    /* overflow: scroll; */
   }
   @media only screen and (min-width: 1600px) {
     grid-area: 3 / 3 / 4 / 4;

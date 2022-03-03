@@ -4,7 +4,7 @@ import { device } from '../../Consts/devices';
 
 export const FooterStyled = styled.div`
   display: flex;
-  position: fixed;
+  /* position: fixed; */
   right: 0;
   bottom: 0;
   left: 0;
