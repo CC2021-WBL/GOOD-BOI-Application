@@ -15,14 +15,6 @@ const GreyLabelStyled = styled.div`
   }
 
   @media only screen and (min-width: 800px) {
-    background: ${({ theme }) => theme.white};
-    border-bottom: 1px solid ${({ theme }) => theme.grey200};
-    .greyLabelText {
-      max-width: 800px;
-      justify-content: left;
-    }
-  }
-  @media only screen and (min-width: 1600px) {
     display: grid;
     grid-template-columns: 1fr 220px minmax(360px, 1160px) 220px 1fr;
     justify-content: start;

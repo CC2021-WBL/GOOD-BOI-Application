@@ -36,7 +36,7 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
         data = { text: 'Twoje psy', label: '' };
         break;
       case 'role':
-        data = { text: 'Wybierz rolę', label: 'Kontynuuj jako' };
+        data = { text: 'Wybierz konto', label: 'Dostępne role' };
         break;
       case 'register':
         data = { text: 'Rejestracja', label: 'Dołącz do nas' };
@@ -48,7 +48,7 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
         data = { text: 'Dane Konta', label: '' };
         break;
       case 'user-dogs':
-        data = { text: 'Twoje Psy', label: 'Lista Twoich psów' };
+        data = { text: 'Twoje Psy', label: 'Zarządzaj swoimi psami' };
         break;
       case 'settings':
         data = { text: 'Ustawienia', label: '' };
