@@ -39,7 +39,7 @@ const NavElement = () => {
             <div className="burger-wrapper" />
           ) : (
             <div className="burger-wrapper">
-              <MdMenu className="burger-icon" onClick={() => setOpen(true)} />
+              <MdMenu className="burger-icon " onClick={() => setOpen(true)} />
             </div>
           )}
 
@@ -64,7 +64,7 @@ const NavElement = () => {
 };
 
 NavElement.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
 };
 
 export default NavElement;
