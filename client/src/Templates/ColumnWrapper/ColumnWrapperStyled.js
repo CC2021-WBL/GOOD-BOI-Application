@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-import { device } from '../../Consts/device';
-
 const ColumnWrapperStyled = styled.div`
+  grid-area: 3 / 1 / 4 / 2;
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -13,24 +12,12 @@ const ColumnWrapperStyled = styled.div`
   padding-bottom: ${(props) =>
     props.paddingBottom && `${props.paddingBottom}rem`};
 
-  ${(props) =>
-    props.className === 'user_profile' &&
-    `
-    @media only screen and (min-width: 740px) {
-      display: grid;
-      gap: 20px;
-      grid-template-columns: 40% 40% 20%;
-      grid-template-rows: repeat(8, 12.5%);
- 
+  @media only screen and (min-width: 800px) {
+    grid-area: 3 / 2 / 4 / 3;
+    /* overflow: scroll; */
   }
-  
-  `}
-
-  @media ${device.desktopL} {
-    ${(props) => props.desktop && `${props.desktop}`};
-  }
-  @media ${device.mobileL} {
-    ${(props) => props.mobile && `${props.mobile}`}
+  @media only screen and (min-width: 1600px) {
+    grid-area: 3 / 3 / 4 / 4;
   }
 `;
 

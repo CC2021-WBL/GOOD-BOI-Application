@@ -1,0 +1,250 @@
+components:
+  schemas:
+    Contest:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: The auto-generated id of the contest
+          example: '3845029d-e97d-41ed-997f-2299d09ef648'
+        contestName:
+          type: string
+          description: The name of the contest
+          example: 'Piętnasty zjazd dobrych chłopaków'
+        kennelClubDepartment:
+          type: string
+          description: The city of kennelClubDepartment
+          example: 'Warszawa'
+        startDate:
+          type: string
+          format: date-time
+          example: '1985-04-12 14:10'
+        endDate:
+          type: string
+          format: date-time
+          example: '1985-04-12 14:10'
+        applicationOpenDate:
+          type: string
+          format: date-time
+          example: '1985-04-12 14:10'
+        applicationClosedDate:
+          type: string
+          format: date-time
+          example: '1985-04-12 14:10'
+        address:
+          type: object
+          $ref: '#/components/schemas/Adress'
+        judges:
+          type: array
+          items:
+            type: string
+          default: [ ]
+        steward:
+          type: string
+        manager:
+          type: object
+          $ref: '#/components/schemas/Participant'
+        feePLN:
+          type: number
+        amountOfApplications:
+          type: number
+          default: 0
+        maxAmountOfApplications:
+          type: number
+        ObedienceClasses:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObedienceClasses'
+    Dog:
+      type: object
+      properties:
+        dogName:
+          type: string
+        kennelName:
+          type: string
+        pkr:
+          type: string
+        registrationNumber:
+          type: string
+        breed:
+          type: string
+        dateOfBirth:
+          type: string
+          format: date-time
+          example: '2007-03-11 12:10'
+        color:
+          type: number
+        chipOrTatoo:
+          type: number
+        sex:
+          type: sex
+        owner:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Result'
+    Participant:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        phoneNumber:
+          type: string
+        participantName:
+          type: string
+        participantSurname:
+          type: string
+        adress:
+          type: object
+          $ref: '#/components/schemas/Adress'
+        dogs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dog'
+        portalRoles:
+          type: array
+          items:
+            type: string
+          default: ['participant']
+    ParticipantDog:
+      type: object
+      properties:
+        dogId:
+          type: object
+          $ref: '#/components/schemas/Dog'
+        dogName:
+          type: string
+    Adress:
+      type: object
+      properties:
+        country:
+          type: string
+          default: 'Polska'
+        city:
+          type: string
+        street:
+          type: string
+        numberOfHouse:
+          type: string
+        postalCode:
+          type: string
+
+    ObedienceClasses:
+      type: object
+      properties:
+        classNumber:
+          type: number
+        isFinished:
+          type: boolean;
+          default: false
+        participants:
+          type: array
+          items:
+            $ref: '#/components/schemas/InsideClassSchema'
+    InsideClassSchema:
+      type: object
+      properties:
+        dogId:
+          type: object
+          $ref: '#/components/schemas/Dog'
+        dogName:
+          type: string
+        participantId:
+          type: object
+          $ref: '#/components/schemas/Participant'
+        resultId:
+          type: object
+          $ref: '#/components/schemas/Result'
+    Result:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: The auto-generated id of the result
+          example: '3845029d-e97d-41ed-997f-2299d09ef648'
+        contestId:
+          type: object
+          $ref: '#/components/schemas/Contest'
+          description: The id of the contest
+          example: 'a0347677-c3c9-4edc-9d46-fed4a958fdc2'
+        contestName:
+          type: string
+          description: The name of the contest
+          example: 'Piętnasty zjazd dobrych chłopaków'
+        obedienceClass:
+          type: number
+          description: Obedience class
+          example: 0
+        dogId:
+          type: object
+          $ref: '#/components/schemas/Dog'
+          description: The id of the dog taken from pkr
+          example: 'VIII-40407'
+        dogName:
+          type: string
+          description: The name of the dog
+          example: 'Woof'
+        participantId:
+          type: object
+          $ref: '#/components/schemas/Participant'
+          description: The id of the participant/user
+          example: 'matylda1234'
+        summaryResult:
+          type: number
+          description: Summary result in contest
+          example: 130
+        evaluation:
+          type: string
+          description: Rating, evaluation of dog
+          example: 'doskonała'
+        specialState:
+          type: string
+          description: Disqualified or other special state
+          example: 'dyskwalifikacja'
+        exercises:
+          type: array
+          description: Exercises with results
+          example: '[]'
+
+paths:
+  /contests:
+    get:
+      summary: Returns the list of contests
+      responses:
+        200:
+          description: The list of all contests
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contest'
+
+
+  /contests/classes/:contestId:
+    get:
+      summary: Returns the list of classes in current contest
+      responses:
+        200:
+          description: The list of all classes in current contest
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ObedienceClasses'
+  /results:
+    get:
+      summary: Returns the list of results
+      responses:
+        200:
+          description: The list of all results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Result'
