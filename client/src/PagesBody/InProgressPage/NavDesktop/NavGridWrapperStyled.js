@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const NavDesktopWrapperStyled = styled.div`
+const NavGridWrapperStyled = styled.div`
   grid-column-start: 1;
   grid-column-end: 4;
   grid-row-start: 1;
@@ -24,4 +24,4 @@ const NavDesktopWrapperStyled = styled.div`
   }
 `;
 
-export default NavDesktopWrapperStyled;
+export default NavGridWrapperStyled;

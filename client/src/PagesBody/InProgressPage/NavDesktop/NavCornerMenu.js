@@ -1,37 +1,37 @@
 import { IoMdSettings } from 'react-icons/io';
 import { MdLogout } from 'react-icons/md';
 import MenuItem from './../Sidebar/MenuItem';
+import MenuItemStyled from './../Sidebar/MenuItemStyled';
 import NavCornerMenuStyled from './NavCornerMenuStyled';
 import { UserDataContext } from '../../../Context/UserDataContext';
-import styled from 'styled-components';
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const fontsize = '20px';
+const fontsize = '20px'; // icon size
 
 const NavCornerMenu = ({ onClick }) => {
   const { dispatch } = useContext(UserDataContext);
+  const navigate = useNavigate();
 
   return (
     <NavCornerMenuStyled>
       <MenuItem
-        formolecule="Cornermenu"
+        stylefor="Cornermenu"
         linkTo={`/settings`}
         text="Settings"
         icon={<IoMdSettings fontSize={fontsize} />}
       />
-      <MenuItem
-        formolecule="Cornermenu"
-        linkTo={`/`}
-        text="Wyloguj"
-        icon={
-          <MdLogout
-            fontSize={fontsize}
-            onClick={() => {
-              dispatch({ type: 'LOG_OUT', index: 1 });
-            }}
-          />
-        }
-      />
+      <MenuItemStyled
+        style={{ padding: '0 0 0 0.5rem' }}
+        onClick={() => {
+          dispatch({ type: 'LOG_OUT', index: 1 });
+          console.log('clicked logout');
+          navigate('/');
+        }}
+      >
+        <MdLogout fontSize={fontsize} />
+        Wyloguj
+      </MenuItemStyled>
     </NavCornerMenuStyled>
   );
 };

@@ -2,12 +2,11 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const bgHandler = (props) => {
-  if (props.formolecule === 'Sidebar')
+  if (props.stylefor === 'Sidebar')
     return `background: ${props.theme.primary101}`;
-  if (props.formolecule === 'Cornermenu')
-    return `background: ${props.theme.primary201}`;
-  if (props.formolecule === 'Navbar')
-    return `background: ${props.theme.primary501}`;
+  if (props.stylefor === 'Cornermenu')
+    return `color: ${props.theme.grey400}; font-weight: normal`;
+  if (props.stylefor === 'Navbar') return `color: ${props.theme.primary801}`;
 };
 
 const NavLinkStyled = styled(NavLink)`

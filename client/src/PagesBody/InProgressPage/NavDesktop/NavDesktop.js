@@ -2,30 +2,46 @@ import { ReactComponent as AppLogoSVG } from '../../../Assets/AppLogoSVG.svg';
 import ButtonsWrapperStyled from '../ButtonsWrapperStyled';
 import FakeButton from './../../../Atoms/FakeButton/FakeButton';
 import GoodBoiLogo from './../GoodBoiLogo';
-import NavDesktopInnerStyled from './NavDesktopInnerStyled';
-import NavDesktopWrapperStyled from './NavDesktopWrapperStyled';
+import NavInnerStyled from './NavInnerStyled';
 import NavLinkStyled from './../NavLinkStyled';
 import NavMenu from './NavMenu';
+import NavWrapperStyled from './NavWrapperStyled';
 import { UserDataContext } from './../../../Context/UserDataContext';
 import { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 
-// TODO: Merge with NavElement
 const NavDesktop = () => {
   const location = useLocation();
   const { state } = useContext(UserDataContext);
   const { isAuthenticated } = state;
 
-  if (!isAuthenticated) {
+  // when logged in:
+  if (isAuthenticated) {
     return (
-      <NavDesktopWrapperStyled>
-        <NavDesktopInnerStyled>
+      <NavWrapperStyled>
+        <NavInnerStyled>
+          <GoodBoiLogo />
+          <NavMenu />
+        </NavInnerStyled>
+      </NavWrapperStyled>
+    );
+  } else {
+    // when not logged in
+    return (
+      <NavWrapperStyled>
+        <NavInnerStyled>
           <NavLinkStyled to="/">
             <AppLogoSVG />
           </NavLinkStyled>
-          <NavLinkStyled to="/login">STRONA GŁÓWNA</NavLinkStyled>
-          <NavLinkStyled to="/contests">AKTUALNE KONKURSY</NavLinkStyled>
-          <NavLinkStyled to="/register">WEŹ UDZIAŁ W ZAWODACH</NavLinkStyled>
+          <NavLinkStyled to="/login" stylefor="Navbar">
+            STRONA GŁÓWNA
+          </NavLinkStyled>
+          <NavLinkStyled to="/contests" stylefor="Navbar">
+            AKTUALNE KONKURSY
+          </NavLinkStyled>
+          <NavLinkStyled to="/register" stylefor="Navbar">
+            WEŹ UDZIAŁ W ZAWODACH
+          </NavLinkStyled>
           <ButtonsWrapperStyled>
             {location.pathname !== '/register' && (
               <FakeButton to="/register" colors="ternary" text="Zarejestruj" />
@@ -34,20 +50,10 @@ const NavDesktop = () => {
               <FakeButton to="/login" colors="primary" text="Zaloguj się" />
             )}
           </ButtonsWrapperStyled>
-        </NavDesktopInnerStyled>
-      </NavDesktopWrapperStyled>
+        </NavInnerStyled>
+      </NavWrapperStyled>
     );
   }
-  // when logged in:
-  else
-    return (
-      <NavDesktopWrapperStyled>
-        <NavDesktopInnerStyled>
-          <GoodBoiLogo />
-          <NavMenu />
-        </NavDesktopInnerStyled>
-      </NavDesktopWrapperStyled>
-    );
 };
 
 export default NavDesktop;

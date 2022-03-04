@@ -18,31 +18,31 @@ const Sidebar = () => {
       <SidebarStyled>
         <SidebarItemsStyled>
           <MenuItem
-            formolecule="Sidebar"
+            stylefor="Sidebar"
             linkTo={`/user/${userId}/user-data`}
             text="Profil"
             icon={<FaUserCircle fontSize={fontsize} />}
           />
           <MenuItem
-            formolecule="Cornermenu"
+            stylefor="Sidebar"
             linkTo="/role"
             text="Wybierz rolę"
             icon={<FaUsersCog fontSize={fontsize} />}
           />
           <MenuItem
-            formolecule="Sidebar"
+            stylefor="Sidebar"
             linkTo="/user-dogs"
             text="Twoje psy"
             icon={<FaDog fontSize={fontsize} />}
           />
           <MenuItem
-            formolecule="Sidebar"
+            stylefor="Sidebar"
             linkTo="/contests"
             text="Historia zawodów"
             icon={<BsTrophy fontSize={fontsize} />}
           />
           <MenuItem
-            formolecule="Sidebar"
+            stylefor="Sidebar"
             linkTo="/register"
             text="Zapisz się na zawody"
             icon={<BsTrophyFill fontSize={fontsize} />}

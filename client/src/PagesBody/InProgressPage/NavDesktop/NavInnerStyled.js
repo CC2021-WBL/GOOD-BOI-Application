@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-const NavDesktopInnerStyled = styled.div`
-  /* width: 1200px; */
+const NavInnerStyled = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
@@ -10,4 +9,4 @@ const NavDesktopInnerStyled = styled.div`
   padding: 2rem;
 `;
 
-export default NavDesktopInnerStyled;
+export default NavInnerStyled;

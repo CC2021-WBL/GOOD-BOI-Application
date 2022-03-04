@@ -25,7 +25,7 @@ const LoginForm = () => {
 
   return (
     <>
-      {window.innerWidth >= 800 && <BackgroundStyled></BackgroundStyled>}
+      <BackgroundStyled></BackgroundStyled>
       <ColumnWrapper paddingLeftRight={1}>
         <FormWrapper onSubmit={submitHandler}>
           <InputField
