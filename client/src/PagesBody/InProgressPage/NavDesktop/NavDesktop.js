@@ -5,7 +5,7 @@ import GoodBoiLogo from './../GoodBoiLogo';
 import NavInnerStyled from './NavInnerStyled';
 import NavLinkStyled from './../NavLinkStyled';
 import NavMenu from './NavMenu';
-import NavWrapperStyled from './NavWrapperStyled';
+import NavWrapperStyled from './NavGridWrapperStyled';
 import { UserDataContext } from './../../../Context/UserDataContext';
 import { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
