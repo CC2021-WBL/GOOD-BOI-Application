@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 const fontsize = '20px'; // icon size
 
-const NavCornerMenu = ({ onClick }) => {
+const NavCornerMenu = () => {
   const { dispatch } = useContext(UserDataContext);
   const navigate = useNavigate();
 
