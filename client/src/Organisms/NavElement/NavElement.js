@@ -7,7 +7,7 @@ import Backdrop from '../../Atoms/Modal/Backdrop';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import GoHomeStyled from '../../Atoms/NavElementStyled/GoHomeStyled';
 import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
-import GridWrapper from '../../Styles/GridWrapper';
+import GridWrapper from '../../Templates/Layout/GridWrapper';
 import home from '../../Assets/home.png';
 import { ContestContext } from '../../Context/ContestContext';
 import { DogContext } from '../../Context/DogContext';
