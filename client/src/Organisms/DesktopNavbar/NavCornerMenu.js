@@ -1,9 +1,9 @@
 import { IoMdSettings } from 'react-icons/io';
 import { MdLogout } from 'react-icons/md';
-import MenuItem from './../Sidebar/MenuItem';
-import MenuItemStyled from './../Sidebar/MenuItemStyled';
+import MenuItem from './MenuItem';
+import MenuItemStyled from './MenuItemStyled';
 import NavCornerMenuStyled from './NavCornerMenuStyled';
-import { UserDataContext } from '../../../Context/UserDataContext';
+import { UserDataContext } from './../../Context/UserDataContext';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 

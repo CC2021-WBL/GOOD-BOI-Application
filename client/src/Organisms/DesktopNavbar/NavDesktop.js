@@ -1,4 +1,4 @@
-import { ReactComponent as AppLogoSVG } from '../../../Assets/AppLogoSVG.svg';
+import { ReactComponent as AppLogoSVG } from '../../Assets/AppLogoSVG.svg';
 import ButtonsWrapperStyled from '../ButtonsWrapperStyled';
 import FakeButton from './../../../Atoms/FakeButton/FakeButton';
 import GoodBoiLogo from './../GoodBoiLogo';
