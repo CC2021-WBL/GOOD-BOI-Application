@@ -10,6 +10,7 @@ import { useContext } from 'react';
 import BurgerMenuStyled from './BurgerMenuStyled';
 import HeaderMenuStyled from './HeaderMenuStyled';
 import MenuStyled from './MenuStyled';
+import checkLocationForNavRender from '../../Tools/checkLocationForNavRender';
 import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
 import useClickOutside from '../../Hooks/useClickOutside';
 import { CONTEST_ACTIONS } from '../../Consts/reducersActions';
@@ -30,14 +31,8 @@ const BurgerMenu = ({ open, setOpen }) => {
   });
 
   const locationPath = useLocation();
-  const login = locationPath.pathname === '/login';
-  const register = locationPath.pathname === '/register';
-  const contact = locationPath.pathname === '/contact-form';
-  const forgot = locationPath.pathname === '/forgot';
-  const inProgress = locationPath.pathname === '/in-progress';
-  const landing = locationPath.pathname === '/';
 
-  return login || register || contact || forgot || inProgress || landing ? (
+  return checkLocationForNavRender(locationPath.pathname) ? (
     <BurgerMenuStyled />
   ) : (
     <BurgerMenuStyled open={open} ref={domNode}>
