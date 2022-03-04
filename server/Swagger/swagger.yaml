@@ -1,3 +1,174 @@
+tags:
+  - name: contest
+    description: Everything about contests
+  - name: dog
+    description: Everything about dogs
+  - name: participant
+    description: Everything about participants
+  - name: result
+    description: Everything about results
+  - name: obedience class
+    description: Everything about obedienceClasses
+
+paths:
+  /contests:
+    get:
+      tags:
+        - contest
+      summary: Returns the list of contests.
+      responses:
+        200:
+          description: The list of all contests
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contest'
+  /contests/{contestId}:
+    get:
+      tags:
+        - contest
+      summary: Returns contest
+      parameters:
+        - name: contestId
+          in: path
+          description: ID of contest
+          required: true
+          type: string
+          example: '621d5988d912727b6bd6ffd1'
+      responses:
+        200:
+          description: The list of all contests.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contest'
+    delete:
+      tags:
+        - contest
+      summary: Delete contest.
+      parameters:
+        - name: contestId
+          in: path
+          description: ID of contest to delete
+          required: true
+          type: string
+          example: '62213a9897a2944feec53145'
+      responses:
+        200:
+          description: Contest is deleted.
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Contest'
+    patch:
+      tags:
+        - contest
+      summary: Update contest.
+      parameters:
+        - name: contestId
+          in: path
+          description: ID of contest to update
+          required: true
+          type: string
+          example: '62213a9897a2944feec53145'
+      responses:
+        201:
+          description: Contest is updated.
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Contest'
+  /contests/classes/{contestId}:
+    get:
+      tags:
+        - obedience class
+      summary: Returns the list of obedience classes in current contest.
+      parameters:
+        - name: contestId
+          in: path
+          description: ID of contest to return
+          required: true
+          type: string
+          example: '62213a9897a2944feec53145'
+      responses:
+        200:
+          description: The list of all classes in current contest.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ObedienceClass'
+  /contests/{contestId}/{classNumber}:
+    patch:
+      tags:
+        - obedience class
+      summary: Change isFinished property in obedience class.
+      parameters:
+        - name: contestId
+          in: path
+          description: ID of contest
+          required: true
+          type: string
+          example: '62213a9897a2944feec53145'
+        - name: classNumber
+          in: path
+          style: form
+          description: Obedience class number
+          required: true
+          type: string
+          example: '2'
+      responses:
+        201:
+          description: IsFinished property has been changed.
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ObedienceClass'
+  /register/{userId}:
+    post:
+      tags:
+        - contest
+      summary: Adds a new contest
+      parameters:
+        - name: userId
+          in: path
+          description: ID of contest creator
+          required: true
+          schema:
+            $ref: '#/components/schemas/Participant'
+      responses:
+        201:
+          description: The contest has been added to database
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Contest'
+  /results:
+    get:
+      tags:
+        - result
+      summary: Returns the list of results
+      responses:
+        200:
+          description: The list of all results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Result'
 components:
   schemas:
     Contest:
@@ -54,7 +225,7 @@ components:
         ObedienceClasses:
           type: array
           items:
-            $ref: '#/components/schemas/ObedienceClasses'
+            $ref: '#/components/schemas/ObedienceClass'
     Dog:
       type: object
       properties:
@@ -78,6 +249,9 @@ components:
           type: number
         sex:
           type: sex
+          enum:
+            - pies
+            - suka
         owner:
           type: string
         results:
@@ -108,7 +282,7 @@ components:
           type: array
           items:
             type: string
-          default: ['participant']
+          default: [ 'participant' ]
     ParticipantDog:
       type: object
       properties:
@@ -131,12 +305,16 @@ components:
           type: string
         postalCode:
           type: string
-
-    ObedienceClasses:
+    ObedienceClass:
       type: object
       properties:
         classNumber:
           type: number
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
         isFinished:
           type: boolean;
           default: false
@@ -208,43 +386,3 @@ components:
           type: array
           description: Exercises with results
           example: '[]'
-
-paths:
-  /contests:
-    get:
-      summary: Returns the list of contests
-      responses:
-        200:
-          description: The list of all contests
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Contest'
-
-
-  /contests/classes/:contestId:
-    get:
-      summary: Returns the list of classes in current contest
-      responses:
-        200:
-          description: The list of all classes in current contest
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ObedienceClasses'
-  /results:
-    get:
-      summary: Returns the list of results
-      responses:
-        200:
-          description: The list of all results
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Result'
