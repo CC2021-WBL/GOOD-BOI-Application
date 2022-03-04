@@ -4,7 +4,11 @@ const NavCornerMenuStyled = styled.div`
   text-align: left;
   width: 100%;
   background: ${({ theme }) => theme.grey00};
-  &.cornerMenuItems {
+  &.close {
+    transform: scale(1, 0);
+  }
+  &.open {
+    transform: scale(1, 1);
   }
 `;
 
