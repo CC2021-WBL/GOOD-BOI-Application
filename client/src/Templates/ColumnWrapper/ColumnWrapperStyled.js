@@ -18,6 +18,8 @@ const ColumnWrapperStyled = styled.div`
   }
   @media only screen and (min-width: 1600px) {
     grid-area: 3 / 3 / 4 / 4;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 `;
 

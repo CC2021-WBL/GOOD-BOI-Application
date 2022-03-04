@@ -1,5 +1,4 @@
 import propTypes from 'prop-types';
-import styled from 'styled-components';
 import { useContext, useEffect } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
@@ -14,16 +13,6 @@ import { ContestContext } from '../../Context/ContestContext';
 import { DogContext } from '../../Context/DogContext';
 import { ROLE_NAME } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
-
-const TestWrapperStyled = styled.div`
-  width: 80%;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  align-content: center;
-`;
 
 const ProfilePage = () => {
   const { contestState, contestDispatch } = useContext(ContestContext);
@@ -54,7 +43,6 @@ const ProfilePage = () => {
       className="user_profile"
     >
       <ProfileCard className="user_profile" />
-      {/* <TestWrapperStyled> */}
       <FakeButton
         to="/user-dogs"
         text="Twoje Psy"
@@ -89,7 +77,6 @@ const ProfilePage = () => {
         colors="secondary"
         className={['user_profile', 'user_upcoming']}
       />
-      {/* </TestWrapperStyled> */}
     </ColumnWrapper>
   );
 };

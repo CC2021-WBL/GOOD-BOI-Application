@@ -1,37 +1,23 @@
 import propTypes from 'prop-types';
 
 import FakeButtonStyled from './FakeButtonStyled';
-import useMediaQuery from '../../Hooks/useMediaQuery';
 
 const FakeButton = ({ text, paragraphText, to, state, colors, className }) => {
-  const isDesktop = useMediaQuery('(min-width: 740px)');
+  //TODO: może dodać klasę w przypadku każdego użycia fakebuttona
   if (!className) {
     className = 'bez klasy to rozwiązanie';
   }
-  if (isDesktop) {
-    return (
-      <FakeButtonStyled
-        to={to}
-        state={state}
-        colors={colors}
-        className={className}
-      >
-        <h3>{text}</h3>
-        <p>{paragraphText}</p>
-      </FakeButtonStyled>
-    );
-  } else {
-    return (
-      <FakeButtonStyled
-        to={to}
-        state={state}
-        colors={colors}
-        className={className}
-      >
-        {text.toUpperCase()}
-      </FakeButtonStyled>
-    );
-  }
+  return (
+    <FakeButtonStyled
+      to={to}
+      state={state}
+      colors={colors}
+      className={className}
+    >
+      <p className="fakebtn_header">{text}</p>
+      <p className="desktop_only fakebtn_text">{paragraphText}</p>
+    </FakeButtonStyled>
+  );
 };
 
 FakeButton.propTypes = {

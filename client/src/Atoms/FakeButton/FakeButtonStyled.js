@@ -45,66 +45,62 @@ const FakeButtonStyled = styled(Link)`
   border-radius: 0.75rem;
   ${FONTS.button};
   ${(props) => handleColorType(props)};
-
   ${(props) => handleBorders(props)}
+  text-transform: uppercase;
 
-  ${(props) =>
-    props.className[0] === 'user_profile' &&
-    `
-    @media only screen and (min-width: 740px) {
-    flex: 1;
-    height: 172px;
-    margin: 0;
-    flex-direction: column;
-    justify-content: space-between;
-    color: grey;
-    border: 1.5px solid grey;
-    font-weight: 100;
-    
-    h3 {
-      font-size: 22px;
-      width: 100%;
-      padding: 20px;
+  @media only screen and (min-width: 1600px) {
+    &.user_profile {
+      /* flex: 1; */
+      height: 172px;
+      margin: 0;
       text-align: left;
-      border-bottom: 1px solid grey;
+      flex-direction: column;
+      justify-content: space-between;
+      color: grey;
+      font-weight: 100;
+      align-items: flex-start;
+      padding: 30px;
+      background-color: ${({ theme }) => theme.grey00};
+
+      // nie wiem co to h3 ??
+      h3 {
+        font-size: 22px;
+        padding: 30px;
+        text-align: left;
+        border-bottom: 1px solid grey;
+      }
+
+      p.fakebtn_header {
+        text-transform: capitalize;
+        ${FONTS.h2};
+        color: ${({ theme }) => theme.grey800};
+        height: 62px;
+      }
+
+      p.fakebtn_text {
+        text-transform: none;
+        color: red;
+      }
     }
 
-    p {
-      margin: auto 0;
-      padding: 10px;
+    &.user_dogs {
+      grid-area: 2 / 1 / 4 / 2;
+      align-self: flex-end;
+    }
+
+    &.user_contests {
+      grid-area: 4 / 2 / 6 / 3;
+    }
+
+    &.user_data {
+      grid-area: 2 / 2 / 4 / 3;
+      align-self: flex-end;
+    }
+
+    &.user_upcoming {
+      grid-area: 4 / 1 / 6 / 2;
     }
   }
-  `}
-  ${(props) =>
-    props.className[1] === 'user_dogs' &&
-    `
-    @media only screen and (min-width: 740px) {
-    grid-area: 2 / 1 / 4 / 2;
-    align-self: flex-end;
-  }
-  `}
-  ${(props) =>
-    props.className[1] === 'user_contests' &&
-    `
-    @media only screen and (min-width: 740px) {
-    grid-area: 4 / 2 / 6 / 3;
-  }
-  `}
-  ${(props) =>
-    props.className[1] === 'user_data' &&
-    `
-    @media only screen and (min-width: 740px) {
-      grid-area: 2 / 2 / 4 / 3;
-    align-self: flex-end;
-  }
-  `}
-  ${(props) =>
-    props.className[1] === 'user_upcoming' &&
-    `
-    @media only screen and (min-width: 740px) {
-    grid-area: 4 / 1 / 6 / 2;
-  }
-  `}
 `;
 
 export default FakeButtonStyled;

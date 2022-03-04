@@ -17,6 +17,11 @@ a{text-decoration:none}
         display: none !important;
     }
 }
+.desktop_only {
+    @media only screen and (max-width: 1600px) {
+        display: none;
+    }
+}
 
 body {
     background: ${({ theme }) => theme.white};
