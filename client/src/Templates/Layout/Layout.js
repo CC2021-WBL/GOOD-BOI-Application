@@ -1,4 +1,5 @@
 import Footer from '../../Molecules/Footer/Footer';
+import GridWrapper from './../../Styles/GridWrapper';
 import NavDesktop from '../../Organisms/DesktopNavbar/NavDesktop';
 import NavElement from '../../Organisms/NavElement/NavElement';
 import { Outlet } from 'react-router-dom';
@@ -12,8 +13,10 @@ const Layout = ({ withSettings }) => {
   // const height = useWindowHeight();
   return (
     <>
-      <NavDesktop />
-      <NavElement />
+      <GridWrapper desktop="1/1/2/6" tablet="1/1/2/6">
+        <NavDesktop />
+      </GridWrapper>
+      {/* <NavElement mobile_only /> */}
       <Outlet />
       {/* {Math.abs(initHeight - height.height) <= 150 ? <GhostFooterStyled /> : ``} */}
       {withSettings ? <Footer withSettings /> : <Footer />}

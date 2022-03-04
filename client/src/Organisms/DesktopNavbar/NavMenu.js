@@ -4,9 +4,9 @@ import { FaChevronDown } from 'react-icons/fa';
 import { FaChevronUp } from 'react-icons/fa';
 import NavCornerMenu from './NavCornerMenu';
 import NavMenuStyled from './NavMenuStyled';
-import ProfilePicture from '../ProfilePicture';
+import ProfilePicture from './ProfilePicture';
 import styled from 'styled-components';
-import useClickOutside from '../../../Hooks/useClickOutside';
+import useClickOutside from '../../Hooks/useClickOutside';
 
 const NavButtonWrapper = styled.div`
   height: 61px;
