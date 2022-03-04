@@ -1,12 +1,12 @@
 import { ReactComponent as AppLogoSVG } from '../../Assets/AppLogoSVG.svg';
 import ButtonsWrapperStyled from './ButtonsWrapperStyled';
 import FakeButton from './../../Atoms/FakeButton/FakeButton';
-import GoodBoiLogo from './../GoodBoiLogo';
+import GoodBoiLogo from './GoodBoiLogo';
 import NavInnerStyled from './NavInnerStyled';
 import NavLinkStyled from './NavLinkStyled';
 import NavMenu from './NavMenu';
 import NavWrapperStyled from './NavGridWrapperStyled';
-import { UserDataContext } from './../../../Context/UserDataContext';
+import { UserDataContext } from '../../Context/UserDataContext';
 import { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 
