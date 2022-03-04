@@ -1,8 +1,8 @@
-import propTypes from 'prop-types';
-import { Outlet } from 'react-router-dom';
-
 import Footer from '../../Molecules/Footer/Footer';
+import NavDesktop from '../../Organisms/DesktopNavbar/NavDesktop';
 import NavElement from '../../Organisms/NavElement/NavElement';
+import { Outlet } from 'react-router-dom';
+import propTypes from 'prop-types';
 
 // import useWindowHeight from '../../Tools/useWindowHeight';
 
@@ -12,6 +12,7 @@ const Layout = ({ withSettings }) => {
   // const height = useWindowHeight();
   return (
     <>
+      <NavDesktop />
       <NavElement />
       <Outlet />
       {/* {Math.abs(initHeight - height.height) <= 150 ? <GhostFooterStyled /> : ``} */}
