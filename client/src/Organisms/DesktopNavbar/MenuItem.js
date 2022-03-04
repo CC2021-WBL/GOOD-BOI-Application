@@ -1,5 +1,5 @@
 import MenuItemStyled from './MenuItemStyled';
-import NavLinkStyled from './../NavLinkStyled';
+import NavLinkStyled from './NavLinkStyled';
 import propTypes from 'prop-types';
 
 const MenuItem = (props) => {

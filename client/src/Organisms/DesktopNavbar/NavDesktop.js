@@ -3,7 +3,7 @@ import ButtonsWrapperStyled from '../ButtonsWrapperStyled';
 import FakeButton from './../../../Atoms/FakeButton/FakeButton';
 import GoodBoiLogo from './../GoodBoiLogo';
 import NavInnerStyled from './NavInnerStyled';
-import NavLinkStyled from './../NavLinkStyled';
+import NavLinkStyled from './NavLinkStyled';
 import NavMenu from './NavMenu';
 import NavWrapperStyled from './NavGridWrapperStyled';
 import { UserDataContext } from './../../../Context/UserDataContext';
