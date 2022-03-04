@@ -1,5 +1,8 @@
 const express = require('express');
-const { registerContest } = require('../Controllers/contestControllers');
+const {
+  registerContest,
+  getContests,
+} = require('../Controllers/contestControllers');
 const {
   isAdminStrict,
   isManagerOrAdmin,
@@ -27,8 +30,8 @@ router.get('/classes/:contestId', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const contests = await Contest.find();
-    res.json(contests);
+    const contests = await getContests(req, res);
+    res.status(200).json(contests);
   } catch (error) {
     res.status(500).json({ message: error });
   }

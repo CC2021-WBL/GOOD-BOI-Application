@@ -17,6 +17,7 @@ const userReducer = (state, action) => {
         userName: null,
         userSurname: null,
         roles: null,
+        selectedRole: null,
       };
     case USER_ACTIONS.UPDATE_FIELD:
       return {

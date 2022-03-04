@@ -1,3 +1,4 @@
+const { forContestCard } = require('../Consts/selects');
 const Contest = require('../Model/Contest');
 const { createClassesObjectArray } = require('../Tools/ModelTools');
 
@@ -28,6 +29,67 @@ async function registerContest(req, res) {
   }
 }
 
+// not optimal! works but could be written better, in progress
+async function getContests(req, res) {
+  let data;
+  try {
+    if (req.query.taker) {
+      switch (req.query.taker) {
+        case 'card':
+          data = await Contest.find().select(forContestCard);
+          break;
+        default:
+          break;
+      }
+    } else {
+      data = await Contest.find();
+    }
+    if (!data) {
+      res.status(404).json({ message: 'not found contests' });
+    } else {
+      return data;
+    }
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+}
+
+//TEST PHASE
+/* async function getContests(req, res) {
+  let data;
+  try {
+    if (req.query.taker) {
+      switch (req.query.taker) {
+        case 'card':
+          if (req.query.user) {
+            data = await Contest.find({
+              obedienceClasses: {
+                participants: { participantId: req.query.user },
+              },
+            }).select(forContestCard);
+          } else {
+            data = await Contest.find().select(forContestCard);
+          }
+
+          break;
+
+        default:
+          break;
+      }
+    } else {
+      data = await Contest.find();
+    }
+    if (!data) {
+      res.status(404).json({ message: 'not found contests' });
+    } else {
+      return data;
+    }
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+} */
+
 module.exports = {
   registerContest,
+  getContests,
 };
