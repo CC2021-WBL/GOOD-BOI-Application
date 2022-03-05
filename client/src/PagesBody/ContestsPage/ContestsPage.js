@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 
 import { CONTEST_ACTIONS } from '../../Consts/reducersActions';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
@@ -9,10 +9,12 @@ import FilterLabel from '../../Molecules/FilterLabel/FilterLabel';
 import { TIME } from '../../Consts/infoLabelConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
+import { requestOptionsGET } from '../../FetchData/requestOptions';
 import resForContestPage from '../../Data/MongoDBMock/responseFromContestsToContestsPage';
 import { useLocation } from 'react-router-dom';
 
 const ContestsPage = () => {
+  const rawDataFromDB = useRef(null);
   const [contestData, setContestData] = useState(null);
   const [toggle, setToggle] = useState(false);
   const [selectedMode, setSelectedMode] = useState(null);
@@ -27,10 +29,16 @@ const ContestsPage = () => {
     }
   }, []);
 
-  // mock for getting data from DB for current user (with mock result for request api/contests?userId=matylda1234)
   useEffect(() => {
+    fetch('http://localhost:27020/api/contests/?taker=card', requestOptionsGET)
+      .then((response) => response.json())
+      .then((result) => {
+        rawDataFromDB.current = result;
+        console.log(rawDataFromDB.current);
+      })
+      .catch((error) => console.log('error', error));
+
     if (locationPath.state && locationPath.state.contestContent === 'results') {
-      console.log('Will be selected by ' + state.userId); //is left intentionally
       setContestData(
         resForContestPage.filter((contest) => {
           return contest.participants.includes(state.userId);

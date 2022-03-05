@@ -7,6 +7,7 @@ import { DogContext } from '../../Context/DogContext';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import { ROLE_NAME } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
+import { requestOptionsGET } from '../../FetchData/requestOptions';
 
 const UserDogPage = () => {
   const { state, dispatch } = useContext(UserDataContext);
@@ -15,15 +16,9 @@ const UserDogPage = () => {
   const { dogDispatch } = useContext(DogContext);
 
   useEffect(() => {
-    const requestOptions = {
-      method: 'GET',
-      redirect: 'follow',
-      credentials: 'include',
-    };
-
     fetch(
       `http://localhost:27020/api/users/dogs/${state.userId}`,
-      requestOptions,
+      requestOptionsGET,
     )
       .then((response) => response.json())
       .then((result) => {

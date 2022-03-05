@@ -9,6 +9,7 @@ import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
 import { UserDataContext } from '../../Context/UserDataContext';
 import renderDogData from '../../Tools/renderDogData';
+import { requestOptionsGET } from '../../FetchData/requestOptions';
 import { useNavigate } from 'react-router-dom';
 
 const DogData = ({ id }) => {
@@ -20,13 +21,7 @@ const DogData = ({ id }) => {
   const { contestState } = useContext(ContestContext);
 
   useEffect(() => {
-    const requestOptions = {
-      method: 'GET',
-      redirect: 'follow',
-      credentials: 'include',
-    };
-
-    fetch(`http://localhost:27020/api/dogs/${id}`, requestOptions)
+    fetch(`http://localhost:27020/api/dogs/${id}`, requestOptionsGET)
       .then((response) => response.json())
       .then((result) => {
         setDogData(result);

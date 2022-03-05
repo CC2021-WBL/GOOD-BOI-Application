@@ -6,6 +6,7 @@ import { UserDataContext } from '../../Context/UserDataContext';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
 import propTypes from 'prop-types';
+import { requestOptionsGET } from '../../FetchData/requestOptions';
 
 const UserProfileData = ({ withEdit, initialState }) => {
   const navigate = useNavigate();
@@ -41,13 +42,7 @@ const UserProfileData = ({ withEdit, initialState }) => {
     if (!isAuthenticated) {
       navigate('/login');
     } else {
-      const requestOptions = {
-        method: 'GET',
-        redirect: 'follow',
-        credentials: 'include',
-      };
-
-      fetch(`http://localhost:27020/api/users/${userData}`, requestOptions)
+      fetch(`http://localhost:27020/api/users/${userData}`, requestOptionsGET)
         .then((response) => response.json())
         .then((result) => {
           if (!result) {

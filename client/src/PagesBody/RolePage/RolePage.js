@@ -13,6 +13,7 @@ import ForbiddenEntryPage from '../ForbiddenEntryPage/ForbiddenEntryPage';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { createURLForRolePage } from '../../Tools/UrlCreators';
+import { requestOptionsGET } from '../../FetchData/requestOptions';
 import { useNavigate } from 'react-router-dom';
 
 const RolePage = () => {
@@ -51,13 +52,8 @@ const RolePage = () => {
 
   const handleLogoutClick = (event) => {
     event.preventDefault();
-    const requestOptions = {
-      method: 'GET',
-      redirect: 'follow',
-      credentials: 'include',
-    };
 
-    fetch('http://localhost:27020/api/users/logout', requestOptions)
+    fetch('/api/users/logout', requestOptionsGET)
       .then((response) => response.text())
       .then((result) => {
         dispatch({ type: 'LOG_OUT', index: 1 });

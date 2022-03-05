@@ -68,7 +68,7 @@ async function finishClass(req, res) {
 }
 
 // not optimal! works but could be written better, in progress
-async function getContests(req, res) {
+/* async function getContests(req, res) {
   let data;
   try {
     if (req.query.taker) {
@@ -90,32 +90,29 @@ async function getContests(req, res) {
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
-}
+} */
 
 //TEST PHASE
-/* async function getContests(req, res) {
+async function getContests(req, res) {
   let data;
   try {
-    if (req.query.taker) {
-      switch (req.query.taker) {
-        case 'card':
-          if (req.query.user) {
-            data = await Contest.find({
-              obedienceClasses: {
-                participants: { participantId: req.query.user },
-              },
-            }).select(forContestCard);
-          } else {
-            data = await Contest.find().select(forContestCard);
-          }
+    switch (req.query.taker) {
+      case 'card':
+        if (req.query.user) {
+          data = await Contest.find({
+            obedienceClasses: {
+              participants: { participantId: req.query.user },
+            },
+          }).select(forContestCard);
+        } else {
+          data = await Contest.find().select(forContestCard);
+        }
 
-          break;
+        break;
 
-        default:
-          break;
-      }
-    } else {
-      data = await Contest.find();
+      default:
+        data = await Contest.find();
+        break;
     }
     if (!data) {
       res.status(404).json({ message: 'not found contests' });
@@ -125,7 +122,7 @@ async function getContests(req, res) {
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
-} */
+}
 
 module.exports = {
   registerContest,

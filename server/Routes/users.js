@@ -15,11 +15,9 @@ const {
 router.post('/register', async (req, res) => {
   try {
     const savedUser = await userDbFunc.registerParticipant(req, res);
-    const jwt = passwordTools.issueJWT(savedUser);
     res.status(201).json({
       success: true,
       user: savedUser,
-      token: jwt.token,
     });
   } catch (error) {
     res.status(400).send(error.message);

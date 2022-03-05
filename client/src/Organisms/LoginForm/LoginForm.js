@@ -9,6 +9,7 @@ import InputField from '../../Molecules/InputField/InputField';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import { USER_ACTIONS } from '../../Consts/reducersActions';
 import { UserDataContext } from '../../Context/UserDataContext';
+import { generateRequestOptionsForLogin } from '../../FetchData/requestOptions';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -20,26 +21,10 @@ const LoginForm = () => {
     event.preventDefault();
     const data = { email, password };
 
-    const myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json');
-
-    const raw = JSON.stringify({
-      email: data.email,
-      password: data.password,
-    });
-
-    const requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow',
-      credentials: 'include',
-    };
-
     try {
       const response = await fetch(
-        'http://localhost:27020/api/users/login',
-        requestOptions,
+        '/api/users/login',
+        generateRequestOptionsForLogin(data),
       );
       const result = await response.json();
 
