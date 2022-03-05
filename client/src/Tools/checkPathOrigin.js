@@ -74,6 +74,12 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
           label: `Zakończone`,
         };
         break;
+      case 'manager':
+        data = {
+          text: 'Zarządzaj zawodami',
+          label: 'Co chcesz zrobić?',
+        };
+        break;
       case 'dog-submit':
         if (!contestName) {
           data = { text: 'Zgłoś Psa', label: `Wybierz psa` };
