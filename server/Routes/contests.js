@@ -11,6 +11,7 @@ const {
   isManagerOrAdmin,
   auth,
   blockIfPublic,
+  justStaffManagerOrAdmin,
 } = require('../Middleware/authMiddleware');
 const Contest = require('../Model/Contest');
 const router = express.Router();
@@ -72,36 +73,51 @@ router.post(
   },
 );
 
-router.patch('/:contestId', async (req, res) => {
-  try {
-    const contest = await updateContest(req, res);
-    res.status(201).send(contest);
-  } catch (error) {
-    console.log(error);
-    res.send(error.message);
-  }
-});
+router.patch(
+  '/:contestId',
+  blockIfPublic,
+  isManagerOrAdmin,
+  async (req, res) => {
+    try {
+      const contest = await updateContest(req, res);
+      res.status(201).send(contest);
+    } catch (error) {
+      console.log(error);
+      res.send(error.message);
+    }
+  },
+);
 
-router.patch('/:contestId/:classNumber', async (req, res) => {
-  try {
-    const contest = await finishClass(req, res);
-    res.status(201).send(contest);
-  } catch (error) {
-    console.log(error);
-    res.send(error.message);
-  }
-});
+router.patch(
+  '/:contestId/:classNumber',
+  blockIfPublic,
+  justStaffManagerOrAdmin,
+  async (req, res) => {
+    try {
+      const contest = await finishClass(req, res);
+      res.status(201).send(contest);
+    } catch (error) {
+      console.log(error);
+      res.send(error.message);
+    }
+  },
+);
 
 //Delete contest
-router.delete('/:contestId', blockIfPublic, isAdminStrict, async (req, res) => {
-  try {
-    const removedContest = await Contest.deleteOne({
-      _id: req.params.contestId,
-    });
-    res.status(200).send(removedContest);
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-});
+router.delete(
+  '/:contestId',
+  blockIfPublic,
+  isManagerOrAdmin,
+  async (req, res) => {
+    try {
+      const removedContest = await Contest.deleteOne({
+        _id: req.params.contestId,
+      });
+      res.status(200).send(removedContest);
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  },
+);
 
 module.exports = router;
