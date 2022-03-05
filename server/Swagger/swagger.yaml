@@ -1,0 +1,388 @@
+tags:
+  - name: contest
+    description: Everything about contests
+  - name: dog
+    description: Everything about dogs
+  - name: participant
+    description: Everything about participants
+  - name: result
+    description: Everything about results
+  - name: obedience class
+    description: Everything about obedienceClasses
+
+paths:
+  /contests:
+    get:
+      tags:
+        - contest
+      summary: Returns the list of contests.
+      responses:
+        200:
+          description: The list of all contests
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contest'
+  /contests/{contestId}:
+    get:
+      tags:
+        - contest
+      summary: Returns contest
+      parameters:
+        - name: contestId
+          in: path
+          description: ID of contest
+          required: true
+          type: string
+          example: '621d5988d912727b6bd6ffd1'
+      responses:
+        200:
+          description: The list of all contests.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contest'
+    delete:
+      tags:
+        - contest
+      summary: Delete contest.
+      parameters:
+        - name: contestId
+          in: path
+          description: ID of contest to delete
+          required: true
+          type: string
+          example: '62213a9897a2944feec53145'
+      responses:
+        200:
+          description: Contest is deleted.
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Contest'
+    patch:
+      tags:
+        - contest
+      summary: Update contest.
+      parameters:
+        - name: contestId
+          in: path
+          description: ID of contest to update
+          required: true
+          type: string
+          example: '62213a9897a2944feec53145'
+      responses:
+        201:
+          description: Contest is updated.
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Contest'
+  /contests/classes/{contestId}:
+    get:
+      tags:
+        - obedience class
+      summary: Returns the list of obedience classes in current contest.
+      parameters:
+        - name: contestId
+          in: path
+          description: ID of contest to return
+          required: true
+          type: string
+          example: '62213a9897a2944feec53145'
+      responses:
+        200:
+          description: The list of all classes in current contest.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ObedienceClass'
+  /contests/{contestId}/{classNumber}:
+    patch:
+      tags:
+        - obedience class
+      summary: Change isFinished property in obedience class.
+      parameters:
+        - name: contestId
+          in: path
+          description: ID of contest
+          required: true
+          type: string
+          example: '62213a9897a2944feec53145'
+        - name: classNumber
+          in: path
+          style: form
+          description: Obedience class number
+          required: true
+          type: string
+          example: '2'
+      responses:
+        201:
+          description: IsFinished property has been changed.
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ObedienceClass'
+  /register/{userId}:
+    post:
+      tags:
+        - contest
+      summary: Adds a new contest
+      parameters:
+        - name: userId
+          in: path
+          description: ID of contest creator
+          required: true
+          schema:
+            $ref: '#/components/schemas/Participant'
+      responses:
+        201:
+          description: The contest has been added to database
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Contest'
+  /results:
+    get:
+      tags:
+        - result
+      summary: Returns the list of results
+      responses:
+        200:
+          description: The list of all results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Result'
+components:
+  schemas:
+    Contest:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: The auto-generated id of the contest
+          example: '3845029d-e97d-41ed-997f-2299d09ef648'
+        contestName:
+          type: string
+          description: The name of the contest
+          example: 'Piętnasty zjazd dobrych chłopaków'
+        kennelClubDepartment:
+          type: string
+          description: The city of kennelClubDepartment
+          example: 'Warszawa'
+        startDate:
+          type: string
+          format: date-time
+          example: '1985-04-12 14:10'
+        endDate:
+          type: string
+          format: date-time
+          example: '1985-04-12 14:10'
+        applicationOpenDate:
+          type: string
+          format: date-time
+          example: '1985-04-12 14:10'
+        applicationClosedDate:
+          type: string
+          format: date-time
+          example: '1985-04-12 14:10'
+        address:
+          type: object
+          $ref: '#/components/schemas/Adress'
+        judges:
+          type: array
+          items:
+            type: string
+          default: [ ]
+        steward:
+          type: string
+        manager:
+          type: object
+          $ref: '#/components/schemas/Participant'
+        feePLN:
+          type: number
+        amountOfApplications:
+          type: number
+          default: 0
+        maxAmountOfApplications:
+          type: number
+        ObedienceClasses:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObedienceClass'
+    Dog:
+      type: object
+      properties:
+        dogName:
+          type: string
+        kennelName:
+          type: string
+        pkr:
+          type: string
+        registrationNumber:
+          type: string
+        breed:
+          type: string
+        dateOfBirth:
+          type: string
+          format: date-time
+          example: '2007-03-11 12:10'
+        color:
+          type: number
+        chipOrTatoo:
+          type: number
+        sex:
+          type: sex
+          enum:
+            - pies
+            - suka
+        owner:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Result'
+    Participant:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        phoneNumber:
+          type: string
+        participantName:
+          type: string
+        participantSurname:
+          type: string
+        adress:
+          type: object
+          $ref: '#/components/schemas/Adress'
+        dogs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dog'
+        portalRoles:
+          type: array
+          items:
+            type: string
+          default: [ 'participant' ]
+    ParticipantDog:
+      type: object
+      properties:
+        dogId:
+          type: object
+          $ref: '#/components/schemas/Dog'
+        dogName:
+          type: string
+    Adress:
+      type: object
+      properties:
+        country:
+          type: string
+          default: 'Polska'
+        city:
+          type: string
+        street:
+          type: string
+        numberOfHouse:
+          type: string
+        postalCode:
+          type: string
+    ObedienceClass:
+      type: object
+      properties:
+        classNumber:
+          type: number
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+        isFinished:
+          type: boolean;
+          default: false
+        participants:
+          type: array
+          items:
+            $ref: '#/components/schemas/InsideClassSchema'
+    InsideClassSchema:
+      type: object
+      properties:
+        dogId:
+          type: object
+          $ref: '#/components/schemas/Dog'
+        dogName:
+          type: string
+        participantId:
+          type: object
+          $ref: '#/components/schemas/Participant'
+        resultId:
+          type: object
+          $ref: '#/components/schemas/Result'
+    Result:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: The auto-generated id of the result
+          example: '3845029d-e97d-41ed-997f-2299d09ef648'
+        contestId:
+          type: object
+          $ref: '#/components/schemas/Contest'
+          description: The id of the contest
+          example: 'a0347677-c3c9-4edc-9d46-fed4a958fdc2'
+        contestName:
+          type: string
+          description: The name of the contest
+          example: 'Piętnasty zjazd dobrych chłopaków'
+        obedienceClass:
+          type: number
+          description: Obedience class
+          example: 0
+        dogId:
+          type: object
+          $ref: '#/components/schemas/Dog'
+          description: The id of the dog taken from pkr
+          example: 'VIII-40407'
+        dogName:
+          type: string
+          description: The name of the dog
+          example: 'Woof'
+        participantId:
+          type: object
+          $ref: '#/components/schemas/Participant'
+          description: The id of the participant/user
+          example: 'matylda1234'
+        summaryResult:
+          type: number
+          description: Summary result in contest
+          example: 130
+        evaluation:
+          type: string
+          description: Rating, evaluation of dog
+          example: 'doskonała'
+        specialState:
+          type: string
+          description: Disqualified or other special state
+          example: 'dyskwalifikacja'
+        exercises:
+          type: array
+          description: Exercises with results
+          example: '[]'
