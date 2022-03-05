@@ -36,6 +36,7 @@ async function updateSomeDogProps(req, res) {
     propsToUpdate.forEach((element) => {
       dog[element] = req.body[element];
     });
+    dog.updatedAt = new Date();
     await dog.save();
     return dog;
   } catch (error) {
