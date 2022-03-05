@@ -21,7 +21,7 @@ router.get('/general/:contestId/:classId', async (req, res) => {
     res.status(200).send(summResultsAndName);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: error });
+    res.status(500).send(error.message);
   }
 });
 
@@ -41,8 +41,7 @@ router.get(
         res.status(401).json({ success: false, message: 'unauthorized' });
       }
     } catch (error) {
-      res.json({ message: error });
-      res.status(500).send('data for results page');
+      res.status(500).send(error.message);
     }
   },
 );
@@ -57,7 +56,7 @@ router.post(
       const result = await registerResults(req, res);
       res.status(201).json(result);
     } catch (error) {
-      res.status(400).json({ message: error });
+      res.status(400).send(error.message);
     }
   },
 );
@@ -72,8 +71,7 @@ router.patch(
       const result = await updateSomeResults(req, res);
       res.status(201).send(result);
     } catch (error) {
-      console.log(error);
-      res.send(error.message);
+      res.status(400).send(error.message);
     }
   },
 );

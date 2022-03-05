@@ -53,7 +53,7 @@ router.patch('/:userId', blockIfPublic, isUserOrAdmin, async (req, res) => {
     const updatedUser = await userDbFunc.updateUserData(req, res);
     res.status(200).send(updatedUser);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).send(error.message);
   }
 });
 
@@ -81,7 +81,7 @@ router.get(
         res.status(404).json({ message: 'no dogs for current user' });
       }
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      res.status(500).send(error.message);
     }
   },
 );

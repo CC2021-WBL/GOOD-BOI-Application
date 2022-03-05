@@ -30,7 +30,7 @@ router.post(
       await updateDogsArray(req, res, savedDog);
       res.status(201).json(savedDog);
     } catch (error) {
-      res.status(400).json({ message: error.message });
+      res.status(400).send(error.message);
     }
   },
 );
@@ -45,8 +45,7 @@ router.patch(
       const dog = await updateSomeDogProps(req, res);
       res.status(201).send(dog);
     } catch (error) {
-      console.log(error);
-      res.send(error.message);
+      res.status(400).send(error.message);
     }
   },
 );
@@ -61,7 +60,7 @@ router.put(
       const dog = await updateAllDogData(req, res);
       res.status(201).send(dog);
     } catch (error) {
-      res.json({ message: error.message });
+      res.status(400).json(error.message);
     }
   },
 );
@@ -73,7 +72,7 @@ router.get('/:dogId', dogOwnerAllRolesOrPublic, async (req, res) => {
     res.status(200).send(dogData);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: error.message });
+    res.status(500).send(error.message);
   }
 });
 
@@ -87,7 +86,7 @@ router.delete(
       const removedDog = await deleteDog(req, res);
       res.status(200).send(removedDog);
     } catch (error) {
-      res.status(502).res.json({ message: error.message });
+      res.status(502).res.send(error.message);
     }
   },
 );
