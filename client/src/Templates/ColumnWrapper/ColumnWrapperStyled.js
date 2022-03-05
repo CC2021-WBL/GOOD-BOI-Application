@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const ColumnWrapperStyled = styled.div`
+  grid-area: 3 / 1 / 4 / 2;
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -16,7 +17,17 @@ const ColumnWrapperStyled = styled.div`
       display: flex;
       width: 680px;
       margin: 85px 0 0 0;
-    }
+    }}
+  &.manager-page {
+    padding: 2.2rem 1rem 0 1rem;
+  }
+
+  @media only screen and (min-width: 800px) {
+    grid-area: 3 / 2 / 4 / 3;
+    /* overflow: scroll; */
+  }
+  @media only screen and (min-width: 1600px) {
+    grid-area: 3 / 3 / 4 / 4;
   }
 `;
 

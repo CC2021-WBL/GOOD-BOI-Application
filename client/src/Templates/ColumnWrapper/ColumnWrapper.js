@@ -6,7 +6,7 @@ const ColumnWrapper = ({
   paddingLeftRight = 0,
   paddingTop = 0,
   paddingBottom = 0,
-  className
+  className 
 }) => {
   return (
     <ColumnWrapperStyled
