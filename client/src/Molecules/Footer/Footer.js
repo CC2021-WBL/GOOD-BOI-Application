@@ -1,12 +1,13 @@
-import propTypes from 'prop-types';
-import { useContext } from 'react';
+import { Copy, DevsLogo, FooterStyled, LogoStyled } from './FooterStyled';
 
+import FooterDesktop from './FooterDesktop';
 import FooterProfileButton from '../../Atoms/FooterProfileButton/FooterProfileButton';
 import GridWrapper from '../../Styles/GridWrapper';
-import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
-import useWindowHeight from '../../Tools/useWindowHeight';
-import { Copy, DevsLogo, FooterStyled, LogoStyled } from './FooterStyled';
 import { UserDataContext } from '../../Context/UserDataContext';
+import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
+import propTypes from 'prop-types';
+import { useContext } from 'react';
+import useWindowHeight from '../../Tools/useWindowHeight';
 
 const initHeight = window.innerHeight;
 
@@ -19,7 +20,8 @@ const Footer = ({ withSettings }) => {
   if (Math.abs(initHeight - height.height) <= 500) {
     return (
       <GridWrapper mobile="4 / 1 / 5 / 2" tablet="4 / 1 / 5 / -1" navFoot>
-        <FooterStyled>
+        <FooterDesktop />
+        <FooterStyled className="mobile_only">
           <a
             href="https://github.com/CC2021-WBL"
             target="_blank"
