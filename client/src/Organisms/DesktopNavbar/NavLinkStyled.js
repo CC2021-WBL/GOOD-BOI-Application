@@ -14,6 +14,7 @@ const NavLinkStyled = styled(NavLink)`
   width: 100%;
   display: flex;
   align-items: center;
+  /* justify-content: space-between; */
   padding: 0 0 0 0.5rem;
   gap: 1rem; // gap between nav icons and text
   &:not(.active) {

@@ -1,20 +1,19 @@
+import FONTS from '../../Styles/fontsStyledComponents';
+import { device } from './../../Consts/devices';
 import styled from 'styled-components';
 
-import FONTS from '../../Styles/fontsStyledComponents';
-
 const GreyLabelStyled = styled.div`
-  grid-area: 2 / 1 / 3 / -1;
   display: flex;
   align-items: center;
   justify-content: center;
   background: ${({ theme }) => theme.grey00};
+  height: 100%; //
 
   .greyLabelText {
     color: ${({ theme }) => theme.grey800};
     ${FONTS.body_semibold};
   }
-
-  @media only screen and (min-width: 800px) {
+  @media only screen and (${device.desktop}) {
     display: grid;
     grid-template-columns: 1fr 220px minmax(360px, 1160px) 220px 1fr;
     justify-content: start;

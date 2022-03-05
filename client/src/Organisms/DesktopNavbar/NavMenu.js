@@ -1,5 +1,3 @@
-import { useRef, useState } from 'react';
-
 import { FaChevronDown } from 'react-icons/fa';
 import { FaChevronUp } from 'react-icons/fa';
 import NavButtonWrapper from './NavButtonWrapper';
@@ -8,6 +6,7 @@ import NavCornerMenuWrapper from './NavCornerMenuWrapper';
 import NavMenuStyled from './NavMenuStyled';
 import ProfilePicture from './ProfilePicture';
 import useClickOutside from '../../Hooks/useClickOutside';
+import { useState } from 'react';
 
 const NavMenu = () => {
   const [menuOpen, setMenuOpen] = useState(false);

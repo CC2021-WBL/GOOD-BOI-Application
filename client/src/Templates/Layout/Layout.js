@@ -13,10 +13,7 @@ const Layout = ({ withSettings }) => {
   // const height = useWindowHeight();
   return (
     <>
-      <GridWrapper desktop="1/1/2/6" tablet="1/1/2/6">
-        <NavDesktop />
-      </GridWrapper>
-      {/* <NavElement mobile_only /> */}
+      <NavElement />
       <Outlet />
       {/* {Math.abs(initHeight - height.height) <= 150 ? <GhostFooterStyled /> : ``} */}
       {withSettings ? <Footer withSettings /> : <Footer />}
