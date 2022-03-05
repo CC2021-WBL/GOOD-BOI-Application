@@ -1,33 +1,45 @@
 const express = require('express');
-const { registerContest } = require('../Controllers/contestControllers');
+const {
+  registerContest,
+  updateContest,
+  finishClass,
+} = require('../Controllers/contestControllers');
 const Contest = require('../Model/Contest');
 const router = express.Router();
 
-// Get all contests
-// router.get("/", async (req, res) => {
-//   try {
-//     const contests = await Contest.find();
-//     res.json(contests);
-//   } catch (error) {
-//     res.json({ message: error });
-//   }
-//   res.status(500).send("data for contests page");
-// });
-//
-// //Get current contest
-// router.get("/:contestId", async (req, res) => {
-//   try {
-//     const contest = await Contest.findById();
-//     if (!contest) {
-//       res.status(404).end();
-//     }
-//     res.status(200).send(contest);
-//   } catch (error) {
-//     res.status(500).send(error.message);
-//   }
-// });
+router.get('/', async (req, res) => {
+  try {
+    const contests = await Contest.find();
+    if (!contests) {
+      res.status(404).end();
+    }
+    return res.json(contests);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
 
-// #get classes for current contest -
+router.get('/:contestId', async (req, res) => {
+  try {
+    const contest = await Contest.findById(req.params.contestId);
+    if (!contest) {
+      res.status(404).end();
+    }
+    res.status(200).send(contest);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
+router.post('/register/:userId', async (req, res) => {
+  try {
+    const savedContest = await registerContest(req, res);
+    res.status(201).json(savedContest);
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
+});
+
 router.get('/classes/:contestId', async (req, res) => {
   try {
     const { obedienceClasses } = await Contest.findById(
@@ -43,12 +55,23 @@ router.get('/classes/:contestId', async (req, res) => {
   }
 });
 
-router.post('/register/:userId', async (req, res) => {
+router.patch('/:contestId', async (req, res) => {
   try {
-    const savedContest = await registerContest(req, res);
-    res.status(201).json(savedContest);
+    const contest = await updateContest(req, res);
+    res.status(201).send(contest);
   } catch (error) {
-    res.status(400).json({ message: error });
+    console.log(error);
+    res.send(error.message);
+  }
+});
+
+router.patch('/:contestId/:classNumber', async (req, res) => {
+  try {
+    const contest = await finishClass(req, res);
+    res.status(201).send(contest);
+  } catch (error) {
+    console.log(error);
+    res.send(error.message);
   }
 });
 
