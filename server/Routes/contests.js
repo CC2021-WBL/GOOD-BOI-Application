@@ -1,8 +1,11 @@
 const express = require('express');
 const {
   registerContest,
+  updateContest,
+  finishClass,
   getContests,
 } = require('../Controllers/contestControllers');
+
 const {
   isAdminStrict,
   isManagerOrAdmin,
@@ -12,7 +15,7 @@ const {
 const Contest = require('../Model/Contest');
 const router = express.Router();
 
-// #get classes for current contest -
+// #get classes for current contest
 router.get('/classes/:contestId', async (req, res) => {
   try {
     const { obedienceClasses } = await Contest.findById(
@@ -28,12 +31,13 @@ router.get('/classes/:contestId', async (req, res) => {
   }
 });
 
+// Get many contests
 router.get('/', async (req, res) => {
   try {
     const contests = await getContests(req, res);
     res.status(200).json(contests);
   } catch (error) {
-    res.status(500).json({ message: error });
+    res.status(500).send(error.message);
   }
 });
 
@@ -63,10 +67,30 @@ router.post(
       const savedContest = await registerContest(req, res);
       res.status(201).json(savedContest);
     } catch (error) {
-      res.status(400).json({ message: error });
+      res.status(400).send(error.message);
     }
   },
 );
+
+router.patch('/:contestId', async (req, res) => {
+  try {
+    const contest = await updateContest(req, res);
+    res.status(201).send(contest);
+  } catch (error) {
+    console.log(error);
+    res.send(error.message);
+  }
+});
+
+router.patch('/:contestId/:classNumber', async (req, res) => {
+  try {
+    const contest = await finishClass(req, res);
+    res.status(201).send(contest);
+  } catch (error) {
+    console.log(error);
+    res.send(error.message);
+  }
+});
 
 //Delete contest
 router.delete('/:contestId', blockIfPublic, isAdminStrict, async (req, res) => {

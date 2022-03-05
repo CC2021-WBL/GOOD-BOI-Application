@@ -62,6 +62,9 @@ const swaggerOptions = {
       {
         url: `http://localhost:${PORT}`,
       },
+      {
+        url: `https://good-boi-application-lime.vercel.app`,
+      },
     ],
   },
   apis: ['./server/Routes/*.js', './server/Swagger/*.yaml'],

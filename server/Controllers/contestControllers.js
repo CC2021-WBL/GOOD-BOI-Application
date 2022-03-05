@@ -29,6 +29,44 @@ async function registerContest(req, res) {
   }
 }
 
+async function updateContest(req, res) {
+  try {
+    const propsToUpdate = Object.keys(req.body);
+    if (propsToUpdate.length === 0) {
+      res.status(204).json({ message: 'no data to update' });
+    }
+    const contest = await Contest.findById(req.params.contestId);
+    contest.updatedAt = new Date();
+    propsToUpdate.forEach((element) => {
+      if (element === 'obedienceClasses') {
+        contest[element] = createClassesObjectArray(req.body[element]);
+      } else {
+        contest[element] = req.body[element];
+      }
+    });
+    await contest.save();
+    return contest;
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+}
+
+async function finishClass(req, res) {
+  try {
+    const { contestId, classNumber } = req.params;
+    const contest = await Contest.findById(contestId);
+    const obedienceClass = contest.obedienceClasses.find(
+      (obedienceClass) => obedienceClass.classNumber == classNumber,
+    );
+    obedienceClass.isFinished = !obedienceClass.isFinished;
+    contest.updatedAt = new Date();
+    await contest.save();
+    return contest;
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+}
+
 // not optimal! works but could be written better, in progress
 async function getContests(req, res) {
   let data;
@@ -91,5 +129,7 @@ async function getContests(req, res) {
 
 module.exports = {
   registerContest,
+  updateContest,
+  finishClass,
   getContests,
 };
