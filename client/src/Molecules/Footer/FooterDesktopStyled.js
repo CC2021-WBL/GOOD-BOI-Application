@@ -1,15 +1,9 @@
 import FONTS from '../../Styles/fontsStyledComponents';
+import { device } from './../../Consts/devices';
 import styled from 'styled-components';
 
 const FooterDesktopStyled = styled.footer`
-  /* display: flex; */
-  /* position: relative; */
-  /* bottom: 0px; */
-  width: 100%;
-  /* height: 239px; */
-  /* flex-direction: row; */
-  /* align-items: center; */
-  /* justify-content: center; */
+  display: none;
   background: ${({ theme }) => theme.grey00};
   text-align: right;
   h3 {
@@ -19,13 +13,14 @@ const FooterDesktopStyled = styled.footer`
     color: ${({ theme }) => theme.grey800};
     ${FONTS.body_semibold};
   }
-  /* &.fixed {
-    margin-top: auto;
-    position: fixed;
+
+  @media only screen and (${device.tablet}) {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
   }
-  &.relative {
-    position: relative;
-  } */
 `;
 
 export default FooterDesktopStyled;
