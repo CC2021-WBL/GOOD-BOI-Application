@@ -19,7 +19,7 @@ const UserData = () => {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:27020/api/users/${userData}`, requestOptionsGET)
+    fetch(`/api/users/${userData}`, requestOptionsGET)
       .then((response) => response.json())
       .then((result) => {
         setUserObject(result);

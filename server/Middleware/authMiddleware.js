@@ -62,7 +62,7 @@ module.exports.isManagerOrAdmin = (req, res, next) => {
   }
 };
 
-module.exports.justUserStaffOrAdmin = (req, res, next) => {
+module.exports.isUserStaffOrAdmin = (req, res, next) => {
   if (checkUser(req) || isStaff(req)) {
     next();
   } else {
@@ -70,7 +70,7 @@ module.exports.justUserStaffOrAdmin = (req, res, next) => {
   }
 };
 
-module.exports.justStaffManagerOrAdmin = (req, res, next) => {
+module.exports.isStaffManagerOrAdmin = (req, res, next) => {
   if (isStaff(req) || isManager(req)) {
     next();
   } else {
@@ -78,7 +78,7 @@ module.exports.justStaffManagerOrAdmin = (req, res, next) => {
   }
 };
 
-module.exports.dogOwnerAllRolesOrPublic = (req, res, next) => {
+module.exports.isDogOwnerAllRolesOrPublic = (req, res, next) => {
   if (!req.user) {
     req.access = 'public';
     next();
@@ -89,7 +89,7 @@ module.exports.dogOwnerAllRolesOrPublic = (req, res, next) => {
   }
 };
 
-module.exports.justDogOwnerStaffOrAdmin = (req, res, next) => {
+module.exports.isDogOwnerStaffOrAdmin = (req, res, next) => {
   if (isDogOwner(req.user, req.params.dogId) || isStaff(req)) {
     next();
   } else {
@@ -97,7 +97,7 @@ module.exports.justDogOwnerStaffOrAdmin = (req, res, next) => {
   }
 };
 
-module.exports.justDogOwnerOrAdmin = (req, res, next) => {
+module.exports.isDogOwnerOrAdmin = (req, res, next) => {
   if (isDogOwner(req.user, req.params.dogId)) {
     next();
   } else {

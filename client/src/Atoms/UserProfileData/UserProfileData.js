@@ -42,7 +42,7 @@ const UserProfileData = ({ withEdit, initialState }) => {
     if (!isAuthenticated) {
       navigate('/login');
     } else {
-      fetch(`/api/users/${userData}`, requestOptionsGET)
+      fetch(`/api/users/${userData}?taker=profile`, requestOptionsGET)
         .then((response) => response.json())
         .then((result) => {
           if (!result) {

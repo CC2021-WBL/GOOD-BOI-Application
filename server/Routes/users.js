@@ -2,11 +2,10 @@ const express = require('express');
 const router = express.Router();
 const Participant = require('../Model/Participant');
 const userDbFunc = require('../Controllers/usersControllers');
-const passwordTools = require('../Tools/passwordTools');
 const { loginAuthentication } = require('../Tools/loginAuth');
 const {
   isUserOrAdmin,
-  justUserStaffOrAdmin,
+  isUserStaffOrAdmin,
   auth,
   blockIfPublic,
 } = require('../Middleware/authMiddleware');
@@ -69,7 +68,7 @@ router.get('/:userId', async (req, res) => {
 router.get(
   '/dogs/:userId',
   blockIfPublic,
-  justUserStaffOrAdmin,
+  isUserStaffOrAdmin,
   async (req, res) => {
     try {
       const dogs = await Participant.findById(req.params.userId).select('dogs');

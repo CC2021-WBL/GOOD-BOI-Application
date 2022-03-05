@@ -14,7 +14,7 @@ module.exports.isDogOwner = (user, dogId) => {
 };
 
 module.exports.checkUser = (req) => {
-  if (req.user._id.valueOf() === req.params.userId) {
+  if (req.user && req.user._id.valueOf() === req.params.userId) {
     return true;
   } else {
     return false;
@@ -22,7 +22,7 @@ module.exports.checkUser = (req) => {
 };
 
 module.exports.isManager = (req) => {
-  if (req.user.portalRoles.includes(ROLE_NAME.MANAGER)) {
+  if (req.user && req.user.portalRoles.includes(ROLE_NAME.MANAGER)) {
     return true;
   } else {
     return false;
@@ -30,7 +30,7 @@ module.exports.isManager = (req) => {
 };
 
 module.exports.isStaff = (req) => {
-  if (req.user.portalRoles.includes(ROLE_NAME.STAFF)) {
+  if (req.user && req.user.portalRoles.includes(ROLE_NAME.STAFF)) {
     return true;
   } else {
     return false;

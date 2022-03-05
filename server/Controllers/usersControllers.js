@@ -1,3 +1,4 @@
+const { forProfilePage } = require('../Consts/selects');
 const Participant = require('../Model/Participant');
 const { generatePassword } = require('../Tools/passwordTools');
 
@@ -31,12 +32,19 @@ async function getUserData(req, res) {
   try {
     let data;
     if (req.user && req.user._id.valueOf() === req.params.userId) {
-      data = await Participant.findById(req.params.userId);
-    } else if (req.query.select) {
-      data = await Participant.findSomethingByUserId(
-        req.params.userId,
-        req.query.select,
-      );
+      if (req.query.select) {
+        data = await Participant.findSomethingByUserId(
+          req.params.userId,
+          req.query.select,
+        );
+      } else if (req.query.taker && req.query.taker === 'profile') {
+        data = await Participant.findSomethingByUserId(
+          req.params.userId,
+          forProfilePage,
+        );
+      } else {
+        data = await Participant.findById(req.params.userId);
+      }
     } else {
       data = await Participant.findById(req.params.userId).select([
         'participantName',

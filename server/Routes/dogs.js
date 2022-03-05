@@ -9,11 +9,11 @@ const {
 const { updateDogsArray } = require('../Controllers/usersControllers');
 const {
   isUserOrAdmin,
-  justDogOwnerStaffOrAdmin,
-  dogOwnerAllRolesOrPublic,
+  isDogOwnerStaffOrAdmin,
+  isDogOwnerAllRolesOrPublic,
   auth,
   blockIfPublic,
-  justDogOwnerOrAdmin,
+  isDogOwnerOrAdmin,
 } = require('../Middleware/authMiddleware');
 
 // Middleware to check JWT
@@ -39,7 +39,7 @@ router.post(
 router.patch(
   '/:dogId',
   blockIfPublic,
-  justDogOwnerStaffOrAdmin,
+  isDogOwnerStaffOrAdmin,
   async (req, res) => {
     try {
       const dog = await updateSomeDogProps(req, res);
@@ -54,7 +54,7 @@ router.patch(
 router.put(
   '/:dogId',
   blockIfPublic,
-  justDogOwnerStaffOrAdmin,
+  isDogOwnerStaffOrAdmin,
   async (req, res) => {
     try {
       const dog = await updateAllDogData(req, res);
@@ -66,7 +66,7 @@ router.put(
 );
 
 // Get data of current dog
-router.get('/:dogId', dogOwnerAllRolesOrPublic, async (req, res) => {
+router.get('/:dogId', isDogOwnerAllRolesOrPublic, async (req, res) => {
   try {
     const dogData = await getDogData(req, res);
     res.status(200).send(dogData);
@@ -77,25 +77,20 @@ router.get('/:dogId', dogOwnerAllRolesOrPublic, async (req, res) => {
 });
 
 //Delete current dog
-router.delete(
-  '/:dogId',
-  blockIfPublic,
-  justDogOwnerOrAdmin,
-  async (req, res) => {
-    try {
-      const removedDog = await deleteDog(req, res);
-      res.status(200).send(removedDog);
-    } catch (error) {
-      res.status(502).res.send(error.message);
-    }
-  },
-);
+router.delete('/:dogId', blockIfPublic, isDogOwnerOrAdmin, async (req, res) => {
+  try {
+    const removedDog = await deleteDog(req, res);
+    res.status(200).send(removedDog);
+  } catch (error) {
+    res.status(502).res.send(error.message);
+  }
+});
 
 //Get results for current dog
 router.get(
   '/results/:dogId',
   blockIfPublic,
-  justDogOwnerStaffOrAdmin,
+  isDogOwnerStaffOrAdmin,
   async (req, res) => {
     res.send('get all results for current dog');
   },

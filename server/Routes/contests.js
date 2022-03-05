@@ -7,11 +7,10 @@ const {
 } = require('../Controllers/contestControllers');
 
 const {
-  isAdminStrict,
   isManagerOrAdmin,
   auth,
   blockIfPublic,
-  justStaffManagerOrAdmin,
+  isStaffManagerOrAdmin,
 } = require('../Middleware/authMiddleware');
 const Contest = require('../Model/Contest');
 const router = express.Router();
@@ -91,7 +90,7 @@ router.patch(
 router.patch(
   '/:contestId/:classNumber',
   blockIfPublic,
-  justStaffManagerOrAdmin,
+  isStaffManagerOrAdmin,
   async (req, res) => {
     try {
       const contest = await finishClass(req, res);

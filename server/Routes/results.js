@@ -8,9 +8,9 @@ const {
 
 const {
   auth,
-  justUserStaffOrAdmin,
+  isUserStaffOrAdmin,
   blockIfPublic,
-  justStaffManagerOrAdmin,
+  isStaffManagerOrAdmin,
   isUserOrAdmin,
 } = require('../Middleware/authMiddleware');
 
@@ -31,7 +31,7 @@ router.use(auth);
 router.get(
   '/individual/:resultsId/:userId',
   blockIfPublic,
-  justUserStaffOrAdmin,
+  isUserStaffOrAdmin,
   async (req, res) => {
     try {
       const results = await Result.findById(req.params.resultsId);
@@ -65,7 +65,7 @@ router.post(
 router.patch(
   '/:resultsId',
   blockIfPublic,
-  justStaffManagerOrAdmin,
+  isStaffManagerOrAdmin,
   async (req, res) => {
     try {
       const result = await updateSomeResults(req, res);

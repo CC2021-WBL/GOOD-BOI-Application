@@ -6,3 +6,10 @@ module.exports.forContestCard = [
   'address',
   'amountOfApplications',
 ];
+
+module.exports.forProfilePage = [
+  'participantName',
+  'participantSurname',
+  'address',
+  'dogs',
+];
