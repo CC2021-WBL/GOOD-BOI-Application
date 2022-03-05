@@ -24,7 +24,7 @@ const DogFormPage = () => {
         };
 
         fetch(
-          `http://localhost:27020/api/dogs/${chosenDog.dogId}`,
+          `/api/dogs/${chosenDog.dogId}`,
           requestOptions,
         )
           .then((response) => response.json())

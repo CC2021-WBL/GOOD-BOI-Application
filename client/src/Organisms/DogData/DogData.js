@@ -21,7 +21,7 @@ const DogData = ({ id }) => {
   const { contestState } = useContext(ContestContext);
 
   useEffect(() => {
-    fetch(`http://localhost:27020/api/dogs/${id}`, requestOptionsGET)
+    fetch(`/api/dogs/${id}`, requestOptionsGET)
       .then((response) => response.json())
       .then((result) => {
         setDogData(result);

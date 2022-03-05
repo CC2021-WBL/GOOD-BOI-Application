@@ -30,7 +30,7 @@ const ContestsPage = () => {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:27020/api/contests/?taker=card', requestOptionsGET)
+    fetch('/api/contests/?taker=card', requestOptionsGET)
       .then((response) => response.json())
       .then((result) => {
         rawDataFromDB.current = result;

@@ -16,10 +16,7 @@ const UserDogPage = () => {
   const { dogDispatch } = useContext(DogContext);
 
   useEffect(() => {
-    fetch(
-      `http://localhost:27020/api/users/dogs/${state.userId}`,
-      requestOptionsGET,
-    )
+    fetch(`/api/users/dogs/${state.userId}`, requestOptionsGET)
       .then((response) => response.json())
       .then((result) => {
         setParticipantDogs(result.dogs);
