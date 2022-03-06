@@ -5,7 +5,7 @@ import BurgerMenu from '../../Organisms/BurgerMenu/BurgerMenu';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import Footer from '../../Molecules/Footer/Footer';
-import GridWrapper from '../../Styles/GridWrapper';
+import GridWrapper from '../../Templates/Layout/GridWrapper';
 import ImgWrapperStyled from './ImgWrapperStyled';
 import Logo2 from '../../Assets/Logo2.png';
 import { UserDataContext } from '../../Context/UserDataContext';
