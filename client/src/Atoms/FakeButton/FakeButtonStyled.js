@@ -51,7 +51,7 @@ const FakeButtonStyled = styled(Link)`
   &.user_profile {
     @media only screen and (min-width: 1600px) {
       justify-content: flex-start;
-      height: 170px;
+      height: 100%;
       margin: 0;
       text-align: left;
       flex-direction: column;
@@ -72,7 +72,7 @@ const FakeButtonStyled = styled(Link)`
         border-bottom: 1px solid ${({ theme }) => theme.grey200};
         border-radius: 0.75rem 0.75rem 0 0;
         background-color: ${({ theme }) => theme.white};
-        padding: 0 20px;
+        padding: 0 1.25rem;
       }
 
       .fakebtn_text {
@@ -82,7 +82,7 @@ const FakeButtonStyled = styled(Link)`
         flex-direction: column;
         justify-content: center;
         text-transform: none;
-        padding: 0 20px;
+        padding: 0 1.25rem;
       }
     }
 

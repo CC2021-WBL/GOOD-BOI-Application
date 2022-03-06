@@ -20,9 +20,9 @@ const ColumnWrapperStyled = styled.div`
     grid-area: 3 / 3 / 4 / 4;
     &.user_profile {
       display: grid;
-      gap: 20px;
+      gap: 1.25rem;
       grid-template-columns: repeat(8, 1fr);
-      grid-template-rows: 1fr repeat(2, 170px) 1fr;
+      grid-template-rows: 1fr repeat(2, 10.625rem) 1fr;
       align-items: center;
     }
   }

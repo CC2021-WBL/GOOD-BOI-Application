@@ -3,10 +3,6 @@ import propTypes from 'prop-types';
 import FakeButtonStyled from './FakeButtonStyled';
 
 const FakeButton = ({ text, paragraphText, to, state, colors, className }) => {
-  //TODO: może dodać klasę w przypadku każdego użycia fakebuttona
-  if (!className) {
-    className = 'bez klasy to rozwiązanie';
-  }
   return (
     <FakeButtonStyled
       to={to}

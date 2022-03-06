@@ -7,8 +7,6 @@ const ColumnWrapper = ({
   paddingLeftRight = 0,
   paddingTop = 0,
   paddingBottom = 0,
-  mobile,
-  desktop,
   className,
 }) => {
   return (
@@ -16,8 +14,6 @@ const ColumnWrapper = ({
       paddingLeftRight={paddingLeftRight}
       paddingTop={paddingTop}
       paddingBottom={paddingBottom}
-      mobile={mobile}
-      desktop={desktop}
       className={className}
     >
       {children}
