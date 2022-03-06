@@ -23,6 +23,7 @@ import LandingPage from './PagesBody/LandingPage/LandingPage';
 import Layout from './Templates/Layout/Layout';
 import LeaderboardPage from './PagesBody/LeaderboardPage/LeaderboardPage';
 import LoginForm from './Organisms/LoginForm/LoginForm';
+import ManagerPage from './PagesBody/ManagerPage/ManagerPage';
 import NotFoundPage from './PagesBody/NotFoundPage/NotFoundPage';
 import ParticipantDataPage from './PagesBody/ParticipantDataPage/ParticipantDataPage';
 import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
@@ -60,6 +61,7 @@ function App() {
                         <Route path="user/:userId" element={<ProfilePage />} />
                       </Route>
                       <Route element={<Layout />}>
+                        <Route path="manager" element={<ManagerPage />} />
                         <Route
                           path="settings"
                           element={
