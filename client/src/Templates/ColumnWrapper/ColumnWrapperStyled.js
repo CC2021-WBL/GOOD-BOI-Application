@@ -18,8 +18,12 @@ const ColumnWrapperStyled = styled.div`
   }
   @media only screen and (min-width: 1600px) {
     grid-area: 3 / 3 / 4 / 4;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    &.user_profile {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(8, 1fr);
+      align-items: center;
+    }
   }
 `;
 

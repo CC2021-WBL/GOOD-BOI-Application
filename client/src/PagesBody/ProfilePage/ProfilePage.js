@@ -36,12 +36,7 @@ const ProfilePage = () => {
   }, []);
 
   return (
-    <ColumnWrapper
-      paddingLeftRight={1}
-      desktop="grid-area: 2 / 2 / 8 / 12"
-      mobile="grid-area: 4 / 1 / 2 / 2"
-      className="user_profile"
-    >
+    <ColumnWrapper paddingLeftRight={1} className="user_profile">
       <ProfileCard className="user_profile" />
       <FakeButton
         to="/user-dogs"
