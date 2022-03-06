@@ -3,13 +3,13 @@ import propTypes from 'prop-types';
 import ProfileCardStyled from './ProfileCardStyled';
 import UserProfileData from '../../Atoms/UserProfileData/UserProfileData';
 
-const ProfileCard = ({ withEdit, initialState }) => {
+const ProfileCard = ({ withEdit, initialState, className }) => {
   return (
     <>
       {withEdit ? (
         <UserProfileData withEdit={withEdit} initialState={initialState} />
       ) : (
-        <ProfileCardStyled>
+        <ProfileCardStyled className={className}>
           <div className="bg-box"></div>
           <UserProfileData />
         </ProfileCardStyled>

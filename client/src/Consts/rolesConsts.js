@@ -1,14 +1,14 @@
 export const ROLES = {
   participant: {
-    roleButtonText: 'Zawodnik',
+    roleButtonText: 'Konto Zawodnika',
     roleButtonLink: '/user',
   },
   staff: {
-    roleButtonText: 'Obsługa',
+    roleButtonText: 'Konto Obsługi',
     roleButtonLink: '/contests',
   },
   manager: {
-    roleButtonText: 'Organizator',
+    roleButtonText: 'Konto Organizatora',
     roleButtonLink: '/contests',
   },
 };
