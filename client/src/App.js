@@ -20,7 +20,7 @@ import ErrorBoundary from './Tools/ErrorBoundary';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
 import { GlobalStyles } from './Styles/globalStyles';
-import Grid from './Styles/Grid';
+import Grid from './Templates/Layout/Grid';
 import InProgressPage from './PagesBody/InProgressPage/InProgressPage';
 import LandingPage from './PagesBody/LandingPage/LandingPage';
 import Layout from './Templates/Layout/Layout';
