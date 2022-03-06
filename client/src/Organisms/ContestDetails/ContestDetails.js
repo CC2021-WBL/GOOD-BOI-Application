@@ -17,7 +17,7 @@ const ContestDetails = ({ contestId }) => {
   // console.log(state);
   // const { selectedRole } = state;
   // console.log(selectedRole);
-  const selectedRole = 'participant';
+  const selectedRole = 'manager';
 
   useEffect(() => {
     setContestData(contests.find((contest) => contest.contestId === contestId));
