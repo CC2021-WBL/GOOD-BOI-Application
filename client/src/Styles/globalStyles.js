@@ -18,7 +18,7 @@ a{text-decoration:none}
     }
 }
 .desktop_only {
-    @media only screen and (max-width: 1600px) {
+    @media only screen and (max-width: 1599px) {
         display: none;
     }
 }
