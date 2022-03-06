@@ -22,6 +22,7 @@ const ColumnWrapperStyled = styled.div`
       display: grid;
       gap: 20px;
       grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: 1fr repeat(2, 170px) 1fr;
       align-items: center;
     }
   }

@@ -23,15 +23,21 @@ const ProfileCardStyled = styled.div`
 
   &.user_profile {
     @media only screen and (min-width: 1600px) {
+      height: 100%;
       flex-direction: column;
-      font-size: 22px;
-      grid-area: 1 / 7 / 3 / span 2;
-      justify-content: stretch;
-      border: 1.5px solid grey;
-      border-radius: 15px;
+      justify-content: space-around;
+      font-size: 1.375rem;
+      grid-area: 2 / 7 / span 2 / span 2;
+      border-radius: 0.9375rem;
+      margin: 0;
+      position: relative;
+      border: 1px solid ${({ theme }) => theme.grey200};
 
       .bg-box {
         right: 0;
+        top: 15%;
+        width: 10rem;
+        height: 10rem;
       }
     }
   }

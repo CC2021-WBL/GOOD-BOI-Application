@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import FONTS from '../../Styles/fontsStyledComponents';
+
 const UserProfileDataStyled = styled.div`
   display: flex;
   flex-direction: column;
@@ -30,10 +32,22 @@ const UserProfileDataStyled = styled.div`
     }
   }
 
-  @media (min-width: 740px) {
+  @media only screen and (min-width: 1600px) {
     text-align: center;
     margin-right: 0;
-    padding: 20px;
+    width: 100%;
+
+    h3 {
+      ${FONTS.h2};
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      height: 4rem;
+      top: 0;
+      border-bottom: 1px solid ${({ theme }) => theme.grey200};
+    }
   }
 `;
 

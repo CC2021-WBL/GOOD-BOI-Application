@@ -87,22 +87,22 @@ const FakeButtonStyled = styled(Link)`
     }
 
     &.user_dogs {
-      grid-area: 1 / 1 / 2 / span 3;
+      grid-area: 2 / 1 / 3 / span 3;
       align-self: flex-end;
     }
 
     &.user_contests {
-      grid-area: 2 / 4 / 3 / span 3;
+      grid-area: 3 / 4 / 4 / span 3;
       align-self: flex-start;
     }
 
     &.user_data {
-      grid-area: 1 / 4 / 2 / span 3;
+      grid-area: 2 / 4 / 3 / span 3;
       align-self: flex-end;
     }
 
     &.user_upcoming {
-      grid-area: 2 / 1 / 3 / span 3;
+      grid-area: 3 / 1 / 4 / span 3;
       align-self: flex-start;
       background-color: ${({ theme }) => theme.primary101};
       border: 1px solid ${({ theme }) => theme.primary601};
