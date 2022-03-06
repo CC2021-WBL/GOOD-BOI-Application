@@ -27,7 +27,7 @@ const NavMenu = () => {
         {menuOpen && <FaChevronUp />}
       </NavButtonWrapper>
       <NavCornerMenuWrapper className={menuOpen ? 'open' : 'close'}>
-        <NavCornerMenu onClick={() => setMenuOpen(false)} />
+        <NavCornerMenu />
       </NavCornerMenuWrapper>
     </NavMenuStyled>
   );

@@ -11,7 +11,6 @@ import GridWrapper from '../../Styles/GridWrapper';
 import { MdMenu } from 'react-icons/md';
 import NavDesktop from './../DesktopNavbar/NavDesktop';
 import { NavElementStyled } from './NavElementStyled';
-import PropTypes from 'prop-types';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { checkPathOrigin } from '../../Tools/checkPathOrigin';
 import home from '../../Assets/home.png';
@@ -56,7 +55,7 @@ const NavElement = () => {
           </GoHomeStyled>
         </NavElementStyled>
       </GridWrapper>
-      <GridWrapper desktop="1/1/2/6" tablet="1/1/2/6">
+      <GridWrapper desktop="1 / 1 / 2 / 6" tablet="1 / 1 / 2 / 6" navFoot>
         <NavDesktop />
       </GridWrapper>
       {data.label && data.label.length !== 0 && (
