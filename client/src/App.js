@@ -1,7 +1,7 @@
 import './App.css';
 
 import { Route, Routes } from 'react-router-dom';
-import { darkTheme, lightTheme } from './Styles/Themes';
+import { ThemeProvider } from 'styled-components';
 
 import BurgerMenu from './Organisms/BurgerMenu/BurgerMenu';
 import ClassChoicePage from './PagesBody/ClassChoicePage/ClassChoicePage';
@@ -9,18 +9,15 @@ import ClassCompetitorsPage from './PagesBody/ClassCompetitorsPage/ClassCompetit
 import ClassesPage from './PagesBody/ClassesPage/ClassesPage';
 import ConfirmationPage from './PagesBody/ConfirmationPage/ConfirmationPage';
 import ContactFormPage from './PagesBody/ContactFormPage/ContactFormPage';
-import { ContestContextProvider } from './Context/ContestContext';
 import ContestDetailsPage from './PagesBody/ContestDetailsPage/ContestDetailsPage';
 import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
-import { DogContextProvider } from './Context/DogContext';
 import DogDataPage from './PagesBody/DogDataPage/DogDataPage';
 import DogFormPage from './PagesBody/DogFormPage/DogFormPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
 import ErrorBoundary from './Tools/ErrorBoundary';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
-import { GlobalStyles } from './Styles/globalStyles';
-import Grid from './Styles/Grid';
+import Grid from './Templates/Layout/Grid';
 import InProgressPage from './PagesBody/InProgressPage/InProgressPage';
 import LandingPage from './PagesBody/LandingPage/LandingPage';
 import Layout from './Templates/Layout/Layout';
@@ -33,11 +30,14 @@ import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
 import RegistrationForm from './Organisms/RegistrationForm/RegistrationForm';
 import RolePage from './PagesBody/RolePage/RolePage';
 import SettingsPage from './PagesBody/SettingsPage/SettingsPage';
-import { ThemeProvider } from 'styled-components';
 import UnregisteredPage from './PagesBody/UnregisteredPage/UnregisteredPage';
 import UserDataPage from './PagesBody/UserDataPage/UserDataPage';
-import { UserDataProvider } from './Context/UserDataContext';
 import UserDogPage from './PagesBody/UserDogsPage/UserDogPage';
+import { ContestContextProvider } from './Context/ContestContext';
+import { DogContextProvider } from './Context/DogContext';
+import { GlobalStyles } from './Styles/globalStyles';
+import { UserDataProvider } from './Context/UserDataContext';
+import { darkTheme, lightTheme } from './Styles/Themes';
 import { useDarkMode } from './Hooks/useDarkMode';
 
 function App() {

@@ -4,7 +4,6 @@ import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import { DogContext } from '../../Context/DogContext';
 import DogForm from '../../Organisms/DoggoForm/DogForm';
 import { dogFormInitialState } from '../../Consts/formsInitialStates';
-import doggos from '../../Data/MongoDBMock/doggos';
 import { useNavigate } from 'react-router-dom';
 
 const DogFormPage = () => {
@@ -18,13 +17,27 @@ const DogFormPage = () => {
     let modifiedInitialState = {};
     try {
       if (chosenDog !== undefined && chosenDog !== null) {
-        const dogFromDB = doggos.find((dog) => dog.dogId === chosenDog.dogId);
-        Object.keys(dogFormInitialState).forEach((key) => {
-          modifiedInitialState[key] = dogFromDB[key];
-        });
-        console.log(modifiedInitialState);
+        const requestOptions = {
+          method: 'GET',
+          redirect: 'follow',
+          credentials: 'include',
+        };
 
-        setInitialStateOfDogForm(modifiedInitialState);
+        fetch(
+          `/api/dogs/${chosenDog.dogId}`,
+          requestOptions,
+        )
+          .then((response) => response.json())
+          .then((result) => {
+            console.log(result);
+            Object.keys(dogFormInitialState).forEach((key) => {
+              modifiedInitialState[key] = result[key];
+            });
+            console.log(modifiedInitialState);
+
+            setInitialStateOfDogForm(modifiedInitialState);
+          })
+          .catch((error) => console.log('error', error));
       }
     } catch (error) {
       setInitialStateOfDogForm(dogFormInitialState);
