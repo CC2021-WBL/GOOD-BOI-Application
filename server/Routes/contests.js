@@ -81,7 +81,6 @@ router.patch(
       const contest = await updateContest(req, res);
       res.status(201).send(contest);
     } catch (error) {
-      console.log(error);
       res.send(error.message);
     }
   },
@@ -96,7 +95,6 @@ router.patch(
       const contest = await finishClass(req, res);
       res.status(201).send(contest);
     } catch (error) {
-      console.log(error);
       res.send(error.message);
     }
   },

@@ -20,7 +20,6 @@ router.get('/general/:contestId/:classId', async (req, res) => {
     const summResultsAndName = await getResultSummaryAndName(req, res);
     res.status(200).send(summResultsAndName);
   } catch (error) {
-    console.log(error);
     res.status(500).send(error.message);
   }
 });

@@ -71,7 +71,6 @@ router.get('/:dogId', isDogOwnerAllRolesOrPublic, async (req, res) => {
     const dogData = await getDogData(req, res);
     res.status(200).send(dogData);
   } catch (error) {
-    console.log(error);
     res.status(500).send(error.message);
   }
 });

@@ -63,7 +63,7 @@ async function updateAllDogData(req, res) {
       return updatedDog;
     }
   } catch (error) {
-    res.send(error.message);
+    res.status(500).send(error.message);
   }
 }
 
@@ -86,8 +86,7 @@ async function getDogData(req, res) {
       return dogData;
     }
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: error });
+    res.status(500).send(error.message);
   }
 }
 
@@ -100,7 +99,7 @@ async function deleteDog(req, res) {
       return removedDog;
     }
   } catch (error) {
-    res.status(502).res.json({ message: error });
+    res.status(502).json(error.message);
   }
 }
 
