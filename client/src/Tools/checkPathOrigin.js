@@ -36,10 +36,10 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
         data = { text: 'Twoje psy', label: '' };
         break;
       case 'role':
-        data = { text: 'Wybierz rolę', label: 'Kontynuuj jako' };
+        data = { text: 'Wybierz konto', label: 'Dostępne role' };
         break;
       case 'register':
-        data = { text: 'Rejestracja', label: '' };
+        data = { text: 'Rejestracja', label: 'Dołącz do nas' };
         break;
       case 'forgot':
         data = { text: 'Resetuj hasło', label: '' };
@@ -48,7 +48,7 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
         data = { text: 'Dane Konta', label: '' };
         break;
       case 'user-dogs':
-        data = { text: 'Twoje Psy', label: 'Lista Twoich psów' };
+        data = { text: 'Twoje Psy', label: 'Zarządzaj swoimi psami' };
         break;
       case 'settings':
         data = { text: 'Ustawienia', label: '' };
@@ -72,6 +72,12 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
         data = {
           text: 'Lista zawodów',
           label: `Zakończone`,
+        };
+        break;
+      case 'manager':
+        data = {
+          text: 'Zarządzaj zawodami',
+          label: 'Co chcesz zrobić?',
         };
         break;
       case 'dog-submit':

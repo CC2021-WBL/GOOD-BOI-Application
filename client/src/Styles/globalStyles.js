@@ -12,7 +12,17 @@ a{text-decoration:none}
     margin: 0;
     font-family: 'Mulish', sans-serif;
 }
+.mobile_only {
+    @media only screen and (min-width: 800px) {
+        display: none !important;
+    }
+}
+.desktop_only {
+    @media only screen and (max-width: 1599px) {
+        display: none;
+    }
+}
+
 body {
     background: ${({ theme }) => theme.white};
-  
 }`;
