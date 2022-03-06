@@ -50,6 +50,10 @@ const DogSchema = mongoose.Schema({
     required: true,
   },
   results: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Result' }],
+  participants: {
+    type: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Participant' }],
+    required: true,
+  },
   createdAt: {
     type: Date,
     immutable: true,
