@@ -1,12 +1,13 @@
-import ColumnWrapperStyled from './ColumnWrapperStyled';
 import PropTypes from 'prop-types';
+
+import ColumnWrapperStyled from './ColumnWrapperStyled';
 
 const ColumnWrapper = ({
   children,
   paddingLeftRight = 0,
   paddingTop = 0,
   paddingBottom = 0,
-  className 
+  className,
 }) => {
   return (
     <ColumnWrapperStyled
