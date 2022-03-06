@@ -26,7 +26,6 @@ const AddContestForm = () => {
   for (let i = 1; i <= watch('judges'); i++) {
     judgeArr.push(i);
   }
-
   const handleChange = (e) => {
     const checked = e.target.checked;
     const id = e.target.dataset.id;
@@ -133,7 +132,7 @@ const AddContestForm = () => {
             {...register('country', {
               required: 'Wpisz kraj w którym odbywają się zawody',
               min: 5,
-              maxLength: 100,
+              maxLength: 99,
             })}
           />
           {errors.country && <p>{errors.country.message}</p>}
