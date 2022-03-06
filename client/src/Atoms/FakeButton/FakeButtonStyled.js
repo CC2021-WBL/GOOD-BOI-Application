@@ -103,15 +103,17 @@ const FakeButtonStyled = styled(Link)`
 
     &.user_upcoming {
       grid-area: 3 / 1 / 4 / span 3;
-      align-self: flex-start;
-      background-color: ${({ theme }) => theme.primary101};
-      border: 1px solid ${({ theme }) => theme.primary601};
+      @media only screen and (min-width: 1600px) {
+        align-self: flex-start;
+        background-color: ${({ theme }) => theme.primary101};
+        border: 1px solid ${({ theme }) => theme.primary601};
 
-      .fakebtn_header {
-        border-bottom: 1px solid ${({ theme }) => theme.primary601};
-      }
-      .fakebtn_text {
-        color: ${({ theme }) => theme.primary601};
+        .fakebtn_header {
+          border-bottom: 1px solid ${({ theme }) => theme.primary601};
+        }
+        .fakebtn_text {
+          color: ${({ theme }) => theme.primary601};
+        }
       }
     }
   }
