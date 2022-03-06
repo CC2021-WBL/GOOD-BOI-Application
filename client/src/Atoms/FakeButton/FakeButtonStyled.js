@@ -17,6 +17,8 @@ const handleColorType = (props) => {
       );
     case 'ternary':
       return getStyles(`${props.theme.white}`, `${props.theme.grey800}`);
+    default:
+      return getStyles(`${props.theme.white}`, `${props.theme.grey800}`);
   }
 };
 
@@ -31,6 +33,8 @@ const handleBorders = (props) => {
     case 'secondary':
       return getBorders(`${props.theme.primary601}`);
     case 'ternary':
+      return getBorders(`${props.theme.grey800}`);
+    default:
       return getBorders(`${props.theme.grey800}`);
   }
 };
