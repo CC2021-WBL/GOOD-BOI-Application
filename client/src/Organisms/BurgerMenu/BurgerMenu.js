@@ -1,25 +1,26 @@
+import propTypes from 'prop-types';
+import { BiLogOut } from 'react-icons/bi';
+import { BsTrophyFill } from 'react-icons/bs';
+import { FaUserCircle, FaUserCog } from 'react-icons/fa';
+import { GiSittingDog } from 'react-icons/gi';
+import { Link, useLocation } from 'react-router-dom';
+import { MdOutlineClose, MdSettings } from 'react-icons/md';
+import { useContext } from 'react';
+
+import BurgerMenuStyled from './BurgerMenuStyled';
+import HeaderMenuStyled from './HeaderMenuStyled';
+import MenuStyled from './MenuStyled';
+import checkLocationForNavRender from '../../Tools/checkLocationForNavRender';
+import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
+import useClickOutside from '../../Hooks/useClickOutside';
+import { CONTEST_ACTIONS } from '../../Consts/reducersActions';
+import { ContestContext } from '../../Context/ContestContext';
 import {
   Copy,
   DevsLogo,
   FooterStyled,
 } from '../../Molecules/Footer/FooterStyled';
-import { FaUserCircle, FaUserCog } from 'react-icons/fa';
-import { MdOutlineClose, MdSettings } from 'react-icons/md';
-
-import { BiLogOut } from 'react-icons/bi';
-import { BsTrophyFill } from 'react-icons/bs';
-import BurgerMenuStyled from './BurgerMenuStyled';
-import { CONTEST_ACTIONS } from '../../Consts/reducersActions';
-import { ContestContext } from '../../Context/ContestContext';
-import { GiSittingDog } from 'react-icons/gi';
-import HeaderMenuStyled from './HeaderMenuStyled';
-import { Link } from 'react-router-dom';
-import MenuStyled from './MenuStyled';
 import { UserDataContext } from '../../Context/UserDataContext';
-import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
-import propTypes from 'prop-types';
-import useClickOutside from '../../Hooks/useClickOutside';
-import { useContext } from 'react';
 
 const BurgerMenu = ({ open, setOpen }) => {
   const { state, dispatch } = useContext(UserDataContext);
@@ -29,9 +30,13 @@ const BurgerMenu = ({ open, setOpen }) => {
     setOpen(false);
   });
 
-  return (
+  const locationPath = useLocation();
+
+  return checkLocationForNavRender(locationPath.pathname) ? (
+    <BurgerMenuStyled />
+  ) : (
     <BurgerMenuStyled open={open} ref={domNode}>
-      <HeaderMenuStyled>
+      <HeaderMenuStyled className="mobile_only">
         <MdOutlineClose className="x" onClick={() => setOpen(false)} />
 
         <h3>Menu</h3>
@@ -82,7 +87,7 @@ const BurgerMenu = ({ open, setOpen }) => {
           <h6 className="log-out">Wyloguj się</h6>
         </Link>
       </MenuStyled>
-      <FooterStyled className="footer">
+      <FooterStyled className="footer mobile_only">
         <DevsLogo>
           <img
             className="logo"
