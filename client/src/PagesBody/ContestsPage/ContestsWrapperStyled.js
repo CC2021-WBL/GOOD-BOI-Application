@@ -6,6 +6,8 @@ justify-content:center;
   .mockmap {
     display: none;
   }
+  grid-area: 3 / 1 / 4 / 2;
+  @media (max-width: 800px) {margin-top: 60px;}
   @media (min-width: 800px) {
     display: flex;
     width: 100%;

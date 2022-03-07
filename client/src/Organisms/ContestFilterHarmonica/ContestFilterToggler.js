@@ -16,7 +16,7 @@ const ContestFilterToggler = ({ onClick, toggle }) => {
 
 ContestFilterToggler.propTypes = {
   toggle: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func
 };
 
 export default ContestFilterToggler;

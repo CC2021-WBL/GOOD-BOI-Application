@@ -2,6 +2,7 @@ import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
 
 const ContestFilterTogglerStyled = styled.div`
+ grid-area: 3 / 1 / 4 / 2;
   display: flex;
   height: 2.625rem;
   align-items: center;

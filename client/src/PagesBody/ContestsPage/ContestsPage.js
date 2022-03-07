@@ -76,17 +76,19 @@ const ContestsPage = () => {
 
   return (
     <>
+    {useMediaQuery('(max-width:799px)') && (<><ContestFilterToggler onClick={toggleHandler} toggle={toggle}/> {toggle && <FilterLabel onClick={handleFilterClick} />} </>) }
       <ContestsWrapperStyled className="contests">
         <ColumnWrapper
           paddingLeftRight={1}
           paddingTop={0.5}
           className="contests-column-wrapper"
         >
-          { useMediaQuery('(min-width:800px)') ? <ContestFilterToggler /> :
-          <ContestFilterToggler onClick={toggleHandler} toggle={toggle}/>}
+          { useMediaQuery('(min-width:800px)') && <ContestFilterToggler /> }
+          {/* // :
+          // <ContestFilterToggler onClick={toggleHandler} toggle={toggle}/>}
 
-          {toggle && <FilterLabel onClick={handleFilterClick} />}
-{ useMediaQuery('(min-width:800px)') && <FilterLabel onClick={handleFilterClick}/>}
+          // {toggle && <FilterLabel onClick={handleFilterClick} />} */}
+{ useMediaQuery('(min-width:800px)') && <FilterLabel onClick={handleFilterClick} />}
           {isPending && <h3>Loading...</h3>}
           {contestData &&
             getSelectedContestsByTime(selectedMode, contestData).map(
