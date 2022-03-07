@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
@@ -87,7 +87,7 @@ const ContestDetails = ({ contestId }) => {
                   <FakeButton
                     colors="secondary"
                     text="Edytuj dane"
-                    to="/user-dogs"
+                    to="/add-contest"
                   />
                   <MainButton
                     secondary
