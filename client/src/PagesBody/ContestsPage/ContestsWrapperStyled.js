@@ -7,8 +7,9 @@ justify-content:center;
     display: none;
   }
   grid-area: 3 / 1 / 4 / 2;
-  @media (max-width: 800px) {margin-top: 60px;}
-  @media (min-width: 800px) {
+  margin: 60px 0 0 0;
+  @media only screen and (min-width: 800px) {
+    margin: 0;
     display: flex;
     width: 100%;
     justify-content: center;

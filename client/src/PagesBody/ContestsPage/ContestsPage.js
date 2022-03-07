@@ -14,7 +14,7 @@ import mockmap from '../../Assets/mockmap.png';
 import { requestOptionsGET } from '../../FetchData/requestOptions';
 import resForContestPage from '../../Data/MongoDBMock/responseFromContestsToContestsPage';
 import { useLocation } from 'react-router-dom';
-import useMediaQuery from '../../Hooks/useMediaQuery'
+import useMediaQuery from '../../Hooks/useMediaQuery';
 
 const ContestsPage = () => {
   const rawDataFromDB = useRef(null);
@@ -76,19 +76,23 @@ const ContestsPage = () => {
 
   return (
     <>
-    {useMediaQuery('(max-width:799px)') && (<><ContestFilterToggler onClick={toggleHandler} toggle={toggle}/> {toggle && <FilterLabel onClick={handleFilterClick} />} </>) }
+      {useMediaQuery('(max-width:799px)') && (
+        <>
+          <ContestFilterToggler onClick={toggleHandler} toggle={toggle} />{' '}
+          {toggle && <FilterLabel onClick={handleFilterClick} />}{' '}
+        </>
+      )}
       <ContestsWrapperStyled className="contests">
         <ColumnWrapper
           paddingLeftRight={1}
           paddingTop={0.5}
           className="contests-column-wrapper"
         >
-          { useMediaQuery('(min-width:800px)') && <ContestFilterToggler /> }
-          {/* // :
-          // <ContestFilterToggler onClick={toggleHandler} toggle={toggle}/>}
+          {useMediaQuery('(min-width:800px)') && <ContestFilterToggler />}
 
-          // {toggle && <FilterLabel onClick={handleFilterClick} />} */}
-{ useMediaQuery('(min-width:800px)') && <FilterLabel onClick={handleFilterClick} />}
+          {useMediaQuery('(min-width:800px)') && (
+            <FilterLabel onClick={handleFilterClick} />
+          )}
           {isPending && <h3>Loading...</h3>}
           {contestData &&
             getSelectedContestsByTime(selectedMode, contestData).map(
