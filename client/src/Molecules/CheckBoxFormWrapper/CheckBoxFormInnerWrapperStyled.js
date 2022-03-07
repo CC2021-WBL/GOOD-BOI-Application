@@ -1,9 +1,10 @@
-import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
+
+import FONTS from '../../Styles/fontsStyledComponents';
 
 const CheckBoxFormWrapperStyled = styled.div`
   width: 100%;
-  margin: 20px 0 20px 10px;
+  margin: 1.25rem 0 1.25rem 0.625rem;
   .checkBoxItem {
     flex-direction: row;
     align-items: center;
@@ -18,8 +19,8 @@ const CheckBoxFormWrapperStyled = styled.div`
     height: 3rem;
 
     input {
-      height: 24px;
-      width: 50px;
+      height: 1.5rem;
+      width: 3.125rem;
       text-align: left;
     }
 
@@ -29,10 +30,10 @@ const CheckBoxFormWrapperStyled = styled.div`
 
     label {
       ${FONTS.caption};
-      height: 24px;
+      height: 1.5rem;
       position: relative;
-      top: 3px;
-      padding: 0 0 0 10px;
+      top: 0.1875rem;
+      padding: 0 0 0 0.625rem;
     }
   }
 `;

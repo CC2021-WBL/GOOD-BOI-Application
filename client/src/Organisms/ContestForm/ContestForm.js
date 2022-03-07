@@ -1,14 +1,16 @@
-import CheckBoxFormWrapperStyled from '../../Atoms/CheckBoxFormWrapper/CheckBoxFormWrapperStyled';
-import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
-import InputField from '../InputField/InputField';
-import InputLabel from '../../Atoms/InputLabel/InputLabel';
-import MainButton from '../../Atoms/MainButton/MainButton';
-import SelectFieldStyled from '../../Atoms/SelectField/SelectFieldStyled';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 
-const AddContestForm = () => {
+import CheckBoxFormInnerWrapperStyled from '../../Molecules/CheckBoxFormWrapper/CheckBoxFormInnerWrapperStyled';
+import CheckBoxFormOuterWrapperStyled from './../../Molecules/CheckBoxFormWrapper/CheckBoxFormOuterWrapperStyled';
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
+import InputField from '../../Molecules/InputField/InputField';
+import InputLabel from '../../Atoms/InputLabel/InputLabel';
+import MainButton from '../../Atoms/MainButton/MainButton';
+import SelectFieldStyled from '../../Atoms/SelectField/SelectFieldStyled';
+
+const ContestForm = () => {
   const {
     register,
     handleSubmit,
@@ -35,7 +37,7 @@ const AddContestForm = () => {
           chosenClasses.filter((classNumber) => classNumber !== id),
         );
   };
-
+  console.log(new Date().toISOString().split('T')[0]);
   return (
     <>
       <ColumnWrapper paddingLeftRight={1}>
@@ -51,6 +53,7 @@ const AddContestForm = () => {
             id="name"
             type="text"
             placeholder="&#xf091; Nazwa zawodów"
+            className={errors.name ? 'red-border' : ''}
             {...register('name', {
               required: 'Wpisz prawidłową nazwę konkursu',
               minLength: {
@@ -66,6 +69,7 @@ const AddContestForm = () => {
             id="department"
             type="text"
             placeholder="&#xf015; Oddział ZKwP"
+            className={errors.department ? 'red-border' : ''}
             {...register('department', {
               required: 'Wpisz oddział ZKwP',
               minLength: {
@@ -82,6 +86,7 @@ const AddContestForm = () => {
             type="date"
             defaultValue={new Date().toISOString().split('T')[0]}
             placeholder="&#xF007; Data rozpoczęcia zawodów"
+            className={errors.startingDate ? 'red-border' : ''}
             {...register('startingDate', {
               required: 'Wybierz datę rozpoczęcia zawodów',
             })}
@@ -94,6 +99,7 @@ const AddContestForm = () => {
             type="date"
             defaultValue={new Date().toISOString().split('T')[0]}
             placeholder="&#xF007; Data zakończenia zawodów"
+            className={errors.endingDate ? 'red-border' : ''}
             {...register('endingDate', {
               required: 'Wybierz datę zakończenia zawodów',
             })}
@@ -106,6 +112,7 @@ const AddContestForm = () => {
             type="date"
             defaultValue={new Date().toISOString().split('T')[0]}
             placeholder="&#xF007; Data otwarcia zgłoszeń"
+            className={errors.openingDate ? 'red-border' : ''}
             {...register('openingDate', {
               required: 'Wybierz datę otwarcia zgłoszeń',
             })}
@@ -118,6 +125,7 @@ const AddContestForm = () => {
             type="date"
             defaultValue={new Date().toISOString().split('T')[0]}
             placeholder="&#xF007; Data zamknięcia zgłoszeń"
+            className={errors.closingDate ? 'red-border' : ''}
             {...register('closingDate', {
               required: 'Wybierz datę zamknięcia zgłoszeń',
             })}
@@ -129,6 +137,7 @@ const AddContestForm = () => {
             id="country"
             type="text"
             placeholder="&#xf015; Adres zawodów - kraj"
+            className={errors.country ? 'red-border' : ''}
             {...register('country', {
               required: 'Wpisz kraj w którym odbywają się zawody',
               min: 5,
@@ -142,6 +151,7 @@ const AddContestForm = () => {
             id="city"
             type="text"
             placeholder="&#xf015; Adres zawodów - miasto"
+            className={errors.city ? 'red-border' : ''}
             {...register('city', {
               required: 'Wpisz miasto, w którym odbywają się zawody',
               min: 5,
@@ -154,6 +164,7 @@ const AddContestForm = () => {
             id="number"
             type="number"
             placeholder="&#xf015; Adres zawodów - numer obiektu"
+            className={errors.number ? 'red-border' : ''}
             {...register('number', {
               required: 'Podaj numer obiektu (1 - 2000)',
               max: 2000,
@@ -172,6 +183,7 @@ const AddContestForm = () => {
             type="text"
             pattern="^\d{2}-\d{3}$"
             placeholder="&#xf015;; Adres zawodów - kod pocztowy"
+            className={errors.code ? 'red-border' : ''}
             {...register('code', {
               required: 'Podaj kod pocztowy w formacie XX-XXX',
             })}
@@ -211,6 +223,7 @@ const AddContestForm = () => {
                   id={`judge${judge}`}
                   type="text"
                   placeholder={`Sędzia ${judge}`}
+                  className={errors[`judge${judge}`] ? 'red-border' : ''}
                   {...register(`judge${judge}`, {
                     required: 'Wpisz imię i nazwisko sędziego',
                     maxLength: 100,
@@ -230,6 +243,7 @@ const AddContestForm = () => {
             id="komisarz"
             type="text"
             placeholder="&#xF007; Komisarz"
+            className={errors.komisarz ? 'red-border' : ''}
             {...register('komisarz', {
               required: 'Wpisz imię i nazwisko komisarza',
               min: 3,
@@ -243,6 +257,7 @@ const AddContestForm = () => {
             id="oplata"
             type="number"
             placeholder="&#xf0d6; Opłata startowa [PLN]"
+            className={errors.oplata ? 'red-border' : ''}
             {...register('oplata', {
               required: 'Podaj opłatę startową w PLN',
               max: 1000,
@@ -260,6 +275,7 @@ const AddContestForm = () => {
             id="liczba"
             type="number"
             placeholder="&#xF007; Maksymalna liczba zawodników"
+            className={errors.liczba ? 'red-border' : ''}
             {...register('liczba', {
               required: 'Podaj maksymalną liczbę zawodników',
               max: 100,
@@ -270,72 +286,57 @@ const AddContestForm = () => {
           {errors.liczba && <p>Podaj liczbę z zakresu 1-100 </p>}
           <InputLabel labelText="Wybierz planowane klasy" htmlFor="checkboxy" />
 
-          <div
-            className="checkboxes"
-            style={{
-              border: '1px solid #7B8794',
-              display: 'flex',
-              flexDirection: 'column',
-              borderRadius: '12px',
-              margin: '0 0 1rem 0',
-            }}
+          <CheckBoxFormOuterWrapperStyled
+            className={chosenClasses.length === 0 ? `red-border` : ''}
           >
-            <CheckBoxFormWrapperStyled>
+            <CheckBoxFormInnerWrapperStyled>
               <div className="checkBoxItem">
                 <input
                   name="checkbox0"
                   id="class0"
                   data-id="0"
-                  labelText="Klasa 0"
                   type="checkbox"
-                  htmlFor="checkbox0"
                   value="Klasa 0"
                   {...register('checkbox0')}
                   onChange={handleChange}
                 />
-                <label htmlFor="klasa0">Klasa 0</label>
+                <label htmlFor="class0">Klasa 0</label>
               </div>
               <div className="checkBoxItem">
                 <input
                   name="checkbox1"
                   id="class1"
                   data-id="1"
-                  labelText="Klasa 1"
                   type="checkbox"
-                  htmlFor="checkbox1"
                   value="Klasa 1"
                   {...register('checkbox1')}
                   onChange={handleChange}
                 />
-                <label htmlFor="klasa1">Klasa 1</label>
+                <label htmlFor="class1">Klasa 1</label>
               </div>
               <div className="checkBoxItem">
                 <input
                   name="checkbox2"
                   id="class2"
                   data-id="2"
-                  labelText="Klasa 2"
                   type="checkbox"
-                  htmlFor="checkbox2"
                   value="Klasa 2"
                   {...register('checkbox2')}
                   onChange={handleChange}
                 />
-                <label htmlFor="klasa2">Klasa 2</label>
+                <label htmlFor="class2">Klasa 2</label>
               </div>
               <div className="checkBoxItem">
                 <input
                   name="checkbox3"
                   id="class3"
                   data-id="3"
-                  labelText="Klasa 3"
                   type="checkbox"
-                  htmlFor="checkbox3"
                   value="Klasa 3"
                   {...register('checkbox3')}
                   onChange={handleChange}
                 />
-                <label htmlFor="klasa3">Klasa 3</label>
+                <label htmlFor="class3">Klasa 3</label>
               </div>
               {chosenClasses.length === 0 && (
                 <p
@@ -346,8 +347,8 @@ const AddContestForm = () => {
                   Wybierz przynajmniej jedną klasę
                 </p>
               )}
-            </CheckBoxFormWrapperStyled>
-          </div>
+            </CheckBoxFormInnerWrapperStyled>
+          </CheckBoxFormOuterWrapperStyled>
           {chosenClasses.length !== 0 && (
             <>
               <MainButton primary text="zarejestruj nowe zawody" />
@@ -356,7 +357,7 @@ const AddContestForm = () => {
         </FormWrapper>
         {chosenClasses.length === 0 && (
           <>
-            <MainButton secondary disabled text="Dokończe rejestrację" />
+            <MainButton secondary disabled text="Dokończ rejestrację" />
           </>
         )}
       </ColumnWrapper>
@@ -364,4 +365,4 @@ const AddContestForm = () => {
   );
 };
 
-export default AddContestForm;
+export default ContestForm;

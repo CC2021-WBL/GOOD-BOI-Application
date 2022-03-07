@@ -1,7 +1,7 @@
-import AddContestForm from '../../Molecules/AddContestForm/AddContestForm';
+import ContestForm from '../../Organisms/ContestForm/ContestForm';
 
 const AddContestFormPage = () => {
-  return <AddContestForm />;
+  return <ContestForm />;
 };
 
 export default AddContestFormPage;

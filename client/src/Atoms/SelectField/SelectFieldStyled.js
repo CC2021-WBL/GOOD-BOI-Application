@@ -1,14 +1,15 @@
-import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
+
+import FONTS from '../../Styles/fontsStyledComponents';
 
 const SelectFieldStyled = styled.select`
   width: 100%;
   height: 3rem;
-  padding: 0 0 0 10px;
+  padding: 0 0 0 0.625rem;
   border: 0.5px solid ${({ theme }) => theme.grey400};
-  margin: 0 0 3px 0;
+  margin: 0 0 0.1875rem 0;
   background: ${({ theme }) => theme.white};
-  border-radius: 8px;
+  border-radius: 0.5rem;
   color: ${({ theme }) => theme.grey400};
   font-family: Mulish, FontAwesome, sans-serif;
   ${FONTS.body_semibold};
@@ -16,8 +17,8 @@ const SelectFieldStyled = styled.select`
     color: ${({ theme }) => theme.grey400};
   }
   &:focus {
-    border: 0.5px solid transparent;
-    outline: 3px solid ${({ theme }) => theme.primary201};
+    border: 0.0313rem solid transparent;
+    outline: 0.1875rem solid ${({ theme }) => theme.primary201};
   }
 `;
 
