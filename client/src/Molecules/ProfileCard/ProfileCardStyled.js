@@ -27,7 +27,7 @@ const ProfileCardStyled = styled.div`
       flex-direction: column;
       justify-content: space-around;
       font-size: 1.375rem;
-      grid-area: 2 / 7 / span 2 / span 2;
+      grid-area: 1 / 7 / span 2 / span 2;
       border-radius: 0.9375rem;
       margin: 0;
       position: relative;
