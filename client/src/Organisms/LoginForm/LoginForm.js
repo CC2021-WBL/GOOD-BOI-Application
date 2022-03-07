@@ -3,7 +3,6 @@ import 'font-awesome/css/font-awesome.min.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 
-import BackgroundDiv from './../../PagesBody/InProgressPage/BackgroundDiv';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';

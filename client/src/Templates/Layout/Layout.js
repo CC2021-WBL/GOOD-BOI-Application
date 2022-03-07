@@ -11,22 +11,16 @@ import useWindowHeight from '../../Tools/useWindowHeight';
 
 // import useWindowHeight from '../../Tools/useWindowHeight';
 
-// const initHeight = window.innerHeight;
+const initHeight = window.innerHeight;
 // 150 pixels of change in the window.height triggers the footer and ghost footer to hide
 const Layout = ({ withLabel, withSettings }) => {
   const [moveFooter, setMoveFooter] = useState('');
   useEffect(() => {
     setMoveFooter(app.clientHeight < window.innerHeight);
-    console.log('useEffect ' + moveFooter);
-    console.log('window ' + window.document.body.offsetHeight);
   }, [moveFooter]);
 
   const height = useWindowHeight();
   const app = document.querySelector('#root');
-  console.log(app.clientHeight);
-  console.log(window.innerHeight);
-  console.log(moveFooter);
-  console.log(app.getBoundingClientRect().height);
   return (
     <>
       {window.innerWidth < 700 ? <NavElement /> : ''}
