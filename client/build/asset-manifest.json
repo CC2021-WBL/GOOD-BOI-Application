@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.19fa6059.css",
-    "main.js": "/static/js/main.a1290deb.js",
+    "main.js": "/static/js/main.f69ec7cb.js",
     "static/js/787.0c574e70.chunk.js": "/static/js/787.0c574e70.chunk.js",
     "static/media/profileDogFace.jpg": "/static/media/profileDogFace.8c0496d4eb9e6f1d411a.jpg",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
@@ -9,15 +9,27 @@
     "static/media/fontawesome-webfont.ttf?v=4.7.0": "/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
     "static/media/fontawesome-webfont.woff?v=4.7.0": "/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
     "static/media/fontawesome-webfont.woff2?v=4.7.0": "/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
+    "static/media/dog_8.png": "/static/media/dog_8.e3220a94a6054b151d5e.png",
+    "static/media/dog_7.png": "/static/media/dog_7.d2d80daf579656c3b17b.png",
+    "static/media/dog_9.png": "/static/media/dog_9.441648c2ee38ebf0f3c9.png",
+    "static/media/dog_11.png": "/static/media/dog_11.c94e4c70377f33e0bbb6.png",
+    "static/media/dog_10.png": "/static/media/dog_10.37da758856549bb36d19.png",
     "static/media/mockmap.png": "/static/media/mockmap.51ecff1a71c452cf7983.png",
+    "static/media/dog_12.png": "/static/media/dog_12.175e13ec49a3e5205331.png",
+    "static/media/dog_6.png": "/static/media/dog_6.92e164cb37d731eb60cf.png",
+    "static/media/dog_3.png": "/static/media/dog_3.e5af1b3e4c057c59724f.png",
+    "static/media/dog_1.png": "/static/media/dog_1.8088830763f285c763d3.png",
+    "static/media/dog_2.png": "/static/media/dog_2.2a07814ff08a29469a8e.png",
+    "static/media/dog_5.png": "/static/media/dog_5.71549141e2bcd4fdce3e.png",
+    "static/media/dog_4.png": "/static/media/dog_4.c6ed2752085a692aec5e.png",
     "static/media/logoDevsOnTheWaves.svg": "/static/media/logoDevsOnTheWaves.cf27d25e4bacdf07f9b313a628f6a5f0.svg",
     "index.html": "/index.html",
     "main.19fa6059.css.map": "/static/css/main.19fa6059.css.map",
-    "main.a1290deb.js.map": "/static/js/main.a1290deb.js.map",
+    "main.f69ec7cb.js.map": "/static/js/main.f69ec7cb.js.map",
     "787.0c574e70.chunk.js.map": "/static/js/787.0c574e70.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.19fa6059.css",
-    "static/js/main.a1290deb.js"
+    "static/js/main.f69ec7cb.js"
   ]
 }
