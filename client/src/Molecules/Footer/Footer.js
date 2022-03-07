@@ -1,13 +1,13 @@
-import { Copy, DevsLogo, FooterStyled, LogoStyled } from './FooterStyled';
+import propTypes from 'prop-types';
+import { useContext } from 'react';
 
 import FooterDesktop from './FooterDesktop';
 import FooterProfileButton from '../../Atoms/FooterProfileButton/FooterProfileButton';
 import GridWrapper from '../../Styles/GridWrapper';
-import { UserDataContext } from '../../Context/UserDataContext';
 import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
-import propTypes from 'prop-types';
-import { useContext } from 'react';
 import useWindowHeight from '../../Tools/useWindowHeight';
+import { Copy, DevsLogo, FooterStyled, LogoStyled } from './FooterStyled';
+import { UserDataContext } from '../../Context/UserDataContext';
 
 const initHeight = window.innerHeight;
 
