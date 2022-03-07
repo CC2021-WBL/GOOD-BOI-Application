@@ -1,6 +1,13 @@
-import { useEffect, useState } from 'react';
+import {
+  genRequestOptionsPATCH,
+  genRequestOptionsPOST,
+} from '../FetchData/requestOptions';
+import { useContext, useEffect, useState } from 'react';
+
+import { UserDataContext } from '../Context/UserDataContext';
 
 const useDogForm = (callback, validateData, initialState) => {
+  const { state } = useContext(UserDataContext);
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -13,39 +20,52 @@ const useDogForm = (callback, validateData, initialState) => {
     });
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
     setErrors(validateData(formData));
     setIsSubmitting(true);
 
-    // Sending data to future server
-    const url = 'https://jsonplaceholder.typicode.com/posts';
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    };
-    fetch(url, requestOptions)
-      .then((response) => response.json())
-      // checking if response is coming back
-      .then((res) => console.log(res));
-
-    // error handling tries
-    // .then(async (response) => {
-    //   const isJson = response.headers
-    //     .get('content-type')
-    //     ?.includes('application/json');
-    //   const data = isJson && (await response.json());
-
-    //   //checking if there is a response error
-
-    //   if (!response.ok) {
-    //     const error = (data && data.message) || response.status;
-    //     return Promise.reject(error);
-    //   }
-    // });
-    // navigate(-1);
+    if (!initialState._id) {
+      delete formData._id;
+      try {
+        const res = await fetch(
+          `/api/dogs/register/${state.userId}`,
+          genRequestOptionsPOST(formData),
+        );
+        const result = await res.json();
+        console.log(result);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      try {
+        const res = await fetch(
+          `/api/dogs/${initialState._id}`,
+          genRequestOptionsPATCH(formData),
+        );
+        const result = await res.json();
+        console.log(result);
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
+
+  // error handling tries
+  // .then(async (response) => {
+  //   const isJson = response.headers
+  //     .get('content-type')
+  //     ?.includes('application/json');
+  //   const data = isJson && (await response.json());
+
+  //   //checking if there is a response error
+
+  //   if (!response.ok) {
+  //     const error = (data && data.message) || response.status;
+  //     return Promise.reject(error);
+  //   }
+  // });
+  // navigate(-1);
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {

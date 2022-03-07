@@ -71,6 +71,7 @@ async function updateUserData(req, res) {
     propsToUpdate.forEach((element) => {
       user[element] = req.body[element];
     });
+    user.updatedAt = new Date();
     const updatedUser = await user.save();
     if (!updatedUser) {
       res.send(400).end();
@@ -90,6 +91,7 @@ async function updateDogsArray(req, res, newDog) {
       dogName: newDog.dogName,
     };
     user.dogs.push(dogObject);
+    user.updatedAt = new Date();
     const updatedUser = await user.save();
     if (!updatedUser) {
       res.send(500).end();

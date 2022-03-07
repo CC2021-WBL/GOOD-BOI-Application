@@ -9,7 +9,7 @@ import InputField from '../../Molecules/InputField/InputField';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import { USER_ACTIONS } from '../../Consts/reducersActions';
 import { UserDataContext } from '../../Context/UserDataContext';
-import { generateRequestOptionsForLogin } from '../../FetchData/requestOptions';
+import { genRequestOptionsPOST } from '../../FetchData/requestOptions';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -24,7 +24,7 @@ const LoginForm = () => {
     try {
       const response = await fetch(
         '/api/users/login',
-        generateRequestOptionsForLogin(data),
+        genRequestOptionsPOST(data),
       );
       const result = await response.json();
 

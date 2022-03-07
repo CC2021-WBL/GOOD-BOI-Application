@@ -1,6 +1,12 @@
+import {
+  genRequestOptionsPATCH,
+  genRequestOptionsPOST,
+} from '../../FetchData/requestOptions';
 import { useEffect, useState } from 'react';
 
 const useForm = (callback, validateData, initialState) => {
+  let isNew = false;
+  console.log(initialState);
   const initialStateMock = {
     participantName: '',
     participantSurname: '',
@@ -18,9 +24,11 @@ const useForm = (callback, validateData, initialState) => {
   };
   if (!initialState) {
     initialState = initialStateMock;
+    isNew = true;
   }
 
   const [formData, setFormData] = useState(initialState);
+  const [isNewUser, setIsNewUser] = useState(isNew);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const handleInputChange = (event) => {
@@ -47,17 +55,18 @@ const useForm = (callback, validateData, initialState) => {
     setErrors(validateData(formData));
     setIsSubmitting(true);
 
-    // Sending data to future server
-    const url = 'https://jsonplaceholder.typicode.com/posts';
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    };
-    fetch(url, requestOptions)
-      .then((response) => response.json())
-      // checking if response is coming back
-      .then((res) => console.log(res));
+    if (isNewUser) {
+      fetch('/api/users/register', genRequestOptionsPOST(formData))
+        .then((response) => response.json())
+        .then((result) => console.log(result))
+        .catch((error) => console.log(error));
+    } else {
+      console.log(initialState._id);
+      fetch(`/api/users/${initialState._id}`, genRequestOptionsPATCH(formData))
+        .then((response) => response.json())
+        .then((result) => console.log(result))
+        .catch((error) => console.log(error));
+    }
 
     // error handling tries
     // .then(async (response) => {

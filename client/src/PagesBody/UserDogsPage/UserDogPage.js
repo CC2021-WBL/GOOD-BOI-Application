@@ -23,7 +23,7 @@ const UserDogPage = () => {
         setIsPending(false);
         dogDispatch({
           type: DOG_ACTIONS.SET_DATA,
-          payload: { dogs: result.dogs, chosenDog: '' },
+          payload: { dogs: result.dogs, chosenDog: {} },
         });
         if (state.selectedRole !== ROLE_NAME.PARTICIPANT)
           dispatch({
