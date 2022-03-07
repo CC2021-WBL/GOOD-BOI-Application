@@ -61,7 +61,7 @@ const ContestCard = ({ contestData }) => {
       },
     });
   };
-  const imgs = [
+  const dogsImages = [
     dog_1,
     dog_2,
     dog_3,
@@ -75,7 +75,7 @@ const ContestCard = ({ contestData }) => {
     dog_11,
     dog_12,
   ];
-  let i = Math.floor(Math.random() * imgs.length);
+  let randomDogImage = Math.floor(Math.random() * dogsImages.length);
   return (
     <>
       <ContestCardStyled
@@ -106,13 +106,13 @@ const ContestCard = ({ contestData }) => {
             />
           </ContestInsideElementStyled>
           {pointOnTimeLine === 'archiwalny' && (
-            <p className="p">zobacz wyniki</p>
+            <p className="contest-action">zobacz wyniki</p>
           )}
-          {pointOnTimeLine === 'nadchodzący' && <p className="p">zapisz się</p>}
+          {pointOnTimeLine === 'nadchodzący' && <p className="contest-action">zapisz się</p>}
         </div>
 
-        <div className="doggo">
-          <img src={imgs[i]} alt="Cute doggo" />
+        <div className="doggo-image">
+          <img src={dogsImages[randomDogImage]} alt="Cute doggo" />
         </div>
       </ContestCardStyled>
     </>

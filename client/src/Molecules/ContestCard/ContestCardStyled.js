@@ -23,7 +23,7 @@ const ContestCardStyled = styled.div`
       : props.theme.white};
   border-radius: 0.75rem;
 
-  .p, .doggo {
+  .contest-action, .doggo-image {
     display: none;
   }
   
@@ -41,14 +41,14 @@ const ContestCardStyled = styled.div`
       padding: 1.25rem 0 1.25rem 1.25rem;
     }
 
-    .p {
+    .contest-action {
       display: block;
       color: ${(props) => props.theme.primary501};
       ${FONTS.body_bold};
       text-transform: uppercase;
     }
 
-    .doggo {
+    .doggo-image {
       display: block;
       width: 25%;
       height: 100%;
