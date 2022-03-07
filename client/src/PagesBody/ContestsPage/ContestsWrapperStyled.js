@@ -1,15 +1,21 @@
 import styled from 'styled-components';
 
 const ContestsWrapperStyled = styled.div`
+display: flex;
+justify-content:center;
   .mockmap {
     display: none;
   }
-  @media (min-width: 1200px) {
+  @media (min-width: 800px) {
     display: flex;
     width: 100%;
     justify-content: center;
-    gap: 50px;
-
+    gap: 20px;
+    grid-area: 3 / 2 / 4 / 3;
+    
+  }
+  @media only screen and (min-width: 1600px) {
+    grid-area: 3 / 3 / 4 / 4;
     .mockmap {
       display: block;
       width: 476px;
@@ -21,8 +27,7 @@ const ContestsWrapperStyled = styled.div`
         height: 100%;
         border-radius: 12px;
       }
-    }
-  }
+    }}
 `;
 
 export default ContestsWrapperStyled;

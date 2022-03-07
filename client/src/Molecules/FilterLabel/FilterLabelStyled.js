@@ -12,9 +12,12 @@ const FilterLabelStyled = styled.label`
     justify-content: space-around;
     background-color: ${({ theme }) => theme.grey100};
 
-    @media (min-width: 1200px) {
+    
+    @media (min-width: 800px) {
+      border-radius:0 0 12px 12px;
+      /* max-width: 80% ; */
       .innerWrapper {
-        width: 600px;
+        max-width: 600px;
       }
     }
   }

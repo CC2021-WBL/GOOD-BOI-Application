@@ -23,14 +23,12 @@ const ContestCardStyled = styled.div`
       : props.theme.white};
   border-radius: 0.75rem;
 
-  .p {
+  .p, .doggo {
     display: none;
   }
-  .doggo {
-    display: none;
-  }
+  
 
-  @media (min-width: 1200px) {
+  @media (min-width: 800px) {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -75,7 +73,7 @@ const ContestInsideElementStyled = styled.div`
     props.colorMotive === c.GREEN ? props.theme.positive600 : props.theme.grey400};
   ${FONTS.label_extrabold};
 
-  @media (min-width: 1200px) {
+  @media (min-width: 800px) {
     width: 80%;
     padding: 10px 0;
   }
