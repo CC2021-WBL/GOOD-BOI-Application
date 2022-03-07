@@ -16,7 +16,7 @@ const contestReducer = (state, action) => {
       };
 
     default:
-      console.log('error');
+      return state;
   }
 };
 

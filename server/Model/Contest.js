@@ -1,25 +1,31 @@
 const mongoose = require('mongoose');
 
-const insideClassSchema = new mongoose.Schema({
-  dogId: {
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: 'Dog',
+const insideClassSchema = new mongoose.Schema(
+  {
+    dogId: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Dog',
+    },
+    dogName: {
+      type: String,
+    },
+    participantId: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Participant',
+    },
+    resultsId: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Result',
+    },
   },
-  dogName: {
-    type: String,
-  },
-  participantId: {
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: 'Participant',
-  },
-  resultsId: {
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: 'Result',
-  },
-});
+  { _id: false },
+);
 
-const obedienceClassesSchema = new mongoose.Schema({
-  0: {
+const obedienceClassesSchema = new mongoose.Schema(
+  {
+    classNumber: {
+      type: Number,
+    },
     isFinished: {
       type: Boolean,
       default: false,
@@ -29,37 +35,8 @@ const obedienceClassesSchema = new mongoose.Schema({
       default: [],
     },
   },
-  1: {
-    isFinished: {
-      type: Boolean,
-      default: false,
-    },
-    participants: {
-      type: [insideClassSchema],
-      default: [],
-    },
-  },
-  2: {
-    isFinished: {
-      type: Boolean,
-      default: false,
-    },
-    participants: {
-      type: [insideClassSchema],
-      default: [],
-    },
-  },
-  3: {
-    isFinished: {
-      type: Boolean,
-      default: false,
-    },
-    participants: {
-      type: [insideClassSchema],
-      default: [],
-    },
-  },
-});
+  { _id: false },
+);
 
 const contestSchema = new mongoose.Schema({
   contestName: {
@@ -122,7 +99,7 @@ const contestSchema = new mongoose.Schema({
     required: true,
   },
   obedienceClasses: {
-    type: obedienceClassesSchema,
+    type: [obedienceClassesSchema],
     required: true,
   },
   createdAt: {

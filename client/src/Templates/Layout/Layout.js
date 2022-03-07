@@ -1,14 +1,17 @@
+import propTypes from 'prop-types';
+import { Outlet } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
 import Footer from '../../Molecules/Footer/Footer';
 import FooterDesktop from '../../PagesBody/InProgressPage/FooterDesktop';
 import GhostFooterStyled from '../../Molecules/Footer/GhostFooterStyled';
 import NavDesktop from '../../PagesBody/InProgressPage/NavDesktop';
 import NavElement from '../../Organisms/NavElement/NavElement';
-import { Outlet } from 'react-router-dom';
-import propTypes from 'prop-types';
 import useWindowHeight from '../../Tools/useWindowHeight';
-import { useEffect, useState } from 'react';
 
-const initHeight = window.innerHeight;
+// import useWindowHeight from '../../Tools/useWindowHeight';
+
+// const initHeight = window.innerHeight;
 // 150 pixels of change in the window.height triggers the footer and ghost footer to hide
 const Layout = ({ withLabel, withSettings }) => {
   const [moveFooter, setMoveFooter] = useState('');
