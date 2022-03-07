@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { device } from '../Consts/devices';
+import { device } from '../../Consts/devices';
 
 const GridWrapper = styled.div`
   ${(props) => props.mobile && `grid-area:${props.mobile}`};

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useForm = (callback, validateData, initialState) => {
+const useCustomForm = (callback, validateData, initialState) => {
   const initialStateMock = {
     participantName: '',
     participantSurname: '',
@@ -84,4 +84,4 @@ const useForm = (callback, validateData, initialState) => {
   return { handleInputChange, formData, submitHandler, errors };
 };
 
-export default useForm;
+export default useCustomForm;

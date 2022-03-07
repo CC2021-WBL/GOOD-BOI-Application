@@ -13,6 +13,7 @@ import ForbiddenEntryPage from '../ForbiddenEntryPage/ForbiddenEntryPage';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { createURLForRolePage } from '../../Tools/UrlCreators';
+import { requestOptionsGET } from '../../FetchData/requestOptions';
 import { useNavigate } from 'react-router-dom';
 
 const RolePage = () => {
@@ -49,6 +50,18 @@ const RolePage = () => {
     });
   };
 
+  const handleLogoutClick = (event) => {
+    event.preventDefault();
+
+    fetch('/api/users/logout', requestOptionsGET)
+      .then((response) => response.text())
+      .then((result) => {
+        dispatch({ type: 'LOG_OUT', index: 1 });
+        navigate('/');
+      })
+      .catch((error) => alert(error));
+  };
+
   return (
     <ColumnWrapper paddingLeftRight={1} paddingTop={1.5}>
       {roles.map((role, index) =>
@@ -75,9 +88,8 @@ const RolePage = () => {
       <MainButton
         text="Wyloguj się"
         secondary
-        onClick={() => {
-          dispatch({ type: 'LOG_OUT', index: 1 });
-          navigate('/');
+        onClick={(event) => {
+          handleLogoutClick(event);
         }}
       />
     </ColumnWrapper>

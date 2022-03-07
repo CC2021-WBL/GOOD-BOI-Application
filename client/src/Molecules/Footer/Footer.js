@@ -3,7 +3,7 @@ import { useContext } from 'react';
 
 import FooterDesktop from './FooterDesktop';
 import FooterProfileButton from '../../Atoms/FooterProfileButton/FooterProfileButton';
-import GridWrapper from '../../Styles/GridWrapper';
+import GridWrapper from '../../Templates/Layout/GridWrapper';
 import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
 import useWindowHeight from '../../Tools/useWindowHeight';
 import { Copy, DevsLogo, FooterStyled, LogoStyled } from './FooterStyled';

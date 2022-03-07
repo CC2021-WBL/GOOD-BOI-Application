@@ -17,6 +17,8 @@ const handleColorType = (props) => {
       );
     case 'ternary':
       return getStyles(`${props.theme.white}`, `${props.theme.grey800}`);
+    default:
+      return getStyles(`${props.theme.white}`, `${props.theme.grey800}`);
   }
 };
 
@@ -32,6 +34,8 @@ const handleBorders = (props) => {
       return getBorders(`${props.theme.primary601}`);
     case 'ternary':
       return getBorders(`${props.theme.grey800}`);
+    default:
+      return getBorders(`${props.theme.grey800}`);
   }
 };
 
@@ -45,8 +49,78 @@ const FakeButtonStyled = styled(Link)`
   border-radius: 0.75rem;
   ${FONTS.button};
   ${(props) => handleColorType(props)};
-
   ${(props) => handleBorders(props)}
+  text-transform: uppercase;
+
+  &.user_profile {
+    @media only screen and (min-width: 1600px) {
+      justify-content: flex-start;
+      height: 100%;
+      margin: 0;
+      text-align: left;
+      flex-direction: column;
+      font-weight: 100;
+      align-items: flex-start;
+      background-color: ${({ theme }) => theme.grey00};
+      border: 1px solid ${({ theme }) => theme.grey200};
+
+      .fakebtn_header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-transform: capitalize;
+        width: 100%;
+        height: 4rem;
+
+        ${FONTS.h2};
+        border-bottom: 1px solid ${({ theme }) => theme.grey200};
+        border-radius: 0.75rem 0.75rem 0 0;
+        background-color: ${({ theme }) => theme.white};
+        padding: 0 1.25rem;
+      }
+
+      .fakebtn_text {
+        color: ${({ theme }) => theme.grey400};
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-transform: none;
+        padding: 0 1.25rem;
+      }
+    }
+
+    &.user_dogs {
+      grid-area: 2 / 1 / 3 / span 3;
+      align-self: flex-end;
+    }
+
+    &.user_contests {
+      grid-area: 3 / 4 / 4 / span 3;
+      align-self: flex-start;
+    }
+
+    &.user_data {
+      grid-area: 2 / 4 / 3 / span 3;
+      align-self: flex-end;
+    }
+
+    &.user_upcoming {
+      grid-area: 3 / 1 / 4 / span 3;
+      @media only screen and (min-width: 1600px) {
+        align-self: flex-start;
+        background-color: ${({ theme }) => theme.primary101};
+        border: 1px solid ${({ theme }) => theme.primary601};
+
+        .fakebtn_header {
+          border-bottom: 1px solid ${({ theme }) => theme.primary601};
+        }
+        .fakebtn_text {
+          color: ${({ theme }) => theme.primary601};
+        }
+      }
+    }
+  }
 `;
 
 export default FakeButtonStyled;

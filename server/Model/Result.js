@@ -55,4 +55,6 @@ const resultSchema = new mongoose.Schema({
   },
 });
 
+resultSchema.index({ contestId: 1, dogId: 1 }, { unique: true });
+
 module.exports = mongoose.model('Result', resultSchema);

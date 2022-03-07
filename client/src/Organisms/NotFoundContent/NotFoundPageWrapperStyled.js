@@ -1,5 +1,6 @@
-import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
+
+import FONTS from '../../Styles/fontsStyledComponents';
 
 const NotFoundPageWrapperStyled = styled.div`
   display: flex;
@@ -28,6 +29,13 @@ const NotFoundPageWrapperStyled = styled.div`
 
   .buttons-wrapper {
     width: 100%;
+  }
+
+  @media only screen and (min-width: 800px) {
+    grid-area: 3 / 2 / 4 / 3;
+  }
+  @media only screen and (min-width: 1600px) {
+    grid-area: 3 / 3 / 4 / 4;
   }
 `;
 

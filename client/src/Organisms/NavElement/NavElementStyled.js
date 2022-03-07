@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import FONTS from '../../Styles/fontsStyledComponents';
-import { device } from '../../Consts/devices';
 
 export const NavElementStyled = styled.div`
   display: flex;
