@@ -7,16 +7,11 @@ import { ContestContext } from '../../Context/ContestContext';
 import { DogContext } from '../../Context/DogContext';
 import GoHomeStyled from '../../Atoms/NavElementStyled/GoHomeStyled';
 import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
-<<<<<<< HEAD
-import GridWrapper from '../../Styles/GridWrapper';
-import { MdMenu } from 'react-icons/md';
-=======
 import GridWrapper from '../../Templates/Layout/GridWrapper';
 import checkLocationForNavRender from '../../Tools/checkLocationForNavRender';
 import home from '../../Assets/home.png';
 import { ContestContext } from '../../Context/ContestContext';
 import { DogContext } from '../../Context/DogContext';
->>>>>>> development
 import { NavElementStyled } from './NavElementStyled';
 import PropTypes from 'prop-types';
 import { UserDataContext } from '../../Context/UserDataContext';
@@ -70,11 +65,8 @@ const NavElement = () => {
   );
 };
 
-<<<<<<< HEAD
-=======
 NavElement.propTypes = {
   text: PropTypes.string,
 };
 
->>>>>>> development
 export default NavElement;
