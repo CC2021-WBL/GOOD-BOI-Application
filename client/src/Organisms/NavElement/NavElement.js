@@ -1,10 +1,10 @@
+import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
+import { MdMenu } from 'react-icons/md';
 import { useContext, useState } from 'react';
 
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
-import { ContestContext } from '../../Context/ContestContext';
-import { DogContext } from '../../Context/DogContext';
 import GoHomeStyled from '../../Atoms/NavElementStyled/GoHomeStyled';
 import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
 import GridWrapper from '../../Templates/Layout/GridWrapper';
@@ -13,10 +13,8 @@ import home from '../../Assets/home.png';
 import { ContestContext } from '../../Context/ContestContext';
 import { DogContext } from '../../Context/DogContext';
 import { NavElementStyled } from './NavElementStyled';
-import PropTypes from 'prop-types';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { checkPathOrigin } from '../../Tools/checkPathOrigin';
-import home from '../../Assets/home.png';
 
 const NavElement = () => {
   const locationPath = useLocation();
