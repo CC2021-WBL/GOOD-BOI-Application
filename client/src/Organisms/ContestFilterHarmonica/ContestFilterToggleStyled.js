@@ -21,7 +21,7 @@ const ContestFilterTogglerStyled = styled.div`
   }
 
   @media only screen and (min-width: 800px) {
-    border-radius: 12px 12px 0 0;
+    border-radius: 0.75rem 0.75rem 0 0;
   }
 `;
 

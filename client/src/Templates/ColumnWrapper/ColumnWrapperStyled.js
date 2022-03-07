@@ -22,7 +22,7 @@ const ColumnWrapperStyled = styled.div`
     &.contests-column-wrapper {
       display: flex;
       max-width: 680px;
-      margin: 85px 0 0 0;
+      margin: 5.3125rem 0 0 0;
     }
   }
 

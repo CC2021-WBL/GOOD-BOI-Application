@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const FilterLabelStyled = styled.label`
   display: flex;
   width: 100%;
-  margin-top: 33px;
+  margin-top: 2.0625rem;
   grid-area: 3 / 1 / 4 / 2;
 
   div {
@@ -18,9 +18,9 @@ const FilterLabelStyled = styled.label`
 
   @media only screen and (min-width: 800px) {
     margin-top: 0;
-    div{border-radius: 0 0 12px 12px;
+    div{border-radius: 0 0 0.75rem 0.75rem;
       .innerWrapper {
-        max-width: 600px;
+        max-width: 37.5rem;
       }
     }
   }

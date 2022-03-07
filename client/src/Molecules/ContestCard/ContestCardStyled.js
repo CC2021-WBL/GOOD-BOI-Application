@@ -75,7 +75,7 @@ const ContestInsideElementStyled = styled.div`
 
   @media (min-width: 800px) {
     width: 80%;
-    padding: 10px 0;
+    padding: 0.625rem 0;
   }
 `;
 
