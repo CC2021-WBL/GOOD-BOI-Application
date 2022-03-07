@@ -291,7 +291,7 @@ const ContestForm = () => {
                   data-id="0"
                   type="checkbox"
                   value="Klasa 0"
-                  {...register('checkbox0')}
+                  {...register('class0')}
                   onChange={handleChange}
                 />
                 <label htmlFor="class0">Klasa 0</label>
@@ -303,7 +303,7 @@ const ContestForm = () => {
                   data-id="1"
                   type="checkbox"
                   value="Klasa 1"
-                  {...register('checkbox1')}
+                  {...register('class1')}
                   onChange={handleChange}
                 />
                 <label htmlFor="class1">Klasa 1</label>
@@ -315,7 +315,7 @@ const ContestForm = () => {
                   data-id="2"
                   type="checkbox"
                   value="Klasa 2"
-                  {...register('checkbox2')}
+                  {...register('class2')}
                   onChange={handleChange}
                 />
                 <label htmlFor="class2">Klasa 2</label>
@@ -327,7 +327,7 @@ const ContestForm = () => {
                   data-id="3"
                   type="checkbox"
                   value="Klasa 3"
-                  {...register('checkbox3')}
+                  {...register('class3')}
                   onChange={handleChange}
                 />
                 <label htmlFor="class3">Klasa 3</label>
