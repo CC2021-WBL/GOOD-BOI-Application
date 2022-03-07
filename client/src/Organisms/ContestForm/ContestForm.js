@@ -21,7 +21,6 @@ const ContestForm = () => {
   });
   const [data, setData] = useState('');
   console.log(data);
-
   const [chosenClasses, setChosenClasses] = useState([]);
 
   const judgeArr = [];
@@ -37,7 +36,6 @@ const ContestForm = () => {
           chosenClasses.filter((classNumber) => classNumber !== id),
         );
   };
-  console.log(new Date().toISOString().split('T')[0]);
   return (
     <>
       <ColumnWrapper paddingLeftRight={1}>
@@ -84,7 +82,6 @@ const ContestForm = () => {
             htmlFor="startingDate"
             id="startingDate"
             type="date"
-            defaultValue={new Date().toISOString().split('T')[0]}
             placeholder="&#xF007; Data rozpoczęcia zawodów"
             className={errors.startingDate ? 'red-border' : ''}
             {...register('startingDate', {
@@ -97,7 +94,6 @@ const ContestForm = () => {
             htmlFor="endingDate"
             id="endingDate"
             type="date"
-            defaultValue={new Date().toISOString().split('T')[0]}
             placeholder="&#xF007; Data zakończenia zawodów"
             className={errors.endingDate ? 'red-border' : ''}
             {...register('endingDate', {
@@ -110,7 +106,6 @@ const ContestForm = () => {
             htmlFor="openingDate"
             id="openingDate"
             type="date"
-            defaultValue={new Date().toISOString().split('T')[0]}
             placeholder="&#xF007; Data otwarcia zgłoszeń"
             className={errors.openingDate ? 'red-border' : ''}
             {...register('openingDate', {
@@ -123,7 +118,6 @@ const ContestForm = () => {
             htmlFor="closingDate"
             id="closingDate"
             type="date"
-            defaultValue={new Date().toISOString().split('T')[0]}
             placeholder="&#xF007; Data zamknięcia zgłoszeń"
             className={errors.closingDate ? 'red-border' : ''}
             {...register('closingDate', {

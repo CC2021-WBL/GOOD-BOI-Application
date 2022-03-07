@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import COLORS from './../../Styles/varsStyledComponents';
 
 const CheckBoxFormOuterWrapperStyled = styled.div`
-  /* border: 1px solid #7b8794; */
+  border: 1px solid #7b8794;
   display: flex;
   flex-direction: column;
   border-radius: 0.75rem;
