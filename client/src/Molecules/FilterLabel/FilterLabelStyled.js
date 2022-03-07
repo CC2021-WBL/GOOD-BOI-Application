@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 const FilterLabelStyled = styled.label`
-  grid-area: 3 / 1 / 4 / 2;
-  margin-top: 33px;
   display: flex;
   width: 100%;
+  margin-top: 33px;
+  grid-area: 3 / 1 / 4 / 2;
 
   div {
     display: flex;
