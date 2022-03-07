@@ -34,7 +34,7 @@ router.get(
   async (req, res) => {
     try {
       const results = await Result.findById(req.params.resultsId);
-      if (results.participantId === req.user._id.valueOf()) {
+      if (results.participantId.valueOf() === req.user._id.valueOf()) {
         res.status(200).send(results);
       } else {
         res.status(401).json({ success: false, message: 'unauthorized' });
