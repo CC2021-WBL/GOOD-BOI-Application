@@ -12,8 +12,7 @@ async function registerDog(req, res) {
     chipOrTattoo: req.body.chipOrTattoo,
     sex: req.body.sex,
     owner: req.body.owner,
-    participants: req.params.userId,
-    results: req.body.results,
+    participants: [req.params.userId],
   });
   try {
     const savedDog = await dog.save();
@@ -36,6 +35,7 @@ async function updateSomeDogProps(req, res) {
     propsToUpdate.forEach((element) => {
       dog[element] = req.body[element];
     });
+    dog.updatedAt = new Date();
     await dog.save();
     return dog;
   } catch (error) {
@@ -63,21 +63,30 @@ async function updateAllDogData(req, res) {
       return updatedDog;
     }
   } catch (error) {
-    res.send(error.message);
+    res.status(500).send(error.message);
   }
 }
 
 async function getDogData(req, res) {
+  let dogData;
   try {
-    const dogData = await Dog.findById(req.params.dogId);
+    if (req.access && req.access === 'public') {
+      dogData = await Dog.findById(req.params.dogId).select([
+        'dogName',
+        'kennelName',
+        'breed',
+      ]);
+    } else {
+      dogData = await Dog.findById(req.params.dogId);
+    }
+
     if (!dogData) {
       res.status(204).end();
     } else {
       return dogData;
     }
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: error });
+    res.status(500).send(error.message);
   }
 }
 
@@ -90,7 +99,7 @@ async function deleteDog(req, res) {
       return removedDog;
     }
   } catch (error) {
-    res.status(502).res.json({ message: error });
+    res.status(502).json(error.message);
   }
 }
 

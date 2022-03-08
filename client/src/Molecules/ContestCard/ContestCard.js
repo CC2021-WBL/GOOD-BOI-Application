@@ -1,21 +1,22 @@
+import propTypes from 'prop-types';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
+import dogsImages from '../../Assets/Dogs/dogsImages';
+import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
 import {
   ContestCardStyled,
   ContestInsideElementStyled,
   ContestNameStyled,
 } from './ContestCardStyled';
+import { ContestContext } from '../../Context/ContestContext';
+import { UserDataContext } from '../../Context/UserDataContext';
 import {
   getDataFormatDdMonthYyy,
   getHourAndMinutesFromDate,
   getPointOnTimeLine,
 } from '../../Tools/TimeFunctions';
-
-import { ContestContext } from '../../Context/ContestContext';
-import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
-import { UserDataContext } from '../../Context/UserDataContext';
-import propTypes from 'prop-types';
-import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
-import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const ContestCard = ({ contestData }) => {
   const { contestDispatch } = useContext(ContestContext);
@@ -36,6 +37,8 @@ const ContestCard = ({ contestData }) => {
       navigate(`../class-choice`);
     } else if (selectedRole !== null && selectedRole === 'staff') {
       navigate(`./${contestId}/classes`);
+    } else if (pointOnTimeLine === 'w trakcie') {
+      navigate(`../class-choice`);
     } else {
       navigate(`/contests/${contestId}`);
     }
@@ -48,29 +51,49 @@ const ContestCard = ({ contestData }) => {
     });
   };
 
+  let randomDogImage = Math.floor(Math.random() * dogsImages.length);
   return (
-    <ContestCardStyled
-      colorMotive={setColorMotive(pointOnTimeLine)}
-      onClick={handleClick}
-    >
-      <ContestNameStyled>{contestName}</ContestNameStyled>
-      <ContestInsideElementStyled colorMotive={setColorMotive(pointOnTimeLine)}>
-        <time dateTime={stringDate}>
-          {stringDate}, {getHourAndMinutesFromDate(startDate)}
-        </time>
-        <p>{address.city.toUpperCase()}</p>
-      </ContestInsideElementStyled>
-      <ContestInsideElementStyled colorMotive={setColorMotive(pointOnTimeLine)}>
-        <InfoLabel
-          classInfo={{ dogsAmount: dogsAmount }}
-          colorMotive={setColorMotive(pointOnTimeLine, dogsAmount)}
-        />
-        <InfoLabel
-          pointOnTimeLine={pointOnTimeLine}
-          colorMotive={setColorMotive(pointOnTimeLine)}
-        />
-      </ContestInsideElementStyled>
-    </ContestCardStyled>
+    <>
+      <ContestCardStyled
+        colorMotive={setColorMotive(pointOnTimeLine)}
+        onClick={handleClick}
+      >
+        <div className="contest-card-wrapper">
+          <ContestNameStyled>{contestName}</ContestNameStyled>
+          <ContestInsideElementStyled
+            colorMotive={setColorMotive(pointOnTimeLine)}
+          >
+            <time dateTime={stringDate}>
+              {stringDate}, {getHourAndMinutesFromDate(startDate)}
+            </time>
+            <p>{address.city.toUpperCase()}</p>
+          </ContestInsideElementStyled>
+
+          <ContestInsideElementStyled
+            colorMotive={setColorMotive(pointOnTimeLine)}
+          >
+            <InfoLabel
+              classInfo={{ dogsAmount: dogsAmount }}
+              colorMotive={setColorMotive(pointOnTimeLine, dogsAmount)}
+            />
+            <InfoLabel
+              pointOnTimeLine={pointOnTimeLine}
+              colorMotive={setColorMotive(pointOnTimeLine)}
+            />
+          </ContestInsideElementStyled>
+          {pointOnTimeLine === 'archiwalny' && (
+            <p className="contest-action">zobacz wyniki</p>
+          )}
+          {pointOnTimeLine === 'nadchodzący' && (
+            <p className="contest-action">zapisz się</p>
+          )}
+        </div>
+
+        <div className="doggo-image">
+          <img src={dogsImages[randomDogImage]} alt="Cute doggo" />
+        </div>
+      </ContestCardStyled>
+    </>
   );
 };
 

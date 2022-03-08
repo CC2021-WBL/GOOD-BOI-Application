@@ -3,6 +3,7 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
+import AddContestFormPage from './PagesBody/AddContestFormPage/AddContestFormPage';
 import BurgerMenu from './Organisms/BurgerMenu/BurgerMenu';
 import ClassChoicePage from './PagesBody/ClassChoicePage/ClassChoicePage';
 import ClassCompetitorsPage from './PagesBody/ClassCompetitorsPage/ClassCompetitorsPage';
@@ -17,12 +18,13 @@ import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
 import ErrorBoundary from './Tools/ErrorBoundary';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
-import Grid from './Styles/Grid';
+import Grid from './Templates/Layout/Grid';
 import InProgressPage from './PagesBody/InProgressPage/InProgressPage';
 import LandingPage from './PagesBody/LandingPage/LandingPage';
 import Layout from './Templates/Layout/Layout';
 import LeaderboardPage from './PagesBody/LeaderboardPage/LeaderboardPage';
 import LoginForm from './Organisms/LoginForm/LoginForm';
+import ManagerPage from './PagesBody/ManagerPage/ManagerPage';
 import NotFoundPage from './PagesBody/NotFoundPage/NotFoundPage';
 import ParticipantDataPage from './PagesBody/ParticipantDataPage/ParticipantDataPage';
 import ProfilePage from './PagesBody/ProfilePage/ProfilePage';
@@ -60,6 +62,7 @@ function App() {
                         <Route path="user/:userId" element={<ProfilePage />} />
                       </Route>
                       <Route element={<Layout />}>
+                        <Route path="manager" element={<ManagerPage />} />
                         <Route
                           path="settings"
                           element={
@@ -130,6 +133,10 @@ function App() {
                         <Route
                           path="participant-data/:participantId"
                           element={<ParticipantDataPage />}
+                        />
+                        <Route
+                          path="/manager/:userId/add-contest"
+                          element={<AddContestFormPage />}
                         />
                         <Route
                           path="contests/:contestId"

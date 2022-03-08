@@ -14,7 +14,6 @@ const Layout = ({ withSettings }) => {
     <>
       <NavElement />
       <Outlet />
-      {/* {Math.abs(initHeight - height.height) <= 150 ? <GhostFooterStyled /> : ``} */}
       {withSettings ? <Footer withSettings /> : <Footer />}
     </>
   );

@@ -1,9 +1,16 @@
-const Participant = require("../Model/Participant");
+const { forProfilePage } = require('../Consts/selects');
+const Participant = require('../Model/Participant');
+const { generatePassword } = require('../Tools/passwordTools');
 
 async function registerParticipant(req, res) {
+  const saltHash = generatePassword(req.body.password);
+  const salt = saltHash.salt;
+  const hash = saltHash.hash;
+
   const participant = new Participant({
     email: req.body.email,
-    password: req.body.password,
+    hash: hash,
+    salt: salt,
     phoneNumber: req.body.phoneNumber,
     participantName: req.body.participantName,
     participantSurname: req.body.participantSurname,
@@ -24,16 +31,28 @@ async function registerParticipant(req, res) {
 async function getUserData(req, res) {
   try {
     let data;
-    if (req.query.select) {
-      data = await Participant.findSomethingByUserId(
-        req.params.userId,
-        req.query.select
-      );
+    if (req.user && req.user._id.valueOf() === req.params.userId) {
+      if (req.query.select) {
+        data = await Participant.findSomethingByUserId(
+          req.params.userId,
+          req.query.select,
+        );
+      } else if (req.query.taker && req.query.taker === 'profile') {
+        data = await Participant.findSomethingByUserId(
+          req.params.userId,
+          forProfilePage,
+        );
+      } else {
+        data = await Participant.findById(req.params.userId);
+      }
     } else {
-      data = await Participant.findById(req.params.userId);
+      data = await Participant.findById(req.params.userId).select([
+        'participantName',
+        'participantSurname',
+      ]);
     }
     if (!data) {
-      res.status(204).json({ message: "not found user with that ID" });
+      res.status(204).json({ message: 'not found user with that ID' });
     } else {
       return data;
     }
@@ -46,7 +65,7 @@ async function updateUserData(req, res) {
   try {
     const propsToUpdate = Object.keys(req.body);
     if (propsToUpdate.length === 0) {
-      res.status(204).json({ message: "no data to update" });
+      res.status(204).json({ message: 'no data to update' });
     }
     const user = await Participant.findById(req.params.userId);
     propsToUpdate.forEach((element) => {
