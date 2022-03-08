@@ -1,11 +1,8 @@
-import { Copy, DevsLogo } from './FooterStyled';
-
 import FooterDesktopInnerStyled from './FooterDesktopInnerStyled';
 import FooterDesktopStyled from './FooterDesktopStyled';
-import { LogoStyled } from './FooterStyled';
 import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
-
-// TODO: Merge with Desktop component
+import { Copy, DevsLogo } from './FooterStyled';
+import { LogoStyled } from './FooterStyled';
 
 const FooterDesktop = ({ className }) => {
   return (
