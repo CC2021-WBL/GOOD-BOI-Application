@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import FONTS from './../../Styles/fontsStyledComponents';
 
-const FooterInnerStyled = styled.footer`
+const FooterDesktopInnerStyled = styled.footer`
   display: none;
   text-align: right;
 
@@ -33,4 +33,4 @@ const FooterInnerStyled = styled.footer`
   }
 `;
 
-export default FooterInnerStyled;
+export default FooterDesktopInnerStyled;

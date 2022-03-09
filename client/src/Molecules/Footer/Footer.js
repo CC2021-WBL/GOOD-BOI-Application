@@ -1,61 +1,47 @@
 import propTypes from 'prop-types';
 import { useContext } from 'react';
 
-import FooterDesktop from './FooterDesktop';
+import FooterLinks from './FooterLinks';
 import FooterProfileButton from '../../Atoms/FooterProfileButton/FooterProfileButton';
 import GridWrapper from '../../Templates/Layout/GridWrapper';
-import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
+import LinkWithDevsLogo from './LinkWithDevsLogo';
 import useWindowHeight from '../../Tools/useWindowHeight';
-import { Copy, DevsLogo, FooterStyled, LogoStyled } from './FooterStyled';
+import { FooterStyled } from './FooterStyled';
 import { UserDataContext } from '../../Context/UserDataContext';
 
-const initHeight = window.innerHeight;
+let initHeight = window.innerHeight;
 
 const Footer = ({ withSettings }) => {
   const { state } = useContext(UserDataContext);
   const { isAuthenticated } = state;
   const height = useWindowHeight();
 
-  // windows.innerHeight changes when virtual keyboard popping up, when so - hides the footer
-  if (Math.abs(initHeight - height.height) <= 150) {
-    return (
-      <GridWrapper mobile="4 / 1 / 5 / 2" tablet="4 / 1 / 5 / -1" navFoot>
-        <FooterDesktop />
-        <FooterStyled className="mobile_only">
-          <a
-            href="https://github.com/CC2021-WBL"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <LogoStyled>
-              <DevsLogo>
-                <img
-                  className="logo"
-                  src={logoDevsOnTheWaves}
-                  alt="logo"
-                  width="35px"
-                />
-              </DevsLogo>
-              <Copy>
-                Copyright <br />
-                #Devs on the Waves
-              </Copy>
-            </LogoStyled>
-          </a>
-
+  // TODO: Footer must also hide when mobile is turned and virtual keyboard popps up
+  return (
+    <GridWrapper mobile="4 / 1 / 5 / 2" tablet="4 / 1 / 5 / -1">
+      <FooterStyled className="nonMobileWrapper">
+        <FooterStyled className="nonMobile">
+          <LinkWithDevsLogo />
+          <FooterLinks />
+        </FooterStyled>
+      </FooterStyled>
+      {Math.abs(initHeight - height.height) <= 150 && (
+        <FooterStyled className="mobile">
+          <LinkWithDevsLogo />
           {withSettings ? (
             <FooterProfileButton withSettings />
           ) : (
             isAuthenticated && <FooterProfileButton />
           )}
         </FooterStyled>
-      </GridWrapper>
-    );
-  } else return '';
+      )}
+    </GridWrapper>
+  );
 };
 
 Footer.propTypes = {
   withSettings: propTypes.bool,
+  mobile: propTypes.bool,
 };
 
 export default Footer;
