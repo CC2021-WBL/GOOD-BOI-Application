@@ -36,8 +36,8 @@ const ProfilePage = () => {
   }, []);
 
   return (
-    <ColumnWrapper paddingLeftRight={1} className="user_profile">
-      <ProfileCard className="user_profile" />
+    <ColumnWrapper paddingLeftRight={1} className="user-profile">
+      <ProfileCard className="user-profile" />
       <FakeButton
         to={'/contests'}
         state={{
@@ -46,14 +46,14 @@ const ProfilePage = () => {
         text="Zapisz się na Zawody"
         paragraphText="Przejdź do formularza zapisu na zawody."
         colors="secondary"
-        className={['user_profile', 'user_upcoming']}
+        className={['user-profile', 'user-upcoming']}
       />
       <FakeButton
         to="/user-dogs"
         text="Twoje Psy"
         paragraphText="Lista Psów przypisanych do Twojego konta. Zarejestruj je w systemie, żeby szybciej zgłaszać się na zawody."
         colors="ternary"
-        className={['user_profile', 'user_dogs']}
+        className={['user-profile', 'user-dogs']}
       />
       <FakeButton
         to={`/contests`}
@@ -63,14 +63,14 @@ const ProfilePage = () => {
         text="Twoje Zawody"
         paragraphText="Konkursy w których brałeś udział lub zapisz się na nadchodzące zawody, korzystając z wygodnego formularza."
         colors="ternary"
-        className={['user_profile', 'user_contests']}
+        className={['user-profile', 'user-contests']}
       />
       <FakeButton
         to={`/user/${userId}/user-data`}
         text="Twoje Dane"
         paragraphText="Tu możesz edytować swoje dane imienne i adresowe, a także email i hasło."
         colors="ternary"
-        className={['user_profile', 'user_data']}
+        className={['user-profile', 'user-data']}
       />
     </ColumnWrapper>
   );

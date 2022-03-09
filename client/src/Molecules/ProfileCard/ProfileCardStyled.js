@@ -21,7 +21,7 @@ const ProfileCardStyled = styled.div`
     border-radius: 50%;
   }
 
-  &.user_profile {
+  &.user-profile {
     @media only screen and (min-width: 800px) {
       min-height: 21.25rem;
       flex-direction: column;
@@ -40,7 +40,7 @@ const ProfileCardStyled = styled.div`
       }
     }
 
-    @media only screen and (min-width: 1600px) {
+    @media only screen and (min-width: 1024px) {
       grid-area: 1 / 7 / span 2 / span 2;
       height: 100%;
       justify-content: space-around;
