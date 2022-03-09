@@ -20,7 +20,7 @@ export const FooterStyled = styled.div`
       display: none;
     }
   }
-  &.nonMobileWrapper {
+  &.non-mobile-wrapper {
     display: none;
     background: ${({ theme }) => theme.grey00};
     @media only screen and (min-width: 800px) {
@@ -29,7 +29,7 @@ export const FooterStyled = styled.div`
       height: 100%;
     }
   }
-  &.nonMobile {
+  &.non-mobile {
     display: none;
     text-align: right;
 

@@ -19,8 +19,8 @@ const Footer = ({ withSettings }) => {
   // TODO: Footer must also hide when mobile is turned and virtual keyboard popps up
   return (
     <GridWrapper mobile="4 / 1 / 5 / 2" tablet="4 / 1 / 5 / -1">
-      <FooterStyled className="nonMobileWrapper">
-        <FooterStyled className="nonMobile">
+      <FooterStyled className="non-mobile-wrapper">
+        <FooterStyled className="non-mobile">
           <LinkWithDevsLogo />
           <FooterLinks />
         </FooterStyled>
