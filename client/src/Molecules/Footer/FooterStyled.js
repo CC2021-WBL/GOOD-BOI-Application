@@ -5,10 +5,10 @@ import FONTS from '../../Styles/fontsStyledComponents';
 export const FooterStyled = styled.div`
   &.mobile {
     position: fixed;
-    display: flex;
     right: 0;
     bottom: 0;
     left: 0;
+    display: flex;
     height: 4.875rem;
     align-items: center;
     justify-content: space-between;
@@ -36,11 +36,10 @@ export const FooterStyled = styled.div`
     @media only screen and (min-width: 800px) {
       display: flex;
       width: 100%;
+      min-width: 600px;
       height: 100%;
       align-items: center;
       justify-content: space-between;
-
-      min-width: 600px;
       padding: 2rem;
       margin: auto;
       gap: clamp(2rem, 10vw, 15rem);
@@ -55,8 +54,8 @@ export const FooterStyled = styled.div`
     }
     @media only screen and (min-width: 1600px) {
       max-width: 1200px;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
     }
   }
 `;
