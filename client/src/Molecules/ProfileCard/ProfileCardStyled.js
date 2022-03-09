@@ -34,9 +34,9 @@ const ProfileCardStyled = styled.div`
       .bg-box {
         margin: 1.25rem 0;
         right: 0;
-        top: 15%;
-        width: 10rem;
-        height: 10rem;
+        top: 18%;
+        width: 9rem;
+        height: 9rem;
       }
     }
 
@@ -44,6 +44,13 @@ const ProfileCardStyled = styled.div`
       grid-area: 1 / 7 / span 2 / span 2;
       height: 100%;
       justify-content: space-around;
+    }
+    @media only screen and (min-width: 1600px) {
+      .bg-box {
+        top: 15%;
+        width: 10rem;
+        height: 10rem;
+      }
     }
   }
 `;

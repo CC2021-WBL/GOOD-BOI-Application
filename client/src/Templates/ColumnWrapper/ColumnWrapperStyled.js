@@ -25,7 +25,6 @@ const ColumnWrapperStyled = styled.div`
     /* overflow: scroll; */
   }
   @media only screen and (min-width: 1024px) {
-    grid-area: 3 / 3 / 4 / 4;
     &.user-profile {
       height: 100%;
       display: grid;
@@ -33,6 +32,9 @@ const ColumnWrapperStyled = styled.div`
       grid-template-columns: repeat(8, 1fr);
       grid-template-rows: repeat(2, 10.625rem) 1fr;
       align-items: center;
+    }
+    @media only screen and (min-width: 1600px) {
+      grid-area: 3 / 3 / 4 / 4;
     }
   }
 `;
