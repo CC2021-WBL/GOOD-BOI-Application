@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const ColumnWrapperStyled = styled.div`
-  grid-area: 3 / 1 / 4 / 2;
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -11,6 +10,7 @@ const ColumnWrapperStyled = styled.div`
   padding-top: ${(props) => props.paddingTop && `${props.paddingTop}rem`};
   padding-bottom: ${(props) =>
     props.paddingBottom && `${props.paddingBottom}rem`};
+  grid-area: 3 / 1 / 4 / 2;
 
   &.manager-page {
     padding: 2.2rem 1rem 0 1rem;
@@ -22,7 +22,6 @@ const ColumnWrapperStyled = styled.div`
       gap: 1.25rem;
       height: 100vh;
     }
-    /* overflow: scroll; */
   }
   @media only screen and (min-width: 1024px) {
     &.user-profile {
@@ -33,9 +32,14 @@ const ColumnWrapperStyled = styled.div`
       grid-template-rows: repeat(2, 10.625rem) 1fr;
       align-items: center;
     }
-    @media only screen and (min-width: 1600px) {
-      grid-area: 3 / 3 / 4 / 4;
+    &.contests-column-wrapper {
+      display: flex;
+      max-width: 680px;
+      margin: 1.5625rem 0 0 0;
     }
+  }
+  @media only screen and (min-width: 1600px) {
+    grid-area: 3 / 3 / 4 / 4;
   }
 `;
 
