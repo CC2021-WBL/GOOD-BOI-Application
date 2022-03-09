@@ -52,6 +52,11 @@ const FakeButtonStyled = styled(Link)`
   ${(props) => handleBorders(props)}
   text-transform: uppercase;
 
+  &.add-dogs {
+    @media only screen and (min-width: 800px) {
+      max-width: 16.25rem;
+    }
+  }
   &.user_profile {
     @media only screen and (min-width: 1600px) {
       justify-content: flex-start;

@@ -16,6 +16,10 @@ const ColumnWrapperStyled = styled.div`
     padding: 2.2rem 1rem 0 1rem;
   }
 
+  &.user-dogs-column-wrapper {
+    align-items: center;
+  }
+
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
 
