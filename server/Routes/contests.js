@@ -4,6 +4,7 @@ const {
   updateContest,
   finishClass,
   getContests,
+  getContestsForCard,
 } = require('../Controllers/contestControllers');
 
 const {
@@ -57,6 +58,17 @@ router.get('/:contestId', async (req, res) => {
 // Middleware to check JWT
 router.use(auth);
 
+//Get contests data for ContestCard component
+router.get('/card/data', async (req, res) => {
+  try {
+    const contestsData = await getContestsForCard(req, res);
+    res.status(200).send(contestsData);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error.message);
+  }
+});
+
 //Register new contest
 router.post(
   '/register/:userId',
@@ -72,6 +84,7 @@ router.post(
   },
 );
 
+// Update general contest data
 router.patch(
   '/:contestId',
   blockIfPublic,
@@ -86,6 +99,7 @@ router.patch(
   },
 );
 
+// Update is class finished
 router.patch(
   '/:contestId/:classNumber',
   blockIfPublic,
