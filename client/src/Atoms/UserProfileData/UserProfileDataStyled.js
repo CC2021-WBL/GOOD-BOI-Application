@@ -35,10 +35,11 @@ const UserProfileDataStyled = styled.div`
     text-align: center;
     margin-right: 0;
     width: 100%;
-    padding: 2.5rem 0 0 0;
+    padding: 3.5rem 0 0 0;
 
     h3 {
       ${FONTS.h1};
+      padding: 0.3125rem;
       font-weight: 100;
       display: flex;
       flex-direction: column;
@@ -49,6 +50,10 @@ const UserProfileDataStyled = styled.div`
       top: 0;
       border-bottom: 1px solid ${({ theme }) => theme.grey200};
     }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    padding: 2.5rem 0 0 0;
   }
 
   @media only screen and (min-width: 1600px) {

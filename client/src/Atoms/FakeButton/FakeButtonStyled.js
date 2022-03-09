@@ -90,6 +90,9 @@ const FakeButtonStyled = styled(Link)`
       }
     }
 
+    @media only screen and (min-width: 800px) {
+    }
+
     &.user-dogs {
       grid-area: 1 / 1 / 2 / span 3;
       align-self: flex-end;
