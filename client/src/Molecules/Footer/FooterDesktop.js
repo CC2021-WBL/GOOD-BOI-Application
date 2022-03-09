@@ -4,10 +4,10 @@ import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
 import { Copy, DevsLogo } from './FooterStyled';
 import { LogoStyled } from './FooterStyled';
 
-const FooterDesktop = ({ className }) => {
+const FooterDesktop = () => {
   return (
     <>
-      <FooterDesktopStyled className={className}>
+      <FooterDesktopStyled>
         <FooterDesktopInnerStyled>
           <a
             href="https://github.com/CC2021-WBL"

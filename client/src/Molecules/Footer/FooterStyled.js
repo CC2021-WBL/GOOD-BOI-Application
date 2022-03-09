@@ -30,4 +30,5 @@ export const Copy = styled.div`
   color: ${({ theme }) => theme.grey800};
   font-size: 0.75rem;
   text-align: left;
+  white-space: nowrap;
 `;
