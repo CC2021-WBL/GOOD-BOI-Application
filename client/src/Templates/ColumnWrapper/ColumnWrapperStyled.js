@@ -18,11 +18,16 @@ const ColumnWrapperStyled = styled.div`
 
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
+    &.user_profile {
+      gap: 1.25rem;
+      height: 100vh;
+    }
     /* overflow: scroll; */
   }
   @media only screen and (min-width: 1600px) {
     grid-area: 3 / 3 / 4 / 4;
     &.user_profile {
+      height: 100%;
       display: grid;
       gap: 1.25rem;
       grid-template-columns: repeat(8, 1fr);

@@ -53,7 +53,7 @@ const FakeButtonStyled = styled(Link)`
   text-transform: uppercase;
 
   &.user_profile {
-    @media only screen and (min-width: 1600px) {
+    @media only screen and (min-width: 800px) {
       justify-content: flex-start;
       height: 100%;
       margin: 0;
@@ -103,11 +103,15 @@ const FakeButtonStyled = styled(Link)`
     &.user_data {
       grid-area: 1 / 4 / 2 / span 3;
       align-self: flex-end;
+      margin-bottom: 1.25rem;
+      @media only screen and (min-width: 1600px) {
+        margin-bottom: 0;
+      }
     }
 
     &.user_upcoming {
       grid-area: 2 / 1 / 3 / span 3;
-      @media only screen and (min-width: 1600px) {
+      @media only screen and (min-width: 800px) {
         align-self: flex-start;
         background-color: ${({ theme }) => theme.primary101};
         border: 1px solid ${({ theme }) => theme.primary601};

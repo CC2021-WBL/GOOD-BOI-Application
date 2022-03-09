@@ -39,6 +39,16 @@ const ProfilePage = () => {
     <ColumnWrapper paddingLeftRight={1} className="user_profile">
       <ProfileCard className="user_profile" />
       <FakeButton
+        to={'/contests'}
+        state={{
+          contestContent: 'future',
+        }}
+        text="Zapisz się na Zawody"
+        paragraphText="Przejdź do formularza zapisu na zawody."
+        colors="secondary"
+        className={['user_profile', 'user_upcoming']}
+      />
+      <FakeButton
         to="/user-dogs"
         text="Twoje Psy"
         paragraphText="Lista Psów przypisanych do Twojego konta. Zarejestruj je w systemie, żeby szybciej zgłaszać się na zawody."
@@ -61,16 +71,6 @@ const ProfilePage = () => {
         paragraphText="Tu możesz edytować swoje dane imienne i adresowe, a także email i hasło."
         colors="ternary"
         className={['user_profile', 'user_data']}
-      />
-      <FakeButton
-        to={'/contests'}
-        state={{
-          contestContent: 'future',
-        }}
-        text="Nadchodzące Zawody"
-        paragraphText="Przejdź do formularza zapisu na zawody."
-        colors="secondary"
-        className={['user_profile', 'user_upcoming']}
       />
     </ColumnWrapper>
   );
