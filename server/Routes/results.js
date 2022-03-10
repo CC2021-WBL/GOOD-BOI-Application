@@ -5,6 +5,7 @@ const {
   registerResults,
   getResultSummaryAndName,
 } = require('../Controllers/resultsControllers');
+const { updateResultsArray } = require('../Controllers/dogsControllers');
 
 const {
   auth,
@@ -52,8 +53,10 @@ router.post(
   isUserOrAdmin,
   async (req, res) => {
     try {
-      const result = await registerResults(req, res);
-      res.status(201).json(result);
+      const savedResult = await registerResults(req, res);
+      console.log(savedResult);
+      await updateResultsArray(req, res, savedResult);
+      res.status(201).json(savedResult);
     } catch (error) {
       res.status(400).send(error.message);
     }

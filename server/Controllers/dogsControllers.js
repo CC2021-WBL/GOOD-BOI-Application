@@ -1,4 +1,5 @@
 const Dog = require('../Model/Dog');
+const Participant = require('../Model/Participant');
 
 async function registerDog(req, res) {
   const dog = new Dog({
@@ -103,10 +104,31 @@ async function deleteDog(req, res) {
   }
 }
 
+async function updateResultsArray(req, res, newResult) {
+  try {
+    const dog = Participant.findById(req.params.userId).dogs.dogId.valueOf();
+    console.log(dog);
+    const resultObject = {
+      dogId: dog._id.valueOf(),
+      result: newResult.result,
+    };
+    dog.push(resultObject);
+    const updatedDog = await dog.save();
+    if (!updatedDog) {
+      res.send(500).end();
+    } else {
+      return updatedDog;
+    }
+  } catch (error) {
+    res.send(500).send({ message: 'coś nie pykło' });
+  }
+}
+
 module.exports = {
   registerDog,
   updateSomeDogProps,
   updateAllDogData,
   getDogData,
   deleteDog,
+  updateResultsArray,
 };
