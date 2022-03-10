@@ -18,24 +18,28 @@ const ColumnWrapperStyled = styled.div`
 
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
-
+    &.user-profile {
+      gap: 1.25rem;
+      height: 100vh;
+    }
+  }
+  @media only screen and (min-width: 1024px) {
+    &.user-profile {
+      height: 100%;
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(2, 10.625rem) 1fr;
+      align-items: center;
+    }
     &.contests-column-wrapper {
       display: flex;
       max-width: 680px;
       margin: 1.5625rem 0 0 0;
     }
   }
-
   @media only screen and (min-width: 1600px) {
     grid-area: 3 / 3 / 4 / 4;
-    &.user_profile {
-      display: grid;
-      align-items: center;
-      gap: 1.25rem;
-      grid-template-columns: repeat(8, 1fr);
-      grid-template-rows: repeat(2, 10.625rem) 1fr;
-      align-items: center;
-    }
   }
 `;
 
