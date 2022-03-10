@@ -8,7 +8,6 @@ import GridWrapper from '../../Templates/Layout/GridWrapper';
 import ImgWrapperStyled from './ImgWrapperStyled';
 import Logo2 from '../../Assets/Logo2.png';
 import { MdMenu } from 'react-icons/md';
-import RocketWithPlanets from '../../Molecules/RocketWithPlanets/RocketWithPlanets';
 import { UserDataContext } from '../../Context/UserDataContext';
 
 const LandingPage = () => {
@@ -66,7 +65,6 @@ const LandingPage = () => {
           <BurgerMenu open={open} setOpen={setOpen} />
         </ColumnWrapper>
       </GridWrapper>
-      <RocketWithPlanets />
       <Footer />
     </>
   );
