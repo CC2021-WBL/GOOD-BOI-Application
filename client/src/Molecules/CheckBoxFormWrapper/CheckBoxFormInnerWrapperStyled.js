@@ -14,13 +14,13 @@ const CheckBoxFormWrapperStyled = styled.div`
   div {
     display: flex;
     width: auto;
-    justify-content: flex-start;
-    align-items: center;
     height: 3rem;
+    align-items: center;
+    justify-content: flex-start;
 
     input {
-      height: 1.5rem;
       width: 3.125rem;
+      height: 1.5rem;
       text-align: left;
     }
 
@@ -29,11 +29,12 @@ const CheckBoxFormWrapperStyled = styled.div`
     }
 
     label {
-      ${FONTS.caption};
-      height: 1.5rem;
       position: relative;
       top: 0.1875rem;
+      height: 1.5rem;
       padding: 0 0 0 0.625rem;
+      color: ${({ theme }) => theme.grey800};
+      ${FONTS.caption};
     }
   }
 `;
