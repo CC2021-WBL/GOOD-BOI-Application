@@ -22,9 +22,9 @@ const Footer = ({ withSettings }) => {
     <GridWrapper mobile="4 / 1 / 5 / 2" tablet="4 / 1 / 5 / -1">
       <FooterStyled className="non-mobile-wrapper">
         <FooterStyled className="non-mobile">
+          <RocketWithPlanets />
           <LinkWithDevsLogo />
           <FooterLinks />
-          <RocketWithPlanets />
         </FooterStyled>
       </FooterStyled>
       {Math.abs(initHeight - height.height) <= 150 && (
