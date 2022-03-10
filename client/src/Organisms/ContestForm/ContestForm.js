@@ -47,28 +47,32 @@ const ContestForm = () => {
         >
           <InputField
             labelText="Nazwa zawodów"
-            htmlFor="name"
-            id="name"
+            htmlFor="contestName"
+            id="contestName"
             type="text"
             placeholder="&#xf091; Nazwa zawodów"
-            className={errors.name ? 'red-border' : ''}
-            {...register('name', {
+            className={errors.contestName ? 'red-border' : ''}
+            {...register('contestName', {
               required: 'Wpisz prawidłową nazwę konkursu',
               minLength: {
                 value: 5,
                 message: 'Wpisz prawidłową nazwę zawodów, min. 5 znaków',
               },
+              maxLength: {
+                value: 100,
+                message: 'Wpisz prawidłową nazwę zawodów, max. 100 znaków',
+              },
             })}
           />
-          {errors.name && <p>{errors.name.message}</p>}
+          {errors.contestName && <p>{errors.contestName.message}</p>}
           <InputField
             labelText="Oddział ZKwP:"
-            htmlFor="department"
-            id="department"
+            htmlFor="kennelClubDepartment"
+            id="kennelClubDepartment"
             type="text"
             placeholder="&#xf015; Oddział ZKwP"
-            className={errors.department ? 'red-border' : ''}
-            {...register('department', {
+            className={errors.kennelClubDepartment ? 'red-border' : ''}
+            {...register('kennelClubDepartment', {
               required: 'Wpisz oddział ZKwP',
               minLength: {
                 value: 5,
@@ -76,55 +80,61 @@ const ContestForm = () => {
               },
             })}
           />
-          {errors.department && <p>{errors.department.message}</p>}
+          {errors.kennelClubDepartment && (
+            <p>{errors.kennelClubDepartment.message}</p>
+          )}
           <InputField
             labelText="Data rozpoczęcia zawodów"
-            htmlFor="startingDate"
-            id="startingDate"
+            htmlFor="startDate"
+            id="startDate"
             type="date"
             placeholder="&#xF007; Data rozpoczęcia zawodów"
-            className={errors.startingDate ? 'red-border' : ''}
-            {...register('startingDate', {
+            className={errors.startDate ? 'red-border' : ''}
+            {...register('startDate', {
               required: 'Wybierz datę rozpoczęcia zawodów',
             })}
           />
-          {errors.startingDate && <p>{errors.startingDate.message}</p>}
+          {errors.startDate && <p>{errors.startDate.message}</p>}
           <InputField
             labelText="Data zakończenia zawodów"
-            htmlFor="endingDate"
-            id="endingDate"
+            htmlFor="endDate"
+            id="endDate"
             type="date"
             placeholder="&#xF007; Data zakończenia zawodów"
-            className={errors.endingDate ? 'red-border' : ''}
-            {...register('endingDate', {
+            className={errors.endDate ? 'red-border' : ''}
+            {...register('endDate', {
               required: 'Wybierz datę zakończenia zawodów',
             })}
           />
-          {errors.endingDate && <p>{errors.endingDate.message}</p>}
+          {errors.endDate && <p>{errors.endDate.message}</p>}
           <InputField
             labelText="Data otwarcia zgłoszeń"
-            htmlFor="openingDate"
-            id="openingDate"
+            htmlFor="applicationOpenDate"
+            id="applicationOpenDate"
             type="date"
             placeholder="&#xF007; Data otwarcia zgłoszeń"
-            className={errors.openingDate ? 'red-border' : ''}
-            {...register('openingDate', {
+            className={errors.applicationOpenDate ? 'red-border' : ''}
+            {...register('applicationOpenDate', {
               required: 'Wybierz datę otwarcia zgłoszeń',
             })}
           />
-          {errors.openingDate && <p>{errors.openingDate.message}</p>}
+          {errors.applicationOpenDate && (
+            <p>{errors.applicationOpenDate.message}</p>
+          )}
           <InputField
             labelText="Data zamknięcia zgłoszeń"
-            htmlFor="closingDate"
-            id="closingDate"
+            htmlFor="applicationCloseDate"
+            id="applicationCloseDate"
             type="date"
             placeholder="&#xF007; Data zamknięcia zgłoszeń"
-            className={errors.closingDate ? 'red-border' : ''}
-            {...register('closingDate', {
+            className={errors.applicationCloseDate ? 'red-border' : ''}
+            {...register('applicationCloseDate', {
               required: 'Wybierz datę zamknięcia zgłoszeń',
             })}
           />
-          {errors.closingDate && <p>{errors.closingDate.message}</p>}
+          {errors.applicationCloseDate && (
+            <p>{errors.applicationCloseDate.message}</p>
+          )}
           <InputField
             labelText="Adres zawodów - kraj"
             htmlFor="country"
@@ -247,37 +257,41 @@ const ContestForm = () => {
           {errors.komisarz && <p>{errors.komisarz.message}</p>}
           <InputField
             labelText="Opłata startowa [PLN]"
-            htmlFor="opłata"
-            id="oplata"
+            htmlFor="feePLN"
+            id="feePLN"
             type="number"
             placeholder="&#xf0d6; Opłata startowa [PLN]"
-            className={errors.oplata ? 'red-border' : ''}
-            {...register('oplata', {
+            className={errors.feePLN ? 'red-border' : ''}
+            {...register('feePLN', {
               required: 'Podaj opłatę startową w PLN',
               max: 1000,
               min: 1,
             })}
           />
-          {errors.oplata && <p>{errors.oplata.message}</p>}
-          {errors.oplata &&
-            (errors.oplata.type === 'max' || errors.oplata.type === 'min') && (
+          {errors.feePLN && <p>{errors.feePLN.message}</p>}
+          {errors.feePLN &&
+            (errors.feePLN.type === 'max' || errors.feePLN.type === 'min') && (
               <p>Podaj liczbę z zakresu 1-1000 </p>
             )}
           <InputField
             labelText="Maksymalna liczba zawodników"
-            htmlFor="liczba"
-            id="liczba"
+            htmlFor="maxAmountOfApplications"
+            id="maxAmountOfApplications"
             type="number"
             placeholder="&#xF007; Maksymalna liczba zawodników"
-            className={errors.liczba ? 'red-border' : ''}
-            {...register('liczba', {
+            className={errors.maxAmountOfApplications ? 'red-border' : ''}
+            {...register('maxAmountOfApplications', {
               required: 'Podaj maksymalną liczbę zawodników',
               max: 100,
               min: 1,
             })}
           />
-          {errors.liczba && <p>{errors.liczba.message}</p>}
-          {errors.liczba && <p>Podaj liczbę z zakresu 1-100 </p>}
+          {errors.maxAmountOfApplications && (
+            <p>{errors.maxAmountOfApplications.message}</p>
+          )}
+          {errors.maxAmountOfApplications && (
+            <p>Podaj liczbę z zakresu 1-100 </p>
+          )}
           <InputLabel labelText="Wybierz planowane klasy" htmlFor="checkboxy" />
 
           <CheckBoxFormOuterWrapperStyled
