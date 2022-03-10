@@ -124,9 +124,32 @@ async function getContests(req, res) {
   }
 }
 
+async function addResultToContest(req, res, resultId) {
+  try {
+    const contest = await Contest.findById(req.body.contestId);
+    const obedienceClass = contest.obedienceClasses.find(
+      (obedienceClass) => obedienceClass.classNumber == req.body.obedienceClass,
+    );
+    const participant = obedienceClass.participants.find(
+      (participant) =>
+        participant.participantId.valueOf() === req.body.participantId,
+    );
+    participant.resultsId = resultId;
+    const updatedContest = await contest.save();
+    if (!updatedContest) {
+      res.send(500).end();
+    } else {
+      return updatedContest;
+    }
+  } catch (error) {
+    res.send(500).send({ message: 'coś nie pykło' });
+  }
+}
+
 module.exports = {
   registerContest,
   updateContest,
   finishClass,
   getContests,
+  addResultToContest,
 };

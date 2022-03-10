@@ -15,6 +15,7 @@ const {
   blockIfPublic,
   isDogOwnerOrAdmin,
 } = require('../Middleware/authMiddleware');
+const Contest = require('../Model/Contest');
 
 // Middleware to check JWT
 router.use(auth);
@@ -94,5 +95,26 @@ router.get(
     res.send('get all results for current dog');
   },
 );
+
+//add dog to contest
+router.post('/register-dog/:contestId', async (req, res) => {
+  try {
+    const contest = await Contest.findById(req.params.contestId);
+    contest.obedienceClasses
+      .find(
+        (obedienceClass) =>
+          obedienceClass.classNumber == req.body.obedienceClass,
+      )
+      .participants.push({
+        dogId: req.body.dogId,
+        dogName: req.body.dogName,
+        participantId: req.body.participantId,
+      });
+    const updatedContest = await contest.save();
+    res.status(201).json(updatedContest);
+  } catch (error) {
+    res.status(400).send({ message: 'zjebawszy się' });
+  }
+});
 
 module.exports = router;

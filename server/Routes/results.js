@@ -5,7 +5,8 @@ const {
   registerResults,
   getResultSummaryAndName,
 } = require('../Controllers/resultsControllers');
-const { updateResultsArray } = require('../Controllers/dogsControllers');
+const { addResultToDog } = require('../Controllers/dogsControllers');
+const { addResultToContest } = require('../Controllers/contestControllers');
 
 const {
   auth,
@@ -53,9 +54,10 @@ router.post(
   isUserOrAdmin,
   async (req, res) => {
     try {
+      // TODO: dodać psa do contestu (dogs.js)
       const savedResult = await registerResults(req, res);
-      console.log(savedResult);
-      await updateResultsArray(req, res, savedResult);
+      await addResultToContest(req, res, savedResult._id.valueOf());
+      await addResultToDog(req, res, savedResult._id.valueOf());
       res.status(201).json(savedResult);
     } catch (error) {
       res.status(400).send(error.message);
