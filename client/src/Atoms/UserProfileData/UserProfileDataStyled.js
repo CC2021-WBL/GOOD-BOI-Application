@@ -31,22 +31,37 @@ const UserProfileDataStyled = styled.div`
       color: ${({ theme }) => theme.grey400};
     }
   }
-
-  @media only screen and (min-width: 1600px) {
+  @media only screen and (min-width: 800px) {
     text-align: center;
     margin-right: 0;
     width: 100%;
+    padding: 3.5rem 0 0 0;
 
     h3 {
-      ${FONTS.h2};
+      ${FONTS.h1};
+      padding: 0.3125rem;
+      font-weight: 100;
       display: flex;
       flex-direction: column;
       justify-content: center;
       position: absolute;
       width: 100%;
-      height: 4rem;
+      height: 5rem;
       top: 0;
       border-bottom: 1px solid ${({ theme }) => theme.grey200};
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    padding: 2.5rem 0 0 0;
+  }
+
+  @media only screen and (min-width: 1600px) {
+    padding: 0;
+
+    h3 {
+      ${FONTS.h2};
+      height: 4rem;
     }
   }
 `;

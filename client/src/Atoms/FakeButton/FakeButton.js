@@ -10,8 +10,8 @@ const FakeButton = ({ text, paragraphText, to, state, colors, className }) => {
       colors={colors}
       className={className}
     >
-      <p className="fakebtn_header">{text}</p>
-      <p className="desktop_only fakebtn_text">{paragraphText}</p>
+      <p className="fakebtn-header">{text}</p>
+      <p className="desktop_only fakebtn-text">{paragraphText}</p>
     </FakeButtonStyled>
   );
 };

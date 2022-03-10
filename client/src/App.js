@@ -3,6 +3,7 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
+import AddContestFormPage from './PagesBody/AddContestFormPage/AddContestFormPage';
 import BurgerMenu from './Organisms/BurgerMenu/BurgerMenu';
 import ClassChoicePage from './PagesBody/ClassChoicePage/ClassChoicePage';
 import ClassCompetitorsPage from './PagesBody/ClassCompetitorsPage/ClassCompetitorsPage';
@@ -132,6 +133,10 @@ function App() {
                         <Route
                           path="participant-data/:participantId"
                           element={<ParticipantDataPage />}
+                        />
+                        <Route
+                          path="/manager/:userId/add-contest"
+                          element={<AddContestFormPage />}
                         />
                         <Route
                           path="contests/:contestId"
