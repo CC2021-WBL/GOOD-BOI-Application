@@ -10,7 +10,7 @@ import FilterLabel from '../../Molecules/FilterLabel/FilterLabel';
 import { TIME } from '../../Consts/infoLabelConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
-import mockmap from '../../Assets/mockmap.png';
+import mockmap from '../../Assets/mockMAP.JPG';
 import { requestOptionsGET } from '../../FetchData/requestOptions';
 import resForContestPage from '../../Data/MongoDBMock/responseFromContestsToContestsPage';
 import { useLocation } from 'react-router-dom';
