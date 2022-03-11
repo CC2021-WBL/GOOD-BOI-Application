@@ -3,6 +3,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 
+import BackgroundDiv from './../../Atoms/BackgroundDiv/BackgroundDiv';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
@@ -43,9 +44,9 @@ const LoginForm = () => {
       navigate('/');
     }
   };
-
   return (
     <ColumnWrapper paddingLeftRight={1}>
+      <BackgroundDiv />
       <FormWrapper onSubmit={submitHandler}>
         <InputField
           labelText="Email"
