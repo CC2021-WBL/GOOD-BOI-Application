@@ -17,7 +17,21 @@ a{text-decoration:none}
         display: none !important;
     }
 }
+.desktop_only {
+    @media only screen and (max-width: 1599px) {
+        display: none;
+    }
+}
 
 body {
     background: ${({ theme }) => theme.white};
-}`;
+}
+
+html {
+    -ms-overflow-style: none;
+     scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+    display: none;
+}
+`;

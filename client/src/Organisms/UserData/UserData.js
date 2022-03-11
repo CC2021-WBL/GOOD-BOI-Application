@@ -1,13 +1,14 @@
-import { useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
-import UserField from '../../Atoms/UserField/UserField';
-import participants from '../../Data/MongoDBMock/participants';
 import { UserDataContext } from '../../Context/UserDataContext';
+import UserField from '../../Atoms/UserField/UserField';
+import { requestOptionsGET } from '../../FetchData/requestOptions';
+import { useParams } from 'react-router-dom';
 
 const UserData = () => {
+  const [userObject, setUserObject] = useState(null);
   const { state } = useContext(UserDataContext);
   const { userId } = state;
   const paramsUserData = useParams();
@@ -16,9 +17,19 @@ const UserData = () => {
   if (!userData) {
     userData = paramsUserData.userId;
   }
-  const userObject = participants.find(
-    (participant) => participant.participantId === userData,
-  );
+
+  useEffect(() => {
+    fetch(`/api/users/${userData}`, requestOptionsGET)
+      .then((response) => response.json())
+      .then((result) => {
+        setUserObject(result);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  if (!userObject) {
+    return <p></p>;
+  }
 
   return (
     <>
@@ -33,7 +44,7 @@ const UserData = () => {
         <UserField
           text="zmień hasło"
           password
-          userPassword={userObject.password}
+          userPassword="***********"
           initialState={userObject}
         />
         <UserField

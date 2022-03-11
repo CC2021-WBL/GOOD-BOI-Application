@@ -1,36 +1,63 @@
-import propTypes from 'prop-types';
-
 import InputFieldStyled from './InputFieldStyled';
 import InputLabel from '../../Atoms/InputLabel/InputLabel';
+import React from 'react';
+import propTypes from 'prop-types';
 
-const InputField = ({
-  id,
-  type,
-  placeholder,
-  value,
-  onChange,
-  htmlFor,
-  labelText,
-  name,
-  required,
-  className,
-}) => {
-  return (
-    <>
-      <InputLabel htmlFor={htmlFor} labelText={labelText} />
-      <InputFieldStyled
-        id={id}
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        name={name}
-        required={required}
-        className={className}
-      />
-    </>
-  );
-};
+const InputField = React.forwardRef(
+  (
+    {
+      id,
+      type,
+      placeholder,
+      value,
+      onChange,
+      htmlFor,
+      labelText,
+      name,
+      required,
+      className,
+      onBlur,
+      register,
+      errors,
+      defaultValue,
+    },
+    ref,
+  ) => {
+    return (
+      <div>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'flex-start',
+            alignSelf: 'flex-start',
+          }}
+        >
+          <>
+            <InputLabel htmlFor={htmlFor} labelText={labelText} />
+            <InputFieldStyled
+              id={id}
+              type={type}
+              placeholder={placeholder}
+              value={value}
+              onChange={onChange}
+              name={name}
+              required={required}
+              className={className}
+              Ref={register}
+              errors={errors}
+              onBlur={onBlur}
+              ref={ref}
+              defaultValue={defaultValue}
+            />
+          </>
+        </div>
+      </div>
+    );
+  },
+);
+
+InputField.displayName = 'InputField';
 
 InputField.propTypes = {
   htmlFor: propTypes.string.isRequired,
@@ -43,6 +70,11 @@ InputField.propTypes = {
   name: propTypes.string,
   required: propTypes.bool,
   className: propTypes.string,
+  register: propTypes.any,
+  errors: propTypes.string,
+  onBlur: propTypes.func,
+  defaultValue: propTypes.any,
+  style: propTypes.string,
 };
 
 export default InputField;

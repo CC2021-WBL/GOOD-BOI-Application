@@ -2,10 +2,16 @@ import propTypes from 'prop-types';
 
 import FakeButtonStyled from './FakeButtonStyled';
 
-const FakeButton = ({ text, to, state, colors }) => {
+const FakeButton = ({ text, paragraphText, to, state, colors, className }) => {
   return (
-    <FakeButtonStyled to={to} state={state} colors={colors}>
-      {text.toUpperCase()}
+    <FakeButtonStyled
+      to={to}
+      state={state}
+      colors={colors}
+      className={className}
+    >
+      <p className="fakebtn-header">{text}</p>
+      <p className="desktop_only fakebtn-text">{paragraphText}</p>
     </FakeButtonStyled>
   );
 };

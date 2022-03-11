@@ -1,5 +1,8 @@
+/* eslint-disable no-unused-vars */
 const express = require('express');
 const app = express();
+const passport = require('passport');
+const crypto = require('crypto');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -9,13 +12,18 @@ const swaggerUI = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
 const path = require('path');
 
-const PORT = process.env.PORT || 27020;
+const PORT = process.env.PORT || 5000;
 
 //Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(cookieParser());
+
+// Passport Authentication
+require('./server/Config/passport')(passport);
+app.use(passport.initialize());
 
 // Import routes
 const contestsRoute = require('./server/Routes/contests');
@@ -73,15 +81,17 @@ app.get('/api/test', (req, res) => {
 });
 
 //Inject ReactApp into
-app.use(express.static(path.join(__dirname, 'client', 'build')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html')),
-    function (err) {
-      if (err) {
-        res.status(500).send(err);
-      }
-    };
-});
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client', 'build')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html')),
+      function (err) {
+        if (err) {
+          res.status(500).send(err);
+        }
+      };
+  });
+}
 
 //This text will console.log after every save of index.js
 app.listen(PORT, () =>

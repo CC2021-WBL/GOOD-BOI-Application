@@ -17,10 +17,10 @@ const BurgerMenuStyled = styled.div`
   }
 
   @media only screen and (min-width: 800px) {
-    grid-area: 3 / 1 / 4 / 2;
     position: unset;
-    transform: none;
     height: 100%;
+    grid-area: 3 / 1 / 4 / 2;
+    transform: none;
     transition: none;
   }
   @media only screen and (min-width: 1600px) {

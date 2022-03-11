@@ -2,7 +2,7 @@ import propTypes from 'prop-types';
 import { useContext } from 'react';
 
 import FooterProfileButton from '../../Atoms/FooterProfileButton/FooterProfileButton';
-import GridWrapper from '../../Styles/GridWrapper';
+import GridWrapper from '../../Templates/Layout/GridWrapper';
 import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
 import useWindowHeight from '../../Tools/useWindowHeight';
 import { Copy, DevsLogo, FooterStyled, LogoStyled } from './FooterStyled';
