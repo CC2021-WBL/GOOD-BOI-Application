@@ -16,18 +16,22 @@ const ColumnWrapperStyled = styled.div`
     padding: 2.2rem 1rem 0 1rem;
   }
 
-  &.user-dogs-column-wrapper {
-    align-items: center;
-  }
-
+  
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
+    &.user-dogs-column-wrapper {
+      align-items: flex-end;
+    }
     &.user-profile {
       gap: 1.25rem;
       height: 100vh;
     }
   }
   @media only screen and (min-width: 1024px) {
+    &.user-dogs-column-wrapper {
+      align-items: center;
+    }
+
     &.user-profile {
       height: 100%;
       display: grid;
@@ -36,6 +40,7 @@ const ColumnWrapperStyled = styled.div`
       grid-template-rows: repeat(2, 10.625rem) 1fr;
       align-items: center;
     }
+    
     &.contests-column-wrapper {
       display: flex;
       max-width: 680px;
