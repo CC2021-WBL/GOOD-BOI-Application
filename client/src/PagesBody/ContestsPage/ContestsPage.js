@@ -5,13 +5,16 @@ import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ContestCard from '../../Molecules/ContestCard/ContestCard';
 import { ContestContext } from '../../Context/ContestContext';
 import ContestFilterToggler from '../../Organisms/ContestFilterHarmonica/ContestFilterToggler';
+import ContestsWrapperStyled from './ContestsWrapperStyled';
 import FilterLabel from '../../Molecules/FilterLabel/FilterLabel';
 import { TIME } from '../../Consts/infoLabelConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
+import mockmap from '../../Assets/mockMAP.JPG';
 import { requestOptionsGET } from '../../FetchData/requestOptions';
 import resForContestPage from '../../Data/MongoDBMock/responseFromContestsToContestsPage';
 import { useLocation } from 'react-router-dom';
+import useMediaQuery from '../../Hooks/useMediaQuery';
 
 const ContestsPage = () => {
   const rawDataFromDB = useRef(null);
@@ -73,26 +76,39 @@ const ContestsPage = () => {
 
   return (
     <>
-      <ContestFilterToggler
-        onClick={toggleHandler}
-        toggle={toggle}
-      ></ContestFilterToggler>
+      {useMediaQuery('(max-width:799px)') && (
+        <>
+          <ContestFilterToggler onClick={toggleHandler} toggle={toggle} />{' '}
+          {toggle && <FilterLabel onClick={handleFilterClick} />}{' '}
+        </>
+      )}
+      <ContestsWrapperStyled className="contests">
+        <ColumnWrapper
+          paddingLeftRight={1}
+          paddingTop={0.5}
+          className="contests-column-wrapper"
+        >
+          {useMediaQuery('(min-width:800px)') && <ContestFilterToggler />}
 
-      {toggle && <FilterLabel onClick={handleFilterClick}></FilterLabel>}
+          {useMediaQuery('(min-width:800px)') && (
+            <FilterLabel onClick={handleFilterClick} />
+          )}
+          {isPending && <h3>Loading...</h3>}
+          {contestData &&
+            getSelectedContestsByTime(selectedMode, contestData).map(
+              (contest) => (
+                <ContestCard key={contest.contestId} contestData={contest} />
+              ),
+            )}
+          {contestData &&
+            getSelectedContestsByTime(selectedMode, contestData).length ===
+              0 && <h3>Nie ma zawodów</h3>}
+        </ColumnWrapper>
 
-      <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
-        {isPending && <h3>Loading...</h3>}
-        {contestData &&
-          getSelectedContestsByTime(selectedMode, contestData).map(
-            (contest) => (
-              <ContestCard key={contest.contestId} contestData={contest} />
-            ),
-          )}
-        {contestData &&
-          getSelectedContestsByTime(selectedMode, contestData).length === 0 && (
-            <h3>Nie ma zawodów</h3>
-          )}
-      </ColumnWrapper>
+        <div className="mockmap">
+          <img src={mockmap} alt="mockmap" />
+        </div>
+      </ContestsWrapperStyled>
     </>
   );
 };

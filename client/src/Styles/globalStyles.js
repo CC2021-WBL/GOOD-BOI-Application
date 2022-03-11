@@ -25,4 +25,13 @@ a{text-decoration:none}
 
 body {
     background: ${({ theme }) => theme.white};
-}`;
+}
+
+html {
+    -ms-overflow-style: none;
+     scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+    display: none;
+}
+`;
