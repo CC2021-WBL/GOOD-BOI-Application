@@ -7,7 +7,7 @@ const GridWrapper = styled.div`
 
   @media ${device.tablet} {
     background-color: ${(props) =>
-      props.navFoot ? props.theme.grey200 : props.theme.white};
+      props.navFoot ? props.theme.grey00 : props.theme.white};
     ${(props) => props.tablet && `grid-area:${props.tablet}`};
   }
 
