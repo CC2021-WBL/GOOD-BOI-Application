@@ -19,37 +19,39 @@ const Footer = ({ withSettings }) => {
   // windows.innerHeight changes when virtual keyboard popping up, when so - hide the footer
   if (Math.abs(initHeight - height.height) <= 500) {
     return (
-      <GridWrapper mobile="4 / 1 / 5 / 2" tablet="4 / 1 / 5 / -1" navFoot>
-        <FooterStyled>
-          <a
-            href="https://github.com/CC2021-WBL"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <LogoStyled>
-              <DevsLogo>
-                <img
-                  className="logo"
-                  src={logoDevsOnTheWaves}
-                  alt="logo"
-                  width="35px"
-                />
-              </DevsLogo>
-              <Copy>
-                Copyright <br />
-                #Devs on the Waves
-              </Copy>
-            </LogoStyled>
-          </a>
+      <>
+        <GridWrapper mobile="4 / 1 / 5 / 2" tablet="4 / 1 / 5 / -1" navFoot>
+          <FooterStyled>
+            <a
+              href="https://github.com/CC2021-WBL"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <LogoStyled>
+                <DevsLogo>
+                  <img
+                    className="logo"
+                    src={logoDevsOnTheWaves}
+                    alt="logo"
+                    width="35px"
+                  />
+                </DevsLogo>
+                <Copy>
+                  Copyright <br />
+                  #Devs on the Waves
+                </Copy>
+              </LogoStyled>
+            </a>
 
-          {withSettings ? (
-            <FooterProfileButton withSettings />
-          ) : (
-            isAuthenticated && <FooterProfileButton />
-          )}
-          <RocketWithPlanets />
-        </FooterStyled>
-      </GridWrapper>
+            {withSettings ? (
+              <FooterProfileButton withSettings />
+            ) : (
+              isAuthenticated && <FooterProfileButton />
+            )}
+          </FooterStyled>
+        </GridWrapper>
+        <RocketWithPlanets />
+      </>
     );
   } else return '';
 };
