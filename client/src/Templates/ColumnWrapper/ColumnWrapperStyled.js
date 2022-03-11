@@ -27,7 +27,7 @@ const ColumnWrapperStyled = styled.div`
     }
     &.contests-column-wrapper {
       display: flex;
-      max-width: 680px;
+      max-width: 42.5rem;
       margin: 1.5625rem 0 0 0;
     }
   }
