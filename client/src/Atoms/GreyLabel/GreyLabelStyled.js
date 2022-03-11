@@ -22,7 +22,7 @@ const GreyLabelStyled = styled.div`
     background: ${({ theme }) => theme.white};
     border-bottom: 1px solid ${({ theme }) => theme.grey200};
     .greyLabelText {
-      grid-area: 1 / 1 / 2 / 3;
+      grid-area: 1 / 2 / 2 / 3;
       font-size: 1.25rem;
     }
   }

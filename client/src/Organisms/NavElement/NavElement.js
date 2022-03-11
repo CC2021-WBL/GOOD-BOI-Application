@@ -53,7 +53,7 @@ const NavElement = () => {
           </GoHomeStyled>
         </NavElementStyled>
       </GridWrapper>
-      <GridWrapper desktop="1 / 1 / 2 / 6" tablet="1 / 1 / 2 / 6" navFoot>
+      <GridWrapper desktop="1 / 1 / 2 / 6" tablet="1 / 1 / 2 / 6">
         <Nav />
       </GridWrapper>
       {data.label && data.label.length !== 0 && (

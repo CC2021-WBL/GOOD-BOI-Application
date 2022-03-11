@@ -1,4 +1,3 @@
-import { device } from './../../Consts/devices';
 import styled from 'styled-components';
 
 const NavInnerStyled = styled.div`
