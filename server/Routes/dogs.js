@@ -113,7 +113,7 @@ router.post('/register-dog/:contestId', async (req, res) => {
     const updatedContest = await contest.save();
     res.status(201).json(updatedContest);
   } catch (error) {
-    res.status(400).send({ message: 'zjebawszy się' });
+    res.status(418).send({ message: 'error' });
   }
 });
 
