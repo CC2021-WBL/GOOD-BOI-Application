@@ -69,8 +69,4 @@ const NavElement = () => {
   );
 };
 
-NavElement.propTypes = {
-  text: PropTypes.string,
-};
-
 export default NavElement;
