@@ -1,15 +1,16 @@
-import { ReactComponent as AppLogoSVG } from '../../Assets/AppLogoSVG.svg';
+import { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import ButtonsWrapperStyled from './ButtonsWrapperStyled';
-import FakeButton from './../../Atoms/FakeButton/FakeButton';
+import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import GoodBoiLogo from './GoodBoiLogo';
 import NavInnerStyled from './NavInnerStyled';
 import NavLinkStyled from './NavLinkStyled';
 import NavMenu from './NavMenu';
+import { ReactComponent as AppLogoSVG } from '../../Assets/AppLogoSVG.svg';
 import { UserDataContext } from '../../Context/UserDataContext';
-import { useContext } from 'react';
-import { useLocation } from 'react-router-dom';
 
-const NavDesktop = () => {
+const Nav = () => {
   const location = useLocation();
   const { state } = useContext(UserDataContext);
   const { isAuthenticated } = state;
@@ -51,4 +52,4 @@ const NavDesktop = () => {
   }
 };
 
-export default NavDesktop;
+export default Nav;

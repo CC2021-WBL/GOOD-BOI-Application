@@ -1,6 +1,7 @@
+import styled from 'styled-components';
+
 import FONTS from '../../Styles/fontsStyledComponents';
 import { device } from './../../Consts/devices';
-import styled from 'styled-components';
 
 const GreyLabelStyled = styled.div`
   display: flex;
@@ -13,14 +14,15 @@ const GreyLabelStyled = styled.div`
     color: ${({ theme }) => theme.grey800};
     ${FONTS.body_semibold};
   }
-  @media only screen and (${device.desktop}) {
+  @media only screen and (min-width: 800px) {
+    height: 100%; //
     display: grid;
     grid-template-columns: 1fr 220px minmax(360px, 1160px) 220px 1fr;
-    justify-content: start;
+    grid-template-rows: 1fr;
     background: ${({ theme }) => theme.white};
     border-bottom: 1px solid ${({ theme }) => theme.grey200};
     .greyLabelText {
-      grid-area: 2 / 2 / 5 / 3;
+      grid-area: 1 / 1 / 2 / 3;
       font-size: 1.25rem;
     }
   }
