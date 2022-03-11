@@ -96,7 +96,7 @@ const ContestDetails = ({ contestId }) => {
                   />
                   <FakeButton
                     colors="secondary"
-                    text="Potwierdź i wróć do listy"
+                    text="Wróć do listy"
                     to="/contests"
                   />
                 </>
