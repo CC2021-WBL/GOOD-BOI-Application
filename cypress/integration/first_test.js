@@ -1,4 +1,4 @@
-import test_devices from './test_devices';
+import test_devices from '../test_devices';
 
 test_devices.forEach(({ type, width, height }) => {
   describe(`First GoodBoi Test ${type}`, () => {
@@ -17,7 +17,6 @@ test_devices.forEach(({ type, width, height }) => {
 
     it('LoginPage', () => {
       cy.contains('Zaloguj się').click();
-
       cy.get('.navText').should('contain', 'Logowanie');
       cy.get('label').should('contain', 'Email').and('contain', 'Password');
       cy.get('#email').should('have.attr', 'placeholder', ' Email');
