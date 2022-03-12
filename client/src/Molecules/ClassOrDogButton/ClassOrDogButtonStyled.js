@@ -1,5 +1,6 @@
-import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
+
+import FONTS from '../../Styles/fontsStyledComponents';
 
 const ClassOrDogButtonStyled = styled.button`
   display: flex;
@@ -16,6 +17,12 @@ const ClassOrDogButtonStyled = styled.button`
   border-radius: 0.75rem;
   color: ${({ theme }) => theme.grey800};
   ${FONTS.h3}
+
+  &.user-dogs-button {
+    @media only screen and (min-width: 800px) {
+      max-width: 35rem;
+    }
+  }
 `;
 
 export default ClassOrDogButtonStyled;

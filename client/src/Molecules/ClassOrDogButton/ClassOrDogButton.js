@@ -1,12 +1,13 @@
-import ClassOrDogButtonStyled from './ClassOrDogButtonStyled';
-import { DOG_ACTIONS } from '../../Consts/reducersActions';
-import { DogContext } from '../../Context/DogContext';
-import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const ClassOrDogButton = ({ classInfo, dogInfo, noInfoLabel }) => {
+import ClassOrDogButtonStyled from './ClassOrDogButtonStyled';
+import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
+import { DOG_ACTIONS } from '../../Consts/reducersActions';
+import { DogContext } from '../../Context/DogContext';
+
+const ClassOrDogButton = ({ classInfo, dogInfo, noInfoLabel, className }) => {
   const navigate = useNavigate();
   const { obedienceClass, dogsAmount } = classInfo || [];
   const { index, dogId, dogName, exercisesCompleted, exercisesAmount } =
@@ -50,7 +51,7 @@ const ClassOrDogButton = ({ classInfo, dogInfo, noInfoLabel }) => {
   };
 
   return (
-    <ClassOrDogButtonStyled onClick={clickHandler}>
+    <ClassOrDogButtonStyled onClick={clickHandler} className={className}>
       {/*CONDITIONAL FOR CLASSES */}
       {classInfo && <p>Klasa {obedienceClass}</p>}
       {classInfo && <InfoLabel classInfo={{ dogsAmount, isCompleted }} />}
@@ -81,6 +82,7 @@ ClassOrDogButton.propTypes = {
     exercisesAmount: PropTypes.number,
   }),
   noInfoLabel: PropTypes.bool,
+  className: PropTypes.string
 };
 
 export default ClassOrDogButton;
