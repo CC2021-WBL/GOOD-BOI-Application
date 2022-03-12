@@ -1,12 +1,13 @@
 {
   "files": {
     "main.css": "/static/css/main.19fa6059.css",
-    "main.js": "/static/js/main.f69ec7cb.js",
+    "main.js": "/static/js/main.d1f69844.js",
     "static/js/787.0c574e70.chunk.js": "/static/js/787.0c574e70.chunk.js",
     "static/media/profileDogFace.jpg": "/static/media/profileDogFace.8c0496d4eb9e6f1d411a.jpg",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
     "static/media/fontawesome-webfont.eot": "/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
     "static/media/fontawesome-webfont.ttf?v=4.7.0": "/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
+    "static/media/mockMAP.JPG": "/static/media/mockMAP.b9ee2b7fde6f19fabd75.JPG",
     "static/media/fontawesome-webfont.woff?v=4.7.0": "/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
     "static/media/fontawesome-webfont.woff2?v=4.7.0": "/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
     "static/media/dog_8.png": "/static/media/dog_8.e3220a94a6054b151d5e.png",
@@ -25,11 +26,11 @@
     "static/media/logoDevsOnTheWaves.svg": "/static/media/logoDevsOnTheWaves.cf27d25e4bacdf07f9b313a628f6a5f0.svg",
     "index.html": "/index.html",
     "main.19fa6059.css.map": "/static/css/main.19fa6059.css.map",
-    "main.f69ec7cb.js.map": "/static/js/main.f69ec7cb.js.map",
+    "main.d1f69844.js.map": "/static/js/main.d1f69844.js.map",
     "787.0c574e70.chunk.js.map": "/static/js/787.0c574e70.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.19fa6059.css",
-    "static/js/main.f69ec7cb.js"
+    "static/js/main.d1f69844.js"
   ]
 }

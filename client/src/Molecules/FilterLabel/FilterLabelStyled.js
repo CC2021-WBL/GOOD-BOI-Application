@@ -18,14 +18,13 @@ const FilterLabelStyled = styled.label`
   @media only screen and (min-width: 800px) {
     margin-top: 0;
     div {
-      border-radius: 0 0 0.75rem 0.75rem;
-      background-color: ${({ theme }) => theme.grey00};
       justify-content: flex-end;
+      background: ${({ theme }) => theme.grey00};
+      border-radius: 0 0 0.75rem 0.75rem;
       .innerWrapper {
-        max-width: 37.5rem;
         width: 65%;
+        margin: 0 0.625rem 0 0;
         gap: 0.625rem;
-        margin-right: 0.625rem;
       }
     }
   }
