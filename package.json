@@ -8,7 +8,8 @@
     "start": "concurrently \"npm run dev\" \"cd client && npm start\"",
     "npmi": "concurrently \"npm i\" \"cd client && npm i\"",
     "kill": "concurrently \"npx kill-port 27020\n\" \"npx kill-port 3000\"",
-    "build": "cd client && npm run build"
+    "build": "cd client && npm run build",
+    "cypress:open": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,9 @@
   "author": "devsOnTheWaves",
   "license": "ISC",
   "devDependencies": {
+    "cypress": "^9.5.1",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
