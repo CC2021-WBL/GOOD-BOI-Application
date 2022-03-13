@@ -6,6 +6,7 @@ import { useContext, useState } from 'react';
 import BackgroundDiv from './../../Atoms/BackgroundDiv/BackgroundDiv';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
+import GridWrapper from './../../Templates/Layout/GridWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import { USER_ACTIONS } from '../../Consts/reducersActions';
@@ -45,36 +46,40 @@ const LoginForm = () => {
     }
   };
   return (
-    <ColumnWrapper paddingLeftRight={1}>
-      <BackgroundDiv />
-      <FormWrapper onSubmit={submitHandler}>
-        <InputField
-          labelText="Email"
-          htmlFor="email"
-          type="email"
-          placeholder="&#xf0e0; Email"
-          id="email"
-          required
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
+    <>
+      <GridWrapper tablet="2 / 2 / -2 / -1" desktop="2 / 3 / -2 / -1">
+        <BackgroundDiv />
+      </GridWrapper>
+      <ColumnWrapper paddingLeftRight={1}>
+        <FormWrapper onSubmit={submitHandler}>
+          <InputField
+            labelText="Email"
+            htmlFor="email"
+            type="email"
+            placeholder="&#xf0e0; Email"
+            id="email"
+            required
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
 
-        <InputField
-          labelText="Password"
-          htmlFor="password"
-          type="password"
-          id="password"
-          placeholder="&#xf023; Hasło"
-          required
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-        <Link to="/forgot" className="forgot-pass">
-          Zapomniałeś/aś hasła ?
-        </Link>
-        <MainButton primary text="Zaloguj się" />
-      </FormWrapper>
-    </ColumnWrapper>
+          <InputField
+            labelText="Password"
+            htmlFor="password"
+            type="password"
+            id="password"
+            placeholder="&#xf023; Hasło"
+            required
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+          <Link to="/forgot" className="forgot-pass">
+            Zapomniałeś/aś hasła ?
+          </Link>
+          <MainButton primary text="Zaloguj się" />
+        </FormWrapper>
+      </ColumnWrapper>
+    </>
   );
 };
 

@@ -1,7 +1,8 @@
-import InputFieldStyled from './InputFieldStyled';
-import InputLabel from '../../Atoms/InputLabel/InputLabel';
 import React from 'react';
 import propTypes from 'prop-types';
+
+import InputFieldStyled from './InputFieldStyled';
+import InputLabel from '../../Atoms/InputLabel/InputLabel';
 
 const InputField = React.forwardRef(
   (

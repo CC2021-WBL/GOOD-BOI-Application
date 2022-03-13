@@ -1,6 +1,7 @@
+import propTypes from 'prop-types';
+
 import MenuItemStyled from './MenuItemStyled';
 import NavLinkStyled from './NavLinkStyled';
-import propTypes from 'prop-types';
 
 const MenuItem = (props) => {
   const { text, linkTo, icon, stylefor } = props;
@@ -17,7 +18,7 @@ const MenuItem = (props) => {
 MenuItem.propTypes = {
   text: propTypes.string,
   linkTo: propTypes.string,
-  icon: propTypes.string,
+  icon: propTypes.object,
   stylefor: propTypes.string,
 };
 

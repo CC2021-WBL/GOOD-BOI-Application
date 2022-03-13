@@ -58,9 +58,7 @@ const NavElement = () => {
           tablet="2 / 1 / 3 / -1"
           desktop="2 / 1 / 3 / -1"
         >
-          <>
-            <GreyLabel text={data.label} />
-          </>
+          <GreyLabel text={data.label} />
         </GridWrapper>
       )}
       <BurgerMenu open={open} setOpen={setOpen} />

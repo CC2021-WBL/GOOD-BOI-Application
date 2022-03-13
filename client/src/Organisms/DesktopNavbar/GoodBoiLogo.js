@@ -1,6 +1,7 @@
-import { ReactComponent as AppLogoSVG } from '../../Assets/AppLogoSVG.svg';
-import GoodBoiLogoStyled from './GoodBoiLogoStyled';
 import { NavLink } from 'react-router-dom';
+
+import GoodBoiLogoStyled from './GoodBoiLogoStyled';
+import { ReactComponent as AppLogoSVG } from '../../Assets/AppLogoSVG.svg';
 
 const GoodBoiLogo = () => {
   return (
@@ -8,7 +9,9 @@ const GoodBoiLogo = () => {
       <NavLink to="/login">
         <AppLogoSVG />
       </NavLink>
-      <div style={{ userSelect: 'none' }}>GOOD BOI APP</div>
+      <div style={{ userSelect: 'none', whiteSpace: 'nowrap' }}>
+        GOOD BOI APP
+      </div>
     </GoodBoiLogoStyled>
   );
 };

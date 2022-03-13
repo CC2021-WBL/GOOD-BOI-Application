@@ -1,26 +1,27 @@
 import { FaChevronDown } from 'react-icons/fa';
 import { FaChevronUp } from 'react-icons/fa';
+import { useState } from 'react';
+
 import NavButtonWrapper from './NavButtonWrapper';
 import NavCornerMenu from './NavCornerMenu';
 import NavCornerMenuWrapper from './NavCornerMenuWrapper';
 import NavMenuStyled from './NavMenuStyled';
 import ProfilePicture from './ProfilePicture';
 import useClickOutside from '../../Hooks/useClickOutside';
-import { useState } from 'react';
 
 const NavMenu = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const toggleHandler = () => {
-    setMenuOpen(!menuOpen);
-  };
+  // const [menuOpen, setMenuOpen] = useState(false);
+  // const toggleHandler = () => {
+  //   setMenuOpen(!menuOpen);
+  // };
 
-  let domNode = useClickOutside(() => {
-    setMenuOpen(false);
-  });
+  // let domNode = useClickOutside(() => {
+  //   setMenuOpen(false);
+  // });
 
   return (
     <NavMenuStyled>
-      <NavButtonWrapper ref={domNode} onClick={toggleHandler}>
+      {/* <NavButtonWrapper ref={domNode} onClick={toggleHandler}>
         <ProfilePicture />
         <div style={{ userSelect: 'none' }}>Witaj, Matylda</div>
         {!menuOpen && <FaChevronDown />}
@@ -28,7 +29,7 @@ const NavMenu = () => {
       </NavButtonWrapper>
       <NavCornerMenuWrapper className={menuOpen ? 'open' : 'close'}>
         <NavCornerMenu />
-      </NavCornerMenuWrapper>
+      </NavCornerMenuWrapper> */}
     </NavMenuStyled>
   );
 };

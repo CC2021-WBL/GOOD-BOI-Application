@@ -4,16 +4,15 @@ const NavInnerStyled = styled.div`
   display: none;
 
   @media only screen and (min-width: 800px) {
-    // devices with min-width > 800
     height: 100%;
-    max-width: 1600px;
-    margin: 0 auto;
+    width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    gap: 2rem;
-    padding: 0rem 2rem 0rem 4.5rem;
+    padding: 0rem 11.5rem 0rem 4.5rem;
     background: ${({ theme }) => theme.grey00};
+    border: 5px dotted tomato;
   }
 `;
 
