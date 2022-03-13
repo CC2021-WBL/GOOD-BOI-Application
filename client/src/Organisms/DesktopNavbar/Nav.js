@@ -37,29 +37,15 @@ const Nav = () => {
     return (
       <>
         <NavInnerStyled>
-          <div style={{ position: 'absolute', left: '1rem', top: '0' }}>
-            navInnerstyled
-          </div>
           <GoodBoiLogo />
           {/* <NavMenu /> */}
-          <NavButtonWrapper ref={domNode} onClick={toggleHandler}>
-            {/* <div
-              className="hov"
-              style={{
-                left: '0',
-                position: 'absolute',
-                background: 'lightgrey',
-                opacity: '1',
-                zIndex: '-1',
-                width: '100%',
-                height: '100%',
-              }}
-            ></div> */}
-            <ProfilePicture className="hov" />
-            <div
-              className="hov"
-              style={{ userSelect: 'none', whiteSpace: 'nowrap' }}
-            >
+          <NavButtonWrapper
+            classwName="button-wrapper"
+            ref={domNode}
+            onClick={toggleHandler}
+          >
+            <ProfilePicture />
+            <div style={{ userSelect: 'none', whiteSpace: 'nowrap' }}>
               Witaj, Matylda
             </div>
             {!menuOpen && <FaChevronDown />}

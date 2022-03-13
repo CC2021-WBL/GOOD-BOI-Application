@@ -7,11 +7,5 @@ const NavButtonWrapper = styled.div`
   align-items: center;
   padding: 0 1rem;
   background: ${({ theme }) => theme.grey00};
-  z-index: 2;
-  border: 5px dotted orange;
-  &:hover {
-    filter: brightness(0.9);
-    cursor: pointer;
-  }
 `;
 export default NavButtonWrapper;

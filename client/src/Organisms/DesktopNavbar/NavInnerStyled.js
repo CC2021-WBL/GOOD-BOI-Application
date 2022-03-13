@@ -12,7 +12,6 @@ const NavInnerStyled = styled.div`
     align-items: center;
     padding: 0rem 11.5rem 0rem 4.5rem;
     background: ${({ theme }) => theme.grey00};
-    border: 5px dotted tomato;
   }
 `;
 
