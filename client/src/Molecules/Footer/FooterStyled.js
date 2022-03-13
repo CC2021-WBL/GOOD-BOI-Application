@@ -13,8 +13,7 @@ export const FooterStyled = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem;
-    border-top: 2px solid ${({ theme }) => theme.grey00};
-    margin: 0 auto;
+    border-top: 0.125rem solid ${({ theme }) => theme.grey00};
     background: ${({ theme }) => theme.white};
     @media only screen and (min-width: 800px) {
       display: none;
@@ -39,28 +38,28 @@ export const FooterStyled = styled.div`
     @media only screen and (min-width: 800px) {
       display: flex;
       width: 100%;
-      min-width: 600px;
+      min-width: 37.5rem;
       height: 100%;
       align-items: center;
       justify-content: space-between;
       padding: 2rem;
       margin: auto;
+      font-size: 0.8125rem;
       gap: clamp(2rem, 10vw, 15rem);
-      font-size: 13px;
       p {
         color: ${({ theme }) => theme.grey800};
         white-space: nowrap;
       }
       h3 {
-        color: ${({ theme }) => theme.grey400};
         padding: 0 0 1rem 0;
+        color: ${({ theme }) => theme.grey400};
       }
     }
     @media only screen and (min-width: 1600px) {
-      ${FONTS.body_semibold};
-      max-width: 1200px;
+      max-width: 75rem;
       align-items: center;
       justify-content: space-between;
+      ${FONTS.body_semibold};
     }
   }
 `;
@@ -76,7 +75,7 @@ export const DevsLogo = styled.div`
 
 export const Copy = styled.div`
   align-self: center;
-  margin: 0 0 0 10px;
+  margin: 0 0 0 0.625rem;
   color: ${({ theme }) => theme.grey800};
   font-size: 0.75rem;
   text-align: left;
