@@ -10,7 +10,6 @@ const RocketWithPlanetsStyled = styled.div`
     background-repeat: no-repeat;
     position: relative;
     bottom: 4.9375rem;
-    left: 9.375rem;
   }
 `;
 
