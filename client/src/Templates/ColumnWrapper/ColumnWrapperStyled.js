@@ -16,6 +16,11 @@ const ColumnWrapperStyled = styled.div`
     padding: 2.2rem 1rem 0 1rem;
   }
 
+  .coming-contest {
+    text-align: left;
+    margin: 4.6875rem 0 0 0;
+  }
+
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
     &.user-dogs-column-wrapper {

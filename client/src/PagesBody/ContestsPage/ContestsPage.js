@@ -1,20 +1,22 @@
 import { useContext, useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
-import { CONTEST_ACTIONS } from '../../Consts/reducersActions';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ContestCard from '../../Molecules/ContestCard/ContestCard';
-import { ContestContext } from '../../Context/ContestContext';
 import ContestFilterToggler from '../../Organisms/ContestFilterHarmonica/ContestFilterToggler';
 import ContestsWrapperStyled from './ContestsWrapperStyled';
+import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import FilterLabel from '../../Molecules/FilterLabel/FilterLabel';
+import LandingDesktopTitle from '../../Molecules/LandingDesktopTitle.js/LandingDesktopTitle';
+import mockmap from '../../Assets/mockMAP.JPG';
+import resForContestPage from '../../Data/MongoDBMock/responseFromContestsToContestsPage';
+import useMediaQuery from '../../Hooks/useMediaQuery';
+import { CONTEST_ACTIONS } from '../../Consts/reducersActions';
+import { ContestContext } from '../../Context/ContestContext';
 import { TIME } from '../../Consts/infoLabelConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
-import mockmap from '../../Assets/mockMAP.JPG';
 import { requestOptionsGET } from '../../FetchData/requestOptions';
-import resForContestPage from '../../Data/MongoDBMock/responseFromContestsToContestsPage';
-import { useLocation } from 'react-router-dom';
-import useMediaQuery from '../../Hooks/useMediaQuery';
 
 const ContestsPage = () => {
   const rawDataFromDB = useRef(null);
@@ -74,12 +76,13 @@ const ContestsPage = () => {
     console.log(contestData);
   };
 
+  const landing = locationPath.pathname === '/';
   return (
     <>
       {useMediaQuery('(max-width:799px)') && (
         <>
-          <ContestFilterToggler onClick={toggleHandler} toggle={toggle} />{' '}
-          {toggle && <FilterLabel onClick={handleFilterClick} />}{' '}
+          <ContestFilterToggler onClick={toggleHandler} toggle={toggle} />
+          {toggle && <FilterLabel onClick={handleFilterClick} />}
         </>
       )}
       <ContestsWrapperStyled className="contests">
@@ -88,11 +91,20 @@ const ContestsPage = () => {
           paddingTop={0.5}
           className="contests-column-wrapper"
         >
-          {useMediaQuery('(min-width:800px)') && <ContestFilterToggler />}
+          {useMediaQuery('(min-width:800px)') && landing && (
+            <LandingDesktopTitle />
+          )}
+          {useMediaQuery('(min-width:800px)') && landing && (
+            <h3 className="coming-contest">NADCHODZĄCE KONKURSY</h3>
+          )}
+          {useMediaQuery('(min-width:800px)') && landing ? null : (
+            <ContestFilterToggler />
+          )}
 
-          {useMediaQuery('(min-width:800px)') && (
+          {useMediaQuery('(min-width:800px)') && landing ? null : (
             <FilterLabel onClick={handleFilterClick} />
           )}
+
           {isPending && <h3>Loading...</h3>}
           {contestData &&
             getSelectedContestsByTime(selectedMode, contestData).map(
@@ -103,6 +115,18 @@ const ContestsPage = () => {
           {contestData &&
             getSelectedContestsByTime(selectedMode, contestData).length ===
               0 && <h3>Nie ma zawodów</h3>}
+
+          {useMediaQuery('(min-width:800px)') && landing && (
+            <FakeButton
+              className="more-contests-landing"
+              colors="primary"
+              text="Zobacz więcej konkursów"
+              to="/contests"
+              state={{
+                contestContent: 'past',
+              }}
+            />
+          )}
         </ColumnWrapper>
 
         <div className="mockmap">

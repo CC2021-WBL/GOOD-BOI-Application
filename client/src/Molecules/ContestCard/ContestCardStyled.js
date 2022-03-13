@@ -1,7 +1,8 @@
+import styled from 'styled-components';
+
 import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
 import { COLORSMOTIVE as c } from '../../Consts/infoLabelConsts';
-import styled from 'styled-components';
 
 const ContestCardStyled = styled.div`
   display: flex;
@@ -57,7 +58,7 @@ const ContestCardStyled = styled.div`
         width: 100%;
         height: 100%;
         border-radius: ${(props) =>
-          props.colorMotive === c.GREEN ? '0 9.5px 9.5px 0' : '0 12px 12px 0'};
+          props.colorMotive === c.GREEN ? '0 0.5938rem 0.5938rem 0' : '0 0.75rem 0.75rem 0'};
       }
     }
   }

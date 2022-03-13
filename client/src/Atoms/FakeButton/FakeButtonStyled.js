@@ -52,12 +52,24 @@ const FakeButtonStyled = styled(Link)`
   ${(props) => handleBorders(props)}
   text-transform: uppercase;
 
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.landing-desktop-login {
+    width: 19.375rem;
+  }
+  &.more-contests-landing {
+    text-transform: none;
+    justify-content: flex-end;
+    padding: 0 1.25rem 0 0;
+  }
   &.add-dogs {
     @media only screen and (min-width: 800px) {
       max-width: 16.25rem;
     }
   }
-  
+
   &.user-profile {
     @media only screen and (min-width: 800px) {
       justify-content: flex-start;
@@ -96,7 +108,6 @@ const FakeButtonStyled = styled(Link)`
       }
     }
 
-    
     &.user-dogs {
       grid-area: 1 / 1 / 2 / span 3;
       align-self: flex-end;
