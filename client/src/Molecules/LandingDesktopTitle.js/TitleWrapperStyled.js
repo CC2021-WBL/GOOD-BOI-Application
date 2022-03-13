@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import FONTS from '../../Styles/fontsStyledComponents';
 
 const TitleWrapperStyled = styled.div`
-  max-width: 600px;
-  text-align: left;
   display: flex;
+  max-width: 37.5rem;
   flex-direction: column;
   align-items: flex-start;
   margin: -2.1875rem 0 0 0;
+  text-align: left;
   h1 {
     font-size: 3rem;
   }

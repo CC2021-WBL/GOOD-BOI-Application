@@ -17,8 +17,8 @@ const ColumnWrapperStyled = styled.div`
   }
 
   .coming-contest {
-    text-align: left;
     margin: 4.6875rem 0 0 0;
+    text-align: left;
   }
 
   @media only screen and (min-width: 800px) {
@@ -27,8 +27,8 @@ const ColumnWrapperStyled = styled.div`
       align-items: flex-end;
     }
     &.user-profile {
-      gap: 1.25rem;
       height: 100vh;
+      gap: 1.25rem;
     }
     &.contests-column-wrapper {
       display: flex;
@@ -42,12 +42,12 @@ const ColumnWrapperStyled = styled.div`
     }
 
     &.user-profile {
-      height: 100%;
       display: grid;
+      height: 100%;
+      align-items: center;
       gap: 1.25rem;
       grid-template-columns: repeat(8, 1fr);
       grid-template-rows: repeat(2, 10.625rem) 1fr;
-      align-items: center;
     }
   }
   @media only screen and (min-width: 1600px) {
