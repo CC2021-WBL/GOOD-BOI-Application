@@ -11,7 +11,6 @@ const FooterLinks = () => {
         >
           <h3>O aplikacji</h3>
         </a>
-        <br></br>
         <a
           href="https://github.com/CC2021-WBL"
           target="_blank"
@@ -35,7 +34,6 @@ const FooterLinks = () => {
         >
           <h3>Warunki korzystania</h3>
         </a>
-        <br></br>
         <a
           href="https://github.com/CC2021-WBL"
           target="_blank"

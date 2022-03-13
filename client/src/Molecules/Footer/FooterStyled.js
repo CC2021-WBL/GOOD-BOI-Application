@@ -32,6 +32,9 @@ export const FooterStyled = styled.div`
   &.non-mobile {
     display: none;
     text-align: right;
+    a {
+      flex: 1;
+    }
 
     @media only screen and (min-width: 800px) {
       display: flex;
@@ -43,19 +46,21 @@ export const FooterStyled = styled.div`
       padding: 2rem;
       margin: auto;
       gap: clamp(2rem, 10vw, 15rem);
+      font-size: 13px;
       p {
         color: ${({ theme }) => theme.grey800};
-        ${FONTS.body_semibold};
         white-space: nowrap;
       }
       h3 {
         color: ${({ theme }) => theme.grey400};
+        padding: 0 0 1rem 0;
       }
     }
     @media only screen and (min-width: 1600px) {
+      ${FONTS.body_semibold};
       max-width: 1200px;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
     }
   }
 `;
