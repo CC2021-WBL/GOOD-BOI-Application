@@ -1,14 +1,14 @@
+import propTypes from 'prop-types';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
-import { UserDataContext } from '../../Context/UserDataContext';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
-import propTypes from 'prop-types';
+import { UserDataContext } from '../../Context/UserDataContext';
 import { requestOptionsGET } from '../../FetchData/requestOptions';
 
-const UserProfileData = ({ withEdit, initialState }) => {
+const UserProfileData = ({ withEdit, initialState, className }) => {
   const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
   const { userId, userName, userSurname, isAuthenticated } = state;
@@ -65,15 +65,17 @@ const UserProfileData = ({ withEdit, initialState }) => {
 
   return (
     <>
-      <UserProfileDataStyled withEdit={withEdit}>
-        {state && userObject ? (
-          <h3>{`${participantName} ${participantSurname}`}</h3>
-        ) : (
-          <h3>{`${userName} ${userSurname}`}</h3>
-        )}
+      <UserProfileDataStyled withEdit={withEdit} className={className}>
+        <div className="user-data-wrapper">
+          {state && userObject ? (
+            <h3>{`${participantName} ${participantSurname}`}</h3>
+          ) : (
+            <h3>{`${userName} ${userSurname}`}</h3>
+          )}
 
-        <p>{`${street} ${numberOfHouse}`}</p>
-        <p>{`${postalCode} ${city}`}</p>
+          <p>{`${street} ${numberOfHouse}`}</p>
+          <p>{`${postalCode} ${city}`}</p>
+        </div>
         {withEdit && (
           <button className="edit-btn" onClick={toggleHandler} toggle="true">
             edytuj dane

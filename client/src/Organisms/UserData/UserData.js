@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
-import { UserDataContext } from '../../Context/UserDataContext';
 import UserField from '../../Atoms/UserField/UserField';
+import { UserDataContext } from '../../Context/UserDataContext';
 import { requestOptionsGET } from '../../FetchData/requestOptions';
-import { useParams } from 'react-router-dom';
 
 const UserData = () => {
   const [userObject, setUserObject] = useState(null);
@@ -33,8 +33,8 @@ const UserData = () => {
 
   return (
     <>
-      <ColumnWrapper paddingLeftRight={1}>
-        <ProfileCard withEdit initialState={userObject} />
+      <ColumnWrapper paddingLeftRight={1} className="user-data">
+        <ProfileCard withEdit initialState={userObject} className="user-data" />
         <UserField
           text="zmień email"
           email

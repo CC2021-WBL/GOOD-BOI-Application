@@ -7,7 +7,11 @@ const ProfileCard = ({ withEdit, initialState, className }) => {
   return (
     <>
       {withEdit ? (
-        <UserProfileData withEdit={withEdit} initialState={initialState} />
+        <UserProfileData
+          withEdit={withEdit}
+          initialState={initialState}
+          className={className}
+        />
       ) : (
         <ProfileCardStyled className={className}>
           <div className="bg-box"></div>
