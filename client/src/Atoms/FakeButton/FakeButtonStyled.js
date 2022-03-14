@@ -1,7 +1,6 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-
 import FONTS from '../../Styles/fontsStyledComponents';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const getStyles = (bgColor, color) => {
   return `background:${bgColor}; color:${color}`;
@@ -57,7 +56,7 @@ const FakeButtonStyled = styled(Link)`
       max-width: 16.25rem;
     }
   }
-  
+
   &.user-profile {
     @media only screen and (min-width: 800px) {
       justify-content: flex-start;
@@ -96,7 +95,6 @@ const FakeButtonStyled = styled(Link)`
       }
     }
 
-    
     &.user-dogs {
       grid-area: 1 / 1 / 2 / span 3;
       align-self: flex-end;
