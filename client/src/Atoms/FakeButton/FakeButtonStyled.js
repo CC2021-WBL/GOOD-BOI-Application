@@ -52,8 +52,14 @@ const FakeButtonStyled = styled(Link)`
   ${(props) => handleBorders(props)}
   text-transform: uppercase;
 
-  &.user_profile {
-    @media only screen and (min-width: 1600px) {
+  &.add-dogs {
+    @media only screen and (min-width: 800px) {
+      max-width: 16.25rem;
+    }
+  }
+  
+  &.user-profile {
+    @media only screen and (min-width: 800px) {
       justify-content: flex-start;
       height: 100%;
       margin: 0;
@@ -64,7 +70,7 @@ const FakeButtonStyled = styled(Link)`
       background-color: ${({ theme }) => theme.grey00};
       border: 1px solid ${({ theme }) => theme.grey200};
 
-      .fakebtn_header {
+      .fakebtn-header {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -79,7 +85,7 @@ const FakeButtonStyled = styled(Link)`
         padding: 0 1.25rem;
       }
 
-      .fakebtn_text {
+      .fakebtn-text {
         color: ${({ theme }) => theme.grey400};
         flex-grow: 1;
         display: flex;
@@ -90,32 +96,37 @@ const FakeButtonStyled = styled(Link)`
       }
     }
 
-    &.user_dogs {
+    
+    &.user-dogs {
       grid-area: 1 / 1 / 2 / span 3;
       align-self: flex-end;
     }
 
-    &.user_contests {
+    &.user-contests {
       grid-area: 2 / 4 / 3 / span 3;
       align-self: flex-start;
     }
 
-    &.user_data {
+    &.user-data {
       grid-area: 1 / 4 / 2 / span 3;
       align-self: flex-end;
+      margin-bottom: 1.25rem;
+      @media only screen and (min-width: 1024px) {
+        margin-bottom: 0;
+      }
     }
 
-    &.user_upcoming {
+    &.user-upcoming {
       grid-area: 2 / 1 / 3 / span 3;
-      @media only screen and (min-width: 1600px) {
+      @media only screen and (min-width: 800px) {
         align-self: flex-start;
         background-color: ${({ theme }) => theme.primary101};
         border: 1px solid ${({ theme }) => theme.primary601};
 
-        .fakebtn_header {
+        .fakebtn-header {
           border-bottom: 1px solid ${({ theme }) => theme.primary601};
         }
-        .fakebtn_text {
+        .fakebtn-text {
           color: ${({ theme }) => theme.primary601};
         }
       }

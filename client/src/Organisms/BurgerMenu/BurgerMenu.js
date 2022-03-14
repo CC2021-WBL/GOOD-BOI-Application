@@ -25,14 +25,14 @@ import { UserDataContext } from '../../Context/UserDataContext';
 const BurgerMenu = ({ open, setOpen }) => {
   const { state, dispatch } = useContext(UserDataContext);
   const { contestState, contestDispatch } = useContext(ContestContext);
-  const { userId } = state;
+  const { userId, isAuthenticated } = state;
   let domNode = useClickOutside(() => {
     setOpen(false);
   });
 
   const locationPath = useLocation();
 
-  return checkLocationForNavRender(locationPath.pathname) ? (
+  return checkLocationForNavRender(locationPath.pathname, isAuthenticated) ? (
     <BurgerMenuStyled />
   ) : (
     <BurgerMenuStyled open={open} ref={domNode}>
