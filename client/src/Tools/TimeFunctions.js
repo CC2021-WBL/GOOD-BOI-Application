@@ -84,3 +84,7 @@ export const getSelectedContestsByTime = (timePeriod, contests = []) => {
 
   return selectedcontests;
 };
+
+export const toDateFormat = (date) => {
+  return new Date(date);
+};

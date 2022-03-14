@@ -5,8 +5,8 @@ import DataLine from '../../Atoms/DataLine/DataLine';
 import PropTypes from 'prop-types';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
-import participants from '../../Data/MongoDBMock/participants';
 import renderParticipantData from '../../Tools/renderParticipantData';
+import { requestOptionsGET } from '../../FetchData/requestOptions';
 import { useNavigate } from 'react-router-dom';
 
 const ParticipantData = ({ id }) => {
@@ -15,10 +15,19 @@ const ParticipantData = ({ id }) => {
   const [isPending, setIsPending] = useState(true);
 
   useEffect(() => {
-    setParticipantData(
-      participants.find((participant) => participant.participantId === id),
-    );
-    setIsPending(false);
+    try {
+      async function fetchParticipantData() {
+        const response = await fetch(`/api/users/${id}`, requestOptionsGET);
+        const result = await response.json();
+        console.log(result);
+        setParticipantData(result);
+        setIsPending(false);
+      }
+
+      fetchParticipantData();
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   const handleEdit = (event) => {
