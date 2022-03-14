@@ -19,8 +19,7 @@ export const getDataFormatDdMmhYyy = (date) => {
 };
 
 export const getHourMinutesFormat = (date) => {
-  const convertedDate = new Date(date);
-  return convertedDate.toLocaleTimeString(navigator.language, {
+  return date.toLocaleTimeString(navigator.language, {
     hour: '2-digit',
     minute: '2-digit',
   });

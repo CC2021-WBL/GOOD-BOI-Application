@@ -6,7 +6,6 @@ import applicationInfoRender from '../../../../Tools/contestDetails/applicationI
 
 const ContestDetailsApplicationInfo = ({ applicationData }) => {
   const [applicationInfo, setApplicationInfo] = useState(null);
-  console.log(applicationData);
 
   useEffect(() => {
     setApplicationInfo(applicationData);
