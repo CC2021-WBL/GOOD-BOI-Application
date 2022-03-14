@@ -32,7 +32,7 @@ const NavElement = () => {
   const data = checkPathOrigin(locationPath.pathname, namesFromContext);
   return (
     <>
-      <GridWrapper mobile="1 / 1 / 2 / 2" navFoot>
+      <GridWrapper className="mobile_only" navFoot>
         <NavElementStyled>
           {checkLocationForNavRender(locationPath.pathname) ? (
             <div className="burger-wrapper" />
@@ -49,7 +49,7 @@ const NavElement = () => {
           </GoHomeStyled>
         </NavElementStyled>
       </GridWrapper>
-      <GridWrapper desktop="1 / 2 / 2 / 6" tablet="1 / 2 / 2 / 6">
+      <GridWrapper desktop="1 / 2 / 2 / -1" tablet="1 / 2 / 2 / -1" navFoot>
         <Nav />
       </GridWrapper>
       {data.label && data.label.length !== 0 && (
