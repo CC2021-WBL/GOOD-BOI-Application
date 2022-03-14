@@ -11,7 +11,8 @@ const ColumnWrapperStyled = styled.div`
   padding-bottom: ${(props) =>
     props.paddingBottom && `${props.paddingBottom}rem`};
   grid-area: 3 / 1 / 4 / 2;
-  max-width: ${(props) => props.maxw && `${props.maxw}px`};
+
+  align-items: ${(props) => props.alignItems && `${props.alignItems}`};
 
   &.manager-page {
     padding: 2.2rem 1rem 0 1rem;
@@ -19,6 +20,8 @@ const ColumnWrapperStyled = styled.div`
 
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
+    max-width: ${(props) =>
+      props.maxWidthBigScr && `${props.maxWidthBigScr}rem`};
     &.user-dogs-column-wrapper {
       align-items: flex-end;
     }
@@ -34,8 +37,7 @@ const ColumnWrapperStyled = styled.div`
     &.user-data {
       border: 1px solid ${({ theme }) => theme.grey200};
       border-radius: 0.9375rem;
-      /* margin: 40px; */
-      /* max-width: 300px; */
+      margin: 0 1rem 0 auto;
     }
   }
   @media only screen and (min-width: 1024px) {

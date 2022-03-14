@@ -33,7 +33,11 @@ const UserData = () => {
 
   return (
     <>
-      <ColumnWrapper paddingLeftRight={1} className="user-data">
+      <ColumnWrapper
+        paddingLeftRight={1}
+        maxWidthBigScr={35}
+        className="user-data"
+      >
         <ProfileCard withEdit initialState={userObject} className="user-data" />
         <UserField
           text="zmień email"

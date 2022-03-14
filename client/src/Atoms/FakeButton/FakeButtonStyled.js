@@ -57,7 +57,7 @@ const FakeButtonStyled = styled(Link)`
       max-width: 16.25rem;
     }
   }
-  
+
   &.user-profile {
     @media only screen and (min-width: 800px) {
       justify-content: flex-start;
@@ -88,6 +88,7 @@ const FakeButtonStyled = styled(Link)`
       .fakebtn-text {
         color: ${({ theme }) => theme.grey400};
         flex-grow: 1;
+        flex-basis: 40px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -96,7 +97,6 @@ const FakeButtonStyled = styled(Link)`
       }
     }
 
-    
     &.user-dogs {
       grid-area: 1 / 1 / 2 / span 3;
       align-self: flex-end;

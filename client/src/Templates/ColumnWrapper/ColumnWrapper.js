@@ -8,6 +8,7 @@ const ColumnWrapper = ({
   paddingTop = 0,
   paddingBottom = 0,
   className,
+  maxWidthBigScr,
 }) => {
   return (
     <ColumnWrapperStyled
@@ -15,6 +16,7 @@ const ColumnWrapper = ({
       paddingTop={paddingTop}
       paddingBottom={paddingBottom}
       className={className}
+      maxWidthBigScr={maxWidthBigScr}
     >
       {children}
     </ColumnWrapperStyled>

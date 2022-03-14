@@ -36,18 +36,22 @@ const UserProfileDataStyled = styled.div`
     justify-content: center;
 
     h3 {
-      ${FONTS.h1};
+      ${FONTS.h2};
       padding: 0.3125rem;
       font-weight: 100;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
       position: absolute;
       width: 100%;
       height: 5rem;
       top: 0;
       right: 0;
       border-bottom: 1px solid ${({ theme }) => theme.grey200};
+    }
+    p {
+      padding: 0 3px;
     }
   }
 
