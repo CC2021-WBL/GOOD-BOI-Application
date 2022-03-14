@@ -24,8 +24,14 @@ const ContestCard = ({ contestData }) => {
 
   let navigate = useNavigate();
 
-  const { contestId, contestName, startDate, endDate, address, dogsAmount } =
-    contestData;
+  const {
+    _id,
+    contestName,
+    startDate,
+    endDate,
+    address,
+    amountOfApplications,
+  } = contestData;
 
   const stringDate = getDataFormatDdMonthYyy(startDate);
   const pointOnTimeLine = getPointOnTimeLine(startDate, endDate);
@@ -35,14 +41,14 @@ const ContestCard = ({ contestData }) => {
     if (pointOnTimeLine === 'archiwalny') {
       navigate(`../class-choice`);
     } else if (selectedRole !== null && selectedRole === 'staff') {
-      navigate(`./${contestId}/classes`);
+      navigate(`./${_id}/classes`);
     } else {
-      navigate(`/contests/${contestId}`);
+      navigate(`/contests/${_id}`);
     }
     contestDispatch({
       type: 'SET_CONTEST',
       payload: {
-        contestId: contestId,
+        contestId: _id,
         contestName: contestName,
       },
     });
@@ -58,12 +64,14 @@ const ContestCard = ({ contestData }) => {
         <time dateTime={stringDate}>
           {stringDate}, {getHourAndMinutesFromDate(startDate)}
         </time>
-        <p>{address.city.toUpperCase()}</p>
+        <p>
+          {address.city ? address.city.toUpperCase() : 'LOKALIZACJA WKRÓTCE'}
+        </p>
       </ContestInsideElementStyled>
       <ContestInsideElementStyled colorMotive={setColorMotive(pointOnTimeLine)}>
         <InfoLabel
-          classInfo={{ dogsAmount: dogsAmount }}
-          colorMotive={setColorMotive(pointOnTimeLine, dogsAmount)}
+          classInfo={{ dogsAmount: amountOfApplications }}
+          colorMotive={setColorMotive(pointOnTimeLine, amountOfApplications)}
         />
         <InfoLabel
           pointOnTimeLine={pointOnTimeLine}
@@ -78,8 +86,8 @@ ContestCard.propTypes = {
   contestData: propTypes.shape({
     contestId: propTypes.string,
     contestName: propTypes.string,
-    startDate: propTypes.instanceOf(Date),
-    endDate: propTypes.instanceOf(Date),
+    startDate: propTypes.string,
+    endDate: propTypes.string,
     address: propTypes.object,
     dogsAmount: propTypes.number,
   }),

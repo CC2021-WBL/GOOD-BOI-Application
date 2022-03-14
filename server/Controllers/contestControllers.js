@@ -69,6 +69,21 @@ async function finishClass(req, res) {
   }
 }
 
+async function getPartcicipantsForClassInContest(req, res) {
+  try {
+    const data = await Contest.findById(req.params.contestId).select(
+      'obedienceClasses',
+    );
+    if (!data) {
+      res.status(404).json({ message: 'not found participants' });
+    } else {
+      return data;
+    }
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+}
+
 async function getContests(req, res) {
   let data;
   try {
@@ -111,8 +126,6 @@ async function getContests(req, res) {
 //TEST PHASE
 async function getContestsForCard(req, res) {
   let data;
-  console.log(new Date());
-  console.log(req.query.taker);
   try {
     if (req.query.taker === ROLE_NAME.MANAGER && isManager(req)) {
       data = await Contest.find()
@@ -143,4 +156,5 @@ module.exports = {
   finishClass,
   getContests,
   getContestsForCard,
+  getPartcicipantsForClassInContest,
 };

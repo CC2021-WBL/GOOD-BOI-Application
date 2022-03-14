@@ -5,6 +5,7 @@ const {
   finishClass,
   getContests,
   getContestsForCard,
+  getPartcicipantsForClassInContest,
 } = require('../Controllers/contestControllers');
 
 const {
@@ -50,6 +51,19 @@ router.get('/:contestId', async (req, res) => {
       res.status(404).end();
     }
     res.status(200).send(contest);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
+//Get participants for current class and contest
+router.get('/participants/:contestId/:classId', async (req, res) => {
+  try {
+    const participants = await getPartcicipantsForClassInContest(req, res);
+    if (!participants) {
+      res.status(404).end();
+    }
+    res.status(200).send(participants);
   } catch (error) {
     res.status(500).send(error.message);
   }
