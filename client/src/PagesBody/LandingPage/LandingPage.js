@@ -24,10 +24,10 @@ const LandingPage = () => {
             className="burger-icon"
             onClick={() => setOpen(true)}
             style={{
-              fontSize: '24px',
-              color: 'grey',
+              fontSize: '1.25rem',
+              color: 'lightgrey',
               display: 'flex',
-              marginTop: '10px',
+              margin: '1.125rem',
               cursor: 'pointer',
             }}
           />
