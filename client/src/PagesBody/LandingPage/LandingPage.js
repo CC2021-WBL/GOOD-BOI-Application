@@ -1,3 +1,4 @@
+import { MdMenu } from 'react-icons/md';
 import { useContext, useState } from 'react';
 
 import BurgerMenu from '../../Organisms/BurgerMenu/BurgerMenu';
@@ -7,16 +8,17 @@ import Footer from '../../Molecules/Footer/Footer';
 import GridWrapper from '../../Templates/Layout/GridWrapper';
 import ImgWrapperStyled from './ImgWrapperStyled';
 import Logo2 from '../../Assets/Logo2.png';
-import { MdMenu } from 'react-icons/md';
+import useMediaQuery from '../../Hooks/useMediaQuery';
 import { UserDataContext } from '../../Context/UserDataContext';
 
 const LandingPage = () => {
+  const mobileOnly = useMediaQuery('(max-width:799px)');
   const { state } = useContext(UserDataContext);
   const { isAuthenticated } = state;
   const [open, setOpen] = useState(false);
   return (
     <>
-      {isAuthenticated ? (
+      {isAuthenticated && mobileOnly ? (
         <div className="burger-wrapper">
           <MdMenu
             className="burger-icon"
@@ -61,10 +63,9 @@ const LandingPage = () => {
               />
             </>
           )}
-
-          <BurgerMenu open={open} setOpen={setOpen} />
         </ColumnWrapper>
       </GridWrapper>
+      <BurgerMenu open={open} setOpen={setOpen} />
       <Footer />
     </>
   );
