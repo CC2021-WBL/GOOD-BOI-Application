@@ -32,8 +32,9 @@ const useDogForm = (callback, validateData, initialState) => {
           `/api/dogs/register/${state.userId}`,
           genRequestOptionsPOST(formData),
         );
-        const result = await res.json();
-        console.log(result);
+        if (!res.ok) {
+          alert('Dodanie psa nieudane, spróbuj jeszcze raz');
+        }
       } catch (error) {
         console.log(error);
       }
@@ -43,8 +44,9 @@ const useDogForm = (callback, validateData, initialState) => {
           `/api/dogs/${initialState._id}`,
           genRequestOptionsPATCH(formData),
         );
-        const result = await res.json();
-        console.log(result);
+        if (!res.ok) {
+          alert('Aktualizacja danych nieudana, spróbuj jeszcze raz');
+        }
       } catch (error) {
         console.log(error);
       }

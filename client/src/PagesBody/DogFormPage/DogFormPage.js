@@ -14,32 +14,34 @@ const DogFormPage = () => {
   const [initialStateOfDogForm, setInitialStateOfDogForm] = useState(null);
   const navigate = useNavigate();
 
-  const changeInitialData = () => {
-    let modifiedInitialState = {};
-    console.log(chosenDog);
-    try {
-      if ('dogId' in chosenDog) {
-        console.log(chosenDog);
-        fetch(`/api/dogs/${chosenDog.dogId}`, requestOptionsGET)
-          .then((response) => response.json())
-          .then((result) => {
-            console.log(result);
-            Object.keys(dogFormInitialState).forEach((key) => {
+  useEffect(() => {
+    const changeInitialData = async () => {
+      let modifiedInitialState = {};
+      console.log(chosenDog);
+      try {
+        if ('dogId' in chosenDog) {
+          const response = await fetch(
+            `/api/dogs/${chosenDog.dogId}`,
+            requestOptionsGET,
+          );
+          const result = await response.json();
+
+          Object.keys(dogFormInitialState).forEach((key) => {
+            if (key === 'dateOfBirth') {
+              modifiedInitialState[key] = new Date(result[key]);
+            } else {
               modifiedInitialState[key] = result[key];
-            });
-            setInitialStateOfDogForm(modifiedInitialState);
-          })
-          .catch((error) => console.log(error));
-      } else {
-        console.log(dogFormInitialState);
+            }
+          });
+          setInitialStateOfDogForm(modifiedInitialState);
+        } else {
+          setInitialStateOfDogForm(dogFormInitialState);
+        }
+      } catch (error) {
         setInitialStateOfDogForm(dogFormInitialState);
       }
-    } catch (error) {
-      setInitialStateOfDogForm(dogFormInitialState);
-    }
-  };
+    };
 
-  useEffect(() => {
     changeInitialData();
   }, []);
 
@@ -58,6 +60,7 @@ const DogFormPage = () => {
     navigate(-1);
   }
 
+  console.log(initialStateOfDogForm);
   return (
     <ColumnWrapper paddingLeftRight={1}>
       {!isSubmitted && initialStateOfDogForm ? (
