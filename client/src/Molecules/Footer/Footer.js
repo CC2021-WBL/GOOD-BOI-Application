@@ -1,63 +1,51 @@
-import { Copy, DevsLogo, FooterStyled, LogoStyled } from './FooterStyled';
-
-import FooterProfileButton from '../../Atoms/FooterProfileButton/FooterProfileButton';
-import GridWrapper from '../../Templates/Layout/GridWrapper';
-import RocketWithPlanets from '../../Molecules/RocketWithPlanets/RocketWithPlanets';
-import { UserDataContext } from '../../Context/UserDataContext';
-import logoDevsOnTheWaves from '../../Assets/logoDevsOnTheWaves.svg';
 import propTypes from 'prop-types';
 import { useContext } from 'react';
-import useWindowHeight from '../../Tools/useWindowHeight';
 
-const initHeight = window.innerHeight;
+import FooterLinks from './FooterLinks';
+import FooterProfileButton from '../../Atoms/FooterProfileButton/FooterProfileButton';
+import GridWrapper from '../../Templates/Layout/GridWrapper';
+import LinkWithDevsLogo from './LinkWithDevsLogo';
+import RocketWithPlanets from '../../Molecules/RocketWithPlanets/RocketWithPlanets';
+import useWindowHeight from '../../Tools/useWindowHeight';
+import { FooterStyled } from './FooterStyled';
+import { UserDataContext } from '../../Context/UserDataContext';
+
+let initHeight = window.innerHeight;
 
 const Footer = ({ withSettings }) => {
   const { state } = useContext(UserDataContext);
   const { isAuthenticated } = state;
   const height = useWindowHeight();
 
-  // windows.innerHeight changes when virtual keyboard popping up, when so - hide the footer
-  if (Math.abs(initHeight - height.height) <= 500) {
-    return (
-      <>
-        <GridWrapper mobile="4 / 1 / 5 / 2" tablet="4 / 1 / 5 / -1" navFoot>
-          <FooterStyled>
-            <a
-              href="https://github.com/CC2021-WBL"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <LogoStyled>
-                <DevsLogo>
-                  <img
-                    className="logo"
-                    src={logoDevsOnTheWaves}
-                    alt="logo"
-                    width="35px"
-                  />
-                </DevsLogo>
-                <Copy>
-                  Copyright <br />
-                  #Devs on the Waves
-                </Copy>
-              </LogoStyled>
-            </a>
-
+  // TODO: Footer must also hide when mobile is turned and virtual keyboard popps up
+  return (
+    <>
+      <GridWrapper mobile="4 / 1 / 5 / 2" tablet="4 / 1 / 5 / -1">
+        <FooterStyled className="non-mobile-wrapper">
+          <FooterStyled className="non-mobile">
+            <LinkWithDevsLogo />
+            <FooterLinks />
+          </FooterStyled>
+        </FooterStyled>
+        {Math.abs(initHeight - height.height) <= 150 && (
+          <FooterStyled className="mobile">
+            <LinkWithDevsLogo />
             {withSettings ? (
               <FooterProfileButton withSettings />
             ) : (
               isAuthenticated && <FooterProfileButton />
             )}
           </FooterStyled>
-        </GridWrapper>
-        <RocketWithPlanets />
-      </>
-    );
-  } else return '';
+        )}
+      </GridWrapper>
+      <RocketWithPlanets />
+    </>
+  );
 };
 
 Footer.propTypes = {
   withSettings: propTypes.bool,
+  mobile: propTypes.bool,
 };
 
 export default Footer;
