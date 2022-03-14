@@ -1,5 +1,6 @@
-import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
+
+import FONTS from '../../Styles/fontsStyledComponents';
 
 export const NavElementStyled = styled.div`
   display: flex;
