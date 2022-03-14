@@ -1,10 +1,10 @@
-import { DOG_ACTIONS, USER_ACTIONS } from '../../Consts/reducersActions';
 import { useContext, useEffect, useState } from 'react';
 
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import { DogContext } from '../../Context/DogContext';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
+import { DOG_ACTIONS, USER_ACTIONS } from '../../Consts/reducersActions';
+import { DogContext } from '../../Context/DogContext';
 import { ROLE_NAME } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { requestOptionsGET } from '../../FetchData/requestOptions';
@@ -35,7 +35,7 @@ const UserDogPage = () => {
   }, []);
 
   return (
-    <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
+    <ColumnWrapper paddingLeftRight={1} paddingTop={0.5} className="user-dogs-column-wrapper">
       {isPending && <p>Loading...</p>}
       {participantDogs &&
         participantDogs.map((dog, index) => {
@@ -49,6 +49,7 @@ const UserDogPage = () => {
                 dogId,
               }}
               noInfoLabel
+              className="user-dogs-button"
             />
           );
         })}
@@ -57,6 +58,7 @@ const UserDogPage = () => {
         colors="secondary"
         text="DODAJ NOWEGO PSA"
         to="/add-dog-form"
+        className="add-dogs"
       />
     </ColumnWrapper>
   );
