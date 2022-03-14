@@ -69,6 +69,7 @@ async function finishClass(req, res) {
   }
 }
 
+//TODO: add selection to get participants just for current contest
 async function getPartcicipantsForClassInContest(req, res) {
   try {
     const data = await Contest.findById(req.params.contestId).select(
@@ -98,32 +99,7 @@ async function getContests(req, res) {
   }
 }
 
-// not optimal! works but could be written better, in progress
-/* async function getContests(req, res) {
-  let data;
-  try {
-    if (req.query.taker) {
-      switch (req.query.taker) {
-        case 'card':
-          data = await Contest.find().select(forContestCard);
-          break;
-        default:
-          break;
-      }
-    } else {
-      data = await Contest.find();
-    }
-    if (!data) {
-      res.status(404).json({ message: 'not found contests' });
-    } else {
-      return data;
-    }
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-} */
-
-//TEST PHASE
+//TODO: WORK IN PROGRESS - to add selectors of roles, itd
 async function getContestsForCard(req, res) {
   let data;
   try {

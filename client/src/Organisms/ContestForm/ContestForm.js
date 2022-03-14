@@ -50,7 +50,6 @@ const ContestForm = () => {
       <ColumnWrapper paddingLeftRight={1}>
         <FormWrapper
           onSubmit={handleSubmit(async (data) => {
-            console.log(data);
             data.obedienceClasses = chosenClasses;
             setData(JSON.stringify(data));
             try {
