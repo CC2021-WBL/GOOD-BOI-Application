@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
+import useMediaQuery from '../../Hooks/useMediaQuery';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { requestOptionsGET } from '../../FetchData/requestOptions';
 
@@ -13,6 +14,8 @@ const UserProfileData = ({ withEdit, initialState, className }) => {
   const { state } = useContext(UserDataContext);
   const { userId, userName, userSurname, isAuthenticated } = state;
   const paramsUserData = useParams();
+
+  const isBigScr = useMediaQuery('(min-width:800px)');
 
   let userData = userId;
   if (!userData) {
@@ -34,6 +37,13 @@ const UserProfileData = ({ withEdit, initialState, className }) => {
   //     throw new Error('Your not allowed to be here!');
   //   }
   // }
+  const [toggle, setToggle] = useState(false);
+
+  const toggleHandler = () => {
+    setToggle((prevState) => !prevState);
+  };
+
+  const submitForm = () => {};
 
   const { address, participantName, participantSurname } = userObject;
   const { street, numberOfHouse, city, postalCode } = address;
@@ -55,14 +65,6 @@ const UserProfileData = ({ withEdit, initialState, className }) => {
     }
   }, []);
 
-  const [toggle, setToggle] = useState(false);
-
-  const toggleHandler = () => {
-    setToggle((prevState) => !prevState);
-  };
-
-  const submitForm = () => {};
-
   return (
     <>
       <UserProfileDataStyled withEdit={withEdit} className={className}>
@@ -82,7 +84,7 @@ const UserProfileData = ({ withEdit, initialState, className }) => {
           </button>
         )}
       </UserProfileDataStyled>
-      {toggle && (
+      {(toggle || (isBigScr && withEdit)) && (
         <RegistrationFormSignup
           submitForm={submitForm}
           editData
