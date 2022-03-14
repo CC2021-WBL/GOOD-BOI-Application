@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
 import { MdMenu } from 'react-icons/md';
 import { useContext, useState } from 'react';
@@ -16,6 +17,21 @@ import { NavElementStyled } from './NavElementStyled';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { checkPathOrigin } from '../../Tools/checkPathOrigin';
 
+const NavInnerWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+
+  @media only screen and (min-width: 800px) {
+    display: block;
+    background: ${({ theme }) => theme.grey00};
+  }
+  @media only screen and (min-width: 1600px) {
+    display: block;
+    background: ${({ theme }) => theme.grey00};
+  }
+`;
+
 const NavElement = () => {
   const locationPath = useLocation();
 
@@ -32,8 +48,8 @@ const NavElement = () => {
   const data = checkPathOrigin(locationPath.pathname, namesFromContext);
   return (
     <>
-      <GridWrapper className="mobile_only" navFoot>
-        <NavElementStyled>
+      <GridWrapper className="mobile_only">
+        <NavElementStyled className="mobile_only">
           {checkLocationForNavRender(locationPath.pathname) ? (
             <div className="burger-wrapper" />
           ) : (
@@ -49,8 +65,10 @@ const NavElement = () => {
           </GoHomeStyled>
         </NavElementStyled>
       </GridWrapper>
-      <GridWrapper desktop="1 / 2 / 2 / -1" tablet="1 / 2 / 2 / -1" navFoot>
-        <Nav />
+      <GridWrapper desktop="1 / 1 / 2 / -1" tablet="1 / 1 / 2 / -1">
+        <NavInnerWrapper>
+          <Nav />
+        </NavInnerWrapper>
       </GridWrapper>
       {data.label && data.label.length !== 0 && (
         <GridWrapper

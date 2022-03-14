@@ -38,7 +38,6 @@ const Nav = () => {
       <>
         <NavInnerStyled>
           <GoodBoiLogo />
-          {/* <NavMenu /> */}
           <NavButtonWrapper
             classwName="button-wrapper"
             ref={domNode}

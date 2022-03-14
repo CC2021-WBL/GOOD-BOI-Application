@@ -3,6 +3,6 @@ import styled from 'styled-components';
 const GoodBoiLogoStyled = styled.div`
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
 `;
 export default GoodBoiLogoStyled;
