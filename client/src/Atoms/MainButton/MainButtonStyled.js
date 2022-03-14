@@ -40,6 +40,7 @@ const MainButtonStyled = styled.button`
   ${(props) => borderHandler(props)};
   &:hover {
     filter: brightness(1.1);
+   ;
 
   &.selected-btn:focus {
     border: 3px solid #34c369;

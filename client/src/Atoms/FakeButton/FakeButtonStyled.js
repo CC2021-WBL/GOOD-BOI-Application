@@ -132,6 +132,7 @@ const FakeButtonStyled = styled(Link)`
   }
   &:hover {
     filter: brightness(1.1);
+    
 `;
 
 export default FakeButtonStyled;
