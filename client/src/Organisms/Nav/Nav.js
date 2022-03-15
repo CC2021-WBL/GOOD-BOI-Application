@@ -58,7 +58,7 @@ const Nav = () => {
             <NavLinkStyled to="/">
               <AppLogoSVG />
             </NavLinkStyled>
-            <NavLinkStyled to="/login" stylefor="Navbar">
+            <NavLinkStyled to="/" stylefor="Navbar">
               STRONA GŁÓWNA
             </NavLinkStyled>
             <NavLinkStyled to="/contests" stylefor="Navbar">
