@@ -6,9 +6,9 @@ const ProfilePicture = () => {
 
 const ProfilePictureStyled = styled.div`
   border-radius: 50%;
-  border: 1px solid black;
-  width: 53px;
-  height: 53px;
+  border: 0.0625rem solid black;
+  width: 3.3125rem;
+  height: 3.3125rem;
   background-image: url(${require(`../../Assets/profileDogFace.jpg`)});
   background-size: cover;
 `;

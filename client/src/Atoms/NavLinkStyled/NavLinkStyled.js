@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 const bgHandler = (props) => {
   if (props.stylefor === 'Sidebar')
@@ -14,9 +14,8 @@ const NavLinkStyled = styled(NavLink)`
   width: 100%;
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
   padding: 0 0 0 0.5rem;
-  gap: 1rem; // gap between nav icons and text
+  gap: 1rem;
   &:not(.active) {
     color: ${({ theme }) => theme.grey400};
   }

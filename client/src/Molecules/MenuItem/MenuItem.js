@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 
 import MenuItemStyled from './MenuItemStyled';
-import NavLinkStyled from './NavLinkStyled';
+import NavLinkStyled from '../../Atoms/NavLinkStyled/NavLinkStyled';
 
 const MenuItem = (props) => {
   const { text, linkTo, icon, stylefor } = props;

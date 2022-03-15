@@ -1,11 +1,12 @@
 import { IoMdSettings } from 'react-icons/io';
 import { MdLogout } from 'react-icons/md';
-import MenuItem from './MenuItem';
-import MenuItemStyled from './MenuItemStyled';
-import NavCornerMenuStyled from './NavCornerMenuStyled';
-import { UserDataContext } from './../../Context/UserDataContext';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import MenuItem from '../MenuItem/MenuItem';
+import MenuItemStyled from '../MenuItem/MenuItemStyled';
+import NavCornerMenuStyled from './NavCornerMenuStyled';
+import { UserDataContext } from '../../Context/UserDataContext';
 
 const fontsize = '20px'; // icon size
 
@@ -25,7 +26,6 @@ const NavCornerMenu = () => {
         style={{ padding: '0 0 0 0.5rem' }}
         onClick={() => {
           dispatch({ type: 'LOG_OUT', index: 1 });
-          console.log('clicked logout');
           navigate('/');
         }}
       >

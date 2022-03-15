@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const NavInnerStyled = styled.div`
   display: none;
+  color: ${({ theme }) => theme.grey800};
 
   @media only screen and (min-width: 800px) {
     height: 100%;

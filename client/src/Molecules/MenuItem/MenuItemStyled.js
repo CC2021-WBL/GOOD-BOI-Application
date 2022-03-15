@@ -12,7 +12,7 @@ const MenuItemStyled = styled.div`
   &:hover {
     background: ${({ theme }) => theme.grey00};
     cursor: pointer;
-    filter: brightness(0.9);
+    filter: brightness(0.95);
   }
 `;
 export default MenuItemStyled;

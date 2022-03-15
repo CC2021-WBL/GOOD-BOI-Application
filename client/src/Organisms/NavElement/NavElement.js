@@ -7,8 +7,7 @@ import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import GoHomeStyled from '../../Atoms/NavElementStyled/GoHomeStyled';
 import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
 import GridWrapper from '../../Templates/Layout/GridWrapper';
-import Nav from '../Navbar/Nav';
-import NavWrapper from './../Navbar/NavWrapper';
+import Nav from '../Nav/Nav';
 import checkLocationForNavRender from '../../Tools/checkLocationForNavRender';
 import home from '../../Assets/home.png';
 import { ContestContext } from '../../Context/ContestContext';
@@ -51,9 +50,7 @@ const NavElement = () => {
         </NavElementStyled>
       </GridWrapper>
       <GridWrapper desktop="1 / 1 / 2 / -1" tablet="1 / 1 / 2 / -1">
-        <NavWrapper>
-          <Nav />
-        </NavWrapper>
+        <Nav />
       </GridWrapper>
       {data.label && data.label.length !== 0 && (
         <GridWrapper
