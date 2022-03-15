@@ -53,8 +53,8 @@ export const darkTheme = {
   primary201: '#132c50',
   primary101: '#091524',
 
-  grey800: '#cacaca',
-  grey400: '#d3d3d3',
+  grey800: '#a5a5a5',
+  grey400: '#aaaaaa',
   grey300: '#b8bcc0',
   grey200: '#484e55',
   grey100: '#2a2c2e',
@@ -67,9 +67,9 @@ export const darkTheme = {
   warning100: '#e7cf7f',
 
   negative600: '#8D0909',
-  negative400: '#f8a6a6',
+  negative400: '#8f1111',
   negative200: '#a04949',
-  negative100: '#ac4a4a',
+  negative100: '#df8787',
 
   positive600: '#52c07a',
   positive400: '#2ab841',
