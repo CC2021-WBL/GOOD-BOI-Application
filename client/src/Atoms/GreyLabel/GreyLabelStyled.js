@@ -25,6 +25,7 @@ const GreyLabelStyled = styled.div`
       font-size: 1.25rem;
       text-align: left;
       padding-left: 1rem;
+      grid-area: 1 / 1 / 2 / 4;
     }
   }
   @media only screen and (min-width: 1600px) {
@@ -32,7 +33,7 @@ const GreyLabelStyled = styled.div`
     .greyLabelText {
       text-align: left;
       padding-left: 1rem;
-      grid-column: 2;
+      grid-area: 1 / 2 / 2 / 4;
     }
   }
 `;
