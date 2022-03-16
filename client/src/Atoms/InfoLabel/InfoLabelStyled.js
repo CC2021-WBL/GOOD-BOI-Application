@@ -29,6 +29,8 @@ const InfoLabelStyled = styled.label`
     props.colorMotive === c.WHITE
       ? `background: ${props.theme.white}; color: ${props.theme.grey800};  border: solid 1px  ${props.theme.grey800};`
       : ``};
+        &:hover {
+    filter: brightness(2);
 `;
 
 export default InfoLabelStyled;
