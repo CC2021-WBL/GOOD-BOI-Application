@@ -1,6 +1,7 @@
 import { MdMenu } from 'react-icons/md';
 import { useContext, useState } from 'react';
 
+import BackgroundDivStyled from '../../Atoms/BackgroundLanding/BackgroundDivStyled'
 import BurgerMenu from '../../Organisms/BurgerMenu/BurgerMenu';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import DesktopLandingPage from './DesktopLandingPage';
@@ -34,7 +35,7 @@ const LandingPage = () => {
           />
         </div>
       ) : null}
-
+      <BackgroundDivStyled />
       {useMediaQuery('(max-width:799px)') && (
         <GridWrapper
           mobile="3 / 1 / 4 / 2"
