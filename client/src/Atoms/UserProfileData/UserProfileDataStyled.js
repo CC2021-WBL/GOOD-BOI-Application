@@ -60,7 +60,6 @@ const UserProfileDataStyled = styled.div`
     line-height: 1.4;
 
     h3 {
-      ${FONTS.h2};
       position: static;
       width: 100%;
       border-bottom: none;
