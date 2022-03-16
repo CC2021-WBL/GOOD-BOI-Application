@@ -1,6 +1,5 @@
-import styled from 'styled-components';
-
 import FONTS from '../../Styles/fontsStyledComponents';
+import styled from 'styled-components';
 
 const ClassOrDogButtonStyled = styled.button`
   display: flex;
@@ -23,6 +22,8 @@ const ClassOrDogButtonStyled = styled.button`
       max-width: 35rem;
     }
   }
+  &:hover {
+    filter: brightness(1.1);
 `;
 
 export default ClassOrDogButtonStyled;
