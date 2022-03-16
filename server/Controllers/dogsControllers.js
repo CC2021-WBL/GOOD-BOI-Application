@@ -21,7 +21,7 @@ async function registerDog(req, res) {
     }
     return savedDog;
   } catch (error) {
-    res.status(400).json({ message: error });
+    res.status(500).json({ message: error });
   }
 }
 

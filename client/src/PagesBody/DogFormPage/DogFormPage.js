@@ -1,19 +1,27 @@
 import {
-  getDataFormatDdMmhYyy,
-  getDataFormatYyyyMmDD,
-} from '../../Tools/TimeFunctions';
+  genRequestOptionsPATCH,
+  genRequestOptionsPOST,
+  requestOptionsGET,
+} from '../../Tools/FetchData/requestOptions';
+import {
+  patchDogForm,
+  postDogForm,
+  postOrPatchDogForm,
+} from '../../Tools/FetchData/fetchFormsFunctions';
 import { useContext, useEffect, useState } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import { DogContext } from '../../Context/DogContext';
 import DogForm from '../../Organisms/DoggoForm/DogForm';
+import { UserDataContext } from '../../Context/UserDataContext';
 import { dogFormInitialState } from '../../Consts/formsInitialStates';
-import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
+import { getDataFormatYyyyMmDD } from '../../Tools/TimeFunctions';
 import { useNavigate } from 'react-router-dom';
 
 const DogFormPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { dogState, dogDispatch } = useContext(DogContext);
+  const { state } = useContext(UserDataContext);
   const { dogs, chosenDog } = dogState;
   const [initialStateOfDogForm, setInitialStateOfDogForm] = useState(null);
   const navigate = useNavigate();
@@ -48,15 +56,14 @@ const DogFormPage = () => {
     changeInitialData();
   }, []);
 
-  function submitForm(dogData) {
-    setIsSubmitted(true);
-    if (!dogs.find((dog) => dog.dogId === dogData._id)) {
-      dogDispatch({
-        type: 'UPDATE_ONE_FIELD',
-        fieldName: 'dogs',
-        payload: dogs.push({ dogId: dogData._id, dogName: dogData.dogName }),
-      });
+  async function submitForm(dogData) {
+    if (!initialStateOfDogForm._id) {
+      postDogForm(state, dogData, dogs, dogDispatch);
+    } else {
+      patchDogForm(initialStateOfDogForm, dogData, dogs, dogDispatch);
     }
+
+    setIsSubmitted(true);
 
     navigate(-1);
   }

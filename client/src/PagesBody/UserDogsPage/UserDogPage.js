@@ -13,37 +13,47 @@ const UserDogPage = () => {
   const { state, dispatch } = useContext(UserDataContext);
   const [isPending, setIsPending] = useState(true);
   const [participantDogs, setParticipantDogs] = useState(null);
-  const { dogDispatch } = useContext(DogContext);
+  const { dogState, dogDispatch } = useContext(DogContext);
+  const { dogs } = dogState;
 
   useEffect(() => {
-    async function getDogsNames() {
-      try {
-        let response = await fetch(
-          `/api/users/dogs/${state.userId}`,
-          requestOptionsGET,
-        );
-        if (response.ok) {
-          response = await response.json();
-          setParticipantDogs(response.dogs);
-          setIsPending(false);
-          dogDispatch({
-            type: DOG_ACTIONS.SET_DATA,
-            payload: { dogs: response.dogs, chosenDog: {} },
-          });
-          if (state.selectedRole !== ROLE_NAME.PARTICIPANT)
-            dispatch({
-              type: USER_ACTIONS.SELECT_ROLE,
-              selectedRole: ROLE_NAME.PARTICIPANT,
-            });
-        } else {
-          alert('Ooops! nie udało się pobrać danych z serwera');
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
+    if (state.selectedRole !== ROLE_NAME.PARTICIPANT)
+      dispatch({
+        type: USER_ACTIONS.SELECT_ROLE,
+        selectedRole: ROLE_NAME.PARTICIPANT,
+      });
+  }, []);
 
-    getDogsNames();
+  useEffect(() => {
+    if (dogs && dogs.length > 0) {
+      setParticipantDogs(dogs);
+      setIsPending(false);
+    } else {
+      async function getDogsNames() {
+        try {
+          let response = await fetch(
+            `/api/users/dogs/${state.userId}`,
+            requestOptionsGET,
+          );
+          if (response.ok) {
+            response = await response.json();
+            setParticipantDogs(response.dogs);
+
+            dogDispatch({
+              type: DOG_ACTIONS.SET_DATA,
+              payload: { dogs: response.dogs, chosenDog: {} },
+            });
+          } else {
+            alert('Ooops! nie udało się pobrać danych z serwera');
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      getDogsNames();
+      setIsPending(false);
+    }
   }, []);
 
   return (
