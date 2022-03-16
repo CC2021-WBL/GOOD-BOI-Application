@@ -14,7 +14,7 @@ const BackgroundDivStyled = styled.div`
     grid-area: 2 / 1 /-2 /-1;
   }
   @media only screen and (min-width: 1921px) {
-    grid-area: 2 / 1 /-2 /-2;
+    display: none;
   }
 `;
 
