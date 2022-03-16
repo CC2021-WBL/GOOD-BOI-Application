@@ -16,8 +16,7 @@ const NavButtonStyled = styled.div`
   }
 `;
 
-const NavButton = (props) => {
-  const { menuOpen } = props;
+const NavButton = ({ menuOpen }) => {
   return (
     <NavButtonStyled>
       <ProfilePicture />
