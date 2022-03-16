@@ -19,9 +19,6 @@ const LandingPage = () => {
   const { isAuthenticated, userId } = state;
   const [open, setOpen] = useState(false);
 
-  // const { state, dispatch } = useContext(UserDataContext);
-  // const { contestState, contestDispatch } = useContext(ContestContext);
-  // const { userId, isAuthenticated } = state;
   return (
     <>
       {isAuthenticated && mobileOnly ? (
@@ -35,6 +32,8 @@ const LandingPage = () => {
               display: 'flex',
               margin: '1.125rem',
               cursor: 'pointer',
+              position: 'absolute',
+              top: 0,
             }}
           />
         </div>
