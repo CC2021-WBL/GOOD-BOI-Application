@@ -1,7 +1,7 @@
 import {
   genRequestOptionsPATCH,
   genRequestOptionsPOST,
-} from '../FetchData/requestOptions';
+} from '../Tools/FetchData/requestOptions';
 import { useContext, useEffect, useState } from 'react';
 
 import { UserDataContext } from '../Context/UserDataContext';
@@ -46,6 +46,7 @@ const useDogForm = (callback, validateData, initialState) => {
         );
         if (!res.ok) {
           alert('Aktualizacja danych nieudana, spróbuj jeszcze raz');
+          console.log(res.message);
         }
       } catch (error) {
         console.log(error);

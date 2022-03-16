@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import MainButton from '../../Atoms/MainButton/MainButton';
-import { requestOptionsGET } from '../../FetchData/requestOptions';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const ClassesPage = () => {
   const { contestId } = useParams();

@@ -6,7 +6,7 @@ import { UserDataContext } from '../../Context/UserDataContext';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
 import propTypes from 'prop-types';
-import { requestOptionsGET } from '../../FetchData/requestOptions';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const UserProfileData = ({ withEdit, initialState }) => {
   const navigate = useNavigate();
@@ -42,16 +42,24 @@ const UserProfileData = ({ withEdit, initialState }) => {
     if (!isAuthenticated) {
       navigate('/login');
     } else {
-      fetch(`/api/users/${userData}?taker=profile`, requestOptionsGET)
-        .then((response) => response.json())
-        .then((result) => {
-          if (!result) {
+      async function getUserProfileData() {
+        try {
+          let response = await fetch(
+            `/api/users/${userData}?taker=profile`,
+            requestOptionsGET,
+          );
+          if (!response.ok) {
             navigate('/login');
           } else {
-            setUserObject(result);
+            response = await response.json();
+            setUserObject(response);
           }
-        })
-        .catch((error) => console.log('error', error));
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      getUserProfileData();
     }
   }, []);
 

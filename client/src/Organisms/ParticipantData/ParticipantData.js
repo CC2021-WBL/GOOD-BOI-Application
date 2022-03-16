@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
 import renderParticipantData from '../../Tools/renderParticipantData';
-import { requestOptionsGET } from '../../FetchData/requestOptions';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import { useNavigate } from 'react-router-dom';
 
 const ParticipantData = ({ id }) => {

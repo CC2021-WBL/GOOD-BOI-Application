@@ -11,7 +11,7 @@ import { TIME } from '../../Consts/infoLabelConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
 import mockmap from '../../Assets/mockMAP.JPG';
-import { requestOptionsGET } from '../../FetchData/requestOptions';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import { useLocation } from 'react-router-dom';
 import useMediaQuery from '../../Hooks/useMediaQuery';
 

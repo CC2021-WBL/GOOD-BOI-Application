@@ -9,7 +9,7 @@ import InputLabel from '../../Atoms/InputLabel/InputLabel';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import SelectFieldStyled from '../../Atoms/SelectField/SelectFieldStyled';
 import { UserDataContext } from '../../Context/UserDataContext';
-import { genRequestOptionsPOST } from '../../FetchData/requestOptions';
+import { genRequestOptionsPOST } from '../../Tools/FetchData/requestOptions';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 

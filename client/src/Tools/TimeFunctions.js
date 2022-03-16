@@ -12,8 +12,17 @@ export const getDataFormatDdMonthYyy = (date = Date) => {
 export const getDataFormatDdMmhYyy = (date) => {
   const convertedDate = new Date(date);
   return convertedDate.toLocaleDateString(undefined, {
-    day: 'numeric',
+    day: '2-digit',
     month: 'numeric',
+    year: 'numeric',
+  });
+};
+
+export const getDataFormatYyyyMmDD = (date) => {
+  const convertedDate = new Date(date);
+  return convertedDate.toLocaleDateString('en-CA', {
+    day: '2-digit',
+    month: '2-digit',
     year: 'numeric',
   });
 };

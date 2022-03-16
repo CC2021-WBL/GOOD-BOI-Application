@@ -1,10 +1,14 @@
+import {
+  getDataFormatDdMmhYyy,
+  getDataFormatYyyyMmDD,
+} from '../../Tools/TimeFunctions';
 import { useContext, useEffect, useState } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import { DogContext } from '../../Context/DogContext';
 import DogForm from '../../Organisms/DoggoForm/DogForm';
 import { dogFormInitialState } from '../../Consts/formsInitialStates';
-import { requestOptionsGET } from '../../FetchData/requestOptions';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import { useNavigate } from 'react-router-dom';
 
 const DogFormPage = () => {
@@ -17,7 +21,6 @@ const DogFormPage = () => {
   useEffect(() => {
     const changeInitialData = async () => {
       let modifiedInitialState = {};
-      console.log(chosenDog);
       try {
         if ('dogId' in chosenDog) {
           const response = await fetch(
@@ -28,7 +31,7 @@ const DogFormPage = () => {
 
           Object.keys(dogFormInitialState).forEach((key) => {
             if (key === 'dateOfBirth') {
-              modifiedInitialState[key] = new Date(result[key]);
+              modifiedInitialState[key] = getDataFormatYyyyMmDD(result[key]);
             } else {
               modifiedInitialState[key] = result[key];
             }
@@ -46,21 +49,18 @@ const DogFormPage = () => {
   }, []);
 
   function submitForm(dogData) {
-    console.log(dogData);
-    console.log(dogs);
     setIsSubmitted(true);
-    if (!dogs.find((dog) => dog.dogId === dogData.dogId)) {
+    if (!dogs.find((dog) => dog.dogId === dogData._id)) {
       dogDispatch({
         type: 'UPDATE_ONE_FIELD',
         fieldName: 'dogs',
-        payload: dogs.push({ dogId: dogData.dogId, dogName: dogData.dogName }),
+        payload: dogs.push({ dogId: dogData._id, dogName: dogData.dogName }),
       });
     }
 
     navigate(-1);
   }
 
-  console.log(initialStateOfDogForm);
   return (
     <ColumnWrapper paddingLeftRight={1}>
       {!isSubmitted && initialStateOfDogForm ? (

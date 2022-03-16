@@ -4,7 +4,7 @@ import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
 import { UserDataContext } from '../../Context/UserDataContext';
 import UserField from '../../Atoms/UserField/UserField';
-import { requestOptionsGET } from '../../FetchData/requestOptions';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import { useParams } from 'react-router-dom';
 
 const UserData = () => {

@@ -1,7 +1,7 @@
 import {
   genRequestOptionsPATCH,
   genRequestOptionsPOST,
-} from '../../FetchData/requestOptions';
+} from '../../Tools/FetchData/requestOptions';
 import { useEffect, useState } from 'react';
 
 const useCustomForm = (callback, validateData, initialState) => {
@@ -49,22 +49,29 @@ const useCustomForm = (callback, validateData, initialState) => {
     );
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
     setErrors(validateData(formData));
     setIsSubmitting(true);
 
     if (isNewUser) {
-      fetch('/api/users/register', genRequestOptionsPOST(formData))
-        .then((response) => response.json())
-        .then((result) => console.log(result))
-        .catch((error) => console.log(error));
+      let response = await fetch(
+        '/api/users/register',
+        genRequestOptionsPOST(formData),
+      );
+      if (response.status !== 201) {
+        alert('Ooops, rejestracja nieudana, spróbuj jeszcze raz');
+      }
     } else {
-      console.log(initialState._id);
-      fetch(`/api/users/${initialState._id}`, genRequestOptionsPATCH(formData))
-        .then((response) => response.json())
-        .then((result) => console.log(result))
-        .catch((error) => console.log(error));
+      const response = await fetch(
+        `/api/users/${initialState._id}`,
+        genRequestOptionsPATCH(formData),
+      );
+      if (response.status === 200) {
+        alert('Aktualizacja udana!');
+      } else {
+        alert('Błąd serwera, spróbuj jeszcze raz');
+      }
     }
 
     // error handling tries

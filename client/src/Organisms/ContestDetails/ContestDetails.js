@@ -6,7 +6,7 @@ import ContestDetailsMap from './ContestDetailsMap/ContestDetailsMap';
 import ContestDetailsToggler from './ContestDetailsToggler/ContestDetailsToggler';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import PropTypes from 'prop-types';
-import { requestOptionsGET } from '../../FetchData/requestOptions';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const ContestDetails = ({ contestId }) => {
   const [isPending, setIsPending] = useState(true);
@@ -18,9 +18,12 @@ const ContestDetails = ({ contestId }) => {
         `/api/contests/${contestId}`,
         requestOptionsGET,
       );
-      const result = await response.json();
-      setContestData(result);
-      setIsPending(false);
+      if (response.ok) {
+        const result = await response.json();
+        setContestData(result);
+        setIsPending(false);
+      } else {
+      }
     }
     fetchContestData();
   }, []);
