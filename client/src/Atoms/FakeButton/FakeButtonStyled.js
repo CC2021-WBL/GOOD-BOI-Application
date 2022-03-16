@@ -88,7 +88,7 @@ const FakeButtonStyled = styled(Link)`
       .fakebtn-text {
         color: ${({ theme }) => theme.grey400};
         flex-grow: 1;
-        flex-basis: 40px;
+        flex-basis: 2.5rem;
         display: flex;
         flex-direction: column;
         justify-content: center;

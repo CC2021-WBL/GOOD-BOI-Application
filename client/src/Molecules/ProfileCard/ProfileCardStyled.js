@@ -4,14 +4,14 @@ const ProfileCardStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 0.5px solid ${({ theme }) => theme.grey200};
+  border-bottom: 0.0313rem solid ${({ theme }) => theme.grey200};
 
   .bg-box {
     position: relative;
     right: 1.2rem;
     width: 5rem;
     height: 5rem;
-    border: 1px solid ${({ theme }) => theme.grey200};
+    border: 0.0625rem solid ${({ theme }) => theme.grey200};
     margin: 0.9375rem 0;
     background-image: url(${require(`../../Assets/profileDogFace.jpg`)});
     background-size: cover;
@@ -25,8 +25,8 @@ const ProfileCardStyled = styled.div`
     .bg-box {
       position: absolute;
       top: 0;
-      right: 3px;
-      bottom: 60px;
+      right: 0.1875rem;
+      bottom: 3.75rem;
       margin-left: auto;
       width: 4rem;
       height: 4rem;
@@ -41,7 +41,7 @@ const ProfileCardStyled = styled.div`
       border-radius: 0.9375rem;
       margin: 0;
       position: relative;
-      border: 1px solid ${({ theme }) => theme.grey200};
+      border: 0.0625rem solid ${({ theme }) => theme.grey200};
 
       .bg-box {
         margin: 1.25rem 0;

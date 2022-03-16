@@ -22,8 +22,6 @@ const UserFieldStyled = styled.div`
       border-bottom: none;
     }
   }
-  @media only screen and (min-width: 1024px) {
-  }
 `;
 
 export default UserFieldStyled;

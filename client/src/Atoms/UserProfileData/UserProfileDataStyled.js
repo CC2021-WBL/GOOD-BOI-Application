@@ -46,16 +46,16 @@ const UserProfileDataStyled = styled.div`
       height: 5rem;
       top: 0;
       right: 0;
-      border-bottom: 1px solid ${({ theme }) => theme.grey200};
+      border-bottom: 0.0625rem solid ${({ theme }) => theme.grey200};
     }
     p {
-      padding: 0 3px;
+      padding: 0 0.1875rem;
     }
   }
 
   &.user-data-profile-card {
     justify-content: space-between;
-    padding: 0 0 15px;
+    padding: 0 0 0.9375rem;
     text-align: left;
     line-height: 1.4;
 
