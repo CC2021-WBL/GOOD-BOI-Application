@@ -52,7 +52,7 @@ const ContestCardStyled = styled.div`
 
     .doggo-image {
       display: block;
-      width: 25%;
+      width: 30%;
       height: 100%;
 
       img {
