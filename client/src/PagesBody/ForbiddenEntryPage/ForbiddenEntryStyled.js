@@ -12,6 +12,12 @@ const ForbiddenWrapperStyled = styled.div`
     color: ${({ theme }) => theme.grey800};
     ${FONTS.h2};
   }
+  @media only screen and (min-width: 800px) {
+    grid-area: 3 / 2 / 4 / 3;
+  }
+  @media only screen and (min-width: 1600px) {
+    grid-area: 3 / 3 / 4 / 4;
+  }
 `;
 
 export default ForbiddenWrapperStyled;

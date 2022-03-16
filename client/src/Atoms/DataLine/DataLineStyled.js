@@ -8,6 +8,8 @@ const DataLineStyled = styled.div`
   justify-content: space-between;
   padding: 1rem 0;
   border-bottom: 2px solid ${({ theme }) => theme.grey200};
+  color: ${({ theme }) => theme.grey300};
+
   line-height: 3rem;
   ${FONTS.body_semibold};
   text-align: right;
