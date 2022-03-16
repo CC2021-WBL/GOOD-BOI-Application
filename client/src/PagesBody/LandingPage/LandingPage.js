@@ -3,6 +3,7 @@ import { useContext, useState } from 'react';
 
 import BurgerMenu from '../../Organisms/BurgerMenu/BurgerMenu';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import DesktopLandingPage from './DesktopLandingPage';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import Footer from '../../Molecules/Footer/Footer';
 import GridWrapper from '../../Templates/Layout/GridWrapper';
@@ -33,38 +34,42 @@ const LandingPage = () => {
           />
         </div>
       ) : null}
-      <GridWrapper
-        mobile="3 / 1 / 4 / 2"
-        tablet="2 / 2 / 4 / 3"
-        desktop="3 / 3"
-      >
-        <ColumnWrapper paddingLeftRight={1} paddingBottom={1}>
-          <ImgWrapperStyled>
-            <img src={Logo2} alt="App logo" />
-          </ImgWrapperStyled>
-          {isAuthenticated ? (
-            <FakeButton
-              to="/in-progress"
-              colors="ternary"
-              text="portal good boi"
-            />
-          ) : (
-            <>
-              <FakeButton to="/login" colors="primary" text="Zaloguj się" />
-              <FakeButton
-                to="/register"
-                colors="secondary"
-                text="Zarejestruj"
-              />
+
+      {useMediaQuery('(max-width:799px)') && (
+        <GridWrapper
+          mobile="3 / 1 / 4 / 2"
+          tablet="2 / 2 / 4 / 3"
+          desktop="3 / 3"
+        >
+          <ColumnWrapper paddingLeftRight={1} paddingBottom={1}>
+            <ImgWrapperStyled>
+              <img src={Logo2} alt="App logo" />
+            </ImgWrapperStyled>
+            {isAuthenticated ? (
               <FakeButton
                 to="/in-progress"
                 colors="ternary"
                 text="portal good boi"
               />
-            </>
-          )}
-        </ColumnWrapper>
-      </GridWrapper>
+            ) : (
+              <>
+                <FakeButton to="/login" colors="primary" text="Zaloguj się" />
+                <FakeButton
+                  to="/register"
+                  colors="secondary"
+                  text="Zarejestruj"
+                />
+                <FakeButton
+                  to="/in-progress"
+                  colors="ternary"
+                  text="portal good boi"
+                />
+              </>
+            )}
+          </ColumnWrapper>
+        </GridWrapper>
+      )}
+      {useMediaQuery('(min-width:800px)') && <DesktopLandingPage />}
       <BurgerMenu open={open} setOpen={setOpen} />
       <Footer />
     </>
