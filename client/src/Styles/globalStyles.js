@@ -4,7 +4,7 @@ export const GlobalStyles = createGlobalStyle`
 :root{
 
 font-size: 16px;
-a {
+a, button {
     cursor:pointer;
     text-decoration:none; 
 }
@@ -22,6 +22,12 @@ a {
 }
 .desktop_only {
     @media only screen and (max-width: 1599px) {
+        display: none;
+    }
+}
+
+.tablet_only {
+    @media only screen and (max-width: 799px) {
         display: none;
     }
 }
