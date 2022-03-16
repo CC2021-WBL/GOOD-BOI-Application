@@ -44,6 +44,7 @@ const ColumnWrapperStyled = styled.div`
       border: 1px solid ${({ theme }) => theme.grey200};
       border-radius: 0.9375rem;
       margin: 0 auto;
+      height: fit-content;
     }
   }
   @media only screen and (min-width: 1024px) {
