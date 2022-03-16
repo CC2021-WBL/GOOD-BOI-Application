@@ -22,6 +22,7 @@ const ColumnWrapperStyled = styled.div`
     grid-area: 3 / 2 / 4 / 3;
     max-width: ${(props) =>
       props.maxWidthBigScr && `${props.maxWidthBigScr}rem`};
+
     &.user-dogs-column-wrapper {
       align-items: flex-end;
     }
@@ -34,10 +35,10 @@ const ColumnWrapperStyled = styled.div`
       max-width: 42.5rem;
       margin: 1.5625rem 0 0 0;
     }
-    &.user-data {
+    &.user-data-wrapper {
       border: 1px solid ${({ theme }) => theme.grey200};
       border-radius: 0.9375rem;
-      margin: 0 1rem 0 auto;
+      margin: 0 auto;
     }
   }
   @media only screen and (min-width: 1024px) {
@@ -53,9 +54,9 @@ const ColumnWrapperStyled = styled.div`
       grid-template-rows: repeat(2, 10.625rem) 1fr;
       align-items: center;
     }
-    &.user-data {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    &.user-data-wrapper {
+      margin: 0 auto;
+      margin-bottom: 1rem;
     }
     &.contests-column-wrapper {
       display: flex;

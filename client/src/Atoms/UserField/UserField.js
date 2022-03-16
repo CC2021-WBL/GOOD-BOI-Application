@@ -13,9 +13,9 @@ const UserField = ({
   userPassword,
   userPhoneNumber,
   initialState,
+  isBigScr,
 }) => {
   const [toggle, setToggle] = useState(false);
-
   const toggleHandler = () => {
     setToggle((prevState) => !prevState);
   };

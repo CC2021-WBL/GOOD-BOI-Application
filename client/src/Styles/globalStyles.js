@@ -23,6 +23,12 @@ a{text-decoration:none}
     }
 }
 
+.tablet_only {
+    @media only screen and (max-width: 799px) {
+        display: none;
+    }
+}
+
 body {
     background: ${({ theme }) => theme.white};
 }

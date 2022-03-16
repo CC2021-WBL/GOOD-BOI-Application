@@ -6,8 +6,6 @@ const UserProfileDataStyled = styled.div`
   display: flex;
   padding: 0.625rem 0;
   justify-content: space-between;
-  border-bottom: ${(props) =>
-    props.withEdit ? `1px solid ${props.theme.grey300}` : 'none'};
   margin-right: ${(props) => (props.withEdit ? '0' : '2.5rem')};
   text-align: left;
   line-height: 1.3;
@@ -20,16 +18,16 @@ const UserProfileDataStyled = styled.div`
     color: ${({ theme }) => theme.grey400};
   }
 
-  .edit-btn {
+  .user-data-edit-btn {
     align-self: flex-end;
     border: none;
-    margin: 0 0 0.625rem;
     background: ${({ theme }) => theme.white};
     color: ${({ theme }) => theme.grey800};
     cursor: pointer;
   }
 
   @media only screen and (min-width: 800px) {
+    text-align: center;
     margin-right: 0;
     width: 100%;
     padding: 3.5rem 0 0 0;
@@ -55,9 +53,12 @@ const UserProfileDataStyled = styled.div`
     }
   }
 
-  &.user-data {
+  &.user-data-profile-card {
     justify-content: space-between;
     padding: 0 0 15px;
+    text-align: left;
+    line-height: 1.4;
+
     h3 {
       ${FONTS.h2};
       position: static;
@@ -68,16 +69,14 @@ const UserProfileDataStyled = styled.div`
 
   @media only screen and (min-width: 1024px) {
     padding: 2.5rem 0 0 0;
-    &.user-data {
+
+    &.user-data-profile-card {
       h3 {
         padding: 0.3125rem;
         font-weight: 100;
         position: static;
         width: 100%;
         border-bottom: none;
-      }
-
-      p {
       }
     }
   }

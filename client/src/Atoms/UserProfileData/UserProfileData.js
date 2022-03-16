@@ -2,20 +2,18 @@ import propTypes from 'prop-types';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
-import useMediaQuery from '../../Hooks/useMediaQuery';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { requestOptionsGET } from '../../FetchData/requestOptions';
 
-const UserProfileData = ({ withEdit, initialState, className }) => {
+const UserProfileData = ({ withEdit, initialState, className, isBigScr }) => {
   const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
   const { userId, userName, userSurname, isAuthenticated } = state;
   const paramsUserData = useParams();
-
-  const isBigScr = useMediaQuery('(min-width:800px)');
 
   let userData = userId;
   if (!userData) {
@@ -63,6 +61,9 @@ const UserProfileData = ({ withEdit, initialState, className }) => {
         })
         .catch((error) => console.log('error', error));
     }
+    if (isBigScr) {
+      return setToggle(true);
+    }
   }, []);
 
   return (
@@ -79,12 +80,19 @@ const UserProfileData = ({ withEdit, initialState, className }) => {
           <p>{`${postalCode} ${city}`}</p>
         </div>
         {withEdit && (
-          <button className="edit-btn" onClick={toggleHandler} toggle="true">
-            edytuj dane
-          </button>
+          <>
+            <div className="bg-box tablet_only"></div>
+            <button
+              className="user-data-edit-btn"
+              onClick={toggleHandler}
+              toggle="true"
+            >
+              edytuj dane
+            </button>
+          </>
         )}
       </UserProfileDataStyled>
-      {(toggle || (isBigScr && withEdit)) && (
+      {toggle && withEdit && (
         <RegistrationFormSignup
           submitForm={submitForm}
           editData
