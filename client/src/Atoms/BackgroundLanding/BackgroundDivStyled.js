@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
-import desktopHeroHomePage from '../../Assets/desktopHeroHomePage.png';
-
 const BackgroundDivStyled = styled.div`
   z-index: -10;
-  background: url(${desktopHeroHomePage});
+  background-image: url(${require(`../../Assets/desktopHeroHomePage.png`)});
   background-position: top right;
   background-repeat: no-repeat;
   background-size: contain;

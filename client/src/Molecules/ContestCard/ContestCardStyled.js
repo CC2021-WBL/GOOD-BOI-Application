@@ -24,18 +24,18 @@ const ContestCardStyled = styled.div`
       ? props.theme.positive100
       : props.theme.white};
   border-radius: 0.75rem;
-
   .contest-action,
   .doggo-image {
     display: none;
   }
-
+  
   @media (min-width: 800px) {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding: 0;
+    cursor: pointer;
     text-align: left;
 
     .contest-card-wrapper {

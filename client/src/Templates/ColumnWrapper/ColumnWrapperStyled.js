@@ -16,7 +16,7 @@ const ColumnWrapperStyled = styled.div`
     padding: 2.2rem 1rem 0 1rem;
   }
 
-  .coming-contests {
+  .incoming-contests {
     margin: 3.75rem 0 0 0;
     color: ${({ theme }) => theme.grey800};
     text-align: left;

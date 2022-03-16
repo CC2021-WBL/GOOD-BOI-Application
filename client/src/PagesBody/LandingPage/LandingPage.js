@@ -1,7 +1,7 @@
 import { MdMenu } from 'react-icons/md';
 import { useContext, useState } from 'react';
 
-import BackgroundDivStyled from '../../Atoms/BackgroundLanding/BackgroundDivStyled'
+import BackgroundDivStyled from '../../Atoms/BackgroundLanding/BackgroundDivStyled';
 import BurgerMenu from '../../Organisms/BurgerMenu/BurgerMenu';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import DesktopLandingPage from './DesktopLandingPage';
@@ -16,8 +16,12 @@ import { UserDataContext } from '../../Context/UserDataContext';
 const LandingPage = () => {
   const mobileOnly = useMediaQuery('(max-width:799px)');
   const { state } = useContext(UserDataContext);
-  const { isAuthenticated } = state;
+  const { isAuthenticated, userId } = state;
   const [open, setOpen] = useState(false);
+
+  // const { state, dispatch } = useContext(UserDataContext);
+  // const { contestState, contestDispatch } = useContext(ContestContext);
+  // const { userId, isAuthenticated } = state;
   return (
     <>
       {isAuthenticated && mobileOnly ? (
@@ -48,9 +52,9 @@ const LandingPage = () => {
             </ImgWrapperStyled>
             {isAuthenticated ? (
               <FakeButton
-                to="/in-progress"
+                to={`/user/${userId}`}
                 colors="ternary"
-                text="portal good boi"
+                text="Twój profil"
               />
             ) : (
               <>
@@ -59,11 +63,6 @@ const LandingPage = () => {
                   to="/register"
                   colors="secondary"
                   text="Zarejestruj"
-                />
-                <FakeButton
-                  to="/in-progress"
-                  colors="ternary"
-                  text="portal good boi"
                 />
               </>
             )}

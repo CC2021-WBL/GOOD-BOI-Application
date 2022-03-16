@@ -51,7 +51,7 @@ const DesktopLandingPage = () => {
               className="landing-desktop-login"
             />
           </TitleWrapperStyled>
-          <h3 className="coming-contests">NADCHODZĄCE KONKURSY</h3>
+          <h3 className="incoming-contests">NADCHODZĄCE KONKURSY</h3>
           {isPending && <h3>Loading...</h3>}
           {contestData &&
             getSelectedContestsByTime(selectedMode, contestData).map(
