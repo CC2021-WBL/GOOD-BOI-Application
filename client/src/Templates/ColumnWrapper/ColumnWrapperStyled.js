@@ -27,7 +27,7 @@ const ColumnWrapperStyled = styled.div`
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
     max-width: ${(props) =>
-      props.maxWidthBigScr && `${props.maxWidthBigScr}rem`};
+      props.maxWidthBigScreen && `${props.maxWidthBigScreen}rem`};
 
     &.user-dogs-column-wrapper {
       align-items: flex-end;

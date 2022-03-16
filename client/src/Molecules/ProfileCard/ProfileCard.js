@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import ProfileCardStyled from './ProfileCardStyled';
 import UserProfileData from '../../Atoms/UserProfileData/UserProfileData';
 
-const ProfileCard = ({ withEdit, initialState, className, isBigScr }) => {
+const ProfileCard = ({ withEdit, initialState, className, isBigScreen }) => {
   return (
     <>
       {withEdit ? (
@@ -12,7 +12,7 @@ const ProfileCard = ({ withEdit, initialState, className, isBigScr }) => {
             withEdit={withEdit}
             initialState={initialState}
             className={className}
-            isBigScr={isBigScr}
+            isBigScreen={isBigScreen}
           />
         </ProfileCardStyled>
       ) : (

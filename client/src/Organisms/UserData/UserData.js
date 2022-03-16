@@ -13,7 +13,7 @@ const UserData = () => {
   const { state } = useContext(UserDataContext);
   const { userId } = state;
   const paramsUserData = useParams();
-  const isBigScr = useMediaQuery('(min-width:800px)');
+  const isBigScreen = useMediaQuery('(min-width:800px)');
 
   let userData = userId;
   if (!userData) {
@@ -37,14 +37,14 @@ const UserData = () => {
     <>
       <ColumnWrapper
         paddingLeftRight={1}
-        maxWidthBigScr={35}
+        maxWidthBigScreen={35}
         className="user-data-wrapper"
       >
         <ProfileCard
           withEdit
           initialState={userObject}
           className="user-data-profile-card"
-          isBigScr={isBigScr}
+          isBigScreen={isBigScreen}
         />
         <UserField
           text="zmień email"

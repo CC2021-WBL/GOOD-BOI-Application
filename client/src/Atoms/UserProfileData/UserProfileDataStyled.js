@@ -55,7 +55,7 @@ const UserProfileDataStyled = styled.div`
 
   &.user-data-profile-card {
     justify-content: space-between;
-    padding: 0 0 0.9375rem;
+    padding: 0 0 1.25rem;
     text-align: left;
     line-height: 1.4;
 

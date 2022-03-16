@@ -9,7 +9,12 @@ import createUserInitialData from '../../Tools/createUserInitialData';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { requestOptionsGET } from '../../FetchData/requestOptions';
 
-const UserProfileData = ({ withEdit, initialState, className, isBigScr }) => {
+const UserProfileData = ({
+  withEdit,
+  initialState,
+  className,
+  isBigScreen,
+}) => {
   const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
   const { userId, userName, userSurname, isAuthenticated } = state;
@@ -61,7 +66,7 @@ const UserProfileData = ({ withEdit, initialState, className, isBigScr }) => {
         })
         .catch((error) => console.log('error', error));
     }
-    if (isBigScr) {
+    if (isBigScreen) {
       return setToggle(true);
     }
   }, []);

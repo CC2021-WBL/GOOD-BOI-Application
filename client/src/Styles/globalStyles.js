@@ -4,7 +4,7 @@ export const GlobalStyles = createGlobalStyle`
 :root{
 
 font-size: 16px;
-a {
+a, button {
     cursor:pointer;
     text-decoration:none; 
 }

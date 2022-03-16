@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const UserFieldStyled = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 1.25rem 0;
   border-bottom: 0.5px solid ${({ theme }) => theme.grey200};
 
   p {

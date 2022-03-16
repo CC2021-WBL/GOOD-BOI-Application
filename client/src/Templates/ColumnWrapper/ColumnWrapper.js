@@ -8,7 +8,7 @@ const ColumnWrapper = ({
   paddingTop = 0,
   paddingBottom = 0,
   className,
-  maxWidthBigScr,
+  maxWidthBigScreen,
 }) => {
   return (
     <ColumnWrapperStyled
@@ -16,7 +16,7 @@ const ColumnWrapper = ({
       paddingTop={paddingTop}
       paddingBottom={paddingBottom}
       className={className}
-      maxWidthBigScr={maxWidthBigScr}
+      maxWidthBigScreen={maxWidthBigScreen}
     >
       {children}
     </ColumnWrapperStyled>
