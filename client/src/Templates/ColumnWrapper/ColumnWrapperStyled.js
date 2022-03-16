@@ -18,6 +18,12 @@ const ColumnWrapperStyled = styled.div`
     padding: 2.2rem 1rem 0 1rem;
   }
 
+  .incoming-contests {
+    margin: 3.75rem 0 0 0;
+    color: ${({ theme }) => theme.grey800};
+    text-align: left;
+  }
+
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
     max-width: ${(props) =>
@@ -46,12 +52,12 @@ const ColumnWrapperStyled = styled.div`
     }
 
     &.user-profile {
-      height: 100%;
       display: grid;
+      height: 100%;
+      align-items: center;
       gap: 1.25rem;
       grid-template-columns: repeat(8, 1fr);
       grid-template-rows: repeat(2, 10.625rem) 1fr;
-      align-items: center;
     }
     &.user-data-wrapper {
       margin: 0 auto;

@@ -4,7 +4,10 @@ export const GlobalStyles = createGlobalStyle`
 :root{
 
 font-size: 16px;
-a{text-decoration:none}
+a {
+    cursor:pointer;
+    text-decoration:none; 
+}
 }
 *, ::before, ::after{
     box-sizing: border-box;
