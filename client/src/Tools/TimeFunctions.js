@@ -1,7 +1,8 @@
 import { TIME } from '../Consts/infoLabelConsts';
 
-export const getDataFormatDdMonthYyy = (date) => {
-  return date.toLocaleDateString(undefined, {
+export const getDataFormatDdMonthYyy = (date = Date) => {
+  const convertedDate = new Date(date);
+  return convertedDate.toLocaleDateString(undefined, {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
@@ -9,9 +10,19 @@ export const getDataFormatDdMonthYyy = (date) => {
 };
 
 export const getDataFormatDdMmhYyy = (date) => {
-  return date.toLocaleDateString(undefined, {
-    day: 'numeric',
+  const convertedDate = new Date(date);
+  return convertedDate.toLocaleDateString(undefined, {
+    day: '2-digit',
     month: 'numeric',
+    year: 'numeric',
+  });
+};
+
+export const getDataFormatYyyyMmDD = (date) => {
+  const convertedDate = new Date(date);
+  return convertedDate.toLocaleDateString('en-CA', {
+    day: '2-digit',
+    month: '2-digit',
     year: 'numeric',
   });
 };
@@ -24,15 +35,18 @@ export const getHourMinutesFormat = (date) => {
 };
 
 export const getHourAndMinutesFromDate = (date = Date) => {
-  const hour = date.getHours().toString();
-  const minutes = date.getUTCMinutes().toString();
+  const convertedDate = new Date(date);
+  const hour = convertedDate.getHours().toString();
+  const minutes = convertedDate.getUTCMinutes().toString();
   if (minutes === '0') {
     return `${hour}:00`;
   }
   return `${hour}:${minutes}`;
 };
 
-export const getPointOnTimeLine = (startDate, endDate) => {
+export const getPointOnTimeLine = (contestStartDate, contestEndDate) => {
+  const startDate = new Date(contestStartDate);
+  const endDate = new Date(contestEndDate);
   const todayDate = new Date();
   if (endDate < todayDate) {
     return 'archiwalny';
@@ -77,4 +91,8 @@ export const getSelectedContestsByTime = (timePeriod, contests = []) => {
   }
 
   return selectedcontests;
+};
+
+export const toDateFormat = (date) => {
+  return new Date(date);
 };

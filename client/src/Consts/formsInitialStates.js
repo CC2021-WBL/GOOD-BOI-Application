@@ -1,5 +1,5 @@
 export const dogFormInitialState = {
-  dogId: 'testidwhichwillbegivenbymongo',
+  _id: '',
   dogName: '',
   kennelName: '',
   pkr: '',

@@ -4,8 +4,8 @@ import toBeAnnounced from '../../Consts/toBeAnnounced';
 
 const applicationInfoRender = (applicationInfo) => {
   const {
-    applicationOpenDate = toBeAnnounced,
-    applicationClosedDate = toBeAnnounced,
+    applicationOpenDateFormat = toBeAnnounced,
+    applicationClosedDateFormat = toBeAnnounced,
     feePLN = toBeAnnounced,
   } = applicationInfo;
 
@@ -13,16 +13,16 @@ const applicationInfoRender = (applicationInfo) => {
     [
       'Otwarcie zgłoszeń',
       `${
-        applicationOpenDate instanceof Date
-          ? getDataFormatDdMmhYyy(applicationOpenDate)
+        applicationOpenDateFormat instanceof Date
+          ? getDataFormatDdMmhYyy(applicationOpenDateFormat)
           : toBeAnnounced
       }`,
     ],
     [
       'Zgłoszenia do',
       `${
-        applicationClosedDate instanceof Date
-          ? getDataFormatDdMmhYyy(applicationClosedDate)
+        applicationClosedDateFormat instanceof Date
+          ? getDataFormatDdMmhYyy(applicationClosedDateFormat)
           : toBeAnnounced
       }`,
     ],

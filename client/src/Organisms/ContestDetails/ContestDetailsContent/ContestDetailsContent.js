@@ -1,26 +1,27 @@
-import PropTypes from 'prop-types';
-import ContestDetailsContentStyled from './ContestDetailsContentStyled';
-
-import ContestDetailsDate from './ContestDetailsDate/ContestDetailsDate';
 import ContestDetailsAddress from './ContestDetailsAddress/ContestDetailsAddress';
-import ContestDetailsJudges from './ContestDetailsJudges/ContestDetailsJudges';
 import ContestDetailsApplicationInfo from './ContestDetailsApplicationInfo/ContestDetailsApplicationInfo';
+import ContestDetailsContentStyled from './ContestDetailsContentStyled';
+import ContestDetailsDate from './ContestDetailsDate/ContestDetailsDate';
+import ContestDetailsJudges from './ContestDetailsJudges/ContestDetailsJudges';
+import PropTypes from 'prop-types';
 
 const ContestDetailsContent = ({ contestData }) => {
   const { startDate } = contestData;
   const { address } = contestData;
   const { judges } = contestData;
   const { applicationOpenDate, applicationClosedDate, feePLN } = contestData;
+  const applicationOpenDateFormat = new Date(applicationOpenDate);
+  const applicationClosedDateFormat = new Date(applicationClosedDate);
 
   return (
     <ContestDetailsContentStyled>
-      <ContestDetailsDate date={startDate} />
+      <ContestDetailsDate date={new Date(startDate)} />
       <ContestDetailsAddress addressInfo={address} />
       <ContestDetailsJudges judges={judges} />
       <ContestDetailsApplicationInfo
         applicationData={{
-          applicationOpenDate,
-          applicationClosedDate,
+          applicationOpenDateFormat,
+          applicationClosedDateFormat,
           feePLN,
         }}
       />

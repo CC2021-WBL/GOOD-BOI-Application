@@ -1,22 +1,22 @@
-import propTypes from 'prop-types';
-import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
-import dogsImages from '../../Assets/Dogs/dogsImages';
-import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
 import {
   ContestCardStyled,
   ContestInsideElementStyled,
   ContestNameStyled,
 } from './ContestCardStyled';
-import { ContestContext } from '../../Context/ContestContext';
-import { UserDataContext } from '../../Context/UserDataContext';
 import {
   getDataFormatDdMonthYyy,
   getHourAndMinutesFromDate,
   getPointOnTimeLine,
 } from '../../Tools/TimeFunctions';
+
+import { ContestContext } from '../../Context/ContestContext';
+import InfoLabel from '../../Atoms/InfoLabel/InfoLabel';
+import { UserDataContext } from '../../Context/UserDataContext';
+import dogsImages from '../../Assets/Dogs/dogsImages';
+import propTypes from 'prop-types';
+import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ContestCard = ({ contestData, className }) => {
   const { contestDispatch } = useContext(ContestContext);
@@ -25,8 +25,14 @@ const ContestCard = ({ contestData, className }) => {
 
   let navigate = useNavigate();
 
-  const { contestId, contestName, startDate, endDate, address, dogsAmount } =
-    contestData;
+  const {
+    _id,
+    contestName,
+    startDate,
+    endDate,
+    address,
+    amountOfApplications,
+  } = contestData;
 
   const stringDate = getDataFormatDdMonthYyy(startDate);
   const pointOnTimeLine = getPointOnTimeLine(startDate, endDate);
@@ -36,16 +42,16 @@ const ContestCard = ({ contestData, className }) => {
     if (pointOnTimeLine === 'archiwalny') {
       navigate(`../class-choice`);
     } else if (selectedRole !== null && selectedRole === 'staff') {
-      navigate(`./${contestId}/classes`);
+      navigate(`./${_id}/classes`);
     } else if (pointOnTimeLine === 'w trakcie') {
       navigate(`../class-choice`);
     } else {
-      navigate(`/contests/${contestId}`);
+      navigate(`/contests/${_id}`);
     }
     contestDispatch({
       type: 'SET_CONTEST',
       payload: {
-        contestId: contestId,
+        contestId: _id,
         contestName: contestName,
       },
     });
@@ -67,15 +73,22 @@ const ContestCard = ({ contestData, className }) => {
             <time dateTime={stringDate}>
               {stringDate}, {getHourAndMinutesFromDate(startDate)}
             </time>
-            <p>{address.city.toUpperCase()}</p>
+            <p>
+              {address.city
+                ? address.city.toUpperCase()
+                : 'LOKALIZACJA WKRÓTCE'}
+            </p>
           </ContestInsideElementStyled>
 
           <ContestInsideElementStyled
             colorMotive={setColorMotive(pointOnTimeLine)}
           >
             <InfoLabel
-              classInfo={{ dogsAmount: dogsAmount }}
-              colorMotive={setColorMotive(pointOnTimeLine, dogsAmount)}
+              classInfo={{ dogsAmount: amountOfApplications }}
+              colorMotive={setColorMotive(
+                pointOnTimeLine,
+                amountOfApplications,
+              )}
             />
             <InfoLabel
               pointOnTimeLine={pointOnTimeLine}
@@ -102,12 +115,12 @@ ContestCard.propTypes = {
   contestData: propTypes.shape({
     contestId: propTypes.string,
     contestName: propTypes.string,
-    startDate: propTypes.instanceOf(Date),
-    endDate: propTypes.instanceOf(Date),
+    startDate: propTypes.string,
+    endDate: propTypes.string,
     address: propTypes.object,
     dogsAmount: propTypes.number,
   }),
-  className:propTypes.string,
+  className: propTypes.string,
 };
 
 export default ContestCard;
