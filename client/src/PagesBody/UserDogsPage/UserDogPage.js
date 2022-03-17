@@ -55,7 +55,6 @@ const UserDogPage = () => {
       setIsPending(false);
     }
   }, []);
-
   return (
     <ColumnWrapper
       paddingLeftRight={1}
