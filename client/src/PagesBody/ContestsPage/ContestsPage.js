@@ -11,8 +11,7 @@ import { TIME } from '../../Consts/infoLabelConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
 import mockmap from '../../Assets/mockMAP.JPG';
-import { requestOptionsGET } from '../../FetchData/requestOptions';
-import resForContestPage from '../../Data/MongoDBMock/responseFromContestsToContestsPage';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import { useLocation } from 'react-router-dom';
 import useMediaQuery from '../../Hooks/useMediaQuery';
 
@@ -33,34 +32,40 @@ const ContestsPage = () => {
   }, []);
 
   useEffect(() => {
-    fetch('/api/contests/?taker=card', requestOptionsGET)
-      .then((response) => response.json())
-      .then((result) => {
-        rawDataFromDB.current = result;
-        console.log(rawDataFromDB.current);
-      })
-      .catch((error) => console.log('error', error));
-
-    if (locationPath.state && locationPath.state.contestContent === 'results') {
-      setContestData(
-        resForContestPage.filter((contest) => {
-          return contest.participants.includes(state.userId);
-        }),
+    async function fetchContestsData() {
+      const response = await fetch(
+        '/api/contests/card/data',
+        requestOptionsGET,
       );
-      setSelectedMode(TIME.PRESENT_AND_PAST);
-      setIsPending(false);
-    } else if (
-      locationPath.state &&
-      locationPath.state.contestContent === 'future'
-    ) {
-      setContestData(resForContestPage);
-      setSelectedMode(TIME.FUTURE);
-      setIsPending(false);
-    } else {
-      setContestData(resForContestPage);
-      setSelectedMode(TIME.UNKNOWN);
-      setIsPending(false);
+      const result = await response.json();
+      rawDataFromDB.current = result;
+
+      if (
+        locationPath.state &&
+        locationPath.state.contestContent === 'results'
+      ) {
+        setContestData(
+          rawDataFromDB.current.filter((contest) => {
+            return contest.participants.includes(state.userId);
+          }),
+        );
+        setSelectedMode(TIME.PRESENT_AND_PAST);
+        setIsPending(false);
+      } else if (
+        locationPath.state &&
+        locationPath.state.contestContent === 'future'
+      ) {
+        setContestData(rawDataFromDB.current);
+        setSelectedMode(TIME.FUTURE);
+        setIsPending(false);
+      } else {
+        setContestData(rawDataFromDB.current);
+        setSelectedMode(TIME.UNKNOWN);
+        setIsPending(false);
+      }
     }
+
+    fetchContestsData();
   }, []);
 
   const toggleHandler = () => {
@@ -71,7 +76,7 @@ const ContestsPage = () => {
   const handleFilterClick = (time, event) => {
     event.preventDefault();
     setSelectedMode(time);
-    console.log(contestData);
+    console.log(rawDataFromDB.current);
   };
 
   return (

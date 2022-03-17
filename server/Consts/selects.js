@@ -8,6 +8,7 @@ module.exports.forContestCard = [
 ];
 
 module.exports.forProfilePage = [
+  '_id',
   'participantName',
   'participantSurname',
   'address',

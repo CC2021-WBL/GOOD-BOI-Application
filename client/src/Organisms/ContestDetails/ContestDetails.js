@@ -6,15 +6,26 @@ import ContestDetailsMap from './ContestDetailsMap/ContestDetailsMap';
 import ContestDetailsToggler from './ContestDetailsToggler/ContestDetailsToggler';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import PropTypes from 'prop-types';
-import contests from '../../Data/MongoDBMock/contests';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const ContestDetails = ({ contestId }) => {
   const [isPending, setIsPending] = useState(true);
   const [contestData, setContestData] = useState(null);
 
   useEffect(() => {
-    setContestData(contests.find((contest) => contest.contestId === contestId));
-    setIsPending(false);
+    async function fetchContestData() {
+      const response = await fetch(
+        `/api/contests/${contestId}`,
+        requestOptionsGET,
+      );
+      if (response.ok) {
+        const result = await response.json();
+        setContestData(result);
+        setIsPending(false);
+      } else {
+      }
+    }
+    fetchContestData();
   }, []);
 
   const [toggle, setToggle] = useState(false);
