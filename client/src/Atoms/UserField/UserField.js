@@ -15,7 +15,6 @@ const UserField = ({
   initialState,
 }) => {
   const [toggle, setToggle] = useState(false);
-
   const toggleHandler = () => {
     setToggle((prevState) => !prevState);
   };

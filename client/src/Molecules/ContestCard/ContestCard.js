@@ -18,7 +18,7 @@ import setColorMotive from '../../Tools/ColorsSettingForInfoLabel';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const ContestCard = ({ contestData }) => {
+const ContestCard = ({ contestData, className }) => {
   const { contestDispatch } = useContext(ContestContext);
   const { state } = useContext(UserDataContext);
   const { selectedRole } = state;
@@ -63,6 +63,7 @@ const ContestCard = ({ contestData }) => {
       <ContestCardStyled
         colorMotive={setColorMotive(pointOnTimeLine)}
         onClick={handleClick}
+        className={className}
       >
         <div className="contest-card-wrapper">
           <ContestNameStyled>{contestName}</ContestNameStyled>
@@ -119,6 +120,7 @@ ContestCard.propTypes = {
     address: propTypes.object,
     dogsAmount: propTypes.number,
   }),
+  className: propTypes.string,
 };
 
 export default ContestCard;
