@@ -6,7 +6,6 @@ const {
   getResultSummaryAndName,
 } = require('../Controllers/resultsControllers');
 const { addResultToDog } = require('../Controllers/dogsControllers');
-// const { addResultToContest } = require('../Controllers/contestControllers');
 const { addDogToContest } = require('../Controllers/contestControllers');
 
 const {
@@ -51,17 +50,15 @@ router.get(
   },
 );
 
-// post - create results for current competing part
+// post - create results for current competing part, add dog to contest (with resultsID), and result to Dog
 router.post(
   '/register/:userId',
   blockIfPublic,
   isUserOrAdmin,
   async (req, res) => {
     try {
-      // TODO: dodać psa do contestu (dogs.js)
       const savedResult = await registerResults(req, res);
       await addDogToContest(req, res, savedResult._id.valueOf());
-      // await addResultToContest(req, res, savedResult._id.valueOf());
       await addResultToDog(req, res, savedResult._id.valueOf());
       res.status(201).json(savedResult);
     } catch (error) {

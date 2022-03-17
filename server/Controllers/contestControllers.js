@@ -149,25 +149,44 @@ async function addResultToContest(req, res, resultId) {
 async function addDogToContest(req, res, resultsId) {
   try {
     const contest = await Contest.findById(req.body.contestId);
-    contest.obedienceClasses
-      .find(
-        (obedienceClass) =>
-          obedienceClass.classNumber == req.body.obedienceClass,
-      )
-      .participants.push({
-        dogId: req.body.dogId,
-        dogName: req.body.dogName,
-        participantId: req.body.participantId,
-        resultsId: resultsId,
+    if (!contest) {
+      res.status(404).send({
+        message:
+          'Requested contest does not exist, please try again in few minutes.',
       });
+    }
+
+    if (!contest.obedienceClasses) {
+      res.status(404).send({
+        message:
+          'Requested contest does not have needed obedience class, please try again in few minutes.',
+      });
+
+      contest.obedienceClasses
+        .find(
+          (obedienceClass) =>
+            obedienceClass.classNumber == req.body.obedienceClass,
+        )
+        .participants.push({
+          dogId: req.body.dogId,
+          dogName: req.body.dogName,
+          participantId: req.body.participantId,
+          resultsId: resultsId,
+        });
+    }
     const updatedContest = await contest.save();
     if (!updatedContest) {
-      res.send(500).end();
+      res.status(500).send({
+        message:
+          'Shoot! An error occurred on the server, contest was not updated. Please do not panic.',
+      });
     } else {
       return updatedContest;
     }
   } catch (error) {
-    res.status(418).send({ message: 'error' });
+    res
+      .status(503)
+      .send({ message: 'The requested service is not available.' });
   }
 }
 
