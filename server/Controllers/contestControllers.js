@@ -142,7 +142,32 @@ async function addResultToContest(req, res, resultId) {
       return updatedContest;
     }
   } catch (error) {
-    res.send(500).send({ message: 'coś nie pykło' });
+    res.send(500).send({ message: 'contest not found' });
+  }
+}
+
+async function addDogToContest(req, res, resultsId) {
+  try {
+    const contest = await Contest.findById(req.body.contestId);
+    contest.obedienceClasses
+      .find(
+        (obedienceClass) =>
+          obedienceClass.classNumber == req.body.obedienceClass,
+      )
+      .participants.push({
+        dogId: req.body.dogId,
+        dogName: req.body.dogName,
+        participantId: req.body.participantId,
+        resultsId: resultsId,
+      });
+    const updatedContest = await contest.save();
+    if (!updatedContest) {
+      res.send(500).end();
+    } else {
+      return updatedContest;
+    }
+  } catch (error) {
+    res.status(418).send({ message: 'error' });
   }
 }
 
@@ -152,4 +177,5 @@ module.exports = {
   finishClass,
   getContests,
   addResultToContest,
+  addDogToContest,
 };

@@ -6,7 +6,8 @@ const {
   getResultSummaryAndName,
 } = require('../Controllers/resultsControllers');
 const { addResultToDog } = require('../Controllers/dogsControllers');
-const { addResultToContest } = require('../Controllers/contestControllers');
+// const { addResultToContest } = require('../Controllers/contestControllers');
+const { addDogToContest } = require('../Controllers/contestControllers');
 
 const {
   auth,
@@ -39,7 +40,10 @@ router.get(
       if (results.participantId.valueOf() === req.user._id.valueOf()) {
         res.status(200).send(results);
       } else {
-        res.status(401).json({ success: false, message: 'unauthorized' });
+        res.status(401).json({
+          success: false,
+          message: 'client failed to authenticate with the server',
+        });
       }
     } catch (error) {
       res.status(500).send(error.message);
@@ -56,7 +60,8 @@ router.post(
     try {
       // TODO: dodać psa do contestu (dogs.js)
       const savedResult = await registerResults(req, res);
-      await addResultToContest(req, res, savedResult._id.valueOf());
+      await addDogToContest(req, res, savedResult._id.valueOf());
+      // await addResultToContest(req, res, savedResult._id.valueOf());
       await addResultToDog(req, res, savedResult._id.valueOf());
       res.status(201).json(savedResult);
     } catch (error) {
