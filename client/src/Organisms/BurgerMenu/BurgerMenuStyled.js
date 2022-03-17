@@ -22,9 +22,11 @@ const BurgerMenuStyled = styled.div`
     grid-area: 3 / 1 / 4 / 2;
     transform: none;
     transition: none;
+    display: none;
   }
   @media only screen and (min-width: 1600px) {
-    grid-area: 3 / 2 / 4 / 3;
+    /* grid-area: 3 / 2 / 4 / 3; */
+    display: none;
   }
 `;
 

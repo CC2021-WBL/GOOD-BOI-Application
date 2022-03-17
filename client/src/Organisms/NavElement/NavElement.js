@@ -2,12 +2,12 @@ import { Link, useLocation } from 'react-router-dom';
 import { MdMenu } from 'react-icons/md';
 import { useContext, useState } from 'react';
 
-import Backdrop from '../../Atoms/Modal/Backdrop';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import GoHomeStyled from '../../Atoms/NavElementStyled/GoHomeStyled';
 import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
 import GridWrapper from '../../Templates/Layout/GridWrapper';
 import Nav from '../Nav/Nav';
+import Sidebar from './../Sidebar/Sidebar';
 import checkLocationForNavRender from '../../Tools/checkLocationForNavRender';
 import home from '../../Assets/home.png';
 import { ContestContext } from '../../Context/ContestContext';
@@ -15,6 +15,8 @@ import { DogContext } from '../../Context/DogContext';
 import { NavElementStyled } from './NavElementStyled';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { checkPathOrigin } from '../../Tools/checkPathOrigin';
+
+// import Backdrop from '../../Atoms/Modal/Backdrop';
 
 const NavElement = () => {
   const locationPath = useLocation();
@@ -62,7 +64,8 @@ const NavElement = () => {
         </GridWrapper>
       )}
       <BurgerMenu open={open} setOpen={setOpen} />
-      {open && <Backdrop />}
+      {/* <Backdrop /> */}
+      <Sidebar />
     </>
   );
 };
