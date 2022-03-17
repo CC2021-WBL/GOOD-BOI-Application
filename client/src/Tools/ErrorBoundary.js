@@ -41,7 +41,7 @@ export class ErrorBoundary extends Component {
             <NavLink
               style={{
                 margin: '1rem',
-                width: '100%',
+                width: '30%',
                 height: '3.25rem',
                 borderRadius: '10px',
                 textDecoration: 'none',
@@ -56,6 +56,25 @@ export class ErrorBoundary extends Component {
               to="/"
             >
               Odśwież stronę!
+            </NavLink>
+            <NavLink
+              style={{
+                margin: '1rem',
+                width: '30%',
+                height: '3.25rem',
+                borderRadius: '10px',
+                textDecoration: 'none',
+                color: 'grey',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                border: '1px solid grey',
+                fontSize: '0.9375rem',
+              }}
+              onClick={this.refresh}
+              to="/contact-form"
+            >
+              Skontaktuj się z nami!
             </NavLink>
           </NotFoundPageWrapperStyled>
         </>
