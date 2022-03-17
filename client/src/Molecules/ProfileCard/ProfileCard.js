@@ -3,11 +3,18 @@ import propTypes from 'prop-types';
 import ProfileCardStyled from './ProfileCardStyled';
 import UserProfileData from '../../Atoms/UserProfileData/UserProfileData';
 
-const ProfileCard = ({ withEdit, initialState, className }) => {
+const ProfileCard = ({ withEdit, initialState, className, isBigScreen }) => {
   return (
     <>
       {withEdit ? (
-        <UserProfileData withEdit={withEdit} initialState={initialState} />
+        <ProfileCardStyled className={className}>
+          <UserProfileData
+            withEdit={withEdit}
+            initialState={initialState}
+            className={className}
+            isBigScreen={isBigScreen}
+          />
+        </ProfileCardStyled>
       ) : (
         <ProfileCardStyled className={className}>
           <div className="bg-box"></div>
