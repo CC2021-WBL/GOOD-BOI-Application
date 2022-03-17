@@ -24,13 +24,15 @@ const ContestCardStyled = styled.div`
       ? props.theme.positive100
       : props.theme.white};
   border-radius: 0.75rem;
+
   .contest-action,
   .doggo-image {
     display: none;
   }
-  
+
   @media (min-width: 800px) {
     display: flex;
+    max-height: 11.25rem;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -52,7 +54,7 @@ const ContestCardStyled = styled.div`
 
     .doggo-image {
       display: block;
-      width: 30%;
+      width: auto;
       height: 100%;
 
       img {

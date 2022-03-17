@@ -73,7 +73,7 @@ const validateData = (formData) => {
   }
   if (!phoneNumber) {
     errors.phoneNumber = 'Podaj Numer Telefonu (Tylko cyfry)';
-  } else if (phoneNumber.length < 12) {
+  } else if (phoneNumber.length < 9) {
     errors.phoneNumber = 'Podany numer jest za krótki';
   }
 

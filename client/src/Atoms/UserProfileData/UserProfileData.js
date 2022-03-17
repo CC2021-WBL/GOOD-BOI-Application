@@ -1,13 +1,12 @@
-import propTypes from 'prop-types';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
+import { UserDataContext } from '../../Context/UserDataContext';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
-import { UserDataContext } from '../../Context/UserDataContext';
-import { requestOptionsGET } from '../../FetchData/requestOptions';
+import propTypes from 'prop-types';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const UserProfileData = ({
   withEdit,
@@ -41,16 +40,24 @@ const UserProfileData = ({
     if (!isAuthenticated) {
       navigate('/login');
     } else {
-      fetch(`/api/users/${userData}?taker=profile`, requestOptionsGET)
-        .then((response) => response.json())
-        .then((result) => {
-          if (!result) {
+      async function getUserProfileData() {
+        try {
+          let response = await fetch(
+            `/api/users/${userData}?taker=profile`,
+            requestOptionsGET,
+          );
+          if (!response.ok) {
             navigate('/login');
           } else {
-            setUserObject(result);
+            response = await response.json();
+            setUserObject(response);
           }
-        })
-        .catch((error) => console.log('error', error));
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      getUserProfileData();
     }
     if (isBigScreen) {
       return setToggle(true);
