@@ -23,7 +23,9 @@ const ClassOrDogButtonStyled = styled.button`
     }
   }
   &:hover {
-    filter: brightness(1.1);
+    filter: brightness(1.05);
+    cursor: pointer;
+    box-shadow: 2px 4px ${({ theme }) => theme.primary201};
+  }
 `;
-
 export default ClassOrDogButtonStyled;

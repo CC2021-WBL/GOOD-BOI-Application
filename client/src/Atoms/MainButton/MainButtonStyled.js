@@ -39,7 +39,11 @@ const MainButtonStyled = styled.button`
   ${(props) => handleBgAndColor(props)};
   ${(props) => borderHandler(props)};
   &:hover {
-    filter: brightness(1.1);
+    filter: brightness(1.05);
+    box-shadow: 2px 4px ${({ theme }) => theme.primary201};
+    cursor: pointer;
+
+
    ;
 
   &.selected-btn:focus {

@@ -19,6 +19,12 @@ const ButtonExercisesStyled = styled.button`
   margin: 0.25rem 0;
   ${FONTS.label_semibold};
   ${(props) => handleBgAndColor(props)};
+
+  &:hover {
+    filter: brightness(1.05);
+    box-shadow: 2px 4px ${({ theme }) => theme.primary201};
+    cursor: pointer;
+  }
 `;
 
 export default ButtonExercisesStyled;

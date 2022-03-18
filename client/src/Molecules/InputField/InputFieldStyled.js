@@ -18,7 +18,7 @@ const InputFieldStyled = styled.input`
 
   &:focus {
     border: 0.5px solid transparent;
-    outline: 3px solid ${({ theme }) => theme.primary201};
+    outline: 3px solid ${({ theme }) => theme.primary601};
   }
 
   &.red-border {

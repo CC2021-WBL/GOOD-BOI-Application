@@ -30,7 +30,9 @@ const InfoLabelStyled = styled.label`
       ? `background: ${props.theme.white}; color: ${props.theme.grey800};  border: solid 1px  ${props.theme.grey800};`
       : ``};
         &:hover {
-    filter: brightness(2);
+    filter: brightness(1.025);
+    cursor: pointer;
+
 `;
 
 export default InfoLabelStyled;
