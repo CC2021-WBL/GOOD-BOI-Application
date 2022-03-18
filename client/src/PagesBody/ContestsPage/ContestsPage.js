@@ -35,38 +35,38 @@ const ContestsPage = () => {
 
   useEffect(() => {
     async function fetchContestsData() {
-      if (state.selectedRole === ROLE_NAME.PARTICIPANT) {
-        const result = await getContestsCards(ROLE_NAME.PARTICIPANT);
-        console.log(result);
-        rawDataFromDB.current = result;
+      let result = null;
+      if (
+        state.selectedRole === ROLE_NAME.PARTICIPANT &&
+        locationPath.state &&
+        locationPath.state.contestContent !== 'future'
+      ) {
+        result = await getContestsCards(ROLE_NAME.PARTICIPANT);
+      } else if (state.selectedRole === ROLE_NAME.MANAGER) {
+        result = await getContestsCards(ROLE_NAME.MANAGER);
+      } else if (state.selectedRole === ROLE_NAME.STAFF) {
+        result = await getContestsCards(ROLE_NAME.STAFF);
       } else {
-        const result = await getContestsCards();
-        rawDataFromDB.current = result;
+        result = await getContestsCards();
       }
-      console.log(rawDataFromDB.current);
+      rawDataFromDB.current = result;
+      setContestData(rawDataFromDB.current);
 
-      if ((rawDataFromDB.current = null)) {
+      if (rawDataFromDB.current === null) {
         setIsPending(false);
       } else if (
         locationPath.state &&
         locationPath.state.contestContent === 'results'
       ) {
-        setContestData(
-          rawDataFromDB.current.filter((contest) => {
-            return contest.participants.includes(state.userId);
-          }),
-        );
         setSelectedMode(TIME.PRESENT_AND_PAST);
         setIsPending(false);
       } else if (
         locationPath.state &&
         locationPath.state.contestContent === 'future'
       ) {
-        setContestData(rawDataFromDB.current);
         setSelectedMode(TIME.FUTURE);
         setIsPending(false);
       } else {
-        setContestData(rawDataFromDB.current);
         setSelectedMode(TIME.UNKNOWN);
         setIsPending(false);
       }
@@ -83,7 +83,6 @@ const ContestsPage = () => {
   const handleFilterClick = (time, event) => {
     event.preventDefault();
     setSelectedMode(time);
-    console.log(rawDataFromDB.current);
   };
 
   return (

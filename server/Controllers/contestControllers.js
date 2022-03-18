@@ -109,10 +109,34 @@ async function getContestsForCard(req, res) {
         .equals(req.user._id)
         .select(forContestCard);
     } else if (req.query.taker === 'participant') {
+      console.log(req.user);
       data = await Contest.find()
         .where('participantId')
         .equals(req.user._id)
         .select(forContestCard);
+    } else if (req.query.taker === 'staff') {
+      data = await Contest.aggregate([
+        {
+          $project: {
+            contestName: 1,
+            kennelClubDepartment: 1,
+            startDate: 1,
+            endDate: 1,
+            address: 1,
+            amountOfApplications: 1,
+          },
+        },
+        {
+          $match: {
+            startDate: {
+              $lte: new Date(),
+            },
+            endDate: {
+              $gte: new Date(),
+            },
+          },
+        },
+      ]);
     } else {
       data = await Contest.find().select(forContestCard);
     }

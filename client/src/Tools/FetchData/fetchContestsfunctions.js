@@ -5,6 +5,7 @@ export async function getContestsCards(taker) {
   if (taker) {
     url = `/api/contests/card/data?taker=${taker}`;
   }
+  console.log(url);
 
   const response = await fetch(url, requestOptionsGET);
   if (response.status === 200) {
@@ -14,5 +15,3 @@ export async function getContestsCards(taker) {
     return null;
   }
 }
-
-export async function 
