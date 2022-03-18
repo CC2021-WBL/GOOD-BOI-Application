@@ -1,23 +1,13 @@
-import { useContext } from 'react';
-
+import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import ForbiddenWrapperStyled from './ForbiddenEntryStyled';
-import MainButton from '../../Atoms/MainButton/MainButton';
 import notFound from '../../Assets/notFound.png';
-import { UserDataContext } from '../../Context/UserDataContext';
 
 const ForbiddenEntryPage = () => {
-  const { dispatch } = useContext(UserDataContext);
   return (
     <ForbiddenWrapperStyled>
       <img src={notFound} alt="Dog with question mark" />
       <h1>Nie masz uprawnień żeby wejść na tę stronę</h1>
-      <MainButton
-        text="wejdź przez testowe dane"
-        ternary
-        onClick={() => {
-          dispatch({ type: 'CHANGE_USER', index: 1 });
-        }}
-      />
+      <FakeButton text="Przejdź na stronę logowania" ternary to="/login" />
     </ForbiddenWrapperStyled>
   );
 };
