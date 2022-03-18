@@ -19,7 +19,6 @@ const ParticipantData = ({ id }) => {
       async function fetchParticipantData() {
         const response = await fetch(`/api/users/${id}`, requestOptionsGET);
         const result = await response.json();
-        console.log(result);
         setParticipantData(result);
         setIsPending(false);
       }
