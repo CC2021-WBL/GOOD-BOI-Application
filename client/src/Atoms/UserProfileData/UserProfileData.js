@@ -69,17 +69,21 @@ const UserProfileData = ({
       <UserProfileDataStyled withEdit={withEdit} className={className}>
         <div className="user-data-wrapper">
           {state && userObject ? (
-            <h3>{`${participantName} ${participantSurname}`}</h3>
+            <>
+              <h3>{`${participantName} ${participantSurname}`}</h3>
+              <p>{`${street} ${numberOfHouse}`}</p>
+              <p>{`${postalCode} ${city}`}</p>
+            </>
           ) : (
-            <h3>{`${userName} ${userSurname}`}</h3>
+            <>
+              <h3>{`${userName} ${userSurname}`}</h3>
+            </>
           )}
-
-          <p>{`${street} ${numberOfHouse}`}</p>
-          <p>{`${postalCode} ${city}`}</p>
+          <></>
         </div>
         {withEdit && (
           <>
-            <div className="bg-box tablet_only"></div>
+            <div className="bg-box tablet_only" />
             <button
               className="user-data-edit-btn"
               onClick={toggleHandler}
