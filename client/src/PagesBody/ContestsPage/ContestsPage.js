@@ -56,6 +56,12 @@ const ContestsPage = () => {
         setIsPending(false);
       } else if (
         locationPath.state &&
+        locationPath.state.contestContent === 'custom'
+      ) {
+        setSelectedMode(TIME.UNKNOWN);
+        setIsPending(false);
+      } else if (
+        locationPath.state &&
         locationPath.state.contestContent === 'results'
       ) {
         setSelectedMode(TIME.PRESENT_AND_PAST);
