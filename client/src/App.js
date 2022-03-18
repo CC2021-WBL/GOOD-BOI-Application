@@ -15,7 +15,7 @@ import ContestsPage from './PagesBody/ContestsPage/ContestsPage';
 import DogDataPage from './PagesBody/DogDataPage/DogDataPage';
 import DogFormPage from './PagesBody/DogFormPage/DogFormPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
-import ErrorBoundary from './Tools/ErrorBoundary';
+import ErrorBoundary from './Tools/ErrorBoundary/ErrorBoundary';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
 import Grid from './Templates/Layout/Grid';
