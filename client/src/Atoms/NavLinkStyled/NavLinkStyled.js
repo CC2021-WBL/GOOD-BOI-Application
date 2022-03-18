@@ -14,7 +14,7 @@ const NavLinkStyled = styled(NavLink)`
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 0 0 0 0.5rem;
+  ${(props) => props.stylefor === 'Sidebar' && 'padding-left: .5rem'};
   gap: 1rem;
   &:not(.active) {
     color: ${({ theme }) => theme.grey400};

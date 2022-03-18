@@ -11,7 +11,7 @@ const MenuItemStyled = styled.div`
   color: ${({ theme }) => theme.grey400};
   &:hover {
     cursor: pointer;
-    background-color: rgba(230, 230, 230, 0.4);
+    background-color: rgba(230, 230, 230, 0.5);
   }
 `;
 export default MenuItemStyled;
