@@ -12,9 +12,10 @@ const bgHandler = (props) => {
 const NavLinkStyled = styled(NavLink)`
   height: 100%;
   width: 100%;
+  justify-content: center;
   display: flex;
   align-items: center;
-  padding: 0 0 0 0.5rem;
+  /* padding: 0 0 0 0.5rem; */
   gap: 1rem;
   &:not(.active) {
     color: ${({ theme }) => theme.grey400};

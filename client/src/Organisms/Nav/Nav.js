@@ -55,7 +55,7 @@ const Nav = () => {
       <>
         <NavBackground>
           <NavInnerStyled>
-            <NavLinkStyled to="/">
+            <NavLinkStyled to="/" style={{ flex: '1', paddingRight: '.5rem' }}>
               <AppLogoSVG />
             </NavLinkStyled>
             <NavLinkStyled to="/" stylefor="Navbar">
@@ -64,7 +64,11 @@ const Nav = () => {
             <NavLinkStyled to="/contests" stylefor="Navbar">
               AKTUALNE KONKURSY
             </NavLinkStyled>
-            <NavLinkStyled to="/register" stylefor="Navbar">
+            <NavLinkStyled
+              to="/register"
+              stylefor="Navbar"
+              style={{ paddingRight: '1rem' }}
+            >
               WEŹ UDZIAŁ W ZAWODACH
             </NavLinkStyled>
             <NavButtons />

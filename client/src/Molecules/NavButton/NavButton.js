@@ -7,12 +7,14 @@ import ProfilePicture from '../../Atoms/ProfilePicture/ProfilePicture';
 
 const NavButtonStyled = styled.div`
   display: flex;
+  width: 100%;
   gap: 1rem;
   align-items: center;
   transition: all 0.2s ease-in-out;
   border-radius: 1.5625rem 0.625rem 0.625rem 1.5625rem;
+  padding: 0 1rem 0 0;
   :hover {
-    background-color: rgba(230, 230, 230, 0.4);
+    background-color: rgba(230, 230, 230, 0.5);
   }
 `;
 
