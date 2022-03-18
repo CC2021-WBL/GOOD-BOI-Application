@@ -12,16 +12,13 @@ export class ErrorBoundary extends Component {
     this.state = { hasError: false, error: '', errorInfo: '' };
   }
 
-  refresh = () => {
-    window.location.reload();
-  };
-
   static getDerivedStateFromError(error) {
     console.log(error);
-    return { hasError: true };
+    return { hasError: true, error };
   }
 
   componentDidCatch(error, errorInfo) {
+    console.log(error, errorInfo);
     this.setState({
       error: error,
       errorInfo: errorInfo,
@@ -31,33 +28,40 @@ export class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <BodyWrapper>
+        <ErrorBoundaryStyled>
           <NotFoundPageWrapperStyled style={{ textAlign: 'center' }}>
             <img src={ErrorPageGraphic} alt="Doggo in space" />
             <div className="text-wrapper">
               <h1>Coś poszło nie tak.</h1>
-              <br />
-              <p>Wróć do strony głównej i spróbuj ponownie później.</p>
+              <p>Wróć do strony głównej lub spróbuj ponownie później.</p>
             </div>
-            <NavLink className="error-link" onTouchTap={this.refresh} to="/">
-              Odśwież stronę!
-            </NavLink>
-            <NavLink
+            <a
+              className="error-link"
+              href="/"
+              onClick={() => {
+                window.location.reload();
+              }}
+            >
+              Wróc do strony głównej!
+            </a>
+            <a
               className="error-link error-link__contact"
-              onClick={this.refresh}
-              to="/contact-form"
+              href="/contact-form"
+              onClick={() => {
+                window.location.reload();
+              }}
             >
               Skontaktuj się z nami!
-            </NavLink>
+            </a>
           </NotFoundPageWrapperStyled>
-        </BodyWrapper>
+        </ErrorBoundaryStyled>
       );
     }
     return this.props.children;
   }
 }
 
-const BodyWrapper = styled.div`
+const ErrorBoundaryStyled = styled.div`
   height: 100vh;
   background-color: ${({ theme }) => theme.white};
   display: flex;
