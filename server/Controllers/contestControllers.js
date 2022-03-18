@@ -139,12 +139,12 @@ async function addResultToContest(req, res, resultId) {
     participant.resultsId = resultId;
     const updatedContest = await contest.save();
     if (!updatedContest) {
-      res.send(500).end();
+      res.status(500).send({ message: 'contest not found' });
     } else {
       return updatedContest;
     }
   } catch (error) {
-    res.send(500).send({ message: 'contest not found' });
+    res.status(500).send({ message: 'contest not found' });
   }
 }
 
