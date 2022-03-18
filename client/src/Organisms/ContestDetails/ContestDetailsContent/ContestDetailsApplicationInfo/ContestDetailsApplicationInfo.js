@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 
-import applicationInfoRender from '../../../../Tools/contestDetails/applicationInfoRender';
 import ContestDetailsLine from '../../../../Atoms/ContestDetailsLine/ContestDetailsLine';
+import PropTypes from 'prop-types';
+import applicationInfoRender from '../../../../Tools/contestDetails/applicationInfoRender';
 
 const ContestDetailsApplicationInfo = ({ applicationData }) => {
   const [applicationInfo, setApplicationInfo] = useState(null);

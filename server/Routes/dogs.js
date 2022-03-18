@@ -6,7 +6,10 @@ const {
   getDogData,
   deleteDog,
 } = require('../Controllers/dogsControllers');
-const { updateDogsArray } = require('../Controllers/usersControllers');
+const {
+  updateDogsArray,
+  changeDogDataInParticipants,
+} = require('../Controllers/usersControllers');
 const {
   isUserOrAdmin,
   isDogOwnerStaffOrAdmin,
@@ -42,8 +45,12 @@ router.patch(
   isDogOwnerStaffOrAdmin,
   async (req, res) => {
     try {
-      const dog = await updateSomeDogProps(req, res);
-      res.status(201).send(dog);
+      const dogObject = await updateSomeDogProps(req, res);
+
+      if (dogObject.prevDogName !== dogObject.updatedDog.dogName) {
+        await changeDogDataInParticipants(res, dogObject.updatedDog);
+      }
+      res.status(201).send(dogObject.updatedDog);
     } catch (error) {
       res.status(400).send(error.message);
     }
@@ -57,8 +64,15 @@ router.put(
   isDogOwnerStaffOrAdmin,
   async (req, res) => {
     try {
-      const dog = await updateAllDogData(req, res);
-      res.status(201).send(dog);
+      const dogObject = await updateAllDogData(req, res);
+      if (dogObject.prevDogName !== dogObject.updatedDog.dogName) {
+        const response = await changeDogDataInParticipants(
+          res,
+          dogObject.updatedDog,
+        );
+        console.log(response);
+      }
+      res.status(201).send(dogObject.updatedDog);
     } catch (error) {
       res.status(400).json(error.message);
     }

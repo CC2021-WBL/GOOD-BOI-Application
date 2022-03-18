@@ -39,7 +39,7 @@ async function getResultSummaryAndName(req, res) {
     const results = await Result.find({
       contestId: req.params.contestId,
     })
-      .where({ obedienceClass: 0 })
+      .where({ obedienceClass: req.params.classId })
       .select(['dogName', 'summaryResult']);
 
     res.json(results);

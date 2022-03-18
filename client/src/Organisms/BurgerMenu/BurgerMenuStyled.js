@@ -14,6 +14,9 @@ const BurgerMenuStyled = styled.div`
     display: flex;
     justify-content: flex-start;
     background: ${({ theme }) => theme.white};
+    position: fixed;
+    bottom: 0.8125rem;
+    padding: 0 0 0 0.8125rem;
   }
 
   @media only screen and (min-width: 800px) {

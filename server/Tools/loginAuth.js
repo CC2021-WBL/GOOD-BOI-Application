@@ -6,7 +6,7 @@ module.exports.loginAuthentication = async (req, res) => {
     const user = await Participant.findOne({ email: req.body.email });
 
     if (!user) {
-      res.status(401).json({ success: false, message: 'could not find user' });
+      res.status(404).json({ success: false, message: 'could not find user' });
     }
 
     const isValid = validatePassword(req.body.password, user.hash, user.salt);

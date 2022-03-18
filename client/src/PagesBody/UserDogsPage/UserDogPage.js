@@ -1,41 +1,66 @@
+import { DOG_ACTIONS, USER_ACTIONS } from '../../Consts/reducersActions';
 import { useContext, useEffect, useState } from 'react';
 
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import FakeButton from '../../Atoms/FakeButton/FakeButton';
-import { DOG_ACTIONS, USER_ACTIONS } from '../../Consts/reducersActions';
 import { DogContext } from '../../Context/DogContext';
+import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import { ROLE_NAME } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
-import { requestOptionsGET } from '../../FetchData/requestOptions';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const UserDogPage = () => {
   const { state, dispatch } = useContext(UserDataContext);
   const [isPending, setIsPending] = useState(true);
   const [participantDogs, setParticipantDogs] = useState(null);
-  const { dogDispatch } = useContext(DogContext);
+  const { dogState, dogDispatch } = useContext(DogContext);
+  const { dogs } = dogState;
 
   useEffect(() => {
-    fetch(`/api/users/dogs/${state.userId}`, requestOptionsGET)
-      .then((response) => response.json())
-      .then((result) => {
-        setParticipantDogs(result.dogs);
-        setIsPending(false);
-        dogDispatch({
-          type: DOG_ACTIONS.SET_DATA,
-          payload: { dogs: result.dogs, chosenDog: '' },
-        });
-        if (state.selectedRole !== ROLE_NAME.PARTICIPANT)
-          dispatch({
-            type: USER_ACTIONS.SELECT_ROLE,
-            selectedRole: ROLE_NAME.PARTICIPANT,
-          });
-      })
-      .catch((error) => alert(error));
+    if (state.selectedRole !== ROLE_NAME.PARTICIPANT)
+      dispatch({
+        type: USER_ACTIONS.SELECT_ROLE,
+        selectedRole: ROLE_NAME.PARTICIPANT,
+      });
   }, []);
 
+  useEffect(() => {
+    if (dogs && dogs.length > 0) {
+      setParticipantDogs(dogs);
+      setIsPending(false);
+    } else {
+      async function getDogsNames() {
+        try {
+          let response = await fetch(
+            `/api/users/dogs/${state.userId}`,
+            requestOptionsGET,
+          );
+          if (response.ok) {
+            response = await response.json();
+            setParticipantDogs(response.dogs);
+
+            dogDispatch({
+              type: DOG_ACTIONS.SET_DATA,
+              payload: { dogs: response.dogs, chosenDog: {} },
+            });
+          } else {
+            alert('Ooops! nie udało się pobrać danych z serwera');
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      getDogsNames();
+      setIsPending(false);
+    }
+  }, []);
   return (
-    <ColumnWrapper paddingLeftRight={1} paddingTop={0.5} className="user-dogs-column-wrapper">
+    <ColumnWrapper
+      paddingLeftRight={1}
+      paddingTop={0.5}
+      className="user-dogs-column-wrapper"
+    >
       {isPending && <p>Loading...</p>}
       {participantDogs &&
         participantDogs.map((dog, index) => {
