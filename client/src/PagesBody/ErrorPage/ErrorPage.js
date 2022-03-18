@@ -12,24 +12,6 @@ const ErrorPage = ({ ResStatus }) => {
         statusem na error page i wyświetla konkretną wiadomość */}
         {/* <p>{ERROR_MSG.ResStatus}</p> */}
       </div>
-      <a
-        className="error-link"
-        href="/"
-        onClick={() => {
-          window.location.reload();
-        }}
-      >
-        Wróc do strony głównej!
-      </a>
-      <a
-        className="error-link error-link__contact"
-        href="/contact-form"
-        onClick={() => {
-          window.location.reload();
-        }}
-      >
-        Skontaktuj się z nami!
-      </a>
     </NotFoundPageWrapperStyled>
   );
 };
