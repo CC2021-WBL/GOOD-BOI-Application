@@ -1,8 +1,9 @@
+import { useContext } from 'react';
+
 import ForbiddenWrapperStyled from './ForbiddenEntryStyled';
 import MainButton from '../../Atoms/MainButton/MainButton';
-import { UserDataContext } from '../../Context/UserDataContext';
 import notFound from '../../Assets/notFound.png';
-import { useContext } from 'react';
+import { UserDataContext } from '../../Context/UserDataContext';
 
 const ForbiddenEntryPage = () => {
   const { dispatch } = useContext(UserDataContext);
