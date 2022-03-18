@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.19fa6059.css",
-    "main.js": "/static/js/main.34fcbd93.js",
+    "main.css": "/static/css/main.1a5666cc.css",
+    "main.js": "/static/js/main.b3ae7660.js",
     "static/js/787.0c574e70.chunk.js": "/static/js/787.0c574e70.chunk.js",
     "static/media/profileDogFace.jpg": "/static/media/profileDogFace.8c0496d4eb9e6f1d411a.jpg",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
@@ -26,14 +26,14 @@
     "static/media/mockmap.png": "/static/media/mockmap.51ecff1a71c452cf7983.png",
     "static/media/planets.png": "/static/media/planets.cdb481dbf2521ded20c2.png",
     "static/media/rocket.png": "/static/media/rocket.8f5790d9679c5b7dfb3d.png",
-    "static/media/logoDevsOnTheWaves.svg": "/static/media/logoDevsOnTheWaves.cf27d25e4bacdf07f9b313a628f6a5f0.svg",
+    "static/media/logoDevsOnTheWaves.svg": "/static/media/logoDevsOnTheWaves.2bf74039d34d89f1174fade3fb24354d.svg",
     "index.html": "/index.html",
-    "main.19fa6059.css.map": "/static/css/main.19fa6059.css.map",
-    "main.34fcbd93.js.map": "/static/js/main.34fcbd93.js.map",
+    "main.1a5666cc.css.map": "/static/css/main.1a5666cc.css.map",
+    "main.b3ae7660.js.map": "/static/js/main.b3ae7660.js.map",
     "787.0c574e70.chunk.js.map": "/static/js/787.0c574e70.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.19fa6059.css",
-    "static/js/main.34fcbd93.js"
+    "static/css/main.1a5666cc.css",
+    "static/js/main.b3ae7660.js"
   ]
 }
