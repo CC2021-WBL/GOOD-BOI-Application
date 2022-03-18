@@ -1,5 +1,5 @@
 module.exports.ERROR_MSG = {
-  400: 'Ojej! Spokojnie, nic się nie stało. Sprawdź dokładnie wpisany adres i spróbuj odświeżyć przeglądarkę.',
+  400: 'Ojej! Coś poszło nie tak. Spróbuj ponownie później.',
   401: 'Ojej! Nie jesteśmy pewni kim jesteś. Spróbuj zalogować się ponownie.',
   403: 'Ojej! Nie masz uprawnień do tej części serwisu.',
   404: 'Ojej! Nie udało się znaleźć potrzebnych danych. Spróbuj jeszcze raz.',
