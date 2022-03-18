@@ -16,7 +16,6 @@ import DogDataPage from './PagesBody/DogDataPage/DogDataPage';
 import DogFormPage from './PagesBody/DogFormPage/DogFormPage';
 import DogSummaryPage from './PagesBody/DogSummaryPage/DogSummaryPage';
 import ErrorBoundary from './Tools/ErrorBoundary';
-import ErrorPage from './PagesBody/ErrorPage/ErrorPage';
 import ExercisesPage from './PagesBody/ExercisesPage/ExercisesPage';
 import ForgotPassForm from './Organisms/ForgotPassForm/ForgotPassForm';
 import Grid from './Templates/Layout/Grid';
@@ -58,8 +57,6 @@ function App() {
                 <div className="App">
                   <Grid>
                     <Routes>
-                      {/* ścieżka w celach stylujących */}
-                      <Route path="error-page" element={<ErrorPage />} />
                       <Route path="/" element={<LandingPage />} />
                       <Route element={<Layout withSettings />}>
                         <Route path="user/:userId" element={<ProfilePage />} />
