@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { MdMenu } from 'react-icons/md';
 import { useContext, useState } from 'react';
 
+import Backdrop from '../../Atoms/Modal/Backdrop';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import GoHomeStyled from '../../Atoms/NavElementStyled/GoHomeStyled';
 import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
@@ -15,8 +16,6 @@ import { DogContext } from '../../Context/DogContext';
 import { NavElementStyled } from './NavElementStyled';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { checkPathOrigin } from '../../Tools/checkPathOrigin';
-
-// import Backdrop from '../../Atoms/Modal/Backdrop';
 
 const NavElement = () => {
   const locationPath = useLocation();
@@ -50,6 +49,7 @@ const NavElement = () => {
             </Link>
           </GoHomeStyled>
         </NavElementStyled>
+        {open && <Backdrop />}
       </GridWrapper>
       <GridWrapper desktop="1 / 1 / 2 / -1" tablet="1 / 1 / 2 / -1">
         <Nav />
@@ -64,7 +64,6 @@ const NavElement = () => {
         </GridWrapper>
       )}
       <BurgerMenu open={open} setOpen={setOpen} />
-      {/* <Backdrop /> */}
       <Sidebar />
     </>
   );
