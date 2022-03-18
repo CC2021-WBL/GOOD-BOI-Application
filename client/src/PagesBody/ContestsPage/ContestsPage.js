@@ -7,8 +7,10 @@ import { ContestContext } from '../../Context/ContestContext';
 import ContestFilterToggler from '../../Organisms/ContestFilterHarmonica/ContestFilterToggler';
 import ContestsWrapperStyled from './ContestsWrapperStyled';
 import FilterLabel from '../../Molecules/FilterLabel/FilterLabel';
+import { ROLE_NAME } from '../../Consts/rolesConsts';
 import { TIME } from '../../Consts/infoLabelConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
+import { getContestsCards } from '../../Tools/FetchData/fetchContestsfunctions';
 import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
 import mockmap from '../../Assets/mockMAP.JPG';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
@@ -33,14 +35,19 @@ const ContestsPage = () => {
 
   useEffect(() => {
     async function fetchContestsData() {
-      const response = await fetch(
-        '/api/contests/card/data',
-        requestOptionsGET,
-      );
-      const result = await response.json();
-      rawDataFromDB.current = result;
+      if (state.selectedRole === ROLE_NAME.PARTICIPANT) {
+        const result = await getContestsCards(ROLE_NAME.PARTICIPANT);
+        console.log(result);
+        rawDataFromDB.current = result;
+      } else {
+        const result = await getContestsCards();
+        rawDataFromDB.current = result;
+      }
+      console.log(rawDataFromDB.current);
 
-      if (
+      if ((rawDataFromDB.current = null)) {
+        setIsPending(false);
+      } else if (
         locationPath.state &&
         locationPath.state.contestContent === 'results'
       ) {
