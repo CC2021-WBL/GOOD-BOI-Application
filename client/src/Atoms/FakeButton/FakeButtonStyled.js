@@ -51,6 +51,18 @@ const FakeButtonStyled = styled(Link)`
   ${(props) => handleBorders(props)}
   text-transform: uppercase;
 
+  &.landing-desktop-login {
+    width: 19.375rem;
+  }
+  &.more-contests {
+    height: 2.625rem;
+    justify-content: right;
+    padding: 0 1.375rem 0 0;
+    border: none;
+    margin-top: -0.5625rem;
+    border-radius: 0 0 0.75rem 0.75rem;
+    text-transform: none;
+  }
   &.add-dogs {
     @media only screen and (min-width: 800px) {
       max-width: 16.25rem;
@@ -59,56 +71,57 @@ const FakeButtonStyled = styled(Link)`
 
   &.user-profile {
     @media only screen and (min-width: 800px) {
-      justify-content: flex-start;
       height: 100%;
-      margin: 0;
-      text-align: left;
       flex-direction: column;
-      font-weight: 100;
       align-items: flex-start;
-      background-color: ${({ theme }) => theme.grey00};
+      justify-content: flex-start;
       border: 1px solid ${({ theme }) => theme.grey200};
+      margin: 0;
+      background-color: ${({ theme }) => theme.grey00};
+      font-weight: 100;
+      text-align: left;
 
       .fakebtn-header {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-transform: capitalize;
         width: 100%;
         height: 4rem;
-
-        ${FONTS.h2};
-        border-bottom: 1px solid ${({ theme }) => theme.grey200};
-        border-radius: 0.75rem 0.75rem 0 0;
-        background-color: ${({ theme }) => theme.white};
+        flex-direction: column;
+        justify-content: center;
         padding: 0 1.25rem;
+        border-bottom: 1px solid ${({ theme }) => theme.grey200};
+        background-color: ${({ theme }) => theme.white};
+        border-radius: 0.75rem 0.75rem 0 0;
+        ${FONTS.h2};
+        text-transform: capitalize;
       }
 
       .fakebtn-text {
         color: ${({ theme }) => theme.grey400};
         flex-grow: 1;
+        flex-basis: 2.5rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        text-transform: none;
         padding: 0 1.25rem;
+        color: ${({ theme }) => theme.grey400};
+        text-transform: none;
       }
     }
 
     &.user-dogs {
-      grid-area: 1 / 1 / 2 / span 3;
       align-self: flex-end;
+      grid-area: 1 / 1 / 2 / span 3;
     }
 
     &.user-contests {
-      grid-area: 2 / 4 / 3 / span 3;
       align-self: flex-start;
+      grid-area: 2 / 4 / 3 / span 3;
     }
 
     &.user-data {
-      grid-area: 1 / 4 / 2 / span 3;
       align-self: flex-end;
       margin-bottom: 1.25rem;
+      grid-area: 1 / 4 / 2 / span 3;
       @media only screen and (min-width: 1024px) {
         margin-bottom: 0;
       }
@@ -118,8 +131,8 @@ const FakeButtonStyled = styled(Link)`
       grid-area: 2 / 1 / 3 / span 3;
       @media only screen and (min-width: 800px) {
         align-self: flex-start;
-        background-color: ${({ theme }) => theme.primary101};
         border: 1px solid ${({ theme }) => theme.primary601};
+        background-color: ${({ theme }) => theme.primary101};
 
         .fakebtn-header {
           border-bottom: 1px solid ${({ theme }) => theme.primary601};

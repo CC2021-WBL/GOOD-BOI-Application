@@ -1,7 +1,11 @@
 {
   "files": {
     "main.css": "/static/css/main.19fa6059.css",
+<<<<<<< HEAD
     "main.js": "/static/js/main.adb50213.js",
+=======
+    "main.js": "/static/js/main.34fcbd93.js",
+>>>>>>> development
     "static/js/787.0c574e70.chunk.js": "/static/js/787.0c574e70.chunk.js",
     "static/media/profileDogFace.jpg": "/static/media/profileDogFace.8c0496d4eb9e6f1d411a.jpg",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
@@ -9,30 +13,39 @@
     "static/media/fontawesome-webfont.ttf?v=4.7.0": "/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
     "static/media/mockMAP.JPG": "/static/media/mockMAP.b9ee2b7fde6f19fabd75.JPG",
     "static/media/fontawesome-webfont.woff?v=4.7.0": "/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
+    "static/media/dog_8.png": "/static/media/dog_8.abeb17509fdac017dfdc.png",
+    "static/media/dog_7.png": "/static/media/dog_7.0c6c999215e7f1965998.png",
     "static/media/fontawesome-webfont.woff2?v=4.7.0": "/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
-    "static/media/dog_8.png": "/static/media/dog_8.e3220a94a6054b151d5e.png",
-    "static/media/dog_7.png": "/static/media/dog_7.d2d80daf579656c3b17b.png",
-    "static/media/dog_9.png": "/static/media/dog_9.441648c2ee38ebf0f3c9.png",
-    "static/media/dog_11.png": "/static/media/dog_11.c94e4c70377f33e0bbb6.png",
-    "static/media/dog_10.png": "/static/media/dog_10.37da758856549bb36d19.png",
+    "static/media/dog_9.png": "/static/media/dog_9.adeba03bf0b30620321a.png",
+    "static/media/dog_11.png": "/static/media/dog_11.b5f66cea9532461cf5e3.png",
+    "static/media/dog_10.png": "/static/media/dog_10.604e72dfc279d37094a6.png",
+    "static/media/dog_12.png": "/static/media/dog_12.755428d58c137be86edd.png",
+    "static/media/dog_6.png": "/static/media/dog_6.4193a94bbbb73721dc1f.png",
+    "static/media/dog_1.png": "/static/media/dog_1.a268ce59ad90149f8d69.png",
+    "static/media/dog_3.png": "/static/media/dog_3.646138d62866a4846756.png",
+    "static/media/dog_2.png": "/static/media/dog_2.f286fd1c18075e229c1d.png",
+    "static/media/desktopHeroHomePage.png": "/static/media/desktopHeroHomePage.0c036f3b5a626cf4b5b3.png",
+    "static/media/dog_5.png": "/static/media/dog_5.43414742f81d92b5ec1d.png",
+    "static/media/dog_4.png": "/static/media/dog_4.bf76d8f10d40628ef6e6.png",
     "static/media/mockmap.png": "/static/media/mockmap.51ecff1a71c452cf7983.png",
     "static/media/planets.png": "/static/media/planets.cdb481dbf2521ded20c2.png",
-    "static/media/dog_12.png": "/static/media/dog_12.175e13ec49a3e5205331.png",
-    "static/media/dog_6.png": "/static/media/dog_6.92e164cb37d731eb60cf.png",
-    "static/media/dog_3.png": "/static/media/dog_3.e5af1b3e4c057c59724f.png",
-    "static/media/dog_1.png": "/static/media/dog_1.8088830763f285c763d3.png",
-    "static/media/dog_2.png": "/static/media/dog_2.2a07814ff08a29469a8e.png",
-    "static/media/dog_5.png": "/static/media/dog_5.71549141e2bcd4fdce3e.png",
-    "static/media/dog_4.png": "/static/media/dog_4.c6ed2752085a692aec5e.png",
     "static/media/rocket.png": "/static/media/rocket.8f5790d9679c5b7dfb3d.png",
     "static/media/logoDevsOnTheWaves.svg": "/static/media/logoDevsOnTheWaves.cf27d25e4bacdf07f9b313a628f6a5f0.svg",
     "index.html": "/index.html",
     "main.19fa6059.css.map": "/static/css/main.19fa6059.css.map",
+<<<<<<< HEAD
     "main.adb50213.js.map": "/static/js/main.adb50213.js.map",
+=======
+    "main.34fcbd93.js.map": "/static/js/main.34fcbd93.js.map",
+>>>>>>> development
     "787.0c574e70.chunk.js.map": "/static/js/787.0c574e70.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.19fa6059.css",
+<<<<<<< HEAD
     "static/js/main.adb50213.js"
+=======
+    "static/js/main.34fcbd93.js"
+>>>>>>> development
   ]
 }

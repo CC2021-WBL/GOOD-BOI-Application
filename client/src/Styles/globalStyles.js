@@ -4,7 +4,10 @@ export const GlobalStyles = createGlobalStyle`
 :root{
 
 font-size: 16px;
-a{text-decoration:none}
+a, button {
+    cursor:pointer;
+    text-decoration:none; 
+}
 }
 *, ::before, ::after{
     box-sizing: border-box;
@@ -19,6 +22,12 @@ a{text-decoration:none}
 }
 .desktop_only {
     @media only screen and (max-width: 1599px) {
+        display: none;
+    }
+}
+
+.tablet_only {
+    @media only screen and (max-width: 799px) {
         display: none;
     }
 }

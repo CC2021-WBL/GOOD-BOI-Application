@@ -1,4 +1,4 @@
-import { getDataFormatDdMonthYyy } from './TimeFunctions';
+import { getDataFormatDdMmhYyy } from './TimeFunctions';
 
 const renderDogData = (dogData) => {
   const noDataText = 'brak danych';
@@ -22,8 +22,8 @@ const renderDogData = (dogData) => {
     ['Płeć']: sex,
     ['Maść']: color,
     ['Data urodzenia']: `${
-      typeof dateOfBirth === 'object'
-        ? getDataFormatDdMonthYyy(dateOfBirth)
+      dateOfBirth.toString().length > 4
+        ? getDataFormatDdMmhYyy(dateOfBirth)
         : noDataText
     }`,
     ['Numer PKR']: pkr,

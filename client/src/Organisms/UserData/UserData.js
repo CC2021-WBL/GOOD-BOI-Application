@@ -4,7 +4,8 @@ import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
 import { UserDataContext } from '../../Context/UserDataContext';
 import UserField from '../../Atoms/UserField/UserField';
-import { requestOptionsGET } from '../../FetchData/requestOptions';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
+import useMediaQuery from '../../Hooks/useMediaQuery';
 import { useParams } from 'react-router-dom';
 
 const UserData = () => {
@@ -12,6 +13,7 @@ const UserData = () => {
   const { state } = useContext(UserDataContext);
   const { userId } = state;
   const paramsUserData = useParams();
+  const isBigScreen = useMediaQuery('(min-width:800px)');
 
   let userData = userId;
   if (!userData) {
@@ -33,8 +35,17 @@ const UserData = () => {
 
   return (
     <>
-      <ColumnWrapper paddingLeftRight={1}>
-        <ProfileCard withEdit initialState={userObject} />
+      <ColumnWrapper
+        paddingLeftRight={1}
+        maxWidthBigScreen={35}
+        className="user-data-wrapper"
+      >
+        <ProfileCard
+          withEdit
+          initialState={userObject}
+          className="user-data-profile-card"
+          isBigScreen={isBigScreen}
+        />
         <UserField
           text="zmień email"
           email

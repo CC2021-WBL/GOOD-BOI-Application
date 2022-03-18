@@ -1,5 +1,7 @@
+const { ROLE_NAME } = require('../Consts/roles');
 const { forContestCard } = require('../Consts/selects');
 const Contest = require('../Model/Contest');
+const { isManager } = require('../Tools/autorizationAdditionalTools');
 const { createClassesObjectArray } = require('../Tools/ModelTools');
 
 async function registerContest(req, res) {
@@ -67,21 +69,26 @@ async function finishClass(req, res) {
   }
 }
 
-// not optimal! works but could be written better, in progress
-/* async function getContests(req, res) {
+//TODO: add selection to get participants just for current contest
+async function getPartcicipantsForClassInContest(req, res) {
+  try {
+    const data = await Contest.findById(req.params.contestId).select(
+      'obedienceClasses',
+    );
+    if (!data) {
+      res.status(404).json({ message: 'not found participants' });
+    } else {
+      return data;
+    }
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+}
+
+async function getContests(req, res) {
   let data;
   try {
-    if (req.query.taker) {
-      switch (req.query.taker) {
-        case 'card':
-          data = await Contest.find().select(forContestCard);
-          break;
-        default:
-          break;
-      }
-    } else {
-      data = await Contest.find();
-    }
+    data = await Contest.find();
     if (!data) {
       res.status(404).json({ message: 'not found contests' });
     } else {
@@ -90,29 +97,24 @@ async function finishClass(req, res) {
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
-} */
+}
 
-//TEST PHASE
-async function getContests(req, res) {
+//TODO: WORK IN PROGRESS - to add selectors of roles, itd
+async function getContestsForCard(req, res) {
   let data;
   try {
-    switch (req.query.taker) {
-      case 'card':
-        if (req.query.user) {
-          data = await Contest.find({
-            obedienceClasses: {
-              participants: { participantId: req.query.user },
-            },
-          }).select(forContestCard);
-        } else {
-          data = await Contest.find().select(forContestCard);
-        }
-
-        break;
-
-      default:
-        data = await Contest.find();
-        break;
+    if (req.query.taker === ROLE_NAME.MANAGER && isManager(req)) {
+      data = await Contest.find()
+        .where(ROLE_NAME.MANAGER)
+        .equals(req.user._id)
+        .select(forContestCard);
+    } else if (req.query.taker === 'participant') {
+      data = await Contest.find()
+        .where('participantId')
+        .equals(req.user._id)
+        .select(forContestCard);
+    } else {
+      data = await Contest.find().select(forContestCard);
     }
     if (!data) {
       res.status(404).json({ message: 'not found contests' });
@@ -129,4 +131,6 @@ module.exports = {
   updateContest,
   finishClass,
   getContests,
+  getContestsForCard,
+  getPartcicipantsForClassInContest,
 };

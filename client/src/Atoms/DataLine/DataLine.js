@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import DataLineStyled from './DataLineStyled';
+import PropTypes from 'prop-types';
 
 const DataLine = ({ text }) => {
   let textArray = [];

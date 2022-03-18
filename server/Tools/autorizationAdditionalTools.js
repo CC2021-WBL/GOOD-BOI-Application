@@ -1,4 +1,4 @@
-const ROLE_NAME = require('../Consts/roles');
+const { ROLE_NAME } = require('../Consts/roles');
 
 module.exports.isDogOwner = (user, dogId) => {
   let isOwner = false;
