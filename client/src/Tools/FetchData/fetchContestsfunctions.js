@@ -29,3 +29,21 @@ export async function getContestsCards(userStateFromContext, locationPath) {
     //will be returned info to render error page component
   }
 }
+
+export async function fetchContestsForLandingPage() {
+  try {
+    let response = await fetch(
+      '/api/contests/card/data?taker=landing',
+      requestOptionsGET,
+    );
+    if (response.status === 200) {
+      response = await response.json();
+      return response;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.log(error);
+    alert('Ooops, cos poszło nie tak');
+  }
+}
