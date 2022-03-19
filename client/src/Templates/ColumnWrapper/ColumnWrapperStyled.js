@@ -83,8 +83,8 @@ const ColumnWrapperStyled = styled.div`
         max-width: 470px;
         border: 1px solid ${({ theme }) => theme.grey200};
         border-radius: 0.9375rem;
-        padding: 50px;
-        margin: auto;
+        padding: 30px;
+        margin: 10 auto;
       }
 
       @media only screen and (min-width: 1600px) {
