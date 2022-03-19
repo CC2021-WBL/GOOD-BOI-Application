@@ -111,10 +111,26 @@ async function deleteDog(req, res) {
   }
 }
 
+async function addResultToDog(req, res, resultId) {
+  try {
+    const dog = await Dog.findById(req.body.dogId);
+    dog.results.push(resultId);
+    const updatedDog = await dog.save();
+    if (!updatedDog) {
+      res.send(500).end();
+    } else {
+      return updatedDog;
+    }
+  } catch (error) {
+    res.send(500).send({ message: 'coś nie pykło' });
+  }
+}
+
 module.exports = {
   registerDog,
   updateSomeDogProps,
   updateAllDogData,
   getDogData,
   deleteDog,
+  addResultToDog,
 };
