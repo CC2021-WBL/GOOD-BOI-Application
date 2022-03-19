@@ -1,10 +1,7 @@
 export function removeNullsFromArray(array = []) {
-  let newArray = [];
-  array.forEach((element) => {
-    if (element !== null) {
-      newArray.push(element);
-    }
+  const filteredArray = array.filter((contest) => {
+    return contest !== null;
   });
 
-  return newArray;
+  return filteredArray;
 }

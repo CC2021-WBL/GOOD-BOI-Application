@@ -14,13 +14,11 @@ import { getContestsCards } from '../../Tools/FetchData/fetchContestsfunctions';
 import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
 import mockmap from '../../Assets/mockMAP.JPG';
 import { removeNullsFromArray } from '../../Tools/FetchData/additionalToolsForResults';
-import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import { useLocation } from 'react-router-dom';
 import useMediaQuery from '../../Hooks/useMediaQuery';
 
 const ContestsPage = () => {
   const rawDataFromDB = useRef(null);
-  const [contestData, setContestData] = useState(null);
   const [toggle, setToggle] = useState(false);
   const [selectedMode, setSelectedMode] = useState(null);
   const locationPath = useLocation();
@@ -54,7 +52,6 @@ const ContestsPage = () => {
         result = removeNullsFromArray(result);
       }
       rawDataFromDB.current = result;
-      setContestData(rawDataFromDB.current);
 
       if (rawDataFromDB.current === null) {
         setIsPending(false);
@@ -115,15 +112,15 @@ const ContestsPage = () => {
             <FilterLabel onClick={handleFilterClick} />
           )}
           {isPending && <h3>Loading...</h3>}
-          {contestData &&
-            getSelectedContestsByTime(selectedMode, contestData).map(
+          {rawDataFromDB.current &&
+            getSelectedContestsByTime(selectedMode, rawDataFromDB.current).map(
               (contest) => (
                 <ContestCard key={contest.contestId} contestData={contest} />
               ),
             )}
-          {contestData &&
-            getSelectedContestsByTime(selectedMode, contestData).length ===
-              0 && <h3>Nie ma zawodów</h3>}
+          {rawDataFromDB.current &&
+            getSelectedContestsByTime(selectedMode, rawDataFromDB.current)
+              .length === 0 && <h3>Nie ma zawodów</h3>}
         </ColumnWrapper>
 
         <div className="mockmap">

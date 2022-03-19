@@ -6,11 +6,16 @@ export async function getContestsCards(taker) {
     url = `/api/contests/card/data?taker=${taker}`;
   }
 
-  const response = await fetch(url, requestOptionsGET);
-  if (response.status === 200) {
-    const result = await response.json();
-    return result;
-  } else {
-    return null;
+  try {
+    const response = await fetch(url, requestOptionsGET);
+    if (response.status === 200) {
+      const result = await response.json();
+      return result;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    alert('Ooops, coś poszło nie tak, spróbuj ponownie za chwilę');
+    //will be returned info to render error page component
   }
 }
