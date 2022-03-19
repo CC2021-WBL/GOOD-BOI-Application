@@ -1,5 +1,6 @@
-import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
+
+import FONTS from '../../Styles/fontsStyledComponents';
 
 export const NavElementStyled = styled.div`
   display: flex;
@@ -37,8 +38,8 @@ export const NavElementStyled = styled.div`
   }
 
   @media only screen and (min-width: 1024px) {
-    height: 110px;
     max-width: 1600px;
+    height: 110px;
     margin: 0 auto;
     background-color: ${({ theme }) => theme.grey200};
   }
