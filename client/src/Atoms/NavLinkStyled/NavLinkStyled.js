@@ -10,13 +10,13 @@ const handler = (props) => {
 };
 
 const NavLinkStyled = styled(NavLink)`
-  height: 100%;
-  width: 100%;
   display: flex;
+  width: 100%;
+  height: 100%;
   align-items: center;
-  ${(props) => props.stylefor === 'Sidebar' && 'padding-left: .5rem'};
   gap: 1rem;
-  transition: all 0.2s ease-in-out;
+  ${(props) => props.stylefor === 'Sidebar' && 'padding-left: .5rem'};
+  transition: color 0.2s ease-in-out;
   &:not(.active) {
     color: ${({ theme }) => theme.grey400};
   }

@@ -3,9 +3,7 @@ import propTypes from 'prop-types';
 import MenuItemStyled from './MenuItemStyled';
 import NavLinkStyled from '../../Atoms/NavLinkStyled/NavLinkStyled';
 
-const MenuItem = (props) => {
-  const { text, linkTo, icon, stylefor } = props;
-
+const MenuItem = ({ text, linkTo, icon, stylefor }) => {
   return (
     <MenuItemStyled>
       <NavLinkStyled to={linkTo} stylefor={stylefor}>

@@ -7,6 +7,7 @@ import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import GoHomeStyled from '../../Atoms/NavElementStyled/GoHomeStyled';
 import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
 import GridWrapper from '../../Templates/Layout/GridWrapper';
+import Nav from '../Nav/Nav';
 import Sidebar from './../Sidebar/Sidebar';
 import checkLocationForNavRender from '../../Tools/checkLocationForNavRender';
 import home from '../../Assets/home.png';
@@ -50,10 +51,9 @@ const NavElement = () => {
         </NavElementStyled>
         {open && <Backdrop />}
       </GridWrapper>
-      <GridWrapper
-        desktop="1 / 1 / 2 / -1"
-        tablet="1 / 1 / 2 / -1"
-      ></GridWrapper>
+      <GridWrapper desktop="1 / 1 / 2 / -1" tablet="1 / 1 / 2 / -1">
+        <Nav />
+      </GridWrapper>
       {data.label && data.label.length !== 0 && (
         <GridWrapper
           mobile="2 / 1 / 3 / 2"
