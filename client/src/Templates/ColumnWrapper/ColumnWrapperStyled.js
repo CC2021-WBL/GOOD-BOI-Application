@@ -14,6 +14,7 @@ const ColumnWrapperStyled = styled.div`
 
   &.manager-page {
     padding: 2.2rem 1rem 0 1rem;
+    margin: 0 auto;
   }
 
   .incoming-contests {
@@ -22,10 +23,10 @@ const ColumnWrapperStyled = styled.div`
     text-align: left;
   }
 
-  &.register-form-column-wrapper {
-    margin: auto;
+  &.register-form-column-wrapper, &.contest-form-column-wrapper, &.role-page-column-wrapper {
+    margin: 0 auto;
   }
-
+  
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
     max-width: ${(props) =>
