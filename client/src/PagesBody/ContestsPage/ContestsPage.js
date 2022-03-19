@@ -13,6 +13,7 @@ import { UserDataContext } from '../../Context/UserDataContext';
 import { getContestsCards } from '../../Tools/FetchData/fetchContestsfunctions';
 import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
 import mockmap from '../../Assets/mockMAP.JPG';
+import { removeNullsFromArray } from '../../Tools/FetchData/additionalToolsForResults';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import { useLocation } from 'react-router-dom';
 import useMediaQuery from '../../Hooks/useMediaQuery';
@@ -48,6 +49,9 @@ const ContestsPage = () => {
         result = await getContestsCards(ROLE_NAME.STAFF);
       } else {
         result = await getContestsCards();
+      }
+      if (Array.isArray(result)) {
+        result = removeNullsFromArray(result);
       }
       rawDataFromDB.current = result;
       setContestData(rawDataFromDB.current);

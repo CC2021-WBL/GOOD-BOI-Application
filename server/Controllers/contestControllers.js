@@ -109,18 +109,24 @@ async function getContestsForCard(req, res) {
       data = await Contest.find()
         .where(ROLE_NAME.MANAGER)
         .equals(req.user._id)
-        .select(forContestCard);
+        .select(forContestCard)
+        .sort({ startDate: 1 });
     } else if (req.query.taker === 'participant') {
       const contestsIdArray = await Result.find({
         participantId: req.user._id,
       }).select({ contestId: 1, _id: 0 });
-      data = [];
 
-      for (const contestIdKey of contestsIdArray) {
-        const contest = await Contest.findById(
-          contestIdKey.contestId.valueOf(),
-        ).select(forContestCard);
-        data.push(contest);
+      if (!contestsIdArray) {
+        res.status(404).send(ERROR_MSG[404]);
+      } else {
+        data = [];
+
+        for (const contestIdKey of contestsIdArray) {
+          const contest = await Contest.findById(
+            contestIdKey.contestId.valueOf(),
+          ).select(forContestCard);
+          data.push(contest);
+        }
       }
     } else if (req.query.taker === 'staff') {
       data = await Contest.aggregate([
@@ -146,9 +152,8 @@ async function getContestsForCard(req, res) {
         },
       ]);
     } else {
-      data = await Contest.find().select(forContestCard);
+      data = await Contest.find().select(forContestCard).sort({ startDate: 1 });
     }
-    console.log(data);
     if (!data) {
       res.status(404).send(ERROR_MSG[404]);
     } else {
