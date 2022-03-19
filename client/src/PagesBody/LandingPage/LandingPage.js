@@ -10,6 +10,7 @@ import Footer from '../../Molecules/Footer/Footer';
 import GridWrapper from '../../Templates/Layout/GridWrapper';
 import ImgWrapperStyled from './ImgWrapperStyled';
 import Logo2 from '../../Assets/Logo2.png';
+import NavElement from '../../Organisms/NavElement/NavElement';
 import useMediaQuery from '../../Hooks/useMediaQuery';
 import { UserDataContext } from '../../Context/UserDataContext';
 
@@ -39,6 +40,7 @@ const LandingPage = () => {
         </div>
       ) : null}
       <BackgroundDivStyled />
+      <NavElement />
       {useMediaQuery('(max-width:799px)') && (
         <GridWrapper
           mobile="3 / 1 / 4 / 2"
