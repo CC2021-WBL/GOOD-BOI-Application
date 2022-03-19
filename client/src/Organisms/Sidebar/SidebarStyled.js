@@ -12,7 +12,6 @@ const SidebarStyled = styled.aside`
     grid-area: 3 / 1 / 4 / 2;
   }
   @media only screen and (min-width: 1600px) {
-    display: grid;
     grid-area: 3 / 2 / 4 / 3;
   }
 `;

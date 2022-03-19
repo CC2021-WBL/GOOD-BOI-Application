@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-const bgHandler = (props) => {
+const handler = (props) => {
   if (props.stylefor === 'Sidebar')
     return `background: ${props.theme.primary101}`;
   if (props.stylefor === 'Cornermenu')
@@ -23,7 +23,7 @@ const NavLinkStyled = styled(NavLink)`
   &.active {
     font-weight: bold;
     color: ${({ theme }) => theme.primary601};
-    ${(props) => bgHandler(props)};
+    ${(props) => handler(props)};
   }
 `;
 

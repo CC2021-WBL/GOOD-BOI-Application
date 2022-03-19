@@ -16,7 +16,7 @@ const MenuItem = (props) => {
   );
 };
 MenuItem.propTypes = {
-  text: propTypes.string,
+  text: propTypes.string.isRequired,
   linkTo: propTypes.string,
   icon: propTypes.object,
   stylefor: propTypes.string,
