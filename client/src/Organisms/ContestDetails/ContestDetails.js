@@ -35,8 +35,9 @@ const ContestDetails = ({ contestId }) => {
   };
 
   return (
-    <ColumnWrapper>
+    <ColumnWrapper className="contest-data">
       {isPending && <p>Loading...</p>}
+
       {contestData && (
         <>
           <ContestDetailsMap />

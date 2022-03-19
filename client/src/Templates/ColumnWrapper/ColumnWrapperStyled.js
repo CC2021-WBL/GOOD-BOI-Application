@@ -72,6 +72,11 @@ const ColumnWrapperStyled = styled.div`
       max-width: 42.5rem;
       margin: 1.5625rem 0 0 0;
     }
+    &.contest-data {
+      display: grid;
+      height: 100%;
+      grid-template-columns: 1fr 1fr;
+    }
   }
   @media only screen and (min-width: 1600px) {
     grid-area: 3 / 3 / 4 / 4;
