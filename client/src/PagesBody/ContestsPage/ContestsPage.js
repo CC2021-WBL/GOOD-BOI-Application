@@ -7,6 +7,7 @@ import { ContestContext } from '../../Context/ContestContext';
 import ContestFilterToggler from '../../Organisms/ContestFilterHarmonica/ContestFilterToggler';
 import ContestsWrapperStyled from './ContestsWrapperStyled';
 import FilterLabel from '../../Molecules/FilterLabel/FilterLabel';
+import Spinner from '../../Atoms/Spinner/Spinner';
 import { TIME } from '../../Consts/infoLabelConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
@@ -98,7 +99,7 @@ const ContestsPage = () => {
           {useMediaQuery('(min-width:800px)') && (
             <FilterLabel onClick={handleFilterClick} />
           )}
-          {isPending && <h3>Loading...</h3>}
+          {isPending && <Spinner />}
           {contestData &&
             getSelectedContestsByTime(selectedMode, contestData).map(
               (contest) => (

@@ -1,5 +1,7 @@
-import ParticipantData from '../../Organisms/ParticipantData/ParticipantData';
 import { useContext, useEffect, useState } from 'react';
+
+import ParticipantData from '../../Organisms/ParticipantData/ParticipantData';
+import Spinner from '../../Atoms/Spinner/Spinner';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { useParams } from 'react-router-dom';
 
@@ -20,7 +22,7 @@ const ParticipantDataPage = () => {
 
   return (
     <>
-      {isPending && <p>Loading...</p>}
+      {isPending && <Spinner />}
       {participantId && <ParticipantData id={participantId} />}
     </>
   );

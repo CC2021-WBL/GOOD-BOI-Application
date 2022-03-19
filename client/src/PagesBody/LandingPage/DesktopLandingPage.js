@@ -4,6 +4,7 @@ import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ContestCard from '../../Molecules/ContestCard/ContestCard';
 import ContestsWrapperStyled from '../ContestsPage/ContestsWrapperStyled';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
+import Spinner from '../../Atoms/Spinner/Spinner';
 import { TIME } from '../../Consts/infoLabelConsts';
 import TitleWrapperStyled from '../../Molecules/LandingDesktopTitle/TitleWrapperStyled';
 import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
@@ -52,7 +53,7 @@ const DesktopLandingPage = () => {
             />
           </TitleWrapperStyled>
           <h3 className="incoming-contests">NADCHODZĄCE KONKURSY</h3>
-          {isPending && <h3>Loading...</h3>}
+          {isPending && <Spinner />}
           {contestData &&
             getSelectedContestsByTime(selectedMode, contestData).map(
               (contest) => (
