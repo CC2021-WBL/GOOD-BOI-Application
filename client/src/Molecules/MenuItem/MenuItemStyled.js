@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
 const MenuItemStyled = styled.div`
-  display: flex;
   position: relative;
-  align-items: center;
-  justify-items: space-between;
-  gap: 1rem;
+  display: flex;
   height: 3rem;
+  align-items: center;
   padding: 0 0 0 0.5rem;
   color: ${({ theme }) => theme.grey400};
+  gap: 1rem;
+  justify-items: space-between;
   transition: all 0.2s ease-in-out;
   &:hover {
-    cursor: pointer;
     background-color: rgba(230, 230, 230, 0.5);
+    cursor: pointer;
   }
 `;
 export default MenuItemStyled;

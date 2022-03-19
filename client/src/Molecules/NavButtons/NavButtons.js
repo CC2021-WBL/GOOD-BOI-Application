@@ -5,9 +5,9 @@ import FakeButton from '../../Atoms/FakeButton/FakeButton';
 
 const NavButtonsStyled = styled.div`
   display: flex;
+  min-width: 21.875rem;
   flex-direction: row;
   justify-content: space-between;
-  min-width: 21.875rem;
   gap: 1rem;
 `;
 

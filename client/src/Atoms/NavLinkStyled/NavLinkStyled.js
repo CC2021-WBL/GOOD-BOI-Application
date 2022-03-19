@@ -10,19 +10,19 @@ const bgHandler = (props) => {
 };
 
 const NavLinkStyled = styled(NavLink)`
-  height: 100%;
-  width: 100%;
   display: flex;
+  width: 100%;
+  height: 100%;
   align-items: center;
-  ${(props) => props.stylefor === 'Sidebar' && 'padding-left: .5rem'};
   gap: 1rem;
+  ${(props) => props.stylefor === 'Sidebar' && 'padding-left: .5rem'};
   transition: all 0.2s ease-in-out;
   &:not(.active) {
     color: ${({ theme }) => theme.grey400};
   }
   &.active {
-    font-weight: bold;
     color: ${({ theme }) => theme.primary601};
+    font-weight: bold;
     ${(props) => bgHandler(props)};
   }
 `;

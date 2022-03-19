@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
 const NavCornerMenuWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
   position: absolute;
-  left: 0;
   top: 5rem;
+  left: 0;
+  display: flex;
   width: 100%;
+  flex-direction: column;
   background: ${({ theme }) => theme.grey00};
-  transition: all 0.2s ease-in-out;
   transform-origin: 0 0;
+  transition: all 0.2s ease-in-out;
   &.close {
     transform: scale(1, 0);
   }

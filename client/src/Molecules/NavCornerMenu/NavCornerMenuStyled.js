@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const NavCornerMenuStyled = styled.div`
-  text-align: left;
   width: 100%;
+  text-align: left;
   &.close {
     transform: scale(1, 0);
   }
