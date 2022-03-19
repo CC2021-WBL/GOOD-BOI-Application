@@ -25,11 +25,11 @@ async function registerContest(req, res) {
   try {
     const savedContest = await contest.save();
     if (!savedContest) {
-      res.status(400).json({ message: 'inappropriate data' });
+      res.status(400).send(ERROR_MSG[400]);
     }
     return savedContest;
   } catch (error) {
-    res.status(400).json({ message: error });
+    res.status(500).send(ERROR_MSG[500]);
   }
 }
 
@@ -78,12 +78,12 @@ async function getPartcicipantsForClassInContest(req, res) {
       'obedienceClasses',
     );
     if (!data) {
-      res.status(404).json({ message: 'not found participants' });
+      res.status(404).send(ERROR_MSG[404]);
     } else {
       return data;
     }
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(500).send(ERROR_MSG[500]);
   }
 }
 
@@ -92,12 +92,12 @@ async function getContests(req, res) {
   try {
     data = await Contest.find();
     if (!data) {
-      res.status(404).json({ message: 'not found contests' });
+      res.status(404).send(ERROR_MSG[404]);
     } else {
       return data;
     }
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(500).send(ERROR_MSG[500]);
   }
 }
 
