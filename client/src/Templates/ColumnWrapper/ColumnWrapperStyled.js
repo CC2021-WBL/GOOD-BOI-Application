@@ -37,6 +37,9 @@ const ColumnWrapperStyled = styled.div`
     ${FONTS.h2};
     line-height: 2.5;
   }
+  .login-form-centered {
+    text-align: center;
+  }
 
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
@@ -68,6 +71,7 @@ const ColumnWrapperStyled = styled.div`
       padding: 50px;
       margin: auto;
       background-color: ${({ theme }) => theme.white};
+      color: ${({ theme }) => theme.grey800};
     }
 
     .login-form-captions {
