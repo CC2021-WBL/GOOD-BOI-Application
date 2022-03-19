@@ -151,6 +151,34 @@ async function getContestsForCard(req, res) {
           },
         },
       ]);
+    } else if (req.query.taker === 'landing') {
+      data = await Contest.aggregate([
+        {
+          $project: {
+            contestName: 1,
+            kennelClubDepartment: 1,
+            startDate: 1,
+            endDate: 1,
+            address: 1,
+            amountOfApplications: 1,
+          },
+        },
+        {
+          $match: {
+            startDate: {
+              $gte: new Date(),
+            },
+          },
+        },
+        {
+          $sort: {
+            startDate: 1,
+          },
+        },
+        {
+          $limit: 3,
+        },
+      ]);
     } else {
       data = await Contest.find().select(forContestCard).sort({ startDate: 1 });
     }
