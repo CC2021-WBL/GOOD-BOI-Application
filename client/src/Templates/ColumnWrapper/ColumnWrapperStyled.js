@@ -1,3 +1,4 @@
+import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
 
 const ColumnWrapperStyled = styled.div`
@@ -49,32 +50,57 @@ const ColumnWrapperStyled = styled.div`
       margin: 0 auto;
       height: fit-content;
     }
-  }
-  @media only screen and (min-width: 1024px) {
-    &.user-dogs-column-wrapper {
-      align-items: center;
+    &.login-column-wrapper {
+      max-width: 470px;
+      border: 1px solid ${({ theme }) => theme.grey200};
+      border-radius: 0.9375rem;
+      padding: 50px;
+      margin: auto;
     }
+    @media only screen and (min-width: 1024px) {
+      &.user-dogs-column-wrapper {
+        align-items: center;
+      }
 
-    &.user-profile {
-      display: grid;
-      height: 100%;
-      align-items: center;
-      gap: 1.25rem;
-      grid-template-columns: repeat(8, 1fr);
-      grid-template-rows: repeat(2, 10.625rem) 1fr;
+      &.user-profile {
+        display: grid;
+        height: 100%;
+        align-items: center;
+        gap: 1.25rem;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(2, 10.625rem) 1fr;
+      }
+      &.user-data-wrapper {
+        margin: 0 auto;
+        margin-bottom: 1rem;
+      }
+      &.contests-column-wrapper {
+        display: flex;
+        max-width: 42.5rem;
+        margin: 1.5625rem 0 0 0;
+      }
+      &.login-column-wrapper {
+        max-width: 470px;
+        border: 1px solid ${({ theme }) => theme.grey200};
+        border-radius: 0.9375rem;
+        padding: 50px;
+        margin: auto;
+      }
+
+      @media only screen and (min-width: 1600px) {
+        grid-area: 3 / 3 / 4 / 4;
+      }
     }
-    &.user-data-wrapper {
-      margin: 0 auto;
-      margin-bottom: 1rem;
+    .login-form-header {
+      ${FONTS.h2};
+      text-align: left;
+      line-height: 2;
     }
-    &.contests-column-wrapper {
-      display: flex;
-      max-width: 42.5rem;
-      margin: 1.5625rem 0 0 0;
+    .login-form-caption {
+      ${FONTS.caption};
+      text-align: left;
+      line-height: 2;
     }
-  }
-  @media only screen and (min-width: 1600px) {
-    grid-area: 3 / 3 / 4 / 4;
   }
 `;
 
