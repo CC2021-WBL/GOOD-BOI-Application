@@ -1,11 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.19fa6059.css",
-<<<<<<< HEAD
-    "main.js": "/static/js/main.c71d96ee.js",
-=======
-    "main.js": "/static/js/main.e275cd67.js",
->>>>>>> development
+    "main.js": "/static/js/main.a7745333.js",
     "static/js/787.0c574e70.chunk.js": "/static/js/787.0c574e70.chunk.js",
     "static/media/profileDogFace.jpg": "/static/media/profileDogFace.8c0496d4eb9e6f1d411a.jpg",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
@@ -34,19 +30,11 @@
     "static/media/logoDevsOnTheWaves.svg": "/static/media/logoDevsOnTheWaves.cf27d25e4bacdf07f9b313a628f6a5f0.svg",
     "index.html": "/index.html",
     "main.19fa6059.css.map": "/static/css/main.19fa6059.css.map",
-<<<<<<< HEAD
-    "main.c71d96ee.js.map": "/static/js/main.c71d96ee.js.map",
-=======
-    "main.e275cd67.js.map": "/static/js/main.e275cd67.js.map",
->>>>>>> development
+    "main.a7745333.js.map": "/static/js/main.a7745333.js.map",
     "787.0c574e70.chunk.js.map": "/static/js/787.0c574e70.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.19fa6059.css",
-<<<<<<< HEAD
-    "static/js/main.c71d96ee.js"
-=======
-    "static/js/main.e275cd67.js"
->>>>>>> development
+    "static/js/main.a7745333.js"
   ]
 }
