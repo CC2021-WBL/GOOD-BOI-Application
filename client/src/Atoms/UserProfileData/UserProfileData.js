@@ -1,11 +1,11 @@
-import propTypes from 'prop-types';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
+import { UserDataContext } from '../../Context/UserDataContext';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
-import { UserDataContext } from '../../Context/UserDataContext';
+import propTypes from 'prop-types';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const UserProfileData = ({
@@ -62,7 +62,7 @@ const UserProfileData = ({
     if (isBigScreen) {
       return setToggle(true);
     }
-  }, [userObject, address]);
+  }, []);
 
   return (
     <>

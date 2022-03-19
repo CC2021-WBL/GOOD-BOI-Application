@@ -1,3 +1,4 @@
+const { ERROR_MSG } = require('../Consts/errorMessages');
 const { ROLE_NAME } = require('../Consts/roles');
 const { forContestCard } = require('../Consts/selects');
 const Contest = require('../Model/Contest');
@@ -126,69 +127,30 @@ async function getContestsForCard(req, res) {
   }
 }
 
-async function addResultToContest(req, res, resultId) {
+async function addApplicationDataToContest(req, res, resultsId, contest) {
   try {
-    const contest = await Contest.findById(req.body.contestId);
-    const obedienceClass = contest.obedienceClasses.find(
-      (obedienceClass) => obedienceClass.classNumber == req.body.obedienceClass,
-    );
-    const participant = obedienceClass.participants.find(
-      (participant) =>
-        participant.participantId.valueOf() === req.body.participantId,
-    );
-    participant.resultsId = resultId;
+    contest.obedienceClasses
+      .find(
+        (obedienceClass) =>
+          obedienceClass.classNumber == req.body.obedienceClass,
+      )
+      .participants.push({
+        dogId: req.body.dogId,
+        dogName: req.body.dogName,
+        participantId: req.body.participantId,
+        resultsId: resultsId,
+      });
+
+    contest.amountOfApplications += 1;
+
     const updatedContest = await contest.save();
     if (!updatedContest) {
-      res.status(500).send({ message: 'contest not found' });
+      res.status(500).send(ERROR_MSG[500]);
     } else {
       return updatedContest;
     }
   } catch (error) {
-    res.status(500).send({ message: 'contest not found' });
-  }
-}
-
-async function addDogToContest(req, res, resultsId) {
-  try {
-    const contest = await Contest.findById(req.body.contestId);
-    if (!contest) {
-      res.status(404).send({
-        message:
-          'Requested contest does not exist, please try again in few minutes.',
-      });
-    }
-
-    if (!contest.obedienceClasses) {
-      res.status(404).send({
-        message:
-          'Requested contest does not have needed obedience class, please try again in few minutes.',
-      });
-
-      contest.obedienceClasses
-        .find(
-          (obedienceClass) =>
-            obedienceClass.classNumber == req.body.obedienceClass,
-        )
-        .participants.push({
-          dogId: req.body.dogId,
-          dogName: req.body.dogName,
-          participantId: req.body.participantId,
-          resultsId: resultsId,
-        });
-    }
-    const updatedContest = await contest.save();
-    if (!updatedContest) {
-      res.status(500).send({
-        message:
-          'Shoot! An error occurred on the server, contest was not updated. Please do not panic.',
-      });
-    } else {
-      return updatedContest;
-    }
-  } catch (error) {
-    res
-      .status(503)
-      .send({ message: 'The requested service is not available.' });
+    res.status(503).send(ERROR_MSG[503]);
   }
 }
 
@@ -197,8 +159,7 @@ module.exports = {
   updateContest,
   finishClass,
   getContests,
-  addResultToContest,
-  addDogToContest,
+  addApplicationDataToContest,
   getContestsForCard,
   getPartcicipantsForClassInContest,
 };

@@ -6,7 +6,9 @@ const {
   getResultSummaryAndName,
 } = require('../Controllers/resultsControllers');
 const { addResultToDog } = require('../Controllers/dogsControllers');
-const { addDogToContest } = require('../Controllers/contestControllers');
+const {
+  addApplicationDataToContest,
+} = require('../Controllers/contestControllers');
 
 const {
   auth,
@@ -15,6 +17,9 @@ const {
   isStaffManagerOrAdmin,
   isUserOrAdmin,
 } = require('../Middleware/authMiddleware');
+const Contest = require('../Model/Contest');
+const { ERROR_MSG } = require('../Consts/errorMessages');
+const { checkContestAndCurrentClassExist } = require('../Tools/checkingTools');
 
 //get - leaderboard with summary results from current class in current contest
 router.get('/general/:contestId/:classId', async (req, res) => {
@@ -57,12 +62,26 @@ router.post(
   isUserOrAdmin,
   async (req, res) => {
     try {
-      const savedResult = await registerResults(req, res);
-      await addDogToContest(req, res, savedResult._id.valueOf());
-      await addResultToDog(req, res, savedResult._id.valueOf());
-      res.status(201).json(savedResult);
+      const contest = await Contest.findById(req.body.contestId);
+      if (checkContestAndCurrentClassExist(req, contest) === false) {
+        res.status(404).send(ERROR_MSG[404]);
+      } else if (
+        contest.amountOfApplications >= contest.maxAmountOfApplications
+      ) {
+        res.status(409).send('no vacancies, the start list is full');
+      } else {
+        const savedResult = await registerResults(req, res);
+        await addApplicationDataToContest(
+          req,
+          res,
+          savedResult._id.valueOf(),
+          contest,
+        );
+        await addResultToDog(req, res, savedResult._id.valueOf());
+        res.status(201).json(savedResult);
+      }
     } catch (error) {
-      res.status(400).send(error.message);
+      res.status(400).send(ERROR_MSG[400]);
     }
   },
 );
