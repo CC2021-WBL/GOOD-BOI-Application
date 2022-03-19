@@ -4,9 +4,12 @@ import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ContestCard from '../../Molecules/ContestCard/ContestCard';
 import ContestsWrapperStyled from '../ContestsPage/ContestsWrapperStyled';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
-import TitleWrapperStyled from '../../Molecules/LandingDesktopTitle/TitleWrapperStyled';
 import { fetchContestsForLandingPage } from '../../Tools/FetchData/fetchContestsfunctions';
 import mockmap from '../../Assets/mockMAP.JPG';
+
+// import TitleWrapperStyled from '../../Molecules/LandingDesktopTitle/TitleWrapperStyled';
+
+
 
 const DesktopLandingPage = () => {
   const [isPending, setIsPending] = useState(true);
@@ -30,7 +33,7 @@ const DesktopLandingPage = () => {
           paddingTop={0.5}
           className="contests-column-wrapper"
         >
-          <TitleWrapperStyled>
+          {/* <TitleWrapperStyled>
             <h1>GOOD BOI</h1>
             <h3>
               portal zrzeszający fanów <br /> dobrych pieskow
@@ -41,7 +44,7 @@ const DesktopLandingPage = () => {
               text="Zaloguj się"
               className="landing-desktop-login"
             />
-          </TitleWrapperStyled>
+          </TitleWrapperStyled> */}
           <h3 className="incoming-contests">NADCHODZĄCE KONKURSY</h3>
           {isPending && <h3>Loading...</h3>}
           {contestData &&

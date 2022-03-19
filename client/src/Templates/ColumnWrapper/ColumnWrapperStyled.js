@@ -17,7 +17,7 @@ const ColumnWrapperStyled = styled.div`
   }
 
   .incoming-contests {
-    margin: 3.75rem 0 0 0;
+    /* margin: 3.75rem 0 0 0; */
     color: ${({ theme }) => theme.grey800};
     text-align: left;
   }

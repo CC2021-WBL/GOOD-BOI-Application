@@ -22,7 +22,7 @@ const ContestsWrapperStyled = styled.div`
       display: block;
       width: 29.75rem;
       height: 28rem;
-      margin: 1.5625rem 1.25rem 0 0;
+      margin: 4rem 1.25rem 0 0;
 
       img {
         width: 100%;
