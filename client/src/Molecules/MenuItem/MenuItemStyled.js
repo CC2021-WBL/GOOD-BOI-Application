@@ -7,7 +7,7 @@ const MenuItemStyled = styled.div`
   justify-items: space-between;
   gap: 1rem;
   height: 3rem;
-  padding: 0 0 0 0rem;
+  padding: 0;
   color: ${({ theme }) => theme.grey400};
   &:hover {
     background: ${({ theme }) => theme.grey00};

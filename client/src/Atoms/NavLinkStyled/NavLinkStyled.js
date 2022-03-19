@@ -12,11 +12,11 @@ const bgHandler = (props) => {
 const NavLinkStyled = styled(NavLink)`
   height: 100%;
   width: 100%;
-  justify-content: center;
   display: flex;
   align-items: center;
-  /* padding: 0 0 0 0.5rem; */
+  ${(props) => props.stylefor === 'Sidebar' && 'padding-left: .5rem'};
   gap: 1rem;
+  transition: all 0.2s ease-in-out;
   &:not(.active) {
     color: ${({ theme }) => theme.grey400};
   }
