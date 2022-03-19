@@ -7,9 +7,8 @@ import { ContestContext } from '../../Context/ContestContext';
 import ContestFilterToggler from '../../Organisms/ContestFilterHarmonica/ContestFilterToggler';
 import ContestsWrapperStyled from './ContestsWrapperStyled';
 import FilterLabel from '../../Molecules/FilterLabel/FilterLabel';
-import { ROLE_NAME } from '../../Consts/rolesConsts';
-import { TIME } from '../../Consts/infoLabelConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
+import { chooseAndSetSelectedMode } from '../../Tools/contestPageFunctions';
 import { getContestsCards } from '../../Tools/FetchData/fetchContestsfunctions';
 import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
 import mockmap from '../../Assets/mockMAP.JPG';
@@ -34,49 +33,15 @@ const ContestsPage = () => {
 
   useEffect(() => {
     async function fetchContestsData() {
-      let result = null;
-      if (
-        state.selectedRole === ROLE_NAME.PARTICIPANT &&
-        locationPath.state &&
-        locationPath.state.contestContent !== 'future'
-      ) {
-        result = await getContestsCards(ROLE_NAME.PARTICIPANT);
-      } else if (state.selectedRole === ROLE_NAME.MANAGER) {
-        result = await getContestsCards(ROLE_NAME.MANAGER);
-      } else if (state.selectedRole === ROLE_NAME.STAFF) {
-        result = await getContestsCards(ROLE_NAME.STAFF);
-      } else {
-        result = await getContestsCards();
-      }
+      let result = await getContestsCards(state, locationPath);
+
       if (Array.isArray(result)) {
         result = removeNullsFromArray(result);
       }
       rawDataFromDB.current = result;
 
-      if (rawDataFromDB.current === null) {
-        setIsPending(false);
-      } else if (
-        locationPath.state &&
-        locationPath.state.contestContent === 'custom'
-      ) {
-        setSelectedMode(TIME.UNKNOWN);
-        setIsPending(false);
-      } else if (
-        locationPath.state &&
-        locationPath.state.contestContent === 'results'
-      ) {
-        setSelectedMode(TIME.PRESENT_AND_PAST);
-        setIsPending(false);
-      } else if (
-        locationPath.state &&
-        locationPath.state.contestContent === 'future'
-      ) {
-        setSelectedMode(TIME.FUTURE);
-        setIsPending(false);
-      } else {
-        setSelectedMode(TIME.UNKNOWN);
-        setIsPending(false);
-      }
+      chooseAndSetSelectedMode(locationPath, setSelectedMode);
+      setIsPending(false);
     }
 
     fetchContestsData();
