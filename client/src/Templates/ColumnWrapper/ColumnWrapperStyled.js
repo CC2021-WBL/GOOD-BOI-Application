@@ -26,6 +26,12 @@ const ColumnWrapperStyled = styled.div`
   &.register-form-column-wrapper {
     margin: auto;
   }
+  .login-form-header {
+    display: none;
+  }
+  .login-form-caption {
+    display: none;
+  }
 
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
@@ -93,13 +99,17 @@ const ColumnWrapperStyled = styled.div`
     }
     .login-form-header {
       ${FONTS.h2};
+      ${({ theme }) => theme.grey800}
       text-align: left;
       line-height: 2;
+      display: block;
     }
     .login-form-caption {
       ${FONTS.caption};
+      ${({ theme }) => theme.grey800}
       text-align: left;
       line-height: 2;
+      display: block;
     }
   }
 `;
