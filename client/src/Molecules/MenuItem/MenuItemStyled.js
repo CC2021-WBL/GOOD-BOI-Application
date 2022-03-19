@@ -7,12 +7,12 @@ const MenuItemStyled = styled.div`
   justify-items: space-between;
   gap: 1rem;
   height: 3rem;
-  padding: 0;
+  padding: 0 0 0 0.5rem;
   color: ${({ theme }) => theme.grey400};
+  transition: all 0.2s ease-in-out;
   &:hover {
-    background: ${({ theme }) => theme.grey00};
     cursor: pointer;
-    filter: brightness(0.95);
+    background-color: rgba(230, 230, 230, 0.5);
   }
 `;
 export default MenuItemStyled;

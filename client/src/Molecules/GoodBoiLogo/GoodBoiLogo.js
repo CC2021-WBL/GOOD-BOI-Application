@@ -6,7 +6,7 @@ import { ReactComponent as AppLogoSVG } from '../../Assets/AppLogoSVG.svg';
 const GoodBoiLogo = () => {
   return (
     <GoodBoiLogoStyled>
-      <NavLink to="/login">
+      <NavLink to="/">
         <AppLogoSVG />
       </NavLink>
       <div style={{ userSelect: 'none', whiteSpace: 'nowrap' }}>

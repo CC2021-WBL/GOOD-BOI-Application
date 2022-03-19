@@ -55,7 +55,7 @@ const Nav = () => {
       <>
         <NavBackground>
           <NavInnerStyled>
-            <NavLinkStyled to="/" style={{ flex: '1', paddingRight: '.5rem' }}>
+            <NavLinkStyled to="/" style={{ flex: '1', paddingRight: '1rem' }}>
               <AppLogoSVG />
             </NavLinkStyled>
             <NavLinkStyled to="/" stylefor="Navbar">
