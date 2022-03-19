@@ -2,8 +2,10 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { FaChevronDown } from 'react-icons/fa';
 import { FaChevronUp } from 'react-icons/fa';
+import { useContext } from 'react';
 
 import ProfilePicture from '../../Atoms/ProfilePicture/ProfilePicture';
+import { UserDataContext } from './../../Context/UserDataContext';
 
 const NavButtonStyled = styled.div`
   display: flex;
@@ -19,11 +21,14 @@ const NavButtonStyled = styled.div`
 `;
 
 const NavButton = ({ menuOpen }) => {
+  const { state } = useContext(UserDataContext);
+  const { userName } = state;
+  console.log('userName ', userName);
   return (
     <NavButtonStyled>
       <ProfilePicture />
       <div style={{ userSelect: 'none', whiteSpace: 'nowrap' }}>
-        Witaj, Matylda
+        Witaj, {userName}
       </div>
       {!menuOpen && <FaChevronDown />}
       {menuOpen && <FaChevronUp />}
