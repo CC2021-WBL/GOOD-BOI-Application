@@ -9,6 +9,7 @@ const MenuItemStyled = styled.div`
   height: 3rem;
   padding: 0 0 0 0rem;
   color: ${({ theme }) => theme.grey400};
+  transition: all 0.2s ease-in-out;
   &:hover {
     cursor: pointer;
     background-color: rgba(230, 230, 230, 0.5);
