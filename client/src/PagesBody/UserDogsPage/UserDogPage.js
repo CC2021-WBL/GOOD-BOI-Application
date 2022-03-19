@@ -6,6 +6,7 @@ import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import { DogContext } from '../../Context/DogContext';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import { ROLE_NAME } from '../../Consts/rolesConsts';
+import Spinner from '../../Atoms/Spinner/Spinner';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
@@ -61,7 +62,7 @@ const UserDogPage = () => {
       paddingTop={0.5}
       className="user-dogs-column-wrapper"
     >
-      {isPending && <p>Loading...</p>}
+      {isPending && <Spinner />}
       {participantDogs &&
         participantDogs.map((dog, index) => {
           const { dogName, dogId } = dog;

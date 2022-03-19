@@ -7,6 +7,7 @@ import { DogContext } from '../../Context/DogContext';
 import PropTypes from 'prop-types';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
+import Spinner from '../../Atoms/Spinner/Spinner';
 import { UserDataContext } from '../../Context/UserDataContext';
 import renderDogData from '../../Tools/renderDogData';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
@@ -75,7 +76,7 @@ const DogData = ({ id }) => {
         />
       </SpecialButtonsContainerStyled>
       <ColumnWrapper paddingLeftRight={1}>
-        {isPending && <p>Loading...</p>}
+        {isPending && <Spinner />}
         {dogData &&
           Object.entries(renderDogData(dogData)).map((dataLine, index) => (
             <DataLine key={index} text={dataLine} />

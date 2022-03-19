@@ -1,7 +1,9 @@
-import { useParams } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
+
 import { ContestContext } from '../../Context/ContestContext';
 import ContestDetails from '../../Organisms/ContestDetails/ContestDetails';
+import Spinner from '../../Atoms/Spinner/Spinner';
+import { useParams } from 'react-router-dom';
 
 const ContestDetailsPage = () => {
   const { contestId: contestIdParams } = useParams();
@@ -20,7 +22,7 @@ const ContestDetailsPage = () => {
 
   return (
     <>
-      {isPending && <p>Loading...</p>}
+      {isPending && <Spinner />}
       {contestId && <ContestDetails contestId={contestId} />}
     </>
   );
