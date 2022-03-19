@@ -32,12 +32,10 @@ const LoginForm = () => {
         paddingLeftRight={1}
         maxWidthBigScreen={0}
       >
-        <>
+        <div className="login-form-captions">
           <p className="login-form-header">Witaj Ponownie!</p>
-          <p className="login-form-caption">
-            Zaloguj się poniżej, aby uzyskać dostęp do konta.{' '}
-          </p>
-        </>
+          <p>Zaloguj się poniżej, aby uzyskać dostęp do konta. </p>
+        </div>
         <FormWrapper onSubmit={submitHandler}>
           <InputField
             labelText="Email"

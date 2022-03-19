@@ -26,11 +26,16 @@ const ColumnWrapperStyled = styled.div`
   &.register-form-column-wrapper {
     margin: auto;
   }
-  .login-form-header {
+  .login-form-captions {
     display: none;
+    color: ${({ theme }) => theme.grey800};
+    ${FONTS.caption};
+    text-align: left;
+    margin: 0.5rem;
   }
-  .login-form-caption {
-    display: none;
+  .login-form-header {
+    ${FONTS.h2};
+    line-height: 2.5;
   }
 
   @media only screen and (min-width: 800px) {
@@ -62,6 +67,11 @@ const ColumnWrapperStyled = styled.div`
       border-radius: 0.9375rem;
       padding: 50px;
       margin: auto;
+      background-color: ${({ theme }) => theme.white};
+    }
+
+    .login-form-captions {
+      display: block;
     }
     @media only screen and (min-width: 1024px) {
       &.user-dogs-column-wrapper {
@@ -92,24 +102,14 @@ const ColumnWrapperStyled = styled.div`
         padding: 30px;
         margin: 10 auto;
       }
+      .login-form-captions {
+        display: block;
+        background-color: ${({ theme }) => theme.white};
+      }
 
       @media only screen and (min-width: 1600px) {
         grid-area: 3 / 3 / 4 / 4;
       }
-    }
-    .login-form-header {
-      ${FONTS.h2};
-      ${({ theme }) => theme.grey800}
-      text-align: left;
-      line-height: 2;
-      display: block;
-    }
-    .login-form-caption {
-      ${FONTS.caption};
-      ${({ theme }) => theme.grey800}
-      text-align: left;
-      line-height: 2;
-      display: block;
     }
   }
 `;
