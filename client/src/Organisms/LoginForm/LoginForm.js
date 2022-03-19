@@ -7,9 +7,8 @@ import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 import MainButton from '../../Atoms/MainButton/MainButton';
-import { USER_ACTIONS } from '../../Consts/reducersActions';
 import { UserDataContext } from '../../Context/UserDataContext';
-import { generateRequestOptionsForLogin } from '../../FetchData/requestOptions';
+import { loginUser } from '../../Tools/FetchData/fetchFunctions';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -21,27 +20,7 @@ const LoginForm = () => {
     event.preventDefault();
     const data = { email, password };
 
-    try {
-      const response = await fetch(
-        '/api/users/login',
-        generateRequestOptionsForLogin(data),
-      );
-      const result = await response.json();
-
-      dispatch({
-        type: USER_ACTIONS.LOG_IN,
-        payload: {
-          userId: result.user.userId,
-          userName: result.user.userName,
-          userSurname: result.user.userSurname,
-          roles: result.user.roles,
-        },
-      });
-      navigate('/role');
-    } catch (error) {
-      console.log(error);
-      navigate('/');
-    }
+    await loginUser(data, dispatch, navigate);
   };
 
   return (

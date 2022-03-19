@@ -11,9 +11,7 @@ const FooterProfileButton = ({ withSettings }) => {
   const { userId } = state;
   const navigate = useNavigate();
   function clickHandler() {
-    {
-      withSettings ? navigate('./settings') : navigate(`./user/${userId}`);
-    }
+    withSettings ? navigate('./settings') : navigate(`./user/${userId}`);
   }
   return (
     <FooterProfileButtonStyled onClick={clickHandler}>

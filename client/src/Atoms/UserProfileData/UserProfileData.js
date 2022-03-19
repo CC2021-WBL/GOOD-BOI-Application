@@ -2,12 +2,11 @@ import propTypes from 'prop-types';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
 import { UserDataContext } from '../../Context/UserDataContext';
-import { requestOptionsGET } from '../../FetchData/requestOptions';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const UserProfileData = ({
   withEdit,
@@ -41,38 +40,50 @@ const UserProfileData = ({
     if (!isAuthenticated) {
       navigate('/login');
     } else {
-      fetch(`/api/users/${userData}?taker=profile`, requestOptionsGET)
-        .then((response) => response.json())
-        .then((result) => {
-          if (!result) {
+      async function getUserProfileData() {
+        try {
+          let response = await fetch(
+            `/api/users/${userData}?taker=profile`,
+            requestOptionsGET,
+          );
+          if (!response.ok) {
             navigate('/login');
           } else {
-            setUserObject(result);
+            response = await response.json();
+            setUserObject(response);
           }
-        })
-        .catch((error) => console.log('error', error));
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      getUserProfileData();
     }
     if (isBigScreen) {
       return setToggle(true);
     }
-  }, []);
+  }, [userObject, address]);
 
   return (
     <>
       <UserProfileDataStyled withEdit={withEdit} className={className}>
         <div className="user-data-wrapper">
           {state && userObject ? (
-            <h3>{`${participantName} ${participantSurname}`}</h3>
+            <>
+              <h3>{`${participantName} ${participantSurname}`}</h3>
+              <p>{`${street} ${numberOfHouse}`}</p>
+              <p>{`${postalCode} ${city}`}</p>
+            </>
           ) : (
-            <h3>{`${userName} ${userSurname}`}</h3>
+            <>
+              <h3>{`${userName} ${userSurname}`}</h3>
+            </>
           )}
-
-          <p>{`${street} ${numberOfHouse}`}</p>
-          <p>{`${postalCode} ${city}`}</p>
+          <></>
         </div>
         {withEdit && (
           <>
-            <div className="bg-box tablet_only"></div>
+            <div className="bg-box tablet_only" />
             <button
               className="user-data-edit-btn"
               onClick={toggleHandler}

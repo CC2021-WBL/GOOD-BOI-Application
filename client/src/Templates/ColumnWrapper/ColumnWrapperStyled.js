@@ -12,8 +12,6 @@ const ColumnWrapperStyled = styled.div`
     props.paddingBottom && `${props.paddingBottom}rem`};
   grid-area: 3 / 1 / 4 / 2;
 
-  align-items: ${(props) => props.alignItems && `${props.alignItems}`};
-
   &.manager-page {
     padding: 2.2rem 1rem 0 1rem;
   }
@@ -24,10 +22,15 @@ const ColumnWrapperStyled = styled.div`
     text-align: left;
   }
 
+  &.register-form-column-wrapper {
+    margin: auto;
+  }
+
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
     max-width: ${(props) =>
       props.maxWidthBigScreen && `${props.maxWidthBigScreen}rem`};
+    align-items: ${(props) => props.alignItems && `${props.alignItems}`};
 
     &.user-dogs-column-wrapper {
       align-items: flex-end;
