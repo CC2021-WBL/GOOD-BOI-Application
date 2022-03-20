@@ -31,8 +31,15 @@ export const NavElementStyled = styled.div`
   }
 
   @media only screen and (min-width: 800px) {
-    height: 110px;
     max-width: 1600px;
+    height: 110px;
+    margin: 0 auto;
+    background-color: ${({ theme }) => theme.grey200};
+  }
+
+  @media only screen and (min-width: 1024px) {
+    max-width: 1600px;
+    height: 110px;
     margin: 0 auto;
     background-color: ${({ theme }) => theme.grey200};
   }

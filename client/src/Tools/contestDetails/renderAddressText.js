@@ -2,12 +2,17 @@ import toBeAnnounced from '../../Consts/toBeAnnounced';
 
 export const renderAddressText = (address) => {
   const { street, numberOfHouse, city } = address;
+  let streetDetails = null;
+  if (street && numberOfHouse) {
+    streetDetails = `${street} ${numberOfHouse}`;
+  } else if (street) {
+    streetDetails = street;
+  } else {
+    streetDetails = toBeAnnounced;
+  }
 
   return [
-    [
-      `${street ? `${street} ${numberOfHouse}` : `Adres: ${toBeAnnounced}`}`,
-      `${city ? `${city}` : `Miasto: ${toBeAnnounced}`}`,
-    ],
+    [`${streetDetails}`, `${city ? `${city}` : `Miasto: ${toBeAnnounced}`}`],
   ];
 };
 

@@ -1,31 +1,66 @@
 import styled from 'styled-components';
 
+import FONTS from '../../Styles/fontsStyledComponents';
+
 export const FooterStyled = styled.div`
-  display: flex;
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 4.875rem;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem;
-  border-top: 2px solid ${({ theme }) => theme.grey00};
-  margin: 0 auto;
-  background: ${({ theme }) => theme.white};
-
-  @media only screen and (min-width: 800px) {
-    border: none;
-    position: unset;
-    height: 120px;
-    max-width: 1600px;
-    margin: 0 auto;
-    background-color: ${({ theme }) => theme.grey200};
+  &.mobile {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    height: 4.875rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    border-top: 0.125rem solid ${({ theme }) => theme.grey00};
+    background: ${({ theme }) => theme.white};
+    @media only screen and (min-width: 800px) {
+      display: none;
+    }
   }
+  &.non-mobile-wrapper {
+    display: none;
+    background: ${({ theme }) => theme.grey00};
+    @media only screen and (min-width: 800px) {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &.non-mobile {
+    display: none;
+    text-align: right;
+    a {
+      flex: 1;
+    }
 
-  @media only screen and (min-width: 1600px) {
-    height: 240px;
-    max-width: 1600px;
+    @media only screen and (min-width: 800px) {
+      display: flex;
+      width: 100%;
+      min-width: 37.5rem;
+      height: 100%;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem;
+      margin: auto;
+      font-size: 0.8125rem;
+      gap: clamp(2rem, 10vw, 15rem);
+      p {
+        color: ${({ theme }) => theme.grey800};
+        white-space: nowrap;
+      }
+      h3 {
+        padding: 0 0 1rem 0;
+        color: ${({ theme }) => theme.grey400};
+      }
+    }
+    @media only screen and (min-width: 1600px) {
+      max-width: 75rem;
+      align-items: center;
+      justify-content: space-between;
+      ${FONTS.body_semibold};
+    }
   }
 `;
 
@@ -40,8 +75,9 @@ export const DevsLogo = styled.div`
 
 export const Copy = styled.div`
   align-self: center;
-  margin: 0 0 0 10px;
+  margin: 0 0 0 0.625rem;
   color: ${({ theme }) => theme.grey800};
   font-size: 0.75rem;
   text-align: left;
+  white-space: nowrap;
 `;

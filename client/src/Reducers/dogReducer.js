@@ -20,6 +20,8 @@ const dogReducer = (state, action) => {
       return {
         chosenDog: {},
       };
+    default:
+      return state;
   }
 };
 

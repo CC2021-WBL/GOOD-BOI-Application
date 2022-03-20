@@ -1,70 +1,77 @@
 import { MdMenu } from 'react-icons/md';
 import { useContext, useState } from 'react';
 
+import BackgroundDivStyled from '../../Atoms/BackgroundLanding/BackgroundDivStyled';
 import BurgerMenu from '../../Organisms/BurgerMenu/BurgerMenu';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import DesktopLandingPage from './DesktopLandingPage';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import Footer from '../../Molecules/Footer/Footer';
 import GridWrapper from '../../Templates/Layout/GridWrapper';
 import ImgWrapperStyled from './ImgWrapperStyled';
 import Logo2 from '../../Assets/Logo2.png';
+import NavElement from '../../Organisms/NavElement/NavElement';
+import useMediaQuery from '../../Hooks/useMediaQuery';
 import { UserDataContext } from '../../Context/UserDataContext';
 
 const LandingPage = () => {
+  const mobileOnly = useMediaQuery('(max-width:799px)');
   const { state } = useContext(UserDataContext);
-  const { isAuthenticated } = state;
+  const { isAuthenticated, userId } = state;
   const [open, setOpen] = useState(false);
+
   return (
     <>
-      {isAuthenticated ? (
+      {isAuthenticated && mobileOnly ? (
         <div className="burger-wrapper">
           <MdMenu
             className="burger-icon"
             onClick={() => setOpen(true)}
             style={{
-              fontSize: '24px',
-              color: 'grey',
+              fontSize: '1.25rem',
+              color: 'lightgrey',
               display: 'flex',
-              marginTop: '10px',
+              margin: '1.125rem',
               cursor: 'pointer',
+              position: 'absolute',
+              top: 0,
             }}
           />
         </div>
       ) : null}
-      <GridWrapper
-        mobile="3 / 1 / 4 / 2"
-        tablet="2 / 2 / 4 / 3"
-        desktop="3 / 3"
-      >
-        <ColumnWrapper paddingLeftRight={1} paddingBottom={1}>
-          <ImgWrapperStyled>
-            <img src={Logo2} alt="App logo" />
-          </ImgWrapperStyled>
-          {isAuthenticated ? (
-            <FakeButton
-              to="/in-progress"
-              colors="ternary"
-              text="portal good boi"
-            />
-          ) : (
-            <>
-              <FakeButton to="/login" colors="primary" text="Zaloguj się" />
+      <BackgroundDivStyled />
+      <NavElement />
+      {useMediaQuery('(max-width:799px)') && (
+        <GridWrapper
+          mobile="3 / 1 / 4 / 2"
+          tablet="2 / 2 / 4 / 3"
+          desktop="3 / 3"
+        >
+          <ColumnWrapper paddingLeftRight={1} paddingBottom={1}>
+            <ImgWrapperStyled>
+              <img src={Logo2} alt="App logo" />
+            </ImgWrapperStyled>
+            {isAuthenticated ? (
               <FakeButton
-                to="/register"
-                colors="secondary"
-                text="Zarejestruj"
-              />
-              <FakeButton
-                to="/in-progress"
+                to={`/user/${userId}`}
                 colors="ternary"
-                text="portal good boi"
+                text="Twój profil"
               />
-            </>
-          )}
-
-          <BurgerMenu open={open} setOpen={setOpen} />
-        </ColumnWrapper>
-      </GridWrapper>
+            ) : (
+              <>
+                <FakeButton to="/login" colors="primary" text="Zaloguj się" />
+                <FakeButton
+                  to="/register"
+                  colors="secondary"
+                  text="Zarejestruj"
+                />
+              </>
+            )}
+          </ColumnWrapper>
+        </GridWrapper>
+      )}
+      {useMediaQuery('(min-width:800px)') && <DesktopLandingPage />}
+      <BurgerMenu open={open} setOpen={setOpen} />
       <Footer />
     </>
   );

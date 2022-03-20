@@ -1,16 +1,17 @@
-import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import doggos from '../../Data/MongoDBMock/doggos';
-import renderDogData from '../../Tools/renderDogData';
+import { ContestContext } from '../../Context/ContestContext';
 import DataLine from '../../Atoms/DataLine/DataLine';
+import { DogContext } from '../../Context/DogContext';
+import PropTypes from 'prop-types';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
-import { useContext, useEffect, useState } from 'react';
+import Spinner from '../../Atoms/Spinner/Spinner';
 import { UserDataContext } from '../../Context/UserDataContext';
-import { DogContext } from '../../Context/DogContext';
-import { ContestContext } from '../../Context/ContestContext';
+import renderDogData from '../../Tools/renderDogData';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
+import { useNavigate } from 'react-router-dom';
 
 const DogData = ({ id }) => {
   let navigate = useNavigate();
@@ -21,8 +22,22 @@ const DogData = ({ id }) => {
   const { contestState } = useContext(ContestContext);
 
   useEffect(() => {
-    setDogData(doggos.find((dog) => dog.dogId === id));
-    setIsPending(false);
+    async function fetchDogData() {
+      try {
+        let response = await fetch(`/api/dogs/${id}`, requestOptionsGET);
+        if (response.ok) {
+          response = await response.json();
+          setDogData(response);
+          setIsPending(false);
+        } else {
+          alert('Ooops, problem z serwerem, nie udało się załadować danych');
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchDogData();
   }, []);
 
   const handleEdit = (event) => {
@@ -61,7 +76,7 @@ const DogData = ({ id }) => {
         />
       </SpecialButtonsContainerStyled>
       <ColumnWrapper paddingLeftRight={1}>
-        {isPending && <p>Loading...</p>}
+        {isPending && <Spinner />}
         {dogData &&
           Object.entries(renderDogData(dogData)).map((dataLine, index) => (
             <DataLine key={index} text={dataLine} />

@@ -1,29 +1,51 @@
-import { useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
-import UserField from '../../Atoms/UserField/UserField';
-import participants from '../../Data/MongoDBMock/participants';
 import { UserDataContext } from '../../Context/UserDataContext';
+import UserField from '../../Atoms/UserField/UserField';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
+import useMediaQuery from '../../Hooks/useMediaQuery';
+import { useParams } from 'react-router-dom';
 
 const UserData = () => {
+  const [userObject, setUserObject] = useState(null);
   const { state } = useContext(UserDataContext);
   const { userId } = state;
   const paramsUserData = useParams();
+  const isBigScreen = useMediaQuery('(min-width:800px)');
 
   let userData = userId;
   if (!userData) {
     userData = paramsUserData.userId;
   }
-  const userObject = participants.find(
-    (participant) => participant.participantId === userData,
-  );
+
+  useEffect(() => {
+    fetch(`/api/users/${userData}`, requestOptionsGET)
+      .then((response) => response.json())
+      .then((result) => {
+        setUserObject(result);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  if (!userObject) {
+    return <p></p>;
+  }
 
   return (
     <>
-      <ColumnWrapper paddingLeftRight={1}>
-        <ProfileCard withEdit initialState={userObject} />
+      <ColumnWrapper
+        paddingLeftRight={1}
+        maxWidthBigScreen={35}
+        className="user-data-wrapper"
+      >
+        <ProfileCard
+          withEdit
+          initialState={userObject}
+          className="user-data-profile-card"
+          isBigScreen={isBigScreen}
+        />
         <UserField
           text="zmień email"
           email
@@ -33,7 +55,7 @@ const UserData = () => {
         <UserField
           text="zmień hasło"
           password
-          userPassword={userObject.password}
+          userPassword="***********"
           initialState={userObject}
         />
         <UserField

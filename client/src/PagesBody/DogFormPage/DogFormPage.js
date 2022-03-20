@@ -1,49 +1,69 @@
+import {
+  genRequestOptionsPATCH,
+  genRequestOptionsPOST,
+  requestOptionsGET,
+} from '../../Tools/FetchData/requestOptions';
+import {
+  patchDogForm,
+  postDogForm,
+  postOrPatchDogForm,
+} from '../../Tools/FetchData/fetchFormsFunctions';
 import { useContext, useEffect, useState } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import { DogContext } from '../../Context/DogContext';
 import DogForm from '../../Organisms/DoggoForm/DogForm';
+import { UserDataContext } from '../../Context/UserDataContext';
 import { dogFormInitialState } from '../../Consts/formsInitialStates';
-import doggos from '../../Data/MongoDBMock/doggos';
+import { getDataFormatYyyyMmDD } from '../../Tools/TimeFunctions';
 import { useNavigate } from 'react-router-dom';
 
 const DogFormPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { dogState, dogDispatch } = useContext(DogContext);
+  const { state } = useContext(UserDataContext);
   const { dogs, chosenDog } = dogState;
   const [initialStateOfDogForm, setInitialStateOfDogForm] = useState(null);
   const navigate = useNavigate();
 
-  const changeInitialData = () => {
-    let modifiedInitialState = {};
-    try {
-      if (chosenDog !== undefined && chosenDog !== null) {
-        const dogFromDB = doggos.find((dog) => dog.dogId === chosenDog.dogId);
-        Object.keys(dogFormInitialState).forEach((key) => {
-          modifiedInitialState[key] = dogFromDB[key];
-        });
-        console.log(modifiedInitialState);
-
-        setInitialStateOfDogForm(modifiedInitialState);
-      }
-    } catch (error) {
-      setInitialStateOfDogForm(dogFormInitialState);
-    }
-  };
-
   useEffect(() => {
+    const changeInitialData = async () => {
+      let modifiedInitialState = {};
+      try {
+        if ('dogId' in chosenDog) {
+          const response = await fetch(
+            `/api/dogs/${chosenDog.dogId}`,
+            requestOptionsGET,
+          );
+          const result = await response.json();
+
+          Object.keys(dogFormInitialState).forEach((key) => {
+            if (key === 'dateOfBirth') {
+              modifiedInitialState[key] = getDataFormatYyyyMmDD(result[key]);
+            } else {
+              modifiedInitialState[key] = result[key];
+            }
+          });
+          setInitialStateOfDogForm(modifiedInitialState);
+        } else {
+          setInitialStateOfDogForm(dogFormInitialState);
+        }
+      } catch (error) {
+        setInitialStateOfDogForm(dogFormInitialState);
+      }
+    };
+
     changeInitialData();
   }, []);
 
-  function submitForm(dogData) {
-    setIsSubmitted(true);
-    if (!dogs.find((dog) => dog.dogId === dogData.dogId)) {
-      dogDispatch({
-        type: 'UPDATE_ONE_FIELD',
-        fieldName: 'dogs',
-        payload: dogs.push({ dogId: dogData.dogId, dogName: dogData.dogName }),
-      });
+  async function submitForm(dogData) {
+    if (!initialStateOfDogForm._id) {
+      postDogForm(state, dogData, dogs, dogDispatch);
+    } else {
+      patchDogForm(initialStateOfDogForm, dogData, dogs, dogDispatch);
     }
+
+    setIsSubmitted(true);
 
     navigate(-1);
   }

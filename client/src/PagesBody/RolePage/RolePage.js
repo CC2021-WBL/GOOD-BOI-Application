@@ -1,19 +1,20 @@
+import { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import ForbiddenEntryPage from '../ForbiddenEntryPage/ForbiddenEntryPage';
+import MainButton from '../../Atoms/MainButton/MainButton';
 import {
   CONTEST_ACTIONS,
   DOG_ACTIONS,
   USER_ACTIONS,
 } from '../../Consts/reducersActions';
-import { ROLES, ROLE_NAME } from '../../Consts/rolesConsts';
-import { useContext, useEffect } from 'react';
-
-import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import { ContestContext } from '../../Context/ContestContext';
 import { DogContext } from '../../Context/DogContext';
-import ForbiddenEntryPage from '../ForbiddenEntryPage/ForbiddenEntryPage';
-import MainButton from '../../Atoms/MainButton/MainButton';
+import { ROLES, ROLE_NAME } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { createURLForRolePage } from '../../Tools/UrlCreators';
-import { useNavigate } from 'react-router-dom';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const RolePage = () => {
   const { state, dispatch } = useContext(UserDataContext);
@@ -49,8 +50,20 @@ const RolePage = () => {
     });
   };
 
+  const handleLogoutClick = (event) => {
+    event.preventDefault();
+
+    fetch('/api/users/logout', requestOptionsGET)
+      .then((response) => response.text())
+      .then((result) => {
+        dispatch({ type: 'LOG_OUT', index: 1 });
+        navigate('/');
+      })
+      .catch((error) => alert(error));
+  };
+
   return (
-    <ColumnWrapper paddingLeftRight={1} paddingTop={1.5}>
+    <ColumnWrapper paddingLeftRight={1} paddingTop={1.5} className="role-page-column-wrapper" maxWidthBigScreen={45}>
       {roles.map((role, index) =>
         role === 'staff' ? (
           <MainButton
@@ -75,9 +88,8 @@ const RolePage = () => {
       <MainButton
         text="Wyloguj się"
         secondary
-        onClick={() => {
-          dispatch({ type: 'LOG_OUT', index: 1 });
-          navigate('/');
+        onClick={(event) => {
+          handleLogoutClick(event);
         }}
       />
     </ColumnWrapper>

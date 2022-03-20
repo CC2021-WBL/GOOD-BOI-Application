@@ -23,3 +23,7 @@ yarn-error.log*
 
 #webstorm folder
 .idea/
+
+#private key
+id_rsa_priv.pem
+

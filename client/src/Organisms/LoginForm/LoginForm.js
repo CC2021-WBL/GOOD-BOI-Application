@@ -1,25 +1,26 @@
 import 'font-awesome/css/font-awesome.min.css';
 
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
-import { Link } from 'react-router-dom';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import { UserDataContext } from '../../Context/UserDataContext';
+import { loginUser } from '../../Tools/FetchData/fetchFunctions';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { dispatch } = useContext(UserDataContext);
+  const navigate = useNavigate();
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
-
     const data = { email, password };
-    //test, after submit, entered user data
-    console.log(data);
+
+    await loginUser(data, dispatch, navigate);
   };
 
   return (
@@ -49,15 +50,7 @@ const LoginForm = () => {
         <Link to="/forgot" className="forgot-pass">
           Zapomniałeś/aś hasła ?
         </Link>
-        <Link to="/role" style={{ textDecoration: 'none' }}>
-          <MainButton
-            onClick={() => {
-              dispatch({ type: 'LOG_IN' });
-            }}
-            primary
-            text="Zaloguj się"
-          />
-        </Link>
+        <MainButton primary text="Zaloguj się" />
       </FormWrapper>
     </ColumnWrapper>
   );

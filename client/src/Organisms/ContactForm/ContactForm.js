@@ -1,12 +1,13 @@
+import emailjs from '@emailjs/browser';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+
 import CheckboxAgreeField from '../../Atoms/CheckboxAgreeField/CheckboxAgreeField';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import TextArea from '../../Atoms/TextArea/TextArea';
-import emailjs from '@emailjs/browser';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 
 const emailRgx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
@@ -76,7 +77,11 @@ const ContactForm = () => {
   };
 
   return (
-    <ColumnWrapper paddingLeftRight={1}>
+    <ColumnWrapper
+      paddingLeftRight={1}
+      maxWidthBigScreen={35}
+      className="user-data-wrapper"
+    >
       <FormWrapper onSubmit={submitHandler} id="form">
         <InputField
           labelText="* Email"
