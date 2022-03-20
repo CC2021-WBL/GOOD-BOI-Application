@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const SidebarStyled = styled.aside`
   display: none;
-  border: 0.0313rem solid ${({ theme }) => theme.grey100};
   border-top: none;
   border-bottom: none;
   text-align: left;
