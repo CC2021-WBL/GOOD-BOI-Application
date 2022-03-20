@@ -5,6 +5,7 @@ const Contest = require('../Model/Contest');
 const Result = require('../Model/Result');
 const { isManager } = require('../Tools/autorizationAdditionalTools');
 const { createClassesObjectArray } = require('../Tools/ModelTools');
+const mongoose = require('mongoose');
 
 async function registerContest(req, res) {
   const contest = new Contest({
@@ -74,15 +75,21 @@ async function finishClass(req, res) {
 //TODO: add selection to get participants just for current contest
 async function getPartcicipantsForClassInContest(req, res) {
   try {
-    const data = await Contest.findById(req.params.contestId).select(
-      'obedienceClasses',
-    );
+    console.log(req.params.contestId);
+    const data = await Contest.aggregate([
+      { $match: { _id: new mongoose.Types.ObjectId(req.params.contestId) } },
+      { $project: { _id: 0, obedienceClasses: 1 } },
+      { $elemMatch: { classNumber: req.params.classId } },
+    ]);
+    console.log(data);
+
     if (!data) {
       res.status(404).send(ERROR_MSG[404]);
     } else {
       return data;
     }
   } catch (error) {
+    console.log(error);
     res.status(500).send(ERROR_MSG[500]);
   }
 }
