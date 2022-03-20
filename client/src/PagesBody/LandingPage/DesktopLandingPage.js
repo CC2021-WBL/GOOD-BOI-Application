@@ -5,6 +5,7 @@ import ContestCard from '../../Molecules/ContestCard/ContestCard';
 import ContestsWrapperStyled from '../ContestsPage/ContestsWrapperStyled';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import Spinner from '../../Atoms/Spinner/Spinner';
+import TitleWrapperStyled from '../../Molecules/LandingDesktopTitle/TitleWrapperStyled';
 import { fetchContestsForLandingPage } from '../../Tools/FetchData/fetchContestsfunctions';
 import mockmap from '../../Assets/mockMAP.JPG';
 
@@ -26,24 +27,25 @@ const DesktopLandingPage = () => {
 
   return (
     <>
+      <TitleWrapperStyled>
+        <h1>GOOD BOI</h1>
+        <h3>
+          portal zrzeszający fanów <br /> dobrych pieskow
+        </h3>
+        <FakeButton
+          colors="primary"
+          to="/login"
+          text="Zaloguj się"
+          className="landing-desktop-login"
+        />
+      </TitleWrapperStyled>
+
       <ContestsWrapperStyled className="contests">
         <ColumnWrapper
           paddingLeftRight={1}
           paddingTop={0.5}
           className="contests-column-wrapper"
         >
-          {/* <TitleWrapperStyled>
-            <h1>GOOD BOI</h1>
-            <h3>
-              portal zrzeszający fanów <br /> dobrych pieskow
-            </h3>
-            <FakeButton
-              colors="primary"
-              to="/login"
-              text="Zaloguj się"
-              className="landing-desktop-login"
-            />
-          </TitleWrapperStyled> */}
           <h3 className="incoming-contests">NADCHODZĄCE KONKURSY</h3>
           {isPending && <Spinner />}
           {contestData &&
