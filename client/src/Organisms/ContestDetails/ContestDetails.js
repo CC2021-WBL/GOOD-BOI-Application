@@ -47,15 +47,13 @@ const ContestDetails = ({ contestId }) => {
     <ColumnWrapper className="contest-data">
       {isPending && <Spinner />}
       {contestData && <ContestDetailsMap />}
-      <ColumnWrapper className="contest-data-details">
-        {contestData && (
+      {contestData && (
+        <ColumnWrapper className="contest-data-details">
           <div className="contest-data">
             <ContestDetailsToggler onClick={toggleHandler} toggle={toggle} />
             {toggle && <ContestDetailsContent contestData={contestData} />}
             <ContestDetailsEmptyBarStyled />
           </div>
-        )}
-        {contestData && (
           <ColumnWrapper className="contest-data-buttons">
             <FakeButton
               colors="ternary"
@@ -70,8 +68,8 @@ const ContestDetails = ({ contestId }) => {
               className="contest-data-button-enter"
             />
           </ColumnWrapper>
-        )}
-      </ColumnWrapper>
+        </ColumnWrapper>
+      )}
     </ColumnWrapper>
   );
 };
