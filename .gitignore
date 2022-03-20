@@ -27,3 +27,4 @@ yarn-error.log*
 #private key
 id_rsa_priv.pem
 
+/cypress.env.json

@@ -26,6 +26,14 @@ const ColumnWrapperStyled = styled.div`
   &.register-form-column-wrapper, &.contest-form-column-wrapper, &.role-page-column-wrapper {
     margin: 0 auto;
   }
+
+  &.contest-data-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+  }
+
   
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
@@ -72,6 +80,21 @@ const ColumnWrapperStyled = styled.div`
       display: flex;
       max-width: 42.5rem;
       margin: 1.5625rem 0 0 0;
+    }
+    &.contest-data {
+      display: grid;
+      height: 100%;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+    }
+    &.contest-data-details {
+      grid-area: 1/1/2/2;
+    }
+    &.contest-data-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 1rem;
     }
   }
   @media only screen and (min-width: 1600px) {
