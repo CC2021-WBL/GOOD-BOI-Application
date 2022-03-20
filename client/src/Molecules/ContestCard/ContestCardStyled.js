@@ -1,7 +1,8 @@
+import styled from 'styled-components';
+
 import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
 import { COLORSMOTIVE as c } from '../../Consts/infoLabelConsts';
-import styled from 'styled-components';
 
 const ContestCardStyled = styled.div`
   display: flex;
@@ -15,7 +16,8 @@ const ContestCardStyled = styled.div`
       props.colorMotive === c.GREEN
         ? props.theme.positive400
         : props.theme.grey200};
-  border-width: ${(props) => (props.colorMotive === c.GREEN ? '3px' : '1px')};
+  border-width: ${(props) =>
+    props.colorMotive === c.GREEN ? '0.1875rem' : '0.0625rem'};
   margin: 0.5rem auto 0.5rem;
   background-color: ${(props) =>
     props.colorMotive === c.GREEN
@@ -23,17 +25,19 @@ const ContestCardStyled = styled.div`
       : props.theme.white};
   border-radius: 0.75rem;
 
-  .contest-action, .doggo-image {
+  .contest-action,
+  .doggo-image {
     display: none;
   }
-  
 
   @media (min-width: 800px) {
     display: flex;
+    max-height: 11.25rem;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding: 0;
+    cursor: pointer;
     text-align: left;
 
     .contest-card-wrapper {
@@ -50,7 +54,7 @@ const ContestCardStyled = styled.div`
 
     .doggo-image {
       display: block;
-      width: 25%;
+      width: auto;
       height: 100%;
 
       img {
@@ -59,6 +63,13 @@ const ContestCardStyled = styled.div`
         border-radius: ${(props) =>
           props.colorMotive === c.GREEN ? '0 9.5px 9.5px 0' : '0 12px 12px 0'};
       }
+    }
+    &.last-card:last-of-type {
+      border-radius: 0.75rem 0.75rem 0 0;
+    }
+    &.last-card:last-of-type img {
+      border-radius: ${(props) =>
+        props.colorMotive === c.GREEN ? '0 0.5938rem 0 0' : '0 0.75rem 0 0'};
     }
   }
 `;
@@ -70,7 +81,9 @@ const ContestInsideElementStyled = styled.div`
   padding: 10px;
   border-top: 1px solid ${COLORS.grey200};
   color: ${(props) =>
-    props.colorMotive === c.GREEN ? props.theme.positive600 : props.theme.grey400};
+    props.colorMotive === c.GREEN
+      ? props.theme.positive600
+      : props.theme.grey400};
   ${FONTS.label_extrabold};
 
   @media (min-width: 800px) {

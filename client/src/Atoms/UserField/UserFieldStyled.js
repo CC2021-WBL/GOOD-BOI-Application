@@ -1,14 +1,13 @@
-import COLORS from '../../Styles/varsStyledComponents';
 import styled from 'styled-components';
 
 const UserFieldStyled = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 20px 0;
-  border-bottom: 0.5px solid ${COLORS.grey300};
+  padding: 1.25rem 0;
+  border-bottom: 0.5px solid ${({ theme }) => theme.grey200};
 
   p {
-    color: ${COLORS.grey400};
+    color: ${({ theme }) => theme.grey400};
   }
 
   .edit-btn {
@@ -16,6 +15,12 @@ const UserFieldStyled = styled.div`
     background: ${({ theme }) => theme.white};
     color: ${({ theme }) => theme.grey800};
     cursor: pointer;
+  }
+
+  @media only screen and (min-width: 800px) {
+    :last-child {
+      border-bottom: none;
+    }
   }
 `;
 

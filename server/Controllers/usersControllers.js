@@ -71,9 +71,10 @@ async function updateUserData(req, res) {
     propsToUpdate.forEach((element) => {
       user[element] = req.body[element];
     });
+    user.updatedAt = new Date();
     const updatedUser = await user.save();
     if (!updatedUser) {
-      res.send(400).end();
+      res.status(400).end();
     } else {
       return updatedUser;
     }
@@ -90,14 +91,37 @@ async function updateDogsArray(req, res, newDog) {
       dogName: newDog.dogName,
     };
     user.dogs.push(dogObject);
+    user.updatedAt = new Date();
     const updatedUser = await user.save();
     if (!updatedUser) {
-      res.send(500).end();
+      res.status(500).end();
     } else {
       return updatedUser;
     }
   } catch (error) {
-    res.send(500).send(error.message);
+    res.status(500).send(error.message);
+  }
+}
+
+async function changeDogDataInParticipants(res, dogData) {
+  try {
+    if (dogData.participants && dogData.participants.length > 0) {
+      for (const participantId of dogData.participants) {
+        const participant = await Participant.findById(participantId);
+        participant.dogs.forEach((dog) => {
+          if (dog.dogId.valueOf() === dogData._id.valueOf()) {
+            dog.dogName = dogData.dogName;
+          }
+        });
+        participant.updatedAt = new Date();
+        const updatedParticipant = await participant.save();
+        if (!updatedParticipant) {
+          res.status(500).end();
+        }
+      }
+    }
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -106,4 +130,5 @@ module.exports = {
   getUserData,
   updateUserData,
   updateDogsArray,
+  changeDogDataInParticipants,
 };

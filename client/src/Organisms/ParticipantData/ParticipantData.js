@@ -5,8 +5,9 @@ import DataLine from '../../Atoms/DataLine/DataLine';
 import PropTypes from 'prop-types';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
-import participants from '../../Data/MongoDBMock/participants';
+import Spinner from '../../Atoms/Spinner/Spinner';
 import renderParticipantData from '../../Tools/renderParticipantData';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import { useNavigate } from 'react-router-dom';
 
 const ParticipantData = ({ id }) => {
@@ -15,10 +16,18 @@ const ParticipantData = ({ id }) => {
   const [isPending, setIsPending] = useState(true);
 
   useEffect(() => {
-    setParticipantData(
-      participants.find((participant) => participant.participantId === id),
-    );
-    setIsPending(false);
+    try {
+      async function fetchParticipantData() {
+        const response = await fetch(`/api/users/${id}`, requestOptionsGET);
+        const result = await response.json();
+        setParticipantData(result);
+        setIsPending(false);
+      }
+
+      fetchParticipantData();
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   const handleEdit = (event) => {
@@ -51,7 +60,7 @@ const ParticipantData = ({ id }) => {
         />
       </SpecialButtonsContainerStyled>
       <ColumnWrapper paddingLeftRight={1}>
-        {isPending && <p>Loading...</p>}
+        {isPending && <Spinner />}
         {participantData &&
           Object.entries(renderParticipantData(participantData)).map(
             (dataLine, index) => <DataLine key={index} text={dataLine} />,

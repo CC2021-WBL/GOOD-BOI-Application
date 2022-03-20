@@ -9,11 +9,10 @@ import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import Modal from '../Modal/Modal';
 import PropTypes from 'prop-types';
-import contests from '../../Data/MongoDBMock/contests';
+import Spinner from '../../Atoms/Spinner/Spinner';
 import modalData from '../../Consts/modalData';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import { useNavigate } from 'react-router-dom';
-
-// import { UserDataContext } from '../../Context/UserDataContext';
 
 const ContestDetails = ({ contestId }) => {
   const [isPending, setIsPending] = useState(true);
@@ -28,8 +27,19 @@ const ContestDetails = ({ contestId }) => {
   const selectedRole = 'manager';
 
   useEffect(() => {
-    setContestData(contests.find((contest) => contest.contestId === contestId));
-    setIsPending(false);
+    async function fetchContestData() {
+      const response = await fetch(
+        `/api/contests/${contestId}`,
+        requestOptionsGET,
+      );
+      if (response.ok) {
+        const result = await response.json();
+        setContestData(result);
+        setIsPending(false);
+      } else {
+      }
+    }
+    fetchContestData();
   }, []);
 
   const [toggle, setToggle] = useState(false);
@@ -68,6 +78,7 @@ const ContestDetails = ({ contestId }) => {
       {isCloseContestModalOpen && <Backdrop onClick={closeModalHandler} />}
 
       {isPending && <p>Loading...</p>}
+      {isPending && <Spinner />}
       {contestData && (
         <>
           <ContestDetailsMap />

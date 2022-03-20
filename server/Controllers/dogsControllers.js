@@ -21,29 +21,36 @@ async function registerDog(req, res) {
     }
     return savedDog;
   } catch (error) {
-    res.status(400).json({ message: error });
+    res.status(500).json({ message: error });
   }
 }
 
 async function updateSomeDogProps(req, res) {
+  let prevDogName;
   try {
     const propsToUpdate = Object.keys(req.body);
     if (propsToUpdate.length === 0) {
       res.status(204).json({ message: 'no data to update' });
     }
     const dog = await Dog.findById(req.params.dogId);
-    propsToUpdate.forEach((element) => {
-      dog[element] = req.body[element];
-    });
-    dog.updatedAt = new Date();
-    await dog.save();
-    return dog;
+    if (!dog) {
+      res.status(404).json({ message: 'no dog with current ID in DB' });
+    } else {
+      prevDogName = dog.dogName;
+      propsToUpdate.forEach((element) => {
+        dog[element] = req.body[element];
+      });
+      dog.updatedAt = new Date();
+      const updatedDog = await dog.save();
+      return { updatedDog: updatedDog, prevDogName: prevDogName };
+    }
   } catch (error) {
     res.status(400).send(error.message);
   }
 }
 
 async function updateAllDogData(req, res) {
+  let prevDogName;
   try {
     const newData = Object.keys(req.body);
     if (newData.length === 0) {
@@ -53,6 +60,7 @@ async function updateAllDogData(req, res) {
     if (!dog) {
       res.status(404).json({ message: 'no dog with current ID in DB' });
     }
+    prevDogName = dog.dogName;
     newData.forEach((element) => {
       dog[element] = req.body[element];
     });
@@ -60,7 +68,7 @@ async function updateAllDogData(req, res) {
     if (!updatedDog) {
       res.status(500).json({ message: 'saving error' });
     } else {
-      return updatedDog;
+      return { updatedDog: updatedDog, prevDogName: prevDogName };
     }
   } catch (error) {
     res.status(500).send(error.message);
@@ -103,10 +111,26 @@ async function deleteDog(req, res) {
   }
 }
 
+async function addResultToDog(req, res, resultId) {
+  try {
+    const dog = await Dog.findById(req.body.dogId);
+    dog.results.push(resultId);
+    const updatedDog = await dog.save();
+    if (!updatedDog) {
+      res.send(500).end();
+    } else {
+      return updatedDog;
+    }
+  } catch (error) {
+    res.send(500).send({ message: 'coś nie pykło' });
+  }
+}
+
 module.exports = {
   registerDog,
   updateSomeDogProps,
   updateAllDogData,
   getDogData,
   deleteDog,
+  addResultToDog,
 };

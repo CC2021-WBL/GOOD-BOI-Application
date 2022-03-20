@@ -1,5 +1,6 @@
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import CheckBoxFormInnerWrapperStyled from '../../Molecules/CheckBoxFormWrapper/CheckBoxFormInnerWrapperStyled';
 import CheckBoxFormOuterWrapperStyled from './../../Molecules/CheckBoxFormWrapper/CheckBoxFormOuterWrapperStyled';
@@ -9,6 +10,8 @@ import InputField from '../../Molecules/InputField/InputField';
 import InputLabel from '../../Atoms/InputLabel/InputLabel';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import SelectFieldStyled from '../../Atoms/SelectField/SelectFieldStyled';
+import { UserDataContext } from '../../Context/UserDataContext';
+import { genRequestOptionsPOST } from '../../Tools/FetchData/requestOptions';
 
 const ContestForm = () => {
   const {
@@ -20,8 +23,14 @@ const ContestForm = () => {
     mode: 'onBlur',
   });
   const [data, setData] = useState('');
-  console.log(data);
   const [chosenClasses, setChosenClasses] = useState([]);
+  const params = useParams();
+  const { state } = useContext(UserDataContext);
+
+  let managerId = state.userId;
+  if (!managerId) {
+    managerId = params.userId;
+  }
 
   const judgeArr = [];
   for (let i = 1; i <= watch('judges'); i++) {
@@ -38,21 +47,33 @@ const ContestForm = () => {
   };
   return (
     <>
-      <ColumnWrapper paddingLeftRight={1}>
+      <ColumnWrapper paddingLeftRight={1} maxWidthBigScreen={45} className="contest-form-column-wrapper">
         <FormWrapper
-          onSubmit={handleSubmit((data) => {
+          onSubmit={handleSubmit(async (data) => {
             data.obedienceClasses = chosenClasses;
             setData(JSON.stringify(data));
+            try {
+              const response = await fetch(
+                `/api/contests/register/${managerId}`,
+                genRequestOptionsPOST(data),
+              );
+              const result = await response.json();
+              console.log(result);
+              // to decide how handle when success
+            } catch (error) {
+              console.log(error);
+              //to decide how handle when error
+            }
           })}
         >
           <InputField
             labelText="Nazwa zawodów"
-            htmlFor="name"
-            id="name"
+            htmlFor="contestName"
+            id="contestName"
             type="text"
             placeholder="&#xf091; Nazwa zawodów"
             className={errors.name ? 'red-border' : ''}
-            {...register('name', {
+            {...register('contestName', {
               required: 'Wpisz prawidłową nazwę konkursu',
               minLength: {
                 value: 5,
@@ -63,12 +84,12 @@ const ContestForm = () => {
           {errors.name && <p>{errors.name.message}</p>}
           <InputField
             labelText="Oddział ZKwP:"
-            htmlFor="department"
-            id="department"
+            htmlFor="kennelClubDepartment"
+            id="kennelClubDepartment"
             type="text"
             placeholder="&#xf015; Oddział ZKwP"
             className={errors.department ? 'red-border' : ''}
-            {...register('department', {
+            {...register('kennelClubDepartment', {
               required: 'Wpisz oddział ZKwP',
               minLength: {
                 value: 5,
@@ -79,44 +100,44 @@ const ContestForm = () => {
           {errors.department && <p>{errors.department.message}</p>}
           <InputField
             labelText="Data rozpoczęcia zawodów"
-            htmlFor="startingDate"
-            id="startingDate"
+            htmlFor="startDate"
+            id="startDate"
             type="date"
             placeholder="&#xF007; Data rozpoczęcia zawodów"
             className={errors.startingDate ? 'red-border' : ''}
-            {...register('startingDate', {
+            {...register('startDate', {
               required: 'Wybierz datę rozpoczęcia zawodów',
             })}
           />
           {errors.startingDate && <p>{errors.startingDate.message}</p>}
           <InputField
             labelText="Data zakończenia zawodów"
-            htmlFor="endingDate"
-            id="endingDate"
+            htmlFor="endDate"
+            id="endDate"
             type="date"
             placeholder="&#xF007; Data zakończenia zawodów"
             className={errors.endingDate ? 'red-border' : ''}
-            {...register('endingDate', {
+            {...register('endDate', {
               required: 'Wybierz datę zakończenia zawodów',
             })}
           />
           {errors.endingDate && <p>{errors.endingDate.message}</p>}
           <InputField
             labelText="Data otwarcia zgłoszeń"
-            htmlFor="openingDate"
-            id="openingDate"
+            htmlFor="applicationOpenDate"
+            id="applicationOpenDate"
             type="date"
             placeholder="&#xF007; Data otwarcia zgłoszeń"
             className={errors.openingDate ? 'red-border' : ''}
-            {...register('openingDate', {
+            {...register('applicationOpenDate', {
               required: 'Wybierz datę otwarcia zgłoszeń',
             })}
           />
           {errors.openingDate && <p>{errors.openingDate.message}</p>}
           <InputField
             labelText="Data zamknięcia zgłoszeń"
-            htmlFor="closingDate"
-            id="closingDate"
+            htmlFor="applicationClosedDate"
+            id="applicationClosedDate"
             type="date"
             placeholder="&#xF007; Data zamknięcia zgłoszeń"
             className={errors.closingDate ? 'red-border' : ''}

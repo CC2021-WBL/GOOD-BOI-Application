@@ -1,4 +1,4 @@
-const ROLE_NAME = require('../Consts/roles');
+const { ROLE_NAME } = require('../Consts/roles');
 
 module.exports.isDogOwner = (user, dogId) => {
   let isOwner = false;
@@ -12,7 +12,10 @@ module.exports.isDogOwner = (user, dogId) => {
 };
 
 module.exports.checkUser = (req) => {
-  if (req.user && req.user._id.valueOf() === req.params.userId) {
+  if (
+    req.user &&
+    JSON.stringify(req.user._id.valueOf()) === JSON.stringify(req.params.userId)
+  ) {
     return true;
   } else {
     return false;

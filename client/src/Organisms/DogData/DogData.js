@@ -7,9 +7,10 @@ import { DogContext } from '../../Context/DogContext';
 import PropTypes from 'prop-types';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
+import Spinner from '../../Atoms/Spinner/Spinner';
 import { UserDataContext } from '../../Context/UserDataContext';
 import renderDogData from '../../Tools/renderDogData';
-import { requestOptionsGET } from '../../FetchData/requestOptions';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import { useNavigate } from 'react-router-dom';
 
 const DogData = ({ id }) => {
@@ -21,13 +22,22 @@ const DogData = ({ id }) => {
   const { contestState } = useContext(ContestContext);
 
   useEffect(() => {
-    fetch(`/api/dogs/${id}`, requestOptionsGET)
-      .then((response) => response.json())
-      .then((result) => {
-        setDogData(result);
-        setIsPending(false);
-      })
-      .catch((error) => console.log('error', error));
+    async function fetchDogData() {
+      try {
+        let response = await fetch(`/api/dogs/${id}`, requestOptionsGET);
+        if (response.ok) {
+          response = await response.json();
+          setDogData(response);
+          setIsPending(false);
+        } else {
+          alert('Ooops, problem z serwerem, nie udało się załadować danych');
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchDogData();
   }, []);
 
   const handleEdit = (event) => {
@@ -66,7 +76,7 @@ const DogData = ({ id }) => {
         />
       </SpecialButtonsContainerStyled>
       <ColumnWrapper paddingLeftRight={1}>
-        {isPending && <p>Loading...</p>}
+        {isPending && <Spinner />}
         {dogData &&
           Object.entries(renderDogData(dogData)).map((dataLine, index) => (
             <DataLine key={index} text={dataLine} />

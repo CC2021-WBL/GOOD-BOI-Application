@@ -7,18 +7,18 @@ import { ContestContext } from '../../Context/ContestContext';
 import ContestFilterToggler from '../../Organisms/ContestFilterHarmonica/ContestFilterToggler';
 import ContestsWrapperStyled from './ContestsWrapperStyled';
 import FilterLabel from '../../Molecules/FilterLabel/FilterLabel';
-import { TIME } from '../../Consts/infoLabelConsts';
+import Spinner from '../../Atoms/Spinner/Spinner';
 import { UserDataContext } from '../../Context/UserDataContext';
+import { chooseAndSetSelectedMode } from '../../Tools/contestPageFunctions';
+import { getContestsCards } from '../../Tools/FetchData/fetchContestsfunctions';
 import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
 import mockmap from '../../Assets/mockMAP.JPG';
-import { requestOptionsGET } from '../../FetchData/requestOptions';
-import resForContestPage from '../../Data/MongoDBMock/responseFromContestsToContestsPage';
+import { removeNullsFromArray } from '../../Tools/FetchData/additionalToolsForResults';
 import { useLocation } from 'react-router-dom';
 import useMediaQuery from '../../Hooks/useMediaQuery';
 
 const ContestsPage = () => {
   const rawDataFromDB = useRef(null);
-  const [contestData, setContestData] = useState(null);
   const [toggle, setToggle] = useState(false);
   const [selectedMode, setSelectedMode] = useState(null);
   const locationPath = useLocation();
@@ -33,34 +33,19 @@ const ContestsPage = () => {
   }, []);
 
   useEffect(() => {
-    fetch('/api/contests/?taker=card', requestOptionsGET)
-      .then((response) => response.json())
-      .then((result) => {
-        rawDataFromDB.current = result;
-        console.log(rawDataFromDB.current);
-      })
-      .catch((error) => console.log('error', error));
+    async function fetchContestsData() {
+      let result = await getContestsCards(state, locationPath);
 
-    if (locationPath.state && locationPath.state.contestContent === 'results') {
-      setContestData(
-        resForContestPage.filter((contest) => {
-          return contest.participants.includes(state.userId);
-        }),
-      );
-      setSelectedMode(TIME.PRESENT_AND_PAST);
-      setIsPending(false);
-    } else if (
-      locationPath.state &&
-      locationPath.state.contestContent === 'future'
-    ) {
-      setContestData(resForContestPage);
-      setSelectedMode(TIME.FUTURE);
-      setIsPending(false);
-    } else {
-      setContestData(resForContestPage);
-      setSelectedMode(TIME.UNKNOWN);
+      if (Array.isArray(result)) {
+        result = removeNullsFromArray(result);
+      }
+      rawDataFromDB.current = result;
+
+      chooseAndSetSelectedMode(locationPath, setSelectedMode);
       setIsPending(false);
     }
+
+    fetchContestsData();
   }, []);
 
   const toggleHandler = () => {
@@ -71,7 +56,6 @@ const ContestsPage = () => {
   const handleFilterClick = (time, event) => {
     event.preventDefault();
     setSelectedMode(time);
-    console.log(contestData);
   };
 
   return (
@@ -93,16 +77,17 @@ const ContestsPage = () => {
           {useMediaQuery('(min-width:800px)') && (
             <FilterLabel onClick={handleFilterClick} />
           )}
+          {isPending && <Spinner />}
           {isPending && <h3>Loading...</h3>}
-          {contestData &&
-            getSelectedContestsByTime(selectedMode, contestData).map(
+          {rawDataFromDB.current &&
+            getSelectedContestsByTime(selectedMode, rawDataFromDB.current).map(
               (contest) => (
                 <ContestCard key={contest.contestId} contestData={contest} />
               ),
             )}
-          {contestData &&
-            getSelectedContestsByTime(selectedMode, contestData).length ===
-              0 && <h3>Nie ma zawodów</h3>}
+          {rawDataFromDB.current &&
+            getSelectedContestsByTime(selectedMode, rawDataFromDB.current)
+              .length === 0 && <h3>Nie ma zawodów</h3>}
         </ColumnWrapper>
 
         <div className="mockmap">
