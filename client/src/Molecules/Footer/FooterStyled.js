@@ -31,10 +31,6 @@ export const FooterStyled = styled.div`
   &.non-mobile {
     display: none;
     text-align: right;
-    a {
-      flex: 1;
-    }
-
     @media only screen and (min-width: 800px) {
       display: flex;
       width: 100%;
@@ -56,7 +52,7 @@ export const FooterStyled = styled.div`
       }
     }
     @media only screen and (min-width: 1600px) {
-      max-width: 75rem;
+      max-width: 101.25rem;
       align-items: center;
       justify-content: space-between;
       ${FONTS.body_semibold};
