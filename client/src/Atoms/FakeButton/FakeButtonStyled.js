@@ -62,6 +62,7 @@ const FakeButtonStyled = styled(Link)`
     margin-top: -0.5625rem;
     border-radius: 0 0 0.75rem 0.75rem;
     text-transform: none;
+    z-index: 1;
   }
   &.add-dogs {
     @media only screen and (min-width: 800px) {
