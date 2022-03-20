@@ -53,7 +53,9 @@ const FakeButtonStyled = styled(Link)`
   text-transform: uppercase;
 
   &.contest-data-button-back {
+    display: none;
     @media only screen and (min-width: 1024px) {
+      display: flex;
       margin-right: 0.5rem;
     }
   }
