@@ -64,13 +64,6 @@ const Nav = () => {
             <NavLinkStyled to="/contests" stylefor="Navbar">
               AKTUALNE KONKURSY
             </NavLinkStyled>
-            <NavLinkStyled
-              to="/register"
-              stylefor="Navbar"
-              style={{ paddingRight: '1rem' }}
-            >
-              WEŹ UDZIAŁ W ZAWODACH
-            </NavLinkStyled>
             <NavButtons />
           </NavInnerStyled>
         </NavBackground>

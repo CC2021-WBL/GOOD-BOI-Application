@@ -14,7 +14,7 @@ const MenuItem = ({ text, linkTo, icon, stylefor }) => {
   );
 };
 MenuItem.propTypes = {
-  text: propTypes.string,
+  text: propTypes.string.isRequired,
   linkTo: propTypes.string,
   icon: propTypes.object,
   stylefor: propTypes.string,
