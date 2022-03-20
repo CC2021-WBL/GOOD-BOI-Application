@@ -15,7 +15,7 @@ const ContestDetails = ({ contestId }) => {
   const [isPending, setIsPending] = useState(true);
   const [contestData, setContestData] = useState(null);
   const [toggle, setToggle] = useState(true);
-  const size = useWindowSize();
+  const { width } = useWindowSize();
 
   useEffect(() => {
     async function fetchContestData() {
@@ -34,10 +34,8 @@ const ContestDetails = ({ contestId }) => {
   }, []);
 
   useEffect(() => {
-    if (size.width > 1024) {
-      setToggle(true);
-    }
-  }, [size]);
+    width > 1024 && setToggle(true);
+  }, [width]);
 
   const toggleHandler = () => {
     setToggle((prevState) => !prevState);
