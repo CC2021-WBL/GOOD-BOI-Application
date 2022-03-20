@@ -15,6 +15,7 @@ const ColumnWrapperStyled = styled.div`
   grid-area: 3 / 1 / 4 / 2;
 
   &.not-found-wrapper {
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
