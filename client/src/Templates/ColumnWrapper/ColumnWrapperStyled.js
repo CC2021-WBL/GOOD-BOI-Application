@@ -83,7 +83,8 @@ const ColumnWrapperStyled = styled.div`
       height: fit-content;
     }
     &.not-found-wrapper,
-    &.user-data-wrapper {
+    &.user-data-wrapper,
+    &.forgot-wrapper {
       grid-area: 3 / 1 / 4 / 3;
       margin: 0 auto;
     }
@@ -114,7 +115,8 @@ const ColumnWrapperStyled = styled.div`
   @media only screen and (min-width: 1600px) {
     grid-area: 3 / 3 / 4 / 4;
     &.not-found-wrapper,
-    &.user-data-wrapper {
+    &.user-data-wrapper,
+    &.forgot-wrapper {
       grid-area: 3 / 3 / 4 / 4;
     }
   }
