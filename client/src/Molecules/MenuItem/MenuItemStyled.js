@@ -5,7 +5,7 @@ const MenuItemStyled = styled.div`
   display: flex;
   height: 3rem;
   align-items: center;
-  padding: 0 0 0 0.5rem;
+  padding: 0;
   color: ${({ theme }) => theme.grey400};
   gap: 1rem;
   justify-items: space-between;
