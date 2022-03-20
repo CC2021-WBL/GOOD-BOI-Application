@@ -22,6 +22,7 @@ export const FooterStyled = styled.div`
   &.non-mobile-wrapper {
     display: none;
     background: ${({ theme }) => theme.grey00};
+    margin-top: 1rem;
     @media only screen and (min-width: 800px) {
       display: block;
       width: 100%;
