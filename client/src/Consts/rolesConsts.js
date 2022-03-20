@@ -4,11 +4,11 @@ export const ROLES = {
     roleButtonLink: '/user',
   },
   staff: {
-    roleButtonText: 'Konto Obsługi',
+    roleButtonText: 'Panel sędziego',
     roleButtonLink: '/contests',
   },
   manager: {
-    roleButtonText: 'Konto Organizatora',
+    roleButtonText: 'Panel Organizatora',
     roleButtonLink: '/contests',
   },
   admin: {

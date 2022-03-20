@@ -67,10 +67,15 @@ const DogData = ({ id }) => {
   return (
     <ColumnWrapper>
       <SpecialButtonsContainerStyled>
-        <SpecialButton left text="edytuj" handler={handleEdit} colors="blue" />
+        <SpecialButton
+          left
+          text="edytuj dane psa"
+          handler={handleEdit}
+          colors="blue"
+        />
         <SpecialButton
           right
-          text="potwierdź"
+          text="potwierdź dane psa"
           handler={handleConfirm}
           colors="green"
         />
