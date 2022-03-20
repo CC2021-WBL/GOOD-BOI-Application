@@ -7,21 +7,34 @@ const ContestDetailsMapStyled = styled.div`
   height: 8.5rem;
   align-items: center;
   justify-content: center;
-  background-color: ${({ theme }) => theme.grey200};
+  background-image: url(${mapmock});
+  img {
+    display:none;
+  }
 
-  &.contest-data {
+  &.contest-data-map {
     @media only screen and (min-width: 800px) {
       background-image: url(${mapmock});
     }
     @media only screen and (min-width: 1024px) {
-      background-image: url(${mockMAP});
-      grid-area: 1 / 1 / 2 / 3;
+      padding: 1.5rem;
+      background-image: none;
+      grid-area: 1 / 2 / 2 / 3;
       height: 100%;
+      display: flex;
+      align-items: start;
+
+      img {
+        display: block;
+        width: 100%;
+        border-radius: 0.75rem;
+      }
     }
-    @media only screen and (min-width: 1600px) {
-      background-image: url(${mockMAP});
-    }
+
+
   }
+
+}
 `;
 
 export default ContestDetailsMapStyled;

@@ -52,9 +52,22 @@ const FakeButtonStyled = styled(Link)`
   ${(props) => handleBorders(props)}
   text-transform: uppercase;
 
+  &.contest-data-button-back {
+    @media only screen and (min-width: 1024px) {
+      margin-right: 0.5rem;
+    }
+  }
+
+  &.contest-data-button-enter {
+    @media only screen and (min-width: 1024px) {
+      margin-left: 0.5rem;
+    }
+  }
+
   &.landing-desktop-login {
     width: 19.375rem;
   }
+
   &.more-contests {
     height: 2.625rem;
     justify-content: right;
@@ -64,6 +77,7 @@ const FakeButtonStyled = styled(Link)`
     border-radius: 0 0 0.75rem 0.75rem;
     text-transform: none;
   }
+
   &.add-dogs {
     @media only screen and (min-width: 800px) {
       max-width: 16.25rem;
@@ -138,6 +152,7 @@ const FakeButtonStyled = styled(Link)`
         .fakebtn-header {
           border-bottom: 1px solid ${({ theme }) => theme.primary601};
         }
+
         .fakebtn-text {
           color: ${({ theme }) => theme.primary601};
         }

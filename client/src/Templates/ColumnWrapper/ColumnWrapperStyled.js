@@ -26,6 +26,13 @@ const ColumnWrapperStyled = styled.div`
     margin: auto;
   }
 
+  &.contest-data-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+  }
+
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
     max-width: ${(props) =>
@@ -76,6 +83,16 @@ const ColumnWrapperStyled = styled.div`
       display: grid;
       height: 100%;
       grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+    }
+    &.contest-data-details {
+      grid-area: 1/1/2/2;
+    }
+    &.contest-data-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 1rem;
     }
   }
   @media only screen and (min-width: 1600px) {
