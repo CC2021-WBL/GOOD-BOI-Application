@@ -4,12 +4,11 @@ import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ContestCard from '../../Molecules/ContestCard/ContestCard';
 import ContestsWrapperStyled from '../ContestsPage/ContestsWrapperStyled';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
+import Spinner from '../../Atoms/Spinner/Spinner';
 import { fetchContestsForLandingPage } from '../../Tools/FetchData/fetchContestsfunctions';
 import mockmap from '../../Assets/mockMAP.JPG';
 
 // import TitleWrapperStyled from '../../Molecules/LandingDesktopTitle/TitleWrapperStyled';
-
-
 
 const DesktopLandingPage = () => {
   const [isPending, setIsPending] = useState(true);
@@ -46,7 +45,7 @@ const DesktopLandingPage = () => {
             />
           </TitleWrapperStyled> */}
           <h3 className="incoming-contests">NADCHODZĄCE KONKURSY</h3>
-          {isPending && <h3>Loading...</h3>}
+          {isPending && <Spinner />}
           {contestData &&
             contestData.map((contest) => (
               <ContestCard
