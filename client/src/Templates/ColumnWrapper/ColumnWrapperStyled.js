@@ -15,6 +15,7 @@ const ColumnWrapperStyled = styled.div`
 
   &.manager-page {
     padding: 2.2rem 1rem 0 1rem;
+    margin: 0 auto;
   }
 
   .incoming-contests {
@@ -23,8 +24,10 @@ const ColumnWrapperStyled = styled.div`
     text-align: left;
   }
 
-  &.register-form-column-wrapper {
-    margin: auto;
+  &.register-form-column-wrapper,
+  &.contest-form-column-wrapper,
+  &.role-page-column-wrapper {
+    margin: 0 auto;
   }
   .login-form-captions {
     display: none;
