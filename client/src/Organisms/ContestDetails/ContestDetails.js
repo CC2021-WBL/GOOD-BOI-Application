@@ -6,6 +6,7 @@ import ContestDetailsMap from './ContestDetailsMap/ContestDetailsMap';
 import ContestDetailsToggler from './ContestDetailsToggler/ContestDetailsToggler';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import PropTypes from 'prop-types';
+import Spinner from '../../Atoms/Spinner/Spinner';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const ContestDetails = ({ contestId }) => {
@@ -36,7 +37,7 @@ const ContestDetails = ({ contestId }) => {
 
   return (
     <ColumnWrapper>
-      {isPending && <p>Loading...</p>}
+      {isPending && <Spinner />}
       {contestData && (
         <>
           <ContestDetailsMap />
