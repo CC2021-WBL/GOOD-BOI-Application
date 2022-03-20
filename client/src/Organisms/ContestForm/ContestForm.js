@@ -1,4 +1,6 @@
 import { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
 
 import CheckBoxFormInnerWrapperStyled from '../../Molecules/CheckBoxFormWrapper/CheckBoxFormInnerWrapperStyled';
 import CheckBoxFormOuterWrapperStyled from './../../Molecules/CheckBoxFormWrapper/CheckBoxFormOuterWrapperStyled';
@@ -10,8 +12,6 @@ import MainButton from '../../Atoms/MainButton/MainButton';
 import SelectFieldStyled from '../../Atoms/SelectField/SelectFieldStyled';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { genRequestOptionsPOST } from '../../Tools/FetchData/requestOptions';
-import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
 
 const ContestForm = () => {
   const {
@@ -47,7 +47,7 @@ const ContestForm = () => {
   };
   return (
     <>
-      <ColumnWrapper paddingLeftRight={1}>
+      <ColumnWrapper paddingLeftRight={1} maxWidthBigScreen={45} className="contest-form-column-wrapper">
         <FormWrapper
           onSubmit={handleSubmit(async (data) => {
             data.obedienceClasses = chosenClasses;

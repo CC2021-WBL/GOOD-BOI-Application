@@ -1,20 +1,20 @@
+import { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import ForbiddenEntryPage from '../ForbiddenEntryPage/ForbiddenEntryPage';
+import MainButton from '../../Atoms/MainButton/MainButton';
 import {
   CONTEST_ACTIONS,
   DOG_ACTIONS,
   USER_ACTIONS,
 } from '../../Consts/reducersActions';
-import { ROLES, ROLE_NAME } from '../../Consts/rolesConsts';
-import { useContext, useEffect } from 'react';
-
-import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import { ContestContext } from '../../Context/ContestContext';
 import { DogContext } from '../../Context/DogContext';
-import ForbiddenEntryPage from '../ForbiddenEntryPage/ForbiddenEntryPage';
-import MainButton from '../../Atoms/MainButton/MainButton';
+import { ROLES, ROLE_NAME } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { createURLForRolePage } from '../../Tools/UrlCreators';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
-import { useNavigate } from 'react-router-dom';
 
 const RolePage = () => {
   const { state, dispatch } = useContext(UserDataContext);
@@ -63,7 +63,7 @@ const RolePage = () => {
   };
 
   return (
-    <ColumnWrapper paddingLeftRight={1} paddingTop={1.5}>
+    <ColumnWrapper paddingLeftRight={1} paddingTop={1.5} className="role-page-column-wrapper" maxWidthBigScreen={45}>
       {roles.map((role, index) =>
         role === 'staff' ? (
           <MainButton
