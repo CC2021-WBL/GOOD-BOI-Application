@@ -106,6 +106,9 @@ const FakeButtonStyled = styled(Link)`
         padding: 0 1.25rem;
         color: ${({ theme }) => theme.grey400};
         text-transform: none;
+        ${FONTS.caption};
+        line-height: 1.5;
+
       }
     }
 
