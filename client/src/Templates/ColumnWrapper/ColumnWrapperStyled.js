@@ -78,7 +78,7 @@ const ColumnWrapperStyled = styled.div`
       max-width: 470px;
       border: 1px solid ${({ theme }) => theme.grey200};
       border-radius: 0.9375rem;
-      padding: 3.125rem;
+      padding: 1.875rem;
       margin: auto;
       background-color: ${({ theme }) => theme.white};
       color: ${({ theme }) => theme.grey800};
@@ -113,8 +113,7 @@ const ColumnWrapperStyled = styled.div`
         max-width: 29.375rem;
         border: 1px solid ${({ theme }) => theme.grey200};
         border-radius: 0.9375rem;
-        padding: 1.875rem;
-        margin: 10 auto;
+        margin: auto;
       }
       .login-form-captions {
         display: block;
