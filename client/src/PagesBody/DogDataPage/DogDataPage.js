@@ -1,7 +1,9 @@
-import DogData from '../../Organisms/DogData/DogData';
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+
 import { DogContext } from '../../Context/DogContext';
+import DogData from '../../Organisms/DogData/DogData';
+import Spinner from '../../Atoms/Spinner/Spinner';
+import { useParams } from 'react-router-dom';
 
 const DogDataPage = () => {
   const { dogId: dogIdParams } = useParams();
@@ -20,7 +22,7 @@ const DogDataPage = () => {
 
   return (
     <>
-      {isPending && <p>Loading...</p>}
+      {isPending && <Spinner />}
       {dogId && <DogData id={dogId} />}
     </>
   );
