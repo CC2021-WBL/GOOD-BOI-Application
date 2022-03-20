@@ -14,7 +14,7 @@ const ContestsWrapperStyled = styled.div`
     justify-content: center;
     margin: 0;
     gap: 1.25rem;
-    grid-area: 3 / 2 / 4 / 3;
+    grid-area: 3 / 1 / 4 / 3;
   }
   @media only screen and (min-width: 1600px) {
     grid-area: 3 / 3 / 4 / 4;

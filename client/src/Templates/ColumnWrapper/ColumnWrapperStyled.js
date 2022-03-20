@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import FONTS from '../../Styles/fontsStyledComponents';
+
 const ColumnWrapperStyled = styled.div`
   display: flex;
   width: 100%;
@@ -11,6 +13,36 @@ const ColumnWrapperStyled = styled.div`
   padding-bottom: ${(props) =>
     props.paddingBottom && `${props.paddingBottom}rem`};
   grid-area: 3 / 1 / 4 / 2;
+
+  &.not-found-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 35rem;
+    margin: 0 auto;
+
+    .main-content-wrapper {
+      display: flex;
+      width: 16.25rem;
+      height: 7.5rem;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 2.1875rem 0 4.25rem;
+
+      h2 {
+        color: ${({ theme }) => theme.grey800};
+        ${FONTS.h2}
+      }
+
+      p {
+        color: ${({ theme }) => theme.grey800};
+        ${FONTS.caption}
+      }
+    }
+    .buttons-wrapper {
+      width: 100%;
+    }
+  }
 
   &.manager-page {
     padding: 2.2rem 1rem 0 1rem;
@@ -49,6 +81,10 @@ const ColumnWrapperStyled = styled.div`
       margin: 0 auto;
       height: fit-content;
     }
+    &.not-found-wrapper {
+      grid-area: 3 / 1 / 4 / 3;
+      margin: 0 auto;
+    }
   }
   @media only screen and (min-width: 1024px) {
     &.user-dogs-column-wrapper {
@@ -75,6 +111,9 @@ const ColumnWrapperStyled = styled.div`
   }
   @media only screen and (min-width: 1600px) {
     grid-area: 3 / 3 / 4 / 4;
+    &.not-found-wrapper {
+      grid-area: 3 / 3 / 4 / 4;
+    }
   }
 `;
 

@@ -6,8 +6,8 @@ import ContestsWrapperStyled from '../ContestsPage/ContestsWrapperStyled';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import Spinner from '../../Atoms/Spinner/Spinner';
 import TitleWrapperStyled from '../../Molecules/LandingDesktopTitle/TitleWrapperStyled';
-import { fetchContestsForLandingPage } from '../../Tools/FetchData/fetchContestsfunctions';
 import mockmap from '../../Assets/mockMAP.JPG';
+import { fetchContestsForLandingPage } from '../../Tools/FetchData/fetchContestsfunctions';
 
 const DesktopLandingPage = () => {
   const [isPending, setIsPending] = useState(true);
