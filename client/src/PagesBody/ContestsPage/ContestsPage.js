@@ -82,7 +82,7 @@ const ContestsPage = () => {
           {rawDataFromDB.current &&
             getSelectedContestsByTime(selectedMode, rawDataFromDB.current).map(
               (contest) => (
-                <ContestCard key={contest.contestId} contestData={contest} />
+                <ContestCard key={contest._id} contestData={contest} />
               ),
             )}
           {rawDataFromDB.current &&

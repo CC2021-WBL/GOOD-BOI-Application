@@ -65,7 +65,7 @@ const DogData = ({ id }) => {
   };
 
   return (
-    <ColumnWrapper>
+    <ColumnWrapper className="dog-data-container">
       <SpecialButtonsContainerStyled>
         <SpecialButton left text="edytuj" handler={handleEdit} colors="blue" />
         <SpecialButton
@@ -75,12 +75,15 @@ const DogData = ({ id }) => {
           colors="green"
         />
       </SpecialButtonsContainerStyled>
-      <ColumnWrapper paddingLeftRight={1}>
+      <ColumnWrapper paddingLeftRight={1} className="dog-data-details">
         {isPending && <Spinner />}
         {dogData &&
           Object.entries(renderDogData(dogData)).map((dataLine, index) => (
             <DataLine key={index} text={dataLine} />
           ))}
+      </ColumnWrapper>
+      <ColumnWrapper paddingLeftRight={1} className="dog-data-details-bar">
+        Dane psa
       </ColumnWrapper>
     </ColumnWrapper>
   );
