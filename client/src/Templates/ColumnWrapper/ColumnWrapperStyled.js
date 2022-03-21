@@ -13,6 +13,10 @@ const ColumnWrapperStyled = styled.div`
     props.paddingBottom && `${props.paddingBottom}rem`};
   grid-area: 3 / 1 / 4 / 2;
 
+  &.dog-data-details-bar {
+    display: none;
+  }
+
   &.manager-page {
     padding: 2.2rem 1rem 0 1rem;
     margin: 0 auto;
@@ -136,9 +140,10 @@ const ColumnWrapperStyled = styled.div`
         max-width: 35rem;
         border: 1px solid ${({ theme }) => theme.grey200};
         border-radius: 0.9375rem;
-        margin: 1.5rem auto auto;
+        margin: 1.5rem auto 1rem;
         display: flex;
         flex-direction: column-reverse;
+        height: fit-content;
       }
 
       &.dog-data-details {
