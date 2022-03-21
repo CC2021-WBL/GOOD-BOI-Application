@@ -13,7 +13,8 @@ const ColumnWrapperStyled = styled.div`
     props.paddingBottom && `${props.paddingBottom}rem`};
   grid-area: 3 / 1 / 4 / 2;
 
-  &.dog-data-details-bar {
+  &.dog-data-details-bar,
+  &.enter-competition-container {
     display: none;
   }
 
@@ -160,17 +161,29 @@ const ColumnWrapperStyled = styled.div`
         background-color: ${({ theme }) => theme.grey200};
       }
 
+      &.enter-competition-container {
+        grid-area: 1/2/2/3;
+        max-width: 35rem;
+        border: 1px solid ${({ theme }) => theme.grey200};
+        border-radius: 0.9375rem;
+        margin: 1rem 1rem;
+        display: flex;
+        height: fit-content;
+      }
+
       @media only screen and (min-width: 1600px) {
         grid-area: 3 / 3 / 4 / 4;
       }
-      &.contest-data {
+      &.contest-data,
+      &.user-dogs-enter-competition {
         display: grid;
         height: 100%;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
       }
 
-      &.contest-data-details {
+      &.contest-data-details,
+      &.user-dogs-column-wrapper-enter-competition {
         grid-area: 1/1/2/2;
       }
 

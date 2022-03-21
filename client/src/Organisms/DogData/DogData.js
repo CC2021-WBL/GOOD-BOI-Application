@@ -21,6 +21,8 @@ const DogData = ({ id }) => {
   const { dogState } = useContext(DogContext);
   const { contestState } = useContext(ContestContext);
 
+  console.log(state, dogState, contestState);
+
   useEffect(() => {
     async function fetchDogData() {
       try {
@@ -65,12 +67,12 @@ const DogData = ({ id }) => {
   };
 
   return (
-    <ColumnWrapper className="dog-data-container">
+    <ColumnWrapper className={`dog-data-container`}>
       <SpecialButtonsContainerStyled>
         <SpecialButton left text="edytuj" handler={handleEdit} colors="blue" />
         <SpecialButton
           right
-          text="potwierdź"
+          text={contestState.contestId ? 'Potwierdź' : 'Wróć do listy psów'}
           handler={handleConfirm}
           colors="green"
         />

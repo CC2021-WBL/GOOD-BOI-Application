@@ -26,6 +26,7 @@ const ContestDetails = ({ contestId }) => {
       if (response.ok) {
         const result = await response.json();
         setContestData(result);
+        console.log(result);
         setIsPending(false);
       } else {
       }

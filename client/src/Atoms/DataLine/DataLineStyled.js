@@ -18,6 +18,10 @@ const DataLineStyled = styled.div`
     color: ${({ theme }) => theme.grey400};
     text-align: left;
   }
+
+  @media only screen and (min-width: 1024px) {
+    color: black;
+  }
 `;
 
 export default DataLineStyled;
