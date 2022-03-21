@@ -4,12 +4,12 @@ import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ContestCard from '../../Molecules/ContestCard/ContestCard';
 import ContestsWrapperStyled from '../ContestsPage/ContestsWrapperStyled';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
-import { TIME } from '../../Consts/infoLabelConsts';
 import TitleWrapperStyled from '../../Molecules/LandingDesktopTitle/TitleWrapperStyled';
-import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
 import mockmap from '../../Assets/mockMAP.JPG';
-import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import resForContestPage from '../../Data/MongoDBMock/responseFromContestsToContestsPage';
+import { TIME } from '../../Consts/infoLabelConsts';
+import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const DesktopLandingPage = () => {
   const [isPending, setIsPending] = useState(true);

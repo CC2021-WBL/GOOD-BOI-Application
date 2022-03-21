@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
@@ -5,7 +6,6 @@ import ContestDetailsContent from './ContestDetailsContent/ContestDetailsContent
 import ContestDetailsMap from './ContestDetailsMap/ContestDetailsMap';
 import ContestDetailsToggler from './ContestDetailsToggler/ContestDetailsToggler';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
-import PropTypes from 'prop-types';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const ContestDetails = ({ contestId }) => {
