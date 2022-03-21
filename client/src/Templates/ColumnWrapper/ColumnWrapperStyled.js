@@ -56,10 +56,33 @@ const ColumnWrapperStyled = styled.div`
     text-align: left;
   }
 
-  &.register-form-column-wrapper, &.contest-form-column-wrapper, &.role-page-column-wrapper {
+  &.register-form-column-wrapper,
+  &.contest-form-column-wrapper,
+  &.role-page-column-wrapper {
     margin: 0 auto;
   }
-  
+  .login-form-captions {
+    display: none;
+    color: ${({ theme }) => theme.grey800};
+    ${FONTS.caption};
+    text-align: left;
+    margin: 0.5rem;
+  }
+  .login-form-header {
+    ${FONTS.h2};
+    line-height: 2.5;
+  }
+  .login-form-centered {
+    text-align: center;
+  }
+
+  &.contest-data-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+  }
+
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
     max-width: ${(props) =>
@@ -89,28 +112,75 @@ const ColumnWrapperStyled = styled.div`
       grid-area: 3 / 1 / 4 / 3;
       margin: 0 auto;
     }
+    &.login-column-wrapper {
+      max-width: 470px;
+      border: 1px solid ${({ theme }) => theme.grey200};
+      border-radius: 0.9375rem;
+      padding: 1.875rem;
+      margin: auto;
+      background-color: ${({ theme }) => theme.white};
+      color: ${({ theme }) => theme.grey800};
+    }
   }
   @media only screen and (min-width: 1024px) {
     &.user-dogs-column-wrapper {
       align-items: center;
     }
 
-    &.user-profile {
+    .login-form-captions {
+      display: block;
+    }
+    @media only screen and (min-width: 1024px) {
+      &.user-dogs-column-wrapper {
+        align-items: center;
+      }
+
+      &.user-profile {
+        display: grid;
+        height: 100%;
+        align-items: center;
+        gap: 1.25rem;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(2, 10.625rem) 1fr;
+      }
+      &.user-data-wrapper {
+        margin: 0 auto;
+        margin-bottom: 1rem;
+      }
+      &.contests-column-wrapper {
+        display: flex;
+        max-width: 42.5rem;
+        margin: 1.5625rem 0 0 0;
+      }
+      &.login-column-wrapper {
+        max-width: 29.375rem;
+        border: 1px solid ${({ theme }) => theme.grey200};
+        border-radius: 0.9375rem;
+        margin: auto;
+      }
+      .login-form-captions {
+        display: block;
+        background-color: ${({ theme }) => theme.white};
+      }
+
+      @media only screen and (min-width: 1600px) {
+        grid-area: 3 / 3 / 4 / 4;
+      }
+    }
+    &.contest-data {
       display: grid;
       height: 100%;
-      align-items: center;
-      gap: 1.25rem;
-      grid-template-columns: repeat(8, 1fr);
-      grid-template-rows: repeat(2, 10.625rem) 1fr;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
     }
-    &.user-data-wrapper {
-      margin: 0 auto;
-      margin-bottom: 1rem;
+    &.contest-data-details {
+      grid-area: 1/1/2/2;
     }
-    &.contests-column-wrapper {
+    &.contest-data-buttons {
       display: flex;
-      max-width: 42.5rem;
-      margin: 1.5625rem 0 0 0;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 1rem;
     }
   }
   @media only screen and (min-width: 1600px) {
