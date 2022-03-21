@@ -1,9 +1,8 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-import ReactMap, { Marker, Popup } from 'react-map-gl';
-
 import propTypes from 'prop-types';
-import { useState } from 'react';
+import ReactMap, { Marker, Popup } from 'react-map-gl';
+import { useEffect, useState } from 'react';
 
 const initialState = {
   latitude: 51.796,
@@ -11,26 +10,24 @@ const initialState = {
   zoom: 4.5,
 };
 
-const Map = () => {
+// const contestsData = [
+//   {
+//     contestName: 'Zawody Pana Kleksa',
+//     latitude: 52.248,
+//     longitude: 20.976,
+//   },
+//   {
+//     contestName: 'Mistrzostwa Zjadaczy Kabanosów',
+//     latitude: 51.168,
+//     longitude: 22.472,
+//   },
+// ];
+
+const Map = (contestsData = []) => {
   const [viewstate, setViewstate] = useState(initialState);
   const [selectedContest, setSelectedContest] = useState(null);
-  const contestsData = [
-    {
-      latitude: 52.248,
-      longitude: 20.976,
-    },
-    {
-      latitude: 51.168,
-      longitude: 22.472,
-    },
-  ];
 
-  const onMarkerClick = (event, singleContest) => {
-    console.log('clicked');
-    event.preventDefault();
-    setSelectedContest(singleContest);
-  };
-
+  console.log(contestsData);
   return (
     <ReactMap
       {...viewstate}
@@ -44,23 +41,26 @@ const Map = () => {
         'pk.eyJ1IjoibW9uaWtha3IiLCJhIjoiY2wweTZ6NjYyMXF2bTNpbm1sb2FzYnU1ayJ9.82jjXRoyf1BwTpQkFRmTZw'
       }
     >
-      {contestsData.map((singleContest, index) => (
-        <Marker
-          key={index}
-          latitude={singleContest.latitude}
-          longitude={singleContest.longitude}
-          onClick={(event, singleContest) => {
-            onMarkerClick(event, singleContest);
-          }}
-        ></Marker>
-      ))}
+      {contestsData &&
+        contestsData.length > 0 &&
+        contestsData.map((singleContest, index) => (
+          <Marker
+            key={index}
+            latitude={singleContest.latitude}
+            longitude={singleContest.longitude}
+            anchor="center"
+            onClick={() => setSelectedContest(singleContest)}
+          ></Marker>
+        ))}
 
       {selectedContest && (
         <Popup
           latitude={selectedContest.latitude}
           longitude={selectedContest.longitude}
+          closeOnClick={false}
+          onClose={() => setSelectedContest(null)}
         >
-          <div>Tu są zawody</div>
+          <div>{selectedContest.contestName}</div>
         </Popup>
       )}
     </ReactMap>
@@ -70,7 +70,5 @@ const Map = () => {
 Map.propTypes = {
   contestsCoordinates: propTypes.array,
 };
-
-// propTypes.oneOfType([propTypes.array, propTypes.object])
 
 export default Map;
