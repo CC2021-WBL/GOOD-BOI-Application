@@ -23,7 +23,6 @@ const NavButtonStyled = styled.div`
 const NavButton = ({ menuOpen }) => {
   const { state } = useContext(UserDataContext);
   const { userName } = state;
-  console.log('userName ', userName);
   return (
     <NavButtonStyled>
       <ProfilePicture />
