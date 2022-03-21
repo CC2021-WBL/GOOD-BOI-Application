@@ -21,6 +21,7 @@ const ColumnWrapperStyled = styled.div`
     align-items: center;
     max-width: 35rem;
     margin: 0 auto;
+    padding-top: 1.25rem;
 
     .main-content-wrapper {
       display: flex;
@@ -95,6 +96,7 @@ const ColumnWrapperStyled = styled.div`
   }
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
+    margin: 0 auto;
     max-width: ${(props) =>
       props.maxWidthBigScreen && `${props.maxWidthBigScreen}rem`};
     align-items: ${(props) => props.alignItems && `${props.alignItems}`};
@@ -117,11 +119,9 @@ const ColumnWrapperStyled = styled.div`
       height: fit-content;
     }
     &.not-found-wrapper,
-    &.user-data-wrapper,
     &.forgot-wrapper {
       grid-area: 3 / 1 / 4 / 3;
       grid-column-start: ${(props) => props.isAuthenticated && 2};
-      margin: 0 auto;
     }
     &.login-column-wrapper {
       max-width: 470px;

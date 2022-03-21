@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
-import { UserDataContext } from '../../Context/UserDataContext';
 import UserField from '../../Atoms/UserField/UserField';
-import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import useMediaQuery from '../../Hooks/useMediaQuery';
-import { useParams } from 'react-router-dom';
+import { UserDataContext } from '../../Context/UserDataContext';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const UserData = () => {
   const [userObject, setUserObject] = useState(null);
@@ -30,7 +30,7 @@ const UserData = () => {
   }, []);
 
   if (!userObject) {
-    return <p></p>;
+    return <p>Wkradł się błąd</p>;
   }
 
   return (
