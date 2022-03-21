@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
@@ -9,12 +11,10 @@ import ContestDetailsToggler from './ContestDetailsToggler/ContestDetailsToggler
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import Modal from '../Modal/Modal';
-import PropTypes from 'prop-types';
 import Spinner from '../../Atoms/Spinner/Spinner';
 import modalData from '../../Consts/modalData';
-import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
-import { useNavigate } from 'react-router-dom';
 import useWindowSize from '../../Hooks/useWindowSize';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const ContestDetails = ({ contestId }) => {
   const [isPending, setIsPending] = useState(true);
@@ -89,58 +89,28 @@ const ContestDetails = ({ contestId }) => {
             <ContestDetailsToggler onClick={toggleHandler} toggle={toggle} />
             {toggle && <ContestDetailsContent contestData={contestData} />}
             {selectedRole === 'participant' && (
-                <FakeButton colors="secondary" text="ZGŁOŚ SWÓJ UDZIAŁ" />
-              )}{' '}
-              {selectedRole === 'manager' && (
-                <>
-                  <FakeButton
-                    colors="secondary"
-                    text="Edytuj dane"
-                    to="/add-contest"
-                  />
-                  <MainButton
-                    secondary
-                    text="Odwołaj i usuń zawody"
-                    onClick={openCloseContestModal}
-                  />
-                  <FakeButton
-                    colors="secondary"
-                    text="Wróć do listy"
-                    to="/contests"
-                  />
-                </>
-              )}
+              <FakeButton colors="secondary" text="ZGŁOŚ SWÓJ UDZIAŁ" />
+            )}{' '}
+            {selectedRole === 'manager' && (
+              <>
+                <FakeButton
+                  colors="secondary"
+                  text="Edytuj dane"
+                  to="/add-contest"
+                />
+                <MainButton
+                  secondary
+                  text="Odwołaj i usuń zawody"
+                  onClick={openCloseContestModal}
+                />
+                <FakeButton
+                  colors="secondary"
+                  text="Wróć do listy"
+                  to="/contests"
+                />
+              </>
+            )}
           </div>
-          {/* <div
-            style={{
-              margin: '1rem',
-            }}
-          >
-            <>
-              {selectedRole === 'participant' && (
-                <FakeButton colors="secondary" text="ZGŁOŚ SWÓJ UDZIAŁ" />
-              )}{' '}
-              {selectedRole === 'manager' && (
-                <>
-                  <FakeButton
-                    colors="secondary"
-                    text="Edytuj dane"
-                    to="/add-contest"
-                  />
-                  <MainButton
-                    secondary
-                    text="Odwołaj i usuń zawody"
-                    onClick={openCloseContestModal}
-                  />
-                  <FakeButton
-                    colors="secondary"
-                    text="Wróć do listy"
-                    to="/contests"
-                  />
-                </>
-              )}
-            </>
-          </div> */}
         </>
       )}
     </ColumnWrapper>
