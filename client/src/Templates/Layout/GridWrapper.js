@@ -6,8 +6,7 @@ const GridWrapper = styled.div`
   ${(props) => props.mobile && `grid-area:${props.mobile}`};
 
   @media ${device.tablet} {
-    background-color: ${(props) =>
-      props.navFoot ? props.theme.grey200 : props.theme.white};
+    background-color: ${(props) => props.theme.white};
     ${(props) => props.tablet && `grid-area:${props.tablet}`};
   }
 
