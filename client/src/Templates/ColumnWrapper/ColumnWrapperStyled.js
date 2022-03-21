@@ -155,113 +155,80 @@ const ColumnWrapperStyled = styled.div`
     &.user-dogs-column-wrapper {
       align-items: center;
     }
-    .login-form-captions {
-      display: block;
+
+    &.user-dogs-column-wrapper {
+      align-items: center;
+    }
+    &.user-profile {
+      display: grid;
+      height: 100%;
+      align-items: center;
+      gap: 1.25rem;
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(2, 10.625rem) 1fr;
     }
 
-    @media only screen and (min-width: 1024px) {
-      &.user-dogs-column-wrapper {
-        align-items: center;
-      }
-      &.user-profile {
-        display: grid;
-        height: 100%;
-        align-items: center;
-        gap: 1.25rem;
-        grid-template-columns: repeat(8, 1fr);
-        grid-template-rows: repeat(2, 10.625rem) 1fr;
-      }
+    &.user-data-wrapper {
+      margin: 0 auto;
+      margin-bottom: 1rem;
+    }
 
-      &.user-data-wrapper {
-        margin: 0 auto;
-        margin-bottom: 1rem;
-      }
+    &.contests-column-wrapper {
+      display: flex;
+      max-width: 42.5rem;
+      margin: 1.5625rem 0 0 0;
+    }
 
-      &.contests-column-wrapper {
-        display: flex;
-        max-width: 42.5rem;
-        margin: 1.5625rem 0 0 0;
-      }
+    &.login-column-wrapper {
+      max-width: 29.375rem;
+      border: 1px solid ${({ theme }) => theme.grey200};
+      border-radius: 0.9375rem;
+      margin: auto;
+    }
 
-      &.login-column-wrapper {
-        max-width: 29.375rem;
-        border: 1px solid ${({ theme }) => theme.grey200};
-        border-radius: 0.9375rem;
-        margin: auto;
-      }
+    .login-form-captions {
+      background-color: ${({ theme }) => theme.white};
+    }
 
-      .login-form-captions {
-        display: block;
-        background-color: ${({ theme }) => theme.white};
-      }
+    &.dog-data-container {
+      max-width: 35rem;
+      border: 1px solid ${({ theme }) => theme.grey200};
+      border-radius: 0.9375rem;
+      margin: 1.5rem auto 1rem;
+      display: flex;
+      flex-direction: column-reverse;
+      height: fit-content;
+    }
 
-      &.dog-data-container {
-        max-width: 35rem;
-        border: 1px solid ${({ theme }) => theme.grey200};
-        border-radius: 0.9375rem;
-        margin: 1.5rem auto 1rem;
-        display: flex;
-        flex-direction: column-reverse;
-        height: fit-content;
-      }
+    &.dog-data-details {
+      margin-bottom: 1rem;
+    }
 
-      &.dog-data-details {
-        margin-bottom: 1rem;
-      }
+    &.dog-data-details-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 3rem;
+      border-radius: 0.75rem 0.75rem 0 0;
+      background-color: ${({ theme }) => theme.grey200};
+    }
+    &.contest-data {
+      display: grid;
+      height: 100%;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+    }
 
-      &.dog-data-details-bar {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 3rem;
-        border-radius: 0.75rem 0.75rem 0 0;
-        background-color: ${({ theme }) => theme.grey200};
-      }
-      &.contest-data {
-        display: grid;
-        height: 100%;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-      }
+    &.contest-data-details {
+      grid-area: 1/1/2/2;
+    }
 
-      &.contest-data-details {
-        grid-area: 1/1/2/2;
-      }
-
-      &.contest-data-buttons {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 1rem;
-      }
-
-      &.login-column-wrapper {
-        max-width: 29.375rem;
-        border: 1px solid ${({ theme }) => theme.grey200};
-        border-radius: 0.9375rem;
-        margin: auto;
-      }
-      .login-form-captions {
-        display: block;
-        background-color: ${({ theme }) => theme.white};
-      }
-
-      &.contest-data {
-        display: grid;
-        height: 100%;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-      }
-      &.contest-data-details {
-        grid-area: 1/1/2/2;
-      }
-      &.contest-data-buttons {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 1rem;
-      }
+    &.contest-data-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 1rem;
     }
   }
   @media only screen and (min-width: 1600px) {
