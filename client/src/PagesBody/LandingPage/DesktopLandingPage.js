@@ -31,7 +31,7 @@ const DesktopLandingPage = () => {
     <>
       <ContestsWrapperStyled
         className="contests"
-        isAuthenticated={isAuthenticated}
+        contentPosition={isAuthenticated}
       >
         <ColumnWrapper
           paddingLeftRight={1}

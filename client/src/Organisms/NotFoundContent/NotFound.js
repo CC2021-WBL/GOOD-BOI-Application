@@ -17,7 +17,7 @@ const NotFound = () => {
       paddingLeftRight={1}
       maxWidthBigScreen={35}
       className="not-found-wrapper"
-      isAuthenticated={isAuthenticated}
+      contentPosition={isAuthenticated}
     >
       <img src={notFound} alt="Dog with question mark" />
       <div className="main-content-wrapper">

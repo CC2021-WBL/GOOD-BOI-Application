@@ -118,7 +118,7 @@ const ColumnWrapperStyled = styled.div`
     &.not-found-wrapper,
     &.forgot-wrapper {
       grid-area: 3 / 1 / 4 / 3;
-      grid-column-start: ${(props) => props.isAuthenticated && 2};
+      grid-column-start: ${(props) => props.contentPosition && 2};
     }
     &.login-column-wrapper {
       max-width: 470px;

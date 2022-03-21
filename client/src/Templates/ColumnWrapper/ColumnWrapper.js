@@ -10,7 +10,7 @@ const ColumnWrapper = ({
   className,
   maxWidthBigScreen,
   alignItems,
-  isAuthenticated,
+  contentPosition,
 }) => {
   return (
     <ColumnWrapperStyled
@@ -20,7 +20,7 @@ const ColumnWrapper = ({
       className={className}
       maxWidthBigScreen={maxWidthBigScreen}
       alignItems={alignItems}
-      isAuthenticated={isAuthenticated}
+      contentPosition={contentPosition}
     >
       {children}
     </ColumnWrapperStyled>
