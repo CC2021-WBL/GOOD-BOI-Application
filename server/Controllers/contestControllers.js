@@ -7,6 +7,11 @@ const { isManager } = require('../Tools/autorizationAdditionalTools');
 const { createClassesObjectArray } = require('../Tools/ModelTools');
 
 async function registerContest(req, res) {
+  const coordinates = {
+    latitude: 51.796,
+    longitude: 19.426,
+  };
+
   const contest = new Contest({
     contestName: req.body.contestName,
     kennelClubDepartment: req.body.kennelClubDepartment,
@@ -15,6 +20,7 @@ async function registerContest(req, res) {
     applicationOpenDate: req.body.applicationOpenDate,
     applicationClosedDate: req.body.applicationClosedDate,
     address: req.body.address,
+    coordinates: coordinates,
     judges: req.body.judges,
     steward: req.body.steward,
     manager: req.params.userId,
