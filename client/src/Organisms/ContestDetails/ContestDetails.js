@@ -81,13 +81,37 @@ const ContestDetails = ({ contestId }) => {
 
       {isPending && <p>Loading...</p>}
       {isPending && <Spinner />}
-      {contestData && <ContestDetailsMap />}
+      {/* {contestData && <ContestDetailsMap />} */}
       {contestData && (
         <>
           <ContestDetailsMap />
-          <ContestDetailsToggler onClick={toggleHandler} toggle={toggle} />
-          {toggle && <ContestDetailsContent contestData={contestData} />}
-          <div
+          <div>
+            <ContestDetailsToggler onClick={toggleHandler} toggle={toggle} />
+            {toggle && <ContestDetailsContent contestData={contestData} />}
+            {selectedRole === 'participant' && (
+                <FakeButton colors="secondary" text="ZGŁOŚ SWÓJ UDZIAŁ" />
+              )}{' '}
+              {selectedRole === 'manager' && (
+                <>
+                  <FakeButton
+                    colors="secondary"
+                    text="Edytuj dane"
+                    to="/add-contest"
+                  />
+                  <MainButton
+                    secondary
+                    text="Odwołaj i usuń zawody"
+                    onClick={openCloseContestModal}
+                  />
+                  <FakeButton
+                    colors="secondary"
+                    text="Wróć do listy"
+                    to="/contests"
+                  />
+                </>
+              )}
+          </div>
+          {/* <div
             style={{
               margin: '1rem',
             }}
@@ -116,7 +140,7 @@ const ContestDetails = ({ contestId }) => {
                 </>
               )}
             </>
-          </div>
+          </div> */}
         </>
       )}
     </ColumnWrapper>
