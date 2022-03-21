@@ -13,6 +13,8 @@ import Spinner from '../../Atoms/Spinner/Spinner';
 import modalData from '../../Consts/modalData';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import { useNavigate } from 'react-router-dom';
+import ContestDetailsEmptyBarStyled from '../../Atoms/ContestDetailsEmptyBar/ContestDetailsEmptyBarStyled';
+import useWindowSize from '../../Hooks/useWindowSize';
 
 const ContestDetails = ({ contestId }) => {
   const [isPending, setIsPending] = useState(true);
@@ -25,6 +27,8 @@ const ContestDetails = ({ contestId }) => {
   // const { selectedRole } = state;
   // console.log(selectedRole);
   const selectedRole = 'manager';
+  const [toggle, setToggle] = useState(true);
+  const { width } = useWindowSize();
 
   useEffect(() => {
     async function fetchContestData() {
@@ -42,7 +46,9 @@ const ContestDetails = ({ contestId }) => {
     fetchContestData();
   }, []);
 
-  const [toggle, setToggle] = useState(false);
+  useEffect(() => {
+    width > 1024 && setToggle(true);
+  }, [width]);
 
   const toggleHandler = () => {
     setToggle((prevState) => !prevState);
@@ -78,7 +84,9 @@ const ContestDetails = ({ contestId }) => {
       {isCloseContestModalOpen && <Backdrop onClick={closeModalHandler} />}
 
       {isPending && <p>Loading...</p>}
+    <ColumnWrapper className="contest-data">
       {isPending && <Spinner />}
+      {contestData && <ContestDetailsMap />}
       {contestData && (
         <>
           <ContestDetailsMap />
