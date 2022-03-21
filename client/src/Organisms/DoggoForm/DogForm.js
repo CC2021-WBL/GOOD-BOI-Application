@@ -3,6 +3,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import propTypes from 'prop-types';
 
 import ColumnWrapper from './../../Templates/ColumnWrapper/ColumnWrapper';
+import DogFormHeader from './DoFormHeader';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 import MainButton from '../../Atoms/MainButton/MainButton';
@@ -17,12 +18,13 @@ const DogForm = ({ submitForm, initialState }) => {
   );
   return (
     <ColumnWrapper
-      paddingLeftRight={1}
+      paddingLeftRight={4}
       paddingTop={1}
       paddingBottom={1}
       maxWidthBigScreen={35}
       className="dog-form-wrapper"
     >
+      <DogFormHeader />
       <FormWrapper onSubmit={submitHandler}>
         <InputField
           labelText="Imię rodowodowe psa"

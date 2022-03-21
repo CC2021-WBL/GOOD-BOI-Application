@@ -52,6 +52,11 @@ const ColumnWrapperStyled = styled.div`
       margin: 0 auto;
       height: fit-content;
     }
+    &.dog-form-wrapper {
+      margin: 0 auto;
+      border: 2px solid ${({ theme }) => theme.grey200};
+      border-radius: 0.9375rem;
+    }
   }
   @media only screen and (min-width: 1024px) {
     &.user-dogs-column-wrapper {
@@ -74,9 +79,6 @@ const ColumnWrapperStyled = styled.div`
       display: flex;
       max-width: 42.5rem;
       margin: 1.5625rem 0 0 0;
-    }
-    *.dog-form-wrapper {
-      margin: 0 auto;
     }
   }
   @media only screen and (min-width: 1600px) {
