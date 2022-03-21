@@ -23,10 +23,12 @@ const ColumnWrapperStyled = styled.div`
     text-align: left;
   }
 
-  &.register-form-column-wrapper, &.contest-form-column-wrapper, &.role-page-column-wrapper {
+  &.register-form-column-wrapper,
+  &.contest-form-column-wrapper,
+  &.role-page-column-wrapper {
     margin: 0 auto;
   }
-  
+
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
     max-width: ${(props) =>
@@ -72,6 +74,9 @@ const ColumnWrapperStyled = styled.div`
       display: flex;
       max-width: 42.5rem;
       margin: 1.5625rem 0 0 0;
+    }
+    *.dog-form-wrapper {
+      margin: 0 auto;
     }
   }
   @media only screen and (min-width: 1600px) {
