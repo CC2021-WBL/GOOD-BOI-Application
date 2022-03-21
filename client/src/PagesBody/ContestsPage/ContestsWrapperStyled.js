@@ -15,7 +15,6 @@ const ContestsWrapperStyled = styled.div`
     margin: 0;
     gap: 1.25rem;
     grid-area: 3 / 1 / 4 / 3;
-    //when logged in different column start
     grid-column-start: ${(props) => props.isAuthenticated && 2};
   }
   @media only screen and (min-width: 1600px) {

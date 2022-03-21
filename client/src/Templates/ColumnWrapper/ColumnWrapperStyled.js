@@ -120,6 +120,7 @@ const ColumnWrapperStyled = styled.div`
     &.user-data-wrapper,
     &.forgot-wrapper {
       grid-area: 3 / 1 / 4 / 3;
+      grid-column-start: ${(props) => props.isAuthenticated && 2};
       margin: 0 auto;
     }
     &.login-column-wrapper {

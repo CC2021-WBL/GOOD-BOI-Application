@@ -1,17 +1,23 @@
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import notFound from '../../Assets/notFound.png';
+import { UserDataContext } from '../../Context/UserDataContext';
 
 const NotFound = () => {
+  const { state } = useContext(UserDataContext);
+  const { isAuthenticated } = state;
   const navigate = useNavigate();
+
   return (
     <ColumnWrapper
       paddingLeftRight={1}
       maxWidthBigScreen={35}
       className="not-found-wrapper"
+      isAuthenticated={isAuthenticated}
     >
       <img src={notFound} alt="Dog with question mark" />
       <div className="main-content-wrapper">
