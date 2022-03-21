@@ -1,5 +1,6 @@
-import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
+
+import FONTS from '../../Styles/fontsStyledComponents';
 
 const ColumnWrapperStyled = styled.div`
   display: flex;
@@ -56,6 +57,12 @@ const ColumnWrapperStyled = styled.div`
     flex-direction: column;
     justify-content: space-between;
     padding: 0.5rem 1rem;
+  }
+
+  .dogs-0 {
+    margin: 0 0 0.625rem 0;
+    color: ${({ theme }) => theme.grey800};
+    ${FONTS.h3};
   }
 
   @media only screen and (min-width: 800px) {
