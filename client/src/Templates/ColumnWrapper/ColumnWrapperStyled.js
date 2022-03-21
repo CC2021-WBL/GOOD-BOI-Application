@@ -71,7 +71,8 @@ const ColumnWrapperStyled = styled.div`
   }
   &.register-form-column-wrapper,
   &.contest-form-column-wrapper,
-  &.role-page-column-wrapper {
+  &.role-page-column-wrapper,
+  &.class-choice-wrapper {
     margin: 0 auto;
   }
 
@@ -125,12 +126,13 @@ const ColumnWrapperStyled = styled.div`
       height: fit-content;
     }
     &.not-found-wrapper,
-    &.forgot-wrapper {
+    &.forgot-wrapper,
+    &.class-choice-wrapper {
       grid-area: 3 / 1 / 4 / 3;
       grid-column-start: ${(props) => props.contentPosition && 2};
     }
     &.login-column-wrapper {
-      max-width: 470px;
+      max-width: 29.375rem;
       border: 1px solid ${({ theme }) => theme.grey200};
       border-radius: 0.9375rem;
       padding: 1.875rem;
