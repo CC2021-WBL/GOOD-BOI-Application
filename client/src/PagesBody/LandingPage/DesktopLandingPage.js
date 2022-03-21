@@ -1,34 +1,26 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ContestCard from '../../Molecules/ContestCard/ContestCard';
 import ContestsWrapperStyled from '../ContestsPage/ContestsWrapperStyled';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
+import Spinner from '../../Atoms/Spinner/Spinner';
 import TitleWrapperStyled from '../../Molecules/LandingDesktopTitle/TitleWrapperStyled';
 import mockmap from '../../Assets/mockMAP.JPG';
-import resForContestPage from '../../Data/MongoDBMock/responseFromContestsToContestsPage';
-import { TIME } from '../../Consts/infoLabelConsts';
-import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
-import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
+import { fetchContestsForLandingPage } from '../../Tools/FetchData/fetchContestsfunctions';
 
 const DesktopLandingPage = () => {
   const [isPending, setIsPending] = useState(true);
   const [contestData, setContestData] = useState(null);
-  const [selectedMode, setSelectedMode] = useState(null);
-  const rawDataFromDB = useRef(null);
 
   useEffect(() => {
-    fetch('/api/contests/?taker=card', requestOptionsGET)
-      .then((response) => response.json())
-      .then((result) => {
-        rawDataFromDB.current = result;
-        console.log(rawDataFromDB.current);
-      })
-      .catch((error) => console.log('error', error));
+    async function fetchContestData() {
+      let contests = await fetchContestsForLandingPage();
+      setContestData(contests);
+      setIsPending(false);
+    }
 
-    setContestData(resForContestPage);
-    setSelectedMode(TIME.FUTURE);
-    setIsPending(false);
+    fetchContestData();
   }, []);
 
   return (
@@ -52,17 +44,15 @@ const DesktopLandingPage = () => {
             />
           </TitleWrapperStyled>
           <h3 className="incoming-contests">NADCHODZĄCE KONKURSY</h3>
-          {isPending && <h3>Loading...</h3>}
+          {isPending && <Spinner />}
           {contestData &&
-            getSelectedContestsByTime(selectedMode, contestData).map(
-              (contest) => (
-                <ContestCard
-                  key={contest.contestId}
-                  contestData={contest}
-                  className="last-card"
-                />
-              ),
-            )}
+            contestData.map((contest) => (
+              <ContestCard
+                key={contest.contestId}
+                contestData={contest}
+                className="last-card"
+              />
+            ))}
           <FakeButton
             colors="primary"
             to="/contests"
