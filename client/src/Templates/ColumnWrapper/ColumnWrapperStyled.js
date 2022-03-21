@@ -58,6 +58,12 @@ const ColumnWrapperStyled = styled.div`
     padding: 0.5rem 1rem;
   }
 
+  &.login-column-wrapper {
+    max-width: 29.375rem;
+    padding: 1.875rem;
+    margin: auto;
+  }
+
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
     max-width: ${(props) =>
@@ -86,11 +92,8 @@ const ColumnWrapperStyled = styled.div`
     }
 
     &.login-column-wrapper {
-      max-width: 470px;
       border: 1px solid ${({ theme }) => theme.grey200};
       border-radius: 0.9375rem;
-      padding: 1.875rem;
-      margin: auto;
       background-color: ${({ theme }) => theme.white};
       color: ${({ theme }) => theme.grey800};
     }
