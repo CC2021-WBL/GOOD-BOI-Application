@@ -7,6 +7,7 @@ import { DogContext } from '../../Context/DogContext';
 import PropTypes from 'prop-types';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
+import Spinner from '../../Atoms/Spinner/Spinner';
 import { UserDataContext } from '../../Context/UserDataContext';
 import renderDogData from '../../Tools/renderDogData';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
@@ -64,7 +65,7 @@ const DogData = ({ id }) => {
   };
 
   return (
-    <ColumnWrapper>
+    <ColumnWrapper className="dog-data-container">
       <SpecialButtonsContainerStyled>
         <SpecialButton left text="edytuj" handler={handleEdit} colors="blue" />
         <SpecialButton
@@ -74,12 +75,15 @@ const DogData = ({ id }) => {
           colors="green"
         />
       </SpecialButtonsContainerStyled>
-      <ColumnWrapper paddingLeftRight={1}>
-        {isPending && <p>Loading...</p>}
+      <ColumnWrapper paddingLeftRight={1} className="dog-data-details">
+        {isPending && <Spinner />}
         {dogData &&
           Object.entries(renderDogData(dogData)).map((dataLine, index) => (
             <DataLine key={index} text={dataLine} />
           ))}
+      </ColumnWrapper>
+      <ColumnWrapper paddingLeftRight={1} className="dog-data-details-bar">
+        Dane psa
       </ColumnWrapper>
     </ColumnWrapper>
   );
