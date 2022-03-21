@@ -1,12 +1,7 @@
 {
   "files": {
-<<<<<<< HEAD
     "main.css": "/static/css/main.1a5666cc.css",
-    "main.js": "/static/js/main.c1495a4d.js",
-=======
-    "main.css": "/static/css/main.19fa6059.css",
-    "main.js": "/static/js/main.c74be4d3.js",
->>>>>>> development
+    "main.js": "/static/js/main.87432d73.js",
     "static/js/787.0c574e70.chunk.js": "/static/js/787.0c574e70.chunk.js",
     "static/media/profileDogFace.jpg": "/static/media/profileDogFace.8c0496d4eb9e6f1d411a.jpg",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
@@ -34,22 +29,12 @@
     "static/media/AppLogoSVG.svg": "/static/media/AppLogoSVG.b96e11c0550f6499be1d18e009db4a1a.svg",
     "static/media/logoDevsOnTheWaves.svg": "/static/media/logoDevsOnTheWaves.2bf74039d34d89f1174fade3fb24354d.svg",
     "index.html": "/index.html",
-<<<<<<< HEAD
     "main.1a5666cc.css.map": "/static/css/main.1a5666cc.css.map",
-    "main.c1495a4d.js.map": "/static/js/main.c1495a4d.js.map",
+    "main.87432d73.js.map": "/static/js/main.87432d73.js.map",
     "787.0c574e70.chunk.js.map": "/static/js/787.0c574e70.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1a5666cc.css",
-    "static/js/main.c1495a4d.js"
-=======
-    "main.19fa6059.css.map": "/static/css/main.19fa6059.css.map",
-    "main.c74be4d3.js.map": "/static/js/main.c74be4d3.js.map",
-    "787.0c574e70.chunk.js.map": "/static/js/787.0c574e70.chunk.js.map"
-  },
-  "entrypoints": [
-    "static/css/main.19fa6059.css",
-    "static/js/main.c74be4d3.js"
->>>>>>> development
+    "static/js/main.87432d73.js"
   ]
 }
