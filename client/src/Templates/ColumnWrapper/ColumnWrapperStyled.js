@@ -163,23 +163,23 @@ const ColumnWrapperStyled = styled.div`
       @media only screen and (min-width: 1600px) {
         grid-area: 3 / 3 / 4 / 4;
       }
-    }
-    &.contest-data {
-      display: grid;
-      height: 100%;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr;
-    }
+      &.contest-data {
+        display: grid;
+        height: 100%;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+      }
 
-    &.contest-data-details {
-      grid-area: 1/1/2/2;
-    }
+      &.contest-data-details {
+        grid-area: 1/1/2/2;
+      }
 
-    &.contest-data-buttons {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 1rem;
+      &.contest-data-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem;
+      }
     }
   }
 `;
