@@ -21,8 +21,8 @@ const NavLinkStyled = styled(NavLink)`
     color: ${({ theme }) => theme.grey400};
   }
   &.active {
-    font-weight: bold;
     color: ${({ theme }) => theme.primary601};
+    font-weight: bold;
     ${(props) => handler(props)};
   }
 `;
