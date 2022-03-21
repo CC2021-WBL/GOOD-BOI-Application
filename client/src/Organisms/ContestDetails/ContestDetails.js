@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ContestDetailsContent from './ContestDetailsContent/ContestDetailsContent';
+import ContestDetailsEmptyBarStyled from '../../Atoms/ContestDetailsEmptyBar/ContestDetailsEmptyBarStyled';
 import ContestDetailsMap from './ContestDetailsMap/ContestDetailsMap';
 import ContestDetailsToggler from './ContestDetailsToggler/ContestDetailsToggler';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
@@ -13,7 +14,6 @@ import Spinner from '../../Atoms/Spinner/Spinner';
 import modalData from '../../Consts/modalData';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import { useNavigate } from 'react-router-dom';
-import ContestDetailsEmptyBarStyled from '../../Atoms/ContestDetailsEmptyBar/ContestDetailsEmptyBarStyled';
 import useWindowSize from '../../Hooks/useWindowSize';
 
 const ContestDetails = ({ contestId }) => {
@@ -22,10 +22,6 @@ const ContestDetails = ({ contestId }) => {
   const [isCloseContestModalOpen, setIsCloseContestModalOpen] = useState(false);
   const navigate = useNavigate();
 
-  // const { state } = useContext(UserDataContext);
-  // console.log(state);
-  // const { selectedRole } = state;
-  // console.log(selectedRole);
   const selectedRole = 'manager';
   const [toggle, setToggle] = useState(true);
   const { width } = useWindowSize();
@@ -73,7 +69,7 @@ const ContestDetails = ({ contestId }) => {
   };
 
   return (
-    <ColumnWrapper>
+    <ColumnWrapper className="contest-data">
       {isCloseContestModalOpen && (
         <Modal
           modalData={modalData.cancelContest}
@@ -84,7 +80,6 @@ const ContestDetails = ({ contestId }) => {
       {isCloseContestModalOpen && <Backdrop onClick={closeModalHandler} />}
 
       {isPending && <p>Loading...</p>}
-    <ColumnWrapper className="contest-data">
       {isPending && <Spinner />}
       {contestData && <ContestDetailsMap />}
       {contestData && (
