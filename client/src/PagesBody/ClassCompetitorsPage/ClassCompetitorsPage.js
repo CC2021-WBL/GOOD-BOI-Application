@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import CLASSES from '../../Consts/classesConst';
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import MainButton from '../../Atoms/MainButton/MainButton';
-import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import results from '../../Data/MongoDBMock/results';
-import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const ClassCompetitorsPage = () => {
   const [dogList, setDogList] = useState(null);
@@ -34,7 +34,12 @@ const ClassCompetitorsPage = () => {
   }
 
   return (
-    <ColumnWrapper paddingLeftRight={1} paddingTop={0.25}>
+    <ColumnWrapper
+      paddingLeftRight={1}
+      paddingTop={0.25}
+      maxWidthBigScreen={35}
+      className="class-competitors-wrapper grid-position"
+    >
       {dogList.map((dog, index) => {
         const { dogId, dogName, competingPairsId } = dog;
 
