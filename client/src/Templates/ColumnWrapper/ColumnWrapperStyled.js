@@ -1,5 +1,6 @@
-import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
+
+import FONTS from '../../Styles/fontsStyledComponents';
 
 const ColumnWrapperStyled = styled.div`
   display: flex;
@@ -55,6 +56,12 @@ const ColumnWrapperStyled = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 0.5rem 1rem;
+  }
+
+  &.contest-data-buttons-manager {
+    display: flex;
+    flex-direction: column;
     padding: 0.5rem 1rem;
   }
 

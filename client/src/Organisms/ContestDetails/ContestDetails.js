@@ -107,7 +107,7 @@ const ContestDetails = ({ contestId }) => {
               </ColumnWrapper>
             )}{' '}
             {state && state.selectedRole === 'manager' && (
-              <>
+              <ColumnWrapper className="contest-data-buttons-manager">
                 <FakeButton
                   colors="secondary"
                   text="Edytuj dane"
@@ -123,7 +123,7 @@ const ContestDetails = ({ contestId }) => {
                   text="Wróć do listy"
                   to="/contests"
                 />
-              </>
+              </ColumnWrapper>
             )}
           </div>
         </>
