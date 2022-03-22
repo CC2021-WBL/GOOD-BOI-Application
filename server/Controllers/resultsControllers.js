@@ -9,16 +9,17 @@ async function registerResults(req, res) {
     dogId: req.body.dogId,
     dogName: req.body.dogName,
     participantId: req.body.participantId,
+    exercises: req.body.exercises,
   });
   try {
     const savedResult = await result.save();
     if (!savedResult) {
-      res.status(500).send(ERROR_MSG[500]);
+      res.status(500).json({ message: ERROR_MSG[500] });
     } else {
       return savedResult;
     }
   } catch (error) {
-    res.status(400).json({ message: error });
+    res.status(400).json({ message: ERROR_MSG[400] });
   }
 }
 
@@ -35,7 +36,7 @@ async function updateSomeResults(req, res) {
     await result.save();
     return result;
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).json({ message: ERROR_MSG[400] });
   }
 }
 
@@ -49,7 +50,7 @@ async function getResultSummaryAndName(req, res) {
 
     res.json(results);
   } catch (error) {
-    res.json({ message: error });
+    res.status(500).json({ message: ERROR_MSG[500] });
   }
 }
 

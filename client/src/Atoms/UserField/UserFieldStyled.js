@@ -17,6 +17,14 @@ const UserFieldStyled = styled.div`
     cursor: pointer;
   }
 
+  .edit-close {
+    margin-right: 10px;
+    transform: scale(1.8);
+    background: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.grey400};
+    cursor: pointer;
+  }
+
   @media only screen and (min-width: 800px) {
     :last-child {
       border-bottom: none;

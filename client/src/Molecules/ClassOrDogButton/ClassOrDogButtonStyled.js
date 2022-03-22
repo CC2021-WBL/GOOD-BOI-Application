@@ -1,6 +1,5 @@
-import styled from 'styled-components';
-
 import FONTS from '../../Styles/fontsStyledComponents';
+import styled from 'styled-components';
 
 const ClassOrDogButtonStyled = styled.button`
   display: flex;
@@ -23,6 +22,10 @@ const ClassOrDogButtonStyled = styled.button`
       max-width: 35rem;
     }
   }
+  &:hover {
+    filter: brightness(1.05);
+    cursor: pointer;
+    box-shadow: 2px 4px ${({ theme }) => theme.primary201};
+  }
 `;
-
 export default ClassOrDogButtonStyled;

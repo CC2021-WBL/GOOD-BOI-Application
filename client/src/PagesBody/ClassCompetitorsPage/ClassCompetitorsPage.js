@@ -35,12 +35,15 @@ const ClassCompetitorsPage = () => {
   }
 
   return (
-    <ColumnWrapper paddingLeftRight={1} paddingTop={0.25}>
+    <ColumnWrapper
+      paddingLeftRight={1}
+      paddingTop={0.25}
+      maxWidthBigScreen={35}
+      className="class-competitors-wrapper grid-position"
+    >
       {dogList &&
         dogList.map((dog, index) => {
           const { dogId, dogName, resultsId } = dog;
-
-          console.log(resultsId.exercises);
 
           const exercisesCompleted = resultsId.exercises.filter(
             (exercise) => exercise.result != null,

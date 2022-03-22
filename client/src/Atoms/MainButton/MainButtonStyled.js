@@ -15,7 +15,8 @@ const handleBgAndColor = (props) => {
 
 const borderHandler = (props) => {
   if (props.primary) {
-    return `border: 0.5px solid ${props.theme.grey800};`;
+    return `border: 0.5px solid ${props.theme.grey800};
+    `;
   }
   if (props.secondary) {
     return `border: 0.5px solid ${props.theme.primary601};`;
@@ -37,6 +38,14 @@ const MainButtonStyled = styled.button`
   ${FONTS.button};
   ${(props) => handleBgAndColor(props)};
   ${(props) => borderHandler(props)};
+  &:hover {
+    filter: brightness(1.05);
+    box-shadow: 2px 4px ${({ theme }) => theme.primary201};
+    cursor: pointer;
+
+
+   ;
+
   &.selected-btn:focus {
     border: 3px solid #34c369;
     background: ${({ theme }) => theme.positive100};

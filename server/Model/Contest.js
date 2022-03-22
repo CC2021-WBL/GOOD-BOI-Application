@@ -113,7 +113,51 @@ const contestSchema = new mongoose.Schema(
       default: () => Date.now(),
     },
   },
+<<<<<<< HEAD
   { strictPopulate: false },
 );
+=======
+  coordinates: {
+    latitude: Number,
+    longitude: Number,
+  },
+  judges: {
+    type: [String],
+    default: [],
+  },
+  steward: {
+    type: String,
+  },
+  manager: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: 'Participant',
+    required: true,
+  },
+  feePLN: {
+    type: Number,
+  },
+  amountOfApplications: {
+    type: Number,
+    default: 0,
+  },
+  maxAmountOfApplications: {
+    type: Number,
+    required: true,
+  },
+  obedienceClasses: {
+    type: [obedienceClassesSchema],
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    immutable: true,
+    default: () => Date.now(),
+  },
+  updatedAt: {
+    type: Date,
+    default: () => Date.now(),
+  },
+});
+>>>>>>> a8d09da087f0bc97be4158881dbaf87866804f23
 
 module.exports = mongoose.model('Contest', contestSchema);

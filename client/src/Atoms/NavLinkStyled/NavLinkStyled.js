@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-const bgHandler = (props) => {
+const handler = (props) => {
   if (props.stylefor === 'Sidebar')
     return `background: ${props.theme.primary101}`;
   if (props.stylefor === 'Cornermenu')
@@ -16,14 +16,14 @@ const NavLinkStyled = styled(NavLink)`
   align-items: center;
   gap: 1rem;
   ${(props) => props.stylefor === 'Sidebar' && 'padding-left: .5rem'};
+  ${(props) => props.stylefor === 'Cornermenu' && 'padding-left: .5rem'};
   transition: color 0.2s ease-in-out;
   &:not(.active) {
     color: ${({ theme }) => theme.grey400};
   }
   &.active {
     color: ${({ theme }) => theme.primary601};
-    font-weight: bold;
-    ${(props) => bgHandler(props)};
+    ${(props) => handler(props)};
   }
 `;
 
