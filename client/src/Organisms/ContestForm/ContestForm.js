@@ -48,11 +48,6 @@ const ContestForm = () => {
   };
   return (
     <>
-      {/* <ColumnWrapper
-        paddingLeftRight={1}
-        maxWidthBigScreen={45}
-        className="contest-form-column-wrapper"
-      > */}
       <ColumnWrapper
         paddingLeftRight={4}
         paddingTop={1}
@@ -61,7 +56,6 @@ const ContestForm = () => {
         className="form-wrapper"
       >
         <ContestFormHeader />
-
         <FormWrapper
           onSubmit={handleSubmit(async (data) => {
             data.obedienceClasses = chosenClasses;
