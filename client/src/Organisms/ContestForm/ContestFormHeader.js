@@ -52,11 +52,11 @@ const ContestFormHeader = () => {
         className="baloons"
         style={{ display: 'flex', justifyContent: 'center' }}
       >
-        <div className="baloon active">1</div>
+        <div className="baloon active"></div>
         <div className="line"></div>
-        <div className="baloon">2</div>
+        <div className="baloon"></div>
         <div className="line"></div>
-        <div className="baloon">3</div>
+        <div className="baloon"></div>
       </div>
     </ContestFormHeaderStyled>
   );

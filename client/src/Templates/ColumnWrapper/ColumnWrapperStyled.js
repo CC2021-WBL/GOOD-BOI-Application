@@ -252,8 +252,8 @@ const ColumnWrapperStyled = styled.div`
       justify-content: space-between;
       padding: 1rem;
     }
-    &.dog-form-wrapper {
-      margin: 0 auto;
+    &.form-wrapper {
+      margin: 1rem auto 0;
       border: 2px solid ${({ theme }) => theme.grey200};
       border-radius: 0.9375rem;
   }
