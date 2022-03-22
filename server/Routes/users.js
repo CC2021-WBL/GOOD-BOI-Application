@@ -9,9 +9,20 @@ const {
   auth,
   blockIfPublic,
 } = require('../Middleware/authMiddleware');
-
+// const { schema } = require('../Controllers/usersControllers');
+// const Joi = require('@hapi/joi');
 //Submit data of user
-router.post('/register', async (req, res) => {
+
+const SchemaValidator = require('../Middleware/SchemaValidator');
+const validateRequest = SchemaValidator(true);
+
+router.post('/register', validateRequest, async (req, res) => {
+  // const { error } = schema.validate(req.body);
+  // if (error) return res.status(400).send(error.details[0].message);
+
+//   const emailExist=await Participant.findOne({email:req.body.email})
+
+// if(emailExist) return res.status(400).send('Email already exists')  
   try {
     const savedUser = await userDbFunc.registerParticipant(req, res);
     res.status(201).json({

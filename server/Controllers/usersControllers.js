@@ -6,7 +6,6 @@ async function registerParticipant(req, res) {
   const saltHash = generatePassword(req.body.password);
   const salt = saltHash.salt;
   const hash = saltHash.hash;
-
   const participant = new Participant({
     email: req.body.email,
     hash: hash,
