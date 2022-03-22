@@ -46,8 +46,8 @@ const ContestFormHeaderStyled = styled.div`
 const ContestFormHeader = () => {
   return (
     <ContestFormHeaderStyled className="dog-form-header">
-      <h2>Uzupełnij dane psa</h2>
-      <caption>Wpisz wszystkie dane swojego psa</caption>
+      <h2>Dodaj zawody</h2>
+      <caption>Wpisz wszystkie dane rejestracyjne zawodów</caption>
       <div
         className="baloons"
         style={{ display: 'flex', justifyContent: 'center' }}
