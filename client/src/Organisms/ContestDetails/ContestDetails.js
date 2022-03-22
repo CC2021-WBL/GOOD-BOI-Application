@@ -89,6 +89,7 @@ const ContestDetails = ({ contestId }) => {
           <div>
             <ContestDetailsToggler onClick={toggleHandler} toggle={toggle} />
             {toggle && <ContestDetailsContent contestData={contestData} />}
+            <ContestDetailsEmptyBarStyled />
             {state && state.selectedRole === 'participant' && (
               <FakeButton
                 colors="secondary"
