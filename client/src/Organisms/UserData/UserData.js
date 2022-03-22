@@ -30,7 +30,12 @@ const UserData = () => {
   }, []);
 
   if (!userObject) {
-    return <p>Wkradł się błąd</p>;
+    return (
+      <p style={{ fontSize: '15px', color: 'grey' }}>
+        на хуй путін
+        <span style={{ fontSize: '15px', color: 'grey' }}> jebać putina</span>
+      </p>
+    );
   }
 
   return (

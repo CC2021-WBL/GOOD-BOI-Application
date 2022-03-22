@@ -99,7 +99,10 @@ const ContestDetails = ({ contestId }) => {
                 <FakeButton
                   colors="ternary"
                   text="WRÓĆ DO LISTY ZAWODÓW"
-                  to="/contests"
+                  state={{
+                    contestContent: 'future',
+                  }}
+                  to="/future-contests"
                   className="contest-data-button-back"
                 />
                 <FakeButton
