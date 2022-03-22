@@ -3,7 +3,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import propTypes from 'prop-types';
 
 import ColumnWrapper from './../../Templates/ColumnWrapper/ColumnWrapper';
-import DogFormHeader from './DoFormHeader';
+import DogFormHeader from './DogFormHeader';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 import MainButton from '../../Atoms/MainButton/MainButton';

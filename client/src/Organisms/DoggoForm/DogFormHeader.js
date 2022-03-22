@@ -4,6 +4,7 @@ const DogFormHeaderStyled = styled.div`
   display: none;
   margin-top: 1rem;
   text-align: left;
+  color: ${({ theme }) => theme.grey800};
 
   @media only screen and (min-width: 800px) {
     display: block;
