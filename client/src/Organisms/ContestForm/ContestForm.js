@@ -41,9 +41,11 @@ const ContestForm = () => {
     const checked = e.target.checked;
     const id = e.target.dataset.id;
     checked
-      ? setChosenClasses((oldArray) => [...oldArray, id])
+      ? setChosenClasses((oldArray) => [...oldArray, Number(id)])
       : setChosenClasses(
-          chosenClasses.filter((classNumber) => classNumber !== id),
+          chosenClasses.filter(
+            (classNumber) => Number(classNumber) !== Number(id),
+          ),
         );
   };
   return (
@@ -59,6 +61,8 @@ const ContestForm = () => {
         <FormWrapper
           onSubmit={handleSubmit(async (data) => {
             data.obedienceClasses = chosenClasses;
+            console.log(data);
+
             setData(JSON.stringify(data));
             try {
               const response = await fetch(
@@ -66,7 +70,6 @@ const ContestForm = () => {
                 genRequestOptionsPOST(data),
               );
               const result = await response.json();
-              console.log(result);
               // to decide how handle when success
             } catch (error) {
               console.log(error);
@@ -171,7 +174,7 @@ const ContestForm = () => {
             type="text"
             placeholder="&#xf015; Adres zawodów - kraj"
             className={errors.country ? 'red-border' : ''}
-            {...register('country', {
+            {...register('address.country', {
               required: 'Wpisz kraj w którym odbywają się zawody',
               min: 5,
               maxLength: 99,
@@ -185,7 +188,7 @@ const ContestForm = () => {
             type="text"
             placeholder="&#xf015; Adres zawodów - miasto"
             className={errors.city ? 'red-border' : ''}
-            {...register('city', {
+            {...register('address.city', {
               required: 'Wpisz miasto, w którym odbywają się zawody',
               min: 5,
             })}
@@ -199,7 +202,7 @@ const ContestForm = () => {
             type="text"
             placeholder="&#xf015; Adres zawodów - ulica"
             className={errors.street ? 'red-border' : ''}
-            {...register('street', {
+            {...register('address.street', {
               required: 'Wpisz ulicę, na której odbywają się zawody',
               min: 5,
             })}
@@ -209,12 +212,12 @@ const ContestForm = () => {
           {/* ==================================================== */}
           <InputField
             labelText="Adres zawodów - numer obiektu"
-            htmlFor="number"
-            id="number"
+            htmlFor="numberOfHouse"
+            id="numberOfHouse"
             type="number"
             placeholder="&#xf015; Adres zawodów - numer obiektu"
             className={errors.number ? 'red-border' : ''}
-            {...register('number', {
+            {...register('address.numberOfHouse', {
               required: 'Podaj numer obiektu (1 - 2000)',
               max: 2000,
               min: 1,
@@ -227,13 +230,13 @@ const ContestForm = () => {
             )}
           <InputField
             labelText="Adres zawodów - kod pocztowy"
-            htmlFor="code"
-            id="code"
+            htmlFor="postalCode"
+            id="postalCode"
             type="text"
             pattern="^\d{2}-\d{3}$"
             placeholder="&#xf015;; Adres zawodów - kod pocztowy"
             className={errors.code ? 'red-border' : ''}
-            {...register('code', {
+            {...register('address.postalCode', {
               required: 'Podaj kod pocztowy w formacie XX-XXX',
             })}
           />
@@ -273,7 +276,7 @@ const ContestForm = () => {
                   type="text"
                   placeholder={`Sędzia ${judge}`}
                   className={errors[`judge${judge}`] ? 'red-border' : ''}
-                  {...register(`judge${judge}`, {
+                  {...register(`judges[${index}]`, {
                     required: 'Wpisz imię i nazwisko sędziego',
                     maxLength: 100,
                   })}
@@ -288,12 +291,12 @@ const ContestForm = () => {
           })}
           <InputField
             labelText="Komisarz"
-            htmlFor="komisarz"
-            id="komisarz"
+            htmlFor="steward"
+            id="steward"
             type="text"
             placeholder="&#xF007; Komisarz"
             className={errors.komisarz ? 'red-border' : ''}
-            {...register('komisarz', {
+            {...register('steward', {
               required: 'Wpisz imię i nazwisko komisarza',
               min: 3,
               maxLength: 100,
@@ -362,7 +365,6 @@ const ContestForm = () => {
                   data-id="1"
                   type="checkbox"
                   value="Klasa 1"
-                  {...register('class1')}
                   onChange={handleChange}
                 />
                 <label htmlFor="class1">Klasa 1</label>
@@ -374,7 +376,6 @@ const ContestForm = () => {
                   data-id="2"
                   type="checkbox"
                   value="Klasa 2"
-                  {...register('class2')}
                   onChange={handleChange}
                 />
                 <label htmlFor="class2">Klasa 2</label>
@@ -386,7 +387,6 @@ const ContestForm = () => {
                   data-id="3"
                   type="checkbox"
                   value="Klasa 3"
-                  {...register('class3')}
                   onChange={handleChange}
                 />
                 <label htmlFor="class3">Klasa 3</label>

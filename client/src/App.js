@@ -99,6 +99,10 @@ function App() {
                       <Route path="role" element={<RolePage />} />
                       <Route path="contests" element={<ContestsPage />} />
                       <Route
+                        path="future-contests"
+                        element={<ContestsPage />}
+                      />
+                      <Route
                         path="class-choice"
                         element={<ClassChoicePage />}
                       />

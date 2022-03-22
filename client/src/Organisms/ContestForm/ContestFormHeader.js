@@ -47,17 +47,7 @@ const ContestFormHeader = () => {
   return (
     <ContestFormHeaderStyled className="dog-form-header">
       <h2>Dodaj zawody</h2>
-      <caption>Wpisz wszystkie dane rejestracyjne zawodów</caption>
-      <div
-        className="baloons"
-        style={{ display: 'flex', justifyContent: 'center' }}
-      >
-        <div className="baloon active"></div>
-        <div className="line"></div>
-        <div className="baloon"></div>
-        <div className="line"></div>
-        <div className="baloon"></div>
-      </div>
+      <caption>Uzupełnij wszystkie pola.</caption>
     </ContestFormHeaderStyled>
   );
 };
