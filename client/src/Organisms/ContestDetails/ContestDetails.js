@@ -91,11 +91,20 @@ const ContestDetails = ({ contestId }) => {
             {toggle && <ContestDetailsContent contestData={contestData} />}
             <ContestDetailsEmptyBarStyled />
             {state && state.selectedRole === 'participant' && (
-              <FakeButton
-                colors="secondary"
-                text="ZGŁOŚ SWÓJ UDZIAŁ"
-                to="/user-dogs"
-              />
+              <ColumnWrapper className="contest-data-buttons">
+                <FakeButton
+                  colors="ternary"
+                  text="WRÓĆ DO LISTY ZAWODÓW"
+                  to="/contests"
+                  className="contest-data-button-back"
+                />
+                <FakeButton
+                  colors="secondary"
+                  text="ZGŁOŚ SWÓJ UDZIAŁ"
+                  to="/user-dogs"
+                  className="contest-data-button-enter"
+                />
+              </ColumnWrapper>
             )}{' '}
             {state && state.selectedRole === 'manager' && (
               <>
