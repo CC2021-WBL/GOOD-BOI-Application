@@ -22,6 +22,7 @@ const ColumnWrapperStyled = styled.div`
     max-width: 35rem;
     margin: 0 auto;
     padding-top: 1.25rem;
+
     .main-content-wrapper {
       display: flex;
       width: 16.25rem;
