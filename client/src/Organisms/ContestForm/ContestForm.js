@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import CheckBoxFormInnerWrapperStyled from '../../Molecules/CheckBoxFormWrapper/CheckBoxFormInnerWrapperStyled';
 import CheckBoxFormOuterWrapperStyled from './../../Molecules/CheckBoxFormWrapper/CheckBoxFormOuterWrapperStyled';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import ContestFormHeader from './ContestFormHeader';
 import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 import InputLabel from '../../Atoms/InputLabel/InputLabel';
@@ -57,8 +58,10 @@ const ContestForm = () => {
         paddingTop={1}
         paddingBottom={1}
         maxWidthBigScreen={35}
-        className="dog-form-wrapper"
+        className="form-wrapper"
       >
+        <ContestFormHeader />
+
         <FormWrapper
           onSubmit={handleSubmit(async (data) => {
             data.obedienceClasses = chosenClasses;
