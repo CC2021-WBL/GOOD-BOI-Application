@@ -25,7 +25,6 @@ const UserProfileData = ({
     userData = paramsUserData.userId;
   }
   const [userObject, setUserObject] = useState(createUserInitialData(state));
-  console.log(setUserObject);
   const [toggle, setToggle] = useState(false);
 
   const toggleHandler = () => {

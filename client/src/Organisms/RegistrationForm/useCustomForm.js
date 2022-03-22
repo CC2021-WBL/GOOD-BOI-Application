@@ -51,7 +51,6 @@ const useCustomForm = (callback, validateData, initialState, setUserObject) => {
   };
 
   const submitHandler = async (event) => {
-    console.log(formData);
     event.preventDefault();
     setErrors(validateData(formData));
     setIsSubmitting(true);
