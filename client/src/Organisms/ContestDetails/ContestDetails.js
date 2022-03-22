@@ -1,9 +1,6 @@
 import PropTypes from 'prop-types';
 import { useContext, useEffect, useState } from 'react';
-<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom';
-=======
->>>>>>> development
 
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
@@ -12,14 +9,10 @@ import ContestDetailsEmptyBarStyled from '../../Atoms/ContestDetailsEmptyBar/Con
 import ContestDetailsMap from './ContestDetailsMap/ContestDetailsMap';
 import ContestDetailsToggler from './ContestDetailsToggler/ContestDetailsToggler';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
-<<<<<<< HEAD
 import MainButton from '../../Atoms/MainButton/MainButton';
 import Modal from '../Modal/Modal';
 import Spinner from '../../Atoms/Spinner/Spinner';
 import modalData from '../../Consts/modalData';
-=======
-import Spinner from '../../Atoms/Spinner/Spinner';
->>>>>>> development
 import useWindowSize from '../../Hooks/useWindowSize';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
@@ -30,7 +23,6 @@ const ContestDetails = ({ contestId }) => {
   const [isPending, setIsPending] = useState(true);
   const [contestData, setContestData] = useState(null);
   const [isCloseContestModalOpen, setIsCloseContestModalOpen] = useState(false);
-  const { state } = useContext(UserDataContext);
   const navigate = useNavigate();
 
   const [toggle, setToggle] = useState(true);
@@ -79,8 +71,10 @@ const ContestDetails = ({ contestId }) => {
   };
 
   return (
-<<<<<<< HEAD
-    <ColumnWrapper className="contest-data">
+    <ColumnWrapper
+      className="contest-data grid-position"
+      contentPosition={isAuthenticated}
+    >
       {isCloseContestModalOpen && (
         <Modal
           modalData={modalData.cancelContest}
@@ -91,12 +85,6 @@ const ContestDetails = ({ contestId }) => {
       {isCloseContestModalOpen && <Backdrop onClick={closeModalHandler} />}
 
       {isPending && <p>Loading...</p>}
-=======
-    <ColumnWrapper
-      className="contest-data grid-position"
-      contentPosition={isAuthenticated}
-    >
->>>>>>> development
       {isPending && <Spinner />}
       {/* {contestData && <ContestDetailsMap />} */}
       {contestData && (
