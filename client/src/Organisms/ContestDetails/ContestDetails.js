@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Backdrop from '../../Atoms/Modal/Backdrop';
@@ -14,15 +14,16 @@ import Modal from '../Modal/Modal';
 import Spinner from '../../Atoms/Spinner/Spinner';
 import modalData from '../../Consts/modalData';
 import useWindowSize from '../../Hooks/useWindowSize';
+import { UserDataContext } from '../../Context/UserDataContext';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const ContestDetails = ({ contestId }) => {
   const [isPending, setIsPending] = useState(true);
   const [contestData, setContestData] = useState(null);
   const [isCloseContestModalOpen, setIsCloseContestModalOpen] = useState(false);
+  const { state } = useContext(UserDataContext);
   const navigate = useNavigate();
 
-  const selectedRole = 'manager';
   const [toggle, setToggle] = useState(true);
   const { width } = useWindowSize();
 
@@ -88,10 +89,14 @@ const ContestDetails = ({ contestId }) => {
           <div>
             <ContestDetailsToggler onClick={toggleHandler} toggle={toggle} />
             {toggle && <ContestDetailsContent contestData={contestData} />}
-            {selectedRole === 'participant' && (
-              <FakeButton colors="secondary" text="ZGŁOŚ SWÓJ UDZIAŁ" />
+            {state && state.selectedRole === 'participant' && (
+              <FakeButton
+                colors="secondary"
+                text="ZGŁOŚ SWÓJ UDZIAŁ"
+                to="/user-dogs"
+              />
             )}{' '}
-            {selectedRole === 'manager' && (
+            {state && state.selectedRole === 'manager' && (
               <>
                 <FakeButton
                   colors="secondary"
