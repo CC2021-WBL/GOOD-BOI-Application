@@ -14,6 +14,11 @@ import contests from '../../Data/MongoDBMock/contests';
 import modalData from '../../Consts/modalData';
 import results from '../../Data/MongoDBMock/results';
 
+//MOCK DATA FOR FRONT
+const contestId = '3845029d-e97d-41ed-997f-2299d09ef648';
+const classId = 0;
+const dogId = 'VIII-40407';
+
 const ExercisesPage = () => {
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
   const [isPenaltyModalOpen, setIsPenaltyModalOpen] = useState(false);
@@ -25,7 +30,8 @@ const ExercisesPage = () => {
 
   const locationPath = useLocation();
 
-  const label = locationPath.state.label;
+  //const label = locationPath.state.label; // uncomment when fetch will be ready
+  const label = 'Lista ćwiczeń'; // MOCK FOR FRONT
 
   useEffect(() => {
     if (penaltyPoints < -10) {
@@ -87,7 +93,7 @@ const ExercisesPage = () => {
     navigate(-1);
   };
 
-  const { contestId, classId, dogId } = useParams();
+  //const { contestId, classId, dogId } = useParams(); // uncomment when fetch will be ready
 
   const contestResults = contests.find(
     (contest) => contest.contestId === contestId,
