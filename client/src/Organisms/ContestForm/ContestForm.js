@@ -47,10 +47,17 @@ const ContestForm = () => {
   };
   return (
     <>
-      <ColumnWrapper
+      {/* <ColumnWrapper
         paddingLeftRight={1}
         maxWidthBigScreen={45}
         className="contest-form-column-wrapper"
+      > */}
+      <ColumnWrapper
+        paddingLeftRight={4}
+        paddingTop={1}
+        paddingBottom={1}
+        maxWidthBigScreen={35}
+        className="dog-form-wrapper"
       >
         <FormWrapper
           onSubmit={handleSubmit(async (data) => {
