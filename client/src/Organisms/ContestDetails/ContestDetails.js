@@ -1,17 +1,20 @@
-import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { useContext, useEffect, useState } from 'react';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ContestDetailsContent from './ContestDetailsContent/ContestDetailsContent';
+import ContestDetailsEmptyBarStyled from '../../Atoms/ContestDetailsEmptyBar/ContestDetailsEmptyBarStyled';
 import ContestDetailsMap from './ContestDetailsMap/ContestDetailsMap';
 import ContestDetailsToggler from './ContestDetailsToggler/ContestDetailsToggler';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
-import PropTypes from 'prop-types';
 import Spinner from '../../Atoms/Spinner/Spinner';
-import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
-import ContestDetailsEmptyBarStyled from '../../Atoms/ContestDetailsEmptyBar/ContestDetailsEmptyBarStyled';
 import useWindowSize from '../../Hooks/useWindowSize';
+import { UserDataContext } from '../../Context/UserDataContext';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const ContestDetails = ({ contestId }) => {
+  const { state } = useContext(UserDataContext);
+  const { isAuthenticated } = state;
   const [isPending, setIsPending] = useState(true);
   const [contestData, setContestData] = useState(null);
   const [toggle, setToggle] = useState(true);
@@ -42,7 +45,10 @@ const ContestDetails = ({ contestId }) => {
   };
 
   return (
-    <ColumnWrapper className="contest-data">
+    <ColumnWrapper
+      className="contest-data grid-position"
+      contentPosition={isAuthenticated}
+    >
       {isPending && <Spinner />}
       {contestData && <ContestDetailsMap />}
       {contestData && (
