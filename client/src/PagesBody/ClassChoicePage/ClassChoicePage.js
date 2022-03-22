@@ -1,15 +1,18 @@
 import { useContext, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import { ContestContext } from '../../Context/ContestContext';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import MainButton from '../../Atoms/MainButton/MainButton';
-import contests from '../../Data/MongoDBMock/contests';
+import { ContestContext } from '../../Context/ContestContext';
+import { UserDataContext } from '../../Context/UserDataContext';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
-import { useLocation } from 'react-router-dom';
 
 const ClassChoicePage = () => {
   const { contestState } = useContext(ContestContext);
+  const { state } = useContext(UserDataContext);
+  const { isAuthenticated } = state;
+
   const [selectedClass, setSelectedClass] = useState('');
   const [classesArr, setClassesArr] = useState(null);
   const location = useLocation();
@@ -55,7 +58,13 @@ const ClassChoicePage = () => {
   };
 
   return (
-    <ColumnWrapper paddingLeftRight={1} paddingTop={0.25}>
+    <ColumnWrapper
+      paddingLeftRight={1}
+      paddingTop={0.25}
+      contentPosition={isAuthenticated}
+      maxWidthBigScreen={35}
+      className="class-choice-wrapper grid-position"
+    >
       {classesArr &&
         Object.keys(classesArr).map((obedienceClass, index) => {
           return (

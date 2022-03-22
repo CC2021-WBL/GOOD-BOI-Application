@@ -1,5 +1,6 @@
-import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
+
+import FONTS from '../../Styles/fontsStyledComponents';
 
 const handleBgAndColor = (props) => {
   if (props.primary) {
@@ -19,6 +20,12 @@ const ButtonExercisesStyled = styled.button`
   margin: 0.25rem 0;
   ${FONTS.label_semibold};
   ${(props) => handleBgAndColor(props)};
+
+  &:hover {
+    filter: brightness(1.05);
+    box-shadow: 0.125rem 0.25rem ${({ theme }) => theme.primary201};
+    cursor: pointer;
+  }
 `;
 
 export default ButtonExercisesStyled;
