@@ -15,7 +15,7 @@ const NavInnerStyled = styled.div`
     margin: 0 auto;
   }
   @media only screen and (min-width: 1600px) {
-    max-width: 1200px;
+    max-width: 1620px;
     padding: 0rem 2rem;
   }
 `;
