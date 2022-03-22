@@ -1,9 +1,11 @@
+import styled from 'styled-components';
+
 import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
 import { COLORSMOTIVE as c } from '../../Consts/infoLabelConsts';
-import styled from 'styled-components';
 
 const InfoLabelStyled = styled.label`
+  cursor: pointer;
   display: flex;
   height: 1.25rem;
   align-items: center;
