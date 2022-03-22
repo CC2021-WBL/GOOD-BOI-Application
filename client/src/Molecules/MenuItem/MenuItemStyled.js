@@ -6,6 +6,7 @@ const MenuItemStyled = styled.div`
   height: 3rem;
   align-items: center;
   padding: 0;
+  ${(props) => props.stylefor === 'Cornermenu' && 'padding-left: .5rem'};
   color: ${({ theme }) => theme.grey400};
   gap: 1rem;
   justify-items: space-between;

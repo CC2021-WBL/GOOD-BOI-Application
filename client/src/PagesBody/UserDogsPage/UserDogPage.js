@@ -1,12 +1,12 @@
-import { DOG_ACTIONS, USER_ACTIONS } from '../../Consts/reducersActions';
 import { useContext, useEffect, useState } from 'react';
 
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import { DogContext } from '../../Context/DogContext';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
-import { ROLE_NAME } from '../../Consts/rolesConsts';
 import Spinner from '../../Atoms/Spinner/Spinner';
+import { DOG_ACTIONS, USER_ACTIONS } from '../../Consts/reducersActions';
+import { DogContext } from '../../Context/DogContext';
+import { ROLE_NAME } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
@@ -79,7 +79,9 @@ const UserDogPage = () => {
             />
           );
         })}
-
+      {dogs && dogs.length === 0 && (
+        <h3 className="dogs-0">Nie dodałeś jeszcze żadnego psa.</h3>
+      )}
       <FakeButton
         colors="secondary"
         text="DODAJ NOWEGO PSA"

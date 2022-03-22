@@ -21,6 +21,7 @@ export const FooterStyled = styled.div`
   }
   &.non-mobile-wrapper {
     display: none;
+    margin-top: 1rem;
     background: ${({ theme }) => theme.grey00};
     @media only screen and (min-width: 800px) {
       display: block;
@@ -31,7 +32,7 @@ export const FooterStyled = styled.div`
   &.non-mobile {
     display: none;
     text-align: right;
-    a {
+    a:nth-child(1) {
       flex: 1;
     }
 
@@ -56,7 +57,7 @@ export const FooterStyled = styled.div`
       }
     }
     @media only screen and (min-width: 1600px) {
-      max-width: 75rem;
+      max-width: 101.25rem;
       align-items: center;
       justify-content: space-between;
       ${FONTS.body_semibold};

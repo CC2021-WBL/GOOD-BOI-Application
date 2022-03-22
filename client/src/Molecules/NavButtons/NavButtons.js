@@ -16,9 +16,10 @@ const NavButtons = () => {
   return (
     <NavButtonsStyled>
       {location.pathname !== '/register' && (
-        <FakeButton to="/register" colors="ternary" text="Zarejestruj" />
+        <FakeButton to="/register" colors="ternary" text="Zarejestruj się" />
       )}
-      {location.pathname !== '/login' && (
+
+      {location.pathname !== '/login' && location.pathname !== '/' && (
         <FakeButton to="/login" colors="primary" text="Zaloguj się" />
       )}
     </NavButtonsStyled>

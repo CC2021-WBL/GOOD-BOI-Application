@@ -23,6 +23,7 @@ const NavCornerMenu = () => {
         icon={<IoMdSettings fontSize={fontsize} />}
       />
       <MenuItemStyled
+        stylefor="Cornermenu"
         onClick={() => {
           dispatch({ type: 'LOG_OUT', index: 1 });
           navigate('/');

@@ -100,6 +100,12 @@ const ColumnWrapperStyled = styled.div`
     padding: 0.5rem 1rem;
   }
 
+  .dogs-0 {
+    margin: 0 0 0.625rem 0;
+    color: ${({ theme }) => theme.grey800};
+    ${FONTS.h3};
+  }
+
   &.user-data-wrapper {
     margin-top: 1rem;
   }
