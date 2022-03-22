@@ -1,4 +1,5 @@
 import propTypes from 'prop-types';
+import { FaRegTimesCircle } from 'react-icons/fa';
 import { useState } from 'react';
 
 import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
@@ -27,7 +28,7 @@ const UserField = ({
         {password && <p>{userPassword}</p>}
         {phoneNumber && <p>{userPhoneNumber}</p>}
         <button className="edit-btn" onClick={toggleHandler} toggle="true">
-          {text}
+          {!toggle ? text : <FaRegTimesCircle className="edit-close" />}
         </button>
       </UserFieldStyled>
       {toggle && email && (

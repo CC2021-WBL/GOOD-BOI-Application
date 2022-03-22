@@ -26,6 +26,14 @@ const UserProfileDataStyled = styled.div`
     cursor: pointer;
   }
 
+  .user-data-edit-close {
+    margin-right: 10px;
+    transform: scale(1.8);
+    background: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.grey400};
+    cursor: pointer;
+  }
+
   &.user-data-profile-card {
     justify-content: space-between;
     padding: 0 0 1.25rem;
@@ -63,9 +71,6 @@ const UserProfileDataStyled = styled.div`
     }
     p {
       padding: 0 0.1875rem;
-    }
-    .user-data-edit-btn {
-      visibility: hidden;
     }
   }
 

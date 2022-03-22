@@ -38,7 +38,7 @@ const DogData = ({ id }) => {
     }
 
     fetchDogData();
-  }, [id, dogData]);
+  }, []);
 
   const handleEdit = (event) => {
     event.preventDefault();

@@ -1,4 +1,5 @@
 import propTypes from 'prop-types';
+import { FaRegTimesCircle } from 'react-icons/fa';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -24,7 +25,7 @@ const UserProfileData = ({
     userData = paramsUserData.userId;
   }
   const [userObject, setUserObject] = useState(createUserInitialData(state));
-  console.log(setUserObject)
+  console.log(setUserObject);
   const [toggle, setToggle] = useState(false);
 
   const toggleHandler = () => {
@@ -89,7 +90,11 @@ const UserProfileData = ({
               onClick={toggleHandler}
               toggle="true"
             >
-              edytuj dane
+              {!toggle ? (
+                'edytuj dane'
+              ) : (
+                <FaRegTimesCircle className="user-data-edit-close" />
+              )}
             </button>
           </>
         )}
