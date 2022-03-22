@@ -1,11 +1,12 @@
+import propTypes from 'prop-types';
+import { FaRegTimesCircle } from 'react-icons/fa';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
-import { UserDataContext } from '../../Context/UserDataContext';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
-import propTypes from 'prop-types';
+import { UserDataContext } from '../../Context/UserDataContext';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const UserProfileData = ({
@@ -24,7 +25,6 @@ const UserProfileData = ({
     userData = paramsUserData.userId;
   }
   const [userObject, setUserObject] = useState(createUserInitialData(state));
-
   const [toggle, setToggle] = useState(false);
 
   const toggleHandler = () => {
@@ -89,7 +89,11 @@ const UserProfileData = ({
               onClick={toggleHandler}
               toggle="true"
             >
-              edytuj dane
+              {!toggle ? (
+                'edytuj dane'
+              ) : (
+                <FaRegTimesCircle className="user-data-edit-close" />
+              )}
             </button>
           </>
         )}
@@ -99,6 +103,7 @@ const UserProfileData = ({
           submitForm={submitForm}
           editData
           initialState={initialState}
+          setUserObject={setUserObject}
         />
       )}
     </>

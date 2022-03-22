@@ -1,21 +1,21 @@
 import { useContext, useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
-import { CONTEST_ACTIONS } from '../../Consts/reducersActions';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ContestCard from '../../Molecules/ContestCard/ContestCard';
-import { ContestContext } from '../../Context/ContestContext';
 import ContestFilterToggler from '../../Organisms/ContestFilterHarmonica/ContestFilterToggler';
 import ContestsWrapperStyled from './ContestsWrapperStyled';
 import FilterLabel from '../../Molecules/FilterLabel/FilterLabel';
 import Spinner from '../../Atoms/Spinner/Spinner';
+import mockmap from '../../Assets/mockMAP.JPG';
+import useMediaQuery from '../../Hooks/useMediaQuery';
+import { CONTEST_ACTIONS } from '../../Consts/reducersActions';
+import { ContestContext } from '../../Context/ContestContext';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { chooseAndSetSelectedMode } from '../../Tools/contestPageFunctions';
 import { getContestsCards } from '../../Tools/FetchData/fetchContestsfunctions';
 import { getSelectedContestsByTime } from '../../Tools/TimeFunctions';
-import mockmap from '../../Assets/mockMAP.JPG';
 import { removeNullsFromArray } from '../../Tools/FetchData/additionalToolsForResults';
-import { useLocation } from 'react-router-dom';
-import useMediaQuery from '../../Hooks/useMediaQuery';
 
 const ContestsPage = () => {
   const rawDataFromDB = useRef(null);
@@ -24,6 +24,7 @@ const ContestsPage = () => {
   const locationPath = useLocation();
   const [isPending, setIsPending] = useState(true);
   const { state } = useContext(UserDataContext);
+  const { isAuthenticated } = state;
   const { contestState, contestDispatch } = useContext(ContestContext);
 
   useEffect(() => {
@@ -66,7 +67,10 @@ const ContestsPage = () => {
           {toggle && <FilterLabel onClick={handleFilterClick} />}{' '}
         </>
       )}
-      <ContestsWrapperStyled className="contests">
+      <ContestsWrapperStyled
+        className="contests"
+        contentPosition={isAuthenticated}
+      >
         <ColumnWrapper
           paddingLeftRight={1}
           paddingTop={0.5}
