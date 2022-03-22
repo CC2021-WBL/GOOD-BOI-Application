@@ -23,7 +23,6 @@ const NavLinkStyled = styled(NavLink)`
   }
   &.active {
     color: ${({ theme }) => theme.primary601};
-    font-weight: bold;
     ${(props) => handler(props)};
   }
 `;
