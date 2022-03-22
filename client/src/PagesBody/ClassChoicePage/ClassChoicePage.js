@@ -63,7 +63,7 @@ const ClassChoicePage = () => {
       paddingTop={0.25}
       contentPosition={isAuthenticated}
       maxWidthBigScreen={35}
-      className="class-choice-wrapper"
+      className="class-choice-wrapper grid-position"
     >
       {classesArr &&
         Object.keys(classesArr).map((obedienceClass, index) => {

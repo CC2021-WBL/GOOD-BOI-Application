@@ -45,7 +45,10 @@ const ContestDetails = ({ contestId }) => {
   };
 
   return (
-    <ColumnWrapper className="contest-data" contentPosition={isAuthenticated}>
+    <ColumnWrapper
+      className="contest-data grid-position"
+      contentPosition={isAuthenticated}
+    >
       {isPending && <Spinner />}
       {contestData && <ContestDetailsMap />}
       {contestData && (

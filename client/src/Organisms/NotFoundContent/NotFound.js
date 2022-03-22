@@ -16,7 +16,7 @@ const NotFound = () => {
     <ColumnWrapper
       paddingLeftRight={1}
       maxWidthBigScreen={35}
-      className="not-found-wrapper"
+      className="not-found-wrapper grid-position"
       contentPosition={isAuthenticated}
     >
       <img src={notFound} alt="Dog with question mark" />

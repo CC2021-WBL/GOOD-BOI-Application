@@ -16,7 +16,7 @@ const RegistrationForm = ({ editData }) => {
     <ColumnWrapper
       paddingLeftRight={1}
       maxWidthBigScreen={35}
-      className="register-form-column-wrapper user-data-wrapper"
+      className="register-form-column-wrapper user-data-wrapper grid-position"
     >
       {!isSubmitted ? (
         <RegistrationFormSignup submitForm={submitForm} editData={editData} />

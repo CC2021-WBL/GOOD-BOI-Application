@@ -125,15 +125,6 @@ const ColumnWrapperStyled = styled.div`
       margin: 0 auto 1rem;
       height: fit-content;
     }
-    &.not-found-wrapper,
-    &.forgot-wrapper,
-    &.class-choice-wrapper,
-    &.contest-data,
-    &.login-column-wrapper,
-    &.register-form-column-wrapper {
-      grid-area: 3 / 1 / 4 / 3;
-      grid-column-start: ${(props) => props.contentPosition && 2};
-    }
     &.login-column-wrapper {
       max-width: 29.375rem;
       border: 1px solid ${({ theme }) => theme.grey200};
@@ -145,6 +136,10 @@ const ColumnWrapperStyled = styled.div`
     }
     &.register-form-column-wrapper {
       margin-top: 1rem;
+    }
+    &.grid-position {
+      grid-area: 3 / 1 / 4 / 3;
+      grid-column-start: ${(props) => props.contentPosition && 2};
     }
   }
   @media only screen and (min-width: 1024px) {
@@ -245,12 +240,7 @@ const ColumnWrapperStyled = styled.div`
   }
   @media only screen and (min-width: 1600px) {
     grid-area: 3 / 3 / 4 / 4;
-    &.not-found-wrapper,
-    &.user-data-wrapper,
-    &.forgot-wrapper,
-    &.class-choice-wrapper,
-    &.contest-data,
-    &.login-column-wrapper {
+    &.grid-position {
       grid-area: 3 / 3 / 4 / 4;
     }
   }
