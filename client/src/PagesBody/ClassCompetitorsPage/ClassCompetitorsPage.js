@@ -19,14 +19,14 @@ const ClassCompetitorsPage = () => {
         `/api/contests/participants/${contestId}/${classId}`,
         requestOptionsGET,
       );
-      const result = await response.json();
-      setDogList(result);
-      console.log(result);
+      if (response) {
+        const dogsArr = await response.json();
+        console.log(dogsArr);
+        setDogList(dogsArr);
+      }
     }
     fetchDogList();
   }, []);
-  // const dogList = contests.find((contest) => contest.contestId === contestId)
-  //   .obedienceClasses[classId];
   const exercisesAmount = CLASSES[classId].exercises.length;
 
   console.log(dogList);
@@ -40,14 +40,11 @@ const ClassCompetitorsPage = () => {
         dogList.map((dog, index) => {
           const { dogId, dogName, resultsId } = dog;
 
-          /* copetingPairsId ?? = resultsId ? jak sfeczować excersisey? mam id resultu*/
-          console.log(resultsId);
-          const dogPerformance = dogList.find(
-            (dog) => dog.resultsId === resultsId,
-          );
-          /* const exercisesCompleted = dogPerformance.exercises.filter(
+          console.log(resultsId.exercises);
+
+          const exercisesCompleted = resultsId.exercises.filter(
             (exercise) => exercise.result != null,
-          ).length; */
+          ).length;
 
           return (
             <ClassOrDogButton
@@ -56,7 +53,7 @@ const ClassCompetitorsPage = () => {
                 index,
                 dogId,
                 dogName,
-                // exercisesCompleted,
+                exercisesCompleted,
                 exercisesAmount,
               }}
             />
