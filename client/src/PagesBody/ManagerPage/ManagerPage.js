@@ -1,13 +1,14 @@
+import { useContext } from 'react';
+
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import { UserDataContext } from '../../Context/UserDataContext';
-import { useContext } from 'react';
 
 const ManagerPage = () => {
   const { state } = useContext(UserDataContext);
   const { isAuthenticated, userId } = state;
   return (
-    <ColumnWrapper paddingLeftRight={1} className="manager-page">
+    <ColumnWrapper paddingLeftRight={1} className="manager-page" maxWidthBigScreen={45}>
       {isAuthenticated ? (
         <>
           <FakeButton

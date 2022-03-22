@@ -1,5 +1,6 @@
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import CheckBoxFormInnerWrapperStyled from '../../Molecules/CheckBoxFormWrapper/CheckBoxFormInnerWrapperStyled';
 import CheckBoxFormOuterWrapperStyled from './../../Molecules/CheckBoxFormWrapper/CheckBoxFormOuterWrapperStyled';
@@ -9,6 +10,8 @@ import InputField from '../../Molecules/InputField/InputField';
 import InputLabel from '../../Atoms/InputLabel/InputLabel';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import SelectFieldStyled from '../../Atoms/SelectField/SelectFieldStyled';
+import { UserDataContext } from '../../Context/UserDataContext';
+import { genRequestOptionsPOST } from '../../Tools/FetchData/requestOptions';
 
 const ContestForm = () => {
   const {
@@ -20,8 +23,14 @@ const ContestForm = () => {
     mode: 'onBlur',
   });
   const [data, setData] = useState('');
-  console.log(data);
   const [chosenClasses, setChosenClasses] = useState([]);
+  const params = useParams();
+  const { state } = useContext(UserDataContext);
+
+  let managerId = state.userId;
+  if (!managerId) {
+    managerId = params.userId;
+  }
 
   const judgeArr = [];
   for (let i = 1; i <= watch('judges'); i++) {
@@ -38,11 +47,27 @@ const ContestForm = () => {
   };
   return (
     <>
-      <ColumnWrapper paddingLeftRight={1}>
+      <ColumnWrapper
+        paddingLeftRight={1}
+        maxWidthBigScreen={45}
+        className="contest-form-column-wrapper"
+      >
         <FormWrapper
-          onSubmit={handleSubmit((data) => {
+          onSubmit={handleSubmit(async (data) => {
             data.obedienceClasses = chosenClasses;
             setData(JSON.stringify(data));
+            try {
+              const response = await fetch(
+                `/api/contests/register/${managerId}`,
+                genRequestOptionsPOST(data),
+              );
+              const result = await response.json();
+              console.log(result);
+              // to decide how handle when success
+            } catch (error) {
+              console.log(error);
+              //to decide how handle when error
+            }
           })}
         >
           <InputField

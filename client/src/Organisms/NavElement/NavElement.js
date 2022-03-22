@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 import { MdMenu } from 'react-icons/md';
 import { useContext, useState } from 'react';
@@ -8,6 +7,8 @@ import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import GoHomeStyled from '../../Atoms/NavElementStyled/GoHomeStyled';
 import GreyLabel from '../../Atoms/GreyLabel/GreyLabel';
 import GridWrapper from '../../Templates/Layout/GridWrapper';
+import Nav from '../Nav/Nav';
+import Sidebar from './../Sidebar/Sidebar';
 import checkLocationForNavRender from '../../Tools/checkLocationForNavRender';
 import home from '../../Assets/home.png';
 import { ContestContext } from '../../Context/ContestContext';
@@ -29,12 +30,11 @@ const NavElement = () => {
     dogName: dogState.chosenDog.dogName || '',
     contestName: contestState.contestName || '',
   };
-
   const data = checkPathOrigin(locationPath.pathname, namesFromContext);
   return (
     <>
-      <GridWrapper mobile="1 / 1 / 2 / 2" tablet="1 / 1 / 2 / -1" navFoot>
-        <NavElementStyled>
+      <GridWrapper className="mobile_only">
+        <NavElementStyled className="mobile_only">
           {checkLocationForNavRender(locationPath.pathname) ? (
             <div className="burger-wrapper" />
           ) : (
@@ -42,29 +42,31 @@ const NavElement = () => {
               <MdMenu className="burger-icon " onClick={() => setOpen(true)} />
             </div>
           )}
-
           <h3 className="navText">{data.text}</h3>
-
           <GoHomeStyled>
             <Link to="/">
               <img src={home} alt="Buda psa" className="logo" />
             </Link>
           </GoHomeStyled>
         </NavElementStyled>
+        {open && <Backdrop />}
+      </GridWrapper>
+      <GridWrapper desktop="1 / 1 / 2 / -1" tablet="1 / 1 / 2 / -1">
+        <Nav />
       </GridWrapper>
       {data.label && data.label.length !== 0 && (
-        <>
+        <GridWrapper
+          mobile="2 / 1 / 3 / 2"
+          tablet="2 / 1 / 3 / -1"
+          desktop="2 / 1 / 3 / -1"
+        >
           <GreyLabel text={data.label} />
-        </>
+        </GridWrapper>
       )}
       <BurgerMenu open={open} setOpen={setOpen} />
-      {open && <Backdrop />}
+      <Sidebar />
     </>
   );
-};
-
-NavElement.propTypes = {
-  text: PropTypes.string,
 };
 
 export default NavElement;

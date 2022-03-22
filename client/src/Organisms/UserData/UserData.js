@@ -1,17 +1,19 @@
 import { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
-import { UserDataContext } from '../../Context/UserDataContext';
 import UserField from '../../Atoms/UserField/UserField';
-import { requestOptionsGET } from '../../FetchData/requestOptions';
-import { useParams } from 'react-router-dom';
+import useMediaQuery from '../../Hooks/useMediaQuery';
+import { UserDataContext } from '../../Context/UserDataContext';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const UserData = () => {
   const [userObject, setUserObject] = useState(null);
   const { state } = useContext(UserDataContext);
   const { userId } = state;
   const paramsUserData = useParams();
+  const isBigScreen = useMediaQuery('(min-width:800px)');
 
   let userData = userId;
   if (!userData) {
@@ -28,30 +30,42 @@ const UserData = () => {
   }, []);
 
   if (!userObject) {
-    return <p></p>;
+    return <p>Wkradł się błąd</p>;
   }
 
   return (
     <>
-      <ColumnWrapper paddingLeftRight={1}>
-        <ProfileCard withEdit initialState={userObject} />
+      <ColumnWrapper
+        paddingLeftRight={1}
+        maxWidthBigScreen={35}
+        className="user-data-wrapper"
+      >
+        <ProfileCard
+          withEdit
+          initialState={userObject}
+          className="user-data-profile-card"
+          isBigScreen={isBigScreen}
+        />
         <UserField
           text="zmień email"
           email
           userEmail={userObject.email}
           initialState={userObject}
+          setUserObject={setUserObject}
         />
         <UserField
           text="zmień hasło"
           password
           userPassword="***********"
           initialState={userObject}
+          setUserObject={setUserObject}
         />
         <UserField
           text="zmień numer telefonu"
           phoneNumber
           userPhoneNumber={userObject.phoneNumber}
           initialState={userObject}
+          setUserObject={setUserObject}
         />
       </ColumnWrapper>
     </>

@@ -1,6 +1,5 @@
-const checkLocationForNavRender = (pathname) => {
+const checkLocationForNavRender = (pathname, isAuthorized) => {
   const pathsWithNavMenu = [
-    '/',
     '/not-found',
     '/login',
     '/register',
@@ -8,6 +7,10 @@ const checkLocationForNavRender = (pathname) => {
     '/forgot',
     '/in-progress',
   ];
+
+  if (!isAuthorized) {
+    pathsWithNavMenu.push('/');
+  }
 
   const checkPath = (elem) => elem === pathname;
 

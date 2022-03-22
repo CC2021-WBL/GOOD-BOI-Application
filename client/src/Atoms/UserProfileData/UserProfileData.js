@@ -1,14 +1,20 @@
+import propTypes from 'prop-types';
+import { FaRegTimesCircle } from 'react-icons/fa';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
-import { UserDataContext } from '../../Context/UserDataContext';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
-import propTypes from 'prop-types';
-import { requestOptionsGET } from '../../FetchData/requestOptions';
+import { UserDataContext } from '../../Context/UserDataContext';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
-const UserProfileData = ({ withEdit, initialState }) => {
+const UserProfileData = ({
+  withEdit,
+  initialState,
+  className,
+  isBigScreen,
+}) => {
   const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
   const { userId, userName, userSurname, isAuthenticated } = state;
@@ -19,42 +25,6 @@ const UserProfileData = ({ withEdit, initialState }) => {
     userData = paramsUserData.userId;
   }
   const [userObject, setUserObject] = useState(createUserInitialData(state));
-
-  // mock for checking authentication and if userId is in database
-  // const { pathname } = useLocation();
-  // if (!isAuthenticated) {
-  //   try {
-  //     const userId = pathname.split('/').pop();
-  //     const userObject = participants.find(
-  //       (participant) => participant.participantId === userId,
-  //     );
-  //     dispatch({ type: 'LOG_IN' });
-  //     setUserObject(userObject);
-  //   } catch (err) {
-  //     throw new Error('Your not allowed to be here!');
-  //   }
-  // }
-
-  const { address, participantName, participantSurname } = userObject;
-  const { street, numberOfHouse, city, postalCode } = address;
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate('/login');
-    } else {
-      fetch(`/api/users/${userData}?taker=profile`, requestOptionsGET)
-        .then((response) => response.json())
-        .then((result) => {
-          if (!result) {
-            navigate('/login');
-          } else {
-            setUserObject(result);
-          }
-        })
-        .catch((error) => console.log('error', error));
-    }
-  }, []);
-
   const [toggle, setToggle] = useState(false);
 
   const toggleHandler = () => {
@@ -63,28 +33,77 @@ const UserProfileData = ({ withEdit, initialState }) => {
 
   const submitForm = () => {};
 
+  const { address, participantName, participantSurname } = userObject;
+  const { street, numberOfHouse, city, postalCode } = address;
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/login');
+    } else {
+      async function getUserProfileData() {
+        try {
+          let response = await fetch(
+            `/api/users/${userData}?taker=profile`,
+            requestOptionsGET,
+          );
+          if (!response.ok) {
+            navigate('/login');
+          } else {
+            response = await response.json();
+            setUserObject(response);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      getUserProfileData();
+    }
+    if (isBigScreen) {
+      return setToggle(true);
+    }
+  }, []);
+
   return (
     <>
-      <UserProfileDataStyled withEdit={withEdit}>
-        {state && userObject ? (
-          <h3>{`${participantName} ${participantSurname}`}</h3>
-        ) : (
-          <h3>{`${userName} ${userSurname}`}</h3>
-        )}
-
-        <p>{`${street} ${numberOfHouse}`}</p>
-        <p>{`${postalCode} ${city}`}</p>
+      <UserProfileDataStyled withEdit={withEdit} className={className}>
+        <div className="user-data-wrapper">
+          {state && userObject ? (
+            <>
+              <h3>{`${participantName} ${participantSurname}`}</h3>
+              <p>{`${street} ${numberOfHouse}`}</p>
+              <p>{`${postalCode} ${city}`}</p>
+            </>
+          ) : (
+            <>
+              <h3>{`${userName} ${userSurname}`}</h3>
+            </>
+          )}
+          <></>
+        </div>
         {withEdit && (
-          <button className="edit-btn" onClick={toggleHandler} toggle="true">
-            edytuj dane
-          </button>
+          <>
+            <div className="bg-box tablet_only" />
+            <button
+              className="user-data-edit-btn"
+              onClick={toggleHandler}
+              toggle="true"
+            >
+              {!toggle ? (
+                'edytuj dane'
+              ) : (
+                <FaRegTimesCircle className="user-data-edit-close" />
+              )}
+            </button>
+          </>
         )}
       </UserProfileDataStyled>
-      {toggle && (
+      {toggle && withEdit && (
         <RegistrationFormSignup
           submitForm={submitForm}
           editData
           initialState={initialState}
+          setUserObject={setUserObject}
         />
       )}
     </>

@@ -1,3 +1,4 @@
+const { ERROR_MSG } = require('../Consts/errorMessages');
 const Result = require('../Model/Result');
 
 async function registerResults(req, res) {
@@ -11,7 +12,11 @@ async function registerResults(req, res) {
   });
   try {
     const savedResult = await result.save();
-    return savedResult;
+    if (!savedResult) {
+      res.status(500).send(ERROR_MSG[500]);
+    } else {
+      return savedResult;
+    }
   } catch (error) {
     res.status(400).json({ message: error });
   }
@@ -39,7 +44,7 @@ async function getResultSummaryAndName(req, res) {
     const results = await Result.find({
       contestId: req.params.contestId,
     })
-      .where({ obedienceClass: 0 })
+      .where({ obedienceClass: req.params.classId })
       .select(['dogName', 'summaryResult']);
 
     res.json(results);

@@ -13,7 +13,11 @@ const RegistrationForm = ({ editData }) => {
   }
 
   return (
-    <ColumnWrapper paddingLeftRight={1}>
+    <ColumnWrapper
+      paddingLeftRight={1}
+      maxWidthBigScreen={35}
+      className="register-form-column-wrapper user-data-wrapper grid-position"
+    >
       {!isSubmitted ? (
         <RegistrationFormSignup submitForm={submitForm} editData={editData} />
       ) : (

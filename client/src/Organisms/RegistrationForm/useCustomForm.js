@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react';
 
-const useCustomForm = (callback, validateData, initialState) => {
+import {
+  genRequestOptionsPATCH,
+  genRequestOptionsPOST,
+} from '../../Tools/FetchData/requestOptions';
+
+const useCustomForm = (callback, validateData, initialState, setUserObject) => {
+  let isNew = false;
   const initialStateMock = {
     participantName: '',
     participantSurname: '',
@@ -18,9 +24,11 @@ const useCustomForm = (callback, validateData, initialState) => {
   };
   if (!initialState) {
     initialState = initialStateMock;
+    isNew = true;
   }
 
   const [formData, setFormData] = useState(initialState);
+  const [isNewUser, setIsNewUser] = useState(isNew);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const handleInputChange = (event) => {
@@ -42,22 +50,31 @@ const useCustomForm = (callback, validateData, initialState) => {
     );
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
     setErrors(validateData(formData));
     setIsSubmitting(true);
 
-    // Sending data to future server
-    const url = 'https://jsonplaceholder.typicode.com/posts';
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    };
-    fetch(url, requestOptions)
-      .then((response) => response.json())
-      // checking if response is coming back
-      .then((res) => console.log(res));
+    if (isNewUser) {
+      let response = await fetch(
+        '/api/users/register',
+        genRequestOptionsPOST(formData),
+      );
+      if (response.status !== 201) {
+        alert('Ooops, rejestracja nieudana, spróbuj jeszcze raz');
+      }
+    } else {
+      const response = await fetch(
+        `/api/users/${initialState._id}`,
+        genRequestOptionsPATCH(formData),
+      );
+      if (response.status === 200) {
+        alert('Aktualizacja udana!');
+        setUserObject(formData);
+      } else {
+        alert('Błąd serwera, spróbuj jeszcze raz');
+      }
+    }
 
     // error handling tries
     // .then(async (response) => {

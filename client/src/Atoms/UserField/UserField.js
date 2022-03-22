@@ -1,4 +1,5 @@
 import propTypes from 'prop-types';
+import { FaRegTimesCircle } from 'react-icons/fa';
 import { useState } from 'react';
 
 import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
@@ -13,9 +14,9 @@ const UserField = ({
   userPassword,
   userPhoneNumber,
   initialState,
+  setUserObject,
 }) => {
   const [toggle, setToggle] = useState(false);
-
   const toggleHandler = () => {
     setToggle((prevState) => !prevState);
   };
@@ -28,7 +29,7 @@ const UserField = ({
         {password && <p>{userPassword}</p>}
         {phoneNumber && <p>{userPhoneNumber}</p>}
         <button className="edit-btn" onClick={toggleHandler} toggle="true">
-          {text}
+          {!toggle ? text : <FaRegTimesCircle className="edit-close" />}
         </button>
       </UserFieldStyled>
       {toggle && email && (
@@ -36,6 +37,7 @@ const UserField = ({
           submitForm={submitForm}
           editEmail
           initialState={initialState}
+          setUserObject={setUserObject}
         />
       )}
       {toggle && password && (
@@ -43,6 +45,7 @@ const UserField = ({
           submitForm={submitForm}
           editPassword
           initialState={initialState}
+          setUserObject={setUserObject}
         />
       )}
       {toggle && phoneNumber && (
@@ -50,6 +53,7 @@ const UserField = ({
           submitForm={submitForm}
           editPhoneNumber
           initialState={initialState}
+          setUserObject={setUserObject}
         />
       )}
     </>

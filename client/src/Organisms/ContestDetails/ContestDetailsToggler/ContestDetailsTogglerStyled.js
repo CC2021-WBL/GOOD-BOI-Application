@@ -18,6 +18,16 @@ const ContestDetailsTogglerStyled = styled.div`
   p {
     color: ${({ theme }) => theme.grey400};
   }
+  @media only screen and (min-width: 1024px) {
+    margin: 1.5rem 1rem 0 1rem;
+    border-radius: 0.75rem 0.75rem 0 0;
+    cursor: default;
+    pointer-events: none;
+
+    :hover {
+      opacity: 1;
+    }
+  }
 `;
 
 export default ContestDetailsTogglerStyled;
