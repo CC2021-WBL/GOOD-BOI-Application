@@ -1,5 +1,6 @@
-import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
+
+import FONTS from '../../Styles/fontsStyledComponents';
 
 const handleBgAndColor = (props) => {
   if (props.primary) {
@@ -22,7 +23,7 @@ const ButtonExercisesStyled = styled.button`
 
   &:hover {
     filter: brightness(1.05);
-    box-shadow: 2px 4px ${({ theme }) => theme.primary201};
+    box-shadow: 0.125rem 0.25rem ${({ theme }) => theme.primary201};
     cursor: pointer;
   }
 `;

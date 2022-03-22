@@ -4,7 +4,7 @@ export const ROLES = {
     roleButtonLink: '/user',
   },
   staff: {
-    roleButtonText: 'Panel sędziego',
+    roleButtonText: 'Panel Sędziego',
     roleButtonLink: '/contests',
   },
   manager: {

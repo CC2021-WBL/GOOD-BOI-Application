@@ -1,17 +1,17 @@
+import PropTypes from 'prop-types';
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import { ContestContext } from '../../Context/ContestContext';
 import DataLine from '../../Atoms/DataLine/DataLine';
-import { DogContext } from '../../Context/DogContext';
-import PropTypes from 'prop-types';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
 import Spinner from '../../Atoms/Spinner/Spinner';
-import { UserDataContext } from '../../Context/UserDataContext';
 import renderDogData from '../../Tools/renderDogData';
+import { ContestContext } from '../../Context/ContestContext';
+import { DogContext } from '../../Context/DogContext';
+import { UserDataContext } from '../../Context/UserDataContext';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
-import { useNavigate } from 'react-router-dom';
 
 const DogData = ({ id }) => {
   let navigate = useNavigate();
@@ -67,15 +67,10 @@ const DogData = ({ id }) => {
   return (
     <ColumnWrapper className="dog-data-container">
       <SpecialButtonsContainerStyled>
-        <SpecialButton
-          left
-          text="edytuj dane psa"
-          handler={handleEdit}
-          colors="blue"
-        />
+        <SpecialButton left text="edytuj" handler={handleEdit} colors="blue" />
         <SpecialButton
           right
-          text="potwierdź dane psa"
+          text="potwierdź"
           handler={handleConfirm}
           colors="green"
         />
