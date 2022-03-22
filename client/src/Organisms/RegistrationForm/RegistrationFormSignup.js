@@ -13,11 +13,14 @@ const RegistrationFormSignup = ({
   editPassword,
   initialState,
   editPhoneNumber,
+  setUserObject
 }) => {
+  console.log(setUserObject)
   const { handleInputChange, submitHandler, formData, errors } = useCustomForm(
     submitForm,
     validateData,
     initialState,
+    setUserObject,
   );
 
   if (editData) {

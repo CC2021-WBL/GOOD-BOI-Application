@@ -21,6 +21,7 @@ const UserData = () => {
   }
 
   useEffect(() => {
+    console.log('getching userData')
     fetch(`/api/users/${userData}`, requestOptionsGET)
       .then((response) => response.json())
       .then((result) => {

@@ -4,7 +4,7 @@ import {
 } from '../../Tools/FetchData/requestOptions';
 import { useEffect, useState } from 'react';
 
-const useCustomForm = (callback, validateData, initialState) => {
+const useCustomForm = (callback, validateData, initialState, setUserObject) => {
   let isNew = false;
   const initialStateMock = {
     participantName: '',
@@ -50,6 +50,7 @@ const useCustomForm = (callback, validateData, initialState) => {
   };
 
   const submitHandler = async (event) => {
+    console.log(formData)
     event.preventDefault();
     setErrors(validateData(formData));
     setIsSubmitting(true);
@@ -69,6 +70,7 @@ const useCustomForm = (callback, validateData, initialState) => {
       );
       if (response.status === 200) {
         alert('Aktualizacja udana!');
+        setUserObject(formData)
       } else {
         alert('Błąd serwera, spróbuj jeszcze raz');
       }

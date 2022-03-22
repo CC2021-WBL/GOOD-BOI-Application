@@ -24,7 +24,7 @@ const UserProfileData = ({
     userData = paramsUserData.userId;
   }
   const [userObject, setUserObject] = useState(createUserInitialData(state));
-
+  console.log(setUserObject)
   const [toggle, setToggle] = useState(false);
 
   const toggleHandler = () => {
@@ -62,7 +62,7 @@ const UserProfileData = ({
     if (isBigScreen) {
       return setToggle(true);
     }
-  }, [userObject]);
+  }, []);
 
   return (
     <>
@@ -99,6 +99,7 @@ const UserProfileData = ({
           submitForm={submitForm}
           editData
           initialState={initialState}
+          setUserObject={setUserObject}
         />
       )}
     </>
