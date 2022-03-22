@@ -26,6 +26,19 @@ const UserProfileDataStyled = styled.div`
     cursor: pointer;
   }
 
+  &.user-data-profile-card {
+    justify-content: space-between;
+    padding: 0 0 1.25rem;
+    text-align: left;
+    line-height: 1.4;
+
+    h3 {
+      position: static;
+      width: 100%;
+      border-bottom: none;
+    }
+  }
+
   @media only screen and (min-width: 800px) {
     text-align: center;
     margin-right: 0;
@@ -51,18 +64,8 @@ const UserProfileDataStyled = styled.div`
     p {
       padding: 0 0.1875rem;
     }
-  }
-
-  &.user-data-profile-card {
-    justify-content: space-between;
-    padding: 0 0 1.25rem;
-    text-align: left;
-    line-height: 1.4;
-
-    h3 {
-      position: static;
-      width: 100%;
-      border-bottom: none;
+    .user-data-edit-btn {
+      visibility: hidden;
     }
   }
 
