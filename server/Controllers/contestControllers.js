@@ -81,7 +81,16 @@ async function getPartcicipantsForClassInContest(req, res) {
     //   { $project: { classNumber: req.params.classId } },
     const contest = await Contest.findById(
       new mongoose.Types.ObjectId(req.params.contestId),
-    );
+    ).populate({
+      path: 'obedienceClasses',
+      populate: {
+        path: 'participants',
+        populate: {
+          path: 'resultsId',
+          model: 'Result',
+        },
+      },
+    });
     const participantsArray = contest.obedienceClasses.find(
       (obedienceClass) => obedienceClass.classNumber == req.params.classId,
     ).participants;

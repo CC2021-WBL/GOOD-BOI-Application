@@ -38,79 +38,82 @@ const obedienceClassesSchema = new mongoose.Schema(
   { _id: false },
 );
 
-const contestSchema = new mongoose.Schema({
-  contestName: {
-    type: String,
-    required: true,
-    minlength: 5,
-    maxlength: 100,
-  },
-  kennelClubDepartment: {
-    type: String,
-    required: true,
-    minlength: 4,
-    maxlength: 50,
-  },
-  startDate: {
-    type: Date,
-    required: true,
-  },
-  endDate: {
-    type: Date,
-    required: true,
-  },
-  applicationOpenDate: {
-    type: Date,
-  },
-  applicationClosedDate: {
-    type: Date,
-  },
-  address: {
-    country: {
+const contestSchema = new mongoose.Schema(
+  {
+    contestName: {
       type: String,
-      default: 'Polska',
+      required: true,
+      minlength: 5,
+      maxlength: 100,
     },
-    city: String,
-    street: String,
-    numberOfHouse: String,
-    postalCode: String,
+    kennelClubDepartment: {
+      type: String,
+      required: true,
+      minlength: 4,
+      maxlength: 50,
+    },
+    startDate: {
+      type: Date,
+      required: true,
+    },
+    endDate: {
+      type: Date,
+      required: true,
+    },
+    applicationOpenDate: {
+      type: Date,
+    },
+    applicationClosedDate: {
+      type: Date,
+    },
+    address: {
+      country: {
+        type: String,
+        default: 'Polska',
+      },
+      city: String,
+      street: String,
+      numberOfHouse: String,
+      postalCode: String,
+    },
+    judges: {
+      type: [String],
+      default: [],
+    },
+    steward: {
+      type: String,
+    },
+    manager: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Participant',
+      required: true,
+    },
+    feePLN: {
+      type: Number,
+    },
+    amountOfApplications: {
+      type: Number,
+      default: 0,
+    },
+    maxAmountOfApplications: {
+      type: Number,
+      required: true,
+    },
+    obedienceClasses: {
+      type: [obedienceClassesSchema],
+      required: true,
+    },
+    createdAt: {
+      type: Date,
+      immutable: true,
+      default: () => Date.now(),
+    },
+    updatedAt: {
+      type: Date,
+      default: () => Date.now(),
+    },
   },
-  judges: {
-    type: [String],
-    default: [],
-  },
-  steward: {
-    type: String,
-  },
-  manager: {
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: 'Participant',
-    required: true,
-  },
-  feePLN: {
-    type: Number,
-  },
-  amountOfApplications: {
-    type: Number,
-    default: 0,
-  },
-  maxAmountOfApplications: {
-    type: Number,
-    required: true,
-  },
-  obedienceClasses: {
-    type: [obedienceClassesSchema],
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    immutable: true,
-    default: () => Date.now(),
-  },
-  updatedAt: {
-    type: Date,
-    default: () => Date.now(),
-  },
-});
+  { strictPopulate: false },
+);
 
 module.exports = mongoose.model('Contest', contestSchema);
