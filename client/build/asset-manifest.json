@@ -10,7 +10,11 @@
 >>>>>>> development
 =======
     "main.css": "/static/css/main.19fa6059.css",
+<<<<<<< HEAD
     "main.js": "/static/js/main.29c7c08b.js",
+>>>>>>> development
+=======
+    "main.js": "/static/js/main.eb1f61a2.js",
 >>>>>>> development
     "static/js/787.0c574e70.chunk.js": "/static/js/787.0c574e70.chunk.js",
     "static/media/profileDogFace.jpg": "/static/media/profileDogFace.8c0496d4eb9e6f1d411a.jpg",
@@ -59,12 +63,16 @@
 >>>>>>> development
 =======
     "main.19fa6059.css.map": "/static/css/main.19fa6059.css.map",
-    "main.29c7c08b.js.map": "/static/js/main.29c7c08b.js.map",
+    "main.eb1f61a2.js.map": "/static/js/main.eb1f61a2.js.map",
     "787.0c574e70.chunk.js.map": "/static/js/787.0c574e70.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.19fa6059.css",
+<<<<<<< HEAD
     "static/js/main.29c7c08b.js"
+>>>>>>> development
+=======
+    "static/js/main.eb1f61a2.js"
 >>>>>>> development
   ]
 }
