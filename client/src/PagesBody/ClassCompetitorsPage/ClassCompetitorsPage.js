@@ -40,12 +40,11 @@ const ClassCompetitorsPage = () => {
         dogList.map((dog, index) => {
           const { dogId, dogName, resultsId } = dog;
 
-          /* copetingPairsId ?? = resultsId ? co sprawdzić i co wyświetlić  potrzebny fetch kolejny ?*/
-
+          /* copetingPairsId ?? = resultsId ? jak sfeczować excersisey? mam id resultu*/
+          console.log(resultsId);
           const dogPerformance = dogList.find(
             (dog) => dog.resultsId === resultsId,
           );
-
           /* const exercisesCompleted = dogPerformance.exercises.filter(
             (exercise) => exercise.result != null,
           ).length; */
