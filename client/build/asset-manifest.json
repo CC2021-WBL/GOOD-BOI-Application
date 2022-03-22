@@ -1,12 +1,7 @@
 {
   "files": {
-<<<<<<< HEAD
-    "main.css": "/static/css/main.19fa6059.css",
-    "main.js": "/static/js/main.552f66fb.js",
-=======
     "main.css": "/static/css/main.1a5666cc.css",
     "main.js": "/static/js/main.00d400f2.js",
->>>>>>> development
     "static/js/787.0c574e70.chunk.js": "/static/js/787.0c574e70.chunk.js",
     "static/media/profileDogFace.jpg": "/static/media/profileDogFace.8c0496d4eb9e6f1d411a.jpg",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
