@@ -35,39 +35,35 @@ const Nav = () => {
   // when logged in:
   if (isAuthenticated) {
     return (
-      <>
-        <NavBackground>
-          <NavInnerStyled>
-            <GoodBoiLogo />
-            <NavButtonWrapper ref={domNode} onClick={toggleHandler}>
-              <NavButton menuOpen={menuOpen} />
-              <NavCornerMenuWrapper className={menuOpen ? 'open' : 'close'}>
-                <NavCornerMenu />
-              </NavCornerMenuWrapper>
-            </NavButtonWrapper>
-          </NavInnerStyled>
-        </NavBackground>
-      </>
+      <NavBackground>
+        <NavInnerStyled>
+          <GoodBoiLogo />
+          <NavButtonWrapper ref={domNode} onClick={toggleHandler}>
+            <NavButton menuOpen={menuOpen} />
+            <NavCornerMenuWrapper className={menuOpen ? 'open' : 'close'}>
+              <NavCornerMenu />
+            </NavCornerMenuWrapper>
+          </NavButtonWrapper>
+        </NavInnerStyled>
+      </NavBackground>
     );
   } else {
     // when not logged in
     return (
-      <>
-        <NavBackground>
-          <NavInnerStyled>
-            <NavLinkStyled to="/" style={{ flex: '1', paddingRight: '1rem' }}>
-              <AppLogoSVG />
-            </NavLinkStyled>
-            <NavLinkStyled to="/" stylefor="Navbar">
-              STRONA GŁÓWNA
-            </NavLinkStyled>
-            <NavLinkStyled to="/contests" stylefor="Navbar">
-              AKTUALNE KONKURSY
-            </NavLinkStyled>
-            <NavButtons />
-          </NavInnerStyled>
-        </NavBackground>
-      </>
+      <NavBackground>
+        <NavInnerStyled>
+          <NavLinkStyled to="/" style={{ flex: '1', paddingRight: '1rem' }}>
+            <AppLogoSVG />
+          </NavLinkStyled>
+          <NavLinkStyled to="/" stylefor="Navbar">
+            STRONA GŁÓWNA
+          </NavLinkStyled>
+          <NavLinkStyled to="/contests" stylefor="Navbar">
+            AKTUALNE KONKURSY
+          </NavLinkStyled>
+          <NavButtons />
+        </NavInnerStyled>
+      </NavBackground>
     );
   }
 };

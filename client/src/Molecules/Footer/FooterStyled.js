@@ -32,6 +32,10 @@ export const FooterStyled = styled.div`
   &.non-mobile {
     display: none;
     text-align: right;
+    a:nth-child(1) {
+      flex: 1;
+    }
+
     @media only screen and (min-width: 800px) {
       display: flex;
       width: 100%;
