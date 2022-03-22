@@ -129,7 +129,8 @@ const ColumnWrapperStyled = styled.div`
     &.forgot-wrapper,
     &.class-choice-wrapper,
     &.contest-data,
-    &.login-column-wrapper {
+    &.login-column-wrapper,
+    &.register-form-column-wrapper {
       grid-area: 3 / 1 / 4 / 3;
       grid-column-start: ${(props) => props.contentPosition && 2};
     }
@@ -141,6 +142,9 @@ const ColumnWrapperStyled = styled.div`
       margin: auto;
       background-color: ${({ theme }) => theme.white};
       color: ${({ theme }) => theme.grey800};
+    }
+    &.register-form-column-wrapper {
+      margin-top: 1rem;
     }
   }
   @media only screen and (min-width: 1024px) {
@@ -175,6 +179,10 @@ const ColumnWrapperStyled = styled.div`
     &.user-data-wrapper {
       margin: 0 auto;
       margin-bottom: 1rem;
+    }
+
+    &.register-form-column-wrapper {
+      margin-top: 1rem;
     }
 
     &.contests-column-wrapper {
