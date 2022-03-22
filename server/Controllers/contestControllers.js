@@ -75,18 +75,22 @@ async function finishClass(req, res) {
 //TODO: add selection to get participants just for current contest
 async function getPartcicipantsForClassInContest(req, res) {
   try {
-    console.log(req.params.contestId);
-    const data = await Contest.aggregate([
-      { $match: { _id: new mongoose.Types.ObjectId(req.params.contestId) } },
-      { $project: { _id: 0, obedienceClasses: 1 } },
-      { $elemMatch: { classNumber: req.params.classId } },
-    ]);
-    console.log(data);
+    // const data = await Contest.aggregate([
+    //   { $match: { _id: new mongoose.Types.ObjectId(req.params.contestId) } },
+    //   { $project: { _id: 0, obedienceClasses: 1 } },
+    //   { $project: { classNumber: req.params.classId } },
+    const contest = await Contest.findById(
+      new mongoose.Types.ObjectId(req.params.contestId),
+    );
+    const participantsArray = contest.obedienceClasses.find(
+      (obedienceClass) => obedienceClass.classNumber == req.params.classId,
+    ).participants;
+    console.log(participantsArray);
 
-    if (!data) {
+    if (!participantsArray) {
       res.status(404).send(ERROR_MSG[404]);
     } else {
-      return data;
+      return participantsArray;
     }
   } catch (error) {
     console.log(error);

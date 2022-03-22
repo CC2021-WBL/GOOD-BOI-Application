@@ -6,7 +6,6 @@ import CLASSES from '../../Consts/classesConst';
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import MainButton from '../../Atoms/MainButton/MainButton';
-import results from '../../Data/MongoDBMock/results';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const ClassCompetitorsPage = () => {
@@ -30,6 +29,7 @@ const ClassCompetitorsPage = () => {
   //   .obedienceClasses[classId];
   const exercisesAmount = CLASSES[classId].exercises.length;
 
+  console.log(dogList);
   function onClassFinishClick() {
     navigate();
   }
@@ -38,15 +38,17 @@ const ClassCompetitorsPage = () => {
     <ColumnWrapper paddingLeftRight={1} paddingTop={0.25}>
       {dogList &&
         dogList.map((dog, index) => {
-          const { dogId, dogName, competingPairsId } = dog;
+          const { dogId, dogName, resultsId } = dog;
 
-          const dogPerformance = results.find(
-            (result) => result.competingPairsId === competingPairsId,
+          /* copetingPairsId ?? = resultsId ? co sprawdzić i co wyświetlić  potrzebny fetch kolejny ?*/
+
+          const dogPerformance = dogList.find(
+            (dog) => dog.resultsId === resultsId,
           );
 
-          const exercisesCompleted = dogPerformance.exercises.filter(
+          /* const exercisesCompleted = dogPerformance.exercises.filter(
             (exercise) => exercise.result != null,
-          ).length;
+          ).length; */
 
           return (
             <ClassOrDogButton
@@ -55,7 +57,7 @@ const ClassCompetitorsPage = () => {
                 index,
                 dogId,
                 dogName,
-                exercisesCompleted,
+                // exercisesCompleted,
                 exercisesAmount,
               }}
             />
