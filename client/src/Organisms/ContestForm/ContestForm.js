@@ -187,6 +187,22 @@ const ContestForm = () => {
             })}
           />
           {errors.city && <p>{errors.city.message}</p>}
+          {/* ==================================================== */}
+          <InputField
+            labelText="Adres zawodów - ulica"
+            htmlFor="street"
+            id="street"
+            type="text"
+            placeholder="&#xf015; Adres zawodów - ulica"
+            className={errors.street ? 'red-border' : ''}
+            {...register('street', {
+              required: 'Wpisz ulicę, na której odbywają się zawody',
+              min: 5,
+            })}
+          />
+          {errors.street && <p>{errors.street.message}</p>}
+
+          {/* ==================================================== */}
           <InputField
             labelText="Adres zawodów - numer obiektu"
             htmlFor="number"
