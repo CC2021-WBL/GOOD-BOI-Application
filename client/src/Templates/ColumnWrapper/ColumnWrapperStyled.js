@@ -239,6 +239,9 @@ const ColumnWrapperStyled = styled.div`
       justify-content: space-between;
       padding: 1rem;
     }
+    &.dog-form-wrapper {
+      margin-top: 1rem;
+    }
   }
   @media only screen and (min-width: 1600px) {
     grid-area: 3 / 3 / 4 / 4;
