@@ -1,21 +1,7 @@
 {
   "files": {
-<<<<<<< HEAD
-<<<<<<< HEAD
     "main.css": "/static/css/main.19fa6059.css",
-    "main.js": "/static/js/main.455a79c2.js",
-=======
-    "main.css": "/static/css/main.1a5666cc.css",
-    "main.js": "/static/js/main.00d400f2.js",
->>>>>>> development
-=======
-    "main.css": "/static/css/main.19fa6059.css",
-<<<<<<< HEAD
-    "main.js": "/static/js/main.29c7c08b.js",
->>>>>>> development
-=======
-    "main.js": "/static/js/main.eb1f61a2.js",
->>>>>>> development
+    "main.js": "/static/js/main.fd83102e.js",
     "static/js/787.0c574e70.chunk.js": "/static/js/787.0c574e70.chunk.js",
     "static/media/profileDogFace.jpg": "/static/media/profileDogFace.8c0496d4eb9e6f1d411a.jpg",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
@@ -43,36 +29,12 @@
     "static/media/AppLogoSVG.svg": "/static/media/AppLogoSVG.aa51f4316fa965a2c166b9e67c391a29.svg",
     "static/media/logoDevsOnTheWaves.svg": "/static/media/logoDevsOnTheWaves.cf27d25e4bacdf07f9b313a628f6a5f0.svg",
     "index.html": "/index.html",
-<<<<<<< HEAD
-<<<<<<< HEAD
     "main.19fa6059.css.map": "/static/css/main.19fa6059.css.map",
-    "main.455a79c2.js.map": "/static/js/main.455a79c2.js.map",
+    "main.fd83102e.js.map": "/static/js/main.fd83102e.js.map",
     "787.0c574e70.chunk.js.map": "/static/js/787.0c574e70.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.19fa6059.css",
-    "static/js/main.455a79c2.js"
-=======
-    "main.1a5666cc.css.map": "/static/css/main.1a5666cc.css.map",
-    "main.00d400f2.js.map": "/static/js/main.00d400f2.js.map",
-    "787.0c574e70.chunk.js.map": "/static/js/787.0c574e70.chunk.js.map"
-  },
-  "entrypoints": [
-    "static/css/main.1a5666cc.css",
-    "static/js/main.00d400f2.js"
->>>>>>> development
-=======
-    "main.19fa6059.css.map": "/static/css/main.19fa6059.css.map",
-    "main.eb1f61a2.js.map": "/static/js/main.eb1f61a2.js.map",
-    "787.0c574e70.chunk.js.map": "/static/js/787.0c574e70.chunk.js.map"
-  },
-  "entrypoints": [
-    "static/css/main.19fa6059.css",
-<<<<<<< HEAD
-    "static/js/main.29c7c08b.js"
->>>>>>> development
-=======
-    "static/js/main.eb1f61a2.js"
->>>>>>> development
+    "static/js/main.fd83102e.js"
   ]
 }
