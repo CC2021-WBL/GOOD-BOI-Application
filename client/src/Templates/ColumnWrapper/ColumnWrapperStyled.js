@@ -127,7 +127,8 @@ const ColumnWrapperStyled = styled.div`
     }
     &.not-found-wrapper,
     &.forgot-wrapper,
-    &.class-choice-wrapper {
+    &.class-choice-wrapper,
+    &.contest-data {
       grid-area: 3 / 1 / 4 / 3;
       grid-column-start: ${(props) => props.contentPosition && 2};
     }
@@ -237,7 +238,9 @@ const ColumnWrapperStyled = styled.div`
     grid-area: 3 / 3 / 4 / 4;
     &.not-found-wrapper,
     &.user-data-wrapper,
-    &.forgot-wrapper {
+    &.forgot-wrapper,
+    &.class-choice-wrapper,
+    &.contest-data {
       grid-area: 3 / 3 / 4 / 4;
     }
   }

@@ -12,7 +12,6 @@ const ClassChoicePage = () => {
   const { contestState } = useContext(ContestContext);
   const { state } = useContext(UserDataContext);
   const { isAuthenticated } = state;
-  console.log(isAuthenticated);
 
   const [selectedClass, setSelectedClass] = useState('');
   const [classesArr, setClassesArr] = useState(null);
