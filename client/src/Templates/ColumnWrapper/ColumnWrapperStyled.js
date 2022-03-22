@@ -135,7 +135,8 @@ const ColumnWrapperStyled = styled.div`
       background-color: ${({ theme }) => theme.white};
       color: ${({ theme }) => theme.grey800};
     }
-    &.register-form-column-wrapper {
+    &.register-form-column-wrapper,
+    &.dog-form-wrapper {
       margin-top: 1rem;
     }
     &.grid-position {
