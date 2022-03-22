@@ -47,7 +47,8 @@ const SpecialButtonStyled = styled.button`
   ${({ roundedBorder }) => handleBorder(roundedBorder)};
   ${(props) => handleColorType(props)};
   &:hover {
-    filter: brightness(1.1);
+    filter: brightness(1.05);
+    cursor: pointer;
   }
 `;
 export default SpecialButtonStyled;

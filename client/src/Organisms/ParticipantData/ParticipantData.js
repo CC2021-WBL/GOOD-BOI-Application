@@ -51,10 +51,15 @@ const ParticipantData = ({ id }) => {
   return (
     <ColumnWrapper>
       <SpecialButtonsContainerStyled>
-        <SpecialButton left text="edytuj" handler={handleEdit} colors="blue" />
+        <SpecialButton
+          left
+          text="edytuj dane uczestnika"
+          handler={handleEdit}
+          colors="blue"
+        />
         <SpecialButton
           right
-          text="potwierdź"
+          text="potwierdź dane uczestnika"
           handler={handleConfirm}
           colors="green"
         />

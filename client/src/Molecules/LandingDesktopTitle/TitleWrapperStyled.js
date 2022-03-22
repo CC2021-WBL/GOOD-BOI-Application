@@ -6,7 +6,7 @@ const TitleWrapperStyled = styled.div`
   display: flex;
   max-width: 37.5rem;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: left;
   margin: -3.9375rem 0 0 0;
   text-align: left;
   h1 {
