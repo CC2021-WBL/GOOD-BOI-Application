@@ -10,5 +10,3 @@ const Rocket = () => {
 };
 
 export default Rocket;
-
-//for commit

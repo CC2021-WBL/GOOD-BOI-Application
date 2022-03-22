@@ -1,6 +1,7 @@
-import FONTS from '../../Styles/fontsStyledComponents';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+import FONTS from '../../Styles/fontsStyledComponents';
 
 const getStyles = (bgColor, color) => {
   return `background:${bgColor}; color:${color}`;
@@ -124,7 +125,6 @@ const FakeButtonStyled = styled(Link)`
         text-transform: none;
         ${FONTS.caption};
         line-height: 1.5;
-
       }
     }
 
@@ -166,10 +166,9 @@ const FakeButtonStyled = styled(Link)`
   }
   &:hover {
     filter: brightness(1.025);
-    box-shadow: 2px 4px ${({ theme }) => theme.primary201};
+    box-shadow: 0.125rem 0.25rem ${({ theme }) => theme.primary201};
     cursor: pointer;
-
-    
+  }
 `;
 
 export default FakeButtonStyled;
