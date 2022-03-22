@@ -1,23 +1,28 @@
 import { useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
+import CLASSES from '../../Consts/classesConst';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import { ContestContext } from '../../Context/ContestContext';
+import { DogContext } from '../../Context/DogContext';
 import { UserDataContext } from '../../Context/UserDataContext';
+import { postApplication } from '../../Tools/FetchData/fetchFormsFunctions';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const ClassChoicePage = () => {
   const { contestState } = useContext(ContestContext);
   const { state } = useContext(UserDataContext);
-  const { isAuthenticated } = state;
+  const { dogState } = useContext(DogContext);
+  const { isAuthenticated, userId } = state;
+  const { contestId, contestName } = contestState;
+  const { chosenDog } = dogState;
 
   const [selectedClass, setSelectedClass] = useState('');
   const [classesArr, setClassesArr] = useState(null);
   const location = useLocation();
-
-  const { contestId } = contestState;
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getClasses() {
@@ -41,7 +46,8 @@ const ClassChoicePage = () => {
     getClasses();
   }, []);
 
-  const clickHandler = (index) => {
+  const clickHandler = (event, index) => {
+    event.preventDefault();
     setSelectedClass(index);
   };
 
@@ -49,11 +55,34 @@ const ClassChoicePage = () => {
     if (selectedClass !== undefined) {
       if (!location.state) {
         return `../contests/${contestId}/classes/${selectedClass}/leaderboard`;
-      } else if (location.state.application) {
-        return `/confirmation`;
       }
     } else {
       return '';
+    }
+  };
+
+  const sendApplication = async (event) => {
+    event.preventDefault();
+    if (selectedClass) {
+      const exercisesArr = CLASSES[selectedClass].exercises.map((exercise) => ({
+        codeName: exercise.codeName,
+        result: null,
+      }));
+      const body = {
+        contestId: contestId,
+        contestName: contestName,
+        obedienceClass: selectedClass,
+        dogId: chosenDog.dogId,
+        dogName: chosenDog.dogName,
+        participantId: userId,
+        exercises: exercisesArr,
+      };
+
+      const isSuccess = await postApplication(body);
+
+      if (isSuccess) {
+        navigate('/confirmation');
+      }
     }
   };
 
@@ -66,10 +95,10 @@ const ClassChoicePage = () => {
       className="class-choice-wrapper grid-position"
     >
       {classesArr &&
-        Object.keys(classesArr).map((obedienceClass, index) => {
+        classesArr.map((obedienceClass, index) => {
           return (
             <MainButton
-              onClick={() => clickHandler(obedienceClass)}
+              onClick={(event) => clickHandler(event, obedienceClass)}
               key={index}
               style={{ height: '75px' }}
               text={`Klasa ${obedienceClass}`}
@@ -80,10 +109,10 @@ const ClassChoicePage = () => {
           );
         })}
       {classesArr && location.state && (
-        <FakeButton
+        <MainButton
           text={'WYŚLIJ FORMULARZ'}
-          colors="secondary"
-          to={linkTo()}
+          secondary
+          onClick={(event) => sendApplication(event)}
         />
       )}
       {classesArr && !location.state && (
