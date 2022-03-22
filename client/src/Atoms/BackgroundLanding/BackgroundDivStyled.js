@@ -8,6 +8,10 @@ const BackgroundDivStyled = styled.div`
   background-size: contain;
   grid-area: 2 / 1 /-2 /-1;
 
+  &.login-page-background {
+    grid-area: 2 / 1 /-2 /-1;
+  }
+
   @media only screen and (min-width: 800px) {
     grid-area: 2 / 1 /-2 /-1;
   }

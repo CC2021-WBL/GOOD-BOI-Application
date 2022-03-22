@@ -1,17 +1,17 @@
+import PropTypes from 'prop-types';
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import { ContestContext } from '../../Context/ContestContext';
 import DataLine from '../../Atoms/DataLine/DataLine';
-import { DogContext } from '../../Context/DogContext';
-import PropTypes from 'prop-types';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
 import Spinner from '../../Atoms/Spinner/Spinner';
-import { UserDataContext } from '../../Context/UserDataContext';
 import renderDogData from '../../Tools/renderDogData';
+import { ContestContext } from '../../Context/ContestContext';
+import { DogContext } from '../../Context/DogContext';
+import { UserDataContext } from '../../Context/UserDataContext';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
-import { useNavigate } from 'react-router-dom';
 
 const DogData = ({ id }) => {
   let navigate = useNavigate();
@@ -65,7 +65,7 @@ const DogData = ({ id }) => {
   };
 
   return (
-    <ColumnWrapper>
+    <ColumnWrapper className="dog-data-container">
       <SpecialButtonsContainerStyled>
         <SpecialButton left text="edytuj" handler={handleEdit} colors="blue" />
         <SpecialButton
@@ -75,12 +75,15 @@ const DogData = ({ id }) => {
           colors="green"
         />
       </SpecialButtonsContainerStyled>
-      <ColumnWrapper paddingLeftRight={1}>
+      <ColumnWrapper paddingLeftRight={1} className="dog-data-details">
         {isPending && <Spinner />}
         {dogData &&
           Object.entries(renderDogData(dogData)).map((dataLine, index) => (
             <DataLine key={index} text={dataLine} />
           ))}
+      </ColumnWrapper>
+      <ColumnWrapper paddingLeftRight={1} className="dog-data-details-bar">
+        Dane psa
       </ColumnWrapper>
     </ColumnWrapper>
   );
