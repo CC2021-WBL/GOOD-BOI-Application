@@ -1,8 +1,9 @@
+import { useEffect, useState } from 'react';
+
 import {
   genRequestOptionsPATCH,
   genRequestOptionsPOST,
 } from '../../Tools/FetchData/requestOptions';
-import { useEffect, useState } from 'react';
 
 const useCustomForm = (callback, validateData, initialState, setUserObject) => {
   let isNew = false;
@@ -50,7 +51,7 @@ const useCustomForm = (callback, validateData, initialState, setUserObject) => {
   };
 
   const submitHandler = async (event) => {
-    console.log(formData)
+    console.log(formData);
     event.preventDefault();
     setErrors(validateData(formData));
     setIsSubmitting(true);
@@ -70,7 +71,7 @@ const useCustomForm = (callback, validateData, initialState, setUserObject) => {
       );
       if (response.status === 200) {
         alert('Aktualizacja udana!');
-        setUserObject(formData)
+        setUserObject(formData);
       } else {
         alert('Błąd serwera, spróbuj jeszcze raz');
       }

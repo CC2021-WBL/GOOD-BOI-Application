@@ -21,7 +21,7 @@ const UserData = () => {
   }
 
   useEffect(() => {
-    console.log('getching userData')
+    console.log('getching userData');
     fetch(`/api/users/${userData}`, requestOptionsGET)
       .then((response) => response.json())
       .then((result) => {
@@ -52,18 +52,21 @@ const UserData = () => {
           email
           userEmail={userObject.email}
           initialState={userObject}
+          setUserObject={setUserObject}
         />
         <UserField
           text="zmień hasło"
           password
           userPassword="***********"
           initialState={userObject}
+          setUserObject={setUserObject}
         />
         <UserField
           text="zmień numer telefonu"
           phoneNumber
           userPhoneNumber={userObject.phoneNumber}
           initialState={userObject}
+          setUserObject={setUserObject}
         />
       </ColumnWrapper>
     </>
