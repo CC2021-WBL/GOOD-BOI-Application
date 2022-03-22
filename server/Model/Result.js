@@ -1,5 +1,13 @@
 const mongoose = require('mongoose');
 
+const ExercisesSchema = new mongoose.Schema(
+  {
+    codeName: String,
+    result: mongoose.SchemaTypes.Mixed,
+  },
+  { _id: false },
+);
+
 const resultSchema = new mongoose.Schema({
   contestId: {
     type: mongoose.SchemaTypes.ObjectId,
@@ -41,7 +49,7 @@ const resultSchema = new mongoose.Schema({
     default: null,
   },
   exercises: {
-    type: [mongoose.SchemaTypes.Mixed],
+    type: [ExercisesSchema],
     default: [],
   },
   createdAt: {

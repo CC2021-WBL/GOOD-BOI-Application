@@ -61,27 +61,29 @@ router.post(
   blockIfPublic,
   isUserOrAdmin,
   async (req, res) => {
+    let contest;
     try {
-      const contest = await Contest.findById(req.body.contestId);
-      if (checkContestAndCurrentClassExist(req, contest) === false) {
-        res.status(404).send(ERROR_MSG[404]);
-      } else if (
-        contest.amountOfApplications >= contest.maxAmountOfApplications
-      ) {
-        res.status(409).send('no vacancies, the start list is full');
-      } else {
-        const savedResult = await registerResults(req, res);
-        await addApplicationDataToContest(
-          req,
-          res,
-          savedResult._id.valueOf(),
-          contest,
-        );
-        await addResultToDog(req, res, savedResult._id.valueOf());
-        res.status(201).json(savedResult);
-      }
+      contest = await Contest.findById(req.body.contestId);
     } catch (error) {
-      res.status(400).send(ERROR_MSG[400]);
+      res.status(500).json({ message: ERROR_MSG[500] });
+    }
+
+    if (checkContestAndCurrentClassExist(req, contest) === false) {
+      res.status(404).send(ERROR_MSG[404]).end();
+    } else if (
+      contest.amountOfApplications >= contest.maxAmountOfApplications
+    ) {
+      res.status(409).send('no vacancies, the start list is full');
+    } else {
+      const savedResult = await registerResults(req, res);
+      await addApplicationDataToContest(
+        req,
+        res,
+        savedResult._id.valueOf(),
+        contest,
+      );
+      await addResultToDog(req, res, savedResult._id.valueOf());
+      res.status(201).json(savedResult);
     }
   },
 );
