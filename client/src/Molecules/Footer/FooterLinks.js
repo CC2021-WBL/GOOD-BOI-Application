@@ -3,7 +3,7 @@
 const FooterLinks = () => {
   return (
     <>
-      <div>
+      <div className="about-application">
         <a
           href="https://github.com/CC2021-WBL"
           target="_blank"
