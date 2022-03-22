@@ -99,6 +99,10 @@ const ColumnWrapperStyled = styled.div`
     justify-content: space-between;
     padding: 0.5rem 1rem;
   }
+
+  &.user-data-wrapper {
+    margin-top: 1rem;
+  }
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
     margin: 0 auto;
@@ -125,6 +129,9 @@ const ColumnWrapperStyled = styled.div`
       border-radius: 0.9375rem;
       margin: 0 auto 1rem;
       height: fit-content;
+      h3 {
+        align-items: flex-start;
+      }
     }
     &.login-column-wrapper {
       max-width: 29.375rem;
