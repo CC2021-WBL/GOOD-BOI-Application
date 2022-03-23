@@ -65,7 +65,7 @@ const ContestForm = () => {
       paddingTop={1}
       paddingBottom={1}
       maxWidthBigScreen={35}
-      className="form-wrapper"
+      className="form-wrapper grid-position"
     >
       <ContestFormHeader />
       <FormWrapper
