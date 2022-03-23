@@ -21,10 +21,6 @@ const ParticipantSchema = new mongoose.Schema({
     lowercase: true,
     unique: true,
     maxlength: 255,
-    /* validate: {
-      validator: (v) => v.inculdes('@'),
-      message: (props) => `${props.value} should contain the @ symbol`,
-    }, */
   },
   hash: {
     type: String,
@@ -73,10 +69,6 @@ const ParticipantSchema = new mongoose.Schema({
     default: () => Date.now(),
   },
 });
-
-ParticipantSchema.methods.sayHi = function () {
-  console.log(`Hi, my name is ${this.participantName}`);
-};
 
 ParticipantSchema.statics.findSomethingByUserId = function (
   participantId,

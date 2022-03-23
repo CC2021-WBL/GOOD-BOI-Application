@@ -6,6 +6,7 @@ const Result = require('../Model/Result');
 const { isManager } = require('../Tools/autorizationAdditionalTools');
 const { createGeolocationUrl } = require('../Tools/geolocationTools');
 const { createClassesObjectArray } = require('../Tools/ModelTools');
+const mongoose = require('mongoose');
 const fetch = require('node-fetch');
 
 const requestOptionsGET = {
@@ -97,23 +98,44 @@ async function finishClass(req, res) {
     );
     obedienceClass.isFinished = !obedienceClass.isFinished;
     contest.updatedAt = new Date();
-    await contest.save();
-    return contest;
+    const updatedContest = await contest.save();
+    if (!updatedContest) {
+      res.status(500).json({ message: ERROR_MSG[500] });
+    } else {
+      return updatedContest;
+    }
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(500).json({ message: ERROR_MSG[500] });
   }
 }
 
-//TODO: add selection to get participants just for current contest
 async function getPartcicipantsForClassInContest(req, res) {
   try {
-    const data = await Contest.findById(req.params.contestId).select(
-      'obedienceClasses',
+    const contest = await Contest.findById(
+      new mongoose.Types.ObjectId(req.params.contestId),
+    ).populate({
+      path: 'obedienceClasses',
+      populate: {
+        path: 'participants',
+        populate: {
+          path: 'resultsId',
+          model: 'Result',
+        },
+      },
+    });
+    const obedienceClass = contest.obedienceClasses.find(
+      (obedienceClass) => obedienceClass.classNumber == req.params.classId,
     );
-    if (!data) {
+
+    const forClassObj = {
+      participants: obedienceClass.participants,
+      isFinished: obedienceClass.isFinished,
+    };
+
+    if (!forClassObj) {
       res.status(404).send(ERROR_MSG[404]);
     } else {
-      return data;
+      return forClassObj;
     }
   } catch (error) {
     res.status(500).send(ERROR_MSG[500]);
@@ -134,7 +156,6 @@ async function getContests(req, res) {
   }
 }
 
-//TODO: WORK IN PROGRESS - to add selectors of roles, itd
 async function getContestsForCard(req, res) {
   let data;
   try {
