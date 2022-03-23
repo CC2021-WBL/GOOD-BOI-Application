@@ -101,6 +101,12 @@ const ColumnWrapperStyled = styled.div`
     padding: 0.5rem 1rem;
   }
 
+  &.login-column-wrapper {
+    max-width: 29.375rem;
+    padding: 1.875rem;
+    margin: auto;
+  }
+
   &.contest-data-buttons-manager {
     display: flex;
     flex-direction: column;
@@ -150,8 +156,6 @@ const ColumnWrapperStyled = styled.div`
       max-width: 29.375rem;
       border: 1px solid ${({ theme }) => theme.grey200};
       border-radius: 0.9375rem;
-      padding: 1.875rem;
-      margin: auto;
       background-color: ${({ theme }) => theme.white};
       color: ${({ theme }) => theme.grey800};
     }
@@ -229,12 +233,12 @@ const ColumnWrapperStyled = styled.div`
       flex-direction: column-reverse;
       height: fit-content;
     }
-    
+
     &.participant-data-details,
     &.dog-data-details {
       margin-bottom: 1rem;
     }
-    
+
     &.participant-data-details-bar,
     &.dog-data-details-bar {
       display: flex;
@@ -266,11 +270,12 @@ const ColumnWrapperStyled = styled.div`
       margin: 1rem auto 0;
       border: 2px solid ${({ theme }) => theme.grey200};
       border-radius: 0.9375rem;
-  }
-  @media only screen and (min-width: 1600px) {
-    grid-area: 3 / 3 / 4 / 4;
-    &.grid-position {
+    }
+    @media only screen and (min-width: 1600px) {
       grid-area: 3 / 3 / 4 / 4;
+      &.grid-position {
+        grid-area: 3 / 3 / 4 / 4;
+      }
     }
   }
 `;

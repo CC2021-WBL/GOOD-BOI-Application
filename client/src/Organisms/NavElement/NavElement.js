@@ -30,6 +30,7 @@ const NavElement = () => {
     dogName: dogState.chosenDog.dogName || '',
     contestName: contestState.contestName || '',
   };
+
   const data = checkPathOrigin(locationPath.pathname, namesFromContext);
   return (
     <>
