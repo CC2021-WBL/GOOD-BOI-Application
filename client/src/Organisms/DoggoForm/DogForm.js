@@ -22,7 +22,7 @@ const DogForm = ({ submitForm, initialState }) => {
       paddingTop={1}
       paddingBottom={1}
       maxWidthBigScreen={35}
-      className="dog-form-wrapper"
+      className="form-wrapper"
     >
       <DogFormHeader />
       <FormWrapper onSubmit={submitHandler}>
