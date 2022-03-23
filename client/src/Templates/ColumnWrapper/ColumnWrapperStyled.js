@@ -258,9 +258,10 @@ const ColumnWrapperStyled = styled.div`
       justify-content: space-between;
       padding: 1rem;
     }
-    &.dog-form-wrapper {
-      margin-top: 1rem;
-    }
+    &.form-wrapper {
+      margin: 1rem auto 0;
+      border: 2px solid ${({ theme }) => theme.grey200};
+      border-radius: 0.9375rem;
   }
   @media only screen and (min-width: 1600px) {
     grid-area: 3 / 3 / 4 / 4;
