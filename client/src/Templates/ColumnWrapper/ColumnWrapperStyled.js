@@ -14,7 +14,6 @@ const ColumnWrapperStyled = styled.div`
     props.paddingBottom && `${props.paddingBottom}rem`};
   grid-area: 3 / 1 / 4 / 2;
 
-
   &.not-found-wrapper {
     text-align: center;
     display: flex;
@@ -31,7 +30,6 @@ const ColumnWrapperStyled = styled.div`
       flex-direction: column;
       justify-content: space-between;
       margin: 2.1875rem 0 4.25rem;
-
       h2 {
         color: ${({ theme }) => theme.grey800};
         ${FONTS.h2}
@@ -42,18 +40,15 @@ const ColumnWrapperStyled = styled.div`
         ${FONTS.caption}
       }
     }
-
     .buttons-wrapper {
       width: 100%;
     }
   }
-
   .incoming-contests {
     margin: 3.75rem 0 0 0;
     color: ${({ theme }) => theme.grey800};
     text-align: left;
   }
-
   .login-form-captions {
     display: none;
     color: ${({ theme }) => theme.grey800};
@@ -61,27 +56,22 @@ const ColumnWrapperStyled = styled.div`
     text-align: left;
     margin: 0.5rem;
   }
-
   .login-form-header {
     ${FONTS.h2};
     line-height: 2.5;
   }
-
   .login-form-centered {
     text-align: center;
   }
-
   &.participant-data-details-bar,
   &.dog-data-details-bar,
   &.enter-competition-container {
     display: none;
   }
-
   &.manager-page {
     padding: 2.2rem 1rem 0 1rem;
     margin: 0 auto;
   }
-
   &.register-form-column-wrapper,
   &.contest-form-column-wrapper,
   &.role-page-column-wrapper,
@@ -105,7 +95,6 @@ const ColumnWrapperStyled = styled.div`
   .login-form-centered {
     text-align: center;
   }
-
   &.contest-data-buttons {
     display: flex;
     flex-direction: column;
@@ -134,13 +123,19 @@ const ColumnWrapperStyled = styled.div`
   &.user-data-wrapper {
     margin-top: 1rem;
   }
-
   @media only screen and (min-width: 800px) {
     grid-area: 3 / 2 / 4 / 3;
     margin: 0 auto;
     max-width: ${(props) =>
       props.maxWidthBigScreen && `${props.maxWidthBigScreen}rem`};
     align-items: ${(props) => props.alignItems && `${props.alignItems}`};
+
+    &.form-wrapper {
+      grid-area: 3 / 1 / 4 / 3;
+      margin: 1rem auto 0;
+      border: 2px solid ${({ theme }) => theme.grey200};
+      border-radius: 0.9375rem;
+    }
 
     &.user-dogs-column-wrapper {
       align-items: flex-end;
@@ -161,12 +156,10 @@ const ColumnWrapperStyled = styled.div`
       border-radius: 0.9375rem;
       margin: 0 auto 1rem;
       height: fit-content;
-
       h3 {
         align-items: flex-start;
       }
     }
-
     &.login-column-wrapper {
       max-width: 29.375rem;
       border: 1px solid ${({ theme }) => theme.grey200};
@@ -174,15 +167,18 @@ const ColumnWrapperStyled = styled.div`
       background-color: ${({ theme }) => theme.white};
       color: ${({ theme }) => theme.grey800};
     }
-
     &.register-form-column-wrapper,
     &.dog-form-wrapper {
       margin-top: 1rem;
     }
-
     &.grid-position {
       grid-area: 3 / 1 / 4 / 3;
       grid-column-start: ${(props) => props.contentPosition && 2};
+    }
+    &.dog-form-wrapper {
+      margin: 0 auto;
+      border: 2px solid ${({ theme }) => theme.grey200};
+      border-radius: 0.9375rem;
     }
   }
   @media only screen and (min-width: 1024px) {
@@ -194,12 +190,10 @@ const ColumnWrapperStyled = styled.div`
       margin: auto;
       background-color: ${({ theme }) => theme.white};
       color: ${({ theme }) => theme.grey800};
-
       .login-form-captions {
         display: block;
       }
     }
-
     &.user-dogs-column-wrapper {
       align-items: center;
     }
@@ -207,7 +201,6 @@ const ColumnWrapperStyled = styled.div`
     &.user-dogs-column-wrapper {
       align-items: center;
     }
-
     &.user-profile {
       display: grid;
       height: 100%;
@@ -269,7 +262,6 @@ const ColumnWrapperStyled = styled.div`
       border-radius: 0.75rem 0.75rem 0 0;
       background-color: ${({ theme }) => theme.grey200};
     }
-
     &.contest-data {
       display: grid;
       height: 100%;
@@ -339,6 +331,9 @@ const ColumnWrapperStyled = styled.div`
 
     &.grid-position {
       grid-area: 3/3/4/4;
+    }
+    &.form-wrapper {
+      grid-area: 3 / 3 / 4 / 4;
     }
   }
 `;

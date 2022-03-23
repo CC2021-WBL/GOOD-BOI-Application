@@ -18,9 +18,12 @@ const ClassesPage = () => {
         `/api/contests/classes/${contestId}`,
         requestOptionsGET,
       );
-      const result = await response.json();
-      setContestClasses(result);
-      console.log(result);
+      if (response.status === 200) {
+        const classes = await response.json();
+        setContestClasses(classes);
+      } else {
+        alert('Nie udało się znaleźć klas');
+      }
       setIsPending(false);
     }
     fetchClasses();
@@ -29,8 +32,13 @@ const ClassesPage = () => {
   function onClickFinish() {
     navigate('/contests');
   }
+
   return (
-    <ColumnWrapper paddingLeftRight={1} paddingTop={0.25} maxWidthBigScreen={45}>
+    <ColumnWrapper
+      paddingLeftRight={1}
+      paddingTop={0.25}
+      maxWidthBigScreen={45}
+    >
       {isPending && <Spinner />}
       {contestClasses
         ? Object.keys(contestClasses).map((obedienceClass, index) => {
@@ -39,9 +47,10 @@ const ClassesPage = () => {
                 key={index}
                 contestId={contestId}
                 classInfo={{
-                  obedienceClass,
+                  obedienceClass: contestClasses[obedienceClass].classNumber,
                   dogsAmount:
                     contestClasses[obedienceClass].participants.length,
+                  isCompleted: contestClasses[obedienceClass].isFinished,
                 }}
               />
             );
