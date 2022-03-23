@@ -63,6 +63,7 @@ const ColumnWrapperStyled = styled.div`
   .login-form-centered {
     text-align: center;
   }
+  &.participant-data-details-bar,
   &.dog-data-details-bar {
     display: none;
   }
@@ -218,7 +219,8 @@ const ColumnWrapperStyled = styled.div`
       background-color: ${({ theme }) => theme.white};
     }
 
-    &.dog-data-container {
+    &.dog-data-container,
+    &.participant-data-container {
       max-width: 35rem;
       border: 1px solid ${({ theme }) => theme.grey200};
       border-radius: 0.9375rem;
@@ -227,11 +229,13 @@ const ColumnWrapperStyled = styled.div`
       flex-direction: column-reverse;
       height: fit-content;
     }
-
+    
+    &.participant-data-details,
     &.dog-data-details {
       margin-bottom: 1rem;
     }
-
+    
+    &.participant-data-details-bar,
     &.dog-data-details-bar {
       display: flex;
       justify-content: center;
