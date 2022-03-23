@@ -21,7 +21,9 @@ const UserField = ({
     setToggle((prevState) => !prevState);
   };
 
-  const submitForm = () => {};
+  const submitForm = () => {
+    console.log('SUBMIT SAMOTNY');
+  };
   return (
     <>
       <UserFieldStyled>

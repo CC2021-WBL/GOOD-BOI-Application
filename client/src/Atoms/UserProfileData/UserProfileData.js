@@ -3,6 +3,7 @@ import { FaRegTimesCircle } from 'react-icons/fa';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import ErrorPage from '../../PagesBody/ErrorPage/ErrorPage';
 import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
@@ -18,6 +19,7 @@ const UserProfileData = ({
   const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
   const { userId, userName, userSurname, isAuthenticated } = state;
+  const [errors, setErrors] = useState(null);
   const paramsUserData = useParams();
 
   let userData = userId;
@@ -47,12 +49,14 @@ const UserProfileData = ({
             requestOptionsGET,
           );
           if (!response.ok) {
-            navigate('/login');
+            throw Error('Twoja stara to andrzej duda');
+            // navigate('/login');
           } else {
             response = await response.json();
             setUserObject(response);
           }
         } catch (error) {
+          setErrors(error.message);
           console.log(error);
         }
       }
@@ -66,45 +70,51 @@ const UserProfileData = ({
 
   return (
     <>
-      <UserProfileDataStyled withEdit={withEdit} className={className}>
-        <div className="user-data-wrapper">
-          {state && userObject ? (
-            <>
-              <h3>{`${participantName} ${participantSurname}`}</h3>
-              <p>{`${street} ${numberOfHouse}`}</p>
-              <p>{`${postalCode} ${city}`}</p>
-            </>
-          ) : (
-            <>
-              <h3>{`${userName} ${userSurname}`}</h3>
-            </>
-          )}
-          <></>
-        </div>
-        {withEdit && (
-          <>
-            <div className="bg-box tablet_only" />
-            <button
-              className="user-data-edit-btn"
-              onClick={toggleHandler}
-              toggle="true"
-            >
-              {!toggle ? (
-                'edytuj dane'
+      {errors ? (
+        <ErrorPage message={errors}></ErrorPage>
+      ) : (
+        <>
+          <UserProfileDataStyled withEdit={withEdit} className={className}>
+            <div className="user-data-wrapper">
+              {state && userObject ? (
+                <>
+                  <h3>{`${participantName} ${participantSurname}`}</h3>
+                  <p>{`${street} ${numberOfHouse}`}</p>
+                  <p>{`${postalCode} ${city}`}</p>
+                </>
               ) : (
-                <FaRegTimesCircle className="user-data-edit-close" />
+                <>
+                  <h3>{`${userName} ${userSurname}`}</h3>
+                </>
               )}
-            </button>
-          </>
-        )}
-      </UserProfileDataStyled>
-      {toggle && withEdit && (
-        <RegistrationFormSignup
-          submitForm={submitForm}
-          editData
-          initialState={initialState}
-          setUserObject={setUserObject}
-        />
+              <></>
+            </div>
+            {withEdit && (
+              <>
+                <div className="bg-box tablet_only" />
+                <button
+                  className="user-data-edit-btn"
+                  onClick={toggleHandler}
+                  toggle="true"
+                >
+                  {!toggle ? (
+                    'edytuj dane'
+                  ) : (
+                    <FaRegTimesCircle className="user-data-edit-close" />
+                  )}
+                </button>
+              </>
+            )}
+          </UserProfileDataStyled>
+          {toggle && withEdit && (
+            <RegistrationFormSignup
+              submitForm={submitForm}
+              editData
+              initialState={initialState}
+              setUserObject={setUserObject}
+            />
+          )}
+        </>
       )}
     </>
   );

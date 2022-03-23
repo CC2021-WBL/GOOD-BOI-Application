@@ -133,7 +133,7 @@ const RegistrationFormSignup = ({
           type="text"
           placeholder="&#xf095; Numer Telefonu"
           id="phoneNumber"
-          value={formData.phoneNumber}
+          value={parseInt(formData.phoneNumber)}
           onChange={handleInputChange}
           className={errors.phoneNumber ? 'red-border' : 'none'}
         />
