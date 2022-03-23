@@ -3,6 +3,23 @@ import {
   genRequestOptionsPOST,
 } from './requestOptions';
 
+export async function postApplication(body) {
+  console.log(body);
+  const res = await fetch(
+    `/api/results/register/${body.participantId}`,
+    genRequestOptionsPOST(body),
+  );
+  if (res.status === 201) {
+    return true;
+  } else if (res.status === 400) {
+    alert('nieprawidłowe dane');
+    return false;
+  } else {
+    alert('Nie udało się wysłać zgłoszenia');
+    return false;
+  }
+}
+
 export async function postDogForm(state, dogData, dogs, dogDispatch) {
   delete dogData._id;
   const res = await fetch(

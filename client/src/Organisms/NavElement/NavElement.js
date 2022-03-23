@@ -33,7 +33,7 @@ const NavElement = () => {
   const data = checkPathOrigin(locationPath.pathname, namesFromContext);
   return (
     <>
-      <GridWrapper className="mobile_only">
+      <GridWrapper mobile="1 / 1 / 2 / -1" className="mobile_only">
         <NavElementStyled className="mobile_only">
           {checkLocationForNavRender(locationPath.pathname) ? (
             <div className="burger-wrapper" />

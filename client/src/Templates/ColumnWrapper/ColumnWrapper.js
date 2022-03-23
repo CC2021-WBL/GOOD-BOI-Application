@@ -10,6 +10,7 @@ const ColumnWrapper = ({
   className,
   maxWidthBigScreen,
   alignItems,
+  contentPosition,
 }) => {
   return (
     <ColumnWrapperStyled
@@ -19,6 +20,7 @@ const ColumnWrapper = ({
       className={className}
       maxWidthBigScreen={maxWidthBigScreen}
       alignItems={alignItems}
+      contentPosition={contentPosition}
     >
       {children}
     </ColumnWrapperStyled>
