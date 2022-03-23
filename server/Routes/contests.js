@@ -58,15 +58,8 @@ router.get('/:contestId', async (req, res) => {
 
 //Get participants for current class and contest
 router.get('/participants/:contestId/:classId', async (req, res) => {
-  try {
-    const participants = await getPartcicipantsForClassInContest(req, res);
-    if (!participants) {
-      res.status(404).end();
-    }
-    res.status(200).send(participants);
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
+  const forClassObj = await getPartcicipantsForClassInContest(req, res);
+  res.status(200).send(forClassObj);
 });
 
 // Middleware to check JWT
@@ -119,12 +112,8 @@ router.patch(
   blockIfPublic,
   isStaffManagerOrAdmin,
   async (req, res) => {
-    try {
-      const contest = await finishClass(req, res);
-      res.status(201).send(contest);
-    } catch (error) {
-      res.send(error.message);
-    }
+    const updatedContest = await finishClass(req, res);
+    res.status(201).send(updatedContest);
   },
 );
 

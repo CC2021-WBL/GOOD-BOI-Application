@@ -9,14 +9,10 @@ import { DogContext } from '../../Context/DogContext';
 
 const ClassOrDogButton = ({ classInfo, dogInfo, noInfoLabel, className }) => {
   const navigate = useNavigate();
-  const { obedienceClass, dogsAmount } = classInfo || [];
+  const { obedienceClass, dogsAmount, isCompleted } = classInfo || [];
   const { index, dogId, dogName, exercisesCompleted, exercisesAmount } =
     dogInfo || [];
   const { dogDispatch } = useContext(DogContext);
-
-  //CHECK IF CLASS IS COMPLETE
-  // TODO (there must be some good way to check if all exercises for all dogs are completed)
-  const isCompleted = false;
 
   const clickHandler = (event) => {
     event.preventDefault();
@@ -73,6 +69,7 @@ ClassOrDogButton.propTypes = {
   classInfo: PropTypes.shape({
     obedienceClass: PropTypes.string.isRequired,
     dogsAmount: PropTypes.number.isRequired,
+    isCompleted: PropTypes.bool,
   }),
   dogInfo: PropTypes.shape({
     index: PropTypes.number.isRequired,
@@ -82,7 +79,7 @@ ClassOrDogButton.propTypes = {
     exercisesAmount: PropTypes.number,
   }),
   noInfoLabel: PropTypes.bool,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default ClassOrDogButton;

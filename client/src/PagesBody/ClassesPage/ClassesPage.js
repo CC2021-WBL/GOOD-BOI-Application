@@ -17,9 +17,8 @@ const ClassesPage = () => {
         `/api/contests/classes/${contestId}`,
         requestOptionsGET,
       );
-      const result = await response.json();
-      setContestClasses(result);
-      console.log(result);
+      const classes = await response.json();
+      setContestClasses(classes);
     }
     fetchClasses();
   }, []);
@@ -39,6 +38,7 @@ const ClassesPage = () => {
                   obedienceClass,
                   dogsAmount:
                     contestClasses[obedienceClass].participants.length,
+                  isCompleted: contestClasses[obedienceClass].isFinished,
                 }}
               />
             );

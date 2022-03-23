@@ -98,10 +98,14 @@ async function finishClass(req, res) {
     );
     obedienceClass.isFinished = !obedienceClass.isFinished;
     contest.updatedAt = new Date();
-    await contest.save();
-    return contest;
+    const updatedContest = await contest.save();
+    if (!updatedContest) {
+      res.status(500).json({ message: ERROR_MSG[500] });
+    } else {
+      return updatedContest;
+    }
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(500).json({ message: ERROR_MSG[500] });
   }
 }
 
@@ -119,15 +123,19 @@ async function getPartcicipantsForClassInContest(req, res) {
         },
       },
     });
-    const participantsArray = contest.obedienceClasses.find(
+    const obedienceClass = contest.obedienceClasses.find(
       (obedienceClass) => obedienceClass.classNumber == req.params.classId,
-    ).participants;
-    console.log(participantsArray);
+    );
 
-    if (!participantsArray) {
+    const forClassObj = {
+      participants: obedienceClass.participants,
+      isFinished: obedienceClass.isFinished,
+    };
+
+    if (!forClassObj) {
       res.status(404).send(ERROR_MSG[404]);
     } else {
-      return participantsArray;
+      return forClassObj;
     }
   } catch (error) {
     res.status(500).send(ERROR_MSG[500]);
@@ -148,7 +156,6 @@ async function getContests(req, res) {
   }
 }
 
-//TODO: WORK IN PROGRESS - to add selectors of roles, itd
 async function getContestsForCard(req, res) {
   let data;
   try {

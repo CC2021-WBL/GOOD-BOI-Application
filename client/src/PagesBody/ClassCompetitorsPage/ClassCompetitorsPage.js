@@ -11,6 +11,7 @@ import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const ClassCompetitorsPage = () => {
   const [dogList, setDogList] = useState(null);
+  const [isClassFinished, setIsClassFinished] = useState(null);
   const { contestId, classId } = useParams();
   const navigate = useNavigate();
 
@@ -20,10 +21,10 @@ const ClassCompetitorsPage = () => {
         `/api/contests/participants/${contestId}/${classId}`,
         requestOptionsGET,
       );
-      if (response) {
-        const dogsArr = await response.json();
-        console.log(dogsArr);
-        setDogList(dogsArr);
+      if (response && response.status === 200) {
+        const forClassObj = await response.json();
+        setIsClassFinished(forClassObj.isFinished);
+        setDogList(forClassObj.participants);
       }
     }
     fetchDogList();
@@ -66,7 +67,11 @@ const ClassCompetitorsPage = () => {
             />
           );
         })}
-      <MainButton onClick={onClassFinishClick} secondary text="ZAKOŃCZ KLASĘ" />
+      <MainButton
+        onClick={onClassFinishClick}
+        secondary
+        text={isClassFinished ? 'WRÓĆ DO OCENY' : 'ZAKOŃCZ KLASĘ'}
+      />
     </ColumnWrapper>
   );
 };
