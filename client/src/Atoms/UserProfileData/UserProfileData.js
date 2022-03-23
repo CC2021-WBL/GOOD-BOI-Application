@@ -3,11 +3,12 @@ import { FaRegTimesCircle } from 'react-icons/fa';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import ErrorPage from '../../PagesBody/ErrorPage/ErrorPage';
+import ErrorComponent from '../../PagesBody/ErrorPage/ErrorPage';
 import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
 import { UserDataContext } from '../../Context/UserDataContext';
+import { generateErrorMessage } from '../../Tools/generateErrorMessage';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const UserProfileData = ({
@@ -19,7 +20,7 @@ const UserProfileData = ({
   const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
   const { userId, userName, userSurname, isAuthenticated } = state;
-  const [errors, setErrors] = useState(null);
+  const [fetchErrors, setFetchErrors] = useState(null);
   const paramsUserData = useParams();
 
   let userData = userId;
@@ -45,19 +46,17 @@ const UserProfileData = ({
       async function getUserProfileData() {
         try {
           let response = await fetch(
-            `/api/users/${userData}?taker=profile`,
+            `/api/user/${userData}?taker=profile`,
             requestOptionsGET,
           );
           if (!response.ok) {
-            throw Error('Twoja stara to andrzej duda');
-            // navigate('/login');
+            throw Error(generateErrorMessage(response.status));
           } else {
             response = await response.json();
             setUserObject(response);
           }
         } catch (error) {
-          setErrors(error.message);
-          console.log(error);
+          setFetchErrors(error.message);
         }
       }
 
@@ -70,8 +69,8 @@ const UserProfileData = ({
 
   return (
     <>
-      {errors ? (
-        <ErrorPage message={errors}></ErrorPage>
+      {fetchErrors ? (
+        <ErrorComponent message={fetchErrors}></ErrorComponent>
       ) : (
         <>
           <UserProfileDataStyled withEdit={withEdit} className={className}>

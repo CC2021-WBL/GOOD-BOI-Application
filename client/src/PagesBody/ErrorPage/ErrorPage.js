@@ -1,14 +1,15 @@
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ErrorPageGraphic from '../../Assets/ErrorPageGraphic.png';
 
-const ErrorPage = ({ message }) => {
+const ErrorComponent = ({ message }) => {
   return (
-    <>
+    <ColumnWrapper className="error-wrapper">
       <img src={ErrorPageGraphic} alt="Doggo in space" />
       <div className="text-wrapper">
-        <h1>{message}</h1>
+        <p>{message}</p>
       </div>
-    </>
+    </ColumnWrapper>
   );
 };
 
-export default ErrorPage;
+export default ErrorComponent;
