@@ -28,7 +28,11 @@ const ContestsPage = () => {
   const { contestState, contestDispatch } = useContext(ContestContext);
 
   useEffect(() => {
-    if (contestState.contestId || contestState.contestName) {
+    if (
+      contestState.contestId ||
+      contestState.contestName ||
+      contestState.contestAddress
+    ) {
       contestDispatch({ type: CONTEST_ACTIONS.CLEAR });
     }
   }, []);

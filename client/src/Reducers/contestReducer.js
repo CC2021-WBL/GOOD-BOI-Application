@@ -13,6 +13,8 @@ const contestReducer = (state, action) => {
       return {
         contestId: null,
         contestName: null,
+        contestAddress: null,
+        contestStartDate: null,
       };
 
     default:

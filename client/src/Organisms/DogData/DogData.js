@@ -72,7 +72,7 @@ const DogData = ({ id }) => {
         <SpecialButton left text="edytuj" handler={handleEdit} colors="blue" />
         <SpecialButton
           right
-          text={contestState.contestId ? 'Potwierdź' : 'Wróć do listy psów'}
+          text={contestState.contestId ? 'potwierdź' : 'wróć do listy psów'}
           handler={handleConfirm}
           colors="green"
         />

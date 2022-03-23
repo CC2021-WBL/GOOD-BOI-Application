@@ -14,28 +14,12 @@ import DataLine from '../../Atoms/DataLine/DataLine';
 
 const UserDogPage = () => {
   const { state, dispatch } = useContext(UserDataContext);
-  const [contestData, setContestData] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const [participantDogs, setParticipantDogs] = useState(null);
   const { dogState, dogDispatch } = useContext(DogContext);
   const { dogs } = dogState;
   const { contestState } = useContext(ContestContext);
-
-  useEffect(() => {
-    async function fetchContestData() {
-      const response = await fetch(
-        `/api/contests/${contestState.contestId}`,
-        requestOptionsGET,
-      );
-      if (response.ok) {
-        const result = await response.json();
-        setContestData(result);
-        setIsPending(false);
-      } else {
-      }
-    }
-    fetchContestData();
-  }, []);
+  console.log(contestState);
 
   useEffect(() => {
     if (state.selectedRole !== ROLE_NAME.PARTICIPANT)
@@ -87,58 +71,59 @@ const UserDogPage = () => {
 
   return (
     <ColumnWrapper className={`user-dogs${enterCompetitionClass()}`}>
-    <ColumnWrapper
-      paddingLeftRight={1}
-      paddingTop={0.5}
-      className={`user-dogs-column-wrapper${enterCompetitionClass()}`}
-    >
-      {isPending && <Spinner />}
-      {participantDogs &&
-        participantDogs.map((dog, index) => {
-          const { dogName, dogId } = dog;
-          return (
-            <ClassOrDogButton
-              key={dogId}
-              dogInfo={{
-                index,
-                dogName,
-                dogId,
-              }}
-              noInfoLabel
-              className="user-dogs-button"
+      <ColumnWrapper
+        paddingLeftRight={1}
+        paddingTop={0.5}
+        className={`user-dogs-column-wrapper${enterCompetitionClass()}`}
+      >
+        {isPending && <Spinner />}
+        {participantDogs &&
+          participantDogs.map((dog, index) => {
+            const { dogName, dogId } = dog;
+            return (
+              <ClassOrDogButton
+                key={dogId}
+                dogInfo={{
+                  index,
+                  dogName,
+                  dogId,
+                }}
+                noInfoLabel
+                className="user-dogs-button"
+              />
+            );
+          })}
+        {dogs && dogs.length === 0 && (
+          <h3 className="dogs-0">Nie dodałeś jeszcze żadnego psa.</h3>
+        )}
+        <FakeButton
+          colors="secondary"
+          text="DODAJ NOWEGO PSA"
+          to="/add-dog-form"
+          className="add-dogs"
+        />
+      </ColumnWrapper>
+      {contestState.contestId && (
+        <ColumnWrapper className="enter-competition-container">
+          <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
+            <DataLine text={contestState.contestName} />
+            <DataLine
+              text={[
+                `
+              ${contestState.contestAddress.street} ${
+                  contestState.contestAddress.numberOfHouse || ''
+                }, ${contestState.contestAddress.city.toUpperCase()}`,
+                contestState.contestStartDate,
+              ]}
             />
-          );
-        })}
-      {dogs && dogs.length === 0 && (
-        <h3 className="dogs-0">Nie dodałeś jeszcze żadnego psa.</h3>
-      )}
-      <FakeButton
-        colors="secondary"
-        text="DODAJ NOWEGO PSA"
-        to="/add-dog-form"
-        className="add-dogs"
-      />
-    </ColumnWrapper>
-      {contestState.contestId && contestData && (
-        <ColumnWrapper
-          paddingLeftRight={1}
-          paddingTop={0.5}
-          className="enter-competition-container"
-        >
-          <DataLine text={contestState.contestName} />
-          <DataLine text={contestData.startDate} />
-          <DataLine
-            text={[contestData.address.street, contestData.address.city]}
-          />
-          {/*<DataLine text={contestData.address.numberOfHouse} />*/}
-          <DataLine text={`Wybierz psa`} />
-          <DataLine text={`Potwierdż dane psa`} />
-          <DataLine text={`Potwierdź dane użytkownika`} />
-          <DataLine text={`Wybierz klasę`} />
-          <DataLine text={`Potwierdź udział`} />
+            <DataLine text={`Wybierz psa`} />
+            <DataLine text={`Potwierdż dane psa`} />
+            <DataLine text={`Potwierdź dane użytkownika`} />
+            <DataLine text={`Wybierz klasę`} />
+            <DataLine text={`Potwierdź udział`} />
+          </ColumnWrapper>
         </ColumnWrapper>
       )}
-
     </ColumnWrapper>
   );
 };

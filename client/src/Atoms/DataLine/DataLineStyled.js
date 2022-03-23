@@ -20,7 +20,7 @@ const DataLineStyled = styled.div`
   }
 
   @media only screen and (min-width: 1024px) {
-    color: black;
+    color: ${({ theme }) => theme.grey800};
   }
 `;
 
