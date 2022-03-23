@@ -26,15 +26,16 @@ const ExercisesPage = () => {
   const { contestId, dogId } = useParams();
   const locationPath = useLocation();
 
-  const { label, results } = locationPath.state;
+  const { label } = locationPath.state;
 
   useEffect(() => {
-    if (!results) {
-      getExercisesPoints(dogId, contestId, setDogPerformance, setResultId);
-    } else {
-      setDogPerformance(results.exercises);
-      setResultId(results._id);
+    async function fetchResults() {
+      const resultDoc = await getExercisesPoints(dogId, contestId);
+      setDogPerformance({ exercises: resultDoc.exercises });
+      setResultId(resultDoc._id);
     }
+
+    fetchResults();
   }, []);
 
   useEffect(() => {
@@ -42,6 +43,7 @@ const ExercisesPage = () => {
       navigate('./dog-summary', {
         state: {
           dogPerformance: { dogPerformance },
+          resultId: resultId,
         },
       });
     }
@@ -54,6 +56,7 @@ const ExercisesPage = () => {
     navigate('./dog-summary', {
       state: {
         dogPerformance: { dogPerformance },
+        resultId: resultId,
       },
     });
   };
@@ -65,7 +68,8 @@ const ExercisesPage = () => {
 
   const navigate = useNavigate();
 
-  const handleEvaluation = () => {
+  const handleEvaluation = (event) => {
+    event.preventDefault();
     setIsEvaluationModalOpen(false);
     dogPerformance.specialState = penaltyPoints;
     navigate('./dog-summary', {
@@ -73,21 +77,30 @@ const ExercisesPage = () => {
         text: 'Tabela Wyników',
         label: `${label}`,
         dogPerformance: { dogPerformance },
+        resultId: resultId,
       },
     });
   };
-  const openDisqualifyModalHandler = () => {
+  const openDisqualifyModalHandler = (event) => {
+    event.preventDefault();
     setIsDisqualifyModalOpen(true);
   };
-  const openPenaltyModalHandler = () => {
+  const openPenaltyModalHandler = (event) => {
+    event.preventDefault();
     setIsPenaltyModalOpen(true);
   };
 
-  const openEvaluationModalHandler = () => {
-    setIsEvaluationModalOpen(true);
+  const openEvaluationModalHandler = async (event) => {
+    event.preventDefault();
+    console.log(dogPerformance);
+    const isUpdated = await updateExercisesPoints(resultId, dogPerformance);
+    if (isUpdated) {
+      setIsEvaluationModalOpen(true);
+    }
   };
 
-  function closeModalHandler() {
+  function closeModalHandler(event) {
+    event.preventDefault();
     setIsPenaltyModalOpen(false);
     setIsDisqualifyModalOpen(false);
     setIsEvaluationModalOpen(false);
@@ -145,7 +158,7 @@ const ExercisesPage = () => {
 
         {dogPerformance && (
           <ExerciseCardsContainer
-            dogPerformance={dogPerformance}
+            dogPerformance={dogPerformance.exercises}
             setDogPerformance={setDogPerformance}
           />
         )}

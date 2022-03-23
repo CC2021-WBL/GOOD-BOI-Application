@@ -13,7 +13,7 @@ const ExerciseCardsContainer = ({ dogPerformance, setDogPerformance }) => {
       console.log('Choose points from 0 to 10 (with 0.5 step).');
     } else {
       setDogPerformance((prevState) => {
-        prevState.find(
+        prevState.exercises.find(
           (exercise) => exercise.codeName === event.target.id,
         ).result = Number(event.target.value);
         return prevState;

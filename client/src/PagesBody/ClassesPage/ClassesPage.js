@@ -17,8 +17,10 @@ const ClassesPage = () => {
         `/api/contests/classes/${contestId}`,
         requestOptionsGET,
       );
-      const classes = await response.json();
-      setContestClasses(classes);
+      if (response.status === 200) {
+        const classes = await response.json();
+        setContestClasses(classes);
+      }
     }
     fetchClasses();
   }, []);
@@ -26,6 +28,7 @@ const ClassesPage = () => {
   function onClickFinish() {
     navigate('/contests');
   }
+
   return (
     <ColumnWrapper paddingLeftRight={1} paddingTop={0.25}>
       {contestClasses
@@ -35,7 +38,7 @@ const ClassesPage = () => {
                 key={index}
                 contestId={contestId}
                 classInfo={{
-                  obedienceClass,
+                  obedienceClass: contestClasses[obedienceClass].classNumber,
                   dogsAmount:
                     contestClasses[obedienceClass].participants.length,
                   isCompleted: contestClasses[obedienceClass].isFinished,

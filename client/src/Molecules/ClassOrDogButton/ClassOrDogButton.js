@@ -58,7 +58,6 @@ const ClassOrDogButton = ({ classInfo, dogInfo, noInfoLabel, className }) => {
         payload: { dogId: dogId, dogName: dogName },
       });
   };
-
   return (
     <ClassOrDogButtonStyled onClick={clickHandler} className={className}>
       {/*CONDITIONAL FOR CLASSES */}

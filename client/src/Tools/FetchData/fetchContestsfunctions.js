@@ -64,12 +64,7 @@ export async function finishClass(contestId, classNumber) {
   }
 }
 
-export async function getExercisesPoints(
-  dogId,
-  contestId,
-  setDogPerformance,
-  setResultId,
-) {
+export async function getExercisesPoints(dogId, contestId) {
   try {
     let response = await fetch(
       `/api/results/individual/bydog/${dogId}/${contestId}`,
@@ -77,21 +72,19 @@ export async function getExercisesPoints(
     );
     if (response.status === 200) {
       const resultDoc = await response.json();
-      console.log(resultDoc);
-      setDogPerformance(resultDoc.exercises);
-      setResultId(resultDoc._id);
+      return resultDoc[0];
     } else {
-      console.log(response.message);
+      return null;
     }
   } catch (error) {}
 }
 
-export async function updateExercisesPoints(resultsId, exercisesToUpdate) {
-  const exercises = { exercises: exercisesToUpdate };
+export async function updateExercisesPoints(resultsId, dataToUpdate) {
+  console.log(dataToUpdate);
   try {
     let response = await fetch(
       `/api/results/${resultsId}`,
-      genRequestOptionsPATCH(exercises),
+      genRequestOptionsPATCH(dataToUpdate),
     );
     if (response.status === 201) {
       return true;
