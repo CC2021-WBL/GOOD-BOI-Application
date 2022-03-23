@@ -78,6 +78,7 @@ const FakeButtonStyled = styled(Link)`
     margin-top: -0.5625rem;
     border-radius: 0 0 0.75rem 0.75rem;
     text-transform: none;
+    z-index: 1;
   }
 
   &.add-dogs {
@@ -122,6 +123,8 @@ const FakeButtonStyled = styled(Link)`
         padding: 0 1.25rem;
         color: ${({ theme }) => theme.grey400};
         text-transform: none;
+        ${FONTS.caption};
+        line-height: 1.5;
       }
     }
 
@@ -160,6 +163,11 @@ const FakeButtonStyled = styled(Link)`
         }
       }
     }
+  }
+  &:hover {
+    filter: brightness(1.025);
+    box-shadow: 0.125rem 0.25rem ${({ theme }) => theme.primary201};
+    cursor: pointer;
   }
 `;
 

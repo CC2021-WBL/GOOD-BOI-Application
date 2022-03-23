@@ -35,17 +35,19 @@ const LandingPage = () => {
               cursor: 'pointer',
               position: 'absolute',
               top: 0,
+              zIndex: 10,
             }}
           />
         </div>
       ) : null}
-      <BackgroundDivStyled />
+      <BackgroundDivStyled className="landing-background" />
       <NavElement />
       {useMediaQuery('(max-width:799px)') && (
         <GridWrapper
           mobile="3 / 1 / 4 / 2"
           tablet="2 / 2 / 4 / 3"
           desktop="3 / 3"
+          className="landing-grid-wrapper"
         >
           <ColumnWrapper paddingLeftRight={1} paddingBottom={1}>
             <ImgWrapperStyled>

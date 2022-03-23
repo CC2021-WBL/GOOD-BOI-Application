@@ -57,7 +57,10 @@ const ForgotPassForm = () => {
   };
 
   return (
-    <ColumnWrapper>
+    <ColumnWrapper
+      maxWidthBigScreen={35}
+      className="forgot-wrapper grid-position"
+    >
       {isPassReminderModalOpen && (
         <Modal
           modalData={modalData.passReminder}

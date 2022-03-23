@@ -38,12 +38,14 @@ const Sidebar = () => {
           <MenuItem
             stylefor="Sidebar"
             linkTo="/contests"
+            state={{ contestContent: 'results' }}
             text="Historia zawodów"
             icon={<BsTrophy fontSize={fontsize} />}
           />
           <MenuItem
             stylefor="Sidebar"
-            linkTo="/register"
+            linkTo="/future-contests"
+            state={{ contestContent: 'future' }}
             text="Zapisz się na zawody"
             icon={<BsTrophyFill fontSize={fontsize} />}
           />

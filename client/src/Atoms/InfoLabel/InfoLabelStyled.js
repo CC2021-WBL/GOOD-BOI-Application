@@ -1,9 +1,11 @@
+import styled from 'styled-components';
+
 import COLORS from '../../Styles/varsStyledComponents';
 import FONTS from '../../Styles/fontsStyledComponents';
 import { COLORSMOTIVE as c } from '../../Consts/infoLabelConsts';
-import styled from 'styled-components';
 
 const InfoLabelStyled = styled.label`
+  cursor: pointer;
   display: flex;
   height: 1.25rem;
   align-items: center;
@@ -29,6 +31,10 @@ const InfoLabelStyled = styled.label`
     props.colorMotive === c.WHITE
       ? `background: ${props.theme.white}; color: ${props.theme.grey800};  border: solid 1px  ${props.theme.grey800};`
       : ``};
+  &:hover {
+    filter: brightness(1.025);
+    cursor: pointer;
+  }
 `;
 
 export default InfoLabelStyled;

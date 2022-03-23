@@ -2,17 +2,29 @@ import { NavLink } from 'react-router-dom';
 
 import GoodBoiLogoStyled from './GoodBoiLogoStyled';
 import { ReactComponent as AppLogoSVG } from '../../Assets/AppLogoSVG.svg';
+import { useContext } from 'react';
+import { UserDataContext } from '../../Context/UserDataContext';
 
 const GoodBoiLogo = () => {
+  const { state } = useContext(UserDataContext);
+
   return (
-    <GoodBoiLogoStyled>
-      <NavLink to="/">
+    <NavLink to={`/user/${state.userId}`}>
+      <GoodBoiLogoStyled>
         <AppLogoSVG />
-      </NavLink>
-      <div style={{ userSelect: 'none', whiteSpace: 'nowrap' }}>
-        GOOD BOI APP
-      </div>
-    </GoodBoiLogoStyled>
+
+        <div
+          style={{
+            textDecoration: 'none',
+            userSelect: 'none',
+            whiteSpace: 'nowrap',
+            color: ``,
+          }}
+        >
+          GOOD BOI APP
+        </div>
+      </GoodBoiLogoStyled>
+    </NavLink>
   );
 };
 export default GoodBoiLogo;

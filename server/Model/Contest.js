@@ -75,6 +75,10 @@ const contestSchema = new mongoose.Schema({
     numberOfHouse: String,
     postalCode: String,
   },
+  coordinates: {
+    latitude: Number,
+    longitude: Number,
+  },
   judges: {
     type: [String],
     default: [],

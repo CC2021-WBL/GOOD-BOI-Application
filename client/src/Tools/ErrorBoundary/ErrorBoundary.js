@@ -1,9 +1,9 @@
 import propTypes from 'prop-types';
 import { Component } from 'react';
 
+import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ErrorBoundaryStyled from './ErrorBoundaryStyled';
 import ErrorPageGraphic from '../../Assets/ErrorPageGraphic.png';
-import NotFoundPageWrapperStyled from '../../Organisms/NotFoundContent/NotFoundPageWrapperStyled';
 
 export class ErrorBoundary extends Component {
   constructor(props) {
@@ -26,7 +26,11 @@ export class ErrorBoundary extends Component {
     if (this.state.hasError) {
       return (
         <ErrorBoundaryStyled>
-          <NotFoundPageWrapperStyled style={{ textAlign: 'center' }}>
+          <ColumnWrapper
+            paddingLeftRight={1}
+            maxWidthBigScreen={35}
+            className="not-found-wrapper"
+          >
             <img src={ErrorPageGraphic} alt="Doggo in space" />
             <div className="text-wrapper">
               <h1>Coś poszło nie tak.</h1>
@@ -50,7 +54,7 @@ export class ErrorBoundary extends Component {
             >
               Skontaktuj się z nami!
             </a>
-          </NotFoundPageWrapperStyled>
+          </ColumnWrapper>
         </ErrorBoundaryStyled>
       );
     }
