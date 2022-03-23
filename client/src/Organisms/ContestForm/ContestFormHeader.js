@@ -11,7 +11,7 @@ const ContestFormHeaderStyled = styled.div`
     h2 {
       margin-bottom: 1rem;
     }
-    caption {
+    p {
       text-align: left;
       white-space: nowrap;
       margin-bottom: 2rem;
@@ -47,7 +47,7 @@ const ContestFormHeader = () => {
   return (
     <ContestFormHeaderStyled className="dog-form-header">
       <h2>Dodaj zawody</h2>
-      <caption>Uzupełnij wszystkie pola.</caption>
+      <p>Uzupełnij wszystkie pola.</p>
     </ContestFormHeaderStyled>
   );
 };
