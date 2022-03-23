@@ -30,7 +30,7 @@ const ClassesPage = () => {
     navigate('/contests');
   }
   return (
-    <ColumnWrapper paddingLeftRight={1} paddingTop={0.25}>
+    <ColumnWrapper paddingLeftRight={1} paddingTop={0.25} maxWidthBigScreen={45}>
       {isPending && <Spinner />}
       {contestClasses
         ? Object.keys(contestClasses).map((obedienceClass, index) => {

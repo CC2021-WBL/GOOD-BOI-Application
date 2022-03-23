@@ -40,13 +40,13 @@ const ClassChoicePage = () => {
             classes.push(element.classNumber);
           });
 
-          setIsPending(false)
         }
         setClassesArr(classes);
       } else {
         alert('Ooops, coś poszło nie tak');
       }
     }
+    setIsPending(false)
     getClasses();
   }, []);
 
