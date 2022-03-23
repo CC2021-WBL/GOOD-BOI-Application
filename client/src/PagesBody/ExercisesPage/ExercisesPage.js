@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import ButtonExercises from '../../Atoms/ButtonsExercises/ButtonsExercises';
