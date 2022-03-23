@@ -1,5 +1,6 @@
-import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
+
+import FONTS from '../../Styles/fontsStyledComponents';
 
 const HeaderMenuStyled = styled.div`
   display: flex;
@@ -13,6 +14,7 @@ const HeaderMenuStyled = styled.div`
   .x {
     margin-right: 0.9375rem;
     font-size: 1.5rem;
+    z-index: 10;
     &:hover {
       cursor: pointer;
     }
