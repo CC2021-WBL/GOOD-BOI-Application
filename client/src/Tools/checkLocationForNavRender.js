@@ -18,3 +18,5 @@ const checkLocationForNavRender = (pathname, isAuthorized) => {
 };
 
 export default checkLocationForNavRender;
+
+//send build

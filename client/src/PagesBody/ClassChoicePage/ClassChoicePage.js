@@ -5,6 +5,7 @@ import CLASSES from '../../Consts/classesConst';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import MainButton from '../../Atoms/MainButton/MainButton';
+import Spinner from '../../Atoms/Spinner/Spinner';
 import { ContestContext } from '../../Context/ContestContext';
 import { DogContext } from '../../Context/DogContext';
 import { UserDataContext } from '../../Context/UserDataContext';
@@ -23,6 +24,7 @@ const ClassChoicePage = () => {
   const [selectedClass, setSelectedClass] = useState('');
   const [confirmation, setConfirmation] = useState(null);
   const [classesArr, setClassesArr] = useState(null);
+  const [isPending, setIsPending] = useState(true);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -39,11 +41,13 @@ const ClassChoicePage = () => {
           obedienceClassesObject.forEach((element) => {
             classes.push(element.classNumber);
           });
+
         }
         setClassesArr(classes);
       } else {
         alert('Ooops, coś poszło nie tak');
       }
+      setIsPending(false)
     }
     getClasses();
   }, []);
@@ -104,6 +108,7 @@ const ClassChoicePage = () => {
         maxWidthBigScreen={35}
         className={`class-choice-wrapper${enterCompetitionClassChoice()}`}
       >
+        {isPending && <Spinner />}
         {classesArr &&
           classesArr.map((obedienceClass, index) => {
             return (

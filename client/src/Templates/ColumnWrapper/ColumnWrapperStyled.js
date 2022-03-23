@@ -14,10 +14,6 @@ const ColumnWrapperStyled = styled.div`
     props.paddingBottom && `${props.paddingBottom}rem`};
   grid-area: 3 / 1 / 4 / 2;
 
-  &.manager-page {
-    padding: 2.2rem 1rem 0 1rem;
-    margin: 0 auto;
-  }
 
   &.not-found-wrapper {
     text-align: center;
@@ -117,6 +113,12 @@ const ColumnWrapperStyled = styled.div`
     padding: 0.5rem 1rem;
   }
 
+  &.login-column-wrapper {
+    max-width: 29.375rem;
+    padding: 1.875rem;
+    margin: auto;
+  }
+
   &.contest-data-buttons-manager {
     display: flex;
     flex-direction: column;
@@ -169,8 +171,6 @@ const ColumnWrapperStyled = styled.div`
       max-width: 29.375rem;
       border: 1px solid ${({ theme }) => theme.grey200};
       border-radius: 0.9375rem;
-      padding: 1.875rem;
-      margin: auto;
       background-color: ${({ theme }) => theme.white};
       color: ${({ theme }) => theme.grey800};
     }

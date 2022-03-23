@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const RocketStyled = styled.div`
   position: absolute;
+  bottom: 60px;
   &:hover {
     animation: pop 2.5s infinite;
     @keyframes pop {
