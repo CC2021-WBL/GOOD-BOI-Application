@@ -18,6 +18,12 @@ const ClassesPage = () => {
         `/api/contests/classes/${contestId}`,
         requestOptionsGET,
       );
+      if (response.status === 200) {
+        const classes = await response.json();
+        setContestClasses(classes);
+      } else {
+        alert('Nie udało się znaleźć klas');
+      }
       setIsPending(false);
     }
     fetchClasses();
