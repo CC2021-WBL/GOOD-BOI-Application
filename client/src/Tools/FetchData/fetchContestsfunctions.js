@@ -1,5 +1,5 @@
 import { ROLE_NAME } from '../../Consts/rolesConsts';
-import { requestOptionsGET } from './requestOptions';
+import { genRequestOptionsPATCH, requestOptionsGET } from './requestOptions';
 
 export async function getContestsCards(userStateFromContext, locationPath) {
   let url = '/api/contests/card/data';
@@ -45,5 +45,21 @@ export async function fetchContestsForLandingPage() {
   } catch (error) {
     console.log(error);
     alert('Ooops, cos poszło nie tak');
+  }
+}
+
+export async function finishClass(contestId, classNumber) {
+  try {
+    let response = await fetch(
+      `/api/contests/${contestId}/${classNumber}`,
+      genRequestOptionsPATCH({}),
+    );
+    if (response.status === 201) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    alert('oops, coś poszło nie tak');
   }
 }

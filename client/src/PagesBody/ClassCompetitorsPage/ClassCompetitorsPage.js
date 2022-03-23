@@ -6,6 +6,7 @@ import CLASSES from '../../Consts/classesConst';
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import MainButton from '../../Atoms/MainButton/MainButton';
+import { finishClass } from '../../Tools/FetchData/fetchContestsfunctions';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const ClassCompetitorsPage = () => {
@@ -29,9 +30,12 @@ const ClassCompetitorsPage = () => {
   }, []);
   const exercisesAmount = CLASSES[classId].exercises.length;
 
-  console.log(dogList);
-  function onClassFinishClick() {
-    navigate();
+  async function onClassFinishClick(event) {
+    event.preventDefault();
+    const isSuccess = await finishClass(contestId, classId);
+    if (isSuccess) {
+      navigate(`/contests/${contestId}/classes`);
+    }
   }
 
   return (

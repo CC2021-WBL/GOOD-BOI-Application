@@ -6,16 +6,13 @@ const Result = require('../Model/Result');
 const { isManager } = require('../Tools/autorizationAdditionalTools');
 const { createGeolocationUrl } = require('../Tools/geolocationTools');
 const { createClassesObjectArray } = require('../Tools/ModelTools');
-<<<<<<< HEAD
 const mongoose = require('mongoose');
-=======
 const fetch = require('node-fetch');
 
 const requestOptionsGET = {
   method: 'GET',
   redirect: 'follow',
 };
->>>>>>> a8d09da087f0bc97be4158881dbaf87866804f23
 
 async function registerContest(req, res) {
   const urlToFetchCoords = createGeolocationUrl(req.body.address);
@@ -108,13 +105,8 @@ async function finishClass(req, res) {
   }
 }
 
-//TODO: add selection to get participants just for current contest
 async function getPartcicipantsForClassInContest(req, res) {
   try {
-    // const data = await Contest.aggregate([
-    //   { $match: { _id: new mongoose.Types.ObjectId(req.params.contestId) } },
-    //   { $project: { _id: 0, obedienceClasses: 1 } },
-    //   { $project: { classNumber: req.params.classId } },
     const contest = await Contest.findById(
       new mongoose.Types.ObjectId(req.params.contestId),
     ).populate({
@@ -138,7 +130,6 @@ async function getPartcicipantsForClassInContest(req, res) {
       return participantsArray;
     }
   } catch (error) {
-    console.log(error);
     res.status(500).send(ERROR_MSG[500]);
   }
 }
