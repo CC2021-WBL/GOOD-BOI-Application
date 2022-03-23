@@ -52,9 +52,24 @@ const FakeButtonStyled = styled(Link)`
   ${(props) => handleBorders(props)}
   text-transform: uppercase;
 
+  &.contest-data-button-back {
+    display: none;
+    @media only screen and (min-width: 1024px) {
+      display: flex;
+      margin-right: 0.5rem;
+    }
+  }
+
+  &.contest-data-button-enter {
+    @media only screen and (min-width: 1024px) {
+      margin-left: 0.5rem;
+    }
+  }
+
   &.landing-desktop-login {
     width: 19.375rem;
   }
+
   &.more-contests {
     height: 2.625rem;
     justify-content: right;
@@ -63,7 +78,9 @@ const FakeButtonStyled = styled(Link)`
     margin-top: -0.5625rem;
     border-radius: 0 0 0.75rem 0.75rem;
     text-transform: none;
+    z-index: 1;
   }
+
   &.add-dogs {
     @media only screen and (min-width: 800px) {
       max-width: 16.25rem;
@@ -106,6 +123,8 @@ const FakeButtonStyled = styled(Link)`
         padding: 0 1.25rem;
         color: ${({ theme }) => theme.grey400};
         text-transform: none;
+        ${FONTS.caption};
+        line-height: 1.5;
       }
     }
 
@@ -138,11 +157,17 @@ const FakeButtonStyled = styled(Link)`
         .fakebtn-header {
           border-bottom: 1px solid ${({ theme }) => theme.primary601};
         }
+
         .fakebtn-text {
           color: ${({ theme }) => theme.primary601};
         }
       }
     }
+  }
+  &:hover {
+    filter: brightness(1.025);
+    box-shadow: 0.125rem 0.25rem ${({ theme }) => theme.primary201};
+    cursor: pointer;
   }
 `;
 

@@ -4,9 +4,41 @@ const { forContestCard } = require('../Consts/selects');
 const Contest = require('../Model/Contest');
 const Result = require('../Model/Result');
 const { isManager } = require('../Tools/autorizationAdditionalTools');
+const { createGeolocationUrl } = require('../Tools/geolocationTools');
 const { createClassesObjectArray } = require('../Tools/ModelTools');
+const fetch = require('node-fetch');
+
+const requestOptionsGET = {
+  method: 'GET',
+  redirect: 'follow',
+};
 
 async function registerContest(req, res) {
+  const urlToFetchCoords = createGeolocationUrl(req.body.address);
+  let coordinates;
+  try {
+    const response = await fetch(urlToFetchCoords, requestOptionsGET);
+
+    if (!response) {
+      coordinates = {
+        latitude: 51.796,
+        longitude: 19.426,
+      };
+    } else {
+      const geoData = await response.json();
+      const coordinatesArr = geoData.features[0].geometry.coordinates;
+      coordinates = {
+        latitude: coordinatesArr[1],
+        longitude: coordinatesArr[0],
+      };
+    }
+  } catch (error) {
+    coordinates = {
+      latitude: 51.796,
+      longitude: 19.426,
+    };
+  }
+
   const contest = new Contest({
     contestName: req.body.contestName,
     kennelClubDepartment: req.body.kennelClubDepartment,
@@ -15,6 +47,7 @@ async function registerContest(req, res) {
     applicationOpenDate: req.body.applicationOpenDate,
     applicationClosedDate: req.body.applicationClosedDate,
     address: req.body.address,
+    coordinates: coordinates,
     judges: req.body.judges,
     steward: req.body.steward,
     manager: req.params.userId,

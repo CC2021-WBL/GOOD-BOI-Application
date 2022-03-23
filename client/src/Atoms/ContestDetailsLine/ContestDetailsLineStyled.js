@@ -24,6 +24,10 @@ const ContestDetailsLineStyled = styled.div`
   div:nth-child(2) {
     color: ${({ theme }) => theme.grey400};
   }
+
+  @media only screen and (min-width: 1024px) {
+    line-height: 2.5rem;
+  }
 `;
 
 export default ContestDetailsLineStyled;

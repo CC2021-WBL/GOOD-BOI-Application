@@ -48,7 +48,7 @@ const DogFormHeader = () => {
     <DogFormHeaderStyled className="dog-form-header">
       <h2>Uzupełnij dane psa</h2>
       <caption>Wpisz wszystkie dane swojego psa</caption>
-      <div
+      {/* <div
         className="baloons"
         style={{ display: 'flex', justifyContent: 'center' }}
       >
@@ -57,7 +57,7 @@ const DogFormHeader = () => {
         <div className="baloon">2</div>
         <div className="line"></div>
         <div className="baloon">3</div>
-      </div>
+      </div> */}
     </DogFormHeaderStyled>
   );
 };

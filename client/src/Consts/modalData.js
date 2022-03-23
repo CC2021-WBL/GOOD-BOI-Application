@@ -71,6 +71,16 @@ const modalData = {
       color: `modalGoodRegistrationC`,
     },
   },
+  cancelContest: {
+    title: 'POTWIERDŹ ANULOWANIE ZAWODÓW',
+    about: 'Kliknięcie spowoduje nieodwracalne usunięcie zawodów.',
+    confirmation: 'CZY JESTEŚ PEWIEN?',
+    back: 'wróć do szczegółów',
+    colors: {
+      background: `modalDisqualifyBG`,
+      color: `modalDisqualifyC`,
+    },
+  },
 };
 
 export default modalData;

@@ -16,12 +16,12 @@ const NavLinkStyled = styled(NavLink)`
   align-items: center;
   gap: 1rem;
   ${(props) => props.stylefor === 'Sidebar' && 'padding-left: .5rem'};
+  ${(props) => props.stylefor === 'Cornermenu' && 'padding-left: .5rem'};
   transition: color 0.2s ease-in-out;
   &:not(.active) {
     color: ${({ theme }) => theme.grey400};
   }
   &.active {
-    font-weight: bold;
     color: ${({ theme }) => theme.primary601};
     ${(props) => handler(props)};
   }

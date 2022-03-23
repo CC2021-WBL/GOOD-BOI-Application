@@ -8,8 +8,19 @@ const BackgroundDivStyled = styled.div`
   background-size: contain;
   grid-area: 1 / 1 /-2 /-1;
 
+  &.landing-background {
+    z-index: 0;
+  }
+
+  &.login-page-background {
+    grid-area: 2 / 1 /-2 /-1;
+  }
+
   @media only screen and (min-width: 800px) {
     grid-area: 2 / 1 /-2 /-1;
+    &.landing-background {
+      z-index: -10;
+    }
   }
   @media only screen and (min-width: 1921px) {
     display: none;

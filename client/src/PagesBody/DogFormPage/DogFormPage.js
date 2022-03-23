@@ -69,7 +69,11 @@ const DogFormPage = () => {
   }
 
   return (
-    <ColumnWrapper paddingTop={1} paddingBottom={1}>
+    <ColumnWrapper
+      paddingLeftRight={1}
+      maxWidthBigScreen={35}
+      className="user-data-wrapper dog-form-wrapper"
+    >
       {!isSubmitted && initialStateOfDogForm ? (
         <DogForm submitForm={submitForm} initialState={initialStateOfDogForm} />
       ) : null}
