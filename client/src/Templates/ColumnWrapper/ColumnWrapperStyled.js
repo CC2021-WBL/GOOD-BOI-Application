@@ -295,25 +295,33 @@ const ColumnWrapperStyled = styled.div`
     }
 
 
-
-    &.user-dogs-enter-competition {
+    &.user-dogs-enter-competition,
+    &.dog-data-enter-competition {
       display: grid;
       height: 100%;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr;
-    }
+    }    
     
-    &.enter-competition-container {
+    &.enter-competition-container-full {
       grid-area: 1/2/2/3;
+    }
+    &.enter-competition-container {
       border: 1px solid ${({ theme }) => theme.grey200};
       border-radius: 0.9375rem;
-      margin: 1rem;
       display: flex;
       height: fit-content;
     }
 
-    &.user-dogs-column-wrapper-enter-competition {
+    &.user-dogs-column-wrapper-enter-competition{
       grid-area: 1/1/2/2;
+    }
+    &.dog-data-container-enter-competition {
+      grid-area: 1/1/2/2;
+      display: flex;
+      flex-direction: column-reverse;
+      height: fit-content;
+      margin-top: 1rem;
     }
 
     @media only screen and (min-width: 1600px) {

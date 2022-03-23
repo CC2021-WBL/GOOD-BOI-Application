@@ -12,6 +12,8 @@ import { ContestContext } from '../../Context/ContestContext';
 import { DogContext } from '../../Context/DogContext';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
+import enterCompetitionAddClass from '../EnterCompetitionContainer/enterCompetitionAddClass';
+import EnterCompetitionContainer from '../EnterCompetitionContainer/EnterCompetitionContainer';
 
 const DogData = ({ id }) => {
   let navigate = useNavigate();
@@ -67,26 +69,40 @@ const DogData = ({ id }) => {
   };
 
   return (
-    <ColumnWrapper className={`dog-data-container`}>
-      <SpecialButtonsContainerStyled>
-        <SpecialButton left text="edytuj" handler={handleEdit} colors="blue" />
-        <SpecialButton
-          right
-          text={contestState.contestId ? 'potwierdź' : 'wróć do listy psów'}
-          handler={handleConfirm}
-          colors="green"
-        />
-      </SpecialButtonsContainerStyled>
-      <ColumnWrapper paddingLeftRight={1} className="dog-data-details">
-        {isPending && <Spinner />}
-        {dogData &&
-          Object.entries(renderDogData(dogData)).map((dataLine, index) => (
-            <DataLine key={index} text={dataLine} />
-          ))}
+    <ColumnWrapper
+      className={`dog-data${enterCompetitionAddClass(contestState)}`}
+    >
+      <ColumnWrapper
+        className={`dog-data-container${enterCompetitionAddClass(
+          contestState,
+        )}`}
+      >
+        <SpecialButtonsContainerStyled>
+          <SpecialButton
+            left
+            text="edytuj"
+            handler={handleEdit}
+            colors="blue"
+          />
+          <SpecialButton
+            right
+            text={contestState.contestId ? 'potwierdź' : 'wróć do listy psów'}
+            handler={handleConfirm}
+            colors="green"
+          />
+        </SpecialButtonsContainerStyled>
+        <ColumnWrapper paddingLeftRight={1} className="dog-data-details">
+          {isPending && <Spinner />}
+          {dogData &&
+            Object.entries(renderDogData(dogData)).map((dataLine, index) => (
+              <DataLine key={index} text={dataLine} />
+            ))}
+        </ColumnWrapper>
+        <ColumnWrapper paddingLeftRight={1} className="dog-data-details-bar">
+          Dane psa
+        </ColumnWrapper>
       </ColumnWrapper>
-      <ColumnWrapper paddingLeftRight={1} className="dog-data-details-bar">
-        Dane psa
-      </ColumnWrapper>
+      <EnterCompetitionContainer />
     </ColumnWrapper>
   );
 };

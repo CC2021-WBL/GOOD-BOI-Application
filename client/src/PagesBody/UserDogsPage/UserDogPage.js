@@ -11,6 +11,8 @@ import { UserDataContext } from '../../Context/UserDataContext';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import { ContestContext } from '../../Context/ContestContext';
 import DataLine from '../../Atoms/DataLine/DataLine';
+import EnterCompetitionContainer from '../../Organisms/EnterCompetitionContainer/EnterCompetitionContainer';
+import enterCompetitionAddClass from '../../Organisms/EnterCompetitionContainer/enterCompetitionAddClass';
 
 const UserDogPage = () => {
   const { state, dispatch } = useContext(UserDataContext);
@@ -19,7 +21,6 @@ const UserDogPage = () => {
   const { dogState, dogDispatch } = useContext(DogContext);
   const { dogs } = dogState;
   const { contestState } = useContext(ContestContext);
-  console.log(contestState);
 
   useEffect(() => {
     if (state.selectedRole !== ROLE_NAME.PARTICIPANT)
@@ -61,20 +62,18 @@ const UserDogPage = () => {
     }
   }, []);
 
-  const enterCompetitionClass = () => {
-    if (contestState.contestId === null) {
-      return '';
-    } else {
-      return '-enter-competition';
-    }
-  };
-
   return (
-    <ColumnWrapper className={`user-dogs${enterCompetitionClass()}`}>
+    <ColumnWrapper
+      className={`user-dogs${
+        contestState.contestId !== null ? '-enter-competition' : ''
+      }`}
+    >
       <ColumnWrapper
         paddingLeftRight={1}
         paddingTop={0.5}
-        className={`user-dogs-column-wrapper${enterCompetitionClass()}`}
+        className={`user-dogs-column-wrapper${
+          contestState.contestId !== null ? '-enter-competition' : ''
+        }`}
       >
         {isPending && <Spinner />}
         {participantDogs &&
@@ -103,27 +102,7 @@ const UserDogPage = () => {
           className="add-dogs"
         />
       </ColumnWrapper>
-      {contestState.contestId && (
-        <ColumnWrapper className="enter-competition-container">
-          <ColumnWrapper paddingLeftRight={1} paddingTop={0.5}>
-            <DataLine text={contestState.contestName} />
-            <DataLine
-              text={[
-                `
-              ${contestState.contestAddress.street} ${
-                  contestState.contestAddress.numberOfHouse || ''
-                }, ${contestState.contestAddress.city.toUpperCase()}`,
-                contestState.contestStartDate,
-              ]}
-            />
-            <DataLine text={`Wybierz psa`} />
-            <DataLine text={`Potwierdż dane psa`} />
-            <DataLine text={`Potwierdź dane użytkownika`} />
-            <DataLine text={`Wybierz klasę`} />
-            <DataLine text={`Potwierdź udział`} />
-          </ColumnWrapper>
-        </ColumnWrapper>
-      )}
+      <EnterCompetitionContainer />
     </ColumnWrapper>
   );
 };
