@@ -3,7 +3,7 @@ import { FaRegTimesCircle } from 'react-icons/fa';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import ErrorComponent from '../../PagesBody/ErrorPage/ErrorPage';
+import ErrorComponent from '../../PagesBody/ErrorPage/ErrorComponent';
 import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
@@ -46,7 +46,7 @@ const UserProfileData = ({
       async function getUserProfileData() {
         try {
           let response = await fetch(
-            `/api/user/${userData}?taker=profile`,
+            `/api/users/${userData}?taker=profile`,
             requestOptionsGET,
           );
           if (!response.ok) {
@@ -70,7 +70,7 @@ const UserProfileData = ({
   return (
     <>
       {fetchErrors ? (
-        <ErrorComponent message={fetchErrors}></ErrorComponent>
+        <ErrorComponent message={fetchErrors} />
       ) : (
         <>
           <UserProfileDataStyled withEdit={withEdit} className={className}>

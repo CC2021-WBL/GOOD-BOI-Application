@@ -1,17 +1,20 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import DataLine from '../../Atoms/DataLine/DataLine';
-import PropTypes from 'prop-types';
+import ErrorComponent from '../../PagesBody/ErrorPage/ErrorComponent';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
 import Spinner from '../../Atoms/Spinner/Spinner';
 import renderParticipantData from '../../Tools/renderParticipantData';
+import { generateErrorMessage } from '../../Tools/generateErrorMessage';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
-import { useNavigate } from 'react-router-dom';
 
 const ParticipantData = ({ id }) => {
   let navigate = useNavigate();
+  const [fetchErrors, setFetchErrors] = useState(null);
   const [participantData, setParticipantData] = useState(null);
   const [isPending, setIsPending] = useState(true);
 
@@ -19,14 +22,18 @@ const ParticipantData = ({ id }) => {
     try {
       async function fetchParticipantData() {
         const response = await fetch(`/api/users/${id}`, requestOptionsGET);
-        const result = await response.json();
-        setParticipantData(result);
-        setIsPending(false);
+        if (!response.ok) {
+          throw Error(generateErrorMessage(response.status));
+        } else {
+          const result = await response.json();
+          setParticipantData(result);
+          setIsPending(false);
+        }
       }
 
       fetchParticipantData();
     } catch (error) {
-      console.log(error);
+      setFetchErrors(error.message);
     }
   }, []);
 
@@ -49,30 +56,44 @@ const ParticipantData = ({ id }) => {
   };
 
   return (
-    <ColumnWrapper className="participant-data-container">
-      <SpecialButtonsContainerStyled>
-        <SpecialButton left text="edytuj" handler={handleEdit} colors="blue" />
-        <SpecialButton
-          right
-          text="potwierdź"
-          handler={handleConfirm}
-          colors="green"
-        />
-      </SpecialButtonsContainerStyled>
-      <ColumnWrapper paddingLeftRight={1} className="participant-data-details">
-        {isPending && <Spinner />}
-        {participantData &&
-          Object.entries(renderParticipantData(participantData)).map(
-            (dataLine, index) => <DataLine key={index} text={dataLine} />,
-          )}
-      </ColumnWrapper>
-      <ColumnWrapper
-        paddingLeftRight={1}
-        className="participant-data-details-bar"
-      >
-        Dane uczestnika
-      </ColumnWrapper>
-    </ColumnWrapper>
+    <>
+      {fetchErrors ? (
+        <ErrorComponent message={fetchErrors} />
+      ) : (
+        <ColumnWrapper className="participant-data-container">
+          <SpecialButtonsContainerStyled>
+            <SpecialButton
+              left
+              text="edytuj"
+              handler={handleEdit}
+              colors="blue"
+            />
+            <SpecialButton
+              right
+              text="potwierdź"
+              handler={handleConfirm}
+              colors="green"
+            />
+          </SpecialButtonsContainerStyled>
+          <ColumnWrapper
+            paddingLeftRight={1}
+            className="participant-data-details"
+          >
+            {isPending && <Spinner />}
+            {participantData &&
+              Object.entries(renderParticipantData(participantData)).map(
+                (dataLine, index) => <DataLine key={index} text={dataLine} />,
+              )}
+          </ColumnWrapper>
+          <ColumnWrapper
+            paddingLeftRight={1}
+            className="participant-data-details-bar"
+          >
+            Dane uczestnika
+          </ColumnWrapper>
+        </ColumnWrapper>
+      )}
+    </>
   );
 };
 

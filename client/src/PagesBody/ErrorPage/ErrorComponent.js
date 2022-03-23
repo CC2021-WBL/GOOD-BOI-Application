@@ -6,7 +6,7 @@ const ErrorComponent = ({ message }) => {
     <ColumnWrapper className="error-wrapper">
       <img src={ErrorPageGraphic} alt="Doggo in space" />
       <div className="text-wrapper">
-        <p>{message}</p>
+        <h2>{message}</h2>
       </div>
     </ColumnWrapper>
   );
