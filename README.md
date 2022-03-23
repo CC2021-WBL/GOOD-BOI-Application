@@ -72,6 +72,7 @@ Nie wiesz co to obedience? https://johndog.pl/blog/zyciezpsem/obi-ogole-znaczy/
 - mongoDB: nierelacyjna baza danych
 - passport: autoryzacja
 - swagger: automatyczna dokumentacja api
+- cypress: testy
 
 ### W przyszłości
 
