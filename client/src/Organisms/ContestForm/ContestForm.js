@@ -164,17 +164,17 @@ const ContestForm = () => {
         )}
         <InputField
           labelText="Data zamknięcia zgłoszeń"
-          htmlFor="applicationCloseDate"
-          id="applicationCloseDate"
+          htmlFor="applicationClosedDate"
+          id="applicationClosedDate"
           type="date"
           placeholder="&#xF007; Data zamknięcia zgłoszeń"
-          className={errors.applicationCloseDate ? 'red-border' : ''}
-          {...register('applicationCloseDate', {
+          className={errors.applicationClosedDate ? 'red-border' : ''}
+          {...register('applicationClosedDate', {
             required: 'Wybierz datę zamknięcia zgłoszeń',
           })}
         />
-        {errors.applicationCloseDate && (
-          <p>{errors.applicationCloseDate.message}</p>
+        {errors.applicationClosedDate && (
+          <p>{errors.applicationClosedDate.message}</p>
         )}
         <InputField
           labelText="Adres zawodów - kraj"
