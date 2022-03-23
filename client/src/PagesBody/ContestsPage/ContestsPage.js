@@ -82,7 +82,6 @@ const ContestsPage = () => {
             <FilterLabel onClick={handleFilterClick} />
           )}
           {isPending && <Spinner />}
-          {isPending && <h3>Loading...</h3>}
           {rawDataFromDB.current &&
             getSelectedContestsByTime(selectedMode, rawDataFromDB.current).map(
               (contest) => (
