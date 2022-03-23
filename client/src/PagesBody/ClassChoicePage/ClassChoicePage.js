@@ -102,7 +102,7 @@ const ClassChoicePage = () => {
         paddingTop={0.25}
         contentPosition={isAuthenticated}
         maxWidthBigScreen={35}
-        className={`class-choice-wrapper${enterCompetitionClassChoice()} grid-position`}
+        className={`class-choice-wrapper${enterCompetitionClassChoice()}`}
       >
         {classesArr &&
           classesArr.map((obedienceClass, index) => {

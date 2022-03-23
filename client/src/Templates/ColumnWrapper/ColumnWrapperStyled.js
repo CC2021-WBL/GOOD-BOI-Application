@@ -336,6 +336,10 @@ const ColumnWrapperStyled = styled.div`
 
   @media only screen and (min-width: 1600px) {
     grid-area: 3 / 3 / 4 / 4;
+
+    &.grid-position {
+      grid-area: 3/3/4/4;
+    }
   }
 `;
 
