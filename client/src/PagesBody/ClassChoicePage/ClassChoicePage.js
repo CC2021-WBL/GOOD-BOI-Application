@@ -44,9 +44,9 @@ const ClassChoicePage = () => {
         setClassesArr(classes);
       } else {
         alert('Ooops, coś poszło nie tak');
+        setIsPending(false)
       }
     }
-    setIsPending(false)
     getClasses();
   }, []);
 
