@@ -1,4 +1,5 @@
 import propTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 
 import LeaderboardListElement from '../../Atoms/Leaderboard/LeaderboardListElement';
 import LeaderboardListStyled from './LeaderboardListStyled';
@@ -7,110 +8,51 @@ import checkIfDisqualified from '../../Tools/checkIfDisqualified';
 import contests from '../../Data/MongoDBMock/contests';
 import exerciseCode2string from '../../Tools/exerciseCode2string';
 import results from '../../Data/MongoDBMock/results';
-import { useEffect } from 'react';
-import { getExercisesPoints, getResultsForClassInContest } from '../../Tools/FetchData/fetchContestsfunctions';
+import {
+  getExercisesPoints,
+  getResultsForClassInContest,
+} from '../../Tools/FetchData/fetchContestsfunctions';
 
 const LeaderboardList = ({ classId, dogId, contestId, result }) => {
-  // if dogName is defined, then render dog-summary leaderboard
+  const [individualResult, setIndividualResult] = useState(null);
+  const [classResult, setClassResult] = useState(null);
+  // if dogId is defined, then render dog-summary leaderboard
 
-useEffect(()=>{
-  async function fetchResults(){
-    if(dogId){
-const resultDoc = await getExercisesPoints(dogId, contestId);
-const dogSummaryResult = resultDoc.exercises.map((elem) => ({
-  text: exerciseCode2string(classId, elem.codeName),
-  score: calculateExerciseScore(classId, elem.codeName) * elem.result,
-}));
-    }else{
-  const results = await getResultsForClassInContest(contestId, classId)
-  console.log(results)
+  useEffect(() => {
+    async function fetchResults() {
+      if (dogId) {
+        const resultDoc = await getExercisesPoints(dogId, contestId);
+        const dogSummaryResult = resultDoc.exercises.map((elem) => ({
+          text: exerciseCode2string(classId, elem.codeName),
+          score: calculateExerciseScore(classId, elem.codeName) * elem.result,
+        }));
+        setIndividualResult(dogSummaryResult);
+      } else {
+        const results = await getResultsForClassInContest(contestId, classId);
 
+        const leaderboardArr = results.map((result) => {
+          return {
+            text: result.dogName,
+            score: result.summaryResult,
+          };
+        });
 
-    }
-  }
-
-})
-
-  if (dogName) {
-
-  } else {
-    
-    const resultsArr = contest.obedienceClasses[classId];
-    if (resultsArr) {
-      let resultsIdArr = resultsArr.map((obj) => obj.competingPairsId);
-
-      const finalLeaderboardArr = resultsIdArr.map((competingPairsId) => {
-        let DogSummary = results.find(
-          (summary) => summary.competingPairsId === competingPairsId,
+        const sortedLeaderboard = leaderboardArr.sort(
+          (a, b) => b.score - a.score,
         );
-        return {
-          text: DogSummary.dogName,
-          score: DogSummary.summaryResult,
-        };
-      });
-      const sortedLeaderboardClassResults = finalLeaderboardArr.sort(
-        (a, b) => b.score - a.score,
-      );
 
-  }
-
-  if (dogName) {
-    const dogSummaryResult = result.map((elem) => ({
-      text: exerciseCode2string(classId, elem.codeName),
-      score: calculateExerciseScore(classId, elem.codeName) * elem.result,
-    }));
-    {
-      return (
-        <LeaderboardListStyled>
-          {dogSummaryResult.map((arrElement, index) => {
-            if (!checkIfDisqualified({ result })) {
-              return (
-                <LeaderboardListElement
-                  key={index}
-                  text={arrElement.text}
-                  score={arrElement.score}
-                  index={index}
-                />
-              );
-            } else {
-              return (
-                <LeaderboardListElement
-                  key={index}
-                  text={arrElement.text}
-                  score={arrElement.score}
-                  index={index}
-                  disqualified
-                />
-              );
-            }
-          })}
-        </LeaderboardListStyled>
-      );
+        console.log(sortedLeaderboard);
+        setClassResult(sortedLeaderboard);
+      }
     }
-  } else {
-    // else if dogName is not defined, render Past Contest leaderboard
-    const contest = contests.find((contest) => contest.contestId === contestId);
+    fetchResults();
+  }, []);
 
-    const resultsArr = contest.obedienceClasses[classId];
-    if (resultsArr) {
-      let resultsIdArr = resultsArr.map((obj) => obj.competingPairsId);
-
-      const finalLeaderboardArr = resultsIdArr.map((competingPairsId) => {
-        let DogSummary = results.find(
-          (summary) => summary.competingPairsId === competingPairsId,
-        );
-        return {
-          text: DogSummary.dogName,
-          score: DogSummary.summaryResult,
-        };
-      });
-      const sortedLeaderboardClassResults = finalLeaderboardArr.sort(
-        (a, b) => b.score - a.score,
-      );
-
-      return (
-        <LeaderboardListStyled>
-          {sortedLeaderboardClassResults.map((arrElement, index) => {
+  if (individualResult) {
+    return (
+      <LeaderboardListStyled>
+        {individualResult.map((arrElement, index) => {
+          if (!checkIfDisqualified({ result })) {
             return (
               <LeaderboardListElement
                 key={index}
@@ -119,18 +61,43 @@ const dogSummaryResult = resultDoc.exercises.map((elem) => ({
                 index={index}
               />
             );
-          })}
-        </LeaderboardListStyled>
-      );
-    } else {
-      return (
-        <>
-          <h2>
-            <br></br>Error! Brak danych dla tej kombinacji klasy i psa!
-          </h2>
-        </>
-      );
-    }
+          } else {
+            return (
+              <LeaderboardListElement
+                key={index}
+                text={arrElement.text}
+                score={arrElement.score}
+                index={index}
+                disqualified
+              />
+            );
+          }
+        })}
+      </LeaderboardListStyled>
+    );
+  } else if (classResult) {
+    return (
+      <LeaderboardListStyled>
+        {classResult.map((arrElement, index) => {
+          return (
+            <LeaderboardListElement
+              key={index}
+              text={arrElement.text}
+              score={arrElement.score}
+              index={index}
+            />
+          );
+        })}
+      </LeaderboardListStyled>
+    );
+  } else {
+    return (
+      <>
+        <h2>
+          <br></br>Error! Brak danych dla tej kombinacji klasy i psa!
+        </h2>
+      </>
+    );
   }
 };
 
