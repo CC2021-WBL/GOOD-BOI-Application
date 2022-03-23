@@ -84,7 +84,6 @@ const ContestDetails = ({ contestId }) => {
       )}
       {isCloseContestModalOpen && <Backdrop onClick={closeModalHandler} />}
 
-      {isPending && <p>Loading...</p>}
       {isPending && <Spinner />}
       {/* {contestData && <ContestDetailsMap />} */}
       {contestData && (
