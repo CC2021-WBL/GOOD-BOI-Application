@@ -49,7 +49,7 @@ const ParticipantData = ({ id }) => {
   };
 
   return (
-    <ColumnWrapper>
+    <ColumnWrapper className="participant-data-container">
       <SpecialButtonsContainerStyled>
         <SpecialButton left text="edytuj" handler={handleEdit} colors="blue" />
         <SpecialButton
@@ -59,12 +59,18 @@ const ParticipantData = ({ id }) => {
           colors="green"
         />
       </SpecialButtonsContainerStyled>
-      <ColumnWrapper paddingLeftRight={1}>
+      <ColumnWrapper paddingLeftRight={1} className="participant-data-details">
         {isPending && <Spinner />}
         {participantData &&
           Object.entries(renderParticipantData(participantData)).map(
             (dataLine, index) => <DataLine key={index} text={dataLine} />,
           )}
+      </ColumnWrapper>
+      <ColumnWrapper
+        paddingLeftRight={1}
+        className="participant-data-details-bar"
+      >
+        Dane uczestnika
       </ColumnWrapper>
     </ColumnWrapper>
   );

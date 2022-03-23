@@ -8,6 +8,7 @@ export const checkPathOrigin = (url, namesFromContext = {}) => {
 
     let data = {};
     switch (string) {
+      case 'future-contests':
       case 'contests':
         if (Object.prototype.hasOwnProperty.call(pathPattern, 'contests')) {
           pathPattern.contests++;

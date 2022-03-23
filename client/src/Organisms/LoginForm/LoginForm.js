@@ -27,7 +27,10 @@ const LoginForm = () => {
   return (
     <>
       <BackgroundDivStyled className="login-page-background" />
-      <ColumnWrapper className="login-column-wrapper" paddingLeftRight={1}>
+      <ColumnWrapper
+        className="login-column-wrapper grid-position"
+        paddingLeftRight={1}
+      >
         <div className="login-form-captions">
           <p className="login-form-header">Witaj Ponownie!</p>
           <p>Zaloguj się poniżej, aby uzyskać dostęp do konta. </p>

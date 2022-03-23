@@ -1,12 +1,12 @@
-import { DOG_ACTIONS, USER_ACTIONS } from '../../Consts/reducersActions';
 import { useContext, useEffect, useState } from 'react';
 
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import { DogContext } from '../../Context/DogContext';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
-import { ROLE_NAME } from '../../Consts/rolesConsts';
 import Spinner from '../../Atoms/Spinner/Spinner';
+import { DOG_ACTIONS, USER_ACTIONS } from '../../Consts/reducersActions';
+import { DogContext } from '../../Context/DogContext';
+import { ROLE_NAME } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import { ContestContext } from '../../Context/ContestContext';
@@ -87,36 +87,38 @@ const UserDogPage = () => {
 
   return (
     <ColumnWrapper className={`user-dogs${enterCompetitionClass()}`}>
-      <ColumnWrapper
-        paddingLeftRight={1}
-        paddingTop={0.5}
-        className={`user-dogs-column-wrapper${enterCompetitionClass()}`}
-      >
-        {isPending && <Spinner />}
-        {participantDogs &&
-          participantDogs.map((dog, index) => {
-            const { dogName, dogId } = dog;
-            return (
-              <ClassOrDogButton
-                key={dogId}
-                dogInfo={{
-                  index,
-                  dogName,
-                  dogId,
-                }}
-                noInfoLabel
-                className="user-dogs-button"
-              />
-            );
-          })}
-
-        <FakeButton
-          colors="secondary"
-          text="DODAJ NOWEGO PSA"
-          to="/add-dog-form"
-          className="add-dogs"
-        />
-      </ColumnWrapper>
+    <ColumnWrapper
+      paddingLeftRight={1}
+      paddingTop={0.5}
+      className={`user-dogs-column-wrapper${enterCompetitionClass()}`}
+    >
+      {isPending && <Spinner />}
+      {participantDogs &&
+        participantDogs.map((dog, index) => {
+          const { dogName, dogId } = dog;
+          return (
+            <ClassOrDogButton
+              key={dogId}
+              dogInfo={{
+                index,
+                dogName,
+                dogId,
+              }}
+              noInfoLabel
+              className="user-dogs-button"
+            />
+          );
+        })}
+      {dogs && dogs.length === 0 && (
+        <h3 className="dogs-0">Nie dodałeś jeszcze żadnego psa.</h3>
+      )}
+      <FakeButton
+        colors="secondary"
+        text="DODAJ NOWEGO PSA"
+        to="/add-dog-form"
+        className="add-dogs"
+      />
+    </ColumnWrapper>
       {contestState.contestId && contestData && (
         <ColumnWrapper
           paddingLeftRight={1}
@@ -136,6 +138,7 @@ const UserDogPage = () => {
           <DataLine text={`Potwierdź udział`} />
         </ColumnWrapper>
       )}
+
     </ColumnWrapper>
   );
 };
