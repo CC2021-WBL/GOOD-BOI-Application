@@ -59,6 +59,7 @@ Nie wiesz co to obedience? https://johndog.pl/blog/zyciezpsem/obi-ogole-znaczy/
 - Ikonki wstawiliśmy dzięki Font Awesome oraz React Icons
 - Pomocne okazały się również wtyczki do VSC- sort-imports oraz 'px to rem'
 - Kontrola nad propsami- propTypes
+- React hook form - do obłsugi formularzy
 
 - node
 - nodemon :pomogło nam w automatycznym odświeżaniu danych przy pracy na backendzie
