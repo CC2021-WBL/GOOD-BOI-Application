@@ -20,7 +20,7 @@ const DogData = ({ id }) => {
   const [dogData, setDogData] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const { state } = useContext(UserDataContext);
-  const { dogState } = useContext(DogContext);
+  const { dogDispatch, dogState } = useContext(DogContext);
   const { contestState } = useContext(ContestContext);
 
   console.log(state, dogState, contestState);
@@ -65,17 +65,28 @@ const DogData = ({ id }) => {
           participantId: state.userId,
         },
       });
+    dogDispatch({
+      type: 'UPDATE_ONE_FIELD',
+      fieldName: 'chosenDog',
+      payload: {
+        dogId: id,
+        dogName: dogData.dogName,
+        dogPkr: dogData.pkr,
+      },
+    });
     dogState.chosenDog && !contestState.contestId && navigate(`/user-dogs`);
   };
 
+  const enterCompetitionDogData = () => {
+    return dogState.chosenDog !== {} && contestState.contestId !== null
+      ? '-enter-competition'
+      : '';
+  };
+
   return (
-    <ColumnWrapper
-      className={`dog-data${enterCompetitionAddClass(contestState)}`}
-    >
+    <ColumnWrapper className={`dog-data${enterCompetitionDogData()}`}>
       <ColumnWrapper
-        className={`dog-data-container${enterCompetitionAddClass(
-          contestState,
-        )}`}
+        className={`dog-data-container${enterCompetitionDogData()}`}
       >
         <SpecialButtonsContainerStyled>
           <SpecialButton
@@ -102,7 +113,7 @@ const DogData = ({ id }) => {
           Dane psa
         </ColumnWrapper>
       </ColumnWrapper>
-      <EnterCompetitionContainer />
+      {contestState.contestId !== null && <EnterCompetitionContainer />}
     </ColumnWrapper>
   );
 };

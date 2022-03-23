@@ -35,7 +35,10 @@ export async function postDogForm(state, dogData, dogs, dogDispatch) {
     dogDispatch({
       type: 'UPDATE_ONE_FIELD',
       fieldName: 'dogs',
-      payload: dogs.push({ dogId: dogData._id, dogName: dogData.dogName }),
+      payload: dogs.push({
+        dogId: dogData._id,
+        dogName: dogData.dogName,
+      }),
     });
   }
 }

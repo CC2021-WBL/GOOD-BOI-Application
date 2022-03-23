@@ -82,7 +82,7 @@ ClassOrDogButton.propTypes = {
     exercisesAmount: PropTypes.number,
   }),
   noInfoLabel: PropTypes.bool,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default ClassOrDogButton;

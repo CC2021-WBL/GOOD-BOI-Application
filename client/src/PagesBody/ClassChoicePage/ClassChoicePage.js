@@ -10,16 +10,18 @@ import { DogContext } from '../../Context/DogContext';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { postApplication } from '../../Tools/FetchData/fetchFormsFunctions';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
+import EnterCompetitionContainer from '../../Organisms/EnterCompetitionContainer/EnterCompetitionContainer';
 
 const ClassChoicePage = () => {
   const { contestState } = useContext(ContestContext);
-  const { state } = useContext(UserDataContext);
+  const { dispatch, state } = useContext(UserDataContext);
   const { dogState } = useContext(DogContext);
   const { isAuthenticated, userId } = state;
   const { contestId, contestName } = contestState;
   const { chosenDog } = dogState;
 
   const [selectedClass, setSelectedClass] = useState('');
+  const [confirmation, setConfirmation] = useState(null);
   const [classesArr, setClassesArr] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -81,42 +83,57 @@ const ClassChoicePage = () => {
       const isSuccess = await postApplication(body);
 
       if (isSuccess) {
+        setConfirmation(true);
         navigate('/confirmation');
       }
     }
   };
 
+  const enterCompetitionClassChoice = () => {
+    return dogState.chosenDog !== {} && contestState.contestId !== null
+      ? '-enter-competition'
+      : '';
+  };
+
   return (
-    <ColumnWrapper
-      paddingLeftRight={1}
-      paddingTop={0.25}
-      contentPosition={isAuthenticated}
-      maxWidthBigScreen={35}
-      className="class-choice-wrapper grid-position"
-    >
-      {classesArr &&
-        classesArr.map((obedienceClass, index) => {
-          return (
-            <MainButton
-              onClick={(event) => clickHandler(event, obedienceClass)}
-              key={index}
-              style={{ height: '75px' }}
-              text={`Klasa ${obedienceClass}`}
-              ternary
-              justifyText={'left'}
-              className="selected-btn"
-            />
-          );
-        })}
-      {classesArr && location.state && (
-        <MainButton
-          text={'WYŚLIJ FORMULARZ'}
-          secondary
-          onClick={(event) => sendApplication(event)}
+    <ColumnWrapper className={`class-choice${enterCompetitionClassChoice()}`}>
+      <ColumnWrapper
+        paddingLeftRight={1}
+        paddingTop={0.25}
+        contentPosition={isAuthenticated}
+        maxWidthBigScreen={35}
+        className={`class-choice-wrapper${enterCompetitionClassChoice()} grid-position`}
+      >
+        {classesArr &&
+          classesArr.map((obedienceClass, index) => {
+            return (
+              <MainButton
+                onClick={(event) => clickHandler(event, obedienceClass)}
+                key={index}
+                style={{ height: '75px' }}
+                text={`Klasa ${obedienceClass}`}
+                ternary
+                justifyText={'left'}
+                className="selected-btn"
+              />
+            );
+          })}
+        {classesArr && location.state && (
+          <MainButton
+            text={'WYŚLIJ FORMULARZ'}
+            secondary
+            onClick={(event) => sendApplication(event)}
+          />
+        )}
+        {classesArr && !location.state && (
+          <FakeButton text={'Pokaż wyniki'} colors="secondary" to={linkTo()} />
+        )}
+      </ColumnWrapper>
+      {contestState.contestId !== null && (
+        <EnterCompetitionContainer
+          selectedClass={selectedClass}
+          confirmation={confirmation}
         />
-      )}
-      {classesArr && !location.state && (
-        <FakeButton text={'Pokaż wyniki'} colors="secondary" to={linkTo()} />
       )}
     </ColumnWrapper>
   );

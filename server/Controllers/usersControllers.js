@@ -111,6 +111,7 @@ async function changeDogDataInParticipants(res, dogData) {
         participant.dogs.forEach((dog) => {
           if (dog.dogId.valueOf() === dogData._id.valueOf()) {
             dog.dogName = dogData.dogName;
+            dog.pkr = dogData.pkr;
           }
         });
         participant.updatedAt = new Date();

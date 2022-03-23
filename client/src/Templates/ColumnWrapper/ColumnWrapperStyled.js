@@ -294,15 +294,17 @@ const ColumnWrapperStyled = styled.div`
       border-radius: 0.9375rem;
     }
 
-
     &.user-dogs-enter-competition,
-    &.dog-data-enter-competition {
+    &.dog-data-enter-competition,
+    &.participant-data-enter-competition,
+    &.class-choice-enter-competition,
+    &.confirmation-enter-competition {
       display: grid;
       height: 100%;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr;
-    }    
-    
+    }
+
     &.enter-competition-container-full {
       grid-area: 1/2/2/3;
     }
@@ -313,25 +315,28 @@ const ColumnWrapperStyled = styled.div`
       height: fit-content;
     }
 
-    &.user-dogs-column-wrapper-enter-competition{
+    &.user-dogs-column-wrapper-enter-competition {
       grid-area: 1/1/2/2;
     }
-    &.dog-data-container-enter-competition {
+
+    &.participant-data-container-enter-competition,
+    &.dog-data-container-enter-competition,
+    &.class-choice-wrapper-enter-competition,
+    &.confirmation-container-enter-competition {
       grid-area: 1/1/2/2;
       display: flex;
-      flex-direction: column-reverse;
       height: fit-content;
       margin-top: 1rem;
     }
-
-    @media only screen and (min-width: 1600px) {
-      grid-area: 3 / 3 / 4 / 4;
-      &.grid-position {
-        grid-area: 3 / 3 / 4 / 4;
-      }
-
-
+    &.participant-data-container-enter-competition,
+    &.dog-data-container-enter-competition {
+      flex-direction: column-reverse;
     }
+  }
+
+  @media only screen and (min-width: 1600px) {
+    grid-area: 3 / 3 / 4 / 4;
+  }
 `;
 
 export default ColumnWrapperStyled;

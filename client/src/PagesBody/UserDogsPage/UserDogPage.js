@@ -43,6 +43,7 @@ const UserDogPage = () => {
           );
           if (response.ok) {
             response = await response.json();
+            console.log(response);
             setParticipantDogs(response.dogs);
 
             dogDispatch({
@@ -62,18 +63,16 @@ const UserDogPage = () => {
     }
   }, []);
 
+  const enterCompetitionUserDogs = () => {
+    return contestState.contestId !== null ? '-enter-competition' : '';
+  };
+
   return (
-    <ColumnWrapper
-      className={`user-dogs${
-        contestState.contestId !== null ? '-enter-competition' : ''
-      }`}
-    >
+    <ColumnWrapper className={`user-dogs${enterCompetitionUserDogs()}`}>
       <ColumnWrapper
         paddingLeftRight={1}
         paddingTop={0.5}
-        className={`user-dogs-column-wrapper${
-          contestState.contestId !== null ? '-enter-competition' : ''
-        }`}
+        className={`user-dogs-column-wrapper${enterCompetitionUserDogs()}`}
       >
         {isPending && <Spinner />}
         {participantDogs &&
@@ -102,7 +101,7 @@ const UserDogPage = () => {
           className="add-dogs"
         />
       </ColumnWrapper>
-      <EnterCompetitionContainer />
+      {contestState.contestId !== null && <EnterCompetitionContainer />}
     </ColumnWrapper>
   );
 };
