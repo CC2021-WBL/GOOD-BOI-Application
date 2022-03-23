@@ -61,7 +61,7 @@ const ContestForm = () => {
 
   return (
     <ColumnWrapper
-      paddingLeftRight={4}
+      paddingLeftRight={3}
       paddingTop={1}
       paddingBottom={1}
       maxWidthBigScreen={35}
