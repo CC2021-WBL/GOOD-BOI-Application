@@ -10,15 +10,24 @@ import { DogContext } from '../../Context/DogContext';
 const ClassOrDogButton = ({ classInfo, dogInfo, noInfoLabel, className }) => {
   const navigate = useNavigate();
   const { obedienceClass, dogsAmount, isCompleted } = classInfo || [];
-  const { index, dogId, dogName, exercisesCompleted, exercisesAmount } =
-    dogInfo || [];
+  const {
+    index,
+    dogId,
+    dogName,
+    exercisesCompleted,
+    exercisesAmount,
+    results,
+  } = dogInfo || [];
   const { dogDispatch } = useContext(DogContext);
 
   const clickHandler = (event) => {
     event.preventDefault();
     classInfo &&
       navigate(`./${obedienceClass}`, {
-        state: { text: 'Lista uczestników', label: `Klasa ${obedienceClass}` },
+        state: {
+          text: 'Lista uczestników',
+          label: `Klasa ${obedienceClass}`,
+        },
       });
     dogInfo &&
       noInfoLabel &&
@@ -35,7 +44,11 @@ const ClassOrDogButton = ({ classInfo, dogInfo, noInfoLabel, className }) => {
     dogInfo &&
       !noInfoLabel &&
       navigate(`./${dogId}`, {
-        state: { text: 'Wyniki', label: `Oceny zawodnika ${dogName}` },
+        state: {
+          text: 'Wyniki',
+          label: `Oceny zawodnika ${dogName}`,
+          results: results,
+        },
       });
     dogInfo &&
       !noInfoLabel &&

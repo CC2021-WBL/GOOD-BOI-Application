@@ -63,3 +63,42 @@ export async function finishClass(contestId, classNumber) {
     alert('oops, coś poszło nie tak');
   }
 }
+
+export async function getExercisesPoints(
+  dogId,
+  contestId,
+  setDogPerformance,
+  setResultId,
+) {
+  try {
+    let response = await fetch(
+      `/api/results/individual/bydog/${dogId}/${contestId}`,
+      requestOptionsGET,
+    );
+    if (response.status === 200) {
+      const resultDoc = await response.json();
+      console.log(resultDoc);
+      setDogPerformance(resultDoc.exercises);
+      setResultId(resultDoc._id);
+    } else {
+      console.log(response.message);
+    }
+  } catch (error) {}
+}
+
+export async function updateExercisesPoints(resultsId, exercisesToUpdate) {
+  const exercises = { exercises: exercisesToUpdate };
+  try {
+    let response = await fetch(
+      `/api/results/${resultsId}`,
+      genRequestOptionsPATCH(exercises),
+    );
+    if (response.status === 201) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    alert('Oops, coś poszło nie tak');
+  }
+}

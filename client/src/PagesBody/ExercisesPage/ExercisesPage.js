@@ -1,23 +1,19 @@
-import { useContext, useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import Backdrop from '../../Atoms/Modal/Backdrop';
 import ButtonExercises from '../../Atoms/ButtonsExercises/ButtonsExercises';
 import ButtonExercisesContainerStyled from '../../Molecules/ButtonsExcercisenContainer/ButtonExercisesContainerStyled';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import { DogContext } from '../../Context/DogContext';
 import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
 import Modal from '../../Organisms/Modal/Modal';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
-import contests from '../../Data/MongoDBMock/contests';
 import modalData from '../../Consts/modalData';
-import results from '../../Data/MongoDBMock/results';
-
-//MOCK DATA FOR FRONT
-const contestId = '3845029d-e97d-41ed-997f-2299d09ef648';
-const classId = 0;
-const dogId = 'VIII-40407';
+import {
+  getExercisesPoints,
+  updateExercisesPoints,
+} from '../../Tools/FetchData/fetchContestsfunctions';
 
 const ExercisesPage = () => {
   const [isDisqualifyModalOpen, setIsDisqualifyModalOpen] = useState(false);
@@ -25,13 +21,21 @@ const ExercisesPage = () => {
   const [isEvaluationModalOpen, setIsEvaluationModalOpen] = useState(false);
   let [penaltyPoints, setPenaltyPoints] = useState(0);
   const [disqualified, setDisqualified] = useState(false);
-  const { dogState } = useContext(DogContext);
-  console.log(dogState);
-
+  const [dogPerformance, setDogPerformance] = useState(null);
+  const [resultId, setResultId] = useState(null);
+  const { contestId, dogId } = useParams();
   const locationPath = useLocation();
 
-  //const label = locationPath.state.label; // uncomment when fetch will be ready
-  const label = 'Lista ćwiczeń'; // MOCK FOR FRONT
+  const { label, results } = locationPath.state;
+
+  useEffect(() => {
+    if (!results) {
+      getExercisesPoints(dogId, contestId, setDogPerformance, setResultId);
+    } else {
+      setDogPerformance(results.exercises);
+      setResultId(results._id);
+    }
+  }, []);
 
   useEffect(() => {
     if (penaltyPoints < -10) {
@@ -89,23 +93,13 @@ const ExercisesPage = () => {
     setIsEvaluationModalOpen(false);
   }
 
-  const goBackHandler = () => {
-    navigate(-1);
+  const saveAndGoBackHandler = async (event) => {
+    event.preventDefault();
+    const isUpdated = await updateExercisesPoints(resultId, dogPerformance);
+    if (isUpdated) {
+      navigate(-1);
+    }
   };
-
-  //const { contestId, classId, dogId } = useParams(); // uncomment when fetch will be ready
-
-  const contestResults = contests.find(
-    (contest) => contest.contestId === contestId,
-  ).obedienceClasses[classId];
-
-  const competingPairsId = contestResults.find(
-    (dog) => dog.dogId === dogId,
-  ).competingPairsId;
-
-  const dogPerformance = results.find(
-    (performance) => performance.competingPairsId === competingPairsId,
-  ).exercises;
 
   return (
     <ColumnWrapper>
@@ -149,11 +143,16 @@ const ExercisesPage = () => {
           />
         </SpecialButtonsContainerStyled>
 
-        <ExerciseCardsContainer dogPerformance={dogPerformance} />
+        {dogPerformance && (
+          <ExerciseCardsContainer
+            dogPerformance={dogPerformance}
+            setDogPerformance={setDogPerformance}
+          />
+        )}
       </ColumnWrapper>
       <ButtonExercisesContainerStyled>
         <ButtonExercises
-          handler={goBackHandler}
+          handler={saveAndGoBackHandler}
           secondary
           text={'Zapisz i wróć do listy'}
         />
@@ -161,7 +160,7 @@ const ExercisesPage = () => {
           handler={openEvaluationModalHandler}
           primary
           text={'Zakończ ocenianie'}
-          dogPerformance={dogPerformance} //////
+          dogPerformance={dogPerformance}
         />
       </ButtonExercisesContainerStyled>
     </ColumnWrapper>
