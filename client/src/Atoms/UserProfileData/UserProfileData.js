@@ -49,7 +49,7 @@ const UserProfileData = ({
             requestOptionsGET,
           );
           if (!response.ok) {
-            throw Error('Twoja stara to andrzej duda');
+            throw Error('Błąd');
             // navigate('/login');
           } else {
             response = await response.json();
