@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { device } from '../../Consts/devices';
 
 const GridWrapper = styled.div`
+  &.landing-grid-wrapper {
+    z-index: 10;
+  }
   ${(props) => props.mobile && `grid-area:${props.mobile}`};
 
   @media ${device.tablet} {
