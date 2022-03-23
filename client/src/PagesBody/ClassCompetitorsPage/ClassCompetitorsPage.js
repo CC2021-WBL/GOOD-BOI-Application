@@ -63,6 +63,7 @@ const ClassCompetitorsPage = () => {
                 dogName,
                 exercisesCompleted,
                 exercisesAmount,
+                results: resultsId,
               }}
             />
           );
