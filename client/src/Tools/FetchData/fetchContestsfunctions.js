@@ -80,7 +80,6 @@ export async function getExercisesPoints(dogId, contestId) {
 }
 
 export async function updateExercisesPoints(resultsId, dataToUpdate) {
-  console.log(dataToUpdate);
   try {
     let response = await fetch(
       `/api/results/${resultsId}`,
@@ -94,4 +93,17 @@ export async function updateExercisesPoints(resultsId, dataToUpdate) {
   } catch (error) {
     alert('Oops, coś poszło nie tak');
   }
+}
+
+export async function getResultsForClassInContest(contestId, classId) {
+  try {
+    let response = await fetch(`/api/results/general/${contestId}/${classId}`);
+    if (response.status === 200) {
+      const results = await response.json();
+      console.log(results);
+      return results;
+    } else {
+      return null;
+    }
+  } catch (error) {}
 }

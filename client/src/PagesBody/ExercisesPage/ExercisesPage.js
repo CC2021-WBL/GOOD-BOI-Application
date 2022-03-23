@@ -92,7 +92,6 @@ const ExercisesPage = () => {
 
   const openEvaluationModalHandler = async (event) => {
     event.preventDefault();
-    console.log(dogPerformance);
     const isUpdated = await updateExercisesPoints(resultId, dogPerformance);
     if (isUpdated) {
       setIsEvaluationModalOpen(true);
