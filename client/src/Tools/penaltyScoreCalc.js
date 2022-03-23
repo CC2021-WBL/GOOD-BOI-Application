@@ -1,5 +1,5 @@
 const penaltyScore = ({ result }) => {
-  const penaltyArr = result.map((penalty) => {
+  const penaltyArr = result.exercises.map((penalty) => {
     if (penalty.penalty) {
       return penalty.penalty;
     } else return 0;
