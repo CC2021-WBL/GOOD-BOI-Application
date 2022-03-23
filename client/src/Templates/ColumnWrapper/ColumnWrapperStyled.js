@@ -174,6 +174,11 @@ const ColumnWrapperStyled = styled.div`
       grid-area: 3 / 1 / 4 / 3;
       grid-column-start: ${(props) => props.contentPosition && 2};
     }
+    &.dog-form-wrapper {
+      margin: 0 auto;
+      border: 2px solid ${({ theme }) => theme.grey200};
+      border-radius: 0.9375rem;
+    }
   }
   @media only screen and (min-width: 1024px) {
     &.login-column-wrapper {
