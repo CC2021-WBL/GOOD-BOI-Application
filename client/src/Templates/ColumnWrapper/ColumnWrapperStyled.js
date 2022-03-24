@@ -192,9 +192,6 @@ const ColumnWrapperStyled = styled.div`
       align-items: center;
     }
 
-    &.user-dogs-column-wrapper {
-      align-items: center;
-    }
     &.user-profile {
       display: grid;
       height: 100%;
@@ -303,6 +300,7 @@ const ColumnWrapperStyled = styled.div`
 
     &.user-dogs-column-wrapper-enter-competition {
       grid-area: 1/1/2/2;
+      align-items: center;
     }
 
     &.participant-data-container-enter-competition,
