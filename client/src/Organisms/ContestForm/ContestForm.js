@@ -61,11 +61,11 @@ const ContestForm = () => {
 
   return (
     <ColumnWrapper
-      paddingLeftRight={4}
+      paddingLeftRight={3}
       paddingTop={1}
       paddingBottom={1}
       maxWidthBigScreen={35}
-      className="form-wrapper"
+      className="form-wrapper grid-position"
     >
       <ContestFormHeader />
       <FormWrapper
@@ -242,7 +242,7 @@ const ContestForm = () => {
           id="postalCode"
           type="text"
           pattern="^\d{2}-\d{3}$"
-          placeholder="&#xf015;; Adres zawodów - kod pocztowy"
+          placeholder="&#xf015; Adres zawodów - kod pocztowy"
           className={errors.code ? 'red-border' : ''}
           {...register('address.postalCode', {
             required: 'Podaj kod pocztowy w formacie XX-XXX',
