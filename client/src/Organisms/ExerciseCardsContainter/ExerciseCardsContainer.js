@@ -1,14 +1,9 @@
+import PropTypes from 'prop-types';
+
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ExerciseCard from '../../Molecules/ExerciseCard/ExerciseCard';
-import PropTypes from 'prop-types';
-import { useEffect } from 'react';
-import { useState } from 'react';
 
-const ExerciseCardsContainer = ({ dogPerformance }) => {
-  const [exercisesResults, setExercisesResults] = useState(dogPerformance);
-
-  useEffect(() => {}, [exercisesResults]);
-
+const ExerciseCardsContainer = ({ dogPerformance, setDogPerformance }) => {
   const performanceSaveHandler = (event) => {
     if (
       event.target.value < 0 ||
@@ -17,8 +12,8 @@ const ExerciseCardsContainer = ({ dogPerformance }) => {
     ) {
       console.log('Choose points from 0 to 10 (with 0.5 step).');
     } else {
-      setExercisesResults((prevState) => {
-        prevState.find(
+      setDogPerformance((prevState) => {
+        prevState.exercises.find(
           (exercise) => exercise.codeName === event.target.id,
         ).result = Number(event.target.value);
         return prevState;
@@ -29,7 +24,7 @@ const ExerciseCardsContainer = ({ dogPerformance }) => {
   return (
     <>
       <ColumnWrapper>
-        {exercisesResults.map((exercise) => (
+        {dogPerformance.map((exercise) => (
           <ExerciseCard
             key={exercise.codeName}
             exerciseInfo={exercise}

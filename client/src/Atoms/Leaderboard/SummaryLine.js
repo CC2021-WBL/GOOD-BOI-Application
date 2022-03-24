@@ -1,11 +1,12 @@
+import propTypes from 'prop-types';
+
 import SummaryLineStyled from './SummaryLineStyled';
 import calculateExerciseScore from '../../Tools/calculateExerciseScore';
 import checkIfDisqualified from '../../Tools/checkIfDisqualified';
 import penaltyScore from '../../Tools/penaltyScoreCalc';
-import propTypes from 'prop-types';
 
 const SummaryLine = ({ result, classId }) => {
-  const exercisesArr = result;
+  const exercisesArr = result.exercises;
   const scoresArr = exercisesArr.map((score) => {
     return score.result * calculateExerciseScore(classId, score.codeName);
   });
@@ -18,7 +19,7 @@ const SummaryLine = ({ result, classId }) => {
   function pointsAquired() {
     if (totalScore < 5 && totalScore > 1) {
       return 'punkty.';
-    } else if (totalScore == 1) {
+    } else if (totalScore === 1) {
       return 'punkt.';
     } else return 'punktów.';
   }

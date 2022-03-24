@@ -44,13 +44,38 @@ router.get(
       if (results.participantId.valueOf() === req.user._id.valueOf()) {
         res.status(200).send(results);
       } else {
-        res.status(401).json({
+        res.status(403).json({
           success: false,
-          message: 'client failed to authenticate with the server',
+          message: ERROR_MSG[403],
         });
       }
     } catch (error) {
-      res.status(500).send(error.message);
+      res.status(500).json({ message: ERROR_MSG });
+    }
+  },
+);
+
+// get individual result based on dogId and contestId
+router.get(
+  '/individual/bydog/:dogId/:contestId',
+  blockIfPublic,
+  isStaffManagerOrAdmin,
+  async (req, res) => {
+    try {
+      const results = await Result.find({
+        dogId: req.params.dogId,
+        contestId: req.params.contestId,
+      });
+      if (results) {
+        res.status(200).send(results);
+      } else {
+        res.status(404).json({
+          success: false,
+          message: ERROR_MSG[404],
+        });
+      }
+    } catch (error) {
+      res.status(500).json({ message: ERROR_MSG });
     }
   },
 );

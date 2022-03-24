@@ -1,5 +1,5 @@
 import { ROLE_NAME } from '../../Consts/rolesConsts';
-import { requestOptionsGET } from './requestOptions';
+import { genRequestOptionsPATCH, requestOptionsGET } from './requestOptions';
 
 export async function getContestsCards(userStateFromContext, locationPath) {
   let url = '/api/contests/card/data';
@@ -46,4 +46,64 @@ export async function fetchContestsForLandingPage() {
     console.log(error);
     alert('Ooops, cos poszło nie tak');
   }
+}
+
+export async function finishClass(contestId, classNumber) {
+  try {
+    let response = await fetch(
+      `/api/contests/${contestId}/${classNumber}`,
+      genRequestOptionsPATCH({}),
+    );
+    if (response.status === 201) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    alert('oops, coś poszło nie tak');
+  }
+}
+
+export async function getExercisesPoints(dogId, contestId) {
+  try {
+    let response = await fetch(
+      `/api/results/individual/bydog/${dogId}/${contestId}`,
+      requestOptionsGET,
+    );
+    if (response.status === 200) {
+      const resultDoc = await response.json();
+      return resultDoc[0];
+    } else {
+      return null;
+    }
+  } catch (error) {}
+}
+
+export async function updateExercisesPoints(resultsId, dataToUpdate) {
+  try {
+    let response = await fetch(
+      `/api/results/${resultsId}`,
+      genRequestOptionsPATCH(dataToUpdate),
+    );
+    if (response.status === 201) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    alert('Oops, coś poszło nie tak');
+  }
+}
+
+export async function getResultsForClassInContest(contestId, classId) {
+  try {
+    let response = await fetch(`/api/results/general/${contestId}/${classId}`);
+    if (response.status === 200) {
+      const results = await response.json();
+      console.log(results);
+      return results;
+    } else {
+      return null;
+    }
+  } catch (error) {}
 }
