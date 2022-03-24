@@ -51,7 +51,6 @@ const ClassChoicePage = () => {
 
   const clickHandler = (event, obedienceClass) => {
     event.preventDefault();
-    console.log(obedienceClass);
     setSelectedClass(obedienceClass);
   };
 

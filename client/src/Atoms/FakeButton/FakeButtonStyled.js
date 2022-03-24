@@ -81,12 +81,6 @@ const FakeButtonStyled = styled(Link)`
     z-index: 1;
   }
 
-  &.add-dogs {
-    @media only screen and (min-width: 800px) {
-      max-width: 16.25rem;
-    }
-  }
-
   &.user-profile {
     @media only screen and (min-width: 800px) {
       height: 100%;
