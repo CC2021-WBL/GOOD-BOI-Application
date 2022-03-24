@@ -129,13 +129,6 @@ const ColumnWrapperStyled = styled.div`
       props.maxWidthBigScreen && `${props.maxWidthBigScreen}rem`};
     align-items: ${(props) => props.alignItems && `${props.alignItems}`};
 
-    &.form-wrapper {
-      grid-area: 3 / 1 / 4 / 3;
-      margin: 1rem auto 0;
-      border: 2px solid ${({ theme }) => theme.grey200};
-      border-radius: 0.9375rem;
-    }
-
     &.user-dogs-column-wrapper {
       align-items: flex-end;
     }
@@ -281,9 +274,6 @@ const ColumnWrapperStyled = styled.div`
     @media only screen and (min-width: 1600px) {
       grid-area: 3 / 3 / 4 / 4;
       &.grid-position {
-        grid-area: 3 / 3 / 4 / 4;
-      }
-      &.form-wrapper {
         grid-area: 3 / 3 / 4 / 4;
       }
     }
