@@ -26,13 +26,10 @@ export async function getContestsCards(userStateFromContext, locationPath) {
     }
   } catch (error) {
     alert('Ooops, coś poszło nie tak, spróbuj ponownie za chwilę');
-    //will be returned info to render error page component
   }
 }
 
 export async function fetchContestsForLandingPage() {
-  // const [fetchErrors, setFetchErrors] = useState(null);
-  // try {
   let response = await fetch(
     '/api/contests/card/data?taker=landing',
     requestOptionsGET,
@@ -43,10 +40,6 @@ export async function fetchContestsForLandingPage() {
   } else {
     throw Error(generateErrorMessage(response.status));
   }
-  // } catch (error) {
-
-  // setFetchErrors(error.message);
-  // }
 }
 
 export async function finishClass(contestId, classNumber) {
@@ -66,18 +59,16 @@ export async function finishClass(contestId, classNumber) {
 }
 
 export async function getExercisesPoints(dogId, contestId) {
-  // try {
-    let response = await fetch(
-      `/api/results/individual/bydog/${dogId}/${contestId}`,
-      requestOptionsGET,
-    );
-    if (response.status === 200) {
-      const resultDoc = await response.json();
-      return resultDoc[0];
-    } else {
-      throw Error(generateErrorMessage(response.status));
-    }
-  // } catch (error) {}
+  let response = await fetch(
+    `/api/results/individual/bydog/${dogId}/${contestId}`,
+    requestOptionsGET,
+  );
+  if (response.status === 200) {
+    const resultDoc = await response.json();
+    return resultDoc[0];
+  } else {
+    throw Error(generateErrorMessage(response.status));
+  }
 }
 
 export async function updateExercisesPoints(resultsId, dataToUpdate) {
@@ -106,5 +97,7 @@ export async function getResultsForClassInContest(contestId, classId) {
     } else {
       return null;
     }
-  } catch (error) {}
+  } catch (error) {
+    alert('Oops, coś poszło nie tak');
+  }
 }
