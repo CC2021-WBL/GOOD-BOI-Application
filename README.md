@@ -46,6 +46,7 @@ Nie wiesz co to obedience? https://johndog.pl/blog/zyciezpsem/obi-ogole-znaczy/
 
 ### Zbudowane z użyciem
 
+FRONTEND
 - React
 - Styled Components
 - Vercel
@@ -61,6 +62,7 @@ Nie wiesz co to obedience? https://johndog.pl/blog/zyciezpsem/obi-ogole-znaczy/
 - Kontrola nad propsami- propTypes
 - React hook form - do obłsugi formularzy
 
+BACKEND
 - node
 - nodemon :pomogło nam w automatycznym odświeżaniu danych przy pracy na backendzie
 - base64url
