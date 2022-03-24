@@ -75,21 +75,6 @@ const useCustomForm = (callback, validateData, initialState, setUserObject) => {
         alert('Błąd serwera, spróbuj jeszcze raz');
       }
     }
-
-    // error handling tries
-    // .then(async (response) => {
-    //   const isJson = response.headers
-    //     .get('content-type')
-    //     ?.includes('application/json');
-    //   const data = isJson && (await response.json());
-
-    //   //checking if there is a response error
-
-    //   if (!response.ok) {
-    //     const error = (data && data.message) || response.status;
-    //     return Promise.reject(error);
-    //   }
-    // });
   };
 
   useEffect(() => {

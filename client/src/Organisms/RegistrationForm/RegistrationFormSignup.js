@@ -27,14 +27,7 @@ const RegistrationFormSignup = ({
 
   if (editData) {
     return (
-      <ColumnWrapper
-        paddingLeftRight={3}
-        paddingTop={1}
-        paddingBottom={1}
-        maxWidthBigScreen={35}
-        className="form-wrapper"
-      >
-        <RegistrationFormHeader />
+      <ColumnWrapper paddingBottom={1}>
         <FormWrapper onSubmit={submitHandler}>
           <InputField
             labelText="Imię"
@@ -120,29 +113,20 @@ const RegistrationFormSignup = ({
     );
   } else if (editEmail) {
     return (
-      <ColumnWrapper
-        paddingLeftRight={3}
-        paddingTop={1}
-        paddingBottom={1}
-        maxWidthBigScreen={35}
-        className="form-wrapper"
-      >
-        <RegistrationFormHeader />
-        <FormWrapper onSubmit={submitHandler}>
-          <InputField
-            labelText="Email"
-            htmlFor="email"
-            type="email"
-            placeholder="&#xf0e0; Email"
-            id="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            className={errors.email ? 'red-border' : 'none'}
-          />
-          {errors.email && <p>{errors.email}</p>}
-          <MainButton primary text="Zapisz Nowy Email" />
-        </FormWrapper>
-      </ColumnWrapper>
+      <FormWrapper onSubmit={submitHandler}>
+        <InputField
+          labelText="Email"
+          htmlFor="email"
+          type="email"
+          placeholder="&#xf0e0; Email"
+          id="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          className={errors.email ? 'red-border' : 'none'}
+        />
+        {errors.email && <p>{errors.email}</p>}
+        <MainButton primary text="Zapisz Nowy Email" />
+      </FormWrapper>
     );
   } else if (editPhoneNumber) {
     return (
@@ -192,7 +176,6 @@ const RegistrationFormSignup = ({
   }
   return (
     <ColumnWrapper
-      paddingLeftRight={3}
       paddingTop={1}
       paddingBottom={1}
       maxWidthBigScreen={35}
