@@ -19,22 +19,22 @@ const ParticipantData = ({ id }) => {
   const [isPending, setIsPending] = useState(true);
 
   useEffect(() => {
-    try {
-      async function fetchParticipantData() {
+    async function fetchParticipantData() {
+      try {
         const response = await fetch(`/api/users/${id}`, requestOptionsGET);
         if (!response.ok) {
+          setIsPending(false);
           throw Error(generateErrorMessage(response.status));
         } else {
           const result = await response.json();
           setParticipantData(result);
           setIsPending(false);
         }
+      } catch (error) {
+        setFetchErrors(error.message);
       }
-
-      fetchParticipantData();
-    } catch (error) {
-      setFetchErrors(error.message);
     }
+    fetchParticipantData();
   }, []);
 
   const handleEdit = (event) => {
@@ -54,7 +54,7 @@ const ParticipantData = ({ id }) => {
       state: { application: true },
     });
   };
-
+  console.log(fetchErrors);
   return (
     <>
       {fetchErrors ? (
