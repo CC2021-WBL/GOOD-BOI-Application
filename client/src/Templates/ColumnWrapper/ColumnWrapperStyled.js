@@ -23,7 +23,7 @@ const ColumnWrapperStyled = styled.div`
       width: 5rem;
     }
   }
-
+  
   &.not-found-wrapper {
     text-align: center;
     display: flex;
