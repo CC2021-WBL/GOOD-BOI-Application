@@ -48,7 +48,10 @@ const Confirmation = () => {
           />
         </ConfirmationStyled>
       </ColumnWrapper>
-      <EnterCompetitionContainer confirmation={true} />
+      <EnterCompetitionContainer
+        confirmation={true}
+        selectedClass={state.selectedClass}
+      />
     </ColumnWrapper>
   );
 };

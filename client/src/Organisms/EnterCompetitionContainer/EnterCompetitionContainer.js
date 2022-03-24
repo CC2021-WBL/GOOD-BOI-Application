@@ -31,7 +31,7 @@ const EnterCompetitionContainer = ({
 
   const chosenDogPkrCheckText = () => {
     return chosenDog.dogPkr === undefined
-      ? `Potwierdż dane psa`
+      ? `Potwierdź dane psa`
       : `PKR: ${chosenDog.dogPkr}`;
   };
 
@@ -40,12 +40,12 @@ const EnterCompetitionContainer = ({
   };
 
   const userNameCheckText = () => {
-    return state.userNameConfirmed === undefined
+    return state.userNameConfirmed === null
       ? `Potwierdź dane użytkownika`
       : `Użytkownik: ${state.userNameConfirmed}`;
   };
   const userNameCheckClass = () => {
-    return state.userNameConfirmed === undefined ? `future` : `active`;
+    return state.userNameConfirmed === null ? `future` : `active`;
   };
 
   const selectedClassCheckText = () => {
@@ -53,7 +53,7 @@ const EnterCompetitionContainer = ({
       selectedClass === 1 ||
       selectedClass === 2 ||
       selectedClass === 3
-      ? `Klasa: ${selectedClass}`
+      ? `Klasa: ${selectedClass || state.selectedClass}`
       : `Wybierz klasę`;
   };
   const selectedClassCheckClass = () => {

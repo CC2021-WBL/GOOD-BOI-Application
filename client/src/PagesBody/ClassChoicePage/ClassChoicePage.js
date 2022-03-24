@@ -87,6 +87,11 @@ const ClassChoicePage = () => {
 
       if (isSuccess) {
         setConfirmation(true);
+        dispatch({
+          type: 'UPDATE_FIELD',
+          fieldName: 'selectedClass',
+          payload: selectedClass,
+        });
         navigate('/confirmation');
       }
     }

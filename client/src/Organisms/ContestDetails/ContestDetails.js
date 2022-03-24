@@ -18,7 +18,7 @@ import { UserDataContext } from '../../Context/UserDataContext';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const ContestDetails = ({ contestId }) => {
-  const { state } = useContext(UserDataContext);
+  const { dispatch, state } = useContext(UserDataContext);
   const { isAuthenticated } = state;
   const [isPending, setIsPending] = useState(true);
   const [contestData, setContestData] = useState(null);
@@ -71,6 +71,16 @@ const ContestDetails = ({ contestId }) => {
     event.preventDefault();
   };
 
+  const enterCompetition = (event) => {
+    event.preventDefault();
+    dispatch({
+      type: 'UPDATE_FIELD',
+      fieldName: 'userNameConfirmed',
+      payload: null,
+    });
+    navigate('/user-dogs');
+  };
+
   return (
     <ColumnWrapper
       className="contest-data grid-position"
@@ -105,11 +115,12 @@ const ContestDetails = ({ contestId }) => {
                   to="/future-contests"
                   className="contest-data-button-back"
                 />
-                <FakeButton
-                  colors="secondary"
+                <MainButton
+                  secondary
                   text="ZGŁOŚ SWÓJ UDZIAŁ"
                   to="/user-dogs"
                   className="contest-data-button-enter"
+                  onClick={enterCompetition}
                 />
               </ColumnWrapper>
             )}{' '}
