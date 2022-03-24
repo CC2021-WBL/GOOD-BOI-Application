@@ -1,3 +1,4 @@
+const { ERROR_MSG } = require('../Consts/errorMessages');
 const Dog = require('../Model/Dog');
 
 async function registerDog(req, res) {
@@ -17,11 +18,12 @@ async function registerDog(req, res) {
   try {
     const savedDog = await dog.save();
     if (!savedDog) {
-      res.status(400).json({ message: 'inappropriate data' });
+      res.status(400).json({ message: ERROR_MSG[400] });
+    } else {
+      return savedDog;
     }
-    return savedDog;
   } catch (error) {
-    res.status(500).json({ message: error });
+    res.status(500).json({ message: ERROR_MSG[500] });
   }
 }
 
@@ -94,7 +96,7 @@ async function getDogData(req, res) {
       return dogData;
     }
   } catch (error) {
-    res.status(500).send(error.message);
+    res.status(500).json({ message: ERROR_MSG[500] });
   }
 }
 
@@ -102,7 +104,7 @@ async function deleteDog(req, res) {
   try {
     const removedDog = await Dog.deleteOne({ _id: req.params.dogId });
     if (!removedDog) {
-      res.status(404).json({ message: 'no data with this ID' });
+      res.status(404).json({ message: ERROR_MSG[404] });
     } else {
       return removedDog;
     }
@@ -122,7 +124,7 @@ async function addResultToDog(req, res, resultId) {
       return updatedDog;
     }
   } catch (error) {
-    res.send(500).send({ message: 'coś nie pykło' });
+    res.send(500).send({ message: ERROR_MSG[500] });
   }
 }
 
