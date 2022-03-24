@@ -9,17 +9,16 @@ const {
   auth,
   blockIfPublic,
 } = require('../Middleware/authMiddleware');
+const { ERROR_MSG } = require('../Consts/errorMessages');
 
 //Submit data of user
 router.post('/register', async (req, res) => {
-  try {
-    const savedUser = await userDbFunc.registerParticipant(req, res);
+  const savedUser = await userDbFunc.registerParticipant(req, res);
+  if (savedUser) {
     res.status(201).json({
       success: true,
       user: savedUser,
     });
-  } catch (error) {
-    res.status(400).send(error.message);
   }
 });
 
@@ -46,21 +45,17 @@ router.use(auth);
 
 //Update some data of current user
 router.patch('/:userId', blockIfPublic, isUserOrAdmin, async (req, res) => {
-  try {
-    const updatedUser = await userDbFunc.updateUserData(req, res);
+  const updatedUser = await userDbFunc.updateUserData(req, res);
+  if (updatedUser) {
     res.status(200).send(updatedUser);
-  } catch (error) {
-    res.status(500).send(error.message);
   }
 });
 
 //Get current user data
 router.get('/:userId', async (req, res) => {
-  try {
-    const userData = await userDbFunc.getUserData(req, res);
+  const userData = await userDbFunc.getUserData(req, res);
+  if (userData) {
     res.status(200).send(userData);
-  } catch (error) {
-    res.status(500).send(error.message);
   }
 });
 
@@ -75,10 +70,10 @@ router.get(
       if (dogs) {
         res.status(200).send(dogs);
       } else {
-        res.status(404).json({ message: 'no dogs for current user' });
+        res.status(404).json({ message: ERROR_MSG[404] });
       }
     } catch (error) {
-      res.status(500).send(error.message);
+      res.status(500).json({ message: ERROR_MSG[500] });
     }
   },
 );

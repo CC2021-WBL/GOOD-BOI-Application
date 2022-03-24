@@ -1,4 +1,5 @@
 const express = require('express');
+const { ERROR_MSG } = require('../Consts/errorMessages');
 const {
   registerContest,
   updateContest,
@@ -26,21 +27,17 @@ router.get('/classes/:contestId', async (req, res) => {
     if (obedienceClasses) {
       res.status(200).send(obedienceClasses);
     } else {
-      res.status(404).json({ message: 'no class for current contest' });
+      res.status(404).json({ message: ERROR_MSG[404] });
     }
   } catch (error) {
-    res.status(500).send(error.message);
+    res.status(500).json({ message: ERROR_MSG[500] });
   }
 });
 
 // Get many contests
 router.get('/', async (req, res) => {
-  try {
-    const contests = await getContests(req, res);
-    res.status(200).json(contests);
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
+  const contests = await getContests(req, res);
+  res.status(200).json(contests);
 });
 
 //Get current contest
@@ -48,11 +45,11 @@ router.get('/:contestId', async (req, res) => {
   try {
     const contest = await Contest.findById(req.params.contestId);
     if (!contest) {
-      res.status(404).end();
+      res.status(404).json({ message: ERROR_MSG[404] });
     }
     res.status(200).send(contest);
   } catch (error) {
-    res.status(500).send(error.message);
+    res.status(500).json({ message: ERROR_MSG[500] });
   }
 });
 
@@ -71,8 +68,7 @@ router.get('/card/data', async (req, res) => {
     const contestsData = await getContestsForCard(req, res);
     res.status(200).send(contestsData);
   } catch (error) {
-    console.log(error);
-    res.status(500).send(error.message);
+    res.status(500).json({ message: ERROR_MSG[500] });
   }
 });
 
@@ -86,7 +82,7 @@ router.post(
       const savedContest = await registerContest(req, res);
       res.status(201).json(savedContest);
     } catch (error) {
-      res.status(400).send(error.message);
+      res.status(400).json({ message: ERROR_MSG[400] });
     }
   },
 );
@@ -97,12 +93,8 @@ router.patch(
   blockIfPublic,
   isManagerOrAdmin,
   async (req, res) => {
-    try {
-      const contest = await updateContest(req, res);
-      res.status(201).send(contest);
-    } catch (error) {
-      res.send(error.message);
-    }
+    const contest = await updateContest(req, res);
+    res.status(201).send(contest);
   },
 );
 
@@ -129,7 +121,7 @@ router.delete(
       });
       res.status(200).send(removedContest);
     } catch (error) {
-      res.status(500).send(error.message);
+      res.status(500).json({ message: ERROR_MSG[500] });
     }
   },
 );

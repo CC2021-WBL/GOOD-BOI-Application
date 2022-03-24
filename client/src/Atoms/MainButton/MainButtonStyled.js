@@ -1,5 +1,6 @@
-import FONTS from '../../Styles/fontsStyledComponents';
 import styled from 'styled-components';
+
+import FONTS from '../../Styles/fontsStyledComponents';
 
 const handleBgAndColor = (props) => {
   if (props.primary) {
@@ -38,15 +39,22 @@ const MainButtonStyled = styled.button`
   ${FONTS.button};
   ${(props) => handleBgAndColor(props)};
   ${(props) => borderHandler(props)};
+  &:hover {
+    filter: brightness(1.05);
+    box-shadow: 2px 4px ${({ theme }) => theme.primary201};
+    cursor: pointer;
+  }
+
   &.selected-btn:focus {
     border: 3px solid #34c369;
     background: ${({ theme }) => theme.positive100};
     color: ${({ theme }) => theme.grey800};
   }
-  &:hover {
-    filter: brightness(1.05);
-    box-shadow: 2px 4px ${({ theme }) => theme.primary201};
-    cursor: pointer;
-    
+
+  &.add-dogs {
+    @media only screen and (min-width: 800px) {
+      max-width: 16.25rem;
+    }
+  }
 `;
 export default MainButtonStyled;

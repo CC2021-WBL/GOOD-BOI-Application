@@ -41,24 +41,23 @@ const ClassChoicePage = () => {
           obedienceClassesObject.forEach((element) => {
             classes.push(element.classNumber);
           });
-
         }
         setClassesArr(classes);
       } else {
         alert('Ooops, coś poszło nie tak');
       }
-      setIsPending(false)
+      setIsPending(false);
     }
     getClasses();
   }, []);
 
-  const clickHandler = (event, index) => {
+  const clickHandler = (event, obedienceClass) => {
     event.preventDefault();
-    setSelectedClass(index);
+    setSelectedClass(obedienceClass);
   };
 
   const linkTo = () => {
-    if (selectedClass !== undefined) {
+    if (typeof selectedClass === 'number') {
       if (!location.state) {
         return `../contests/${contestId}/classes/${selectedClass}/leaderboard`;
       }
@@ -69,7 +68,7 @@ const ClassChoicePage = () => {
 
   const sendApplication = async (event) => {
     event.preventDefault();
-    if (selectedClass) {
+    if (selectedClass !== ' ') {
       const exercisesArr = CLASSES[selectedClass].exercises.map((exercise) => ({
         codeName: exercise.codeName,
         result: null,
@@ -127,7 +126,7 @@ const ClassChoicePage = () => {
           <MainButton
             text={'WYŚLIJ FORMULARZ'}
             secondary
-            onClick={(event) => sendApplication(event)}
+            onClick={sendApplication}
           />
         )}
         {classesArr && !location.state && (
