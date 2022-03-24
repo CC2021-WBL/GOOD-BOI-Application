@@ -39,13 +39,12 @@ const ClassChoicePage = () => {
           obedienceClassesObject.forEach((element) => {
             classes.push(element.classNumber);
           });
-
         }
         setClassesArr(classes);
       } else {
         alert('Ooops, coś poszło nie tak');
       }
-      setIsPending(false)
+      setIsPending(false);
     }
     getClasses();
   }, []);

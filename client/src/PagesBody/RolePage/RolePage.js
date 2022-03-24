@@ -50,20 +50,26 @@ const RolePage = () => {
     });
   };
 
-  const handleLogoutClick = (event) => {
+  const handleLogoutClick = async (event) => {
     event.preventDefault();
-
-    fetch('/api/users/logout', requestOptionsGET)
-      .then((response) => response.text())
-      .then((result) => {
+    try {
+      const response = await fetch('/api/users/logout', requestOptionsGET);
+      if (response.status === 205) {
         dispatch({ type: 'LOG_OUT', index: 1 });
         navigate('/');
-      })
-      .catch((error) => alert(error));
+      }
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
-    <ColumnWrapper paddingLeftRight={1} paddingTop={1.5} className="role-page-column-wrapper" maxWidthBigScreen={45}>
+    <ColumnWrapper
+      paddingLeftRight={1}
+      paddingTop={1.5}
+      className="role-page-column-wrapper"
+      maxWidthBigScreen={45}
+    >
       {roles.map((role, index) =>
         role === 'staff' ? (
           <MainButton

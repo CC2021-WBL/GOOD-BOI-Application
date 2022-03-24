@@ -21,12 +21,20 @@ const UserData = () => {
   }
 
   useEffect(() => {
-    fetch(`/api/users/${userData}`, requestOptionsGET)
-      .then((response) => response.json())
-      .then((result) => {
-        setUserObject(result);
-      })
-      .catch((error) => console.log(error));
+    async function fetchData() {
+      try {
+        let response = await fetch(`/api/users/${userData}`, requestOptionsGET);
+        if (response.status === 200) {
+          response = await response.json();
+          setUserObject(response);
+        } else {
+          alert('oops, coś poszło nie tak');
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
   }, []);
 
   if (!userObject) {
