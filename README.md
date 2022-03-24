@@ -2,7 +2,7 @@
 ![logo-devs-on-the-waves-stroke](https://user-images.githubusercontent.com/19845958/148255475-9f24bd68-7020-42e8-a0d7-c2ed885848e5.png)
 
 
-# CodersCamp 2021 - Fullstack Project, Front-end
+# CodersCamp 2021 - Fullstack Project
 **CodersCamp (https://www.coderscamp.edu.pl/) - Największy otwarty kurs programowania webowego** 
 
 # Good Boi App
@@ -59,14 +59,29 @@ Nie wiesz co to obedience? https://johndog.pl/blog/zyciezpsem/obi-ogole-znaczy/
 - Ikonki wstawiliśmy dzięki Font Awesome oraz React Icons
 - Pomocne okazały się również wtyczki do VSC- sort-imports oraz 'px to rem'
 - Kontrola nad propsami- propTypes
+- React hook form - do obłsugi formularzy
+
+- node
+- nodemon :pomogło nam w automatycznym odświeżaniu danych przy pracy na backendzie
+- base64url
+- cookie-parser: do analizy plików cookie
+- dotenv: do zarządzania zmiennymi środowiskowymi
+- express: usprawniał pracę i rozszerzał funkcjonalności node
+- helmet: pomógł zabezpieczyć aplikację
+- jsonwebtoken: wsparł nas w autoryzacji i autentykacji
+- mongoose: tworzenie schematów w mongoDB
+- mongoDB: nierelacyjna baza danych
+- passport: autoryzacja
+- swagger: automatyczna dokumentacja api
+- cypress: testy
 
 ### W przyszłości
 
-- Wersja desktopowa
-- Portal Good Boi oferujący szeroką gamę funkcjonalności dla fanów obedience
 - Drukowanie raportów i protokołów
 - Galeria zdjęć z zawodów
 - Anglojęzyczna wersja językowa
+- Wstawianie zdjęcia przez użytkownika
+- Logowanie przez gmail i facebook
 
 ## Autorzy
 
@@ -74,7 +89,7 @@ Nie wiesz co to obedience? https://johndog.pl/blog/zyciezpsem/obi-ogole-znaczy/
  - [Alicja Kondrat](https://github.com/pierwszazlewej)  UI/UX Designer, Product Owner
  - [Monika Krella](https://github.com/MonikaKrella) Tech Leader
  - [Tomasz Skrętkowski](https://github.com/n0macx) Development Manager
- - [Adam Smycz](https://github.com/Smyku6) 
+ - [Adam Smycz](https://github.com/Smyku6) Tech Leader
  - [Robert Soldynski](https://github.com/RobertS-ki) 
 
 ## Podziękowania

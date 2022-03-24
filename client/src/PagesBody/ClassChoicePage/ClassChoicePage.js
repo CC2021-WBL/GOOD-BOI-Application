@@ -55,13 +55,13 @@ const ClassChoicePage = () => {
     getClasses();
   }, []);
 
-  const clickHandler = (event, index) => {
+  const clickHandler = (event, obedienceClass) => {
     event.preventDefault();
-    setSelectedClass(index);
+    setSelectedClass(obedienceClass);
   };
 
   const linkTo = () => {
-    if (selectedClass !== undefined) {
+    if (typeof selectedClass === 'number') {
       if (!location.state) {
         return `../contests/${contestId}/classes/${selectedClass}/leaderboard`;
       }
@@ -72,7 +72,7 @@ const ClassChoicePage = () => {
 
   const sendApplication = async (event) => {
     event.preventDefault();
-    if (selectedClass) {
+    if (selectedClass !== ' ') {
       const exercisesArr = CLASSES[selectedClass].exercises.map((exercise) => ({
         codeName: exercise.codeName,
         result: null,
