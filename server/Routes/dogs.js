@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { ERROR_MSG } = require('../Consts/errorMessages');
 const {
   registerDog,
   updateSomeDogProps,
@@ -28,12 +29,12 @@ router.post(
   blockIfPublic,
   isUserOrAdmin,
   async (req, res) => {
-    try {
-      const savedDog = await registerDog(req, res);
-      await updateDogsArray(req, res, savedDog);
-      res.status(201).json(savedDog);
-    } catch (error) {
-      res.status(400).send(error.message);
+    const savedDog = await registerDog(req, res);
+    const updatedUser = await updateDogsArray(req, res, savedDog);
+    if (savedDog && updatedUser) {
+      res.status(201).send(savedDog);
+    } else {
+      res.status(503).json({ message: ERROR_MSG[503] });
     }
   },
 );
@@ -81,22 +82,16 @@ router.put(
 
 // Get data of current dog
 router.get('/:dogId', isDogOwnerAllRolesOrPublic, async (req, res) => {
-  try {
-    const dogData = await getDogData(req, res);
+  const dogData = await getDogData(req, res);
+  if (dogData) {
     res.status(200).send(dogData);
-  } catch (error) {
-    res.status(500).send(error.message);
   }
 });
 
 //Delete current dog
 router.delete('/:dogId', blockIfPublic, isDogOwnerOrAdmin, async (req, res) => {
-  try {
-    const removedDog = await deleteDog(req, res);
-    res.status(200).send(removedDog);
-  } catch (error) {
-    res.status(502).res.send(error.message);
-  }
+  const removedDog = await deleteDog(req, res);
+  res.status(200).send(removedDog);
 });
 
 //Get results for current dog

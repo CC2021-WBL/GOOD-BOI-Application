@@ -16,36 +16,12 @@ const ContestFormHeaderStyled = styled.div`
       white-space: nowrap;
       margin-bottom: 2rem;
     }
-    .baloon {
-      font-weight: 900;
-      display: flex;
-      border-radius: 50%;
-      border: 1px solid ${({ theme }) => theme.grey200};
-      width: 2rem;
-      height: 2rem;
-      background: none;
-      justify-content: center;
-      align-items: center;
-      font-size: 15px;
-      color: ${({ theme }) => theme.grey200};
-    }
-    .active {
-      background: ${({ theme }) => theme.primary101};
-      border: 3px solid ${({ theme }) => theme.primary601};
-      color: ${({ theme }) => theme.primary601};
-    }
-    .line {
-      height: 2px;
-      width: 1rem;
-      background: ${({ theme }) => theme.grey200};
-      align-self: center;
-    }
   }
 `;
 
 const ContestFormHeader = () => {
   return (
-    <ContestFormHeaderStyled className="dog-form-header">
+    <ContestFormHeaderStyled>
       <h2>Dodaj zawody</h2>
       <p>Uzupełnij wszystkie pola.</p>
     </ContestFormHeaderStyled>

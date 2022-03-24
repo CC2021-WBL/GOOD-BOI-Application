@@ -1,22 +1,16 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import DogForm from '../../Organisms/DoggoForm/DogForm';
 import { DogContext } from '../../Context/DogContext';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { dogFormInitialState } from '../../Consts/formsInitialStates';
-import {
-  genRequestOptionsPATCH,
-  genRequestOptionsPOST,
-  requestOptionsGET,
-} from '../../Tools/FetchData/requestOptions';
 import { getDataFormatYyyyMmDD } from '../../Tools/TimeFunctions';
 import {
   patchDogForm,
   postDogForm,
-  postOrPatchDogForm,
 } from '../../Tools/FetchData/fetchFormsFunctions';
+import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const DogFormPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -69,15 +63,11 @@ const DogFormPage = () => {
   }
 
   return (
-    <ColumnWrapper
-      paddingLeftRight={1}
-      maxWidthBigScreen={35}
-      className="user-data-wrapper dog-form-wrapper"
-    >
+    <>
       {!isSubmitted && initialStateOfDogForm ? (
         <DogForm submitForm={submitForm} initialState={initialStateOfDogForm} />
       ) : null}
-    </ColumnWrapper>
+    </>
   );
 };
 
