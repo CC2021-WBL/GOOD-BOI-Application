@@ -82,10 +82,14 @@ async function updateContest(req, res) {
         contest[element] = req.body[element];
       }
     });
-    await contest.save();
-    return contest;
+    const updatedContest = await contest.save();
+    if (!updatedContest) {
+      res.status(400).json({ message: ERROR_MSG[400] });
+    } else {
+      return updatedContest;
+    }
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(500).json({ message: ERROR_MSG[500] });
   }
 }
 

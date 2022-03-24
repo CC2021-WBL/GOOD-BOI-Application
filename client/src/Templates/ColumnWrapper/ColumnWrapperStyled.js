@@ -14,6 +14,16 @@ const ColumnWrapperStyled = styled.div`
     props.paddingBottom && `${props.paddingBottom}rem`};
   grid-area: 3 / 1 / 4 / 2;
 
+  &.error-wrapper {
+    height: 20%;
+    align-items: center;
+    padding: 20px;
+    img {
+      height: 5rem;
+      width: 5rem;
+    }
+  }
+
   &.not-found-wrapper {
     text-align: center;
     display: flex;

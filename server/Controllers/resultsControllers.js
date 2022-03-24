@@ -11,15 +11,14 @@ async function registerResults(req, res) {
     participantId: req.body.participantId,
     exercises: req.body.exercises,
   });
+  let savedResult;
   try {
-    const savedResult = await result.save();
-    if (!savedResult) {
-      res.status(500).json({ message: ERROR_MSG[500] });
-    } else {
-      return savedResult;
-    }
+    savedResult = await result.save();
   } catch (error) {
-    res.status(400).json({ message: ERROR_MSG[400] });
+    res.status(409).json({ message: 'Pies już jest zgłoszony na dane zawody' });
+  }
+  if (savedResult) {
+    return savedResult;
   }
 }
 
@@ -33,10 +32,14 @@ async function updateSomeResults(req, res) {
     resultsToUpdate.forEach((element) => {
       result[element] = req.body[element];
     });
-    await result.save();
-    return result;
+    const updatedRasult = await result.save();
+    if (!updatedRasult) {
+      res.status(400).json({ message: ERROR_MSG[400] });
+    } else {
+      return result;
+    }
   } catch (error) {
-    res.status(400).json({ message: ERROR_MSG[400] });
+    res.status(500).json({ message: ERROR_MSG[500] });
   }
 }
 
@@ -47,8 +50,11 @@ async function getResultSummaryAndName(req, res) {
     })
       .where({ obedienceClass: req.params.classId })
       .select(['dogName', 'summaryResult']);
-
-    res.json(results);
+    if (!results) {
+      res.status(404).json({ message: ERROR_MSG[404] });
+    } else {
+      return results;
+    }
   } catch (error) {
     res.status(500).json({ message: ERROR_MSG[500] });
   }
