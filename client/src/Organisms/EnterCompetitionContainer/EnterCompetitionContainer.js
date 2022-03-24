@@ -5,12 +5,72 @@ import DataLine from '../../Atoms/DataLine/DataLine';
 import { DogContext } from '../../Context/DogContext';
 import { UserDataContext } from '../../Context/UserDataContext';
 
-const EnterCompetitionContainer = ({ selectedClass, confirmation }) => {
+const EnterCompetitionContainer = ({
+  selectedClass = undefined,
+  confirmation,
+}) => {
   const { contestState } = useContext(ContestContext);
   const { dogState } = useContext(DogContext);
   const { state } = useContext(UserDataContext);
-  console.log(selectedClass);
-  console.log(confirmation);
+  const { chosenDog } = dogState;
+  const { contestName, contestStartDate, contestAddress } = contestState;
+
+  const address = () =>
+    `ul. ${contestAddress.street} ${contestAddress.numberOfHouse || ''}, ${
+      contestAddress.city
+    }`;
+
+  const chosenDogNameCheckText = () => {
+    return chosenDog.dogName === undefined
+      ? `Wybierz psa`
+      : `Pies: ${chosenDog.dogName}`;
+  };
+  const chosenDogNameCheckClass = () => {
+    return chosenDog.dogName === undefined ? `future` : `active`;
+  };
+
+  const chosenDogPkrCheckText = () => {
+    return chosenDog.dogPkr === undefined
+      ? `Potwierdż dane psa`
+      : `PKR: ${chosenDog.dogPkr}`;
+  };
+
+  const chosenDogPkrCheckClass = () => {
+    return chosenDog.dogPkr === undefined ? `future` : `active`;
+  };
+
+  const userNameCheckText = () => {
+    return state.userNameConfirmed === undefined
+      ? `Potwierdź dane użytkownika`
+      : `Użytkownik: ${state.userNameConfirmed}`;
+  };
+  const userNameCheckClass = () => {
+    return state.userNameConfirmed === undefined ? `future` : `active`;
+  };
+
+  const selectedClassCheckText = () => {
+    return selectedClass === 0 ||
+      selectedClass === 1 ||
+      selectedClass === 2 ||
+      selectedClass === 3
+      ? `Klasa: ${selectedClass}`
+      : `Wybierz klasę`;
+  };
+  const selectedClassCheckClass = () => {
+    return selectedClass === 0 ||
+      selectedClass === 1 ||
+      selectedClass === 2 ||
+      selectedClass === 3
+      ? `active`
+      : `future`;
+  };
+
+  const confirmationCheckText = () => {
+    return confirmation ? `Potwierdzenie zgłoszenia` : `Potwierdź udział`;
+  };
+  const confirmationCheckClass = () => {
+    return confirmation ? `active lastitem success` : `future lastitem`;
+  };
 
   return (
     <ColumnWrapper
@@ -21,74 +81,36 @@ const EnterCompetitionContainer = ({ selectedClass, confirmation }) => {
       <ColumnWrapper className="enter-competition-container">
         <ColumnWrapper paddingLeftRight={0} paddingTop={0.5}>
           <DataLine
-            text={contestState.contestName}
+            text={contestName}
             className={'enter-competition-contest-name'}
           />
           <DataLine
-            text={`${contestState.contestStartDate}`}
+            text={contestStartDate}
             className={'enter-competition-contest-date'}
           />
           <DataLine
-            text={`ul. ${contestState.contestAddress.street} ${
-              contestState.contestAddress.numberOfHouse || ''
-            }, ${contestState.contestAddress.city}`}
+            text={address()}
             className={'enter-competition-contest-address'}
           />
           <DataLine
-            text={
-              dogState.chosenDog.dogName == undefined
-                ? `Wybierz psa`
-                : `Pies: ${dogState.chosenDog.dogName}`
-            }
-            className={
-              dogState.chosenDog.dogName == undefined ? `future` : `active`
-            }
+            text={chosenDogNameCheckText()}
+            className={chosenDogNameCheckClass()}
           />
           <DataLine
-            text={
-              dogState.chosenDog.dogPkr == undefined
-                ? `Potwierdż dane psa`
-                : `PKR: ${dogState.chosenDog.dogPkr}`
-            }
-            className={
-              dogState.chosenDog.dogPkr == undefined ? `future` : `active`
-            }
+            text={chosenDogPkrCheckText()}
+            className={chosenDogPkrCheckClass()}
           />
           <DataLine
-            text={
-              state.userNameConfirmed == undefined
-                ? `Potwierdź dane użytkownika`
-                : `Użytkownik: ${state.userNameConfirmed}`
-            }
-            className={
-              state.userNameConfirmed == undefined ? `future` : `active`
-            }
+            text={userNameCheckText()}
+            className={userNameCheckClass()}
           />
           <DataLine
-            text={
-              selectedClass === 0 ||
-              selectedClass === 1 ||
-              selectedClass === 2 ||
-              selectedClass === 3
-                ? `Klasa: ${selectedClass}`
-                : `Wybierz klasę`
-            }
-            className={
-              selectedClass === 0 ||
-              selectedClass === 1 ||
-              selectedClass === 2 ||
-              selectedClass === 3
-                ? `active`
-                : `future`
-            }
+            text={selectedClassCheckText()}
+            className={selectedClassCheckClass()}
           />
           <DataLine
-            text={
-              confirmation ? `Potwierdzenie zgłoszenia` : `Potwierdź udział`
-            }
-            className={
-              confirmation ? `active lastitem success` : `future lastitem`
-            }
+            text={confirmationCheckText()}
+            className={confirmationCheckClass()}
           />
         </ColumnWrapper>
       </ColumnWrapper>

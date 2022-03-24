@@ -48,7 +48,7 @@ const Confirmation = () => {
           />
         </ConfirmationStyled>
       </ColumnWrapper>
-      {state.selectedClass !== null && <EnterCompetitionContainer />}
+      <EnterCompetitionContainer confirmation={true} />
     </ColumnWrapper>
   );
 };
