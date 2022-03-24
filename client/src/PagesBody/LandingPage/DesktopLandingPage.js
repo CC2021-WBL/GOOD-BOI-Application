@@ -60,17 +60,17 @@ const DesktopLandingPage = () => {
                 className="last-card"
               />
             ))}
-          {!isPending &&
-          <FakeButton
-            colors="primary"
-            to="/contests"
-            state={{
-              contestContent: 'future',
-            }}
-            text="Zobacz więcej konkursów"
-            className="more-contests"
-          />
-          }
+          {!isPending && (
+            <FakeButton
+              colors="primary"
+              to="/contests"
+              state={{
+                contestContent: 'future',
+              }}
+              text="Zobacz więcej konkursów"
+              className="more-contests"
+            />
+          )}
         </ColumnWrapper>
         <div className="mockmap">
           <img src={mockmap} alt="mockmap" />

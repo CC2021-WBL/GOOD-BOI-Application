@@ -3,10 +3,12 @@ import { FaRegTimesCircle } from 'react-icons/fa';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import ErrorComponent from '../../PagesBody/ErrorPage/ErrorComponent';
 import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
 import { UserDataContext } from '../../Context/UserDataContext';
+import { generateErrorMessage } from '../../Tools/generateErrorMessage';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const UserProfileData = ({
@@ -18,6 +20,7 @@ const UserProfileData = ({
   const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
   const { userId, userName, userSurname, isAuthenticated } = state;
+  const [fetchErrors, setFetchErrors] = useState(null);
   const paramsUserData = useParams();
 
   let userData = userId;
@@ -47,13 +50,13 @@ const UserProfileData = ({
             requestOptionsGET,
           );
           if (!response.ok) {
-            navigate('/login');
+            throw Error(generateErrorMessage(response.status));
           } else {
             response = await response.json();
             setUserObject(response);
           }
         } catch (error) {
-          console.log(error);
+          setFetchErrors(error.message);
         }
       }
 
@@ -66,45 +69,51 @@ const UserProfileData = ({
 
   return (
     <>
-      <UserProfileDataStyled withEdit={withEdit} className={className}>
-        <div className="user-data-wrapper">
-          {state && userObject ? (
-            <>
-              <h3>{`${participantName} ${participantSurname}`}</h3>
-              <p>{`${street} ${numberOfHouse}`}</p>
-              <p>{`${postalCode} ${city}`}</p>
-            </>
-          ) : (
-            <>
-              <h3>{`${userName} ${userSurname}`}</h3>
-            </>
-          )}
-          <></>
-        </div>
-        {withEdit && (
-          <>
-            <div className="bg-box tablet_only" />
-            <button
-              className="user-data-edit-btn"
-              onClick={toggleHandler}
-              toggle="true"
-            >
-              {!toggle ? (
-                'edytuj dane'
+      {fetchErrors ? (
+        <ErrorComponent message={fetchErrors} />
+      ) : (
+        <>
+          <UserProfileDataStyled withEdit={withEdit} className={className}>
+            <div className="user-data-wrapper">
+              {state && userObject ? (
+                <>
+                  <h3>{`${participantName} ${participantSurname}`}</h3>
+                  <p>{`${street} ${numberOfHouse}`}</p>
+                  <p>{`${postalCode} ${city}`}</p>
+                </>
               ) : (
-                <FaRegTimesCircle className="user-data-edit-close" />
+                <>
+                  <h3>{`${userName} ${userSurname}`}</h3>
+                </>
               )}
-            </button>
-          </>
-        )}
-      </UserProfileDataStyled>
-      {toggle && withEdit && (
-        <RegistrationFormSignup
-          submitForm={submitForm}
-          editData
-          initialState={initialState}
-          setUserObject={setUserObject}
-        />
+              <></>
+            </div>
+            {withEdit && (
+              <>
+                <div className="bg-box tablet_only" />
+                <button
+                  className="user-data-edit-btn"
+                  onClick={toggleHandler}
+                  toggle="true"
+                >
+                  {!toggle ? (
+                    'edytuj dane'
+                  ) : (
+                    <FaRegTimesCircle className="user-data-edit-close" />
+                  )}
+                </button>
+              </>
+            )}
+          </UserProfileDataStyled>
+          {toggle && withEdit && (
+            <RegistrationFormSignup
+              submitForm={submitForm}
+              editData
+              initialState={initialState}
+              setUserObject={setUserObject}
+            />
+          )}
+        </>
       )}
     </>
   );
