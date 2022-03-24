@@ -175,12 +175,7 @@ const RegistrationFormSignup = ({
     );
   }
   return (
-    <ColumnWrapper
-      paddingTop={1}
-      paddingBottom={1}
-      maxWidthBigScreen={35}
-      className="form-wrapper"
-    >
+    <ColumnWrapper paddingBottom={1}>
       <RegistrationFormHeader />
 
       <FormWrapper onSubmit={submitHandler}>
