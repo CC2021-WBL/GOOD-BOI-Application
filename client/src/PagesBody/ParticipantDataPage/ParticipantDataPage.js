@@ -4,12 +4,15 @@ import ParticipantData from '../../Organisms/ParticipantData/ParticipantData';
 import Spinner from '../../Atoms/Spinner/Spinner';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { useParams } from 'react-router-dom';
+import { DogContext } from '../../Context/DogContext';
 
 const ParticipantDataPage = () => {
   const { participantId: participantIdParams } = useParams();
   const [isPending, setIsPending] = useState(true);
   const [participantId, setParticipantId] = useState(null);
   const { state } = useContext(UserDataContext);
+  const { dogState } = useContext(DogContext);
+  console.log(dogState);
 
   useEffect(() => {
     if (state.userId) {

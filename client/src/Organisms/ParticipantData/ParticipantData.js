@@ -1,6 +1,5 @@
+import { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import DataLine from '../../Atoms/DataLine/DataLine';
@@ -11,12 +10,20 @@ import Spinner from '../../Atoms/Spinner/Spinner';
 import renderParticipantData from '../../Tools/renderParticipantData';
 import { generateErrorMessage } from '../../Tools/generateErrorMessage';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
+import { useNavigate } from 'react-router-dom';
+import { DogContext } from '../../Context/DogContext';
+import { ContestContext } from '../../Context/ContestContext';
+import EnterCompetitionContainer from '../EnterCompetitionContainer/EnterCompetitionContainer';
+import { UserDataContext } from '../../Context/UserDataContext';
 
 const ParticipantData = ({ id }) => {
   let navigate = useNavigate();
   const [fetchErrors, setFetchErrors] = useState(null);
   const [participantData, setParticipantData] = useState(null);
   const [isPending, setIsPending] = useState(true);
+  const { dogState } = useContext(DogContext);
+  const { state, dispatch } = useContext(UserDataContext);
+  const { contestState } = useContext(ContestContext);
 
   useEffect(() => {
     async function fetchParticipantData() {
@@ -50,47 +57,67 @@ const ParticipantData = ({ id }) => {
 
   const handleConfirm = (event) => {
     event.preventDefault();
+    dispatch({
+      type: 'UPDATE_FIELD',
+      fieldName: 'userNameConfirmed',
+      payload: `${participantData.participantName} ${participantData.participantSurname}`,
+    });
     navigate(`/class-choice`, {
       state: { application: true },
     });
   };
-  console.log(fetchErrors);
+
+  const enterCompetitionParticipantData = () => {
+    return dogState.chosenDog !== {} && contestState.contestId !== null
+      ? '-enter-competition'
+      : '';
+  };
+
   return (
     <>
       {fetchErrors ? (
         <ErrorComponent message={fetchErrors} />
       ) : (
-        <ColumnWrapper className="participant-data-container">
-          <SpecialButtonsContainerStyled>
-            <SpecialButton
-              left
-              text="edytuj"
-              handler={handleEdit}
-              colors="blue"
-            />
-            <SpecialButton
-              right
-              text="potwierdź"
-              handler={handleConfirm}
-              colors="green"
-            />
-          </SpecialButtonsContainerStyled>
+        <ColumnWrapper
+          className={`participant-data${enterCompetitionParticipantData()}`}
+        >
           <ColumnWrapper
-            paddingLeftRight={1}
-            className="participant-data-details"
+            className={`participant-data-container${enterCompetitionParticipantData()}`}
           >
-            {isPending && <Spinner />}
-            {participantData &&
-              Object.entries(renderParticipantData(participantData)).map(
-                (dataLine, index) => <DataLine key={index} text={dataLine} />,
-              )}
+            <SpecialButtonsContainerStyled>
+              <SpecialButton
+                left
+                text="edytuj"
+                handler={handleEdit}
+                colors="blue"
+              />
+              <SpecialButton
+                right
+                text="potwierdź"
+                handler={handleConfirm}
+                colors="green"
+              />
+            </SpecialButtonsContainerStyled>
+            <ColumnWrapper
+              paddingLeftRight={1}
+              className="participant-data-details"
+            >
+              {isPending && <Spinner />}
+              {participantData &&
+                Object.entries(renderParticipantData(participantData)).map(
+                  (dataLine, index) => <DataLine key={index} text={dataLine} />,
+                )}
+            </ColumnWrapper>
+            <ColumnWrapper
+              paddingLeftRight={1}
+              className="participant-data-details-bar"
+            >
+              Dane uczestnika
+            </ColumnWrapper>
           </ColumnWrapper>
-          <ColumnWrapper
-            paddingLeftRight={1}
-            className="participant-data-details-bar"
-          >
-            Dane uczestnika
-          </ColumnWrapper>
+          {dogState.chosenDog !== {} && contestState.contestId !== null && (
+            <EnterCompetitionContainer />
+          )}
         </ColumnWrapper>
       )}
     </>

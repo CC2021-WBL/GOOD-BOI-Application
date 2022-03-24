@@ -54,6 +54,7 @@ const MainButtonStyled = styled.button`
   &.add-dogs {
     @media only screen and (min-width: 800px) {
       max-width: 16.25rem;
+      align-self: center;
     }
   }
 `;

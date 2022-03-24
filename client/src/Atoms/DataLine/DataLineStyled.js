@@ -18,6 +18,37 @@ const DataLineStyled = styled.div`
     color: ${({ theme }) => theme.grey400};
     text-align: left;
   }
+
+  @media only screen and (min-width: 1024px) {
+    color: ${({ theme }) => theme.grey800};
+
+    &.enter-competition-contest-name {
+      font-size: 1.5rem;
+      color: ${({ theme }) => theme.grey800};
+      border-bottom: none;
+      padding: 1rem;
+    }
+    &.active,
+    &.enter-competition-contest-date,
+    &.enter-competition-contest-address {
+      padding: 0.5rem 1rem;
+      border-bottom: none;
+    }
+
+    &.future {
+      background-color: ${({ theme }) => theme.grey200};
+      color: ${({ theme }) => theme.grey800};
+      border-bottom: none;
+      padding: 1rem;
+    }
+
+    &.lastitem {
+      border-radius: 0 0 0.75rem 0.75rem;
+    }
+    &.success {
+      background-color: ${({ theme }) => theme.positive200};
+    }
+  }
 `;
 
 export default DataLineStyled;

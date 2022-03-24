@@ -20,7 +20,7 @@ import { generateErrorMessage } from '../../Tools/generateErrorMessage';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const ContestDetails = ({ contestId }) => {
-  const { state } = useContext(UserDataContext);
+  const { dispatch, state } = useContext(UserDataContext);
   const { isAuthenticated } = state;
   const [isPending, setIsPending] = useState(true);
   const [contestData, setContestData] = useState(null);
@@ -77,83 +77,92 @@ const ContestDetails = ({ contestId }) => {
     event.preventDefault();
   };
 
+  const enterCompetition = (event) => {
+    event.preventDefault();
+    dispatch({
+      type: 'UPDATE_FIELD',
+      fieldName: 'userNameConfirmed',
+      payload: null,
+    });
+    dispatch({
+      type: 'UPDATE_FIELD',
+      fieldName: 'selectedClass',
+      payload: null,
+    });
+    navigate('/user-dogs');
+  };
+
   return (
     <>
       {fetchErrors ? (
         <ErrorComponent message={fetchErrors} />
       ) : (
         <>
-          <ColumnWrapper
-            className="contest-data grid-position"
-            contentPosition={isAuthenticated}
-          >
-            {isCloseContestModalOpen && (
-              <Modal
-                modalData={modalData.cancelContest}
-                onCloseHandler={handleReminder}
-                onConfirmHandler={handleReminder}
-              />
-            )}
-            {isCloseContestModalOpen && (
-              <Backdrop onClick={closeModalHandler} />
-            )}
+    <ColumnWrapper
+      className="contest-data grid-position"
+      contentPosition={isAuthenticated}
+    >
+      {isCloseContestModalOpen && (
+        <Modal
+          modalData={modalData.cancelContest}
+          onCloseHandler={handleReminder}
+          onConfirmHandler={handleReminder}
+        />
+      )}
+      {isCloseContestModalOpen && <Backdrop onClick={closeModalHandler} />}
 
-            {isPending && <Spinner />}
-            {/* {contestData && <ContestDetailsMap />} */}
-            {contestData && (
-              <>
-                <ContestDetailsMap />
-                <div>
-                  <ContestDetailsToggler
-                    onClick={toggleHandler}
-                    toggle={toggle}
-                  />
-                  {toggle && (
-                    <ContestDetailsContent contestData={contestData} />
-                  )}
-                  <ContestDetailsEmptyBarStyled />
-                  {state && state.selectedRole === 'participant' && (
-                    <ColumnWrapper className="contest-data-buttons">
-                      <FakeButton
-                        colors="ternary"
-                        text="WRÓĆ DO LISTY ZAWODÓW"
-                        state={{
-                          contestContent: 'future',
-                        }}
-                        to="/future-contests"
-                        className="contest-data-button-back"
-                      />
-                      <FakeButton
-                        colors="secondary"
-                        text="ZGŁOŚ SWÓJ UDZIAŁ"
-                        to="/user-dogs"
-                        className="contest-data-button-enter"
-                      />
-                    </ColumnWrapper>
-                  )}{' '}
-                  {state && state.selectedRole === 'manager' && (
-                    <ColumnWrapper className="contest-data-buttons-manager">
-                      <FakeButton
-                        colors="secondary"
-                        text="Edytuj dane"
-                        to="/add-contest"
-                      />
-                      <MainButton
-                        secondary
-                        text="Odwołaj i usuń zawody"
-                        onClick={openCloseContestModal}
-                      />
-                      <FakeButton
-                        colors="secondary"
-                        text="Wróć do listy"
-                        to="/contests"
-                      />
-                    </ColumnWrapper>
-                  )}
-                </div>
-              </>
+      {isPending && <Spinner />}
+      {/* {contestData && <ContestDetailsMap />} */}
+      {contestData && (
+        <>
+          <ContestDetailsMap />
+          <div>
+            <ContestDetailsToggler onClick={toggleHandler} toggle={toggle} />
+            {toggle && <ContestDetailsContent contestData={contestData} />}
+            <ContestDetailsEmptyBarStyled />
+            {state && state.selectedRole === 'participant' && (
+              <ColumnWrapper className="contest-data-buttons">
+                <FakeButton
+                  colors="ternary"
+                  text="WRÓĆ DO LISTY ZAWODÓW"
+                  state={{
+                    contestContent: 'future',
+                  }}
+                  to="/future-contests"
+                  className="contest-data-button-back"
+                />
+                <MainButton
+                  secondary
+                  text="ZGŁOŚ SWÓJ UDZIAŁ"
+                  to="/user-dogs"
+                  className="contest-data-button-enter"
+                  onClick={enterCompetition}
+                />
+              </ColumnWrapper>
+            )}{' '}
+            {state && state.selectedRole === 'manager' && (
+              <ColumnWrapper className="contest-data-buttons-manager">
+                <FakeButton
+                  colors="secondary"
+                  text="Edytuj dane"
+                  to="/add-contest"
+                />
+                <MainButton
+                  secondary
+                  text="Odwołaj i usuń zawody"
+                  onClick={openCloseContestModal}
+                />
+                <FakeButton
+                  colors="secondary"
+                  text="Wróć do listy"
+                  to="/contests"
+                />
+              </ColumnWrapper>
             )}
-          </ColumnWrapper>
+          </div>
+        </>
+      )}
+    </ColumnWrapper>
         </>
       )}
     </>
