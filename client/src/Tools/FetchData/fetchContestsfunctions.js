@@ -66,7 +66,7 @@ export async function finishClass(contestId, classNumber) {
 }
 
 export async function getExercisesPoints(dogId, contestId) {
-  try {
+  // try {
     let response = await fetch(
       `/api/results/individual/bydog/${dogId}/${contestId}`,
       requestOptionsGET,
@@ -75,9 +75,9 @@ export async function getExercisesPoints(dogId, contestId) {
       const resultDoc = await response.json();
       return resultDoc[0];
     } else {
-      return null;
+      throw Error(generateErrorMessage(response.status));
     }
-  } catch (error) {}
+  // } catch (error) {}
 }
 
 export async function updateExercisesPoints(resultsId, dataToUpdate) {

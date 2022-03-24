@@ -5,6 +5,7 @@ import Backdrop from '../../Atoms/Modal/Backdrop';
 import ButtonExercises from '../../Atoms/ButtonsExercises/ButtonsExercises';
 import ButtonExercisesContainerStyled from '../../Molecules/ButtonsExcercisenContainer/ButtonExercisesContainerStyled';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import ErrorComponent from '../ErrorPage/ErrorComponent';
 import ExerciseCardsContainer from '../../Organisms/ExerciseCardsContainter/ExerciseCardsContainer';
 import Modal from '../../Organisms/Modal/Modal';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
@@ -25,16 +26,19 @@ const ExercisesPage = () => {
   const [resultId, setResultId] = useState(null);
   const { contestId, dogId } = useParams();
   const locationPath = useLocation();
-
+  const [fetchErrors, setFetchErrors] = useState(null);
   const { label } = locationPath.state;
 
   useEffect(() => {
     async function fetchResults() {
-      const resultDoc = await getExercisesPoints(dogId, contestId);
-      setDogPerformance({ exercises: resultDoc.exercises });
-      setResultId(resultDoc._id);
+      try {
+        const resultDoc = await getExercisesPoints(dogId, contestId);
+        setDogPerformance({ exercises: resultDoc.exercises });
+        setResultId(resultDoc._id);
+      } catch (error) {
+        setFetchErrors(error.message);
+      }
     }
-
     fetchResults();
   }, []);
 
@@ -114,68 +118,78 @@ const ExercisesPage = () => {
   };
 
   return (
-    <ColumnWrapper>
-      {isDisqualifyModalOpen && (
-        <Modal
-          modalData={modalData.disqualify}
-          onCloseHandler={closeModalHandler}
-          onConfirmHandler={handleDisqualification}
-        />
-      )}
-      {isPenaltyModalOpen && (
-        <Modal
-          modalData={modalData.penalty}
-          onCloseHandler={closeModalHandler}
-          onConfirmHandler={handlePenalty}
-        />
-      )}
-      {isEvaluationModalOpen && (
-        <Modal
-          modalData={modalData.endEvaluation}
-          onCloseHandler={closeModalHandler}
-          onConfirmHandler={handleEvaluation}
-        />
-      )}
-      {(isDisqualifyModalOpen ||
-        isPenaltyModalOpen ||
-        isEvaluationModalOpen) && <Backdrop onClick={closeModalHandler} />}
-      <ColumnWrapper paddingLeftRight={0.25}>
-        <SpecialButtonsContainerStyled>
-          <SpecialButton
-            text="Dyskwalifikacja"
-            colors="red"
-            handler={openDisqualifyModalHandler}
-            roundedBorder="left"
-          />
-          <SpecialButton
-            text={`Żółta kartka`}
-            colors="yellow"
-            handler={openPenaltyModalHandler}
-            roundedBorder="right"
-          />
-        </SpecialButtonsContainerStyled>
+    <>
+      {fetchErrors ? (
+        <ErrorComponent message={fetchErrors} />
+      ) : (
+        <>
+          <ColumnWrapper>
+            {isDisqualifyModalOpen && (
+              <Modal
+                modalData={modalData.disqualify}
+                onCloseHandler={closeModalHandler}
+                onConfirmHandler={handleDisqualification}
+              />
+            )}
+            {isPenaltyModalOpen && (
+              <Modal
+                modalData={modalData.penalty}
+                onCloseHandler={closeModalHandler}
+                onConfirmHandler={handlePenalty}
+              />
+            )}
+            {isEvaluationModalOpen && (
+              <Modal
+                modalData={modalData.endEvaluation}
+                onCloseHandler={closeModalHandler}
+                onConfirmHandler={handleEvaluation}
+              />
+            )}
+            {(isDisqualifyModalOpen ||
+              isPenaltyModalOpen ||
+              isEvaluationModalOpen) && (
+              <Backdrop onClick={closeModalHandler} />
+            )}
+            <ColumnWrapper paddingLeftRight={0.25}>
+              <SpecialButtonsContainerStyled>
+                <SpecialButton
+                  text="Dyskwalifikacja"
+                  colors="red"
+                  handler={openDisqualifyModalHandler}
+                  roundedBorder="left"
+                />
+                <SpecialButton
+                  text={`Żółta kartka`}
+                  colors="yellow"
+                  handler={openPenaltyModalHandler}
+                  roundedBorder="right"
+                />
+              </SpecialButtonsContainerStyled>
 
-        {dogPerformance && (
-          <ExerciseCardsContainer
-            dogPerformance={dogPerformance.exercises}
-            setDogPerformance={setDogPerformance}
-          />
-        )}
-      </ColumnWrapper>
-      <ButtonExercisesContainerStyled>
-        <ButtonExercises
-          handler={saveAndGoBackHandler}
-          secondary
-          text={'Zapisz i wróć do listy'}
-        />
-        <ButtonExercises
-          handler={openEvaluationModalHandler}
-          primary
-          text={'Zakończ ocenianie'}
-          dogPerformance={dogPerformance}
-        />
-      </ButtonExercisesContainerStyled>
-    </ColumnWrapper>
+              {dogPerformance && (
+                <ExerciseCardsContainer
+                  dogPerformance={dogPerformance.exercises}
+                  setDogPerformance={setDogPerformance}
+                />
+              )}
+            </ColumnWrapper>
+            <ButtonExercisesContainerStyled>
+              <ButtonExercises
+                handler={saveAndGoBackHandler}
+                secondary
+                text={'Zapisz i wróć do listy'}
+              />
+              <ButtonExercises
+                handler={openEvaluationModalHandler}
+                primary
+                text={'Zakończ ocenianie'}
+                dogPerformance={dogPerformance}
+              />
+            </ButtonExercisesContainerStyled>
+          </ColumnWrapper>
+        </>
+      )}
+    </>
   );
 };
 
