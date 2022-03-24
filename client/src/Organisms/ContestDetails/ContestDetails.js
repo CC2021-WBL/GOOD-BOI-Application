@@ -78,6 +78,11 @@ const ContestDetails = ({ contestId }) => {
       fieldName: 'userNameConfirmed',
       payload: null,
     });
+    dispatch({
+      type: 'UPDATE_FIELD',
+      fieldName: 'selectedClass',
+      payload: null,
+    });
     navigate('/user-dogs');
   };
 

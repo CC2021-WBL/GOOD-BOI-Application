@@ -29,6 +29,14 @@ const ClassChoicePage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    dispatch({
+      type: 'UPDATE_FIELD',
+      fieldName: 'selectedClass',
+      payload: selectedClass,
+    });
+  }, [selectedClass]);
+
+  useEffect(() => {
     async function getClasses() {
       const response = await fetch(
         `api/contests/classes/${contestId}`,
@@ -139,10 +147,7 @@ const ClassChoicePage = () => {
         )}
       </ColumnWrapper>
       {contestState.contestId !== null && (
-        <EnterCompetitionContainer
-          selectedClass={selectedClass}
-          confirmation={confirmation}
-        />
+        <EnterCompetitionContainer confirmation={confirmation} />
       )}
     </ColumnWrapper>
   );

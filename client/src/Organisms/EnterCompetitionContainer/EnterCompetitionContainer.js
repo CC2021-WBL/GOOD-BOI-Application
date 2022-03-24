@@ -5,15 +5,13 @@ import DataLine from '../../Atoms/DataLine/DataLine';
 import { DogContext } from '../../Context/DogContext';
 import { UserDataContext } from '../../Context/UserDataContext';
 
-const EnterCompetitionContainer = ({
-  selectedClass = undefined,
-  confirmation,
-}) => {
+const EnterCompetitionContainer = ({ confirmation }) => {
   const { contestState } = useContext(ContestContext);
   const { dogState } = useContext(DogContext);
   const { state } = useContext(UserDataContext);
   const { chosenDog } = dogState;
   const { contestName, contestStartDate, contestAddress } = contestState;
+  const { selectedClass } = state;
 
   const address = () =>
     `ul. ${contestAddress.street} ${contestAddress.numberOfHouse || ''}, ${
@@ -53,7 +51,7 @@ const EnterCompetitionContainer = ({
       selectedClass === 1 ||
       selectedClass === 2 ||
       selectedClass === 3
-      ? `Klasa: ${selectedClass || state.selectedClass}`
+      ? `Klasa: ${selectedClass}`
       : `Wybierz klasę`;
   };
   const selectedClassCheckClass = () => {
