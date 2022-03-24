@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
-import FakeButton from '../../Atoms/FakeButton/FakeButton';
+import MainButton from '../../Atoms/MainButton/MainButton';
 import Spinner from '../../Atoms/Spinner/Spinner';
 import { DOG_ACTIONS, USER_ACTIONS } from '../../Consts/reducersActions';
 import { DogContext } from '../../Context/DogContext';
@@ -14,6 +15,7 @@ const UserDogPage = () => {
   const { state, dispatch } = useContext(UserDataContext);
   const [isPending, setIsPending] = useState(true);
   const [participantDogs, setParticipantDogs] = useState(null);
+  const navigate = useNavigate();
   const { dogState, dogDispatch } = useContext(DogContext);
   const { dogs } = dogState;
 
@@ -56,6 +58,17 @@ const UserDogPage = () => {
       setIsPending(false);
     }
   }, []);
+
+  const onAddDogClick = (event) => {
+    event.preventDefault();
+    dogDispatch({
+      type: DOG_ACTIONS.UPDATE_ONE_FIELD,
+      fieldName: 'chosenDog',
+      payload: {},
+    });
+    navigate('/add-dog-form');
+  };
+
   return (
     <ColumnWrapper
       paddingLeftRight={1}
@@ -82,10 +95,10 @@ const UserDogPage = () => {
       {dogs && dogs.length === 0 && (
         <h3 className="dogs-0">Nie dodałeś jeszcze żadnego psa.</h3>
       )}
-      <FakeButton
-        colors="secondary"
+      <MainButton
+        secondary
         text="DODAJ NOWEGO PSA"
-        to="/add-dog-form"
+        onClick={onAddDogClick}
         className="add-dogs"
       />
     </ColumnWrapper>

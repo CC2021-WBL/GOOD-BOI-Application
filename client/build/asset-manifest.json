@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.f0c50fa2.css",
-    "main.js": "/static/js/main.038e61a4.js",
+    "main.css": "/static/css/main.8e9f7407.css",
+    "main.js": "/static/js/main.dfdde6f7.js",
     "static/js/483.55f63d93.chunk.js": "/static/js/483.55f63d93.chunk.js",
     "static/js/787.0c574e70.chunk.js": "/static/js/787.0c574e70.chunk.js",
     "static/media/profileDogFace.jpg": "/static/media/profileDogFace.8c0496d4eb9e6f1d411a.jpg",
@@ -27,16 +27,16 @@
     "static/media/mockmap.png": "/static/media/mockmap.51ecff1a71c452cf7983.png",
     "static/media/planets.png": "/static/media/planets.cdb481dbf2521ded20c2.png",
     "static/media/rocket.png": "/static/media/rocket.8f5790d9679c5b7dfb3d.png",
-    "static/media/AppLogoSVG.svg": "/static/media/AppLogoSVG.b96e11c0550f6499be1d18e009db4a1a.svg",
-    "static/media/logoDevsOnTheWaves.svg": "/static/media/logoDevsOnTheWaves.2bf74039d34d89f1174fade3fb24354d.svg",
+    "static/media/AppLogoSVG.svg": "/static/media/AppLogoSVG.aa51f4316fa965a2c166b9e67c391a29.svg",
+    "static/media/logoDevsOnTheWaves.svg": "/static/media/logoDevsOnTheWaves.cf27d25e4bacdf07f9b313a628f6a5f0.svg",
     "index.html": "/index.html",
-    "main.f0c50fa2.css.map": "/static/css/main.f0c50fa2.css.map",
-    "main.038e61a4.js.map": "/static/js/main.038e61a4.js.map",
+    "main.8e9f7407.css.map": "/static/css/main.8e9f7407.css.map",
+    "main.dfdde6f7.js.map": "/static/js/main.dfdde6f7.js.map",
     "483.55f63d93.chunk.js.map": "/static/js/483.55f63d93.chunk.js.map",
     "787.0c574e70.chunk.js.map": "/static/js/787.0c574e70.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f0c50fa2.css",
-    "static/js/main.038e61a4.js"
+    "static/css/main.8e9f7407.css",
+    "static/js/main.dfdde6f7.js"
   ]
 }
