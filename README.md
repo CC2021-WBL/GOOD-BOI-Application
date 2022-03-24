@@ -45,6 +45,8 @@ Nie wiesz co to obedience? https://johndog.pl/blog/zyciezpsem/obi-ogole-znaczy/
 ## Proces
 
 ### Zbudowane z użyciem
+![resized-image-Promo (1)](https://user-images.githubusercontent.com/56206231/160007326-75c93c0d-d463-4003-b021-bf2225bde932.jpeg)
+Zapraszamy do odnalezienia easter egg ukrytego w naszej apce :) ![resized-image-Promo (1)](https://user-images.githubusercontent.com/56206231/160007339-a1e10f70-9dfc-41bf-9bab-43d080a4bcca.jpeg)
 
 FRONTEND
 - React
