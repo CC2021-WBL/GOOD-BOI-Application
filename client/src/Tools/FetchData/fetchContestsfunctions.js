@@ -1,9 +1,9 @@
 import { ROLE_NAME } from '../../Consts/rolesConsts';
 import { genRequestOptionsPATCH, requestOptionsGET } from './requestOptions';
+import { generateErrorMessage } from '../../Tools/generateErrorMessage';
 
 export async function getContestsCards(userStateFromContext, locationPath) {
   let url = '/api/contests/card/data';
-
   if (
     userStateFromContext.selectedRole === ROLE_NAME.PARTICIPANT &&
     locationPath.state &&
@@ -31,21 +31,22 @@ export async function getContestsCards(userStateFromContext, locationPath) {
 }
 
 export async function fetchContestsForLandingPage() {
-  try {
-    let response = await fetch(
-      '/api/contests/card/data?taker=landing',
-      requestOptionsGET,
-    );
-    if (response.status === 200) {
-      response = await response.json();
-      return response;
-    } else {
-      return null;
-    }
-  } catch (error) {
-    console.log(error);
-    alert('Ooops, cos poszło nie tak');
+  // const [fetchErrors, setFetchErrors] = useState(null);
+  // try {
+  let response = await fetch(
+    '/api/contests/card/data?taker=landing',
+    requestOptionsGET,
+  );
+  if (response.status === 200) {
+    response = await response.json();
+    return response;
+  } else {
+    throw Error(generateErrorMessage(response.status));
   }
+  // } catch (error) {
+
+  // setFetchErrors(error.message);
+  // }
 }
 
 export async function finishClass(contestId, classNumber) {
