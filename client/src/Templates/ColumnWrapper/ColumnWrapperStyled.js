@@ -72,6 +72,7 @@ const ColumnWrapperStyled = styled.div`
     padding: 2.2rem 1rem 0 1rem;
     margin: 0 auto;
   }
+
   &.register-form-column-wrapper,
   &.contest-form-column-wrapper,
   &.role-page-column-wrapper,
