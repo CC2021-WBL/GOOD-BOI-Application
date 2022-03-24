@@ -3,12 +3,14 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import CLASSES from '../../Consts/classesConst';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import ErrorComponent from '../ErrorPage/ErrorComponent';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import Spinner from '../../Atoms/Spinner/Spinner';
 import { ContestContext } from '../../Context/ContestContext';
 import { DogContext } from '../../Context/DogContext';
 import { UserDataContext } from '../../Context/UserDataContext';
+import { generateErrorMessage } from '../../Tools/generateErrorMessage';
 import { postApplication } from '../../Tools/FetchData/fetchFormsFunctions';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import EnterCompetitionContainer from '../../Organisms/EnterCompetitionContainer/EnterCompetitionContainer';
@@ -36,25 +38,30 @@ const ClassChoicePage = () => {
     });
   }, [selectedClass]);
 
+  const [fetchErrors, setFetchErrors] = useState(null);
   useEffect(() => {
     async function getClasses() {
-      const response = await fetch(
-        `api/contests/classes/${contestId}`,
-        requestOptionsGET,
-      );
-      if (response.status === 200) {
-        const obedienceClassesObject = await response.json();
-        let classes = [];
-        if (obedienceClassesObject.length > 0) {
-          obedienceClassesObject.forEach((element) => {
-            classes.push(element.classNumber);
-          });
+      try {
+        const response = await fetch(
+          `api/contests/classes/${contestId}`,
+          requestOptionsGET,
+        );
+        if (response.status === 200) {
+          const obedienceClassesObject = await response.json();
+          let classes = [];
+          if (obedienceClassesObject.length > 0) {
+            obedienceClassesObject.forEach((element) => {
+              classes.push(element.classNumber);
+            });
+          }
+          setClassesArr(classes);
+        } else {
+          throw Error(generateErrorMessage(response.status));
         }
-        setClassesArr(classes);
-      } else {
-        alert('Ooops, coś poszło nie tak');
+        setIsPending(false);
+      } catch (error) {
+        setFetchErrors(error.message);
       }
-      setIsPending(false);
     }
     getClasses();
   }, []);
@@ -112,6 +119,10 @@ const ClassChoicePage = () => {
   };
 
   return (
+    <>
+      {fetchErrors ? (
+        <ErrorComponent message={fetchErrors} />
+      ) : (<>
     <ColumnWrapper className={`class-choice${enterCompetitionClassChoice()}`}>
       <ColumnWrapper
         paddingLeftRight={1}
@@ -150,6 +161,9 @@ const ClassChoicePage = () => {
         <EnterCompetitionContainer confirmation={confirmation} />
       )}
     </ColumnWrapper>
+        </>
+      )}
+    </>
   );
 };
 

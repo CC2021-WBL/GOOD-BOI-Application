@@ -3,12 +3,14 @@ import { useNavigate } from 'react-router-dom';
 
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import ErrorComponent from '../ErrorPage/ErrorComponent';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import Spinner from '../../Atoms/Spinner/Spinner';
 import { DOG_ACTIONS, USER_ACTIONS } from '../../Consts/reducersActions';
 import { DogContext } from '../../Context/DogContext';
 import { ROLE_NAME } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
+import { generateErrorMessage } from '../../Tools/generateErrorMessage';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import { ContestContext } from '../../Context/ContestContext';
 import DataLine from '../../Atoms/DataLine/DataLine';
@@ -21,6 +23,7 @@ const UserDogPage = () => {
   const [participantDogs, setParticipantDogs] = useState(null);
   const navigate = useNavigate();
   const { dogState, dogDispatch } = useContext(DogContext);
+  const [fetchErrors, setFetchErrors] = useState(null);
   const { dogs } = dogState;
   const { contestState } = useContext(ContestContext);
 
@@ -52,10 +55,10 @@ const UserDogPage = () => {
               payload: { dogs: response.dogs, chosenDog: {} },
             });
           } else {
-            alert('Ooops! nie udało się pobrać danych z serwera');
+            throw Error(generateErrorMessage(response.status));
           }
         } catch (error) {
-          console.log(error);
+          setFetchErrors(error.message);
         }
       }
 
@@ -80,6 +83,11 @@ const UserDogPage = () => {
   };
 
   return (
+    <>
+      {fetchErrors ? (
+        <ErrorComponent message={fetchErrors} />
+      ) : (
+        <>
     <ColumnWrapper className={`user-dogs${enterCompetitionUserDogs()}`}>
       <ColumnWrapper
         paddingLeftRight={1}
@@ -115,6 +123,9 @@ const UserDogPage = () => {
       </ColumnWrapper>
       {contestState.contestId !== null && <EnterCompetitionContainer />}
     </ColumnWrapper>
+        </>
+      )}
+    </>
   );
 };
 

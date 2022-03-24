@@ -5,8 +5,10 @@ import { useParams } from 'react-router-dom';
 import CLASSES from '../../Consts/classesConst';
 import ClassOrDogButton from '../../Molecules/ClassOrDogButton/ClassOrDogButton';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
+import ErrorComponent from '../ErrorPage/ErrorComponent';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import { finishClass } from '../../Tools/FetchData/fetchContestsfunctions';
+import { generateErrorMessage } from '../../Tools/generateErrorMessage';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const ClassCompetitorsPage = () => {
@@ -14,17 +16,23 @@ const ClassCompetitorsPage = () => {
   const [isClassFinished, setIsClassFinished] = useState(null);
   const { contestId, classId } = useParams();
   const navigate = useNavigate();
-
+  const [fetchErrors, setFetchErrors] = useState(null);
   useEffect(() => {
     async function fetchDogList() {
-      const response = await fetch(
-        `/api/contests/participants/${contestId}/${classId}`,
-        requestOptionsGET,
-      );
-      if (response && response.status === 200) {
-        const forClassObj = await response.json();
-        setIsClassFinished(forClassObj.isFinished);
-        setDogList(forClassObj.participants);
+      try {
+        const response = await fetch(
+          `/api/contests/participants/${contestId}/${classId}`,
+          requestOptionsGET,
+        );
+        if (response && response.status === 200) {
+          const forClassObj = await response.json();
+          setIsClassFinished(forClassObj.isFinished);
+          setDogList(forClassObj.participants);
+        } else {
+          throw Error(generateErrorMessage(response.status));
+        }
+      } catch (error) {
+        setFetchErrors(error.message);
       }
     }
     fetchDogList();
@@ -40,40 +48,48 @@ const ClassCompetitorsPage = () => {
   }
 
   return (
-    <ColumnWrapper
-      paddingLeftRight={1}
-      paddingTop={0.25}
-      maxWidthBigScreen={35}
-      className="class-competitors-wrapper grid-position"
-    >
-      {dogList &&
-        dogList.map((dog, index) => {
-          const { dogId, dogName, resultsId } = dog;
+    <>
+      {fetchErrors ? (
+        <ErrorComponent message={fetchErrors} />
+      ) : (
+        <>
+          <ColumnWrapper
+            paddingLeftRight={1}
+            paddingTop={0.25}
+            maxWidthBigScreen={35}
+            className="class-competitors-wrapper grid-position"
+          >
+            {dogList &&
+              dogList.map((dog, index) => {
+                const { dogId, dogName, resultsId } = dog;
 
-          const exercisesCompleted = resultsId.exercises.filter(
-            (exercise) => exercise.result != null,
-          ).length;
+                const exercisesCompleted = resultsId.exercises.filter(
+                  (exercise) => exercise.result != null,
+                ).length;
 
-          return (
-            <ClassOrDogButton
-              key={dogId}
-              dogInfo={{
-                index,
-                dogId,
-                dogName,
-                exercisesCompleted,
-                exercisesAmount,
-                results: resultsId,
-              }}
+                return (
+                  <ClassOrDogButton
+                    key={dogId}
+                    dogInfo={{
+                      index,
+                      dogId,
+                      dogName,
+                      exercisesCompleted,
+                      exercisesAmount,
+                      results: resultsId,
+                    }}
+                  />
+                );
+              })}
+            <MainButton
+              onClick={onClassFinishClick}
+              secondary
+              text={isClassFinished ? 'WRÓĆ DO OCENY' : 'ZAKOŃCZ KLASĘ'}
             />
-          );
-        })}
-      <MainButton
-        onClick={onClassFinishClick}
-        secondary
-        text={isClassFinished ? 'WRÓĆ DO OCENY' : 'ZAKOŃCZ KLASĘ'}
-      />
-    </ColumnWrapper>
+          </ColumnWrapper>
+        </>
+      )}
+    </>
   );
 };
 

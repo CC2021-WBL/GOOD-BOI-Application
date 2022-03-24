@@ -1,12 +1,14 @@
 import { useContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import DataLine from '../../Atoms/DataLine/DataLine';
-import PropTypes from 'prop-types';
+import ErrorComponent from '../../PagesBody/ErrorPage/ErrorComponent';
 import SpecialButton from '../../Atoms/SpecialButton/SpecialButton';
 import SpecialButtonsContainerStyled from '../../Molecules/SpecialButtonsContainer/SpecialButtonsContainerStyled';
 import Spinner from '../../Atoms/Spinner/Spinner';
 import renderParticipantData from '../../Tools/renderParticipantData';
+import { generateErrorMessage } from '../../Tools/generateErrorMessage';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import { useNavigate } from 'react-router-dom';
 import { DogContext } from '../../Context/DogContext';
@@ -16,6 +18,7 @@ import { UserDataContext } from '../../Context/UserDataContext';
 
 const ParticipantData = ({ id }) => {
   let navigate = useNavigate();
+  const [fetchErrors, setFetchErrors] = useState(null);
   const [participantData, setParticipantData] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const { dogState } = useContext(DogContext);
@@ -23,18 +26,22 @@ const ParticipantData = ({ id }) => {
   const { contestState } = useContext(ContestContext);
 
   useEffect(() => {
-    try {
-      async function fetchParticipantData() {
+    async function fetchParticipantData() {
+      try {
         const response = await fetch(`/api/users/${id}`, requestOptionsGET);
-        const result = await response.json();
-        setParticipantData(result);
-        setIsPending(false);
+        if (!response.ok) {
+          setIsPending(false);
+          throw Error(generateErrorMessage(response.status));
+        } else {
+          const result = await response.json();
+          setParticipantData(result);
+          setIsPending(false);
+        }
+      } catch (error) {
+        setFetchErrors(error.message);
       }
-
-      fetchParticipantData();
-    } catch (error) {
-      console.log(error);
     }
+    fetchParticipantData();
   }, []);
 
   const handleEdit = (event) => {
@@ -67,47 +74,53 @@ const ParticipantData = ({ id }) => {
   };
 
   return (
-    <ColumnWrapper
-      className={`participant-data${enterCompetitionParticipantData()}`}
-    >
-      <ColumnWrapper
-        className={`participant-data-container${enterCompetitionParticipantData()}`}
-      >
-        <SpecialButtonsContainerStyled>
-          <SpecialButton
-            left
-            text="edytuj"
-            handler={handleEdit}
-            colors="blue"
-          />
-          <SpecialButton
-            right
-            text="potwierdź"
-            handler={handleConfirm}
-            colors="green"
-          />
-        </SpecialButtonsContainerStyled>
+    <>
+      {fetchErrors ? (
+        <ErrorComponent message={fetchErrors} />
+      ) : (
         <ColumnWrapper
-          paddingLeftRight={1}
-          className="participant-data-details"
+          className={`participant-data${enterCompetitionParticipantData()}`}
         >
-          {isPending && <Spinner />}
-          {participantData &&
-            Object.entries(renderParticipantData(participantData)).map(
-              (dataLine, index) => <DataLine key={index} text={dataLine} />,
-            )}
+          <ColumnWrapper
+            className={`participant-data-container${enterCompetitionParticipantData()}`}
+          >
+            <SpecialButtonsContainerStyled>
+              <SpecialButton
+                left
+                text="edytuj"
+                handler={handleEdit}
+                colors="blue"
+              />
+              <SpecialButton
+                right
+                text="potwierdź"
+                handler={handleConfirm}
+                colors="green"
+              />
+            </SpecialButtonsContainerStyled>
+            <ColumnWrapper
+              paddingLeftRight={1}
+              className="participant-data-details"
+            >
+              {isPending && <Spinner />}
+              {participantData &&
+                Object.entries(renderParticipantData(participantData)).map(
+                  (dataLine, index) => <DataLine key={index} text={dataLine} />,
+                )}
+            </ColumnWrapper>
+            <ColumnWrapper
+              paddingLeftRight={1}
+              className="participant-data-details-bar"
+            >
+              Dane uczestnika
+            </ColumnWrapper>
+          </ColumnWrapper>
+          {dogState.chosenDog !== {} && contestState.contestId !== null && (
+            <EnterCompetitionContainer />
+          )}
         </ColumnWrapper>
-        <ColumnWrapper
-          paddingLeftRight={1}
-          className="participant-data-details-bar"
-        >
-          Dane uczestnika
-        </ColumnWrapper>
-      </ColumnWrapper>
-      {dogState.chosenDog !== {} && contestState.contestId !== null && (
-        <EnterCompetitionContainer />
       )}
-    </ColumnWrapper>
+    </>
   );
 };
 

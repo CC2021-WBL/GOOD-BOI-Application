@@ -8,6 +8,7 @@ import ContestDetailsContent from './ContestDetailsContent/ContestDetailsContent
 import ContestDetailsEmptyBarStyled from '../../Atoms/ContestDetailsEmptyBar/ContestDetailsEmptyBarStyled';
 import ContestDetailsMap from './ContestDetailsMap/ContestDetailsMap';
 import ContestDetailsToggler from './ContestDetailsToggler/ContestDetailsToggler';
+import ErrorComponent from '../../PagesBody/ErrorPage/ErrorComponent';
 import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import Modal from '../Modal/Modal';
@@ -15,6 +16,7 @@ import Spinner from '../../Atoms/Spinner/Spinner';
 import modalData from '../../Consts/modalData';
 import useWindowSize from '../../Hooks/useWindowSize';
 import { UserDataContext } from '../../Context/UserDataContext';
+import { generateErrorMessage } from '../../Tools/generateErrorMessage';
 import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const ContestDetails = ({ contestId }) => {
@@ -24,22 +26,26 @@ const ContestDetails = ({ contestId }) => {
   const [contestData, setContestData] = useState(null);
   const [isCloseContestModalOpen, setIsCloseContestModalOpen] = useState(false);
   const navigate = useNavigate();
-
+  const [fetchErrors, setFetchErrors] = useState(null);
   const [toggle, setToggle] = useState(true);
   const { width } = useWindowSize();
 
   useEffect(() => {
     async function fetchContestData() {
-      const response = await fetch(
-        `/api/contests/${contestId}`,
-        requestOptionsGET,
-      );
-      if (response.ok) {
-        const result = await response.json();
-        setContestData(result);
-        console.log(result);
-        setIsPending(false);
-      } else {
+      try {
+        const response = await fetch(
+          `/api/contests/${contestId}`,
+          requestOptionsGET,
+        );
+        if (response.ok) {
+          const result = await response.json();
+          setContestData(result);
+          setIsPending(false);
+        } else {
+          throw Error(generateErrorMessage(response.status));
+        }
+      } catch (error) {
+        setFetchErrors(error.message);
       }
     }
     fetchContestData();
@@ -87,6 +93,11 @@ const ContestDetails = ({ contestId }) => {
   };
 
   return (
+    <>
+      {fetchErrors ? (
+        <ErrorComponent message={fetchErrors} />
+      ) : (
+        <>
     <ColumnWrapper
       className="contest-data grid-position"
       contentPosition={isAuthenticated}
@@ -152,6 +163,9 @@ const ContestDetails = ({ contestId }) => {
         </>
       )}
     </ColumnWrapper>
+        </>
+      )}
+    </>
   );
 };
 
