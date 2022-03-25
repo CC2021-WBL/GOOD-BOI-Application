@@ -77,7 +77,7 @@ BACKEND
 - mongoDB: nierelacyjna baza danych
 - passport: autoryzacja
 - swagger: automatyczna dokumentacja api
-- cypress: testy
+
 
 ### W przyszłości
 
