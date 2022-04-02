@@ -1,7 +1,10 @@
-import ContestForm from '../../Organisms/ContestForm/ContestForm';
+// import ContestForm from '../../Organisms/ContestForm/ContestForm';
+
+import FormikTestForm from '../../Organisms/ContestForm/FormikTestForm';
 
 const AddContestFormPage = () => {
-  return <ContestForm />;
+  // return <ContestForm />;
+  return <FormikTestForm />;
 };
 
 export default AddContestFormPage;
