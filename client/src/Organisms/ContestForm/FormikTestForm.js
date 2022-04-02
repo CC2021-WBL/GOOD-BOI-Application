@@ -5,8 +5,6 @@ import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ContestFormHeader from './ContestFormHeader';
 import MainButton from '../../Atoms/MainButton/MainButton';
 
-// import ContestFormHeader from './ContestFormHeader';
-
 const Input = styled.input`
   height: 2rem;
   width: 40%;
@@ -30,30 +28,32 @@ const FormikTestForm = () => {
           console.log(values);
         }}
       >
-        {/* <form> */}
-          <label style={{ paddingRight: '10rem', fontWeight: 'bold' }}>
-            input1{' '}
-            <Input
-              placeholder="put input here"
-              style={{ height: '2rem', padding: '.5rem' }}
-            ></Input>
-          </label>
-          <label style={{ paddingRight: '10rem', fontWeight: 'bold' }}>
-            input2{' '}
-            <Input
-              placeholder="put input here"
-              style={{ height: '2rem', padding: '.5rem' }}
-            ></Input>
-          </label>
-          <label style={{ paddingRight: '10rem', fontWeight: 'bold' }}>
-            input3{' '}
-            <Input
-              placeholder="put input here"
-              style={{ height: '2rem', padding: '.5rem' }}
-            ></Input>
-          </label>
-        {/* </form>  */}
-        <MainButton text="zarejestruj sie" />
+        {(formik) => (
+          <form>
+            <label style={{ paddingRight: '10rem', fontWeight: 'bold' }}>
+              input1{' '}
+              <Input
+                placeholder="put input here"
+                style={{ height: '2rem', padding: '.5rem' }}
+              ></Input>
+            </label>
+            <label style={{ paddingRight: '10rem', fontWeight: 'bold' }}>
+              input2{' '}
+              <Input
+                placeholder="put input here"
+                style={{ height: '2rem', padding: '.5rem' }}
+              ></Input>
+            </label>
+            <label style={{ paddingRight: '10rem', fontWeight: 'bold' }}>
+              input3{' '}
+              <Input
+                placeholder="put input here"
+                style={{ height: '2rem', padding: '.5rem' }}
+              ></Input>
+            </label>
+            <MainButton text="zarejestruj sie" />
+          </form>
+        )}
       </Formik>
     </ColumnWrapper>
   );
