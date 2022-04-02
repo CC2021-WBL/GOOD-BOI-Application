@@ -14,6 +14,16 @@ const ColumnWrapperStyled = styled.div`
     props.paddingBottom && `${props.paddingBottom}rem`};
   grid-area: 3 / 1 / 4 / 2;
 
+  &.error-wrapper {
+    height: 20%;
+    align-items: center;
+    padding: 20px;
+    img {
+      height: 5rem;
+      width: 5rem;
+    }
+  }
+  
   &.not-found-wrapper {
     text-align: center;
     display: flex;
@@ -64,13 +74,15 @@ const ColumnWrapperStyled = styled.div`
     text-align: center;
   }
   &.participant-data-details-bar,
-  &.dog-data-details-bar {
+  &.dog-data-details-bar,
+  &.enter-competition-container {
     display: none;
   }
   &.manager-page {
     padding: 2.2rem 1rem 0 1rem;
     margin: 0 auto;
   }
+
   &.register-form-column-wrapper,
   &.contest-form-column-wrapper,
   &.role-page-column-wrapper,
@@ -128,13 +140,6 @@ const ColumnWrapperStyled = styled.div`
     max-width: ${(props) =>
       props.maxWidthBigScreen && `${props.maxWidthBigScreen}rem`};
     align-items: ${(props) => props.alignItems && `${props.alignItems}`};
-
-    &.form-wrapper {
-      grid-area: 3 / 1 / 4 / 3;
-      margin: 1rem auto 0;
-      border: 2px solid ${({ theme }) => theme.grey200};
-      border-radius: 0.9375rem;
-    }
 
     &.user-dogs-column-wrapper {
       align-items: flex-end;
@@ -197,9 +202,6 @@ const ColumnWrapperStyled = styled.div`
       align-items: center;
     }
 
-    &.user-dogs-column-wrapper {
-      align-items: center;
-    }
     &.user-profile {
       display: grid;
       height: 100%;
@@ -278,14 +280,62 @@ const ColumnWrapperStyled = styled.div`
       justify-content: space-between;
       padding: 1rem;
     }
-    @media only screen and (min-width: 1600px) {
+
+    &.form-wrapper {
+      margin: 1rem auto 0;
+      border: 2px solid ${({ theme }) => theme.grey200};
+      border-radius: 0.9375rem;
+    }
+
+    &.user-dogs-enter-competition,
+    &.dog-data-enter-competition,
+    &.participant-data-enter-competition,
+    &.class-choice-enter-competition,
+    &.confirmation-enter-competition {
+      display: grid;
+      height: 100%;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+    }
+
+    &.enter-competition-container-full {
+      grid-area: 1/2/2/3;
+    }
+    &.enter-competition-container {
+      border: 1px solid ${({ theme }) => theme.grey200};
+      border-radius: 0.9375rem;
+      display: flex;
+      height: fit-content;
+    }
+
+    &.user-dogs-column-wrapper-enter-competition {
+      grid-area: 1/1/2/2;
+      align-items: center;
+    }
+
+    &.participant-data-container-enter-competition,
+    &.dog-data-container-enter-competition,
+    &.class-choice-wrapper-enter-competition,
+    &.confirmation-container-enter-competition {
+      grid-area: 1/1/2/2;
+      display: flex;
+      height: fit-content;
+      margin-top: 1rem;
+    }
+    &.participant-data-container-enter-competition,
+    &.dog-data-container-enter-competition {
+      flex-direction: column-reverse;
+    }
+  }
+
+  @media only screen and (min-width: 1600px) {
+    grid-area: 3 / 3 / 4 / 4;
+
+    &.grid-position {
+      grid-area: 3/3/4/4;
+    }
+    &.form-wrapper {
       grid-area: 3 / 3 / 4 / 4;
-      &.grid-position {
-        grid-area: 3 / 3 / 4 / 4;
-      }
-      &.form-wrapper {
-        grid-area: 3 / 3 / 4 / 4;
-      }
     }
   }
 `;

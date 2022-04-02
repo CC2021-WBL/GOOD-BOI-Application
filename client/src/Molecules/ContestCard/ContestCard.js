@@ -53,6 +53,8 @@ const ContestCard = ({ contestData, className }) => {
       payload: {
         contestId: _id,
         contestName: contestName,
+        contestAddress: address,
+        contestStartDate: stringDate,
       },
     });
   };

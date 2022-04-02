@@ -23,11 +23,9 @@ const { checkContestAndCurrentClassExist } = require('../Tools/checkingTools');
 
 //get - leaderboard with summary results from current class in current contest
 router.get('/general/:contestId/:classId', async (req, res) => {
-  try {
-    const summResultsAndName = await getResultSummaryAndName(req, res);
+  const summResultsAndName = await getResultSummaryAndName(req, res);
+  if (summResultsAndName) {
     res.status(200).send(summResultsAndName);
-  } catch (error) {
-    res.status(500).send(error.message);
   }
 });
 
@@ -50,7 +48,7 @@ router.get(
         });
       }
     } catch (error) {
-      res.status(500).json({ message: ERROR_MSG });
+      res.status(500).json({ message: ERROR_MSG[55] });
     }
   },
 );
@@ -70,7 +68,6 @@ router.get(
         res.status(200).send(results);
       } else {
         res.status(404).json({
-          success: false,
           message: ERROR_MSG[404],
         });
       }
@@ -101,14 +98,22 @@ router.post(
       res.status(409).send('no vacancies, the start list is full');
     } else {
       const savedResult = await registerResults(req, res);
-      await addApplicationDataToContest(
-        req,
-        res,
-        savedResult._id.valueOf(),
-        contest,
-      );
-      await addResultToDog(req, res, savedResult._id.valueOf());
-      res.status(201).json(savedResult);
+      if (savedResult) {
+        const updatedContest = await addApplicationDataToContest(
+          req,
+          res,
+          savedResult._id.valueOf(),
+          contest,
+        );
+        const updatedDog = await addResultToDog(
+          req,
+          res,
+          savedResult._id.valueOf(),
+        );
+        if (updatedContest && updatedDog) {
+          res.status(201).json(savedResult);
+        }
+      }
     }
   },
 );
@@ -119,11 +124,9 @@ router.patch(
   blockIfPublic,
   isStaffManagerOrAdmin,
   async (req, res) => {
-    try {
-      const result = await updateSomeResults(req, res);
+    const result = await updateSomeResults(req, res);
+    if (result) {
       res.status(201).send(result);
-    } catch (error) {
-      res.status(400).send(error.message);
     }
   },
 );

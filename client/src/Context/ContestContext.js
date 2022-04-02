@@ -8,6 +8,8 @@ export const ContestContext = createContext();
 const initialData = {
   contestId: null,
   contestName: null,
+  contestAddress: null,
+  contestStartDate: null,
 };
 
 export function ContestContextProvider({ children }) {
