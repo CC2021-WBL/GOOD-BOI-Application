@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 import { Formik } from 'formik';
+import { useContext, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ContestFormHeader from './ContestFormHeader';
+import FormWrapper from './../../Atoms/FormWrapper/FormWrapper';
 import MainButton from '../../Atoms/MainButton/MainButton';
+import { UserDataContext } from '../../Context/UserDataContext';
 
 const Input = styled.input`
   height: 2rem;
@@ -13,6 +17,18 @@ const Input = styled.input`
 `;
 
 const FormikTestForm = () => {
+  const [data, setData] = useState('');
+  const [amountOfJudges, setAmountOfJudges] = useState(0);
+  const [judgesArray, setJudgesArray] = useState([]);
+  const [chosenClasses, setChosenClasses] = useState([]);
+  const [redBorder, setRedBorder] = useState('');
+  const params = useParams();
+  const { state } = useContext(UserDataContext);
+
+  let managerId = state.userId;
+  if (!managerId) {
+    managerId = params.userId;
+  }
   return (
     <ColumnWrapper
       paddingLeftRight={3}
@@ -29,30 +45,30 @@ const FormikTestForm = () => {
         }}
       >
         {(formik) => (
-          <form>
+          <FormWrapper onSubmit={console.log('submit')}>
             <label style={{ paddingRight: '10rem', fontWeight: 'bold' }}>
-              input1{' '}
+              title{' '}
               <Input
                 placeholder="put input here"
                 style={{ height: '2rem', padding: '.5rem' }}
               ></Input>
             </label>
             <label style={{ paddingRight: '10rem', fontWeight: 'bold' }}>
-              input2{' '}
+              body{' '}
               <Input
                 placeholder="put input here"
                 style={{ height: '2rem', padding: '.5rem' }}
               ></Input>
             </label>
-            <label style={{ paddingRight: '10rem', fontWeight: 'bold' }}>
-              input3{' '}
+            <label style={{ paddingRight: '1rem', fontWeight: 'bold' }}>
+              rating{' '}
               <Input
                 placeholder="put input here"
                 style={{ height: '2rem', padding: '.5rem' }}
               ></Input>
             </label>
             <MainButton text="zarejestruj sie" />
-          </form>
+          </FormWrapper>
         )}
       </Formik>
     </ColumnWrapper>
