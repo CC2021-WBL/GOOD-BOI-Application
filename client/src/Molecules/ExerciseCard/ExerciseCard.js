@@ -1,22 +1,26 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
-import Exercise from '../../Atoms/Exercise/Exercise';
-import Points from '../Points/Points';
+import { useState } from 'react';
+
 import EditAccept from '../../Atoms/EditAccept/EditAccept';
+import Exercise from '../../Atoms/Exercise/Exercise';
 import ExerciseCardStyled from './ExerciseCardStyled';
+import Points from '../Points/Points';
 
 const ExerciseCard = ({ exerciseInfo, onChange }) => {
-  const [toggle, setToggle] = useState(true);
+  const [isEditMode, setIsEditMode] = useState(true);
 
   const toggleHandler = () => {
     setToggle((prevState) => !prevState);
+        if (!isEditMode) {
+      saveDataHandler();
+    }
   };
 
   return (
     <ExerciseCardStyled>
-      <Exercise codeName={exerciseInfo.codeName} toggle={toggle} />
-      <Points exerciseInfo={exerciseInfo} toggle={toggle} onChange={onChange} />
-      <EditAccept onClick={toggleHandler} toggle={toggle} />
+      <Exercise codeName={exerciseInfo.codeName} toggle={isEditMode} />
+      <Points exerciseInfo={exerciseInfo} toggle={isEditMode} onChange={onChange} />
+      <EditAccept onClick={toggleHandler} toggle={isEditMode} />
     </ExerciseCardStyled>
   );
 };
@@ -27,6 +31,7 @@ ExerciseCard.propTypes = {
     result: PropTypes.number,
   }),
   onChange: PropTypes.func.isRequired,
+  saveDataHandler: PropTypes.func.isRequired,
 };
 
 export default ExerciseCard;

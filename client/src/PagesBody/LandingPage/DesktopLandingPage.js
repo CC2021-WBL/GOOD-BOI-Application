@@ -61,9 +61,9 @@ const DesktopLandingPage = () => {
               <h3 className="incoming-contests">NADCHODZĄCE KONKURSY</h3>
               {isPending && <Spinner />}
               {contestData &&
-                contestData.map((contest) => (
+                contestData.map((contest, index) => (
                   <ContestCard
-                    key={contest.contestId}
+                    key={index}
                     contestData={contest}
                     className="last-card"
                   />
