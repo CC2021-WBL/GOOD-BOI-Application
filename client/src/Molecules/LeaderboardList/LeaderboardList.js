@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 import LeaderboardListElement from '../../Atoms/Leaderboard/LeaderboardListElement';
 import LeaderboardListStyled from './LeaderboardListStyled';
+import Spinner from '../../Atoms/Spinner/Spinner';
 import calculateExerciseScore from '../../Tools/calculateExerciseScore';
 import checkIfDisqualified from '../../Tools/checkIfDisqualified';
 import exerciseCode2string from '../../Tools/exerciseCode2string';
@@ -14,6 +15,7 @@ import {
 const LeaderboardList = ({ classId, dogId, contestId, result }) => {
   const [individualResult, setIndividualResult] = useState(null);
   const [classResult, setClassResult] = useState(null);
+  const [isPending, setIsPending] = useState(true);
   // if dogId is defined, then render dog-summary leaderboard
 
   useEffect(() => {
@@ -25,6 +27,7 @@ const LeaderboardList = ({ classId, dogId, contestId, result }) => {
           score: calculateExerciseScore(classId, elem.codeName) * elem.result,
         }));
         setIndividualResult(dogSummaryResult);
+        setIsPending(false);
       } else {
         const results = await getResultsForClassInContest(contestId, classId);
 
@@ -41,12 +44,13 @@ const LeaderboardList = ({ classId, dogId, contestId, result }) => {
 
         console.log(sortedLeaderboard);
         setClassResult(sortedLeaderboard);
+        setIsPending(false);
       }
     }
     fetchResults();
   }, []);
 
-  if (individualResult) {
+  if (individualResult && individualResult.length > 0) {
     return (
       <LeaderboardListStyled>
         {individualResult.map((arrElement, index) => {
@@ -73,7 +77,7 @@ const LeaderboardList = ({ classId, dogId, contestId, result }) => {
         })}
       </LeaderboardListStyled>
     );
-  } else if (classResult) {
+  } else if (classResult && classResult.length > 0) {
     return (
       <LeaderboardListStyled>
         {classResult.map((arrElement, index) => {
@@ -88,11 +92,13 @@ const LeaderboardList = ({ classId, dogId, contestId, result }) => {
         })}
       </LeaderboardListStyled>
     );
+  } else if (isPending) {
+    return <Spinner />;
   } else {
     return (
       <>
         <h2>
-          <br></br>Error! Brak danych dla tej kombinacji klasy i psa!
+          <br></br>Brak wyników
         </h2>
       </>
     );

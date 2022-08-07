@@ -15,7 +15,7 @@ const LeaderboardPage = () => {
   const isAllowedToGetDocs = () => {
     const isAllowed =
       isAuthenticated &&
-      roles &&
+      Array.isArray(roles) &&
       roles.include(ROLE_NAME.STAFF || ROLE_NAME.MANAGER || ROLE_NAME.ADMIN);
     console.log(isAllowed);
     return isAllowed;
