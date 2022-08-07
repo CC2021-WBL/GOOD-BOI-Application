@@ -5,9 +5,7 @@ import LeaderboardListElement from '../../Atoms/Leaderboard/LeaderboardListEleme
 import LeaderboardListStyled from './LeaderboardListStyled';
 import calculateExerciseScore from '../../Tools/calculateExerciseScore';
 import checkIfDisqualified from '../../Tools/checkIfDisqualified';
-import contests from '../../Data/MongoDBMock/contests';
 import exerciseCode2string from '../../Tools/exerciseCode2string';
-import results from '../../Data/MongoDBMock/results';
 import {
   getExercisesPoints,
   getResultsForClassInContest,

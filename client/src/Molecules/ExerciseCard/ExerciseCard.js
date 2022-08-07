@@ -6,12 +6,12 @@ import Exercise from '../../Atoms/Exercise/Exercise';
 import ExerciseCardStyled from './ExerciseCardStyled';
 import Points from '../Points/Points';
 
-const ExerciseCard = ({ exerciseInfo, onChange }) => {
+const ExerciseCard = ({ exerciseInfo, onChange, saveDataHandler }) => {
   const [isEditMode, setIsEditMode] = useState(true);
 
   const toggleHandler = () => {
-    setToggle((prevState) => !prevState);
-        if (!isEditMode) {
+    setIsEditMode((prevState) => !prevState);
+    if (!isEditMode) {
       saveDataHandler();
     }
   };
@@ -19,7 +19,11 @@ const ExerciseCard = ({ exerciseInfo, onChange }) => {
   return (
     <ExerciseCardStyled>
       <Exercise codeName={exerciseInfo.codeName} toggle={isEditMode} />
-      <Points exerciseInfo={exerciseInfo} toggle={isEditMode} onChange={onChange} />
+      <Points
+        exerciseInfo={exerciseInfo}
+        toggle={isEditMode}
+        onChange={onChange}
+      />
       <EditAccept onClick={toggleHandler} toggle={isEditMode} />
     </ExerciseCardStyled>
   );
