@@ -79,7 +79,7 @@ const ClassOrDogButton = ({ classInfo, dogInfo, noInfoLabel, className }) => {
 
 ClassOrDogButton.propTypes = {
   classInfo: PropTypes.shape({
-    obedienceClass: PropTypes.string.isRequired,
+    obedienceClass: PropTypes.number.isRequired,
     dogsAmount: PropTypes.number.isRequired,
     isCompleted: PropTypes.bool,
   }),
