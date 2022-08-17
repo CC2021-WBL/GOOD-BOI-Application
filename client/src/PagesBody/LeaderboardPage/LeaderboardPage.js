@@ -1,7 +1,11 @@
+import { useContext } from 'react';
+import { useParams } from 'react-router-dom';
+
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import LeaderboardList from '../../Molecules/LeaderboardList/LeaderboardList';
 import MainButtonStyled from '../../Atoms/MainButton/MainButton';
-import { useParams } from 'react-router-dom';
+import { ROLE_NAME } from '../../Consts/rolesConsts';
+import { UserDataContext } from '../../Context/UserDataContext';
 
 const LeaderboardPage = () => {
   const { contestId, classId } = useParams();
@@ -16,6 +20,7 @@ const LeaderboardPage = () => {
     console.log(isAllowed);
     return isAllowed;
   };
+
   return (
     <ColumnWrapper paddingLeftRight={1}>
       <LeaderboardList contestId={contestId} classId={classId} />

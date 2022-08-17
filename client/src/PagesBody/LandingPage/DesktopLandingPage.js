@@ -53,9 +53,9 @@ const DesktopLandingPage = () => {
               className="contests-column-wrapper"
             >
               <TitleWrapperStyled>
-              <h1>{GOOD_BOI}</h1>
+                <h1>{GOOD_BOI}</h1>
                 <h3>
-                {APP_DESCRIPTION_PART_1} <br /> {APP_DESCRIPTION_PART_2}
+                  {APP_DESCRIPTION_PART_1} <br /> {APP_DESCRIPTION_PART_2}
                 </h3>
                 <FakeButton
                   colors="primary"

@@ -117,7 +117,7 @@ const ExercisesPage = () => {
     }
   };
 
-  const saveDataHandler = async () => {
+    const saveDataHandler = async () => {
     const isUpdated = await updateExercisesPoints(resultId, dogPerformance);
     console.log(isUpdated);
   };
@@ -174,8 +174,8 @@ const ExercisesPage = () => {
               {dogPerformance && (
                 <ExerciseCardsContainer
                   dogPerformance={dogPerformance.exercises}
-                  setDogPerformance={setDogPerformance}
-                  saveDataHandler={saveDataHandler}
+                    setDogPerformance={setDogPerformance}
+                    saveDataHandler={saveDataHandler}
                 />
               )}
             </ColumnWrapper>
