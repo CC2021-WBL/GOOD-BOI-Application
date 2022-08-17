@@ -59,7 +59,7 @@ const Nav = () => {
             STRONA GŁÓWNA
           </NavLinkStyled>
           <NavLinkStyled to="/contests" stylefor="Navbar">
-            AKTUALNE KONKURSY
+            WSZYSTKIE ZAWODY
           </NavLinkStyled>
           <NavButtons />
         </NavInnerStyled>

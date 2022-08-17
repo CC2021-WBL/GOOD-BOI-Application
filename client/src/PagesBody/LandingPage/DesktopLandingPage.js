@@ -8,6 +8,12 @@ import FakeButton from '../../Atoms/FakeButton/FakeButton';
 import Spinner from '../../Atoms/Spinner/Spinner';
 import TitleWrapperStyled from '../../Molecules/LandingDesktopTitle/TitleWrapperStyled';
 import mockmap from '../../Assets/mockMAP.JPG';
+import {
+  APP_DESCRIPTION_PART_1,
+  APP_DESCRIPTION_PART_2,
+  GOOD_BOI,
+  UPCOMING_COMPETITIONS,
+} from '../../Consts/landingPage.texts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { fetchContestsForLandingPage } from '../../Tools/FetchData/fetchContestsfunctions';
 
@@ -47,9 +53,9 @@ const DesktopLandingPage = () => {
               className="contests-column-wrapper"
             >
               <TitleWrapperStyled>
-                <h1>GOOD BOI</h1>
+                <h1>{GOOD_BOI}</h1>
                 <h3>
-                  portal zrzeszający fanów <br /> dobrych pieskow
+                  {APP_DESCRIPTION_PART_1} <br /> {APP_DESCRIPTION_PART_2}
                 </h3>
                 <FakeButton
                   colors="primary"
@@ -58,12 +64,12 @@ const DesktopLandingPage = () => {
                   className="landing-desktop-login"
                 />
               </TitleWrapperStyled>
-              <h3 className="incoming-contests">NADCHODZĄCE KONKURSY</h3>
+              <h3 className="incoming-contests">{UPCOMING_COMPETITIONS}</h3>
               {isPending && <Spinner />}
               {contestData &&
-                contestData.map((contest) => (
+                contestData.map((contest, index) => (
                   <ContestCard
-                    key={contest.contestId}
+                    key={index}
                     contestData={contest}
                     className="last-card"
                   />
