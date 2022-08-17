@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ExerciseCard from '../../Molecules/ExerciseCard/ExerciseCard';
 
-const ExerciseCardsContainer = ({ dogPerformance, setDogPerformance }) => {
+const ExerciseCardsContainer = ({
+  dogPerformance,
+  setDogPerformance, 
+  saveDataHandler,
+}) => {
   const performanceSaveHandler = (event) => {
     if (
       event.target.value < 0 ||
@@ -29,6 +33,7 @@ const ExerciseCardsContainer = ({ dogPerformance, setDogPerformance }) => {
             key={exercise.codeName}
             exerciseInfo={exercise}
             onChange={performanceSaveHandler}
+            saveDataHandler={saveDataHandler}
           />
         ))}
       </ColumnWrapper>
@@ -38,6 +43,8 @@ const ExerciseCardsContainer = ({ dogPerformance, setDogPerformance }) => {
 
 ExerciseCardsContainer.propTypes = {
   dogPerformance: PropTypes.any,
+  setDogPerformance: PropTypes.func,
+  saveDataHandler: PropTypes.func.isRequired,
 };
 
 export default ExerciseCardsContainer;
