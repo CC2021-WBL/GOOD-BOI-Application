@@ -36,7 +36,7 @@ const DogSummaryPage = () => {
       <LeaderboardList
         contestId={contestId}
         classId={classId}
-        dogName={dogId}
+        dogId={dogId}
         result={dogPerformance.exercises}
       />
       <PenaltyOrDisqualifiedLine result={dogPerformance} />

@@ -16,7 +16,7 @@ const LeaderboardPage = () => {
     const isAllowed =
       isAuthenticated &&
       Array.isArray(roles) &&
-      roles.include(ROLE_NAME.STAFF || ROLE_NAME.MANAGER || ROLE_NAME.ADMIN);
+      roles.includes(ROLE_NAME.STAFF || ROLE_NAME.MANAGER || ROLE_NAME.ADMIN);
     console.log(isAllowed);
     return isAllowed;
   };

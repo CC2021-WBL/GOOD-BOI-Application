@@ -63,7 +63,7 @@ const LoginForm = () => {
           <div>
             Nie masz konta?
             <Link to="/register" className="forgot-pass">
-              <> </>Zarejestruj się?
+              <> </>Zarejestruj się
             </Link>
           </div>
         </FormWrapper>
