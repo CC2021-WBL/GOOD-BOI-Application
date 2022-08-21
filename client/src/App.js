@@ -23,7 +23,6 @@ import InProgressPage from './PagesBody/InProgressPage/InProgressPage';
 import LandingPage from './PagesBody/LandingPage/LandingPage';
 import Layout from './Templates/Layout/Layout';
 import LeaderboardPage from './PagesBody/LeaderboardPage/LeaderboardPage';
-import LoginForm from './Organisms/LoginForm/LoginForm';
 import ManagerPage from './PagesBody/ManagerPage/ManagerPage';
 import NotFoundPage from './PagesBody/NotFoundPage/NotFoundPage';
 import ParticipantDataPage from './PagesBody/ParticipantDataPage/ParticipantDataPage';
@@ -40,6 +39,7 @@ import { GlobalStyles } from './Styles/globalStyles';
 import { UserDataProvider } from './Context/UserDataContext';
 import { darkTheme, lightTheme } from './Styles/Themes';
 import { useDarkMode } from './Hooks/useDarkMode';
+import LoginPage from './PagesBody/LoginPage/LoginPage';
 
 function App() {
   const [theme, themeToggler, mountedComponent] = useDarkMode();
@@ -86,7 +86,7 @@ function App() {
                         path="unregistered"
                         element={<UnregisteredPage />}
                       />
-                      <Route path="login" element={<LoginForm />} />
+                      <Route path="login" element={<LoginPage />} />
                       <Route path="in-progress" element={<InProgressPage />} />
                     </Route>
                     <Route element={<Layout withLabel />}>

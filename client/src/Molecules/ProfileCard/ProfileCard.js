@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import ProfileCardStyled from './ProfileCardStyled';
 import UserProfileData from '../../Atoms/UserProfileData/UserProfileData';
 
-const ProfileCard = ({ withEdit, initialState, className, isBigScreen }) => {
+const ProfileCard = ({ withEdit, initialState, className, isBigScreen, userData, fetchErrors }) => {
   return (
     <>
       {withEdit ? (
@@ -13,6 +13,8 @@ const ProfileCard = ({ withEdit, initialState, className, isBigScreen }) => {
             initialState={initialState}
             className={className}
             isBigScreen={isBigScreen}
+            userData={userData}
+            fetchErrors={fetchErrors}
           />
         </ProfileCardStyled>
       ) : (

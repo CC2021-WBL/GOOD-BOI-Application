@@ -11,7 +11,7 @@ import MainButton from '../../Atoms/MainButton/MainButton';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { loginUser } from '../../Tools/FetchData/fetchFunctions';
 
-const LoginForm = () => {
+const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { dispatch } = useContext(UserDataContext);
@@ -72,4 +72,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default LoginPage;

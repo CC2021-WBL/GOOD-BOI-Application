@@ -43,6 +43,11 @@ router.get('/logout', (req, res) => {
 // Middleware to check JWT
 router.use(auth);
 
+router.get('/jwt', blockIfPublic, async (req, res) => {
+  const userData = await userDbFunc.getUserDataByJwt(req, res);
+  res.status(200).send(userData);
+});
+
 //Update some data of current user
 router.patch('/:userId', blockIfPublic, isUserOrAdmin, async (req, res) => {
   const updatedUser = await userDbFunc.updateUserData(req, res);
