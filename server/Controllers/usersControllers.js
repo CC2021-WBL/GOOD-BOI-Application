@@ -29,6 +29,19 @@ async function registerParticipant(req, res) {
   }
 }
 
+async function getUserDataByJwt(req, res) {
+  try {
+    const data = await Participant.findById(req.user._id);
+    if (!data) {
+      res.status(404).json({ message: ERROR_MSG[404] });
+    }
+    return data;
+  } catch (error) {
+    res.status(500).json({ message: ERROR_MSG[500] });
+  }
+  
+}
+
 async function getUserData(req, res) {
   try {
     let data;
@@ -136,4 +149,5 @@ module.exports = {
   updateUserData,
   updateDogsArray,
   changeDogDataInParticipants,
+  getUserDataByJwt,
 };

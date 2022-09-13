@@ -1,71 +1,36 @@
 import propTypes from 'prop-types';
 import { FaRegTimesCircle } from 'react-icons/fa';
-import { useContext, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useContext, useState } from 'react';
 
 import ErrorComponent from '../../PagesBody/ErrorPage/ErrorComponent';
 import RegistrationFormSignup from '../../Organisms/RegistrationForm/RegistrationFormSignup';
 import UserProfileDataStyled from './UserProfileDataStyled';
 import createUserInitialData from '../../Tools/createUserInitialData';
 import { UserDataContext } from '../../Context/UserDataContext';
-import { generateErrorMessage } from '../../Tools/generateErrorMessage';
-import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const UserProfileData = ({
   withEdit,
   initialState,
   className,
   isBigScreen,
+  userData,
+  fetchErrors,
 }) => {
-  const navigate = useNavigate();
   const { state } = useContext(UserDataContext);
-  const { userId, userName, userSurname, isAuthenticated } = state;
-  const [fetchErrors, setFetchErrors] = useState(null);
-  const paramsUserData = useParams();
-
-  let userData = userId;
-  if (!userData) {
-    userData = paramsUserData.userId;
-  }
-  const [userObject, setUserObject] = useState(createUserInitialData(state));
-  const [toggle, setToggle] = useState(false);
+  const { userName, userSurname } = state;
+  const [userObject, setUserObject] = useState(createUserInitialData(userData));
+  const [toggle, setToggle] = useState(isBigScreen);
 
   const toggleHandler = () => {
     setToggle((prevState) => !prevState);
   };
 
-  const submitForm = () => {};
+  const submitForm = () => {
+    console.log(userObject);
+  };
 
   const { address, participantName, participantSurname } = userObject;
   const { street, numberOfHouse, city, postalCode } = address;
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate('/login');
-    } else {
-      async function getUserProfileData() {
-        try {
-          let response = await fetch(
-            `/api/users/${userData}?taker=profile`,
-            requestOptionsGET,
-          );
-          if (!response.ok) {
-            throw Error(generateErrorMessage(response.status));
-          } else {
-            response = await response.json();
-            setUserObject(response);
-          }
-        } catch (error) {
-          setFetchErrors(error.message);
-        }
-      }
-
-      getUserProfileData();
-    }
-    if (isBigScreen) {
-      return setToggle(true);
-    }
-  }, []);
 
   return (
     <>
@@ -121,11 +86,17 @@ const UserProfileData = ({
 
 UserProfileData.propTypes = {
   userData: propTypes.shape({
-    isAuthenticated: propTypes.bool.isRequired,
-    userId: propTypes.string.isRequired,
-    userName: propTypes.string,
-    userSurname: propTypes.string,
-    roles: propTypes.arrayOf(propTypes.string),
+    _id: propTypes.string.isRequired,
+    participantName: propTypes.string,
+    participantSurname: propTypes.string,
+    portalRoles: propTypes.arrayOf(propTypes.string),
+    address: propTypes.shape({
+      city: propTypes.string,
+      country: propTypes.string,
+      numberOfHouse: propTypes.string,
+      postalCode: propTypes.string,
+      street: propTypes.string,
+    }),
   }),
   withEdit: propTypes.bool,
   initialState: propTypes.object,

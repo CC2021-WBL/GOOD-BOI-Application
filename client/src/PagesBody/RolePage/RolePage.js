@@ -14,10 +14,9 @@ import { DogContext } from '../../Context/DogContext';
 import { ROLES, ROLE_NAME } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { createURLForRolePage } from '../../Tools/UrlCreators';
-import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const RolePage = () => {
-  const { state, dispatch } = useContext(UserDataContext);
+  const { state, dispatch, logout } = useContext(UserDataContext);
   const { dogDispatch } = useContext(DogContext);
   const { contestDispatch } = useContext(ContestContext);
   const { userId, roles, isAuthenticated } = state;
@@ -52,18 +51,17 @@ const RolePage = () => {
 
   const handleLogoutClick = (event) => {
     event.preventDefault();
-
-    fetch('/api/users/logout', requestOptionsGET)
-      .then((response) => response.text())
-      .then((result) => {
-        dispatch({ type: 'LOG_OUT', index: 1 });
-        navigate('/');
-      })
-      .catch((error) => alert(error));
+    logout();
+    navigate('/');
   };
 
   return (
-    <ColumnWrapper paddingLeftRight={1} paddingTop={1.5} className="role-page-column-wrapper" maxWidthBigScreen={45}>
+    <ColumnWrapper
+      paddingLeftRight={1}
+      paddingTop={1.5}
+      className="role-page-column-wrapper"
+      maxWidthBigScreen={45}
+    >
       {roles.map((role, index) =>
         role === 'staff' ? (
           <MainButton

@@ -9,8 +9,7 @@ import { UserDataContext } from './../../Context/UserDataContext';
 
 const Sidebar = () => {
   const { state } = useContext(UserDataContext);
-  const { isAuthenticated } = state;
-  const { userId } = state;
+  const { isAuthenticated, userId } = state;
   const fontsize = '30px';
 
   if (isAuthenticated) {

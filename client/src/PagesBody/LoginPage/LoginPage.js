@@ -9,19 +9,18 @@ import FormWrapper from '../../Atoms/FormWrapper/FormWrapper';
 import InputField from '../../Molecules/InputField/InputField';
 import MainButton from '../../Atoms/MainButton/MainButton';
 import { UserDataContext } from '../../Context/UserDataContext';
-import { loginUser } from '../../Tools/FetchData/fetchFunctions';
 
-const LoginForm = () => {
+const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { dispatch } = useContext(UserDataContext);
+  const { dispatch, login } = useContext(UserDataContext);
   const navigate = useNavigate();
 
   const submitHandler = async (event) => {
     event.preventDefault();
     const data = { email, password };
 
-    await loginUser(data, dispatch, navigate);
+    await login(data, dispatch, navigate);
   };
 
   return (
@@ -63,7 +62,7 @@ const LoginForm = () => {
           <div>
             Nie masz konta?
             <Link to="/register" className="forgot-pass">
-              <> </>Zarejestruj się?
+              <> </>Zarejestruj się
             </Link>
           </div>
         </FormWrapper>
@@ -72,4 +71,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default LoginPage;
