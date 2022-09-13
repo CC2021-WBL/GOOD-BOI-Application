@@ -4,11 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ForbiddenEntryPage from '../ForbiddenEntryPage/ForbiddenEntryPage';
 import MainButton from '../../Atoms/MainButton/MainButton';
-import {
-  CONTEST_ACTIONS,
-  DOG_ACTIONS,
-  USER_ACTIONS,
-} from '../../Consts/reducersActions';
+import { CONTEST_ACTIONS, USER_ACTIONS } from '../../Consts/reducersActions';
 import { ContestContext } from '../../Context/ContestContext';
 import { DogContext } from '../../Context/DogContext';
 import { ROLES, ROLE_NAME } from '../../Consts/rolesConsts';
@@ -17,14 +13,16 @@ import { createURLForRolePage } from '../../Tools/UrlCreators';
 
 const RolePage = () => {
   const { state, dispatch, logout } = useContext(UserDataContext);
-  const { dogDispatch } = useContext(DogContext);
+  const { setChosenDog } = useContext(DogContext);
   const { contestDispatch } = useContext(ContestContext);
   const { userId, roles, isAuthenticated } = state;
   const navigate = useNavigate();
 
   useEffect(() => {
     contestDispatch({ type: CONTEST_ACTIONS.CLEAR });
-    dogDispatch({ type: DOG_ACTIONS.CLEAR_CHOSEN_DOG });
+    setChosenDog((prevState) => {
+      return {};
+    });
     dispatch({ type: USER_ACTIONS.CLEAR_SELECTED_ROLE });
   }, []);
 

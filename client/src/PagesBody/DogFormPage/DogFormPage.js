@@ -14,9 +14,8 @@ import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 
 const DogFormPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const { dogState, dogDispatch } = useContext(DogContext);
+  const { dogs, setDogs, chosenDog } = useContext(DogContext);
   const { state } = useContext(UserDataContext);
-  const { dogs, chosenDog } = dogState;
   const [initialStateOfDogForm, setInitialStateOfDogForm] = useState(null);
   const navigate = useNavigate();
 
@@ -52,9 +51,9 @@ const DogFormPage = () => {
 
   async function submitForm(dogData) {
     if (!initialStateOfDogForm._id) {
-      postDogForm(state, dogData, dogs, dogDispatch);
+      postDogForm(state, dogData, dogs, setDogs);
     } else {
-      patchDogForm(initialStateOfDogForm, dogData, dogs, dogDispatch);
+      patchDogForm(initialStateOfDogForm, dogData, dogs, setDogs);
     }
 
     setIsSubmitted(true);

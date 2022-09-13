@@ -22,12 +22,12 @@ const NavElement = () => {
 
   const [open, setOpen] = useState(false);
   const { state } = useContext(UserDataContext);
-  const { dogState } = useContext(DogContext);
+  const { chosenDog } = useContext(DogContext);
   const { contestState } = useContext(ContestContext);
   const namesFromContext = {
     userName: state.userName || '',
     userSurname: state.userSurname || '',
-    dogName: dogState.chosenDog.dogName || '',
+    dogName: chosenDog.dogName || '',
     contestName: contestState.contestName || '',
   };
 

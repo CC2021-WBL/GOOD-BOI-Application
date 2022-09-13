@@ -1,19 +1,26 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
-import dogReducer from '../Reducers/dogReducer';
 import propTypes from 'prop-types';
+import { UserDataContext } from './UserDataContext';
+import { fetchUserDogs } from '../Hooks/QueryHooks/useUserDogs';
 
 export const DogContext = createContext();
 
-const initialData = {
-  dogs: [],
-  chosenDog: {},
-};
-
 export function DogContextProvider({ children }) {
-  const [dogState, dogDispatch] = useReducer(dogReducer, initialData);
+  const { state } = useContext(UserDataContext);
+  const [chosenDog, setChosenDog] = useState({});
+  const [dogs, setDogs] = useState([]);
+
+  useEffect(() => {
+    async function getDogs() {
+      const res = await fetchUserDogs(state.userId);
+      setDogs(res.dogs);
+    }
+
+    getDogs();
+  }, [state.userId]);
   return (
-    <DogContext.Provider value={{ dogState, dogDispatch }}>
+    <DogContext.Provider value={{ dogs, setDogs, chosenDog, setChosenDog }}>
       {children}
     </DogContext.Provider>
   );

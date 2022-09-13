@@ -18,10 +18,9 @@ import EnterCompetitionContainer from '../../Organisms/EnterCompetitionContainer
 const ClassChoicePage = () => {
   const { contestState } = useContext(ContestContext);
   const { dispatch, state } = useContext(UserDataContext);
-  const { dogState } = useContext(DogContext);
+  const { chosenDog } = useContext(DogContext);
   const { isAuthenticated, userId } = state;
   const { contestId, contestName } = contestState;
-  const { chosenDog } = dogState;
 
   const [selectedClass, setSelectedClass] = useState('');
   const [confirmation, setConfirmation] = useState(null);
@@ -113,7 +112,7 @@ const ClassChoicePage = () => {
   };
 
   const enterCompetitionClassChoice = () => {
-    return dogState.chosenDog !== {} && contestState.contestId !== null
+    return chosenDog !== {} && contestState.contestId !== null
       ? '-enter-competition'
       : '';
   };
@@ -122,45 +121,52 @@ const ClassChoicePage = () => {
     <>
       {fetchErrors ? (
         <ErrorComponent message={fetchErrors} />
-      ) : (<>
-    <ColumnWrapper className={`class-choice${enterCompetitionClassChoice()}`}>
-      <ColumnWrapper
-        paddingLeftRight={1}
-        paddingTop={0.25}
-        contentPosition={isAuthenticated}
-        maxWidthBigScreen={35}
-        className={`class-choice-wrapper${enterCompetitionClassChoice()}`}
-      >
-        {isPending && <Spinner />}
-        {classesArr &&
-          classesArr.map((obedienceClass, index) => {
-            return (
-              <MainButton
-                onClick={(event) => clickHandler(event, obedienceClass)}
-                key={index}
-                style={{ height: '75px' }}
-                text={`Klasa ${obedienceClass}`}
-                ternary
-                justifyText={'left'}
-                className="selected-btn"
-              />
-            );
-          })}
-        {classesArr && location.state && (
-          <MainButton
-            text={'WYŚLIJ FORMULARZ'}
-            secondary
-            onClick={sendApplication}
-          />
-        )}
-        {classesArr && !location.state && (
-          <FakeButton text={'Pokaż wyniki'} colors="secondary" to={linkTo()} />
-        )}
-      </ColumnWrapper>
-      {contestState.contestId !== null && (
-        <EnterCompetitionContainer confirmation={confirmation} />
-      )}
-    </ColumnWrapper>
+      ) : (
+        <>
+          <ColumnWrapper
+            className={`class-choice${enterCompetitionClassChoice()}`}
+          >
+            <ColumnWrapper
+              paddingLeftRight={1}
+              paddingTop={0.25}
+              contentPosition={isAuthenticated}
+              maxWidthBigScreen={35}
+              className={`class-choice-wrapper${enterCompetitionClassChoice()}`}
+            >
+              {isPending && <Spinner />}
+              {classesArr &&
+                classesArr.map((obedienceClass, index) => {
+                  return (
+                    <MainButton
+                      onClick={(event) => clickHandler(event, obedienceClass)}
+                      key={index}
+                      style={{ height: '75px' }}
+                      text={`Klasa ${obedienceClass}`}
+                      ternary
+                      justifyText={'left'}
+                      className="selected-btn"
+                    />
+                  );
+                })}
+              {classesArr && location.state && (
+                <MainButton
+                  text={'WYŚLIJ FORMULARZ'}
+                  secondary
+                  onClick={sendApplication}
+                />
+              )}
+              {classesArr && !location.state && (
+                <FakeButton
+                  text={'Pokaż wyniki'}
+                  colors="secondary"
+                  to={linkTo()}
+                />
+              )}
+            </ColumnWrapper>
+            {contestState.contestId !== null && (
+              <EnterCompetitionContainer confirmation={confirmation} />
+            )}
+          </ColumnWrapper>
         </>
       )}
     </>

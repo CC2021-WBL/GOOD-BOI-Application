@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { ContestContext } from '../../Context/ContestContext';
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import DataLine from '../../Atoms/DataLine/DataLine';
@@ -7,9 +7,8 @@ import { UserDataContext } from '../../Context/UserDataContext';
 
 const EnterCompetitionContainer = ({ confirmation }) => {
   const { contestState } = useContext(ContestContext);
-  const { dogState } = useContext(DogContext);
+  const { chosenDog } = useContext(DogContext);
   const { state } = useContext(UserDataContext);
-  const { chosenDog } = dogState;
   const { contestName, contestStartDate, contestAddress } = contestState;
   const { selectedClass } = state;
 

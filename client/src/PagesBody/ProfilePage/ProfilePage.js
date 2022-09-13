@@ -20,7 +20,7 @@ import Spinner from '../../Atoms/Spinner/Spinner';
 const ProfilePage = () => {
   const paramsUserData = useParams();
   const { contestState, contestDispatch } = useContext(ContestContext);
-  const { dogState, dogDispatch } = useContext(DogContext);
+  const { chosenDog, setChosenDog } = useContext(DogContext);
   const { state, dispatch } = useContext(UserDataContext);
   const { userId } = state;
 
@@ -35,8 +35,10 @@ const ProfilePage = () => {
     if (contestState.contestId || contestState.contestName) {
       contestDispatch({ type: CONTEST_ACTIONS.CLEAR });
     }
-    if (dogState.chosenDog) {
-      dogDispatch({ type: DOG_ACTIONS.CLEAR_CHOSEN_DOG });
+    if (chosenDog) {
+      setChosenDog((prevState) => {
+        return {};
+      });
     }
     if (state.selectedRole !== ROLE_NAME.PARTICIPANT) {
       dispatch({

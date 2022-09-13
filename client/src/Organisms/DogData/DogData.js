@@ -23,7 +23,7 @@ const DogData = ({ id }) => {
   const [dogData, setDogData] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const { state } = useContext(UserDataContext);
-  const { dogDispatch, dogState } = useContext(DogContext);
+  const { setChosenDog, chosenDog } = useContext(DogContext);
   const { contestState } = useContext(ContestContext);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const DogData = ({ id }) => {
 
   const handleConfirm = (event) => {
     event.preventDefault();
-    dogState.chosenDog &&
+    chosenDog &&
       contestState.contestId &&
       navigate(`/participant-data/${state.userId}`, {
         state: {
@@ -66,20 +66,18 @@ const DogData = ({ id }) => {
           participantId: state.userId,
         },
       });
-    dogDispatch({
-      type: 'UPDATE_ONE_FIELD',
-      fieldName: 'chosenDog',
-      payload: {
+    setChosenDog(() => {
+      return {
         dogId: id,
         dogName: dogData.dogName,
         dogPkr: dogData.pkr,
-      },
+      };
     });
-    dogState.chosenDog && !contestState.contestId && navigate(`/user-dogs`);
+    chosenDog && !contestState.contestId && navigate(`/user-dogs`);
   };
 
   const enterCompetitionDogData = () => {
-    return dogState.chosenDog !== {} && contestState.contestId !== null
+    return chosenDog !== {} && contestState.contestId !== null
       ? '-enter-competition'
       : '';
   };

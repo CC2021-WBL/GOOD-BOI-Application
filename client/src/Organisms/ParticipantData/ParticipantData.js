@@ -21,7 +21,7 @@ const ParticipantData = ({ id }) => {
   const [fetchErrors, setFetchErrors] = useState(null);
   const [participantData, setParticipantData] = useState(null);
   const [isPending, setIsPending] = useState(true);
-  const { dogState } = useContext(DogContext);
+  const { chosenDog } = useContext(DogContext);
   const { state, dispatch } = useContext(UserDataContext);
   const { contestState } = useContext(ContestContext);
 
@@ -68,7 +68,7 @@ const ParticipantData = ({ id }) => {
   };
 
   const enterCompetitionParticipantData = () => {
-    return dogState.chosenDog !== {} && contestState.contestId !== null
+    return chosenDog !== {} && contestState.contestId !== null
       ? '-enter-competition'
       : '';
   };
@@ -115,7 +115,7 @@ const ParticipantData = ({ id }) => {
               Dane uczestnika
             </ColumnWrapper>
           </ColumnWrapper>
-          {dogState.chosenDog !== {} && contestState.contestId !== null && (
+          {chosenDog !== {} && contestState.contestId !== null && (
             <EnterCompetitionContainer />
           )}
         </ColumnWrapper>

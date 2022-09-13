@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { ERROR_MSG } = require('../Consts/errorMessages');
 const {
   registerDog,
   updateSomeDogProps,
@@ -30,12 +29,10 @@ router.post(
   isUserOrAdmin,
   async (req, res) => {
     const savedDog = await registerDog(req, res);
-    const updatedUser = await updateDogsArray(req, res, savedDog);
-    if (savedDog && updatedUser) {
-      res.status(201).send(savedDog);
-    } else {
-      res.status(503).json({ message: ERROR_MSG[503] });
+    if (savedDog) {
+      await updateDogsArray(req, res, savedDog);
     }
+    res.status(201).send(savedDog);
   },
 );
 
