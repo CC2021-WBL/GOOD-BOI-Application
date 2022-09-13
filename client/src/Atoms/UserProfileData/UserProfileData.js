@@ -14,24 +14,23 @@ const UserProfileData = ({
   className,
   isBigScreen,
   userData,
-  fetchErrors
+  fetchErrors,
 }) => {
-  const { state,} = useContext(UserDataContext);
+  const { state } = useContext(UserDataContext);
   const { userName, userSurname } = state;
-
-  console.log(userData)
-  const [userObject, setUserObject] = useState(createUserInitialData(state));
+  const [userObject, setUserObject] = useState(createUserInitialData(userData));
   const [toggle, setToggle] = useState(isBigScreen);
 
   const toggleHandler = () => {
     setToggle((prevState) => !prevState);
   };
 
-  const submitForm = () => {};
+  const submitForm = () => {
+    console.log(userObject);
+  };
 
   const { address, participantName, participantSurname } = userObject;
   const { street, numberOfHouse, city, postalCode } = address;
-
 
   return (
     <>
@@ -86,12 +85,19 @@ const UserProfileData = ({
 };
 
 UserProfileData.propTypes = {
-  // userData: propTypes.shape({
-  //   userId: propTypes.string.isRequired,
-  //   userName: propTypes.string,
-  //   userSurname: propTypes.string,
-  //   roles: propTypes.arrayOf(propTypes.string),
-  // }),
+  userData: propTypes.shape({
+    _id: propTypes.string.isRequired,
+    participantName: propTypes.string,
+    participantSurname: propTypes.string,
+    portalRoles: propTypes.arrayOf(propTypes.string),
+    address: propTypes.shape({
+      city: propTypes.string,
+      country: propTypes.string,
+      numberOfHouse: propTypes.string,
+      postalCode: propTypes.string,
+      street: propTypes.string,
+    }),
+  }),
   withEdit: propTypes.bool,
   initialState: propTypes.object,
 };

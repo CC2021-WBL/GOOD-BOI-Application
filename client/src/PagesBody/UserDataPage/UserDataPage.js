@@ -1,19 +1,16 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
 import ColumnWrapper from '../../Templates/ColumnWrapper/ColumnWrapper';
 import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
 import UserField from '../../Atoms/UserField/UserField';
 import useMediaQuery from '../../Hooks/useMediaQuery';
 import { UserDataContext } from '../../Context/UserDataContext';
-import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
-import { USER_ACTIONS } from '../../Consts/reducersActions';
-import { generateErrorMessage } from '../../Tools/generateErrorMessage';
+import useUserData from '../../Hooks/QueryHooks/useUserData';
+import Spinner from '../../Atoms/Spinner/Spinner';
 
 const UserData = () => {
-  const [userObject, setUserObject] = useState(null);
   const [fetchErrors, setFetchErrors] = useState(null);
-  const { state, dispatch } = useContext(UserDataContext);
+  const { state } = useContext(UserDataContext);
   const { userId, isAuthenticated } = state;
   const paramsUserData = useParams();
   const isBigScreen = useMediaQuery('(min-width:800px)');
@@ -23,74 +20,22 @@ const UserData = () => {
     currentUserId = paramsUserData.userId;
   }
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      // checkJwt(setUserObject, dispatch, navigate);
+  const { data, isSuccess, isError, error, isLoading } = useUserData(
+    currentUserId,
+    true,
+  );
 
-      async function checkJwt() {
-        try {
-          const response = await fetch(
-            '/api/users/jwt',
-            requestOptionsGET
-          );
-          if (response.status === 200) {
-            const result = await response.json();
-            console.log(result)
-      
-            dispatch({
-              type: USER_ACTIONS.LOG_IN,
-              payload: {
-                userId: result._id,
-                userName: result.participantName,
-                userSurname: result.participantSurname,
-                roles: result.portalRoles,
-              },
-            });
-            setUserObject(() => result)
-          } else {
-            console.log(`status: ${response.status}`)
-          }
-        } catch (error) {
-          console.log("error")
-          console.log(error);
-        }
-      }
+  const [userObject, setUserObject] = useState(data);
 
-      checkJwt()
-      
-    } else {
-      async function getUserProfileData() {
-        try {
-          let response = await fetch(
-            `/api/users/${currentUserId}?taker=profile`,
-            requestOptionsGET,
-          );
-          if (!response.ok) {
-            throw Error(generateErrorMessage(response.status));
-          } else {
-            response = await response.json();
-            console.log(response)
-            setUserObject(response);
-          }
-        } catch (error) {
-          setFetchErrors(error.message);
-        }
-      }
+  if (isLoading) {
+    return <Spinner />;
+  }
 
-      getUserProfileData();
+  if (isError) {
+    console.log(error);
+  }
 
-      fetch(`/api/users/${currentUserId}`, requestOptionsGET)
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result)
-        setUserObject(result);
-      })
-      .catch((error) => console.log(error));
-    }
-    
-  }, []);
-
-  if (!userObject) {
+  if (!data) {
     return (
       <p style={{ fontSize: '15px', color: 'grey' }}>
         на хуй путін
@@ -108,31 +53,31 @@ const UserData = () => {
       >
         <ProfileCard
           withEdit
-          initialState={userObject}
+          initialState={data}
           className="user-data-profile-card"
           isBigScreen={isBigScreen}
-          userData={userObject}
+          userData={data}
           fetchErrors={fetchErrors}
         />
         <UserField
           text="zmień email"
           email
-          userEmail={userObject.email}
-          initialState={userObject}
+          userEmail={data.email}
+          initialState={data}
           setUserObject={setUserObject}
         />
         <UserField
           text="zmień hasło"
           password
           userPassword="***********"
-          initialState={userObject}
+          initialState={data}
           setUserObject={setUserObject}
         />
         <UserField
           text="zmień numer telefonu"
           phoneNumber
-          userPhoneNumber={userObject.phoneNumber}
-          initialState={userObject}
+          userPhoneNumber={data.phoneNumber}
+          initialState={data}
           setUserObject={setUserObject}
         />
       </ColumnWrapper>

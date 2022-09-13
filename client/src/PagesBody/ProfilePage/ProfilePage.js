@@ -13,12 +13,23 @@ import ProfileCard from '../../Molecules/ProfileCard/ProfileCard';
 import { ROLE_NAME } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import propTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
+import useUserData from '../../Hooks/QueryHooks/useUserData';
+import Spinner from '../../Atoms/Spinner/Spinner';
 
 const ProfilePage = () => {
+  const paramsUserData = useParams();
   const { contestState, contestDispatch } = useContext(ContestContext);
   const { dogState, dogDispatch } = useContext(DogContext);
   const { state, dispatch } = useContext(UserDataContext);
   const { userId } = state;
+
+  let currentUserId = userId;
+  if (!currentUserId) {
+    currentUserId = paramsUserData.userId;
+  }
+
+  const { data, isLoading } = useUserData(currentUserId, true);
 
   useEffect(() => {
     if (contestState.contestId || contestState.contestName) {
@@ -35,9 +46,13 @@ const ProfilePage = () => {
     }
   }, []);
 
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <ColumnWrapper paddingLeftRight={1} className="user-profile">
-      <ProfileCard className="user-profile" />
+      <ProfileCard userData={data} className="user-profile" />
       <FakeButton
         to={'/contests'}
         state={{

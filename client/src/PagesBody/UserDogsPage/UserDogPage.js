@@ -11,8 +11,8 @@ import { DogContext } from '../../Context/DogContext';
 import { ROLE_NAME } from '../../Consts/rolesConsts';
 import { UserDataContext } from '../../Context/UserDataContext';
 import { generateErrorMessage } from '../../Tools/generateErrorMessage';
-import { requestOptionsGET } from '../../Tools/FetchData/requestOptions';
 import { ContestContext } from '../../Context/ContestContext';
+import axios from 'axios'
 import DataLine from '../../Atoms/DataLine/DataLine';
 import EnterCompetitionContainer from '../../Organisms/EnterCompetitionContainer/EnterCompetitionContainer';
 import enterCompetitionAddClass from '../../Organisms/EnterCompetitionContainer/enterCompetitionAddClass';
@@ -42,21 +42,19 @@ const UserDogPage = () => {
     } else {
       async function getDogsNames() {
         try {
-          let response = await fetch(
-            `/api/users/dogs/${state.userId}`,
-            requestOptionsGET,
-          );
-          if (response.ok) {
-            response = await response.json();
-            setParticipantDogs(response.dogs);
-
-            dogDispatch({
-              type: DOG_ACTIONS.SET_DATA,
-              payload: { dogs: response.dogs, chosenDog: {} },
-            });
-          } else {
-            throw Error(generateErrorMessage(response.status));
-          }
+          axios.get(`/api/users/dogs/${state.userId}`).then(response => {
+            if (response.status === 200) {
+              setParticipantDogs(response.data.dogs);
+        
+              dogDispatch({
+                type: DOG_ACTIONS.SET_DATA,
+                payload: { dogs: response.data.dogs, chosenDog: {} },
+              });
+              return response.data.dogs;
+            } else {
+              throw Error(generateErrorMessage(response.status));
+            }
+          })
         } catch (error) {
           setFetchErrors(error.message);
         }

@@ -1,24 +1,16 @@
-const createUserInitialData = (state = {}) => {
-  let participantName = '';
-  let participantSurname = '';
-
-  if (state) {
-    participantName = state.userName;
-    participantSurname = state.userSurname;
-  }
-
-  const userData = {
-    participantName: participantName,
-    participantSurname: participantSurname,
+const createUserInitialData = (userData = {}) => {
+  const userInitialData = {
+    participantName: userData.participantName || '',
+    participantSurname: userData.participantSurname || '',
     address: {
-      country: '',
-      city: '',
-      street: '',
-      numberOfHouse: '',
-      postalCode: '',
+      country: userData.address.country || 'Poland',
+      city: userData.address.city || 'City Name',
+      street: userData.address.street || 'Street',
+      numberOfHouse: userData.address.numberOfHouse || '00',
+      postalCode: userData.address.postalCode || '00-000',
     },
   };
-  return userData;
+  return userInitialData;
 };
 
 export default createUserInitialData;
