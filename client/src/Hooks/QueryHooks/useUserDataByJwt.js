@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import axios from 'axios';
 
-const fetchUserDataByJwt = async () => {
+export const fetchUserDataByJwt = async () => {
   const res = await axios.get('/api/users/jwt');
   return res.data;
 };
