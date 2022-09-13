@@ -23,7 +23,7 @@ async function registerDog(req, res) {
       return savedDog;
     }
   } catch (error) {
-    res.status(500).json({ message: ERROR_MSG[500] });
+    res.status(500).json({ message: error.message });
   }
 }
 

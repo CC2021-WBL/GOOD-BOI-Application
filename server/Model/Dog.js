@@ -36,14 +36,13 @@ const DogSchema = mongoose.Schema({
     required: true,
   },
   chipOrTattoo: {
-    type: Number,
-    minlength: 4,
+    type: String,
+    minlength: 2,
     maxlength: 30,
   },
   sex: {
     type: String,
     required: true,
-    enum: ['pies', 'suka'],
   },
   owner: {
     type: String,

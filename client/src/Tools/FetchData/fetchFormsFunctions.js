@@ -1,7 +1,5 @@
-import {
-  genRequestOptionsPATCH,
-  genRequestOptionsPOST,
-} from './requestOptions';
+import { genRequestOptionsPOST } from './requestOptions';
+import axios from 'axios';
 
 export async function postApplication(body) {
   const res = await fetch(
@@ -22,25 +20,25 @@ export async function postApplication(body) {
   }
 }
 
-export async function postDogForm(state, dogData, dogs, dogDispatch) {
+export async function postDogForm(state, dogData, dogs, setDogs) {
   delete dogData._id;
   const res = await fetch(
     `/api/dogs/register/${state.userId}`,
     genRequestOptionsPOST(dogData),
   );
   if (res.status === 400) {
-    alert('nieprawidłowe dane');
+    alert('Nieprawidłowe dane');
   } else if (res.status !== 201) {
     alert('Dodanie psa nieudane, spróbuj jeszcze raz');
-    console.log(res.message);
   } else if (res.status === 201) {
-    dogDispatch({
-      type: 'UPDATE_ONE_FIELD',
-      fieldName: 'dogs',
-      payload: dogs.push({
-        dogId: dogData._id,
-        dogName: dogData.dogName,
-      }),
+    setDogs((prevState) => {
+      return [
+        {
+          dogId: dogData._id,
+          dogName: dogData.dogName,
+        },
+        ...prevState,
+      ];
     });
   }
 }
@@ -49,11 +47,11 @@ export async function patchDogForm(
   initialStateOfDogForm,
   dogData,
   dogs,
-  dogDispatch,
+  setDogs,
 ) {
-  const res = await fetch(
+  const res = await axios.patch(
     `/api/dogs/${initialStateOfDogForm._id}`,
-    genRequestOptionsPATCH(dogData),
+    dogData,
   );
   if (res.status === 400) {
     alert('nieprawidłowe dane');
@@ -68,10 +66,8 @@ export async function patchDogForm(
         element.dogName = dogData.dogName;
       }
     });
-    dogDispatch({
-      type: 'UPDATE_ONE_FIELD',
-      fieldName: 'dogs',
-      payload: dogs,
+    setDogs((prevState) => {
+      return dogs;
     });
   }
 }
