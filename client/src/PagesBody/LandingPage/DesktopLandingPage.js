@@ -64,7 +64,9 @@ const DesktopLandingPage = () => {
                   className="landing-desktop-login"
                 />
               </TitleWrapperStyled>
-              <h3 className="incoming-contests">{UPCOMING_COMPETITIONS}</h3>
+              {contestData && (
+                <h3 className="incoming-contests">{UPCOMING_COMPETITIONS}</h3>
+              )}
               {isPending && <Spinner />}
               {contestData &&
                 contestData.map((contest, index) => (
@@ -74,7 +76,7 @@ const DesktopLandingPage = () => {
                     className="last-card"
                   />
                 ))}
-              {!isPending && (
+              {!isPending && contestData && (
                 <FakeButton
                   colors="primary"
                   to="/contests"
@@ -85,6 +87,8 @@ const DesktopLandingPage = () => {
                   className="more-contests"
                 />
               )}
+
+              {!contestData && <h1>Brak zawodów w najbliższym czasie</h1>}
             </ColumnWrapper>
             <div className="mockmap">
               <img src={mockmap} alt="mockmap" />
