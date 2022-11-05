@@ -27,10 +27,10 @@
     "prettier": "2.5.1"
   },
   "dependencies": {
-    "@types/jest": "^28.1.7",
-    "@types/node": "^18.7.8",
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
+    "@types/jest": "^28.1.8",
+    "@types/node": "^18.11.9",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
     "axios": "^0.27.2",
     "base64url": "^3.0.1",
     "concurrently": "^7.0.0",
@@ -48,6 +48,6 @@
     "react-map-gl": "^7.0.10",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.3.0",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.4"
   }
 }
