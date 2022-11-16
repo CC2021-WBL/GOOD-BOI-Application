@@ -6,13 +6,15 @@ import MenuItem from '../../Molecules/MenuItem/MenuItem';
 import SidebarItemsStyled from './SidebarItemsStyled';
 import SidebarStyled from './SidebarStyled';
 import { UserDataContext } from './../../Context/UserDataContext';
+import { useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
+  const location = useLocation();
   const { state } = useContext(UserDataContext);
   const { isAuthenticated, userId } = state;
   const fontsize = '30px';
 
-  if (isAuthenticated) {
+  if (isAuthenticated && location.pathname !== '/') {
     return (
       <SidebarStyled>
         <SidebarItemsStyled>
