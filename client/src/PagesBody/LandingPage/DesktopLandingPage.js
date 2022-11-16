@@ -22,8 +22,9 @@ const DesktopLandingPage = () => {
   const { isAuthenticated } = state;
 
   const [isPending, setIsPending] = useState(true);
-  const [contestData, setContestData] = useState(null);
+  const [contestData, setContestData] = useState([]);
   const [fetchErrors, setFetchErrors] = useState(null);
+
   useEffect(() => {
     async function fetchContestData() {
       try {
@@ -57,33 +58,45 @@ const DesktopLandingPage = () => {
                 <h3>
                   {APP_DESCRIPTION_PART_1} <br /> {APP_DESCRIPTION_PART_2}
                 </h3>
-                <FakeButton
-                  colors="primary"
-                  to="/login"
-                  text="Zaloguj się"
-                  className="landing-desktop-login"
-                />
-              </TitleWrapperStyled>
-              <h3 className="incoming-contests">{UPCOMING_COMPETITIONS}</h3>
-              {isPending && <Spinner />}
-              {contestData &&
-                contestData.map((contest, index) => (
-                  <ContestCard
-                    key={index}
-                    contestData={contest}
-                    className="last-card"
+
+                {!isPending && (
+                  <FakeButton
+                    colors="primary"
+                    to={isAuthenticated ? '/role' : '/login'}
+                    text={isAuthenticated ? 'Konto użytkownika' : 'Zaloguj się'}
+                    className="landing-desktop-login"
                   />
-                ))}
-              {!isPending && (
-                <FakeButton
-                  colors="primary"
-                  to="/contests"
-                  state={{
-                    contestContent: 'future',
-                  }}
-                  text="Zobacz więcej konkursów"
-                  className="more-contests"
-                />
+                )}
+              </TitleWrapperStyled>
+              {isPending ? (
+                <Spinner />
+              ) : (
+                <>
+                  <h3 className="incoming-contests">
+                    {contestData.length > 0
+                      ? UPCOMING_COMPETITIONS
+                      : 'Brak zawodów w najbliższym czasie'}
+                  </h3>
+                  {contestData.length > 0 &&
+                    contestData.map((contest, index) => (
+                      <>
+                        <ContestCard
+                          key={index}
+                          contestData={contest}
+                          className="last-card"
+                        />
+                        <FakeButton
+                          colors="primary"
+                          to="/contests"
+                          state={{
+                            contestContent: 'future',
+                          }}
+                          text="Zobacz więcej konkursów"
+                          className="more-contests"
+                        />
+                      </>
+                    ))}
+                </>
               )}
             </ColumnWrapper>
             <div className="mockmap">
