@@ -1,36 +1,41 @@
-import { useEffect, useState } from 'react';
+/* eslint-disable react-hooks/rules-of-hooks */
+import { useState } from 'react';
+import useRegisterUser from '../../Hooks/QueryHooks/user/useRegisterUser';
+import useUpdateUser from '../../Hooks/QueryHooks/user/useUpdateUser';
 
-import {
-  genRequestOptionsPATCH,
-  genRequestOptionsPOST,
-} from '../../Tools/FetchData/requestOptions';
+const initialStateMock = {
+  participantName: '',
+  participantSurname: '',
+  email: '',
+  password: '',
+  repeatpass: '',
+  phoneNumber: '',
+  address: {
+    country: '',
+    city: '',
+    street: '',
+    numberOfHouse: '',
+    postalCode: '',
+  },
+};
 
-const useCustomForm = (callback, validateData, initialState, setUserObject) => {
-  let isNew = false;
-  const initialStateMock = {
-    participantName: '',
-    participantSurname: '',
-    email: '',
-    password: '',
-    repeatpass: '',
-    phoneNumber: '',
-    address: {
-      country: '',
-      city: '',
-      street: '',
-      numberOfHouse: '',
-      postalCode: '',
-    },
-  };
+const useCustomForm = (
+  successfulSubmitCallback,
+  validateData,
+  initialState,
+  setUserObject,
+) => {
+  const { mutateAsync: useCreateUser } = useRegisterUser();
+  const { mutateAsync: updateUser } = useUpdateUser();
+  let isNewUser = false;
+
   if (!initialState) {
     initialState = initialStateMock;
-    isNew = true;
+    isNewUser = true;
   }
 
   const [formData, setFormData] = useState(initialState);
-  const [isNewUser, setIsNewUser] = useState(isNew);
   const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const handleInputChange = (event) => {
     const { id, value } = event.target;
 
@@ -52,23 +57,25 @@ const useCustomForm = (callback, validateData, initialState, setUserObject) => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    setErrors(validateData(formData));
-    setIsSubmitting(true);
-
+    const errors = validateData(formData);
+    setErrors(errors);
     if (isNewUser) {
-      let response = await fetch(
-        '/api/users/register',
-        genRequestOptionsPOST(formData),
-      );
-      if (response.status !== 201) {
+      if (Object.keys(errors).length !== 0) {
+        return;
+      }
+
+      const response = await useCreateUser(formData);
+      if (response.status === 201) {
+        successfulSubmitCallback();
+      } else {
         alert('Ooops, rejestracja nieudana, spróbuj jeszcze raz');
       }
     } else {
-      const response = await fetch(
-        `/api/users/${initialState._id}`,
-        genRequestOptionsPATCH(formData),
-      );
-      if (response.status === 200) {
+      const res = await updateUser({
+        userId: initialState._id,
+        userData: formData,
+      });
+      if (res.status === 200) {
         alert('Aktualizacja udana!');
         setUserObject(formData);
       } else {
@@ -76,12 +83,6 @@ const useCustomForm = (callback, validateData, initialState, setUserObject) => {
       }
     }
   };
-
-  useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmitting) {
-      callback();
-    }
-  }, [errors]);
 
   return { handleInputChange, formData, submitHandler, errors };
 };

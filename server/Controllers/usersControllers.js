@@ -18,6 +18,12 @@ async function registerParticipant(req, res) {
     address: req.body.address,
   });
   try {
+    const existedUser = await Participant.findByEmail(req.body.email);
+    if (existedUser) {
+      res.status(400).json({ message: 'Email is registered' });
+      return;
+    }
+
     const savedUser = await participant.save();
     if (!savedUser) {
       res.status(400).json({ message: ERROR_MSG[400] });
@@ -39,7 +45,6 @@ async function getUserDataByJwt(req, res) {
   } catch (error) {
     res.status(500).json({ message: ERROR_MSG[500] });
   }
-  
 }
 
 async function getUserData(req, res) {

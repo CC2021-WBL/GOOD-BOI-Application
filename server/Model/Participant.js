@@ -77,4 +77,8 @@ ParticipantSchema.statics.findSomethingByUserId = function (
   return this.findById(participantId).select(dataToFind);
 };
 
+ParticipantSchema.statics.findByEmail = function (userEmail) {
+  return this.findOne({ email: userEmail });
+};
+
 module.exports = mongoose.model('Participant', ParticipantSchema);
